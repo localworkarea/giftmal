@@ -58,6 +58,23 @@
   }
 }
 
+%padding32-24 {
+  @include adaptiveValue("padding", 32, 24,0,1232.98,992.98);
+ }
+ %fonsSize13-14 {
+   @media (min-width:$mobileSmall){
+     font-size: toRem(13);
+   }
+   @media (max-width:$mobileSmall){
+     font-size: toRem(14);
+   }
+ }
+ %flexCenterGap8 {
+   display: flex;
+   align-items: center;
+   gap: toRem(8);
+ }
+ 
 
 
 // == ITEM DROPDOWN =====================================
@@ -152,18 +169,72 @@
 // ========================================
 
 
-.spoller-item {
-  cursor: pointer;
-  &._active {
-    .spoller-body {
-      height: var(--height-item);
+.input {
+  // .input__item_sms
+  &__item-sms {
+    cursor: pointer;
+    position: relative;
+    .input-sms {
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
     }
   }
-  .spoller-title {
+  // .input__sms-body
+  &__sms-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    gap: toRem(37);
+    ._form-error & {
+      border-color: var(--red);
+      color: var(--red);
+    }
   }
-  .spoller-body {
-    height: 0;
-    overflow: hidden;
-    transition: height .6s ease;
+  // .input__sms-char
+  &__sms-char {
+    position: relative;
+    width: toRem(13);
+    text-align: center;
+    color: var(--fade-violet-1);
+    &:not(:last-child) {
+      &::before {
+        content:'';
+        position: absolute;
+        top: 50%;
+        left: toRem(31);
+        transform: translate(0,-50%);
+        width: toRem(1);
+        height: toRem(8);
+        background-color: rgba(33, 5, 41, 0.1);
+      }
+    }
+    ._form-error & {
+      color: var(--red);
+    }
+    ._form-success & {
+      color: var(--dark-violet);
+    }
+    &.sms-cursor::after {
+      content: "|";
+      position: absolute;
+      right: toRem(-8);
+      font-size: toRem(13);
+      color: var(--dark-violet);
+      opacity: 0;
+      animation: blink 1s infinite;
+      ._form-focus & {
+        opacity: 1;
+      }
+    }
+    &.sms-placeholder {
+    }
   }
+}
+@keyframes blink {
+  50% { opacity: 0; }
 }

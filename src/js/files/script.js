@@ -143,33 +143,59 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+  
+    
+    const inputSms = document.querySelector(".input-sms");
+    const charElements = document.querySelectorAll(".input__sms-char");
+
+    function updateDisplaySms() {
+        const value = inputSms.value.replace(/\D/g, "").slice(0, charElements.length);
+        inputSms.value = value;
+
+        charElements.forEach((charEl, index) => {
+            charEl.textContent = value[index] || "X";
+            charEl.classList.toggle("sms-placeholder", !value[index]);
+            charEl.classList.remove("sms-cursor");
+        });
+
+        // Добавляем мигающий курсор к следующему пустому символу
+        if (value.length < charElements.length) {
+            charElements[value.length].classList.add("sms-cursor");
+        }
+    }
+
+    inputSms.addEventListener("input", updateDisplaySms);
+    inputSms.addEventListener("focus", updateDisplaySms);
+    inputSms.addEventListener("click", updateDisplaySms);
+
+
 });
 
-function trackStickyElement() {
-  const spoller = document.querySelector('.orders-checkout__spoller');
+// function trackStickyElement() {
+//   const spoller = document.querySelector('.orders-checkout__spoller');
 
-  if (!spoller) return;
+//   if (!spoller) return;
 
-  let isSticky = false;
+//   let isSticky = false;
 
-  function checkSticky() {
-    const { bottom } = spoller.getBoundingClientRect();
+//   function checkSticky() {
+//     const { bottom } = spoller.getBoundingClientRect();
 
-    if (bottom >= window.innerHeight) {
-      if (!isSticky) {
-        console.log('orders-checkout__spoller зафиксировался (sticky)');
-        isSticky = true;
-      }
-    } else {
-      if (isSticky) {
-        console.log('orders-checkout__spoller отлип (unstuck)');
-        isSticky = false;
-      }
-    }
-  }
+//     if (bottom >= window.innerHeight) {
+//       if (!isSticky) {
+//         console.log('orders-checkout__spoller зафиксировался (sticky)');
+//         isSticky = true;
+//       }
+//     } else {
+//       if (isSticky) {
+//         console.log('orders-checkout__spoller отлип (unstuck)');
+//         isSticky = false;
+//       }
+//     }
+//   }
 
-  window.addEventListener('scroll', checkSticky);
-  checkSticky(); // Проверяем сразу при загрузке
-}
+//   window.addEventListener('scroll', checkSticky);
+//   checkSticky(); // Проверяем сразу при загрузке
+// }
 
-trackStickyElement();
+// trackStickyElement();

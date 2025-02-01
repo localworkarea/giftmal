@@ -233,28 +233,6 @@
 }
 
 
-%padding32-24 {
-//   @media (min-width:$mobileSmall){
-//     padding: toRem(32); 
-//  }
-//  @media (max-width:$mobileSmall){
-//     padding: toRem(24); 
-//  }
- @include adaptiveValue("padding", 32, 24,0,1232.98,992.98);
-}
-%fonsSize13-14 {
-  @media (min-width:$mobileSmall){
-    font-size: toRem(13);
-  }
-  @media (max-width:$mobileSmall){
-    font-size: toRem(14);
-  }
-}
-%flexCenterGap8 {
-  display: flex;
-  align-items: center;
-  gap: toRem(8);
-}
 
 .orders-checkout {
   @media (max-width: toEm(900.98)){
@@ -560,8 +538,9 @@
 
 
 
-
-
+.tab-checkout {
+  @extend %padding32-24;
+}
 
 
 

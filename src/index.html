@@ -7,9 +7,61 @@
 		<div class="wrapper">
 			@@include('html/_header.htm',{})
 			<main class="page">
-				<div class="page__container">
-					<a href="checkout.html">checkout html</a>
-				</div>
+				<div class="page__container" style="padding: 50px; font-size: toRem(18); border-inline: 1px solid #000; margin-top: 100px; line-height: 1.1;">
+					<p>Посилання на сторінки:</p><br>
+					<ol>
+						<li>
+							<a href="checkout.html" style="display: block;">checkout html</a>
+						</li>
+					</ol>
+					<br><br><br>
+					<p style="font-size: 20px; font-weight: 600;">Інпути та форми</p><br>
+					<p>Якщо до інпута додати data-required атрибут то це поле становитсья обов'язковим для заповнення. При пустому полі і відправці форми буде додаватись помилка</p><br>
+					<p>data-required також робить валідацію за значеннями: <br>
+						1. <b>data-required="email"</b> - для інпутів вводу email<br>
+						2. <b>data-required="sms"</b> - для інпуту вводу коду з SMS.
+					</p><br>
+
+					<form data-dev  action="" method="POST" style="border: 1px solid #0000001e; padding: 10px;">
+
+						<div class="input__item">
+							<label for="inp1" class="input__label">
+								Ваше ім'я
+							</label>
+							<input id="inp1" autocomplete="off" type="text" name="form[]" data-error="Назва помилки написана в data-error атрибуті" placeholder="This input" data-required class="input input_sm">
+						</div>
+
+						<br>
+
+						<div class="input__item">
+							<label for="inp2" class="input__label">
+								Ваше email
+							</label>
+							<input id="inp2" autocomplete="off" type="email" name="form[]" data-error="Введіть коректний email" placeholder="This input" data-required="email" data-validate class="input input_lg">
+						</div>
+
+						<br>
+
+						<div class="input__item">
+							<label for="inp1" class="input__label">
+								Поле вводу отриманого коду з SMS
+							</label>
+							<div class="input__item-sms">
+								<input autocomplete="off" type="text" name="form[]" data-error="Невірний код" data-required="sms" data-validate class="input-sms" maxlength="4" inputmode="numeric">
+								<div class="input__sms-body input input_sm">
+									<span class="input__sms-char sms-placeholder">X</span>
+									<span class="input__sms-char sms-placeholder">X</span>
+									<span class="input__sms-char sms-placeholder">X</span>
+									<span class="input__sms-char sms-placeholder">X</span>
+								</div>
+							</div>
+						</div>
+
+						<br><br>
+						<button type="submit" class="button" style="margin-top: 15px; padding: 10px; border: 1px solid #000; border-radius: 24px">Send</button>
+
+					</form>
+
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>

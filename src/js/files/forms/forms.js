@@ -36,38 +36,38 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 		}
 	});
 	// Якщо увімкнено, додаємо функціонал "Показати пароль"
-	if (options.viewPass) {
-		document.addEventListener("click", function (e) {
-			let targetElement = e.target;
-			if (targetElement.closest('[class*="__viewpass"]')) {
-				let inputType = targetElement.classList.contains('_viewpass-active') ? "password" : "text";
-				targetElement.parentElement.querySelector('input').setAttribute("type", inputType);
-				targetElement.classList.toggle('_viewpass-active');
-			}
-		});
-	}
+	// if (options.viewPass) {
+	// 	document.addEventListener("click", function (e) {
+	// 		let targetElement = e.target;
+	// 		if (targetElement.closest('[class*="__viewpass"]')) {
+	// 			let inputType = targetElement.classList.contains('_viewpass-active') ? "password" : "text";
+	// 			targetElement.parentElement.querySelector('input').setAttribute("type", inputType);
+	// 			targetElement.classList.toggle('_viewpass-active');
+	// 		}
+	// 	});
+	// }
 	// Якщо увімкнено, додаємо функціонал "Автовисота"
-	if (options.autoHeight) {
-		const textareas = document.querySelectorAll('textarea[data-autoheight]');
-		if (textareas.length) {
-			textareas.forEach(textarea => {
-				const startHeight = textarea.hasAttribute('data-autoheight-min') ?
-					Number(textarea.dataset.autoheightMin) : Number(textarea.offsetHeight);
-				const maxHeight = textarea.hasAttribute('data-autoheight-max') ?
-					Number(textarea.dataset.autoheightMax) : Infinity;
-				setHeight(textarea, Math.min(startHeight, maxHeight))
-				textarea.addEventListener('input', () => {
-					if (textarea.scrollHeight > startHeight) {
-						textarea.style.height = `auto`;
-						setHeight(textarea, Math.min(Math.max(textarea.scrollHeight, startHeight), maxHeight));
-					}
-				});
-			});
-			function setHeight(textarea, height) {
-				textarea.style.height = `${height}px`;
-			}
-		}
-	}
+	// if (options.autoHeight) {
+	// 	const textareas = document.querySelectorAll('textarea[data-autoheight]');
+	// 	if (textareas.length) {
+	// 		textareas.forEach(textarea => {
+	// 			const startHeight = textarea.hasAttribute('data-autoheight-min') ?
+	// 				Number(textarea.dataset.autoheightMin) : Number(textarea.offsetHeight);
+	// 			const maxHeight = textarea.hasAttribute('data-autoheight-max') ?
+	// 				Number(textarea.dataset.autoheightMax) : Infinity;
+	// 			setHeight(textarea, Math.min(startHeight, maxHeight))
+	// 			textarea.addEventListener('input', () => {
+	// 				if (textarea.scrollHeight > startHeight) {
+	// 					textarea.style.height = `auto`;
+	// 					setHeight(textarea, Math.min(Math.max(textarea.scrollHeight, startHeight), maxHeight));
+	// 				}
+	// 			});
+	// 		});
+	// 		function setHeight(textarea, height) {
+	// 			textarea.style.height = `${height}px`;
+	// 		}
+	// 	}
+	// }
 }
 // Валідація форм
 export let formValidate = {
@@ -88,6 +88,15 @@ export let formValidate = {
 		if (formRequiredItem.dataset.required === "email") {
 			formRequiredItem.value = formRequiredItem.value.replace(" ", "");
 			if (this.emailTest(formRequiredItem)) {
+				this.addError(formRequiredItem);
+				this.removeSuccess(formRequiredItem);
+				error++;
+			} else {
+				this.removeError(formRequiredItem);
+				this.addSuccess(formRequiredItem);
+			}
+		} else if (formRequiredItem.dataset.required === "sms") {
+			if (!this.smsCodeTest(formRequiredItem)) {
 				this.addError(formRequiredItem);
 				this.removeSuccess(formRequiredItem);
 				error++;
@@ -163,11 +172,17 @@ export let formValidate = {
 			}
 		}, 0);
 	},
+	smsCodeTest(formRequiredItem) {
+		return /^\d{4}$/.test(formRequiredItem.value);
+	},
 	emailTest(formRequiredItem) {
 		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
 	}
+	
 }
-/* Відправлення форм */
+
+
+// Відправлення форм
 export function formSubmit() {
 	const forms = document.forms;
 	if (forms.length) {
@@ -235,14 +250,10 @@ export function formSubmit() {
 		}, 0);
 		// Очищуємо форму
 		formValidate.formClean(form);
-		// Повідомляємо до консолі
-		formLogging(`Форму відправлено!`);
 	}
-	function formLogging(message) {
-		FLS(`[Форми]: ${message}`);
-	}
+
 }
-/* Модуль форми "кількість" */
+// Модуль форми "кількість"
 export function formQuantity() {
 	document.addEventListener("click", function (e) {
 		let targetElement = e.target;
@@ -373,7 +384,7 @@ export function formRating() {
 }
 */
 
-/* Модуль зіркового рейтингу */
+// Модуль зіркового рейтингу
 export function formRating() {
 	// Rating
 	const ratings = document.querySelectorAll('[data-rating]');

@@ -1,5 +1,6 @@
 (() => {
     "use strict";
+    const modules_flsModules = {};
     let _slideUp = (target, duration = 500, showmore = 0) => {
         if (!target.classList.contains("_slide")) {
             target.classList.add("_slide");
@@ -68,6 +69,23 @@
     };
     let _slideToggle = (target, duration = 500) => {
         if (target.hidden) return _slideDown(target, duration); else return _slideUp(target, duration);
+    };
+    let bodyLockStatus = true;
+    let bodyUnlock = (delay = 500) => {
+        if (bodyLockStatus) {
+            const lockPaddingElements = document.querySelectorAll("[data-lp]");
+            setTimeout((() => {
+                lockPaddingElements.forEach((lockPaddingElement => {
+                    lockPaddingElement.style.paddingRight = "";
+                }));
+                document.body.style.paddingRight = "";
+                document.documentElement.classList.remove("lock");
+            }), delay);
+            bodyLockStatus = false;
+            setTimeout((function() {
+                bodyLockStatus = true;
+            }), delay);
+        }
     };
     function spollers() {
         const spollersArray = document.querySelectorAll("[data-spollers]");
@@ -162,6 +180,15 @@
             }
         }
     }
+    function functions_menuClose() {
+        bodyUnlock();
+        document.documentElement.classList.remove("menu-open");
+    }
+    function FLS(message) {
+        setTimeout((() => {
+            if (window.FLS) console.log(message);
+        }), 0);
+    }
     function uniqArray(array) {
         return array.filter((function(item, index, self) {
             return self.indexOf(item) === index;
@@ -203,6 +230,224 @@
                 }));
                 return mdQueriesArray;
             }
+        }
+    }
+    let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+        const targetBlockElement = document.querySelector(targetBlock);
+        if (targetBlockElement) {
+            let headerItem = "";
+            let headerItemHeight = 0;
+            if (noHeader) {
+                headerItem = "header.header";
+                const headerElement = document.querySelector(headerItem);
+                if (!headerElement.classList.contains("_header-scroll")) {
+                    headerElement.style.cssText = `transition-duration: 0s;`;
+                    headerElement.classList.add("_header-scroll");
+                    headerItemHeight = headerElement.offsetHeight;
+                    headerElement.classList.remove("_header-scroll");
+                    setTimeout((() => {
+                        headerElement.style.cssText = ``;
+                    }), 0);
+                } else headerItemHeight = headerElement.offsetHeight;
+            }
+            let options = {
+                speedAsDuration: true,
+                speed,
+                header: headerItem,
+                offset: offsetTop,
+                easing: "easeOutQuad"
+            };
+            document.documentElement.classList.contains("menu-open") ? functions_menuClose() : null;
+            if (typeof SmoothScroll !== "undefined") (new SmoothScroll).animateScroll(targetBlockElement, "", options); else {
+                let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
+                targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
+                targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
+                window.scrollTo({
+                    top: targetBlockElementPosition,
+                    behavior: "smooth"
+                });
+            }
+            FLS(`[gotoBlock]: Юхуу...їдемо до ${targetBlock}`);
+        } else FLS(`[gotoBlock]: Йой... Такого блоку немає на сторінці: ${targetBlock}`);
+    };
+    function formFieldsInit(options = {
+        viewPass: false,
+        autoHeight: false
+    }) {
+        document.body.addEventListener("focusin", (function(e) {
+            const targetElement = e.target;
+            if (targetElement.tagName === "INPUT" || targetElement.tagName === "TEXTAREA") {
+                if (!targetElement.hasAttribute("data-no-focus-classes")) {
+                    targetElement.classList.add("_form-focus");
+                    targetElement.parentElement.classList.add("_form-focus");
+                }
+                formValidate.removeError(targetElement);
+                targetElement.hasAttribute("data-validate") ? formValidate.removeError(targetElement) : null;
+            }
+        }));
+        document.body.addEventListener("focusout", (function(e) {
+            const targetElement = e.target;
+            if (targetElement.tagName === "INPUT" || targetElement.tagName === "TEXTAREA") {
+                if (!targetElement.hasAttribute("data-no-focus-classes")) {
+                    targetElement.classList.remove("_form-focus");
+                    targetElement.parentElement.classList.remove("_form-focus");
+                }
+                targetElement.hasAttribute("data-validate") ? formValidate.validateInput(targetElement) : null;
+            }
+        }));
+    }
+    let formValidate = {
+        getErrors(form) {
+            let error = 0;
+            let formRequiredItems = form.querySelectorAll("*[data-required]");
+            if (formRequiredItems.length) formRequiredItems.forEach((formRequiredItem => {
+                if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) error += this.validateInput(formRequiredItem);
+            }));
+            return error;
+        },
+        validateInput(formRequiredItem) {
+            let error = 0;
+            if (formRequiredItem.dataset.required === "email") {
+                formRequiredItem.value = formRequiredItem.value.replace(" ", "");
+                if (this.emailTest(formRequiredItem)) {
+                    this.addError(formRequiredItem);
+                    this.removeSuccess(formRequiredItem);
+                    error++;
+                } else {
+                    this.removeError(formRequiredItem);
+                    this.addSuccess(formRequiredItem);
+                }
+            } else if (formRequiredItem.dataset.required === "sms") if (!this.smsCodeTest(formRequiredItem)) {
+                this.addError(formRequiredItem);
+                this.removeSuccess(formRequiredItem);
+                error++;
+            } else {
+                this.removeError(formRequiredItem);
+                this.addSuccess(formRequiredItem);
+            } else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
+                this.addError(formRequiredItem);
+                this.removeSuccess(formRequiredItem);
+                error++;
+            } else if (!formRequiredItem.value.trim()) {
+                this.addError(formRequiredItem);
+                this.removeSuccess(formRequiredItem);
+                error++;
+            } else {
+                this.removeError(formRequiredItem);
+                this.addSuccess(formRequiredItem);
+            }
+            return error;
+        },
+        addError(formRequiredItem) {
+            formRequiredItem.classList.add("_form-error");
+            formRequiredItem.parentElement.classList.add("_form-error");
+            let inputError = formRequiredItem.parentElement.querySelector(".form__error");
+            if (inputError) formRequiredItem.parentElement.removeChild(inputError);
+            if (formRequiredItem.dataset.error) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__error">${formRequiredItem.dataset.error}</div>`);
+        },
+        removeError(formRequiredItem) {
+            formRequiredItem.classList.remove("_form-error");
+            formRequiredItem.parentElement.classList.remove("_form-error");
+            if (formRequiredItem.parentElement.querySelector(".form__error")) formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector(".form__error"));
+        },
+        addSuccess(formRequiredItem) {
+            formRequiredItem.classList.add("_form-success");
+            formRequiredItem.parentElement.classList.add("_form-success");
+        },
+        removeSuccess(formRequiredItem) {
+            formRequiredItem.classList.remove("_form-success");
+            formRequiredItem.parentElement.classList.remove("_form-success");
+        },
+        formClean(form) {
+            form.reset();
+            setTimeout((() => {
+                let inputs = form.querySelectorAll("input,textarea");
+                for (let index = 0; index < inputs.length; index++) {
+                    const el = inputs[index];
+                    el.parentElement.classList.remove("_form-focus");
+                    el.classList.remove("_form-focus");
+                    formValidate.removeError(el);
+                }
+                let checkboxes = form.querySelectorAll(".checkbox__input");
+                if (checkboxes.length > 0) for (let index = 0; index < checkboxes.length; index++) {
+                    const checkbox = checkboxes[index];
+                    checkbox.checked = false;
+                }
+                if (modules_flsModules.select) {
+                    let selects = form.querySelectorAll("div.select");
+                    if (selects.length) for (let index = 0; index < selects.length; index++) {
+                        const select = selects[index].querySelector("select");
+                        modules_flsModules.select.selectBuild(select);
+                    }
+                }
+            }), 0);
+        },
+        smsCodeTest(formRequiredItem) {
+            return /^\d{4}$/.test(formRequiredItem.value);
+        },
+        emailTest(formRequiredItem) {
+            return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
+        }
+    };
+    function formSubmit() {
+        const forms = document.forms;
+        if (forms.length) for (const form of forms) {
+            form.addEventListener("submit", (function(e) {
+                const form = e.target;
+                formSubmitAction(form, e);
+            }));
+            form.addEventListener("reset", (function(e) {
+                const form = e.target;
+                formValidate.formClean(form);
+            }));
+        }
+        async function formSubmitAction(form, e) {
+            const error = !form.hasAttribute("data-no-validate") ? formValidate.getErrors(form) : 0;
+            if (error === 0) {
+                const ajax = form.hasAttribute("data-ajax");
+                if (ajax) {
+                    e.preventDefault();
+                    const formAction = form.getAttribute("action") ? form.getAttribute("action").trim() : "#";
+                    const formMethod = form.getAttribute("method") ? form.getAttribute("method").trim() : "GET";
+                    const formData = new FormData(form);
+                    form.classList.add("_sending");
+                    const response = await fetch(formAction, {
+                        method: formMethod,
+                        body: formData
+                    });
+                    if (response.ok) {
+                        let responseResult = await response.json();
+                        form.classList.remove("_sending");
+                        formSent(form, responseResult);
+                    } else {
+                        alert("Помилка");
+                        form.classList.remove("_sending");
+                    }
+                } else if (form.hasAttribute("data-dev")) {
+                    e.preventDefault();
+                    formSent(form);
+                }
+            } else {
+                e.preventDefault();
+                if (form.querySelector("._form-error") && form.hasAttribute("data-goto-error")) {
+                    const formGoToErrorClass = form.dataset.gotoError ? form.dataset.gotoError : "._form-error";
+                    gotoblock_gotoBlock(formGoToErrorClass, true, 1e3);
+                }
+            }
+        }
+        function formSent(form, responseResult = ``) {
+            document.dispatchEvent(new CustomEvent("formSent", {
+                detail: {
+                    form
+                }
+            }));
+            setTimeout((() => {
+                if (modules_flsModules.popup) {
+                    const popup = form.dataset.popupMessage;
+                    popup ? modules_flsModules.popup.open(popup) : null;
+                }
+            }), 0);
+            formValidate.formClean(form);
         }
     }
     let addWindowScrollEvent = false;
@@ -363,27 +608,27 @@
                 }), 0);
             }
         }));
-    }));
-    function trackStickyElement() {
-        const spoller = document.querySelector(".orders-checkout__spoller");
-        if (!spoller) return;
-        let isSticky = false;
-        function checkSticky() {
-            const {bottom} = spoller.getBoundingClientRect();
-            if (bottom >= window.innerHeight) {
-                if (!isSticky) {
-                    console.log("orders-checkout__spoller зафиксировался (sticky)");
-                    isSticky = true;
-                }
-            } else if (isSticky) {
-                console.log("orders-checkout__spoller отлип (unstuck)");
-                isSticky = false;
-            }
+        const inputSms = document.querySelector(".input-sms");
+        const charElements = document.querySelectorAll(".input__sms-char");
+        function updateDisplaySms() {
+            const value = inputSms.value.replace(/\D/g, "").slice(0, charElements.length);
+            inputSms.value = value;
+            charElements.forEach(((charEl, index) => {
+                charEl.textContent = value[index] || "X";
+                charEl.classList.toggle("sms-placeholder", !value[index]);
+                charEl.classList.remove("sms-cursor");
+            }));
+            if (value.length < charElements.length) charElements[value.length].classList.add("sms-cursor");
         }
-        window.addEventListener("scroll", checkSticky);
-        checkSticky();
-    }
-    trackStickyElement();
+        inputSms.addEventListener("input", updateDisplaySms);
+        inputSms.addEventListener("focus", updateDisplaySms);
+        inputSms.addEventListener("click", updateDisplaySms);
+    }));
     window["FLS"] = false;
     spollers();
+    formFieldsInit({
+        viewPass: false,
+        autoHeight: false
+    });
+    formSubmit();
 })();
