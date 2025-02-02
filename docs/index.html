@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250201222723">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250202200550">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
 				<p>Посилання на сторінки:</p><br>
 				<ol>
 					<li>
-						<a href="checkout.html" style="display: block;">checkout html</a>
+						<a href="checkout.html" style="display: block; color:blue">checkout html</a>
 					</li>
 				</ol>
 				<br><br><br>
@@ -49,22 +49,34 @@
 						<label for="inp2" class="input__label">
 							Ваше email
 						</label>
-						<input id="inp2" autocomplete="off" type="email" name="form[]" data-error="Введіть коректний email" placeholder="This input" data-required="email" data-validate class="input input_lg">
+						<input id="inp2" autocomplete="off" type="email" name="form[]" data-error="Введіть коректний email" placeholder="This input" data-required="email" class="input input_lg">
 					</div>
 
 					<br>
 
 					<div class="input__item">
-						<label for="inp1" class="input__label">
+						<label for="inp3" class="input__label">
 							Поле вводу отриманого коду з SMS
 						</label>
-						<div class="input__item-sms">
-							<input autocomplete="off" type="text" name="form[]" data-error="Невірний код" data-required="sms" data-validate class="input-sms" maxlength="4" inputmode="numeric">
-							<div class="input__sms-body input input_sm">
-								<span class="input__sms-char sms-placeholder">X</span>
-								<span class="input__sms-char sms-placeholder">X</span>
-								<span class="input__sms-char sms-placeholder">X</span>
-								<span class="input__sms-char sms-placeholder">X</span>
+						<div class="input__sms-item">
+							<input autocomplete="one-time-code" type="text" name="sms" data-error="Невірний код" data-required="sms" class="input-sms" maxlength="4" inputmode="numeric">
+							<div class="input__sms-chars input input_sm">
+								<span class="input__sms-char char-placeholder sms-cursor">
+									<span class="char-num"></span>
+									<span class="char-x">X</span>
+								</span>
+								<span class="input__sms-char char-placeholder">
+									<span class="char-num"></span>
+									<span class="char-x">X</span>
+								</span>
+								<span class="input__sms-char char-placeholder">
+									<span class="char-num"></span>
+									<span class="char-x">X</span>
+								</span>
+								<span class="input__sms-char char-placeholder">
+									<span class="char-num"></span>
+									<span class="char-x">X</span>
+								</span>
 							</div>
 						</div>
 					</div>
@@ -80,7 +92,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20250201222723"></script>
+	<script src="js/app.min.js?_v=20250202200550"></script>
 </body>
 
 </html>

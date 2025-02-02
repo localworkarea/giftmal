@@ -22,6 +22,11 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			}
 			formValidate.removeError(targetElement);
 			targetElement.hasAttribute('data-validate') ? formValidate.removeError(targetElement) : null;
+
+				// Логика для инпута с классом input-sms
+				if (targetElement.classList.contains('input-sms')) {
+					initSmsInput(targetElement);
+				}
 		}
 	});
 	document.body.addEventListener("focusout", function (e) {
@@ -35,40 +40,44 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			targetElement.hasAttribute('data-validate') ? formValidate.validateInput(targetElement) : null;
 		}
 	});
-	// Якщо увімкнено, додаємо функціонал "Показати пароль"
-	// if (options.viewPass) {
-	// 	document.addEventListener("click", function (e) {
-	// 		let targetElement = e.target;
-	// 		if (targetElement.closest('[class*="__viewpass"]')) {
-	// 			let inputType = targetElement.classList.contains('_viewpass-active') ? "password" : "text";
-	// 			targetElement.parentElement.querySelector('input').setAttribute("type", inputType);
-	// 			targetElement.classList.toggle('_viewpass-active');
-	// 		}
-	// 	});
-	// }
-	// Якщо увімкнено, додаємо функціонал "Автовисота"
-	// if (options.autoHeight) {
-	// 	const textareas = document.querySelectorAll('textarea[data-autoheight]');
-	// 	if (textareas.length) {
-	// 		textareas.forEach(textarea => {
-	// 			const startHeight = textarea.hasAttribute('data-autoheight-min') ?
-	// 				Number(textarea.dataset.autoheightMin) : Number(textarea.offsetHeight);
-	// 			const maxHeight = textarea.hasAttribute('data-autoheight-max') ?
-	// 				Number(textarea.dataset.autoheightMax) : Infinity;
-	// 			setHeight(textarea, Math.min(startHeight, maxHeight))
-	// 			textarea.addEventListener('input', () => {
-	// 				if (textarea.scrollHeight > startHeight) {
-	// 					textarea.style.height = `auto`;
-	// 					setHeight(textarea, Math.min(Math.max(textarea.scrollHeight, startHeight), maxHeight));
-	// 				}
-	// 			});
-	// 		});
-	// 		function setHeight(textarea, height) {
-	// 			textarea.style.height = `${height}px`;
-	// 		}
-	// 	}
-	// }
 }
+
+// == РАБОТА С ПОЛЕМ ВВОДА КОДА СМС ==============================
+function initSmsInput(inputElement) {
+	const smsBody = inputElement.nextElementSibling;
+	const charElements = smsBody.querySelectorAll('.input__sms-char');
+
+	inputElement.addEventListener('input', () => {
+		let value = inputElement.value.replace(/\D/g, "").slice(0, charElements.length);
+		inputElement.value = value;
+
+		charElements.forEach((charEl, index) => {
+			const charNum = charEl.querySelector('.char-num');
+			const charPlaceholder = charEl.querySelector('.char-x');
+
+			if (value[index]) {
+				charNum.style.display = 'inline';
+				charNum.textContent = value[index];
+				charPlaceholder.style.display = 'none';
+			} else {
+				charNum.style.display = 'none';
+				charNum.textContent = '';
+				charPlaceholder.style.display = 'inline';
+			}
+
+			charEl.classList.remove("sms-cursor");
+		});
+
+		// Добавление курсора 
+		if (value.length < charElements.length) {
+			charElements[value.length].classList.add("sms-cursor");
+		} else {
+			charElements[charElements.length - 1].classList.add("sms-cursor");
+		}
+	});
+}
+
+
 // Валідація форм
 export let formValidate = {
 	getErrors(form) {
@@ -161,6 +170,34 @@ export let formValidate = {
 					checkbox.checked = false;
 				}
 			}
+
+			let smsInputs = form.querySelectorAll('.input-sms');
+			smsInputs.forEach(inputElement => {
+				const smsBody = inputElement.nextElementSibling;
+				const charElements = smsBody.querySelectorAll('.input__sms-char');
+
+				charElements.forEach(charEl => {
+					const charNum = charEl.querySelector('.char-num');
+					const charPlaceholder = charEl.querySelector('.char-x'); 
+
+					// Очистка содержимого
+					charNum.textContent = '';
+					charNum.style.display = 'none';
+					charPlaceholder.style.display = 'inline';
+
+					// Восстановление начальных классов
+					charEl.classList.add('char-placeholder');
+					charEl.classList.remove('sms-cursor');
+				});
+
+				// Установка курсора на первую ячейку
+				if (charElements.length > 0) {
+					charElements[0].classList.add('sms-cursor');
+				}
+			});
+
+
+
 			if (flsModules.select) {
 				let selects = form.querySelectorAll('div.select');
 				if (selects.length) {

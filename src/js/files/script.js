@@ -145,28 +145,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   
     
-    const inputSms = document.querySelector(".input-sms");
-    const charElements = document.querySelectorAll(".input__sms-char");
+    // const inputSms = document.querySelector(".input-sms");
+    // const charElements = document.querySelectorAll(".input__sms-char");
 
-    function updateDisplaySms() {
-        const value = inputSms.value.replace(/\D/g, "").slice(0, charElements.length);
-        inputSms.value = value;
+    // function updateDisplaySms() {
+    //     const value = inputSms.value.replace(/\D/g, "").slice(0, charElements.length);
+    //     inputSms.value = value;
 
-        charElements.forEach((charEl, index) => {
-            charEl.textContent = value[index] || "X";
-            charEl.classList.toggle("sms-placeholder", !value[index]);
-            charEl.classList.remove("sms-cursor");
-        });
+    //     charElements.forEach((charEl, index) => {
+    //         charEl.textContent = value[index] || "X";
+    //         charEl.classList.toggle("sms-placeholder", !value[index]);
+    //         charEl.classList.remove("sms-cursor");
+    //     });
 
-        // Добавляем мигающий курсор к следующему пустому символу
-        if (value.length < charElements.length) {
-            charElements[value.length].classList.add("sms-cursor");
-        }
-    }
+    //     // Добавляем мигающий курсор к следующему пустому символу
+    //     if (value.length < charElements.length) {
+    //         charElements[value.length].classList.add("sms-cursor");
+    //     }
+    // }
 
-    inputSms.addEventListener("input", updateDisplaySms);
-    inputSms.addEventListener("focus", updateDisplaySms);
-    inputSms.addEventListener("click", updateDisplaySms);
+    // inputSms.addEventListener("input", updateDisplaySms);
+    // inputSms.addEventListener("focus", updateDisplaySms);
+    // inputSms.addEventListener("click", updateDisplaySms);
 
 
 });

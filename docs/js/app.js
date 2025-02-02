@@ -283,6 +283,7 @@
                 }
                 formValidate.removeError(targetElement);
                 targetElement.hasAttribute("data-validate") ? formValidate.removeError(targetElement) : null;
+                if (targetElement.classList.contains("input-sms")) initSmsInput(targetElement);
             }
         }));
         document.body.addEventListener("focusout", (function(e) {
@@ -294,6 +295,29 @@
                 }
                 targetElement.hasAttribute("data-validate") ? formValidate.validateInput(targetElement) : null;
             }
+        }));
+    }
+    function initSmsInput(inputElement) {
+        const smsBody = inputElement.nextElementSibling;
+        const charElements = smsBody.querySelectorAll(".input__sms-char");
+        inputElement.addEventListener("input", (() => {
+            let value = inputElement.value.replace(/\D/g, "").slice(0, charElements.length);
+            inputElement.value = value;
+            charElements.forEach(((charEl, index) => {
+                const charNum = charEl.querySelector(".char-num");
+                const charPlaceholder = charEl.querySelector(".char-x");
+                if (value[index]) {
+                    charNum.style.display = "inline";
+                    charNum.textContent = value[index];
+                    charPlaceholder.style.display = "none";
+                } else {
+                    charNum.style.display = "none";
+                    charNum.textContent = "";
+                    charPlaceholder.style.display = "inline";
+                }
+                charEl.classList.remove("sms-cursor");
+            }));
+            if (value.length < charElements.length) charElements[value.length].classList.add("sms-cursor"); else charElements[charElements.length - 1].classList.add("sms-cursor");
         }));
     }
     let formValidate = {
@@ -373,6 +397,21 @@
                     const checkbox = checkboxes[index];
                     checkbox.checked = false;
                 }
+                let smsInputs = form.querySelectorAll(".input-sms");
+                smsInputs.forEach((inputElement => {
+                    const smsBody = inputElement.nextElementSibling;
+                    const charElements = smsBody.querySelectorAll(".input__sms-char");
+                    charElements.forEach((charEl => {
+                        const charNum = charEl.querySelector(".char-num");
+                        const charPlaceholder = charEl.querySelector(".char-x");
+                        charNum.textContent = "";
+                        charNum.style.display = "none";
+                        charPlaceholder.style.display = "inline";
+                        charEl.classList.add("char-placeholder");
+                        charEl.classList.remove("sms-cursor");
+                    }));
+                    if (charElements.length > 0) charElements[0].classList.add("sms-cursor");
+                }));
                 if (modules_flsModules.select) {
                     let selects = form.querySelectorAll("div.select");
                     if (selects.length) for (let index = 0; index < selects.length; index++) {
@@ -608,21 +647,6 @@
                 }), 0);
             }
         }));
-        const inputSms = document.querySelector(".input-sms");
-        const charElements = document.querySelectorAll(".input__sms-char");
-        function updateDisplaySms() {
-            const value = inputSms.value.replace(/\D/g, "").slice(0, charElements.length);
-            inputSms.value = value;
-            charElements.forEach(((charEl, index) => {
-                charEl.textContent = value[index] || "X";
-                charEl.classList.toggle("sms-placeholder", !value[index]);
-                charEl.classList.remove("sms-cursor");
-            }));
-            if (value.length < charElements.length) charElements[value.length].classList.add("sms-cursor");
-        }
-        inputSms.addEventListener("input", updateDisplaySms);
-        inputSms.addEventListener("focus", updateDisplaySms);
-        inputSms.addEventListener("click", updateDisplaySms);
     }));
     window["FLS"] = false;
     spollers();

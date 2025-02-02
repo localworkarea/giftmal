@@ -494,6 +494,89 @@ textarea.input {
 .input__label {
   font-weight: 600
 }
+.input__sms-item {
+  position: relative
+}
+.input__sms-item .input-sms {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer
+}
+.input__sms-chars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  gap: 2.3125rem
+}
+._form-error .input__sms-chars {
+  border-color: var(--red);
+  color: var(--red)
+}
+._form-focus .input__sms-chars {
+  background-color: var(--gray-2)
+}
+.input__sms-char {
+  position: relative;
+  width: .8125rem;
+  text-align: center
+}
+.input__sms-char:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 1.9375rem;
+  -webkit-transform: translate(0,-50%);
+  transform: translate(0,-50%);
+  width: .0625rem;
+  height: .5rem;
+  background-color: rgba(33,5,41,.1)
+}
+.input__sms-char .char-num {
+  display: none;
+  color: var(--dark-violet)
+}
+.input__sms-char .char-x {
+  color: var(--fade-violet-1)
+}
+._form-focus .input__sms-char .char-x {
+  color: var(--fade-violet-2)
+}
+.input__sms-char .char-num,
+.input__sms-char .char-x {
+  transition: color .3s ease
+}
+._form-error .input__sms-char .char-num,
+._form-error .input__sms-char .char-x {
+  color: var(--red)
+}
+.input__sms-char.sms-cursor::after {
+  content: "|";
+  position: absolute;
+  right: -.1875rem;
+  font-size: .8125rem;
+  color: var(--dark-violet);
+  opacity: 0;
+  -webkit-animation: blink 1s infinite;
+  animation: blink 1s infinite
+}
+._form-focus .input__sms-char.sms-cursor::after {
+  opacity: 1
+}
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0
+  }
+}
 .ibg {
   width: 100%;
   height: 100%;
@@ -649,75 +732,6 @@ textarea.input {
   border-radius: 1rem;
   padding: .6875rem .5rem;
   transition: background-color .3s ease
-}
-.input__item-sms {
-  cursor: pointer;
-  position: relative
-}
-.input__item-sms .input-sms {
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%
-}
-.input__sms-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  gap: 2.3125rem
-}
-._form-error .input__sms-body {
-  border-color: var(--red);
-  color: var(--red)
-}
-.input__sms-char {
-  position: relative;
-  width: .8125rem;
-  text-align: center;
-  color: var(--fade-violet-1)
-}
-.input__sms-char:not(:last-child)::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 1.9375rem;
-  -webkit-transform: translate(0,-50%);
-  transform: translate(0,-50%);
-  width: .0625rem;
-  height: .5rem;
-  background-color: rgba(33,5,41,.1)
-}
-._form-error .input__sms-char {
-  color: var(--red)
-}
-._form-success .input__sms-char {
-  color: var(--dark-violet)
-}
-.input__sms-char.sms-cursor::after {
-  content: "|";
-  position: absolute;
-  right: -.5rem;
-  font-size: .8125rem;
-  color: var(--dark-violet);
-  opacity: 0;
-  -webkit-animation: blink 1s infinite;
-  animation: blink 1s infinite
-}
-._form-focus .input__sms-char.sms-cursor::after {
-  opacity: 1
-}
-@-webkit-keyframes blink {
-  50% {
-    opacity: 0
-  }
-}
-@keyframes blink {
-  50% {
-    opacity: 0
-  }
 }
 .checkout {
   flex: 1;
@@ -1201,6 +1215,12 @@ textarea.input {
     color: var(--fade-violet-2)
   }
   .input:hover::placeholder {
+    color: var(--fade-violet-2)
+  }
+  .input__sms-item:hover .input__sms-chars {
+    background-color: var(--gray-2)
+  }
+  .input__sms-item:hover .char-x {
     color: var(--fade-violet-2)
   }
   .item-dropdwn__phone:hover {
