@@ -74,7 +74,37 @@
    align-items: center;
    gap: toRem(8);
  }
- 
+ .txt-11 {
+   @media (min-width:$mobileSmall){
+     font-size: toRem(11);
+   }
+   @media (max-width:$mobileSmall){
+     font-size: toRem(12);
+   }
+ }
+ .txt-13 {
+  font-weight: 500;
+  @media (min-width:$mobileSmall){
+    font-size: toRem(13);
+  }
+  @media (max-width:$mobileSmall){
+    font-size: toRem(14);
+  }
+ }
+ .txt-15 {
+  font-weight: 500;
+    @media (min-width:$mobileSmall){
+       font-size: toRem(15); 
+    }
+    @media (max-width:$mobileSmall){
+       font-size: toRem(14); 
+    }
+ }
+
+.txt-accent {
+  line-height: 1.5;
+  color: var(--fade-violet-2);
+}
 
 
 // == ITEM DROPDOWN =====================================
@@ -167,4 +197,61 @@
   }
 }
 // ========================================
+
+.edit-btn {
+  color: var(--violet);
+  @extend %flexCenterGap8;
+  transition: color .3s ease;
+  &::before {
+    font-size: toRem(24);
+  }
+  &:not(:last-child) {
+    margin-bottom: toRem(6);
+  }
+  @media (any-hover: hover){
+    &:hover{
+      color: var(--fade-violet-2);
+    }
+  }
+}
+
+.btn {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: toRem(48);
+  padding: toRem(8) toRem(24);
+  border-radius: toRem(24);
+  transition: background-color .3s ease, color .3s ease;
+  &_dark {
+    background-color: var(--violet);
+    color: var(--white);
+    @media (any-hover: hover){
+      &:hover{
+        background-color: var(--dark-violet);
+      }
+    }
+    &:active {
+      background-color: var(--dark-violet);
+    }
+  }
+  &_light {
+    background-color: var(--white);
+    color: var(--dark-violet);
+    @media (any-hover: hover){
+      &:hover{
+        background-color: var(--fade-violet-2);
+        color: var(--white);
+      }
+    }
+    &:active {
+      background-color: var(--fade-violet-2);
+      color: var(--white);
+    }
+  }
+  &:disabled {
+    background-color: var(--disabled-pink);
+    color: var(--white);
+  }
+}
 

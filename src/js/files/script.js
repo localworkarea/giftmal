@@ -2,7 +2,8 @@
 import { isMobile } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
-
+// import intlTelInput from "intl-tel-input";
+import { ru, uk } from "intl-tel-input/i18n"
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -144,30 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   
-    
-    // const inputSms = document.querySelector(".input-sms");
-    // const charElements = document.querySelectorAll(".input__sms-char");
-
-    // function updateDisplaySms() {
-    //     const value = inputSms.value.replace(/\D/g, "").slice(0, charElements.length);
-    //     inputSms.value = value;
-
-    //     charElements.forEach((charEl, index) => {
-    //         charEl.textContent = value[index] || "X";
-    //         charEl.classList.toggle("sms-placeholder", !value[index]);
-    //         charEl.classList.remove("sms-cursor");
-    //     });
-
-    //     // Добавляем мигающий курсор к следующему пустому символу
-    //     if (value.length < charElements.length) {
-    //         charElements[value.length].classList.add("sms-cursor");
-    //     }
-    // }
-
-    // inputSms.addEventListener("input", updateDisplaySms);
-    // inputSms.addEventListener("focus", updateDisplaySms);
-    // inputSms.addEventListener("click", updateDisplaySms);
-
+  
 
 });
 
@@ -199,3 +177,135 @@ document.addEventListener("DOMContentLoaded", () => {
 // }
 
 // trackStickyElement();
+
+
+  
+function startCountdown() {
+  const timerElement = document.querySelector("[data-timer]");
+  if (!timerElement) return;
+
+  const totalMinutes = parseFloat(timerElement.getAttribute('data-timer'));
+  let totalSeconds = Math.floor(totalMinutes * 60);
+
+  // форматирования времени в формате MM : SS
+  function formatTime(seconds) {
+      const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+      const secs = String(seconds % 60).padStart(2, '0');
+      return `${mins} : ${secs}`;
+  }
+
+  //  начальное значение 
+  timerElement.textContent = formatTime(totalSeconds);
+
+  // Запускаем обратный отсчет
+  const interval = setInterval(() => {
+      totalSeconds--;
+
+      if (totalSeconds <= 0) {
+          clearInterval(interval);
+          timerElement.textContent = "00 : 00";
+          return;
+      }
+
+      // Обновляем отображение времени
+      timerElement.textContent = formatTime(totalSeconds);
+  }, 1000);
+}
+startCountdown();
+
+
+// === International Telephone Input ========================== 
+/* 
+  *International Telephone Input v25.3.0
+ *https://github.com/jackocnr/intl-tel-input.git
+*/
+
+const intlTelInp = document.querySelector("#intlTelInp");
+if (intlTelInp) {
+  const siteLang = document.documentElement.lang.slice(0, 2); // Определяем язык сайта
+  let i18nData;
+
+  switch (siteLang) {
+    case 'ru':
+      i18nData = ru;
+      break;
+    case 'uk':
+      i18nData = uk;
+      break;
+    default:
+      i18nData = null; // Английский будет по умолчанию
+  }
+
+  window.intlTelInput(intlTelInp, {
+    initialCountry: 'auto',
+    geoIpLookup: callback => {
+      fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("us"));
+    },
+    strictMode: true,
+    separateDialCode: true,
+    nationalMode: true,
+    formatOnDisplay: true,
+    i18n: i18nData, // Применяем переводы, если они есть
+  });
+}
+
+// === International Telephone Input Localization ==========================
+/*
+ * International Telephone Input v25.3.0
+ * https://github.com/jackocnr/intl-tel-input.git
+ */
+
+// const intlTelInp = document.querySelector("#intlTelInp");
+
+// if (intlTelInp) {
+//   const userLang = navigator.language.slice(0, 2); // Определяем язык браузера (ru, uk и т.д.)
+//   const supportedLangs = ['ru', 'uk', 'en']; // Добавьте сюда новые языки при необходимости
+
+//   const loadScript = (src) => {
+//     return new Promise((resolve, reject) => {
+//       const script = document.createElement('script');
+//       script.src = src;
+//       script.type = 'module'; // Используем модули для импорта
+//       script.onload = resolve;
+//       script.onerror = reject;
+//       document.head.appendChild(script);
+//     });
+//   };
+
+//   const initIntlTelInput = (i18nData = null) => {
+//     window.intlTelInput(intlTelInp, {
+//       initialCountry: 'auto',
+//       geoIpLookup: callback => {
+//         fetch("https://ipapi.co/json")
+//           .then(res => res.json())
+//           .then(data => callback(data.country_code))
+//           .catch(() => callback("us"));
+//       },
+//       strictMode: true,
+//       separateDialCode: true,
+//       nationalMode: true,
+//       formatOnDisplay: true,
+//       i18n: i18nData // Применяем переводы, если они есть
+//     });
+//   };
+
+//   // Проверка и загрузка перевода
+//   if (supportedLangs.includes(userLang)) {
+//     loadScript(`files/intl-tel-input/i18n/${userLang}/index.js`)
+//       .then(() => {
+//         import(`files/intl-tel-input/i18n/${userLang}/index.js`).then(module => {
+//           initIntlTelInput(module.default); // Передаем переводы в плагин
+//         });
+//       })
+//       .catch(() => {
+//         console.error('Не удалось загрузить перевод, используется английский по умолчанию.');
+//         initIntlTelInput(); // Загружаем без перевода
+//       });
+//   } else {
+//     initIntlTelInput(); // Язык не поддерживается, используется английский
+//   }
+// }
+

@@ -7,7 +7,7 @@
 		<div class="wrapper">
 			@@include('html/_header.htm',{})
 			<main class="page">
-				<div class="page__container" style="padding: 50px; font-size: toRem(18); border-inline: 1px solid #000; margin-top: 100px; line-height: 1.1;">
+				<div class="page__container" style="padding: 50px; font-size: 18px; border-inline: 1px solid #000; margin-block:30px 300px; line-height: 1.1; background-color: #f8f8f8a6">
 					<p>Посилання на сторінки:</p><br>
 					<ol>
 						<li>
@@ -22,7 +22,7 @@
 						2. <b>data-required="sms"</b> - для інпуту вводу коду з SMS.
 					</p><br>
 
-					<form data-dev  action="" method="POST" style="border: 1px solid #0000001e; padding: 10px;">
+					<form data-dev  action="" method="POST" style="border: 1px solid #0000001e; padding: 10px; background-color: #fff;">
 
 						<div class="input__item">
 							<label for="inp1" class="input__label">
@@ -69,14 +69,58 @@
 							</div>
 						</div>
 
+						<br>
+						<div class="input__item">
+							<label for="inp5" class="input__label">
+								Номер телефону
+							</label>
+							<input id="inp5" autocomplete="off" type="text" name="phone" placeholder="Номер телефону" value="+380-50-104-88-57" class="input input_sm">
+						</div>
+
 						<br><br>
-						<button type="submit" class="button" style="margin-top: 15px; padding: 10px; border: 1px solid #000; border-radius: 24px">Send</button>
+						<button type="submit" class="button btn btn_dark" style="margin-top: 15px; padding: 10px; border: 1px solid #000; border-radius: 24px">Send</button>
 
 					</form>
+					<br>
+
+					<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+						Змінити
+					</button>
+
+					<br>
+
+					<button type="button" class="edit-btn icon-phone-sms txt-13" aria-label="send code again">
+						Надіслати код повторно
+					</button>
+
+					<br><br>
+					<p>Функція в JS <b>startCountdown()</b> запускає таймер зворотнього відліку. Час відліку встановлюється в атрибуті data-timer </p><br>
+					<div class="txt-accent txt-13">
+						Не прийшов код? Отримати повторно через <span data-timer="1.5">00 : 00</span> сек
+					</div>
+
+					<br><br>
+					<button type="button" class="tab-checkout__btn btn btn_dark">Кнопка Dark</button>
+					<br>
+					<button type="button" disabled class="tab-checkout__btn btn btn_dark">disabled</button>
+					<br>
+					<button type="button" class="tab-checkout__btn btn btn_light">Кнопка Light</button>
+
+					<br><br>
+					<p>International Telephone Input v25.3.0 https://github.com/jackocnr/intl-tel-input.git</p><br>
+					<p>До проєкту додано 3 мови для перекладу тексту дропдауна на основі вибраної мови сайту: ru, uk; мова за замовчуванням - англійська</p>
+					<br>
+					<div class="input__item input-intl-item">
+						<label for="intlTelInp" class="input__label">
+							Ваш номер телефону
+						</label>
+						<input id="intlTelInp" type="tel" name="tel" class="intl-input input input_sm">
+					</div>
 
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>
+		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
 		@@include('html/_js.htm',{})
 	</body>
 </html>

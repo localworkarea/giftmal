@@ -61,21 +61,147 @@
 										</button>
 									</div>
 									<div class="checkout__tabs">
+
+										<!-- Мої контактні дані -->
 										<form data-dev method="post" class="checkout__tab tab-checkout tab-active">
-											<p class="tab-checkout__title">
-												Мої контактні дані
-											</p>
-											<div class="tab-checkout__item">
-												<p class="tab-checkout__step">
-													1. Підтвердіть свій номер телефону через код
+											<div class="tab-checkout__head">
+												<p class="tab-checkout__title">
+													Мої контактні дані
 												</p>
+												<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+													Змінити
+												</button>
 											</div>
+											<div class="tab-checkout__item">
+												<p class="tab-checkout__subtitle">
+													1. Підтвердіть свій номер телефону
+												</p>
+												<div class="tab-checkout__items items-cl-2">
+													<div class="input__item input-intl-item">
+														<label for="intlTelInp" class="input__label">
+															Ваш номер телефону
+														</label>
+														<input id="intlTelInp" type="tel" name="tel" class="intl-input input input_sm">
+													</div>
+												</div>
+												<div class="tab-checkout__items">
+													<div class="phone-checked">
+														<div class="phone-checked__item txt-15 icon-check">
+															+380-50-104-88-57
+														</div>
+														<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+															Змінити
+														</button>
+													</div>
+												</div>
+												<div class="tab-checkout__items items-cl-2">
+													<div class="input__item">
+														<label for="inp1" class="input__label">
+															Поле вводу отриманого коду з SMS
+														</label>
+														<div class="input__sms-item">
+															<input id="inp1" autocomplete="one-time-code" type="text" name="sms" data-error="Невірний код" data-required="sms"  class="input-sms" maxlength="4" inputmode="numeric">
+															<div class="input__sms-chars input input_sm">
+																<span class="input__sms-char char-placeholder sms-cursor">
+																	<span class="char-num"></span>
+																	<span class="char-x">X</span>
+																</span>
+																<span class="input__sms-char char-placeholder">
+																	<span class="char-num"></span>
+																	<span class="char-x">X</span>
+																</span>
+																<span class="input__sms-char char-placeholder">
+																	<span class="char-num"></span>
+																	<span class="char-x">X</span>
+																</span>
+																<span class="input__sms-char char-placeholder">
+																	<span class="char-num"></span>
+																	<span class="char-x">X</span>
+																</span>
+															</div>
+														</div>
+														<button type="button" class="edit-btn icon-phone-sms txt-13" aria-label="send code again">
+															Надіслати код повторно
+														</button>
+														<div class="txt-accent txt-13">
+															Не прийшов код? Отримати повторно через <span data-timer="1.5">00 : 00</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="tab-checkout__item">
+												<p class="tab-checkout__subtitle">
+													2. Як новий користувач, додайте свої дані для реєстрації
+												</p>
+												<div class="tab-checkout__items items-cl-2">
+													<div class="input__item">
+														<label for="inp2" class="input__label">
+															Ваше ім'я
+														</label>
+														<input id="inp2" autocomplete="off" type="text" name="firstName" data-error="Назва помилки написана в data-error атрибуті" placeholder="Ім'я" data-required class="input input_sm">
+													</div>
+													<div class="input__item">
+														<label for="inp3" class="input__label">
+															Прізвище
+														</label>
+														<input id="inp3" autocomplete="off" type="text" name="lastName" data-error="Назва помилки написана в data-error атрибуті" placeholder="Прізвище" data-required class="input input_sm">
+													</div>
+													<div class="input__item">
+														<label for="inp4" class="input__label">
+															Ваше email
+														</label>
+														<input id="inp4" autocomplete="off" type="email" name="email" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email"  class="input input_sm">
+													</div>
+												</div>
+											</div>
+											<div class="tab-checkout__item">
+												<div class="tab-checkout__items items-cl-2">
+													<div class="data-item">
+														<div class="data-item__label txt-11">
+															Ім’я
+														</div>
+														<div class="data-item__data txt-15">
+															Юлія
+														</div>
+													</div>
+													<div class="data-item">
+														<div class="data-item__label txt-11">
+															Прізвище
+														</div>
+														<div class="data-item__data txt-15">
+															Михайлова
+														</div>
+													</div>
+													<div class="data-item">
+														<div class="data-item__label txt-11">
+															Email
+														</div>
+														<div class="data-item__data txt-15">
+															omihalovjul@gmail.com
+														</div>
+													</div>
+													<div class="data-item">
+														<div class="data-item__label txt-11">
+															Номер телефону
+														</div>
+														<div class="data-item__data txt-15">
+															+380-50-104-88-57
+														</div>
+													</div>
+												</div>
+											</div>
+											<button type="submit" class="tab-checkout__btn btn btn_dark">Отримати код</button>
+											
 										</form>
+
+										<!-- Дані для замовлення -->
 										<div class="checkout__tab tab-checkout">
 											<p class="tab-checkout__title">
 												Дані для Електронних сертифікатів
 											</p>
 										</div>
+
+										<!-- Оплата -->
 										<div class="checkout__tab tab-checkout">
 											<p class="tab-checkout__title">
 												Оплата
@@ -90,7 +216,7 @@
 												<summary class="orders-checkout__head">
 													<div class="orders-checkout__info">
 														<p>Ваші замовлення <span>(2)</span></p>
-														<button data-da=".orders-checkout__wrapper,900.98,0" type="button" class="orders-checkout__change icon-edit" aria-label="change orders">
+														<button data-da=".orders-checkout__wrapper,900.98,0" type="button" class="orders-checkout__change edit-btn icon-edit" aria-label="change orders">
 															Змінити
 														</button>
 													</div>
@@ -182,7 +308,7 @@
 											</details>
 										</div>
 										<div data-da=".orders-checkout__wrapper,900.98,last" class="orders-checkout__total">
-											<div class="orders-checkout__lines">
+											<div class="orders-checkout__lines txt-11">
 												<p class="orders-checkout__text">
 													Загальна сума
 												</p>
@@ -190,7 +316,7 @@
 													<span>2 450</span> грн
 												</div>
 											</div>
-											<div class="orders-checkout__lines">
+											<div class="orders-checkout__lines txt-11">
 												<p class="orders-checkout__text">
 													Доставка
 												</p>
@@ -198,7 +324,7 @@
 													За тарифами Нової Пошти
 												</div>
 											</div>
-											<div class="orders-checkout__lines">
+											<div class="orders-checkout__lines txt-11">
 												<p class="orders-checkout__text">
 													Списаний баланс
 												</p>
@@ -206,7 +332,7 @@
 													<span>-2 450</span> грн
 												</div>
 											</div>
-											<div class="orders-checkout__lines lines-total">
+											<div class="orders-checkout__lines txt-11 lines-total">
 												<p class="orders-checkout__text">
 													До оплати
 												</p>
@@ -223,6 +349,7 @@
 				</div>
 			</main>
 		</div>
+		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
 		@@include('html/_js.htm',{})
 	</body>
 </html>
