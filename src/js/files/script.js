@@ -3,7 +3,7 @@ import { isMobile } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
 // import intlTelInput from "intl-tel-input";
-import { ru, uk } from "intl-tel-input/i18n"
+// import { ru, uk } from "intl-tel-input/i18n"
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -248,64 +248,11 @@ if (intlTelInp) {
     separateDialCode: true,
     nationalMode: true,
     formatOnDisplay: true,
-    i18n: i18nData, // Применяем переводы, если они есть
+    i18n: i18nData,
   });
 }
 
-// === International Telephone Input Localization ==========================
-/*
- * International Telephone Input v25.3.0
- * https://github.com/jackocnr/intl-tel-input.git
- */
 
-// const intlTelInp = document.querySelector("#intlTelInp");
-
-// if (intlTelInp) {
-//   const userLang = navigator.language.slice(0, 2); // Определяем язык браузера (ru, uk и т.д.)
-//   const supportedLangs = ['ru', 'uk', 'en']; // Добавьте сюда новые языки при необходимости
-
-//   const loadScript = (src) => {
-//     return new Promise((resolve, reject) => {
-//       const script = document.createElement('script');
-//       script.src = src;
-//       script.type = 'module'; // Используем модули для импорта
-//       script.onload = resolve;
-//       script.onerror = reject;
-//       document.head.appendChild(script);
-//     });
-//   };
-
-//   const initIntlTelInput = (i18nData = null) => {
-//     window.intlTelInput(intlTelInp, {
-//       initialCountry: 'auto',
-//       geoIpLookup: callback => {
-//         fetch("https://ipapi.co/json")
-//           .then(res => res.json())
-//           .then(data => callback(data.country_code))
-//           .catch(() => callback("us"));
-//       },
-//       strictMode: true,
-//       separateDialCode: true,
-//       nationalMode: true,
-//       formatOnDisplay: true,
-//       i18n: i18nData // Применяем переводы, если они есть
-//     });
-//   };
-
-//   // Проверка и загрузка перевода
-//   if (supportedLangs.includes(userLang)) {
-//     loadScript(`files/intl-tel-input/i18n/${userLang}/index.js`)
-//       .then(() => {
-//         import(`files/intl-tel-input/i18n/${userLang}/index.js`).then(module => {
-//           initIntlTelInput(module.default); // Передаем переводы в плагин
-//         });
-//       })
-//       .catch(() => {
-//         console.error('Не удалось загрузить перевод, используется английский по умолчанию.');
-//         initIntlTelInput(); // Загружаем без перевода
-//       });
-//   } else {
-//     initIntlTelInput(); // Язык не поддерживается, используется английский
-//   }
-// }
-
+tippy('[data-tippy-content]', {
+  placement: 'bottom',
+});

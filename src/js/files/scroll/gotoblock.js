@@ -11,21 +11,21 @@ export let gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 
 	if (targetBlockElement) {
 		let headerItem = '';
 		let headerItemHeight = 0;
-		if (noHeader) {
-			headerItem = 'header.header';
-			const headerElement = document.querySelector(headerItem);
-			if (!headerElement.classList.contains('_header-scroll')) {
-				headerElement.style.cssText = `transition-duration: 0s;`;
-				headerElement.classList.add('_header-scroll');
-				headerItemHeight = headerElement.offsetHeight;
-				headerElement.classList.remove('_header-scroll');
-				setTimeout(() => {
-					headerElement.style.cssText = ``;
-				}, 0);
-			} else {
-				headerItemHeight = headerElement.offsetHeight;
-			}
-		}
+		// if (noHeader) {
+		// 	headerItem = 'header.header';
+		// 	const headerElement = document.querySelector(headerItem);
+		// 	if (!headerElement.classList.contains('_header-scroll')) {
+		// 		headerElement.style.cssText = `transition-duration: 0s;`;
+		// 		headerElement.classList.add('_header-scroll');
+		// 		headerItemHeight = headerElement.offsetHeight;
+		// 		headerElement.classList.remove('_header-scroll');
+		// 		setTimeout(() => {
+		// 			headerElement.style.cssText = ``;
+		// 		}, 0);
+		// 	} else {
+		// 		headerItemHeight = headerElement.offsetHeight;
+		// 	}
+		// }
 		let options = {
 			speedAsDuration: true,
 			speed: speed,

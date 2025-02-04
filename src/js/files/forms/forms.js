@@ -27,6 +27,15 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 				if (targetElement.classList.contains('input-sms')) {
 					initSmsInput(targetElement);
 				}
+
+			// Убираем disabled для кнопки очистки input__clear, если есть текст
+			const clearButton = targetElement.parentElement.querySelector('.input__clear');
+			if (clearButton) {
+				targetElement.addEventListener('input', () => {
+					clearButton.disabled = targetElement.value.length === 0;
+				});
+			}
+
 		}
 	});
 	document.body.addEventListener("focusout", function (e) {
@@ -38,6 +47,26 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			}
 			// Миттєва валідація
 			targetElement.hasAttribute('data-validate') ? formValidate.validateInput(targetElement) : null;
+		}
+	});
+
+	// Инициализация состояния кнопок очистки для всех полей при загрузке
+	document.querySelectorAll('.input__sub-item input').forEach(inputElement => {
+		const clearButton = inputElement.parentElement.querySelector('.input__clear');
+		if (clearButton) {
+			clearButton.disabled = inputElement.value.length === 0;
+		}
+	});
+
+	// Обработчик для кнопки очистки
+	document.body.addEventListener('click', function (e) {
+		if (e.target.classList.contains('input__clear')) {
+			const inputElement = e.target.closest('.input__sub-item').querySelector('input');
+			if (inputElement) {
+				inputElement.value = '';
+				e.target.disabled = true;
+				inputElement.focus();
+			}
 		}
 	});
 }
@@ -162,6 +191,13 @@ export let formValidate = {
 				el.parentElement.classList.remove('_form-focus');
 				el.classList.remove('_form-focus');
 				formValidate.removeError(el);
+
+				// Логика для кнопки очистки
+				const clearButton = el.parentElement.querySelector('.input__clear');
+				if (clearButton) {
+					clearButton.disabled = true;  // Делаем кнопку снова неактивной
+				}
+
 			}
 			let checkboxes = form.querySelectorAll('.checkbox__input');
 			if (checkboxes.length > 0) {

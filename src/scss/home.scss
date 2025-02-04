@@ -117,13 +117,7 @@
   // .checkout__tabs
   &__tabs {
     position: relative;
-    background-color: var(--white);
-    @media (min-width:$mobileSmall){
-      border-radius: toRem(0) toRem(0) toRem(24) toRem(24); 
-    }
-    @media (max-width:$mobileSmall){
-      border-radius: toRem(24) toRem(24) toRem(24) toRem(24); 
-    }
+  
   }
   // .checkout__tab
   &__tab {
@@ -505,8 +499,43 @@
   }
 }
 
+%tabBg-br-r {
+  background-color: var(--white);
+  @media (min-width:$mobileSmall){
+    border-radius: toRem(0) toRem(0) toRem(24) toRem(24); 
+  }
+  @media (max-width:$mobileSmall){
+    border-radius: toRem(24) toRem(24) toRem(24) toRem(24); 
+  }
+}
+
+%gridClm-2 {
+  @media (min-width:$mobileSmall){
+    grid-template-columns: 1fr 1fr;
+    gap: toRem(18); 
+  }
+  @media (max-width:$mobileSmall){
+    grid-template-columns: 1fr;
+    gap: toRem(16); 
+  }
+}
+
 .tab-checkout {
-  @extend %padding32-24;
+  width: 100%;
+	
+  // .tab-checkout_my-data
+	&_my-data {
+    @extend %padding32-24;
+    @extend %tabBg-br-r;
+  }
+  // .tab-checkout_order
+  &_order {
+
+  }
+  // .tab-checkout_payment
+  &_payment {
+
+  }
 	// .tab-checkout__head
 	&__head {
     @extend %flexCenterGap8;
@@ -523,7 +552,7 @@
   &__title {
     line-height: 1.1;
     font-weight: 500;
-    @include adaptiveValue("font-size", 28, 24,0,1440.98,480.98);
+    @include adaptiveValue("font-size", 28, 20,0,1440.98,480.98);
   }
   // .tab-checkout__item
   &__item {
@@ -543,56 +572,114 @@
   &__items {
     display: grid;
     gap: toRem(8);
+    &.items-gap-16 {
+      gap: toRem(16);
+    }
     &.items-cl-2 {
-      @media (min-width:$mobileSmall){
-        grid-template-columns: 1fr 1fr;
-        gap: toRem(18); 
-      }
-      @media (max-width:$mobileSmall){
-        grid-template-columns: 1fr;
-        gap: toRem(16); 
-      }
+      @extend %gridClm-2;
     }
     &:not(:last-child) {
       @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
     }
   }
+	// .tab-checkout__row
+	&__row {
+    display: grid;
+    &.row-cl-2 {
+      @extend %gridClm-2;
+    }
+    &.row-gap-16 {
+      gap: toRem(16);
+    }
+	}
   // .tab-checkout__btn
   &__btn {
   }
-}
 
-.phone-checked {
-  // .phone-checked__item
-  &__item {
-    @extend %flexCenterGap8;
-    &.icon-check {
-      &::before {
-        font-size: toRem(24);
-        color: var(--green);
+	// .tab-checkout__spollers
+	&__spollers {
+	}
+	// .tab-checkout__spoller-body
+	&__spoller-body {
+	}
+	// .tab-checkout__content
+	&__content {
+    @media (min-width:$mobileSmall){
+      padding-top: toRem(32);
+    }
+    @media (max-width:$mobileSmall){
+      padding-top: toRem(16);
+    }
+	}
+	// .tab-checkout__body
+	&__body {
+    background-color: var(--white);
+    border-radius: toRem(24) toRem(24) toRem(24) toRem(24); 
+    @extend %padding32-24;
+    &:first-child {
+      @media (min-width:$mobileSmall){
+        border-radius: toRem(0) toRem(0) toRem(24) toRem(24); 
       }
     }
     &:not(:last-child) {
       margin-bottom: toRem(8);
     }
-  }
+	}
+	// .tab-checkout__summary
+	&__summary {
+    @extend %flexCenterGap8;
+    cursor: pointer;
+    .tab-checkout__title {
+      flex: 1;
+      ._data-complete & {
+        @media (max-width:$mobileSmall){
+           font-size: toRem(14); 
+        }
+      }
+    }
+    &.icon-check {
+      &::before {
+        display: none;
+        color: var(--fade-violet-1);
+        @media (min-width:$mobileSmall){
+          font-size: toRem(29);
+        }
+        @media (max-width:$mobileSmall){
+          font-size: toRem(19);
+        }
+        ._data-complete & {
+          display: block
+        }
+      }
+    }
+    &._spoller-active {
+      .tab-checkout__arrow {
+        transform: rotate(-180deg);
+      }
+    }
+	}
+	// .tab-checkout__title
+	&__title {
+	}
+	// .tab-checkout__arrow
+	&__arrow {
+    @media (max-width:$mobileSmall){
+        background-color: transparent;
+        width: auto;
+        display: block;
+    }
+    &.icon-arrow-down {
+      &::before {
+        @media (max-width:$mobileSmall){
+          font-size: toRem(32); 
+        }
+      }
+    }
+	}
+	// .tab-checkout__content
+	&__content {
+	}
 }
-
-.data-item {
-  // .data-item__label
-  &__label {
-    font-weight: 600;
-    color: var(--fade-violet-2);
-    margin-bottom: toRem(12);
-  }
-  // .data-item__data
-  &__data {
-    line-height: 1.5;
-  }
-}
-
-
-
 
 
 

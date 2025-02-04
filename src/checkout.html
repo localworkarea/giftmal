@@ -7,7 +7,7 @@
 		<div class="wrapper">
 			<main class="page">
 				<div class="checkout">
-					<div class="checkout__top">
+					<header class="checkout__top">
 						<div class="checkout__container-c">
 							<a href="index.html" class="checkout__continue icon-arrow-down" aria-label="continue shopping">Продовжити покупки</a>
 							<a href="index.html" class="checkout__logo icon-logo" aria-label="link to home page"></a>
@@ -31,7 +31,7 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+					</header>
 					<div class="checkout__wrapper">
 						<div class="checkout__container">
 							<p class="checkout__title-main">Оформлення замовлення</p>
@@ -62,8 +62,230 @@
 									</div>
 									<div class="checkout__tabs">
 
+										<!-- Дані для замовлення -->
+										<form data-dev data-goto-error class="checkout__tab tab-checkout tab-checkout_order tab-active">
+											<div data-spollers class="tab-checkout__spollers">
+												<details data-open class="tab-checkout__body _data-complete">
+													<summary class="tab-checkout__summary icon-check">
+														<div class="tab-checkout__title">Дані для Електронних сертифікатів</div>
+														<div class="tab-checkout__arrow dropdown-arrow icon-arrow-down"></div>
+													</summary>
+													<div class="tab-checkout__spoller-body">
+														<div class="tab-checkout__content">
+															
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	1. Оберіть тип доставки
+																</p>
+																<div class="tab-checkout__items items-gap-16">
+
+																	<div class="option">
+																		<div class="option__item">
+																			<input id="deliveryEmail" class="option__input" type="radio" name="delivery" value="email" checked>
+																			<label for="deliveryEmail" class="option__label">
+																				<span class="box"></span>
+																				Email
+																			</label>
+																		</div>
+																		<div class="option__item">
+																			<input id="deliveryTelegram" class="option__input" type="radio" name="delivery" value="telegram">
+																			<label for="deliveryTelegram" class="option__label">
+																				<span class="box"></span>
+																				Telegram
+																			</label>
+																		</div>
+																		<div class="option__item">
+																			<input id="deliveryWhatsapp" class="option__input" type="radio" name="delivery" value="whatsapp">
+																			<label for="deliveryWhatsapp" class="option__label">
+																				<span class="box"></span>
+																				Whatsapp
+																			</label>
+																		</div>
+																		<div class="option__item">
+																			<input id="deliveryViber" class="option__input" type="radio" name="delivery" value="viber">
+																			<label for="deliveryViber" class="option__label">
+																				<span class="box"></span>
+																				Viber
+																			</label>
+																		</div>
+																		<div class="option__item">
+																			<input id="deliveryFacebook" class="option__input" type="radio" name="delivery" value="facebook">
+																			<label for="deliveryFacebook" class="option__label">
+																				<span class="box"></span>
+																				Facebook
+																			</label>
+																		</div>
+																	</div>
+																	<div class="tab-checkout__row row-cl-2">
+																		<p class="txt-accent txt-13">
+																			Ваше замовлення по замовчуванню зберігається в особистому кабінеті після оплати.
+																		</p>
+																	</div>
+																</div>
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	2. Прив’яжіть свій аккаунт
+																</p>
+																<div class="tab-checkout__items items-cl-2">
+																	<div class="tab-checkout__row row-gap-16">
+																		<div class="input__item">
+																			<div class="input__sub-item">
+																				<input autocomplete="off" type="text" name="telegram" data-error="Прив’яжіть аккаунт" placeholder="Прив’язати свій Telegram" data-required class="input input_sm input_social">
+																				<div class="input__social-i">
+																					<img src="@img/icons/telegram.svg" width="24" height="24" alt="Image">
+																				</div>
+																				<button disabled type="button" class="input__clear icon-trash"></button>
+																			</div>
+																		</div>
+																		<p class="txt-accent txt-13">
+																			Пройдіть авторизацію, щоб ми відправили Подарункову картку вам в Telegram. 
+																		</p>
+																	</div>
+																</div>
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	2. Дані отримувача
+																</p>
+																<div class="tab-checkout__items items-cl-2">
+																	<div class="option__item">
+																		<input id="recipientMyself" class="option__input" type="radio" name="recipient" value="myself" checked>
+																		<label for="recipientMyself" class="option__label">
+																			<span class="box"></span>
+																			Я отримувач
+																		</label>
+																	</div>
+																	<div class="option__item">
+																		<input id="recipientAnother" class="option__input" type="radio" name="recipient" value="anotherPerson">
+																		<label for="recipientAnother" class="option__label">
+																			<span class="box"></span>
+																			Інша людина
+																		</label>
+																	</div>
+																</div>
+																<div class="tab-checkout__items items-cl-2">
+																	<div class="data-item">
+																		<div class="data-item__label txt-11">
+																			Ім’я
+																		</div>
+																		<div class="data-item__data txt-15">
+																			Юлія
+																		</div>
+																	</div>
+																	<div class="data-item">
+																		<div class="data-item__label txt-11">
+																			Email
+																		</div>
+																		<div class="data-item__data txt-15">
+																			omihalovjul@gmail.com
+																		</div>
+																	</div>
+																	<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+																		Змінити
+																	</button>
+																</div>
+																<div class="tab-checkout__items items-cl-2">
+																	<div class="input__item">
+																		<label for="inp12" class="input__label">
+																			<span class="info-label">
+																				<span data-tippy-content="Впишіть ваше Ім’я" class="info-label__info icon-info"></span>
+																				Ім’я
+																			</span>
+																		</label>
+																		<div class="input__sub-item">
+																			<input id="inp12" autocomplete="off" type="text" name="form[]" data-error="Введіть текст" placeholder="Ім'я" value="Юлія" data-required class="input input_sm">
+																			<button disabled type="button" class="input__clear icon-cross"></button>
+																		</div>
+																	</div>
+																	<div class="input__item">
+																		<label for="inp11" class="input__label">
+																			Email
+																		</label>
+																		<div class="input__sub-item">
+																			<input id="inp11" autocomplete="off" type="text" name="form[]" data-error="Введіть текст" placeholder="example@gmail.com" value="yuliiia@gmail.com" data-required class="input input_sm">
+																			<button disabled type="button" class="input__clear icon-cross"></button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	3. Оберіть час та дату доставки
+																</p>
+																<div class="tab-checkout__items items-cl-2">
+
+																</div>
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	4. Додай вітання, зроби свою листівку унікальною
+																</p>
+																<div class="tab-checkout__items items-cl-2">
+
+																</div>
+															</div>
+															<button type="submit" class="tab-checkout__btn btn btn_dark">Продовжити</button>
+														</div>
+													</div>
+												</details>
+
+												<details data-open class="tab-checkout__body">
+													<summary class="tab-checkout__summary icon-check">
+														<div class="tab-checkout__title">Дані для Фізичних сертифікатів</div>
+														<div class="tab-checkout__arrow dropdown-arrow icon-arrow-down"></div>
+													</summary>
+													<div class="tab-checkout__spoller-body">
+														<div class="tab-checkout__content">
+															
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	1. Оберіть тип доставки
+																</p>
+															
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	2. Прив’яжіть свій аккаунт
+																</p>
+																<div class="tab-checkout__items items-cl-2">
+
+																</div>
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	2. Дані отримувача
+																</p>
+																<div class="tab-checkout__items items-cl-2">
+
+																</div>
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	3. Оберіть час та дату доставки
+																</p>
+																<div class="tab-checkout__items items-cl-2">
+
+																</div>
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	4. Додай вітання, зроби свою листівку унікальною
+																</p>
+																<div class="tab-checkout__items items-cl-2">
+
+																</div>
+															</div>
+															<button type="submit" class="tab-checkout__btn btn btn_dark">Продовжити</button>
+														</div>
+													</div>
+												</details>
+											</div>
+										</form>
+
+
 										<!-- Мої контактні дані -->
-										<form data-dev method="post" class="checkout__tab tab-checkout tab-active">
+										<form data-dev data-goto-error  method="post" class="checkout__tab tab-checkout tab-checkout_my-data">
 											<div class="tab-checkout__head">
 												<p class="tab-checkout__title">
 													Мої контактні дані
@@ -194,15 +416,8 @@
 											
 										</form>
 
-										<!-- Дані для замовлення -->
-										<div class="checkout__tab tab-checkout">
-											<p class="tab-checkout__title">
-												Дані для Електронних сертифікатів
-											</p>
-										</div>
-
 										<!-- Оплата -->
-										<div class="checkout__tab tab-checkout">
+										<div class="checkout__tab tab-checkout tab-checkout_payment">
 											<p class="tab-checkout__title">
 												Оплата
 											</p>
@@ -349,6 +564,9 @@
 				</div>
 			</main>
 		</div>
+		<script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+		<script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
 		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
 		@@include('html/_js.htm',{})
 	</body>
