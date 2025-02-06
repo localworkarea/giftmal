@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="uk">
-	@@include('html/_head.htm',{
-	"title":"giftmall | Checkout"
-	})
+<html lang="bs">
+	<head>
+		<title> giftmall | Checkout </title>
+		<meta charset="UTF-8">
+		<meta name="format-detection" content="telephone=no">
+		<!-- <style>body{opacity: 0;}</style> -->
+		<link rel="stylesheet" href="css/style.min.css">
+		<link rel="shortcut icon" href="favicon.ico">
+		<!-- <meta name="robots" content="noindex, nofollow"> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
 	<body>
 		<div class="wrapper">
 			<main class="page">
@@ -239,16 +246,22 @@
 																</div>
 																<div class="tab-checkout__items items-cl-2">
 																	<div class="input__item">
-																		<label for="datepicker" class="input__label">
+																		<label for="inpDate" class="input__label">
 																			Дата доставки
 																		</label>
-																		<input id="datepicker" data-datepicker autocomplete="off" type="text" name="form[]" data-error="Виберіть дату доставки" placeholder="01.02.2025" data-required class="input input_sm">
+																		<div class="input__sub-item">
+																			<input id="inpDate" data-datepicker autocomplete="off" type="text" name="form[]" data-error="Виберіть дату доставки" placeholder="01.02.2025" data-required class="input input_sm">
+																			<button type="button" class="input__choise icon-calendar"></button>
+																		</div>
 																	</div>
 																	<div class="input__item">
 																		<label for="inpTime" class="input__label">
 																			Час доставки
 																		</label>
-																		<input id="inpTime" autocomplete="off" type="time" name="form[]" data-error="Виберіть час доставки" placeholder="00:00" data-required class="input input_sm">
+																		<div class="input__sub-item">
+																			<input id="inpTime" autocomplete="off" type="time" name="form[]" data-error="Виберіть час доставки" placeholder="00:00" data-required class="input input_sm">
+																			<button type="button" class="input__choise icon-clock"></button>
+																		</div>
 																	</div>
 																</div>
 															</div>

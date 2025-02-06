@@ -156,22 +156,137 @@ startCountdown();
   *International Telephone Input v25.3.0
  *https://github.com/jackocnr/intl-tel-input.git
 */
-
 const intlTelInp = document.querySelector("#intlTelInp");
 if (intlTelInp) {
   const siteLang = document.documentElement.lang.slice(0, 2); // Определяем язык сайта
   let language;
-
+  
   switch (siteLang) {
-    case 'ru':
-      language = ru;
-      break;
-    case 'uk':
-      language = uk;
-      break;
+      case 'ru':
+        language = ru;
+        break;
+      case 'uk':
+        language = uk;
+        break;
     default:
       language = null; // Английский будет по умолчанию
   }
+  // switch (siteLang) {
+  //   case 'ar':
+  //     language = ar;
+  //     break;
+  //   case 'bg':
+  //       language = bg;
+  //       break;
+  //   case 'bn':
+  //     language = bn;
+  //     break;
+  //   case 'bs':
+  //     language = bs;
+  //     break;
+  //   case 'ca':
+  //     language = ca;
+  //     break;
+  //   case 'cs':
+  //     language = cs;
+  //     break;
+  //   case 'da':
+  //     language = da;
+  //     break;
+  //   case 'de':
+  //     language = de;
+  //     break;
+  //   case 'el':
+  //     language = el;
+  //     break;
+  //   case 'en':
+  //     language = en;
+  //     break;
+  //   case 'es':
+  //     language = es;
+  //     break;
+  //   case 'fa':
+  //     language = fa;
+  //     break;
+  //   case 'fi':
+  //     language = fi;
+  //     break;
+  //   case 'fr':
+  //     language = fr;
+  //     break;
+  //   case 'hi':
+  //     language = hi;
+  //     break;
+  //   case 'hr':
+  //     language = hr;
+  //     break;
+  //   case 'hu':
+  //     language = hu;
+  //     break;
+  //   case 'id':
+  //     language = id;
+  //     break;
+  //   case 'it':
+  //     language = it;
+  //     break;
+  //   case 'ja':
+  //     language = ja;
+  //     break;
+  //   case 'ko':
+  //     language = ko;
+  //     break;
+  //   case 'mr':
+  //     language = mr;
+  //     break;
+  //   case 'nl':
+  //     language = nl;
+  //     break;
+  //   case 'no':
+  //     language = no;
+  //     break;
+  //   case 'pl':
+  //     language = pl;
+  //     break;
+  //   case 'pt':
+  //     language = pt;
+  //     break;
+  //   case 'ro':
+  //     language = ro;
+  //     break;
+  //   case 'ru':
+  //     language = ru;
+  //     break;
+  //   case 'sk':
+  //     language = sk;
+  //     break;
+  //   case 'sv':
+  //     language = sv;
+  //     break;
+  //   case 'te':
+  //     language = te;
+  //     break;
+  //   case 'th':
+  //     language = th;
+  //     break;
+  //   case 'tr':
+  //     language = tr;
+  //     break;
+  //   case 'uk':
+  //     language = uk;
+  //     break;
+  //   case 'ur':
+  //     language = ur;
+  //     break;
+  //   case 'vi':
+  //     language = vi;
+  //     break;
+  //   case 'zh':
+  //     language = zh;
+  //     break;
+  //   default:
+  //     language = null; // Английский будет по умолчанию
+  // }
+
 
   window.intlTelInput(intlTelInp, {
     initialCountry: 'auto',
@@ -188,7 +303,6 @@ if (intlTelInp) {
     i18n: language,
   });
 }
-
 
 
 

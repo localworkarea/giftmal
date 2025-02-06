@@ -145,6 +145,7 @@ textarea.input {
 	// .input__clear
 	&__clear {
     position: absolute;
+    z-index: 2;
     right: toRem(12);
     transition: opacity .3s;
     &.icon-trash {
@@ -174,6 +175,42 @@ textarea.input {
     &:disabled {
       opacity: 0;
       pointer-events: none;
+    }
+	}
+	// .input__choise
+	&__choise {
+    position: absolute;
+    z-index: 2;
+    right: toRem(4);
+    transition: opacity .3s;
+    pointer-events: none;
+    border-radius: 50%;
+    background-color: var(--dark-violet);
+    display: grid;
+    place-items: center;
+    @media (min-width:$mobileSmall){
+      top: toRem(4.5);
+      width: toRem(32);
+      height: toRem(32);
+    }
+    @media (max-width:$mobileSmall){
+      top: toRem(4);
+      width: toRem(40);
+      height: toRem(40);
+        
+    }
+
+
+    &::before {
+      color: var(--white);
+      @media (min-width:$mobileSmall){
+        font-size: toRem(20);
+      }
+      @media (max-width:$mobileSmall){
+         font-size: toRem(24); 
+      }
+    }
+    &.icon-calendar {
     }
 	}
 }
@@ -368,17 +405,27 @@ textarea.input {
   display: flex;
   align-items: center;
   height: 100%;
-	min-height: toRem(40);
+  @media (min-width:$mobileSmall){
+    min-height: toRem(40);
+  }
+  @media (max-width:$mobileSmall){
+    min-height: toRem(48);
+  }
 }
 .iti__selected-dial-code {
-	min-height: toRem(40);
-	place-content: center;
+  place-content: center;
 	@extend %flexCenterGap8;
 	&:before {
-		order: 2;
+    order: 2;
 		font-size: toRem(16);
 		transition: transform 0.3s ease; // Добавляет плавность анимации
 	}
+  @media (min-width:$mobileSmall){
+    min-height: toRem(40);
+  }
+  @media (max-width:$mobileSmall){
+    min-height: toRem(48);
+  }
 }
 .iti__selected-country[aria-expanded="true"] .iti__selected-dial-code::before {
 	transform: rotate(-180deg);

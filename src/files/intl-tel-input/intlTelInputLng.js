@@ -511,7 +511,7 @@
         ac: "Остров Възнесение",
         xk: "Косово"
     };
-    const bg_interface = interface_interfaceTranslations;
+
     const bn_countries_countryTranslations = {
         ad: "আন্ডোরা",
         ae: "সংযুক্ত আরব আমিরাত",
@@ -769,6 +769,7 @@
         xk: "কসোভো"
     };
     const bn_interface = bn_interface_interfaceTranslations;
+
     const bs_countries_countryTranslations = {
         ad: "Andora",
         ae: "Ujedinjeni Arapski Emirati",
@@ -1026,6 +1027,7 @@
         xk: "Kosovo"
     };
     const bs_interface = bs_interface_interfaceTranslations;
+    
     const ca_countries_countryTranslations = {
         ad: "Andorra",
         ae: "Emirats Àrabs Units",
@@ -9517,3 +9519,6 @@
         xk: "科索沃"
     };
     const zh_interface = zh_interface_interfaceTranslations;
+
+
+    
