@@ -1,9 +1,16 @@
 // Підключення функціоналу "Чертоги Фрілансера"
+// import { tr } from "intl-tel-input/i18n";
 import { isMobile } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
-// import intlTelInput from "intl-tel-input";
-// import { ru, uk } from "intl-tel-input/i18n"
+
+
+// import AirDatepicker from 'air-datepicker';
+// import 'air-datepicker/air-datepicker.css';
+// import localeEn from 'air-datepicker/locale/en';
+// import localeRu from 'air-datepicker/locale/ru';
+// import localeUk from 'air-datepicker/locale/uk';
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -149,6 +156,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+tippy("[data-tippy-content]", {
+  placement: "bottom"
+});
+
 // function trackStickyElement() {
 //   const spoller = document.querySelector('.orders-checkout__spoller');
 
@@ -179,80 +190,37 @@ document.addEventListener("DOMContentLoaded", () => {
 // trackStickyElement();
 
 
-  
-function startCountdown() {
-  const timerElement = document.querySelector("[data-timer]");
-  if (!timerElement) return;
 
-  const totalMinutes = parseFloat(timerElement.getAttribute('data-timer'));
-  let totalSeconds = Math.floor(totalMinutes * 60);
 
-  // форматирования времени в формате MM : SS
-  function formatTime(seconds) {
-      const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
-      const secs = String(seconds % 60).padStart(2, '0');
-      return `${mins} : ${secs}`;
+// https://air-datepicker.com/ru/docs
+
+const currentLang = document.documentElement.lang || 'en';
+const datepickerSelector = '[data-datepicker]';
+let dp = null;
+
+function toggleDatepicker(e) {
+  if (e.matches) {
+    // Отключаем datepicker, если он существует
+    if (dp) {
+      dp.destroy();
+      dp = null;
+    }
+  } else {
+    // Включаем datepicker, если он ещё не инициализирован
+    if (!dp && document.querySelector(datepickerSelector)) {
+      dp = new AirDatepicker(datepickerSelector, {
+        dateFormat: 'dd.MM.yyyy',
+        minDate: '01.01.1900',
+        autoClose: true,
+        locale: locales[currentLang] || locales.en
+      });
+    }
   }
-
-  //  начальное значение 
-  timerElement.textContent = formatTime(totalSeconds);
-
-  // Запускаем обратный отсчет
-  const interval = setInterval(() => {
-      totalSeconds--;
-
-      if (totalSeconds <= 0) {
-          clearInterval(interval);
-          timerElement.textContent = "00 : 00";
-          return;
-      }
-
-      // Обновляем отображение времени
-      timerElement.textContent = formatTime(totalSeconds);
-  }, 1000);
-}
-startCountdown();
-
-
-// === International Telephone Input ========================== 
-/* 
-  *International Telephone Input v25.3.0
- *https://github.com/jackocnr/intl-tel-input.git
-*/
-
-const intlTelInp = document.querySelector("#intlTelInp");
-if (intlTelInp) {
-  const siteLang = document.documentElement.lang.slice(0, 2); // Определяем язык сайта
-  let i18nData;
-
-  switch (siteLang) {
-    case 'ru':
-      i18nData = ru;
-      break;
-    case 'uk':
-      i18nData = uk;
-      break;
-    default:
-      i18nData = null; // Английский будет по умолчанию
-  }
-
-  window.intlTelInput(intlTelInp, {
-    initialCountry: 'auto',
-    geoIpLookup: callback => {
-      fetch("https://ipapi.co/json")
-        .then(res => res.json())
-        .then(data => callback(data.country_code))
-        .catch(() => callback("us"));
-    },
-    strictMode: true,
-    separateDialCode: true,
-    nationalMode: true,
-    formatOnDisplay: true,
-    i18n: i18nData,
-  });
 }
 
+const mediaQuery = window.matchMedia('(max-width: 30.061em)');
+mediaQuery.addEventListener('change', toggleDatepicker);
+toggleDatepicker(mediaQuery);
 
-tippy('[data-tippy-content]', {
-  placement: 'bottom',
-});
+
+// mobile date picker: https://www.cssscript.com/mobile-ios-date-picker-rolldate/

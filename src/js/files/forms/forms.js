@@ -23,21 +23,21 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			formValidate.removeError(targetElement);
 			targetElement.hasAttribute('data-validate') ? formValidate.removeError(targetElement) : null;
 
-				// Логика для инпута с классом input-sms
-				if (targetElement.classList.contains('input-sms')) {
-					initSmsInput(targetElement);
-				}
+			// Логика для инпута с классом input-sms
+			if (targetElement.classList.contains('input-sms')) {
+				initSmsInput(targetElement);
+			}
 
 			// Убираем disabled для кнопки очистки input__clear, если есть текст
 			const clearButton = targetElement.parentElement.querySelector('.input__clear');
 			if (clearButton) {
 				targetElement.addEventListener('input', () => {
-					clearButton.disabled = targetElement.value.length === 0;
+					clearButton.disabled = targetElement.value.length === 0 || targetElement.hasAttribute('readonly');
 				});
 			}
-
 		}
 	});
+
 	document.body.addEventListener("focusout", function (e) {
 		const targetElement = e.target;
 		if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
@@ -54,7 +54,7 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 	document.querySelectorAll('.input__sub-item input').forEach(inputElement => {
 		const clearButton = inputElement.parentElement.querySelector('.input__clear');
 		if (clearButton) {
-			clearButton.disabled = inputElement.value.length === 0;
+			clearButton.disabled = inputElement.value.length === 0 || inputElement.hasAttribute('readonly');
 		}
 	});
 
@@ -69,7 +69,55 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			}
 		}
 	});
+
+	// Обработка полей с атрибутом readonly
+	document.querySelectorAll('input[readonly], textarea[readonly]').forEach(inputElement => {
+		const subItem = inputElement.parentElement;
+		const item = subItem.closest('.input__item');
+		const clearButton = subItem.querySelector('.input__clear');
+
+		// Добавляем классы и отключаем кнопку очистки при наличии атрибута readonly
+		if (inputElement.hasAttribute('readonly')) {
+			inputElement.classList.add('_readonly');
+			subItem.classList.add('_readonly');
+			if (item) {
+				item.classList.add('_readonly');
+			}
+			if (clearButton) {
+				clearButton.disabled = true;
+			}
+		}
+
+		// Наблюдатель за изменениями атрибута readonly
+		const observer = new MutationObserver(mutations => {
+			mutations.forEach(mutation => {
+				if (mutation.attributeName === 'readonly') {
+					if (inputElement.hasAttribute('readonly')) {
+						inputElement.classList.add('_readonly');
+						subItem.classList.add('_readonly');
+						if (item) {
+							item.classList.add('_readonly');
+						}
+						if (clearButton) {
+							clearButton.disabled = true;
+						}
+					} else {
+						inputElement.classList.remove('_readonly');
+						subItem.classList.remove('_readonly');
+						if (item) {
+							item.classList.remove('_readonly');
+						}
+						if (clearButton) {
+							clearButton.disabled = inputElement.value.length === 0;
+						}
+					}
+				}
+			});
+		});
+		observer.observe(inputElement, { attributes: true });
+	});
 }
+
 
 // == РАБОТА С ПОЛЕМ ВВОДА КОДА СМС ==============================
 function initSmsInput(inputElement) {

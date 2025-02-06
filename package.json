@@ -90,11 +90,14 @@
 	},
 	"dependencies": {
 		"@tailwindcss/postcss": "^4.0.0",
+		"air-datepicker": "^3.5.3",
 		"gulp-cheerio": "^1.0.0",
 		"intl-tel-input": "^25.3.0",
 		"isotope-layout": "^3.0.6",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"simplebar": "latest"
+		"rolldate-full": "^3.2.3",
+		"simplebar": "latest",
+		"thedatepicker": "^2.4.0"
 	}
 }

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250204214718">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250206122406">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -165,6 +165,46 @@
 							</label>
 						</div>
 					</div>
+					<br><br>
+
+					<p>Поля з атрибутом <b>readonly</b>: батьківським елементам і самому інпуту додаються класи _readonly, через що змінюються стилі полей. Якщо є кнопки очищення поля їм додається атрибут disabled="true". Якщо label має "підказки" то до них застосовується display: none</p><br>
+					<div class="tab-checkout__items items-cl-2">
+						<div class="input__item">
+							<label for="inp15" class="input__label">
+								Ваше ім'я
+							</label>
+							<div class="input__sub-item">
+								<input id="inp15" autocomplete="off" type="text" name="firstName" value="Юлія" data-error="Назва помилки написана в data-error атрибуті" placeholder="Ім'я" data-required class="input input_sm" readonly>
+							</div>
+						</div>
+						<div class="input__item">
+							<label for="inp16" class="input__label">
+								Прізвище
+							</label>
+							<div class="input__sub-item">
+								<input id="inp16" autocomplete="off" type="text" name="lastName" value="Михайлова" data-error="Назва помилки написана в data-error атрибуті" placeholder="Прізвище" data-required class="input input_sm" readonly>
+								<button disabled type="button" class="input__clear icon-cross"></button>
+							</div>
+						</div>
+						<div class="input__item">
+							<label for="inp17" class="input__label">
+								Ваше email
+							</label>
+							<div class="input__sub-item">
+								<input id="inp17" autocomplete="off" type="email" name="email" value="yuliiia@gmail.com" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email" class="input input_sm" readonly>
+								<button disabled type="button" class="input__clear icon-cross"></button>
+							</div>
+						</div>
+						<div class="input__item">
+							<label for="inp17" class="input__label">
+								Номер телефону
+							</label>
+							<div class="input__sub-item">
+								<input id="inp17" autocomplete="off" type="tel" name="tel" value="+380-50-104-88-57" data-error="Введіть телефон" placeholder="example@gmail.com" data-required class="input input_sm" readonly>
+								<button disabled type="button" class="input__clear icon-cross"></button>
+							</div>
+						</div>
+					</div>
 
 
 					<br><br>
@@ -231,11 +271,11 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250204214718"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250204214718"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250204214718"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250204214718"></script>
-	<script src="js/app.min.js?_v=20250204214718"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250206122406"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250206122406"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250206122406"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250206122406"></script>
+	<script src="js/app.min.js?_v=20250206122406"></script>
 </body>
 
 </html>

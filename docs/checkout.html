@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<meta name="format-detection" content="telephone=no">
 		<!-- <style>body{opacity: 0;}</style> -->
-		<link rel="stylesheet" href="css/style.min.css?_v=20250204214718">
+		<link rel="stylesheet" href="css/style.min.css?_v=20250206122406">
 		<link rel="shortcut icon" href="favicon.ico">
 		<!-- <meta name="robots" content="noindex, nofollow"> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -157,7 +157,7 @@
 															<p class="tab-checkout__subtitle">
 																2. Дані отримувача
 															</p>
-															<div class="tab-checkout__items items-cl-2">
+															<div class="tab-checkout__items items-cl-2-nw">
 																<div class="option__item">
 																	<input id="recipientMyself" class="option__input" type="radio" name="recipient" value="myself" checked>
 																	<label for="recipientMyself" class="option__label">
@@ -174,20 +174,25 @@
 																</div>
 															</div>
 															<div class="tab-checkout__items items-cl-2">
-																<div class="data-item">
-																	<div class="data-item__label txt-11">
-																		Ім’я
-																	</div>
-																	<div class="data-item__data txt-15">
-																		Юлія
+																<div class="input__item">
+																	<label for="inp17" class="input__label">
+																		<span class="info-label">
+																			<span data-tippy-content="Впишіть ваше Ім’я" class="info-label__info icon-info"></span>
+																			Ім’я
+																		</span>
+																	</label>
+																	<div class="input__sub-item">
+																		<input id="inp17" autocomplete="off" type="text" name="form[]" data-error="Введіть текст" placeholder="Ім'я" value="Юлія" data-required class="input input_sm" readonly>
+																		<button disabled type="button" class="input__clear icon-cross"></button>
 																	</div>
 																</div>
-																<div class="data-item">
-																	<div class="data-item__label txt-11">
+																<div class="input__item">
+																	<label for="inp18" class="input__label">
 																		Email
-																	</div>
-																	<div class="data-item__data txt-15">
-																		omihalovjul@gmail.com
+																	</label>
+																	<div class="input__sub-item">
+																		<input id="inp18" autocomplete="off" type="text" name="form[]" data-error="Введіть текст" placeholder="example@gmail.com" value="yuliiia@gmail.com" data-required class="input input_sm" readonly>
+																		<button disabled type="button" class="input__clear icon-cross"></button>
 																	</div>
 																</div>
 																<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
@@ -222,8 +227,38 @@
 															<p class="tab-checkout__subtitle">
 																3. Оберіть час та дату доставки
 															</p>
+															<div class="tab-checkout__items items-cl-2-nw">
+																<div class="option__item">
+																	<input id="deliverySoon" class="option__input" type="radio" name="date-time" value="soon" checked>
+																	<label for="deliverySoon" class="option__label">
+																		<span class="box"></span>
+																		Найближчий
+																	</label>
+																</div>
+																<div class="option__item">
+																	<input id="deliverySelect" class="option__input" type="radio" name="date-time" value="select">
+																	<label for="deliverySelect" class="option__label">
+																		<span class="box"></span>
+																		Обрати
+																	</label>
+																</div>
+																<p class="txt-accent txt-13">
+																	Замовлення буде відправлення найближчим часом.
+																</p>
+															</div>
 															<div class="tab-checkout__items items-cl-2">
-
+																<div class="input__item">
+																	<label for="datepicker" class="input__label">
+																		Дата доставки
+																	</label>
+																	<input id="datepicker" data-datepicker autocomplete="off" type="text" name="form[]" data-error="Виберіть дату доставки" placeholder="01.02.2025" data-required class="input input_sm">
+																</div>
+																<div class="input__item">
+																	<label for="inpTime" class="input__label">
+																		Час доставки
+																	</label>
+																	<input id="inpTime" autocomplete="off" type="time" name="form[]" data-error="Виберіть час доставки" placeholder="00:00" data-required class="input input_sm">
+																</div>
 															</div>
 														</div>
 														<div class="tab-checkout__item">
@@ -384,45 +419,48 @@
 													<input id="inp4" autocomplete="off" type="email" name="email" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email" class="input input_sm">
 												</div>
 											</div>
+
 										</div>
 										<div class="tab-checkout__item">
 											<div class="tab-checkout__items items-cl-2">
-												<div class="data-item">
-													<div class="data-item__label txt-11">
-														Ім’я
-													</div>
-													<div class="data-item__data txt-15">
-														Юлія
+												<div class="input__item">
+													<label for="inp15" class="input__label">
+														Ваше ім'я
+													</label>
+													<div class="input__sub-item">
+														<input id="inp15" autocomplete="off" type="text" name="firstName" value="Юлія" data-error="Назва помилки написана в data-error атрибуті" placeholder="Ім'я" data-required class="input input_sm" readonly>
 													</div>
 												</div>
-												<div class="data-item">
-													<div class="data-item__label txt-11">
+												<div class="input__item">
+													<label for="inp16" class="input__label">
 														Прізвище
-													</div>
-													<div class="data-item__data txt-15">
-														Михайлова
-													</div>
-												</div>
-												<div class="data-item">
-													<div class="data-item__label txt-11">
-														Email
-													</div>
-													<div class="data-item__data txt-15">
-														omihalovjul@gmail.com
+													</label>
+													<div class="input__sub-item">
+														<input id="inp16" autocomplete="off" type="text" name="lastName" value="Михайлова" data-error="Назва помилки написана в data-error атрибуті" placeholder="Прізвище" data-required class="input input_sm" readonly>
+														<button disabled type="button" class="input__clear icon-cross"></button>
 													</div>
 												</div>
-												<div class="data-item">
-													<div class="data-item__label txt-11">
+												<div class="input__item">
+													<label for="inp19" class="input__label">
+														Ваше email
+													</label>
+													<div class="input__sub-item">
+														<input id="inp19" autocomplete="off" type="email" name="email" value="yuliiia@gmail.com" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email" class="input input_sm" readonly>
+														<button disabled type="button" class="input__clear icon-cross"></button>
+													</div>
+												</div>
+												<div class="input__item">
+													<label for="inp20" class="input__label">
 														Номер телефону
-													</div>
-													<div class="data-item__data txt-15">
-														+380-50-104-88-57
+													</label>
+													<div class="input__sub-item">
+														<input id="inp20" autocomplete="off" type="tel" name="tel" value="+380-50-104-88-57" data-error="Введіть телефон" placeholder="example@gmail.com" data-required class="input input_sm" readonly>
+														<button disabled type="button" class="input__clear icon-cross"></button>
 													</div>
 												</div>
 											</div>
 										</div>
 										<button type="submit" class="tab-checkout__btn btn btn_dark">Отримати код</button>
-
 									</form>
 
 									<!-- Оплата -->
@@ -573,11 +611,14 @@
 			</div>
 		</main>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250204214718"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250204214718"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250204214718"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250204214718"></script>
-	<script src="js/app.min.js?_v=20250204214718"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250206122406"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250206122406"></script>
+	<script src="files/rolldate/rolldate.min.js?_v=20250206122406"></script>
+	<script src="files/air-datepicker/air-datepickerLng.min.js?_v=20250206122406"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250206122406"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250206122406"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250206122406"></script>
+	<script src="js/app.min.js?_v=20250206122406"></script>
 </body>
 
 </html>

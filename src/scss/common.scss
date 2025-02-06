@@ -298,19 +298,6 @@
   }
 }
 
-.data-item {
-  // .data-item__label
-  &__label {
-    font-weight: 600;
-    color: var(--fade-violet-2);
-    margin-bottom: toRem(12);
-  }
-  // .data-item__data
-  &__data {
-    line-height: 1.5;
-  }
-}
-
 
 .option {
   display: grid;
@@ -392,6 +379,9 @@
 .info-label {
   position: relative;
   padding-left: toRem(25);
+  ._readonly & {
+    padding-left: 0;
+  }
   // .info-label__info
   &__info {
     position: absolute;
@@ -414,6 +404,9 @@
           color: var(--white);
         }
       }
+    }
+    ._readonly & {
+      display: none;
     }
   }
 }

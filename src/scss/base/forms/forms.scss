@@ -48,14 +48,28 @@ textarea {
 	&.intl-input {
 		padding-left: toRem(16) !important;
 	}
-	@media (any-hover: hover){
-		&:hover{
-			background-color: var(--gray-2);
-			&::placeholder {
-				color: var(--fade-violet-2);
-			}
-		}
-	}
+  @media (any-hover: hover){
+    &:hover{
+      background-color: var(--gray-2);
+      &::placeholder {
+        color: var(--fade-violet-2);
+      }
+    }
+  }
+  &._readonly {
+    min-height: auto;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    pointer-events: none;
+    @media (min-width:$mobileSmall){
+      font-size: toRem(15); 
+   }
+   @media (max-width:$mobileSmall){
+      font-size: toRem(14); 
+   }
+  }
 }
 
 .input[placeholder]:not([data-placeholder-nohiden]) {
@@ -95,6 +109,9 @@ textarea.input {
 	&__label {
 		display: block;
 		font-weight: 600;
+    ._readonly & {
+      color: var(--fade-violet-2);
+    }
 		@media (min-width:$mobileSmall){
 			 font-size: toRem(11); 
 			 margin-bottom: toRem(12);
@@ -2591,3 +2608,5 @@ textarea.input {
 // <CALENDAR>
 // Сніппет (HTML):
 // @import "datepicker";
+
+@import "datepicker-2";

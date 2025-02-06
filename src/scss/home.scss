@@ -578,6 +578,15 @@
     &.items-cl-2 {
       @extend %gridClm-2;
     }
+    &.items-cl-2-nw {
+      grid-template-columns: 1fr 1fr;
+      @media (min-width:$mobileSmall){
+        gap: toRem(18); 
+      }
+      @media (max-width:$mobileSmall){
+        gap: toRem(8); 
+      }
+    }
     &:not(:last-child) {
       @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
     }

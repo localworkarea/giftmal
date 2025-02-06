@@ -273,7 +273,7 @@
                 if (targetElement.classList.contains("input-sms")) initSmsInput(targetElement);
                 const clearButton = targetElement.parentElement.querySelector(".input__clear");
                 if (clearButton) targetElement.addEventListener("input", (() => {
-                    clearButton.disabled = targetElement.value.length === 0;
+                    clearButton.disabled = targetElement.value.length === 0 || targetElement.hasAttribute("readonly");
                 }));
             }
         }));
@@ -289,7 +289,7 @@
         }));
         document.querySelectorAll(".input__sub-item input").forEach((inputElement => {
             const clearButton = inputElement.parentElement.querySelector(".input__clear");
-            if (clearButton) clearButton.disabled = inputElement.value.length === 0;
+            if (clearButton) clearButton.disabled = inputElement.value.length === 0 || inputElement.hasAttribute("readonly");
         }));
         document.body.addEventListener("click", (function(e) {
             if (e.target.classList.contains("input__clear")) {
@@ -300,6 +300,35 @@
                     inputElement.focus();
                 }
             }
+        }));
+        document.querySelectorAll("input[readonly], textarea[readonly]").forEach((inputElement => {
+            const subItem = inputElement.parentElement;
+            const item = subItem.closest(".input__item");
+            const clearButton = subItem.querySelector(".input__clear");
+            if (inputElement.hasAttribute("readonly")) {
+                inputElement.classList.add("_readonly");
+                subItem.classList.add("_readonly");
+                if (item) item.classList.add("_readonly");
+                if (clearButton) clearButton.disabled = true;
+            }
+            const observer = new MutationObserver((mutations => {
+                mutations.forEach((mutation => {
+                    if (mutation.attributeName === "readonly") if (inputElement.hasAttribute("readonly")) {
+                        inputElement.classList.add("_readonly");
+                        subItem.classList.add("_readonly");
+                        if (item) item.classList.add("_readonly");
+                        if (clearButton) clearButton.disabled = true;
+                    } else {
+                        inputElement.classList.remove("_readonly");
+                        subItem.classList.remove("_readonly");
+                        if (item) item.classList.remove("_readonly");
+                        if (clearButton) clearButton.disabled = inputElement.value.length === 0;
+                    }
+                }));
+            }));
+            observer.observe(inputElement, {
+                attributes: true
+            });
         }));
     }
     function initSmsInput(inputElement) {
@@ -655,59 +684,28 @@
             }
         }));
     }));
-    function startCountdown() {
-        const timerElement = document.querySelector("[data-timer]");
-        if (!timerElement) return;
-        const totalMinutes = parseFloat(timerElement.getAttribute("data-timer"));
-        let totalSeconds = Math.floor(totalMinutes * 60);
-        function formatTime(seconds) {
-            const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
-            const secs = String(seconds % 60).padStart(2, "0");
-            return `${mins} : ${secs}`;
-        }
-        timerElement.textContent = formatTime(totalSeconds);
-        const interval = setInterval((() => {
-            totalSeconds--;
-            if (totalSeconds <= 0) {
-                clearInterval(interval);
-                timerElement.textContent = "00 : 00";
-                return;
-            }
-            timerElement.textContent = formatTime(totalSeconds);
-        }), 1e3);
-    }
-    startCountdown();
-    const intlTelInp = document.querySelector("#intlTelInp");
-    if (intlTelInp) {
-        const siteLang = document.documentElement.lang.slice(0, 2);
-        let i18nData;
-        switch (siteLang) {
-          case "ru":
-            i18nData = ru;
-            break;
-
-          case "uk":
-            i18nData = uk;
-            break;
-
-          default:
-            i18nData = null;
-        }
-        window.intlTelInput(intlTelInp, {
-            initialCountry: "auto",
-            geoIpLookup: callback => {
-                fetch("https://ipapi.co/json").then((res => res.json())).then((data => callback(data.country_code))).catch((() => callback("us")));
-            },
-            strictMode: true,
-            separateDialCode: true,
-            nationalMode: true,
-            formatOnDisplay: true,
-            i18n: i18nData
-        });
-    }
     tippy("[data-tippy-content]", {
         placement: "bottom"
     });
+    const currentLang = document.documentElement.lang || "en";
+    const datepickerSelector = "[data-datepicker]";
+    let dp = null;
+    function toggleDatepicker(e) {
+        if (e.matches) {
+            if (dp) {
+                dp.destroy();
+                dp = null;
+            }
+        } else if (!dp && document.querySelector(datepickerSelector)) dp = new AirDatepicker(datepickerSelector, {
+            dateFormat: "dd.MM.yyyy",
+            minDate: "01.01.1900",
+            autoClose: true,
+            locale: locales[currentLang] || locales.en
+        });
+    }
+    const mediaQuery = window.matchMedia("(max-width: 30.061em)");
+    mediaQuery.addEventListener("change", toggleDatepicker);
+    toggleDatepicker(mediaQuery);
     window["FLS"] = false;
     spollers();
     formFieldsInit({
