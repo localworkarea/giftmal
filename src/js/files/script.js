@@ -194,19 +194,103 @@ tippy("[data-tippy-content]", {
 
 // https://air-datepicker.com/ru/docs
 
+// const currentLang = document.documentElement.lang || 'en';
+// const datepickerSelector = '[data-datepicker]';
+// let dp = null;
+
+// function toggleDatepicker(e) {
+//   if (e.matches) {
+//     // Отключаем datepicker, если он существует
+//     if (dp) {
+//       dp.destroy();
+//       dp = null;
+//     }
+//   } else {
+//     // Включаем datepicker, если он ещё не инициализирован
+//     if (!dp && document.querySelector(datepickerSelector)) {
+//       dp = new AirDatepicker(datepickerSelector, {
+//         dateFormat: 'dd.MM.yyyy',
+//         minDate: '01.01.1900',
+//         autoClose: true,
+//         locale: locales[currentLang] || locales.en
+//       });
+//     }
+//   }
+// }
+
+// const mediaQuery = window.matchMedia('(max-width: 30.061em)');
+// mediaQuery.addEventListener('change', toggleDatepicker);
+// toggleDatepicker(mediaQuery);
+
+
+// // mobile date picker: https://www.cssscript.com/mobile-ios-date-picker-rolldate/
+// let rd = new Rolldate({
+//   el: '[data-datepicker]',
+//   format: 'YYYY-MM-DD',
+//   beginYear: 2000,
+//   endYear: 2100,
+//   minStep:1,
+//   lang:{title:'Select date'},
+//   trigger:'tap',
+//   init: function() {
+//     console.log('plugin start');
+//   },
+//   moveEnd: function(scroll) {
+//     console.log('End of scroll');
+//   },
+//   confirm: function(date) {
+//     console.log('OK button trigger');
+//   },
+//   cancel: function() {
+//     console.log('Plug-in canceled');
+//   }
+// });
+// rd.show();
+// rd.hide();
+
 const currentLang = document.documentElement.lang || 'en';
 const datepickerSelector = '[data-datepicker]';
 let dp = null;
+let rd = null;
 
 function toggleDatepicker(e) {
   if (e.matches) {
-    // Отключаем datepicker, если он существует
+    // Если активен AirDatepicker, уничтожаем его
     if (dp) {
       dp.destroy();
       dp = null;
     }
+    // Включаем Rolldate, если он еще не активен
+    if (!rd && document.querySelector(datepickerSelector)) {
+      rd = new Rolldate({
+        el: datepickerSelector,
+        format: 'YYYY-MM-DD',
+        beginYear: 1920,
+        endYear: 2050,
+        minStep: 1,
+        lang: { title: 'Select date' },
+        trigger: 'tap',
+        init: function () {
+          console.log('Rolldate started');
+        },
+        moveEnd: function (scroll) {
+          console.log('Rolldate scroll ended');
+        },
+        confirm: function (date) {
+          console.log('Rolldate confirmed:', date);
+        },
+        cancel: function () {
+          console.log('Rolldate canceled');
+        }
+      });
+    }
   } else {
-    // Включаем datepicker, если он ещё не инициализирован
+    // Если активен Rolldate, отключаем его
+    if (rd) {
+      rd.destroy(); // У Rolldate нет метода destroy(), можно просто обнулить
+      rd = null;
+    }
+    // Включаем AirDatepicker, если он еще не активен
     if (!dp && document.querySelector(datepickerSelector)) {
       dp = new AirDatepicker(datepickerSelector, {
         dateFormat: 'dd.MM.yyyy',
@@ -222,5 +306,3 @@ const mediaQuery = window.matchMedia('(max-width: 30.061em)');
 mediaQuery.addEventListener('change', toggleDatepicker);
 toggleDatepicker(mediaQuery);
 
-
-// mobile date picker: https://www.cssscript.com/mobile-ios-date-picker-rolldate/

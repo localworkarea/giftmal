@@ -690,18 +690,48 @@
     const currentLang = document.documentElement.lang || "en";
     const datepickerSelector = "[data-datepicker]";
     let dp = null;
+    let rd = null;
     function toggleDatepicker(e) {
         if (e.matches) {
             if (dp) {
                 dp.destroy();
                 dp = null;
             }
-        } else if (!dp && document.querySelector(datepickerSelector)) dp = new AirDatepicker(datepickerSelector, {
-            dateFormat: "dd.MM.yyyy",
-            minDate: "01.01.1900",
-            autoClose: true,
-            locale: locales[currentLang] || locales.en
-        });
+            if (!rd && document.querySelector(datepickerSelector)) rd = new Rolldate({
+                el: datepickerSelector,
+                format: "YYYY-MM-DD",
+                beginYear: 1920,
+                endYear: 2050,
+                minStep: 1,
+                lang: {
+                    title: "Select date"
+                },
+                trigger: "tap",
+                init: function() {
+                    console.log("Rolldate started");
+                },
+                moveEnd: function(scroll) {
+                    console.log("Rolldate scroll ended");
+                },
+                confirm: function(date) {
+                    console.log("Rolldate confirmed:", date);
+                },
+                cancel: function() {
+                    console.log("Rolldate canceled");
+                }
+            });
+        } else {
+            if (rd) {
+                rd.destroy();
+                rd = null;
+            }
+            if (!dp && document.querySelector(datepickerSelector)) dp = new AirDatepicker(datepickerSelector, {
+                dateFormat: "dd.MM.yyyy",
+                minDate: "01.01.1900",
+                autoClose: true,
+                locale: locales[currentLang] || locales.en
+            });
+        }
     }
     const mediaQuery = window.matchMedia("(max-width: 30.061em)");
     mediaQuery.addEventListener("change", toggleDatepicker);

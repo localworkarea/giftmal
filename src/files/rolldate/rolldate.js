@@ -423,10 +423,17 @@
           if (flag && config.cancel) {
               config.cancel.call(_this);
           }
-          setTimeout(function () {
-              var el = _this.$('.rolldate-container');
-              document.body.removeChild(el);
-          }, 300);
+        //   setTimeout(function () {
+        //       var el = _this.$('.rolldate-container');
+        //       document.body.removeChild(el);
+        //   }, 300);
+        setTimeout(function () {
+            var el = _this.$('.rolldate-container');
+            if (el && el.parentNode) {
+                document.body.removeChild(el);
+            }
+        }, 300);
+        
       },
       getSelected: function getSelected(scroll) {
           var _this = this,
