@@ -38,8 +38,10 @@
     }
   }
 
+  /*
   var css = "ul{margin:0;padding:0}li{list-style-type:none}.rolldate-container{font-size:20px;color:#333;text-align:center}.rolldate-container header{position:relative;line-height:60px;font-size:18px;border-bottom:1px solid #e0e0e0}.rolldate-container .rolldate-mask{position:fixed;width:100%;height:100%;top:0;left:0;z-index:999;background-color:rgba(37,38,45,.4)}.rolldate-container .rolldate-panel{position:fixed;bottom:0;left:0;width:100%;height:273px;z-index:1000;background:#fff;-webkit-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-transform:translate3d(0,273px,0);transform:translate3d(0,273px,0)}.rolldate-container .rolldate-btn{position:absolute;left:0;top:0;height:100%;padding:0 15px;color:#666;font-size:16px;cursor:pointer;-webkit-tap-highlight-color:transparent}.rolldate-container.wx .rolldate-btn{height:150%}.rolldate-container .rolldate-confirm{left:auto;right:0;color:#007bff}.rolldate-container .rolldate-content{position:relative;top:20px}.rolldate-container .rolldate-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}.rolldate-container .rolldate-wrapper>div{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;height:173px;line-height:36px;overflow:hidden;-webkit-flex-basis:-8e;-ms-flex-preferred-size:-8e;flex-basis:-8e;width:1%}.rolldate-container .rolldate-wrapper ul{margin-top:68px}.rolldate-container .rolldate-wrapper li{height:36px}.rolldate-container .rolldate-dim{position:absolute;left:0;top:0;width:100%;height:68px;background:-webkit-gradient(linear,left bottom,left top,from(hsla(0,0%,100%,.4)),to(hsla(0,0%,100%,.8)));background:-webkit-linear-gradient(bottom,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));background:-o-linear-gradient(bottom,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));background:-webkit-gradient(linear, left bottom, left top, from(hsla(0, 0%, 100%, 0.4)), to(hsla(0, 0%, 100%, 0.8)));background:-webkit-linear-gradient(bottom, hsla(0, 0%, 100%, 0.4), hsla(0, 0%, 100%, 0.8));background:-o-linear-gradient(bottom, hsla(0, 0%, 100%, 0.4), hsla(0, 0%, 100%, 0.8));background:linear-gradient(0deg,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));pointer-events:none;-webkit-transform:translateZ(0);transform:translateZ(0);z-index:10}.rolldate-container .mask-top{border-bottom:1px solid #ebebeb}.rolldate-container .mask-bottom{top:auto;bottom:1px;border-top:1px solid #ebebeb}.rolldate-container .fadeIn{-webkit-transform:translateZ(0);transform:translateZ(0)}.rolldate-container .fadeOut{-webkit-transform:translate3d(0,273px,0);transform:translate3d(0,273px,0)}@media screen and (max-width:414px){.rolldate-container{font-size:18px}}@media screen and (max-width:320px){.rolldate-container{font-size:15px}}";
   styleInject(css);
+  */
 
   var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -169,16 +171,16 @@
                   for (var j = config.beginYear; j <= config.endYear; j++) {
                       itemClass = j == date.getFullYear() ? 'active' : '';
 
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + j + lang.year + '</li>';
+                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + j + '</li>';
                       domMndex++;
                   }
               } else if (f == 'MM') {
                   for (var k = 1; k <= 12; k++) {
                       itemClass = k == date.getMonth() + 1 ? 'active' : '';
                       if (typeMonth === 'text') {
-                          ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + localeMonth[domMndex] + lang.month + '</li>';
+                          ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + localeMonth[domMndex] + '</li>';
                       } else {
-                          ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (k < 10 ? '0' + k : k) + lang.month + '</li>';
+                          ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (k < 10 ? '0' + k : k) + '</li>';
                       }
                       domMndex++;
                   }
@@ -187,7 +189,7 @@
                   for (var l = 1; l <= day; l++) {
                       itemClass = l == date.getDate() ? 'active' : '';
 
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (l < 10 ? '0' + l : l) + lang.day + '</li>';
+                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (l < 10 ? '0' + l : l) + '</li>';
                       domMndex++;
                   }
               } else if (f == 'hh') {
@@ -251,7 +253,7 @@
                       if (_day != _this.$('#' + domId['DD'] + ' li', 1).length) {
 
                           for (var _l = 1; _l <= _day; _l++) {
-                              li += '<li class="wheel-item">' + (_l < 10 ? '0' + _l : _l) + lang.day + '</li>';
+                              li += '<li class="wheel-item">' + (_l < 10 ? '0' + _l : _l) + '</li>';
                           }
                           _this.$('#' + domId['DD'] + ' ul').innerHTML = li;
                           _this.scroll['DD'].refresh();

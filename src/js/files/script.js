@@ -62,46 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
   // ===============================================
-
-
-
-  // const spollers = document.querySelectorAll('[data-spoller]');
-  // if (spollers.length) {
-  //   spollers.forEach(spoller => {
-  //     const spollerItems = spoller.querySelectorAll('[data-spoller-item]');
-  //     if (spollerItems.length) {
-  //       spollerItems.forEach(item => {
-  //         const spollerBody = item.querySelector('[data-spoller-body]');
-  //         if (spollerBody) {
-  //             // Вычисляем высоту содержимого spoller-body
-  //             const updateHeight = () => {
-  //                 const bodyHeight = spollerBody.scrollHeight;
-  //               item.style.setProperty('--height-item', `${bodyHeight}px`);
-  //           };
-  //           item.addEventListener('click', () => {
-  //             const isActive = item.classList.contains('_active');
-  //             // Закрываем все остальные элементы, если нужно
-  //             spollerItems.forEach(otherItem => {
-  //                 if (otherItem !== item) {
-  //                     otherItem.classList.remove('_active');
-  //                     otherItem.style.setProperty('--height-item', `0px`);
-  //                 }
-  //             });
-  //             // Переключаем состояние текущего элемента
-  //             if (isActive) {
-  //                 item.classList.remove('_active');
-  //                 item.style.setProperty('--height-item', `0px`);
-  //             } else {
-  //                 updateHeight();
-  //                 item.classList.add('_active');
-  //             }
-  //           });
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
-
   
   // == update height elements ================
   function updateOrderCheckoutElHeights() {
@@ -156,102 +116,118 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-tippy("[data-tippy-content]", {
-  placement: "bottom"
+/* таймер обратного отсчета */
+function startCountdown() {
+  const timerElement = document.querySelector("[data-timer]");
+  if (!timerElement) return;
+
+  const totalMinutes = parseFloat(timerElement.getAttribute('data-timer'));
+  let totalSeconds = Math.floor(totalMinutes * 60);
+
+  // форматирования времени в формате MM : SS
+  function formatTime(seconds) {
+      const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+      const secs = String(seconds % 60).padStart(2, '0');
+      return `${mins} : ${secs}`;
+  }
+
+  //  начальное значение 
+  timerElement.textContent = formatTime(totalSeconds);
+
+  // Запускаем обратный отсчет
+  const interval = setInterval(() => {
+      totalSeconds--;
+
+      if (totalSeconds <= 0) {
+          clearInterval(interval);
+          timerElement.textContent = "00 : 00";
+          return;
+      }
+
+      // Обновляем отображение времени
+      timerElement.textContent = formatTime(totalSeconds);
+  }, 1000);
+}
+startCountdown();
+
+
+// === International Telephone Input ========================== 
+/* 
+  *International Telephone Input v25.3.0
+ *https://github.com/jackocnr/intl-tel-input.git
+*/
+
+const intlTelInp = document.querySelector("#intlTelInp");
+if (intlTelInp) {
+  const siteLang = document.documentElement.lang.slice(0, 2); // Определяем язык сайта
+  let language;
+
+  switch (siteLang) {
+    case 'ru':
+      language = ru;
+      break;
+    case 'uk':
+      language = uk;
+      break;
+    default:
+      language = null; // Английский будет по умолчанию
+  }
+
+  window.intlTelInput(intlTelInp, {
+    initialCountry: 'auto',
+    geoIpLookup: callback => {
+      fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("us"));
+    },
+    strictMode: true,
+    separateDialCode: true,
+    nationalMode: true,
+    formatOnDisplay: true,
+    i18n: language,
+  });
+}
+
+
+
+
+/* tippy settins */
+// ==============================================================
+tippy('[data-tippy-content]', {
+  placement: 'bottom',
 });
 
-// function trackStickyElement() {
-//   const spoller = document.querySelector('.orders-checkout__spoller');
-
-//   if (!spoller) return;
-
-//   let isSticky = false;
-
-//   function checkSticky() {
-//     const { bottom } = spoller.getBoundingClientRect();
-
-//     if (bottom >= window.innerHeight) {
-//       if (!isSticky) {
-//         console.log('orders-checkout__spoller зафиксировался (sticky)');
-//         isSticky = true;
-//       }
-//     } else {
-//       if (isSticky) {
-//         console.log('orders-checkout__spoller отлип (unstuck)');
-//         isSticky = false;
-//       }
-//     }
-//   }
-
-//   window.addEventListener('scroll', checkSticky);
-//   checkSticky(); // Проверяем сразу при загрузке
-// }
-
-// trackStickyElement();
 
 
 
+/* Календарь, переключение между двумя плагинами по ширине 480рх (30.061em): air-datepicker и Rolldate-full 
 
-// https://air-datepicker.com/ru/docs
+https://air-datepicker.com/ru/docs
+mobile date picker: https://www.npmjs.com/package/rolldate-full?activeTab=readme
 
-// const currentLang = document.documentElement.lang || 'en';
-// const datepickerSelector = '[data-datepicker]';
-// let dp = null;
-
-// function toggleDatepicker(e) {
-//   if (e.matches) {
-//     // Отключаем datepicker, если он существует
-//     if (dp) {
-//       dp.destroy();
-//       dp = null;
-//     }
-//   } else {
-//     // Включаем datepicker, если он ещё не инициализирован
-//     if (!dp && document.querySelector(datepickerSelector)) {
-//       dp = new AirDatepicker(datepickerSelector, {
-//         dateFormat: 'dd.MM.yyyy',
-//         minDate: '01.01.1900',
-//         autoClose: true,
-//         locale: locales[currentLang] || locales.en
-//       });
-//     }
-//   }
-// }
-
-// const mediaQuery = window.matchMedia('(max-width: 30.061em)');
-// mediaQuery.addEventListener('change', toggleDatepicker);
-// toggleDatepicker(mediaQuery);
-
-
-// // mobile date picker: https://www.cssscript.com/mobile-ios-date-picker-rolldate/
-// let rd = new Rolldate({
-//   el: '[data-datepicker]',
-//   format: 'YYYY-MM-DD',
-//   beginYear: 2000,
-//   endYear: 2100,
-//   minStep:1,
-//   lang:{title:'Select date'},
-//   trigger:'tap',
-//   init: function() {
-//     console.log('plugin start');
-//   },
-//   moveEnd: function(scroll) {
-//     console.log('End of scroll');
-//   },
-//   confirm: function(date) {
-//     console.log('OK button trigger');
-//   },
-//   cancel: function() {
-//     console.log('Plug-in canceled');
-//   }
-// });
-// rd.show();
-// rd.hide();
+*/
 
 const currentLang = document.documentElement.lang || 'en';
 const datepickerSelector = '[data-datepicker]';
 let dp = null;
 let rd = null;
+
+// Функция для получения локализованных месяцев
+function getLocalizedMonths(lang) {
+  return (locales[lang] && locales[lang].months) || 
+         ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+}
+
+// Функция для получения локализованных текстов Rolldate
+function getLocalizedRolldateText(lang) {
+  const translations = {
+    'uk': { title: 'Вибрати дату', cancel: 'Відмінити', confirm: 'Вибрати' },
+    'ru': { title: 'Выбрать дату', cancel: 'Отменить', confirm: 'Выбрать' },
+    'en': { title: 'Select date', cancel: 'Cancel', confirm: 'Confirm' }
+  };
+  return translations[lang] || translations['en'];
+}
 
 function toggleDatepicker(e) {
   if (e.matches) {
@@ -264,11 +240,13 @@ function toggleDatepicker(e) {
     if (!rd && document.querySelector(datepickerSelector)) {
       rd = new Rolldate({
         el: datepickerSelector,
-        format: 'YYYY-MM-DD',
+        format: 'DD/MM/YYYY',
         beginYear: 1920,
         endYear: 2050,
         minStep: 1,
-        lang: { title: 'Select date' },
+        typeMonth: 'text',
+        localeMonth: getLocalizedMonths(currentLang),
+        lang: getLocalizedRolldateText(currentLang),
         trigger: 'tap',
         init: function () {
           console.log('Rolldate started');
@@ -305,4 +283,3 @@ function toggleDatepicker(e) {
 const mediaQuery = window.matchMedia('(max-width: 30.061em)');
 mediaQuery.addEventListener('change', toggleDatepicker);
 toggleDatepicker(mediaQuery);
-

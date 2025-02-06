@@ -1,172 +1,101 @@
-export function formFieldsInit(options = { viewPass: false, autoHeight: false }) {
-	document.body.addEventListener("focusin", function (e) {
-		const targetElement = e.target;
-		if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
-			if (!targetElement.hasAttribute('data-no-focus-classes')) {
-				targetElement.classList.add('_form-focus');
-				targetElement.parentElement.classList.add('_form-focus');
-			}
-			formValidate.removeError(targetElement);
-			targetElement.hasAttribute('data-validate') ? formValidate.removeError(targetElement) : null;
+// === International Telephone Input ========================== 
+/* 
+  *International Telephone Input v25.3.0
+ *https://github.com/jackocnr/intl-tel-input.git
+*/
 
-			// Логика для инпута с классом input-sms
-			if (targetElement.classList.contains('input-sms')) {
-				initSmsInput(targetElement);
-			}
-		}
-	});
+const intlTelInp = document.querySelector("#intlTelInp");
+if (intlTelInp) {
+  const siteLang = document.documentElement.lang.slice(0, 2); // Определяем язык сайта
+  let i18nData;
 
-	document.body.addEventListener("focusout", function (e) {
-		const targetElement = e.target;
-		if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
-			if (!targetElement.hasAttribute('data-no-focus-classes')) {
-				targetElement.classList.remove('_form-focus');
-				targetElement.parentElement.classList.remove('_form-focus');
-			}
-			// Миттєва валідація
-			targetElement.hasAttribute('data-validate') ? formValidate.validateInput(targetElement) : null;
-		}
-	});
+  switch (siteLang) {
+    case 'ru':
+      i18nData = ru;
+      break;
+    case 'uk':
+      i18nData = uk;
+      break;
+    default:
+      i18nData = null; // Английский будет по умолчанию
+  }
+
+  window.intlTelInput(intlTelInp, {
+    initialCountry: 'auto',
+    geoIpLookup: callback => {
+      fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("us"));
+    },
+    strictMode: true,
+    separateDialCode: true,
+    nationalMode: true,
+    formatOnDisplay: true,
+    i18n: i18nData,
+  });
 }
 
-function initSmsInput(inputElement) {
-	const smsBody = inputElement.nextElementSibling;
-	const charElements = smsBody.querySelectorAll('.input__sms-char');
 
-	inputElement.addEventListener('input', () => {
-		let value = inputElement.value.replace(/\D/g, "").slice(0, charElements.length);
-		inputElement.value = value;
 
-		charElements.forEach((charEl, index) => {
-			charEl.textContent = value[index] || "X";
-			charEl.classList.toggle("sms-placeholder", !value[index]);
-			charEl.classList.remove("sms-cursor");
-		});
 
-		// Добавляем мигающий курсор к следующему пустому символу
-		if (value.length < charElements.length) {
-			charElements[value.length].classList.add("sms-cursor");
-		}
-	});
+// https://air-datepicker.com/ru/docs
+// mobile date picker: https://www.cssscript.com/mobile-ios-date-picker-rolldate/
+const currentLang = document.documentElement.lang || 'en';
+const datepickerSelector = '[data-datepicker]';
+let dp = null;
+let rd = null;
+
+function toggleDatepicker(e) {
+  if (e.matches) {
+    // Если активен AirDatepicker, уничтожаем его
+    if (dp) {
+      dp.destroy();
+      dp = null;
+    }
+    // Включаем Rolldate, если он еще не активен
+    if (!rd && document.querySelector(datepickerSelector)) {
+      rd = new Rolldate({
+        el: datepickerSelector,
+        format: 'YYYY-MM-DD',
+        beginYear: 1920,
+        endYear: 2050,
+        minStep: 1,
+        lang: { title: 'Select date' },
+        trigger: 'tap',
+        init: function () {
+          console.log('Rolldate started');
+        },
+        moveEnd: function (scroll) {
+          console.log('Rolldate scroll ended');
+        },
+        confirm: function (date) {
+          console.log('Rolldate confirmed:', date);
+        },
+        cancel: function () {
+          console.log('Rolldate canceled');
+        }
+      });
+    }
+  } else {
+    // Если активен Rolldate, отключаем его
+    if (rd) {
+      rd.destroy(); // У Rolldate нет метода destroy(), можно просто обнулить
+      rd = null;
+    }
+    // Включаем AirDatepicker, если он еще не активен
+    if (!dp && document.querySelector(datepickerSelector)) {
+      dp = new AirDatepicker(datepickerSelector, {
+        dateFormat: 'dd.MM.yyyy',
+        minDate: '01.01.1900',
+        autoClose: true,
+        locale: locales[currentLang] || locales.en
+      });
+    }
+  }
 }
 
-// Валідація форм
-export let formValidate = {
-	getErrors(form) {
-		let error = 0;
-		let formRequiredItems = form.querySelectorAll('*[data-required]');
-		if (formRequiredItems.length) {
-			formRequiredItems.forEach(formRequiredItem => {
-				if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) {
-					error += this.validateInput(formRequiredItem);
-				}
-			});
-		}
-		return error;
-	},
+const mediaQuery = window.matchMedia('(max-width: 30.061em)');
+mediaQuery.addEventListener('change', toggleDatepicker);
+toggleDatepicker(mediaQuery);
 
-	validateInput(formRequiredItem) {
-		let error = 0;
-		if (formRequiredItem.dataset.required === "email") {
-			formRequiredItem.value = formRequiredItem.value.replace(" ", "");
-			if (this.emailTest(formRequiredItem)) {
-				this.addError(formRequiredItem);
-				this.removeSuccess(formRequiredItem);
-				error++;
-			} else {
-				this.removeError(formRequiredItem);
-				this.addSuccess(formRequiredItem);
-			}
-		} else if (formRequiredItem.dataset.required === "sms") {
-			if (!this.smsCodeTest(formRequiredItem)) {
-				this.addError(formRequiredItem);
-				this.removeSuccess(formRequiredItem);
-				error++;
-			} else {
-				this.removeError(formRequiredItem);
-				this.addSuccess(formRequiredItem);
-			}
-		} else if (formRequiredItem.type === "checkbox" && !formRequiredItem.checked) {
-			this.addError(formRequiredItem);
-			this.removeSuccess(formRequiredItem);
-			error++;
-		} else {
-			if (!formRequiredItem.value.trim()) {
-				this.addError(formRequiredItem);
-				this.removeSuccess(formRequiredItem);
-				error++;
-			} else {
-				this.removeError(formRequiredItem);
-				this.addSuccess(formRequiredItem);
-			}
-		}
-		return error;
-	},
-
-	addError(formRequiredItem) {
-		formRequiredItem.classList.add('_form-error');
-		formRequiredItem.parentElement.classList.add('_form-error');
-		let inputError = formRequiredItem.parentElement.querySelector('.form__error');
-		if (inputError) formRequiredItem.parentElement.removeChild(inputError);
-		if (formRequiredItem.dataset.error) {
-			formRequiredItem.parentElement.insertAdjacentHTML('beforeend', `<div class="form__error">${formRequiredItem.dataset.error}</div>`);
-		}
-	},
-
-	removeError(formRequiredItem) {
-		formRequiredItem.classList.remove('_form-error');
-		formRequiredItem.parentElement.classList.remove('_form-error');
-		if (formRequiredItem.parentElement.querySelector('.form__error')) {
-			formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector('.form__error'));
-		}
-	},
-
-	addSuccess(formRequiredItem) {
-		formRequiredItem.classList.add('_form-success');
-		formRequiredItem.parentElement.classList.add('_form-success');
-	},
-
-	removeSuccess(formRequiredItem) {
-		formRequiredItem.classList.remove('_form-success');
-		formRequiredItem.parentElement.classList.remove('_form-success');
-	},
-
-	formClean(form) {
-		form.reset();
-		setTimeout(() => {
-			let inputs = form.querySelectorAll('input,textarea');
-			for (let index = 0; index < inputs.length; index++) {
-				const el = inputs[index];
-				el.parentElement.classList.remove('_form-focus');
-				el.classList.remove('_form-focus');
-				formValidate.removeError(el);
-			}
-
-			let checkboxes = form.querySelectorAll('.checkbox__input');
-			if (checkboxes.length > 0) {
-				for (let index = 0; index < checkboxes.length; index++) {
-					const checkbox = checkboxes[index];
-					checkbox.checked = false;
-				}
-			}
-
-			if (flsModules.select) {
-				let selects = form.querySelectorAll('div.select');
-				if (selects.length) {
-					for (let index = 0; index < selects.length; index++) {
-						const select = selects[index].querySelector('select');
-						flsModules.select.selectBuild(select);
-					}
-				}
-			}
-		}, 0);
-	},
-
-	smsCodeTest(formRequiredItem) {
-		return /^\d{4}$/.test(formRequiredItem.value);
-	},
-
-	emailTest(formRequiredItem) {
-		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
-	}
-} 

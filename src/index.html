@@ -252,13 +252,27 @@
 									<button disabled type="button" class="input__clear icon-cross"></button>
 								</div>
 							</div>
+							<br><br>
+							<div class="input__item">
+								<label for="datepicker" class="input__label">
+									Дата доставки
+								</label>
+								<input id="datepicker"  autocomplete="off" type="date" name="form[]" data-error="Виберіть дату доставки" placeholder="01.02.2025" data-required class="input input_sm">
+							</div>
+							<br><br>
+							<div class="input__item">
+								<label for="inpTime" class="input__label">
+									Час доставки
+								</label>
+								<input id="inpTime" autocomplete="off" type="time" name="form[]" data-error="Виберіть час доставки" placeholder="00:00" data-required class="input input_sm">
+							</div>
 				</div>
 			</main>
 			@@include('html/_footer.htm',{})
 		</div>
 		<script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
-		<script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
+		<script src="files/intl-tel-input/intlTelInputLng.js"></script>
 		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
 		@@include('html/_js.htm',{})
 	</body>

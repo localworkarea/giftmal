@@ -684,6 +684,56 @@
             }
         }));
     }));
+    function startCountdown() {
+        const timerElement = document.querySelector("[data-timer]");
+        if (!timerElement) return;
+        const totalMinutes = parseFloat(timerElement.getAttribute("data-timer"));
+        let totalSeconds = Math.floor(totalMinutes * 60);
+        function formatTime(seconds) {
+            const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
+            const secs = String(seconds % 60).padStart(2, "0");
+            return `${mins} : ${secs}`;
+        }
+        timerElement.textContent = formatTime(totalSeconds);
+        const interval = setInterval((() => {
+            totalSeconds--;
+            if (totalSeconds <= 0) {
+                clearInterval(interval);
+                timerElement.textContent = "00 : 00";
+                return;
+            }
+            timerElement.textContent = formatTime(totalSeconds);
+        }), 1e3);
+    }
+    startCountdown();
+    const intlTelInp = document.querySelector("#intlTelInp");
+    if (intlTelInp) {
+        const siteLang = document.documentElement.lang.slice(0, 2);
+        let language;
+        switch (siteLang) {
+          case "ru":
+            language = ru;
+            break;
+
+          case "uk":
+            language = uk;
+            break;
+
+          default:
+            language = null;
+        }
+        window.intlTelInput(intlTelInp, {
+            initialCountry: "auto",
+            geoIpLookup: callback => {
+                fetch("https://ipapi.co/json").then((res => res.json())).then((data => callback(data.country_code))).catch((() => callback("us")));
+            },
+            strictMode: true,
+            separateDialCode: true,
+            nationalMode: true,
+            formatOnDisplay: true,
+            i18n: language
+        });
+    }
     tippy("[data-tippy-content]", {
         placement: "bottom"
     });
@@ -691,6 +741,29 @@
     const datepickerSelector = "[data-datepicker]";
     let dp = null;
     let rd = null;
+    function getLocalizedMonths(lang) {
+        return locales[lang] && locales[lang].months || [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    }
+    function getLocalizedRolldateText(lang) {
+        const translations = {
+            uk: {
+                title: "Вибрати дату",
+                cancel: "Відмінити",
+                confirm: "Вибрати"
+            },
+            ru: {
+                title: "Выбрать дату",
+                cancel: "Отменить",
+                confirm: "Выбрать"
+            },
+            en: {
+                title: "Select date",
+                cancel: "Cancel",
+                confirm: "Confirm"
+            }
+        };
+        return translations[lang] || translations["en"];
+    }
     function toggleDatepicker(e) {
         if (e.matches) {
             if (dp) {
@@ -699,13 +772,13 @@
             }
             if (!rd && document.querySelector(datepickerSelector)) rd = new Rolldate({
                 el: datepickerSelector,
-                format: "YYYY-MM-DD",
+                format: "DD/MM/YYYY",
                 beginYear: 1920,
                 endYear: 2050,
                 minStep: 1,
-                lang: {
-                    title: "Select date"
-                },
+                typeMonth: "text",
+                localeMonth: getLocalizedMonths(currentLang),
+                lang: getLocalizedRolldateText(currentLang),
                 trigger: "tap",
                 init: function() {
                     console.log("Rolldate started");

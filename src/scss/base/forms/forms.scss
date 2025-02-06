@@ -5,6 +5,7 @@ textarea {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
+  touch-action: manipulation;
 }
 
 .input {
@@ -2610,3 +2611,4 @@ textarea.input {
 // @import "datepicker";
 
 @import "datepicker-2";
+@import "rolldate";
