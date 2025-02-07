@@ -251,7 +251,7 @@
       position: -webkit-sticky;
       bottom: var(--height);
       bottom: 0;
-      z-index: 2;
+      z-index: 10;
       transform: translate3d(0,0,0);
     }
   }
@@ -587,6 +587,16 @@
         gap: toRem(8); 
       }
     }
+    &.items-cl-2-wr-mb {
+      @media (min-width:toEm(600.98)){
+        grid-template-columns: 1fr 1fr;
+        gap: toRem(18);
+      }
+      @media (max-width:toEm(600.98)){
+        grid-template-columns: 1fr;
+        gap: toRem(24); 
+      }
+    }
     &:not(:last-child) {
       @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
     }
@@ -594,11 +604,27 @@
 	// .tab-checkout__row
 	&__row {
     display: grid;
+    &.d-block {
+      display: block
+    }
+    &.d-flex-clm {
+      display: flex;
+      flex-direction: column;
+    }
     &.row-cl-2 {
       @extend %gridClm-2;
     }
+    .row-cl-2-nw {
+      grid-template-columns: 1fr 1fr;
+    }
     &.row-gap-16 {
       gap: toRem(16);
+    }
+    &.row-gap-8 {
+      gap: toRem(8);
+    }
+    &.row-gap-24 {
+      gap: toRem(24);
     }
 	}
   // .tab-checkout__btn
@@ -690,20 +716,325 @@
 	}
 }
 
+.illustrations {
+  display: grid;
+  gap: toRem(8);
+  @media (min-width:toEm(650.98)){
+    grid-template-columns: repeat(4,1fr);
+  }
+  @media (max-width:toEm(650.98)){
+    grid-template-columns: repeat(3,1fr);
+  }
+  // .illustrations__item
+  &__item {
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 1/1;
+    box-shadow: inset 4px 4px 40px 0 rgba(33, 5, 41, 0.08);
+    border-radius: toRem(16);
+    overflow: hidden;
+    font-weight: 600;
+    @media (min-width:$mobileSmall){
+      font-size: toRem(11);
+    }
+    @media (max-width:$mobileSmall){
+      font-size: toRem(12);
+    }
+    .illustrations__img {
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23CDC8CEFF' stroke-width='4' stroke-dasharray='3%2c 10' stroke-dashoffset='3' stroke-linecap='round'/%3e%3c/svg%3e");
+    }
+  }
+  // .illustrations__item--add
+  &__item--add {
+    &._added {
+      .illustrations__img {
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  // .illustrations__input
+  &__input {
+    &:checked {
+      ~ .illustrations__img {
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  // .illustrations__price
+  &__price {
+    position: absolute;
+    z-index: 3;
+    top: toRem(4);
+    left: toRem(4);
+    height: toRem(24);
+    box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.1), 0 4px 10px 0 rgba(33, 5, 41, 0.12);
+    background-color: #fff;
+    border-radius: toRem(16);
+    display: grid;
+    place-items: center;
+    @media (min-width:$mobileSmall){
+      width: toRem(38);
+      
+    }
+    @media (max-width:$mobileSmall){
+      width: toRem(39);
+    }
+  }
+	// .illustrations__bg
+	&__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: grid;
+    place-items: center;
+	}
+	// .illustrations__bg-item
+	&__bg-item {
+    display: grid;
+    place-items: center;
+    gap: toRem(4);
+	}
+  // .illustrations__add-icon
+  &__icon {
+    &::before {
+      font-size: toRem(22);
+    }
+  }
+  // .illustrations__img
+  &__img {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      border-radius: 16px;
+      border: toRem(2) solid var(--dark-violet);
+      opacity: 0;
+      pointer-events: none;
+    }
+    img {}
+  }
+}
 
+.e-card {
+  background-color: var(--gray-1);
+  @media (min-width:$mobileSmall){
+    padding: toRem(12);
+    border-radius: toRem(32); 
+  }
+  @media (max-width:$mobileSmall){
+    padding: toRem(10) toRem(16) toRem(16);
+    border-radius: toRem(27); 
+  }
+  // .e-card__logo
+  &__logo {
+    display: flex;
+    justify-content: center;
+    @media (min-width:$mobileSmall){
+       padding-bottom: toRem(18); 
+    }
+    @media (max-width:$mobileSmall){
+        padding-bottom: toRem(14); 
+        
+    }
+    @media (max-width:$mobileSmall){
+        
+    }
+    &::before {
+      color: var(--violet);
+      @media (min-width:$mobileSmall){
+         font-size: toRem(23); 
+      }
+      @media (max-width:$mobileSmall){
+        font-size: toRem(19); 
+      }
+    }
+  }
+  // .e-card__header
+  &__header {
+    text-align: center;
+    font-weight: 600;
+    opacity: .45;
+    transition: opacity .3s ease;
+    ._has-text & {
+      opacity: 1;
+    }
+    @media (min-width:toEm(900.98)){
+      padding: toRem(18) toRem(00) toRem(32);
+      max-width: toRem(240);
+      margin-inline: auto;
+    }
+    @media (max-width:toEm(900.98)){
+      padding: toRem(14) toRem(0) toRem(24); 
+      
+    }
+  }
+  // .e-card__title
+  &__title {
+    &:not(:last-child) {
+      @media (min-width:$mobileSmall){
+         margin-bottom: toRem(12); 
+      }
+      @media (max-width:$mobileSmall){
+         margin-bottom: toRem(10); 
+      }
+    }
+    @media (min-width:$mobileSmall){
+      font-size: toRem(18); 
+    }
+    @media (max-width:$mobileSmall){
+       font-size: toRem(15); 
+    }
+  }
+  // .e-card__text
+  &__text {
+    line-height: 1.45;
+  }
+  // .e-card__image
+  &__image {
+    overflow: hidden;
+    position: relative;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='32' ry='32' stroke='%23CDC8CEFF' stroke-width='4' stroke-dasharray='3%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: toRem(32);
+    transition: height .3s ease-in-out, opacity .3s ease;
+    @media (min-width:$tablet){
+      height: toRem(250);
+    }
+    @media (max-width:$tablet){
+      height: toRem(214);
+    }
+    ._no-img & {
+      // height: 0px;
+      // opacity: 0;
+    }
+  }
+  // .e-card__icon
+  &__icon {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: grid;
+    place-items: center;
+    &::before {
+      color: #CFCAD0;
+      @media (min-width:$mobileSmall){
+         font-size: toRem(35); 
+      }
+      @media (max-width:$mobileSmall){
+         font-size: toRem(30); 
+      }
+    }
+  }
+	// .e-card__wrapper-img
+	&__wrapper-img {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+	}
+  // .e-card__card
+  &__card {
+    @media (min-width:$mobileSmall){
+       padding-top: toRem(32); 
+      }
+      @media (max-width:$mobileSmall){
+      padding-top: toRem(24); 
+        
+    }
+  }
+	// .e-card__card-t
+	&__card-t {
+    font-weight: 600;
+    color: var(--fade-violet-2);
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(8); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(12); 
+        
+    }
+	}
+  // .e-card__gift
+  &__gift {
+  }
+}
+  // ._no-img
+  // ._has-text
 
-
-
-
-
-
-
-
-
-
-
-
-
+.gift-card {
+  display: grid;
+  grid-template-columns: 47% 1fr;
+  background-color: var(--white);
+  @media (min-width:toEm(900.98)){
+     border-radius: toRem(24); 
+     padding: toRem(8);
+     gap: toRem(15);
+    }
+    @media (max-width:toEm(900.98)){
+      border-radius: toRem(20); 
+      padding: toRem(9);
+      gap: toRem(10);
+  }
+  // .gift-card__img
+  &__img {
+    overflow: hidden;
+    img {
+      aspect-ratio: 158/103;
+    }
+    @media (min-width:toEm(900.98)){
+       border-radius: toRem(16); 
+    }
+    @media (max-width:toEm(900.98)){
+        border-radius: toRem(14); 
+    }
+  }
+  // .gift-card__body
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(8);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  // .gift-card__name
+  &__name {
+    flex: 1;
+    @media (min-width:$mobileSmall){
+      font-size: toRem(12);
+    }
+    @media (max-width:$mobileSmall){
+       font-size: toRem(10);
+   }
+  }
+  &__type,
+  &__date {
+    color: var(--fade-violet-2);
+  }
+  // .gift-card__type
+  &__type {
+  }
+  // .gift-card__date
+  &__date {
+  }
+  // .gift-card__price
+  &__price {
+    @media (min-width:$mobileSmall){
+      margin-top: toRem(10);
+      font-size: toRem(18);
+      font-size: toRem(18);
+    }
+    @media (max-width:$mobileSmall){
+      margin-top: toRem(16);
+      font-size: toRem(15);
+   }
+  }
+}
 
 
 

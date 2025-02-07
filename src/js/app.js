@@ -112,7 +112,7 @@ import * as flsForms from "./files/forms/forms.js";
 // /*
 flsForms.formFieldsInit({
 	viewPass: false,
-	autoHeight: false
+	autoHeight: true,
 });
 // */
 /* Надсилання форми */
@@ -126,7 +126,7 @@ flsForms.formSubmit();
 // flsForms.formRating();
 
 /* Модуль роботи з select. */
-// import './libs/select.js'
+import './libs/select.js'
 
 /* Модуль роботи з календарем */
 // import './files/forms/datepicker.js'

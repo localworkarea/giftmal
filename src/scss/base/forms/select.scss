@@ -16,6 +16,14 @@
 		cursor: pointer;
 		width: 100%;
 		border-radius: 4px;
+		@media (min-width:$mobileSmall){
+      min-height: toRem(40);
+      font-size: toRem(13);
+    }
+    @media (max-width:$mobileSmall){
+      min-height: toRem(48);
+      font-size: toRem(14);
+    }
 	}
 	// .select__value
 	&__value {

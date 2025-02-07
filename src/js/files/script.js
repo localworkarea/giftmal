@@ -321,36 +321,39 @@ https://air-datepicker.com/ru/docs
 mobile date picker: https://www.npmjs.com/package/rolldate-full?activeTab=readme
 
 */
+const timeFormatsAir = {
+  'en': 'hh:mm AA',  // 12-часовой формат с AM/PM
+  'uk': 'HH:MM',     // 24-часовой формат
+  'ru': 'HH:MM'      // 24-часовой формат
+};
 
 const currentLang = document.documentElement.lang || 'en';
-const datepickerSelector = '[data-datepicker]';
-let dp = null;
-let rd = null;
+const timeFormatAir = timeFormatsAir[currentLang] || timeFormatsAir['en']; // Если нет настроек — используем формат 'en'
 
-// Функция для получения локализованных месяцев
+const datepickerSelector = '[data-datepicker]';
+const timepickerSelector = '[data-datepicker-time]';
+let dp = null, tp = null;
+let rd = null, rt = null;
+
 function getLocalizedMonths(lang) {
-  return (locales[lang] && locales[lang].months) || 
-         ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const defaultMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  return (locales[lang] && locales[lang].months) || defaultMonths;
 }
 
-// Функция для получения локализованных текстов Rolldate
 function getLocalizedRolldateText(lang) {
   const translations = {
     'uk': { title: 'Вибрати дату', cancel: 'Відмінити', confirm: 'Вибрати' },
     'ru': { title: 'Выбрать дату', cancel: 'Отменить', confirm: 'Выбрать' },
     'en': { title: 'Select date', cancel: 'Cancel', confirm: 'Confirm' }
   };
-  return translations[lang] || translations['en'];
+  return translations[lang] || translations['en']; // Если нет перевода — используем 'en'
 }
 
 function toggleDatepicker(e) {
   if (e.matches) {
-    // Если активен AirDatepicker, уничтожаем его
-    if (dp) {
-      dp.destroy();
-      dp = null;
-    }
-    // Включаем Rolldate, если он еще не активен
+    if (dp) { dp.destroy(); dp = null; }
+    if (tp) { tp.destroy(); tp = null; }
+
     if (!rd && document.querySelector(datepickerSelector)) {
       rd = new Rolldate({
         el: datepickerSelector,
@@ -361,34 +364,40 @@ function toggleDatepicker(e) {
         typeMonth: 'text',
         localeMonth: getLocalizedMonths(currentLang),
         lang: getLocalizedRolldateText(currentLang),
-        trigger: 'tap',
-        init: function () {
-          console.log('Rolldate started');
-        },
-        moveEnd: function (scroll) {
-          console.log('Rolldate scroll ended');
-        },
-        confirm: function (date) {
-          console.log('Rolldate confirmed:', date);
-        },
-        cancel: function () {
-          console.log('Rolldate canceled');
-        }
+        trigger: 'tap'
+      });
+    }
+
+    if (!rt && document.querySelector(timepickerSelector)) {
+      const timeFormat = ['ru', 'uk'].includes(currentLang) ? 'hh:mm' : 'hh:mm A';
+
+      rt = new Rolldate({
+          el: timepickerSelector,
+          format: timeFormat,
+          minStep: 1,
+          trigger: 'tap'
       });
     }
   } else {
-    // Если активен Rolldate, отключаем его
-    if (rd) {
-      rd.destroy(); // У Rolldate нет метода destroy(), можно просто обнулить
-      rd = null;
-    }
-    // Включаем AirDatepicker, если он еще не активен
+    if (rd) { rd = null; }
+    if (rt) { rt = null; }
+
     if (!dp && document.querySelector(datepickerSelector)) {
       dp = new AirDatepicker(datepickerSelector, {
         dateFormat: 'dd.MM.yyyy',
         minDate: '01.01.1900',
         autoClose: true,
-        locale: locales[currentLang] || locales.en
+        locale: locales[currentLang] || locales['en']
+      });
+    }
+
+    if (!tp && document.querySelector(timepickerSelector)) {
+      tp = new AirDatepicker(timepickerSelector, {
+        timepicker: true,
+        onlyTimepicker: true,
+        autoClose: true,
+        timeFormat: timeFormatAir,  // Локализованный формат времени (с резервом на en)
+        locale: locales[currentLang] || locales['en']
       });
     }
   }
@@ -397,3 +406,38 @@ function toggleDatepicker(e) {
 const mediaQuery = window.matchMedia('(max-width: 30.061em)');
 mediaQuery.addEventListener('change', toggleDatepicker);
 toggleDatepicker(mediaQuery);
+
+// === END DATE PICKER ============================================
+
+
+
+
+const illustrationInput = document.getElementById("customImageInput");
+if (illustrationInput) {
+  illustrationInput.addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const previewContainer = document.querySelector(".illustrations__item--add .illustrations__img");
+        previewContainer.innerHTML = `<img class="ibg" src="${e.target.result}" alt="Uploaded Image">`;
+        document.querySelector('.illustrations__item--add').classList.add('_added');
+  
+        // Снимаем выбор со всех radio-инпутов
+        document.querySelectorAll('.illustrations__input[type="radio"]').forEach(radio => {
+          radio.checked = false;
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+  
+  // Снимаем выбор с пользовательского инпута, если кликнули на любой radio-инпут
+  document.querySelectorAll('.illustrations__input[type="radio"]').forEach(radio => {
+    radio.addEventListener("change", function () {
+      document.getElementById("customImageInput").value = ""; // Сбрасываем input file
+      document.querySelector('.illustrations__item--add').classList.remove('_added'); // Убираем класс _added
+      document.querySelector(".illustrations__item--add .illustrations__img").innerHTML = ""; // Очищаем превью
+    });
+  });
+}

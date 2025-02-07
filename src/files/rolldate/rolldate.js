@@ -103,6 +103,7 @@
       }
   }
 
+
   Rolldate.prototype = {
       constructor: Rolldate,
       baseData: function baseData() {
@@ -117,7 +118,8 @@
               },
               opts: { //Plug-in default configuration
                   el: '',
-                  format: 'YYYY-MM-DD',
+                //   format: 'YYYY-MM-DD',
+                  format: 'YYYY-MM-DD hh:mm A',
                   beginYear: 2000,
                   endYear: 2100,
                   init: null,
@@ -192,28 +194,62 @@
                       ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (l < 10 ? '0' + l : l) + '</li>';
                       domMndex++;
                   }
-              } else if (f == 'hh') {
-                  for (var m = 0; m <= 23; m++) {
-                      itemClass = m == date.getHours() ? 'active' : '';
+              } 
+            //   else if (f == 'hh') {
+            //       for (var m = 0; m <= 23; m++) {
+            //           itemClass = m == date.getHours() ? 'active' : '';
 
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + lang.hour + '</li>';
-                      domMndex++;
-                  }
-              } else if (f == 'mm') {
+            //           ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
+            //           domMndex++;
+            //       }
+            //   } 
+            else if (f == 'hh') {
+                // Если формат 12-часовой
+                if (config.format.includes('A')) {
+                    for (var m = 1; m <= 12; m++) { // Часы от 1 до 12 для 12-часового формата
+                        itemClass = (m == (date.getHours() % 12 || 12)) ? 'active' : '';
+                        ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
+                        domMndex++;
+                    }
+                } else {
+                    // Если формат 24-часовой
+                    for (var m = 0; m <= 23; m++) { // Часы от 0 до 23 для 24-часового формата
+                        itemClass = m == date.getHours() ? 'active' : '';
+                        ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
+                        domMndex++;
+                    }
+                }
+            }
+              else if (f == 'mm') {
                   for (var n = 0; n <= 59; n += config.minStep) {
                       itemClass = n == date.getMinutes() ? 'active' : '';
 
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (n < 10 ? '0' + n : n) + lang.min + '</li>';
+                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (n < 10 ? '0' + n : n) + '</li>';
                       domMndex++;
                   }
               } else if (f == 'ss') {
                   for (var o = 0; o <= 59; o++) {
                       itemClass = o == date.getSeconds() ? 'active' : '';
 
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (o < 10 ? '0' + o : o) + lang.sec + '</li>';
+                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (o < 10 ? '0' + o : o) + '</li>';
                       domMndex++;
                   }
-              }
+              } 
+            //   else if (f == 'hh') {
+            //     for (var m = 1; m <= 12; m++) { // Теперь от 1 до 12
+            //         itemClass = (m == (date.getHours() % 12 || 12)) ? 'active' : '';
+            //         ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
+            //         domMndex++;
+            //     }
+            // } 
+            else if (f == 'A') { // Добавляем выбор AM/PM
+                var periods = ['AM', 'PM'];
+                for (var p = 0; p < 2; p++) {
+                    itemClass = (periods[p] === (date.getHours() >= 12 ? 'PM' : 'AM')) ? 'active' : '';
+                    ul += '<li class="wheel-item ' + itemClass + '" data-index="' + p + '">' + periods[p] + '</li>';
+                }
+            }
+            
               ul += '</ul></div>';
           }
           var $html = '<div class="rolldate-mask"></div>\n            <div class="rolldate-panel">\n                <header>\n                    <span class="rolldate-btn rolldate-cancel">' + lang.cancel + '</span>\n                    ' + lang.title + '\n                    <span class="rolldate-btn rolldate-confirm">' + lang.confirm + '</span>\n                </header>\n                <section class="rolldate-content">\n                    <div class="rolldate-dim mask-top"></div>\n                    <div class="rolldate-dim mask-bottom"></div>\n                    <div class="rolldate-wrapper">\n                        ' + ul + '\n                    </div>\n                </section>\n            </div>',
@@ -352,51 +388,110 @@
           _this.tap(cancel, function () {
               _this.hide(1);
           });
-          _this.tap(confirm, function () {
-              var config = _this.config,
-                  el = void 0,
-                  date = config.format,
-                  newDate = new Date();
+        //   _this.tap(confirm, function () {
+        //       var config = _this.config,
+        //           el = void 0,
+        //           date = config.format,
+        //           newDate = new Date();
 
-              for (var f in _this.scroll) {
-                  var d = _this.getSelected(_this.scroll[f]);
+        //       for (var f in _this.scroll) {
+        //           var d = _this.getSelected(_this.scroll[f]);
 
-                  date = date.replace(f, d);
-                  if (f == 'YYYY') {
-                      newDate.setFullYear(d);
-                  } else if (f == 'MM') {
-                      newDate.setMonth(d - 1);
-                  } else if (f == 'DD') {
-                      newDate.setDate(d);
-                  } else if (f == 'hh') {
-                      newDate.setHours(d);
-                  } else if (f == 'mm') {
-                      newDate.setMinutes(d);
-                  } else if (f == 'ss') {
-                      newDate.setSeconds(d);
-                  }
-              }
-              if (config.confirm) {
-                  var flag = config.confirm.call(_this, date);
-                  if (flag === false) {
-                      return false;
-                  } else if (flag) {
-                      date = flag;
-                  }
-              }
-              if (config.el) {
-                  el = _this.$(config.el);
-                  if (el.nodeName.toLowerCase() == 'input') {
-                      el.value = date;
-                  } else {
-                      el.innerText = date;
-                  }
-                  el.bindDate = newDate;
-              } else {
-                  _this.bindDate = newDate;
-              }
-              _this.hide();
-          });
+        //           date = date.replace(f, d);
+        //           if (f == 'YYYY') {
+        //               newDate.setFullYear(d);
+        //           } else if (f == 'MM') {
+        //               newDate.setMonth(d - 1);
+        //           } else if (f == 'DD') {
+        //               newDate.setDate(d);
+        //           } else if (f == 'hh') {
+        //               newDate.setHours(d);
+        //           } else if (f == 'mm') {
+        //               newDate.setMinutes(d);
+        //           } else if (f == 'ss') {
+        //               newDate.setSeconds(d);
+        //           }
+        //       }
+        //       if (config.confirm) {
+        //           var flag = config.confirm.call(_this, date);
+        //           if (flag === false) {
+        //               return false;
+        //           } else if (flag) {
+        //               date = flag;
+        //           }
+        //       }
+        //       if (config.el) {
+        //           el = _this.$(config.el);
+        //           if (el.nodeName.toLowerCase() == 'input') {
+        //               el.value = date;
+        //           } else {
+        //               el.innerText = date;
+        //           }
+        //           el.bindDate = newDate;
+        //       } else {
+        //           _this.bindDate = newDate;
+        //       }
+        //       _this.hide();
+        //   });
+        
+        _this.tap(confirm, function () {
+            var config = _this.config,
+                el = void 0,
+                date = config.format,
+                newDate = new Date(),
+                ampm = 'AM'; // По умолчанию AM
+        
+            for (var f in _this.scroll) {
+                var d = _this.getSelected(_this.scroll[f]);
+        
+                if (f === 'A') {
+                    ampm = d; // Получаем 'AM' или 'PM'
+                } else {
+                    date = date.replace(f, d);
+                    if (f == 'YYYY') {
+                        newDate.setFullYear(d);
+                    } else if (f == 'MM') {
+                        newDate.setMonth(d - 1);
+                    } else if (f == 'DD') {
+                        newDate.setDate(d);
+                    } else if (f == 'hh') {
+                        let hours = parseInt(d, 10);
+                        if (ampm === 'PM' && hours < 12) {
+                            hours += 12;
+                        } else if (ampm === 'AM' && hours === 12) {
+                            hours = 0;
+                        }
+                        newDate.setHours(hours);
+                    } else if (f == 'mm') {
+                        newDate.setMinutes(d);
+                    } else if (f == 'ss') {
+                        newDate.setSeconds(d);
+                    }
+                }
+            }
+        
+            // Проверяем и заменяем AM/PM в строке
+            if (date.indexOf('A') !== -1) {
+                date = date.replace(/A/g, ampm); // Заменяем все символы A на AM или PM
+            }
+        
+            // Выводим результат в инпут
+            if (config.el) {
+                el = _this.$(config.el);
+                if (el.nodeName.toLowerCase() == 'input') {
+                    el.value = date; // Передаем строку с AM/PM
+                } else {
+                    el.innerText = date;
+                }
+                el.bindDate = newDate;
+            } else {
+                _this.bindDate = newDate;
+            }
+        
+            _this.hide();
+        });
+        
+        
       },
       bissextile: function bissextile(year, month) {
           var day = void 0;
@@ -434,21 +529,48 @@
             if (el && el.parentNode) {
                 document.body.removeChild(el);
             }
-        }, 300);
+        }, 200);
         
       },
-      getSelected: function getSelected(scroll) {
-          var _this = this,
-              el = this.$('#' + scroll.wrapper.id + ' li', 1)[scroll.getSelectedIndex()],
-              baseData = _this.baseData();
-          if (this.config.typeMonth === 'text') {
-              if (scroll.wrapper.id === baseData.domId.MM) {
-                  var i = parseInt(el.getAttribute('data-index')) + 1;
-                  return i < 10 ? '0' + i.toString() : i.toString();
-              }
-          }
-          return el.innerText.replace(/\D/g, '');
-      }
+    //   getSelected: function getSelected(scroll) {
+    //       var _this = this,
+    //           el = this.$('#' + scroll.wrapper.id + ' li', 1)[scroll.getSelectedIndex()],
+    //           baseData = _this.baseData();
+    //       if (this.config.typeMonth === 'text') {
+    //           if (scroll.wrapper.id === baseData.domId.MM) {
+    //               var i = parseInt(el.getAttribute('data-index')) + 1;
+    //               return i < 10 ? '0' + i.toString() : i.toString();
+    //           }
+    //       }
+    //       return el.innerText.replace(/\D/g, '');
+    //   }
+    getSelected: function getSelected(scroll) {
+        var _this = this,
+            el = this.$('#' + scroll.wrapper.id + ' li', 1)[scroll.getSelectedIndex()],
+            baseData = _this.baseData();
+    
+        if (this.config.typeMonth === 'text' && scroll.wrapper.id === baseData.domId.MM) {
+            var i = parseInt(el.getAttribute('data-index')) + 1;
+            return i < 10 ? '0' + i.toString() : i.toString();
+        }
+    
+        let value = el.innerText.trim();
+        let ampm = '';  // Для AM/PM
+    
+        // Обрабатываем AM/PM отдельно
+        if (scroll.wrapper.id === baseData.domId.A) {
+            ampm = value.match(/AM|PM/i) ? value.match(/AM|PM/i)[0] : ''; // Извлекаем AM/PM
+            return ampm;  // Возвращаем только AM/PM в случае выбора времени суток
+        }
+    
+        value = value;  // Удаляем все нецифровые символы, оставляем только цифры
+    
+        return value;
+    }
+    
+    
+    
+    
   };
   Rolldate.version = version;
 

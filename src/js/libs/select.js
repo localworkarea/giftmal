@@ -49,7 +49,7 @@ class SelectConstructor {
 	constructor(props, data = null) {
 		let defaultConfig = {
 			init: true,
-			logging: true,
+			// logging: true,
 			speed: 150
 		}
 		this.config = Object.assign(defaultConfig, props);
@@ -86,9 +86,9 @@ class SelectConstructor {
 			const selectItems = data ? document.querySelectorAll(data) : document.querySelectorAll('select');
 			if (selectItems.length) {
 				this.selectsInit(selectItems);
-				this.setLogging(`Прокинувся, построїв селектов: (${selectItems.length})`);
+				// this.setLogging(`Прокинувся, построїв селектов: (${selectItems.length})`);
 			} else {
-				this.setLogging('Сплю, немає жодного select');
+				// this.setLogging('Сплю, немає жодного select');
 			}
 		}
 	}
@@ -550,10 +550,10 @@ class SelectConstructor {
 			}
 		}));
 	}
-	// Логінг у консоль
-	setLogging(message) {
-		this.config.logging ? FLS(`[select]: ${message} `) : null;
-	}
+	// // Логінг у консоль
+	// setLogging(message) {
+	// 	this.config.logging ? FLS(`[select]: ${message} `) : null;
+	// }
 }
 // Запускаємо та додаємо в об'єкт модулів
 flsModules.select = new SelectConstructor({});

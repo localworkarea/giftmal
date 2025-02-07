@@ -89,6 +89,8 @@
 		"webpack-stream": "latest"
 	},
 	"dependencies": {
+		"@eonasdan/tempus-dominus": "^6.9.11",
+		"@popperjs/core": "^2.11.8",
 		"@tailwindcss/postcss": "^4.0.0",
 		"air-datepicker": "^3.5.3",
 		"gulp-cheerio": "^1.0.0",

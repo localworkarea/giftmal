@@ -7,15 +7,15 @@
 		<div class="wrapper">
 			@@include('html/_header.htm',{})
 			<main class="page">
-				<div class="page__container" style="padding-inline: 20px; font-size: 18px; padding-block:30px 300px; line-height: 1.1; background-color: #f8f8f8a6">
+				<div class="page__container" style="padding-inline: 20px; font-size: 18px; padding-block:30px 300px; line-height: 1.1; background-color: #f8f8f8a6; max-width: 900px;">
 
 					<p>Посилання на сторінки:</p><br>
-					<ol>
+					<ul style="padding-bottom: 30px; border-bottom: 1px solid gray">
 						<li>
-							<a href="checkout.html" style="display: block; color:blue">checkout html</a>
+							<a href="checkout.html" style="display: block; color:blue">1. checkout page</a>
 						</li>
-					</ol>
-					<br><br><br>
+					</ul>
+					<br>
 					<p style="font-size: 20px; font-weight: 600;">Інпути та форми</p><br>
 					<p>Якщо до інпута додати data-required атрибут то це поле становитсья обов'язковим для заповнення. При пустому полі і відправці форми буде додаватись помилка</p><br>
 					<p>data-required також робить валідацію за значеннями: <br>
@@ -24,8 +24,8 @@
 					</p><br><br>
 					<p>Додавання до форми атрибута <b>data-goto-error</b> надасть можливість прокручувати до першого поля з помилкою</p>
 
-					<br>
-					<form data-dev data-goto-error  action="" method="POST" style="padding: 20px; background-color: #fff; margin-inline: auto; max-width: 400px;">
+					<br><br>
+					<form data-dev data-goto-error  action="" method="POST" style="padding: 20px; background-color: #fff; margin-inline: auto; max-width: 600px; ">
 							<div class="input__item">
 								<label for="inp1" class="input__label">
 									Ваше ім'я
@@ -199,46 +199,43 @@
 							<button type="submit" class="button btn btn_dark" style="margin-top: 15px; padding: 10px; border: 1px solid #000; border-radius: 24px">Send</button>
 
 					</form>
-					<br>
-
+					<br><br><br>
+					<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Окремі елементи</b></p><br>
 					<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
 						Змінити
 					</button>
-
 					<br>
-
 					<button type="button" class="edit-btn icon-phone-sms txt-13" aria-label="send code again">
 						Надіслати код повторно
 					</button>
-
-					<br><br>
-					<p>Функція в JS <b>startCountdown()</b> запускає таймер зворотнього відліку. Час відліку встановлюється в атрибуті data-timer </p><br>
-					<p class="txt-accent txt-13">
-						Не прийшов код? Отримати повторно через <span data-timer="1.5">00 : 00</span> сек
-					</p>
-
-					<br><br>
+					<br>
 					<button type="button" class="tab-checkout__btn btn btn_dark">Кнопка Dark</button>
 					<br>
 					<button type="button" disabled class="tab-checkout__btn btn btn_dark">disabled</button>
 					<br>
 					<button type="button" class="tab-checkout__btn btn btn_light">Кнопка Light</button>
-
+					<br>
+					<div class="dropdown-arrow icon-arrow-down"></div>
+					<br>
+					<p style="padding: 30px 0 0; border-top: 1px solid gray">Функція в JS <b>startCountdown()</b> запускає таймер зворотнього відліку. Час відліку встановлюється в атрибуті data-timer </p><br>
+					<p class="txt-accent txt-13">
+						Не прийшов код? Отримати повторно через <span data-timer="1.5">00 : 00</span> сек
+					</p>
+			
 					<br><br>
-					<p><b>International Telephone Input v25.3.0</b>, https://github.com/jackocnr/intl-tel-input.git</p><br>
+					<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>International Telephone Input v25.3.0</b>, https://github.com/jackocnr/intl-tel-input.git</p><br>
 					<p>В проєкті налаштовано 2 мови (ru, uk) для перекладу тексту дропдауна з англійської. Переклад працює на основі вибраної мови сайту; мова за замовчуванням - англійська. Щоб додати необхідну мову перекладу, необхідно виконати налаштування у app.js (intlTelInput()). Доступно 37 мов. На сторінках, які використовують інтуп міжнародних телефонів файли плагіну підключені через тег <b>script</b> внизу сторінки</p>
 					<br>
-					<!-- <p>За замовчуванням буде відображатися код країни користувача</p><br> -->
+					<p>За замовчуванням буде відображатися код країни користувача</p><br>
 					<div class="input__item input-intl-item">
 						<label for="intlTelInp" class="input__label">
 							Ваш номер телефону
 						</label>
 						<input id="intlTelInp" type="tel" name="tel" class="intl-input input input_sm">
 					</div>
+					
 					<br><br>
-					<div class="dropdown-arrow icon-arrow-down"></div>
-					<br><br>
-							<p><b>Label з підказками.</b> Використовується <a href="tippy.js" target="_blank" style="color: blue">tippy.js</a> Щоб підказка коректно вставлялась оберніть потрібний текст у span (див. html). Текст підказки вноситься в дата атрибут <b>data-tippy-content</b>. Підключено через CDN </p>
+							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Label з підказками.</b> Використовується <a href="tippy.js" target="_blank" style="color: blue">tippy.js</a> Щоб підказка коректно вставлялась оберніть потрібний текст у span (див. html). Текст підказки вноситься в дата атрибут <b>data-tippy-content</b>. Підключено через CDN </p>
 							<br>
 							<div class="input__item">
 								<label for="inp12" class="input__label">
@@ -253,19 +250,6 @@
 								</div>
 							</div>
 							<br><br>
-							<div class="input__item">
-								<label for="datepicker" class="input__label">
-									Дата доставки
-								</label>
-								<input id="datepicker"  autocomplete="off" type="date" name="form[]" data-error="Виберіть дату доставки" placeholder="01.02.2025" data-required class="input input_sm">
-							</div>
-							<br><br>
-							<div class="input__item">
-								<label for="inpTime" class="input__label">
-									Час доставки
-								</label>
-								<input id="inpTime" autocomplete="off" type="time" name="form[]" data-error="Виберіть час доставки" placeholder="00:00" data-required class="input input_sm">
-							</div>
 				</div>
 			</main>
 			@@include('html/_footer.htm',{})
