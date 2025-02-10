@@ -76,6 +76,7 @@ textarea {
 .input[placeholder]:not([data-placeholder-nohiden]) {
 	&::placeholder {
 		transition: opacity 0.3s, color .3s;
+		color: var(--fade-violet-1);
 		._form-error & {
 			color: var(--red);
 		}
@@ -94,6 +95,7 @@ textarea.input {
 	// .input__item
 	&__item {
 		position: relative;
+		min-width: 0;
 		.form__error {
 			font-weight: 600;
 			margin-top: toRem(8);
@@ -314,6 +316,85 @@ textarea.input {
 	50% { opacity: 0; }
 }
 
+
+.option {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(130px, 1fr));
+  @include adaptiveValue("gap", 16, 8,0,1440.98,480.98);
+  // .option__item
+  &__item {
+    position: relative;
+    @media (any-hover: hover){
+      &:hover{
+        .option__label {
+          border-color: var(--dark-violet);
+          color: var(--dark-violet);
+          .box {
+            border-color: var(--dark-violet);
+          }
+        }
+      }
+    }
+  }
+  // .option__input
+  &__input {
+    display: none;
+    &:checked {
+      + .option__label {
+        border-color: var(--dark-violet);
+        color: var(--dark-violet);
+        .box {
+          border-color: var(--dark-violet);
+        }
+        .box::after {
+          background-color: var(--dark-violet);
+        }
+      }
+    }
+  }
+  // .option__label
+  &__label {
+    cursor: pointer;
+    @extend %flexCenterGap8;
+    padding: toRem(12);
+    font-size: toRem(13);
+    font-weight:500;
+    border-radius: toRem(16);
+    border: toRem(1.6) solid var(--gray-2);
+    color: var(--fade-violet-2);
+    transition: color .3s ease, border-color .3s ease;
+    height: 100%;
+    @media (min-width:$mobileSmall){
+      min-height: toRem(40); 
+    }
+    @media (max-width:$mobileSmall){
+      min-height: toRem(48); 
+    }
+    .box {
+      flex: 0 0 auto;
+      position: relative;
+      display: block;
+      width: toRem(16);
+      height: toRem(16);
+      border-radius: 50%;
+      border: toRem(1.6) solid var(--fade-violet-1);
+      transition: border-color .3s ease;
+      &::after {
+        transition: transform 0.5s ease 0s;
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: toRem(10);
+        height: toRem(10);
+        background-color: transparent;
+        border-radius: 50%;
+        transition: background-color .3s ease;
+      }
+    }
+  }
+}
 
 
 

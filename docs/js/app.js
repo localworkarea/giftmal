@@ -276,6 +276,10 @@
                     clearButton.disabled = targetElement.value.length === 0 || targetElement.hasAttribute("readonly");
                 }));
             }
+            if (targetElement.closest(".select__title") || targetElement.closest(".select__body") || targetElement.closest(".select__value")) {
+                const select = targetElement.closest(".select").querySelector("select");
+                formValidate.removeError(select);
+            }
         }));
         document.body.addEventListener("focusout", (function(e) {
             const targetElement = e.target;
@@ -285,6 +289,10 @@
                     targetElement.parentElement.classList.remove("_form-focus");
                 }
                 targetElement.hasAttribute("data-validate") ? formValidate.validateInput(targetElement) : null;
+            }
+            if (targetElement.closest(".select__title") || targetElement.closest(".select__body") || targetElement.closest(".select__value")) {
+                const select = targetElement.closest(".select").querySelector("select");
+                formValidate.removeError(select);
             }
         }));
         document.querySelectorAll(".input__sub-item input").forEach((inputElement => {
@@ -574,6 +582,7 @@
                 classSelectMultiple: "_select-multiple",
                 classSelectCheckBox: "_select-checkbox",
                 classSelectOptionSelected: "_select-selected",
+                classSelectIcon: "icon-check",
                 classSelectPseudoLabel: "_select-pseudo-label"
             };
             this._this = this;
@@ -779,15 +788,22 @@
             }
         }
         getOption(selectOption, originalSelect) {
-            const selectOptionSelected = selectOption.selected && originalSelect.multiple ? ` ${this.selectClasses.classSelectOptionSelected}` : "";
-            const selectOptionHide = selectOption.selected && !originalSelect.hasAttribute("data-show-selected") && !originalSelect.multiple ? `hidden` : ``;
-            const selectOptionClass = selectOption.dataset.class ? ` ${selectOption.dataset.class}` : "";
-            const selectOptionLink = selectOption.dataset.href ? selectOption.dataset.href : false;
-            const selectOptionLinkTarget = selectOption.hasAttribute("data-href-blank") ? `target="_blank"` : "";
+            let selectOptionSelected = "";
+            if (selectOption.selected && originalSelect.multiple) selectOptionSelected = ` ${this.selectClasses.classSelectOptionSelected}`;
+            let selectOptionHide = "";
+            if (selectOption.selected && !originalSelect.hasAttribute("data-show-selected") && !originalSelect.multiple) selectOptionHide = `hidden`;
+            let selectOptionSelectedClass = "";
+            if (selectOption.selected && originalSelect.hasAttribute("data-show-selected") && !originalSelect.multiple) selectOptionSelectedClass = ` ${this.selectClasses.classSelectOptionSelected} ${this.selectClasses.classSelectIcon}`;
+            let selectOptionClass = "";
+            if (selectOption.dataset.class) selectOptionClass = ` ${selectOption.dataset.class}`;
+            let selectOptionLink = false;
+            if (selectOption.dataset.href) selectOptionLink = selectOption.dataset.href;
+            let selectOptionLinkTarget = "";
+            if (selectOption.hasAttribute("data-href-blank")) selectOptionLinkTarget = `target="_blank"`;
             let selectOptionHTML = ``;
-            selectOptionHTML += selectOptionLink ? `<a ${selectOptionLinkTarget} ${selectOptionHide} href="${selectOptionLink}" data-value="${selectOption.value}" class="${this.selectClasses.classSelectOption}${selectOptionClass}${selectOptionSelected}">` : `<button ${selectOptionHide} class="${this.selectClasses.classSelectOption}${selectOptionClass}${selectOptionSelected}" data-value="${selectOption.value}" type="button">`;
+            if (selectOptionLink) selectOptionHTML += `<a ${selectOptionLinkTarget} ${selectOptionHide} href="${selectOptionLink}" data-value="${selectOption.value}" class="${this.selectClasses.classSelectOption}${selectOptionClass}${selectOptionSelected}${selectOptionSelectedClass}">`; else selectOptionHTML += `<button ${selectOptionHide} class="${this.selectClasses.classSelectOption}${selectOptionClass}${selectOptionSelected}${selectOptionSelectedClass}" data-value="${selectOption.value}" type="button">`;
             selectOptionHTML += this.getSelectElementContent(selectOption);
-            selectOptionHTML += selectOptionLink ? `</a>` : `</button>`;
+            if (selectOptionLink) selectOptionHTML += `</a>`; else selectOptionHTML += `</button>`;
             return selectOptionHTML;
         }
         setOptions(selectItem, originalSelect) {
@@ -839,10 +855,20 @@
                         originalSelect.querySelector(`option[value = "${selectSelectedItems.dataset.value}"]`).setAttribute("selected", "selected");
                     }));
                 } else {
+                    if (originalSelect.hasAttribute("data-show-selected")) {
+                        const prevSelected = selectItem.querySelector(this.getSelectClass(this.selectClasses.classSelectOptionSelected));
+                        if (prevSelected) {
+                            prevSelected.classList.remove(this.selectClasses.classSelectOptionSelected);
+                            prevSelected.classList.remove(this.selectClasses.classSelectIcon);
+                        }
+                    }
                     if (!originalSelect.hasAttribute("data-show-selected")) setTimeout((() => {
                         if (selectItem.querySelector(`${this.getSelectClass(this.selectClasses.classSelectOption)}[hidden]`)) selectItem.querySelector(`${this.getSelectClass(this.selectClasses.classSelectOption)}[hidden]`).hidden = false;
                         optionItem.hidden = true;
-                    }), this.config.speed);
+                    }), this.config.speed); else {
+                        optionItem.classList.add(this.selectClasses.classSelectOptionSelected);
+                        optionItem.classList.add(this.selectClasses.classSelectIcon);
+                    }
                     originalSelect.value = optionItem.hasAttribute("data-value") ? optionItem.dataset.value : optionItem.textContent;
                     this.selectAction(selectItem);
                 }
@@ -881,12 +907,28 @@
             const selectInput = this.getSelectElement(selectItem, this.selectClasses.classSelectInput).selectElement;
             const selectOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
             const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption} `);
+            const parentWithEnter = selectItem.closest("[data-select-enter]");
+            const hiddenInput = parentWithEnter ? parentWithEnter.querySelector("[data-select-input]") : null;
             const _this = this;
             selectInput.addEventListener("input", (function() {
                 selectOptionsItems.forEach((selectOptionsItem => {
                     if (selectOptionsItem.textContent.toUpperCase().includes(selectInput.value.toUpperCase())) selectOptionsItem.hidden = false; else selectOptionsItem.hidden = true;
                 }));
+                if (hiddenInput) hiddenInput.value = selectInput.value;
                 selectOptions.hidden === true ? _this.selectAction(selectItem) : null;
+            }));
+            selectOptionsItems.forEach((selectOptionsItem => {
+                selectOptionsItem.addEventListener("click", (function() {
+                    if (hiddenInput) hiddenInput.value = selectOptionsItem.textContent;
+                    selectOptionsItems.forEach((item => {
+                        setTimeout((() => {
+                            item.hidden = false;
+                        }), 300);
+                    }));
+                }));
+            }));
+            if (hiddenInput) selectInput.addEventListener("blur", (function() {
+                hiddenInput.value = selectInput.value;
             }));
         }
         selectCallback(selectItem, originalSelect) {
@@ -1079,8 +1121,8 @@
         }), 1e3);
     }
     startCountdown();
-    const intlTelInp = document.querySelector("#intlTelInp");
-    if (intlTelInp) {
+    const intlTelInputs = document.querySelectorAll("[data-intl-number]");
+    if (intlTelInputs.length > 0) {
         const siteLang = document.documentElement.lang.slice(0, 2);
         let language;
         switch (siteLang) {
@@ -1095,17 +1137,19 @@
           default:
             language = null;
         }
-        window.intlTelInput(intlTelInp, {
-            initialCountry: "auto",
-            geoIpLookup: callback => {
-                fetch("https://ipapi.co/json").then((res => res.json())).then((data => callback(data.country_code))).catch((() => callback("us")));
-            },
-            strictMode: true,
-            separateDialCode: true,
-            nationalMode: true,
-            formatOnDisplay: true,
-            i18n: language
-        });
+        intlTelInputs.forEach((input => {
+            window.intlTelInput(input, {
+                initialCountry: "auto",
+                geoIpLookup: callback => {
+                    fetch("https://ipapi.co/json").then((res => res.json())).then((data => callback(data.country_code))).catch((() => callback("us")));
+                },
+                strictMode: true,
+                separateDialCode: true,
+                nationalMode: true,
+                formatOnDisplay: true,
+                i18n: language
+            });
+        }));
     }
     tippy("[data-tippy-content]", {
         placement: "bottom"

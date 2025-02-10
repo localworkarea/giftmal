@@ -22,12 +22,12 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			}
 			formValidate.removeError(targetElement);
 			targetElement.hasAttribute('data-validate') ? formValidate.removeError(targetElement) : null;
-
+	
 			// Логика для инпута с классом input-sms
 			if (targetElement.classList.contains('input-sms')) {
 				initSmsInput(targetElement);
 			}
-
+	
 			// Убираем disabled для кнопки очистки input__clear, если есть текст
 			const clearButton = targetElement.parentElement.querySelector('.input__clear');
 			if (clearButton) {
@@ -36,8 +36,14 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 				});
 			}
 		}
-	});
 
+		// Удаляем ошибку, если Кастомный select получает фокус
+		if (targetElement.closest('.select__title') || targetElement.closest('.select__body') || targetElement.closest('.select__value')) {
+			const select = targetElement.closest('.select').querySelector('select');
+			formValidate.removeError(select); 
+		}
+	});
+	
 	document.body.addEventListener("focusout", function (e) {
 		const targetElement = e.target;
 		if ((targetElement.tagName === 'INPUT' || targetElement.tagName === 'TEXTAREA')) {
@@ -45,10 +51,19 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 				targetElement.classList.remove('_form-focus');
 				targetElement.parentElement.classList.remove('_form-focus');
 			}
-			// Миттєва валідація
+			// Миттєва валідация
 			targetElement.hasAttribute('data-validate') ? formValidate.validateInput(targetElement) : null;
 		}
+
+		// Удаляем ошибку при потере фокуса с Кастомного select
+		if (targetElement.closest('.select__title') || targetElement.closest('.select__body') || targetElement.closest('.select__value')) {
+			const select = targetElement.closest('.select').querySelector('select');
+			formValidate.removeError(select); 
+		}
 	});
+
+
+
 
 	// Инициализация состояния кнопок очистки для всех полей при загрузке
 	document.querySelectorAll('.input__sub-item input').forEach(inputElement => {

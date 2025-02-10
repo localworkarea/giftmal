@@ -512,11 +512,11 @@
 %gridClm-2 {
   @media (min-width:$mobileSmall){
     grid-template-columns: 1fr 1fr;
-    gap: toRem(18); 
+    gap: toRem(16); 
   }
   @media (max-width:$mobileSmall){
-    grid-template-columns: 1fr;
-    gap: toRem(16); 
+    grid-template-columns: 100%;
+    gap: toRem(18); 
   }
 }
 
@@ -581,7 +581,7 @@
     &.items-cl-2-nw {
       grid-template-columns: 1fr 1fr;
       @media (min-width:$mobileSmall){
-        gap: toRem(18); 
+        gap: toRem(16); 
       }
       @media (max-width:$mobileSmall){
         gap: toRem(8); 
@@ -590,10 +590,10 @@
     &.items-cl-2-wr-mb {
       @media (min-width:toEm(600.98)){
         grid-template-columns: 1fr 1fr;
-        gap: toRem(18);
+        gap: toRem(16);
       }
       @media (max-width:toEm(600.98)){
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
         gap: toRem(24); 
       }
     }
@@ -614,7 +614,7 @@
     &.row-cl-2 {
       @extend %gridClm-2;
     }
-    .row-cl-2-nw {
+    &.row-cl-2-nw {
       grid-template-columns: 1fr 1fr;
     }
     &.row-gap-16 {
@@ -625,6 +625,25 @@
     }
     &.row-gap-24 {
       gap: toRem(24);
+    }
+    &.row-gap-16-8 {
+      @media (min-width:$mobileSmall){
+        gap: toRem(16); 
+      }
+      @media (max-width:$mobileSmall){
+        gap: toRem(8); 
+      }
+    }
+    &.row-cl-2-16-8 {
+      grid-auto-rows: 1fr;
+      @media (min-width:$mobileSmall){
+        grid-template-columns: 1fr 1fr;
+        gap: toRem(16); 
+      }
+      @media (max-width:$mobileSmall){
+        grid-template-columns: 100%;
+        gap: toRem(8); 
+      }
     }
 	}
   // .tab-checkout__btn
@@ -1044,3 +1063,4 @@
 
 // ==  =======================================
 // ---------------------------------------------------
+

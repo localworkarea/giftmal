@@ -68,143 +68,9 @@
 										</button>
 									</div>
 									<div class="checkout__tabs">
-										<!-- Мої контактні дані -->
-										<form data-dev data-goto-error  method="post" class="checkout__tab tab-checkout tab-checkout_my-data tab-active">
-											<div class="tab-checkout__head">
-												<p class="tab-checkout__title">
-													Мої контактні дані
-												</p>
-												<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
-													Змінити
-												</button>
-											</div>
-											<div class="tab-checkout__item">
-												<p class="tab-checkout__subtitle">
-													1. Підтвердіть свій номер телефону
-												</p>
-												<div class="tab-checkout__items items-cl-2">
-													<div class="input__item input-intl-item">
-														<label for="intlTelInp" class="input__label">
-															Ваш номер телефону
-														</label>
-														<input id="intlTelInp" type="tel" name="tel" class="intl-input input input_sm">
-													</div>
-												</div>
-												<div class="tab-checkout__items">
-													<div class="phone-checked">
-														<div class="phone-checked__item txt-15 icon-check">
-															+380-50-104-88-57
-														</div>
-														<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
-															Змінити
-														</button>
-													</div>
-												</div>
-												<div class="tab-checkout__items items-cl-2">
-													<div class="input__item">
-														<label for="inp1" class="input__label">
-															Поле вводу отриманого коду з SMS
-														</label>
-														<div class="input__sms-item">
-															<input id="inp1" autocomplete="one-time-code" type="text" name="sms" data-error="Невірний код" data-required="sms"  class="input-sms" maxlength="4" inputmode="numeric">
-															<div class="input__sms-chars input input_sm">
-																<span class="input__sms-char char-placeholder sms-cursor">
-																	<span class="char-num"></span>
-																	<span class="char-x">X</span>
-																</span>
-																<span class="input__sms-char char-placeholder">
-																	<span class="char-num"></span>
-																	<span class="char-x">X</span>
-																</span>
-																<span class="input__sms-char char-placeholder">
-																	<span class="char-num"></span>
-																	<span class="char-x">X</span>
-																</span>
-																<span class="input__sms-char char-placeholder">
-																	<span class="char-num"></span>
-																	<span class="char-x">X</span>
-																</span>
-															</div>
-														</div>
-														<button type="button" class="edit-btn icon-phone-sms txt-13" aria-label="send code again">
-															Надіслати код повторно
-														</button>
-														<div class="txt-accent txt-13">
-															Не прийшов код? Отримати повторно через <span data-timer="1.5">00 : 00</span>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="tab-checkout__item">
-												<p class="tab-checkout__subtitle">
-													2. Як новий користувач, додайте свої дані для реєстрації
-												</p>
-												<div class="tab-checkout__items items-cl-2">
-													<div class="input__item">
-														<label for="inp2" class="input__label">
-															Ваше ім'я
-														</label>
-														<input id="inp2" autocomplete="off" type="text" name="firstName" data-error="Назва помилки написана в data-error атрибуті" placeholder="Ім'я" data-required class="input input_sm">
-													</div>
-													<div class="input__item">
-														<label for="inp3" class="input__label">
-															Прізвище
-														</label>
-														<input id="inp3" autocomplete="off" type="text" name="lastName" data-error="Назва помилки написана в data-error атрибуті" placeholder="Прізвище" data-required class="input input_sm">
-													</div>
-													<div class="input__item">
-														<label for="inp4" class="input__label">
-															Ваше email
-														</label>
-														<input id="inp4" autocomplete="off" type="email" name="email" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email"  class="input input_sm">
-													</div>
-												</div>
-											
-											</div>
-											<div class="tab-checkout__item">
-												<div class="tab-checkout__items items-cl-2">
-													<div class="input__item">
-														<label for="inp15" class="input__label">
-															Ваше ім'я
-														</label>
-														<div class="input__sub-item">
-															<input id="inp15" autocomplete="off" type="text" name="firstName" value="Юлія" data-error="Назва помилки написана в data-error атрибуті" placeholder="Ім'я" data-required class="input input_sm" readonly>
-														</div>
-													</div>
-													<div class="input__item">
-														<label for="inp16" class="input__label">
-															Прізвище
-														</label>
-														<div class="input__sub-item">
-															<input id="inp16" autocomplete="off" type="text" name="lastName" value="Михайлова" data-error="Назва помилки написана в data-error атрибуті" placeholder="Прізвище" data-required class="input input_sm" readonly>
-															<button disabled type="button" class="input__clear icon-cross"></button>
-														</div>
-													</div>
-													<div class="input__item">
-														<label for="inp19" class="input__label">
-															Ваше email
-														</label>
-														<div class="input__sub-item">
-															<input id="inp19" autocomplete="off" type="email" name="email" value="yuliiia@gmail.com" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email"  class="input input_sm" readonly>
-															<button disabled type="button" class="input__clear icon-cross"></button>
-														</div>
-													</div>
-													<div class="input__item">
-														<label for="inp20" class="input__label">
-															Номер телефону
-														</label>
-														<div class="input__sub-item">
-															<input id="inp20" autocomplete="off" type="tel" name="tel" value="+380-50-104-88-57" data-error="Введіть телефон" placeholder="example@gmail.com" data-required  class="input input_sm" readonly>
-															<button disabled type="button" class="input__clear icon-cross"></button>
-														</div>
-													</div>
-												</div>
-											</div>
-											<button type="submit" class="tab-checkout__btn btn btn_dark">Отримати код</button>
-										</form>
-	
+									
 										<!-- Дані для замовлення -->
-										<form data-dev data-goto-error class="checkout__tab tab-checkout tab-checkout_order">
+										<form data-dev data-goto-error class="checkout__tab tab-checkout tab-checkout_order tab-active">
 											<div data-spollers class="tab-checkout__spollers">
 												<details data-open class="tab-checkout__body _data-complete">
 													<summary class="tab-checkout__summary icon-check">
@@ -359,24 +225,28 @@
 																<p class="tab-checkout__subtitle">
 																	3. Оберіть час та дату доставки
 																</p>
-																<div class="tab-checkout__items items-cl-2-nw">
-																	<div class="option__item">
-																		<input id="deliverySoon" class="option__input" type="radio" name="date-time" value="soon" checked>
-																		<label for="deliverySoon" class="option__label">
-																			<span class="box"></span>
-																			Найближчий
-																		</label>
+																<div class="tab-checkout__items items-gap-16">
+																	<div class="tab-checkout__row row-cl-2-nw row-gap-16-8">
+																		<div class="option__item">
+																			<input id="deliverySoon" class="option__input" type="radio" name="date-time" value="soon" checked>
+																			<label for="deliverySoon" class="option__label">
+																				<span class="box"></span>
+																				Найближчий
+																			</label>
+																		</div>
+																		<div class="option__item">
+																			<input id="deliverySelect" class="option__input" type="radio" name="date-time" value="select">
+																			<label for="deliverySelect" class="option__label">
+																				<span class="box"></span>
+																				Обрати
+																			</label>
+																		</div>
 																	</div>
-																	<div class="option__item">
-																		<input id="deliverySelect" class="option__input" type="radio" name="date-time" value="select">
-																		<label for="deliverySelect" class="option__label">
-																			<span class="box"></span>
-																			Обрати
-																		</label>
-																	</div>
+																	<div class="tab-checkout__row row-cl-2">
 																		<p class="txt-accent txt-13">
 																			Замовлення буде відправлення найближчим часом.
 																		</p>
+																	</div>
 																</div>
 																<div class="tab-checkout__items items-cl-2">
 																	<div class="input__item">
@@ -422,10 +292,25 @@
 																<div class="tab-checkout__items items-cl-2-wr-mb">
 																	<div class="tab-checkout__row row-gap-24 d-flex-clm">
 																		<div class="input__item">
-																			<label for="inp20" class="input__label">
+																			<label for="selectTopic" class="input__label">
 																				Оберіть або напишіть тему вітання
 																			</label>
-																			<input id="inp20" autocomplete="off" type="text" name="form[]" data-error="Оберіть або впишіть тему" placeholder="Оберіть тему" data-required class="input input_sm">
+																			<div data-select-enter class="input__sub-item">
+																				<input data-select-input autocomplete="off" type="text" name="form[]" hidden>
+																				<select id="selectTopic" name="form[]" data-class-modif="type-btn" data-speed="200" data-show-selected data-scroll="250" data-search>
+																					<option value data-show data-class="item-placeholder">Оберіть тему вітання</option>
+																					<option value="1">Тема вітання №1</option>
+																					<option value="2">Тема вітання №2</option>
+																					<option value="3">Тема вітання №3</option>
+																					<option value="4">Тема вітання №4</option>
+																					<option value="5">Тема вітання №5</option>
+																					<option value="6">Тема вітання №6</option>
+																					<option value="7">Тема вітання №7</option>
+																					<option value="8">Тема вітання №8</option>
+																					<option value="9">Тема вітання №9</option>
+																					<option value="10">Тема вітання №10</option>
+																				</select>
+																			</div>
 																		</div>
 																		<div class="input__item">
 																			<label for="inp21" class="input__label">
@@ -582,46 +467,331 @@
 																<p class="tab-checkout__subtitle">
 																	1. Оберіть тип доставки
 																</p>
-															
-															</div>
-															<div class="tab-checkout__item">
-																<p class="tab-checkout__subtitle">
-																	2. Прив’яжіть свій аккаунт
-																</p>
-																<div class="tab-checkout__items items-cl-2">
-
+																<div class="tab-checkout__items items-gap-16">
+																	<div class="tab-checkout__row row-cl-2-16-8">
+																		<div class="option__item">
+																			<input id="deliveryTypeDepartment" class="option__input" type="radio" name="deliveryType" value="NPdepartment" checked>
+																			<label for="deliveryTypeDepartment" class="option__label">
+																				<span class="box"></span>
+																				Відділення Нової Пошти
+																			</label>
+																		</div>
+																		<div class="option__item">
+																			<input id="deliveryTypeCourier" class="option__input" type="radio" name="deliveryType" value="NPcourier">
+																			<label for="deliveryTypeCourier" class="option__label">
+																				<span class="box"></span>
+																				Кур’єрська доставка Новою Поштою
+																			</label>
+																		</div>
+																		<div class="option__item">
+																			<input id="deliveryTypeBox" class="option__input" type="radio" name="deliveryType" value="NPbox">
+																			<label for="deliveryTypeBox" class="option__label">
+																				<span class="box"></span>
+																				Доставка до Поштомату
+																			</label>
+																		</div>
+																	</div>
+																	<div class="tab-checkout__row row-cl-2">
+																		<p class="txt-accent txt-13">
+																			За доставку Нової Пошти ви маєте сплатити особисто після отримання.  Або ви можете зробити оплату в мобільному додатку Нової Пошти.
+																		</p>
+																	</div>
+																</div>
+																<div data-one-select class="tab-checkout__items items-cl-2">
+																	<div class="input__item">
+																		<label for="departmentCity" class="input__label">
+																			Місто
+																		</label>
+																		<select id="departmentCity" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="250" data-search  data-required >
+																			<option value data-class="item-placeholder">Місто</option>
+																			<option value="2">Київ</option>
+																			<option value="3">Львів</option>
+																			<option value="4">Харків</option>
+																			<option value="5">Дніпро</option>
+																			<option value="6">Івано-Франківськ</option>
+																			<option value="7">Одеса</option>
+																			<option value="8">Рівне</option>
+																			<option value="9">Житомир</option>
+																			<option value="10">Луцьк</option>
+																		</select>
+																	</div>
+																	<div class="input__item">
+																		<label for="department" class="input__label">
+																			Відділення
+																		</label>
+																		<select id="department" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="400"  data-required >
+																			<option value data-class="item-placeholder">Відділення</option>
+																			<option value="2">Відд №1. Драгоманова, 10А Відд №1. Драгоманова, 10А</option>
+																			<option value="3">Відд №2. Пирогівський шлях, 15</option>
+																			<option value="4">Відд №3. Богатирський, 20А</option>
+																			<option value="5">Відд №4. Слобажанська, 25</option>
+																			<option value="6">Відд №5. Драгоманова, 30</option>
+																			<option value="7">Відд №6. Драгоманова, 35</option>
+																			<option value="8">Відд №10. Драгоманова, 40в</option>
+																			<option value="9">Відд №11. Драгоманова, 45</option>
+																			<option value="10">Відд №18. Драгоманова, 50</option>
+																			<option value="11">Відд №19. Драгоманова, 55б</option>
+																			<option value="12">Відд №20. Драгоманова, 65</option>
+																			<option value="13">Відд №21. Драгоманова, 135</option>
+																			<option value="14">Відд №22. Драгоманова, 215</option>
+																			<option value="15">Відд №23. Драгоманова, 1</option>
+																			<option value="16">Відд №24. Драгоманова, 1а</option>
+																		</select>
+																	</div>
+																	<div class="input__item">
+																		<label for="buildingNum" class="input__label">
+																			Будинок
+																		</label>
+																		<input id="buildingNum" autocomplete="off" type="text" name="form[]" data-error="Вкажіть номер будинку" placeholder="Будинок" data-required class="input input_sm">
+																	</div>
+																	<div class="input__item">
+																		<label for="appartNum" class="input__label">
+																			Квартина
+																		</label>
+																		<input id="appartNum" autocomplete="off" type="text" name="form[]" data-error="Вкажіть номер квартири" placeholder="Квартира" data-required class="input input_sm">
+																	</div>
 																</div>
 															</div>
 															<div class="tab-checkout__item">
 																<p class="tab-checkout__subtitle">
 																	2. Дані отримувача
 																</p>
+																<div class="tab-checkout__items items-cl-2-nw">
+																	<div class="option__item">
+																		<input id="recipientPhysicalMyself" class="option__input" type="radio" name="recipientPhysical" value="PhysicalMyself" checked>
+																		<label for="recipientPhysicalMyself" class="option__label">
+																			<span class="box"></span>
+																			Я отримувач
+																		</label>
+																	</div>
+																	<div class="option__item">
+																		<input id="recipientPhysicalAnother" class="option__input" type="radio" name="recipientPhysical" value="PhysicalPerson">
+																		<label for="recipientPhysicalAnother" class="option__label">
+																			<span class="box"></span>
+																			Інша людина
+																		</label>
+																	</div>
+																</div>
 																<div class="tab-checkout__items items-cl-2">
-
+																	<div class="input__item">
+																		<label for="physicalRecName" class="input__label">
+																			<span class="info-label">
+																				<span data-tippy-content="Впишіть ваше Ім’я" class="info-label__info icon-info"></span>
+																				Ім’я
+																			</span>
+																		</label>
+																		<div class="input__sub-item">
+																			<input id="physicalRecName" autocomplete="off" type="text" name="form[]" data-error="Введіть текст" placeholder="Ім'я" value="Юлія" data-required class="input input_sm" >
+																			<button disabled type="button" class="input__clear icon-cross"></button>
+																		</div>
+																	</div>
+																	<div class="input__item">
+																		<label for="physicalRecSurame" class="input__label">
+																			Прізвище
+																		</label>
+																		<div class="input__sub-item">
+																			<input id="physicalRecSurame" autocomplete="off" type="text" name="form[]" data-error="Введіть текст" placeholder="Прізвище" value="Михайлова" data-required class="input input_sm" >
+																			<button disabled type="button" class="input__clear icon-cross"></button>
+																		</div>
+																	</div>
+																	<div class="input__item input-intl-item">
+																		<label for="telNumber1" class="input__label">
+																			Ваш номер телефону
+																		</label>
+																		<input id="telNumber1" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+																	</div>
 																</div>
 															</div>
 															<div class="tab-checkout__item">
 																<p class="tab-checkout__subtitle">
-																	3. Оберіть час та дату доставки
+																	3. Додайте оформлення, зробіть свій подарунок чарівним
 																</p>
-																<div class="tab-checkout__items items-cl-2">
-
+																
+																<div class="tab-checkout__items items-gap-16">
+																	<div class="tab-checkout__row row-cl-2-nw row-gap-16-8">
+																		<div class="option__item">
+																			<input id="wrapperAddYes" class="option__input" type="radio" name="wrapperAdd" value="wrapperAddYes" checked>
+																			<label for="wrapperAddYes" class="option__label">
+																				<span class="box"></span>
+																				Додати оформлення
+																			</label>
+																		</div>
+																		<div class="option__item">
+																			<input id="wrapperAddNo" class="option__input" type="radio" name="wrapperAdd" value="wrapperAddNo">
+																			<label for="wrapperAddNo" class="option__label">
+																				<span class="box"></span>
+																				Не додавати
+																			</label>
+																		</div>
+																	</div>
+																	<div class="tab-checkout__row row-cl-2">
+																		<p class="txt-accent txt-13">
+																			Ваше замовлення надійде у пластиковому пакеті. Ми рекомендуємо надати подарункову атмосферу, додавши до нього коробку, пакет або листівку.
+																		</p>
+																	</div>
 																</div>
-															</div>
-															<div class="tab-checkout__item">
 																<p class="tab-checkout__subtitle">
-																	4. Додай вітання, зроби свою листівку унікальною
+																	Оберіть подарункове оформлення
 																</p>
-																<div class="tab-checkout__items items-cl-2">
-
+																<div class="tab-checkout__slider slider-checkout swiper">
+																	<div class="slider-checkout__wrapper swiper-wrapper">
+																		<div class="slider-checkout__slide swiper-slide"></div>
+																	</div>
+																	<div class="slider-checkout__pagination swiper-pagination"></div>
+																	<button type="button" class="slider-checkout__button swiper-button-prev icon-arrow-down"></button>
+																	<button type="button" class="slider-checkout__button swiper-button-next icon-arrow-down"></button>
 																</div>
 															</div>
 															<button type="submit" class="tab-checkout__btn btn btn_dark">Продовжити</button>
+															<div class="checkbox">
+																<input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input _req">
+																<label for="formAgreement" class="checkbox__label"><span>Я даю свое согласие на обработку персональных данных в соответствии с <a href="">Условиями</a>*</span></label>
+															</div>
+
+
+
+															
 														</div>
 													</div>
 												</details>
 											</div>
 										</form>
+
+											<!-- Мої контактні дані -->
+											<form data-dev data-goto-error  method="post" class="checkout__tab tab-checkout tab-checkout_my-data ">
+												<div class="tab-checkout__head">
+													<p class="tab-checkout__title">
+														Мої контактні дані
+													</p>
+													<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+														Змінити
+													</button>
+												</div>
+												<div class="tab-checkout__item">
+													<p class="tab-checkout__subtitle">
+														1. Підтвердіть свій номер телефону
+													</p>
+													<div class="tab-checkout__items items-cl-2">
+														<div class="input__item input-intl-item">
+															<label for="telNumber2" class="input__label">
+																Ваш номер телефону
+															</label>
+															<input id="telNumber2" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+														</div>
+													</div>
+													<div class="tab-checkout__items">
+														<div class="phone-checked">
+															<div class="phone-checked__item txt-15 icon-check">
+																+380-50-104-88-57
+															</div>
+															<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+																Змінити
+															</button>
+														</div>
+													</div>
+													<div class="tab-checkout__items items-cl-2">
+														<div class="input__item">
+															<label for="inp1" class="input__label">
+																Поле вводу отриманого коду з SMS
+															</label>
+															<div class="input__sms-item">
+																<input id="inp1" autocomplete="one-time-code" type="text" name="sms" data-error="Невірний код" data-required="sms"  class="input-sms" maxlength="4" inputmode="numeric">
+																<div class="input__sms-chars input input_sm">
+																	<span class="input__sms-char char-placeholder sms-cursor">
+																		<span class="char-num"></span>
+																		<span class="char-x">X</span>
+																	</span>
+																	<span class="input__sms-char char-placeholder">
+																		<span class="char-num"></span>
+																		<span class="char-x">X</span>
+																	</span>
+																	<span class="input__sms-char char-placeholder">
+																		<span class="char-num"></span>
+																		<span class="char-x">X</span>
+																	</span>
+																	<span class="input__sms-char char-placeholder">
+																		<span class="char-num"></span>
+																		<span class="char-x">X</span>
+																	</span>
+																</div>
+															</div>
+															<button type="button" class="edit-btn icon-phone-sms txt-13" aria-label="send code again">
+																Надіслати код повторно
+															</button>
+															<div class="txt-accent txt-13">
+																Не прийшов код? Отримати повторно через <span data-timer="1.5">00 : 00</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="tab-checkout__item">
+													<p class="tab-checkout__subtitle">
+														2. Як новий користувач, додайте свої дані для реєстрації
+													</p>
+													<div class="tab-checkout__items items-cl-2">
+														<div class="input__item">
+															<label for="inp2" class="input__label">
+																Ваше ім'я
+															</label>
+															<input id="inp2" autocomplete="off" type="text" name="firstName" data-error="Назва помилки написана в data-error атрибуті" placeholder="Ім'я" data-required class="input input_sm">
+														</div>
+														<div class="input__item">
+															<label for="inp3" class="input__label">
+																Прізвище
+															</label>
+															<input id="inp3" autocomplete="off" type="text" name="lastName" data-error="Назва помилки написана в data-error атрибуті" placeholder="Прізвище" data-required class="input input_sm">
+														</div>
+														<div class="input__item">
+															<label for="inp4" class="input__label">
+																Ваше email
+															</label>
+															<input id="inp4" autocomplete="off" type="email" name="email" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email"  class="input input_sm">
+														</div>
+													</div>
+												
+												</div>
+												<div class="tab-checkout__item">
+													<div class="tab-checkout__items items-cl-2">
+														<div class="input__item">
+															<label for="inp15" class="input__label">
+																Ваше ім'я
+															</label>
+															<div class="input__sub-item">
+																<input id="inp15" autocomplete="off" type="text" name="firstName" value="Юлія" data-error="Назва помилки написана в data-error атрибуті" placeholder="Ім'я" data-required class="input input_sm" readonly>
+															</div>
+														</div>
+														<div class="input__item">
+															<label for="inp16" class="input__label">
+																Прізвище
+															</label>
+															<div class="input__sub-item">
+																<input id="inp16" autocomplete="off" type="text" name="lastName" value="Михайлова" data-error="Назва помилки написана в data-error атрибуті" placeholder="Прізвище" data-required class="input input_sm" readonly>
+																<button disabled type="button" class="input__clear icon-cross"></button>
+															</div>
+														</div>
+														<div class="input__item">
+															<label for="inp19" class="input__label">
+																Ваше email
+															</label>
+															<div class="input__sub-item">
+																<input id="inp19" autocomplete="off" type="email" name="email" value="yuliiia@gmail.com" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email"  class="input input_sm" readonly>
+																<button disabled type="button" class="input__clear icon-cross"></button>
+															</div>
+														</div>
+														<div class="input__item">
+															<label for="inp20" class="input__label">
+																Номер телефону
+															</label>
+															<div class="input__sub-item">
+																<input id="inp20" autocomplete="off" type="tel" name="tel" value="+380-50-104-88-57" data-error="Введіть телефон" placeholder="example@gmail.com" data-required  class="input input_sm" readonly>
+																<button disabled type="button" class="input__clear icon-cross"></button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<button type="submit" class="tab-checkout__btn btn btn_dark">Отримати код</button>
+											</form>
+		
 									
 										<!-- Оплата -->
 										<div class="checkout__tab tab-checkout tab-checkout_payment">
