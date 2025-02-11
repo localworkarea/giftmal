@@ -1,54 +1,172 @@
-//<QUANTITY>
-// Сніппет (HTML): qa
+[data-quantity]._value-set {
+	.quantity__item {
+		background-color: var(--gray-2);
+		border-color: var(--gray-2);
+	}
+	
+}
+[data-quantity].quantity_type-1 {
+	.quantity__item {
+		background-color: var(--gray-3);
+		border-color: var(--gray-3);
+	}
+}
+
+[data-quantity]._form-error {
+	.quantity__item {
+		border-color: var(--red);
+	}
+}
+
 .quantity {
-	width: 88px;
-	height: 40px;
-	display: flex;
-	border: 1px solid rgba(166, 166, 166, 0.45);
-	// .quantity__button
-	&__button {
-		flex: 0 0 30px;
-		position: relative;
-		cursor: pointer;
-		&::before,
-		&::after {
-			content: "";
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transition: all 0.3s ease 0s;
-			margin: 0px 0px 0px -4.5px;
-			background-color: #a6a6a6;
-			width: 9px;
-			height: 1px;
+	// .quantity_type-1
+	&_type-1 {
+	}
+	// .quantity__item
+	&__item {
+		display: flex;
+		align-items: center;
+		// justify-content: space-between;
+		background-color: var(--gray-1);
+		transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+		@extend %fonsSize13-14;
+		min-height: toRem(48);
+		padding: toRem(6.5) toRem(6.5);
+		gap: toRem(8);
+		border-radius: toRem(30);
+		border: toRem(1.5) solid var(--gray-1);
+		&:not(:last-child) {
+			margin-bottom: toRem(6);
 		}
-		@media (any-hover: hover) {
-			&:hover {
-				&::before,
-				&::after {
-					background-color: rgba(0, 0, 0, 0.5);
+		.quantity_type-1 & {
+			padding: 0;
+			min-height: toRem(29);
+			background-color: var(--gray-3);
+			border-color: var(--gray-3);
+			border: toRem(0);
+			gap: toRem(1);
+		}
+		@media (any-hover: hover){
+			&:hover{
+				background-color: var(--gray-2);
+				border-color: var(--gray-2);
+			}
+		}
+	}
+	// .quantity__btn
+	&__btn {
+		width: toRem(32);
+		height: toRem(32);
+		border-radius: 50%;
+		position: relative;
+		background-color: var(--white);
+		cursor: pointer;
+		transition: background-color .3s ease, color .3s ease;
+		.quantity_type-1 & {
+			background-color: var(--gray-3);
+			// width: toRem(24);
+			// height: toRem(24);
+		}
+		@media (any-hover: hover){
+			&:hover{
+				background-color: var(--dark-violet);
+				&::before {
+					color: var(--white);
 				}
 			}
 		}
-		// .quantity__button_plus
-		&--plus {
+		&:active {
+			background-color: var(--dark-violet);
 			&::before {
-				transform: rotate(-90deg);
+				color: var(--white);
 			}
 		}
-		// .quantity__button_minus
-		&--minus {
+		&::before {
+			font-size: toRem(32);
+			transition:  color .3s ease;
+			.quantity_type-1 & {
+				// font-size: toRem(16);
+			}
 		}
+		&:disabled {
+			background-color: var(--white) !important;
+			&::before {
+				color: var(--fade-violet-1) !important;
+			}
+			.quantity_type-1 & {
+				background-color: var(--gray-3) !important;
+			}
+		}
+		// .quantity__btn_minus
+		&_minus {
+		}
+		// .quantity__btn_plus
+		&_plus {
+			
+		}
+	}
+	// .quantity__block
+	&__block {
+		flex: 1;
+		display: flex;
+		justify-content: center;
 	}
 	// .quantity__input
 	&__input {
-		flex: 1 1 auto;
+		display: flex;
+		align-items: center;
+		gap: toRem(4);
+		max-width: toRem(48);
+		position: relative;
+		left: toRem(32);
+		.quantity_type-1 & {
+			left: 0;
+			gap: toRem(1);
+		}
 		input {
 			height: 100%;
-			color: #a6a6a6;
-			font-size: 12px;
 			width: 100%;
-			text-align: center;
+			text-align: right;
+			outline: none;
+			&::placeholder {
+				color: var(--fade-violet-2);	
+				._form-error & {
+					color: var(--red);
+				}
+			}
 		}
+		input,
+		span {
+			.quantity_type-1 & {
+				font-weight: 600;
+				font-size: toRem(11);
+			}
+			._value-empty & {
+				color: var(--fade-violet-2);				
+			}
+			._value-set & {
+				color: var(--dark-violet);
+			}
+			._form-error & {
+				color: var(--red);
+			}
+		}
+	}
+	&__warning,
+	&__error {
+		font-weight: 600;
+		font-size: toRem(11);
+		line-height: 1.45;
+		&:not(:last-child) {
+			margin-bottom: toRem(6);
+		}
+	}
+	// .quantity__warning
+	&__warning {
+		color: var(--fade-violet-2)
+	}
+	// .quantity__error
+	&__error {
+		color: var(--red);
 	}
 }

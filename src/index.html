@@ -193,6 +193,7 @@
 									</div>
 								</div>
 							</div>
+						
 							
 	
 							<br><br>
@@ -250,6 +251,167 @@
 								</div>
 							</div>
 							<br><br>
+							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Кнопки кількість</b></p><br>
+							<p>Якщо значення не вказано додається класс помилки <b>_form-error</b></p><p>Можна вказувати атрибути з потрібними значеннями <b>data-quantity-min="1" data-quantity-max="3"</b>. Окремо є можливість ввести цифри у сам інпут</p>
+							<br>
+							<div data-quantity class="quantity">
+								<div class="quantity__item">
+									<div class="quantity__block">
+										<div class="quantity__input">
+											<input data-quantity-value type="text" name="" placeholder="0" value="" data-required>
+											<span>шт</span>
+										</div>
+									</div>
+									<div class="quantity__btns">
+										<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+										<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+									</div>
+								</div>
+								<div class="quantity__error">Ви обрали останній товар</div>
+							</div>
+							<br>
+							<div data-quantity class="quantity">
+								<div class="quantity__item">
+									<div class="quantity__block">
+										<div class="quantity__input">
+											<input data-quantity-value  type="text" name=""  data-quantity-min="1" data-quantity-max="3" placeholder="0" value="2" data-required>
+											<span>шт</span>
+										</div>
+									</div>
+									<div class="quantity__btns">
+										<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+										<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+									</div>
+								</div>
+								<div class="quantity__warning">Залишились: <span>3</span> шт</div>
+							</div>
+							<br>
+							<p>Кнопка кількість з классом <b>quantity_type-1</b></p><br>
+							<div style="max-width: 150px;">
+								<div data-quantity class="quantity quantity_type-1">
+									<div class="quantity__item">
+										<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+										<div class="quantity__block">
+											<div class="quantity__input">
+												<input data-quantity-value  type="text" name="" placeholder="0" value="1">
+												<span>шт</span>
+											</div>
+										</div>
+										<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+									</div>
+								</div>
+							</div>
+							<br>
+							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Електронна листівка</b></p><br>
+							<p style="text-align: center;">Вигляд листівки за замовчуванням</p>
+							<br>
+							<div style="max-width: 400px; margin-inline: auto;">
+								<div class="e-card">
+									<div class="e-card__logo icon-logo"></div>
+									<div class="e-card__header">
+										<div class="e-card__title">
+											З Днем народження!
+										</div>
+										<div class="e-card__text txt-11">
+											Вітаю з твоїм днем! Бажаю миру, любові та щастя. Нехай усі твої мрії збуваються!
+										</div>
+									</div>
+									<div class="e-card__image">
+										<div class="e-card__icon icon-picture-add-2"></div>
+										<div class="e-card__wrapper-img">
+											<!-- <img class="ibg" src="img/checkout/item-06.jpg" alt="Image"> -->
+										</div>
+									</div>
+									<div class="e-card__card">
+										<p class="e-card__card-t txt-11">Ваша подарункова картка</p>
+										<div class="e-card__gift gift-card">
+											<div class="gift-card__img">
+												<img src="img/checkout/item-02.jpg" class="ibg" width="158" height="103" alt="Image">
+											</div>
+											<div class="gift-card__body">
+												<div class="gift-card__name">The cake</div>
+												<div class="gift-card__type txt-11">Електронний • 1 шт</div>
+												<div class="gift-card__date txt-11">Дійсний до: 31.01.28</div>
+												<div class="gift-card__price">₴ <span>400</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<p style="text-align: center;">Додайте класс <b>_no-img</b> і поле для picture плавно скриється</p>
+							<br>
+							<div style="max-width: 400px; margin-inline: auto;">
+								<div class="e-card _no-img">
+									<div class="e-card__logo icon-logo"></div>
+									<div class="e-card__header">
+										<div class="e-card__title">
+											З Днем народження!
+										</div>
+										<div class="e-card__text txt-11">
+											Вітаю з твоїм днем! Бажаю миру, любові та щастя. Нехай усі твої мрії збуваються!
+										</div>
+									</div>
+									<div class="e-card__image">
+										<div class="e-card__icon icon-picture-add-2"></div>
+										<div class="e-card__wrapper-img">
+											<!-- <img class="ibg" src="img/checkout/item-06.jpg" alt="Image"> -->
+										</div>
+									</div>
+									<div class="e-card__card">
+										<p class="e-card__card-t txt-11">Ваша подарункова картка</p>
+										<div class="e-card__gift gift-card">
+											<div class="gift-card__img">
+												<img src="img/checkout/item-02.jpg" class="ibg" width="158" height="103" alt="Image">
+											</div>
+											<div class="gift-card__body">
+												<div class="gift-card__name">The cake</div>
+												<div class="gift-card__type txt-11">Електронний • 1 шт</div>
+												<div class="gift-card__date txt-11">Дійсний до: 31.01.28</div>
+												<div class="gift-card__price">₴ <span>400</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br><br>
+							<p style="text-align: center;">Додайте класс <b>_has-text</b> щоб змінити колір вибранного/введенного тексту.</p>
+							<br>
+							<div style="max-width: 400px; margin-inline: auto;">
+								<div class="e-card _has-text">
+									<div class="e-card__logo icon-logo"></div>
+									<div class="e-card__header">
+										<div class="e-card__title">
+											З Днем народження!
+										</div>
+										<div class="e-card__text txt-11">
+											Вітаю з твоїм днем! Бажаю миру, любові та щастя. Нехай усі твої мрії збуваються!
+										</div>
+									</div>
+									<div class="e-card__image">
+										<div class="e-card__icon icon-picture-add-2"></div>
+										<div class="e-card__wrapper-img">
+											<img class="ibg" src="img/checkout/item-06.jpg" alt="Image">
+										</div>
+									</div>
+									<div class="e-card__card">
+										<p class="e-card__card-t txt-11">Ваша подарункова картка</p>
+										<div class="e-card__gift gift-card">
+											<div class="gift-card__img">
+												<img src="img/checkout/item-02.jpg" class="ibg" width="158" height="103" alt="Image">
+											</div>
+											<div class="gift-card__body">
+												<div class="gift-card__name">The cake</div>
+												<div class="gift-card__type txt-11">Електронний • 1 шт</div>
+												<div class="gift-card__date txt-11">Дійсний до: 31.01.28</div>
+												<div class="gift-card__price">₴ <span>400</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br><br>
+							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Функціонал</b></p><br>
 				</div>
 			</main>
 			@@include('html/_footer.htm',{})

@@ -1,13 +1,6 @@
-// Модуль попапів
-// (c) Фрілансер по життю, "Хмурый Кот"
-// Документація по роботі у шаблоні: https://template.fls.guru/template-docs/funkcional-popup.html
-// Сніппет (HTML): pl
-
-// Підключення функціоналу "Чортоги Фрілансера"
 import { isMobile, bodyLockStatus, bodyLock, bodyUnlock, bodyLockToggle, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 
-// Клас Popup
 class Popup {
 	constructor(options) {
 		let config = {
@@ -34,8 +27,8 @@ class Popup {
 			closeEsc: true, // Закриття ESC
 			bodyLock: true, // Блокування скролла
 			hashSettings: {
-				location: true, // Хеш в адресному рядку
-				goHash: true, // Перехід по наявності в адресному рядку
+				location: false, // Хеш в адресному рядку
+				goHash: false, // Перехід по наявності в адресному рядку
 			},
 			on: { // Події
 				beforeOpen: function () { },
@@ -102,7 +95,6 @@ class Popup {
 		this.options.init ? this.initPopups() : null
 	}
 	initPopups() {
-		this.popupLogging(`Прокинувся`);
 		this.eventsPopup();
 	}
 	eventsPopup() {
@@ -115,9 +107,9 @@ class Popup {
 				this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ?
 					buttonOpen.getAttribute(this.options.attributeOpenButton) :
 					'error';
-				this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ?
-					buttonOpen.getAttribute(this.options.youtubeAttribute) :
-					null;
+				// this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ?
+				// 	buttonOpen.getAttribute(this.options.youtubeAttribute) :
+				// 	null;
 				if (this._dataValue !== 'error') {
 					if (!this.isOpen) this.lastFocusEl = buttonOpen;
 					this.targetOpen.selector = `${this._dataValue}`;
@@ -125,7 +117,7 @@ class Popup {
 					this.open();
 					return;
 
-				} else this.popupLogging(`Йой, не заповнено атрибут у ${buttonOpen.classList}`);
+				}
 
 				return;
 			}
@@ -188,23 +180,23 @@ class Popup {
 			this.targetOpen.element = document.querySelector(this.targetOpen.selector);
 
 			if (this.targetOpen.element) {
-				// YouTube
-				if (this.youTubeCode) {
-					const codeVideo = this.youTubeCode;
-					const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`
-					const iframe = document.createElement('iframe');
-					iframe.setAttribute('allowfullscreen', '');
+				// // YouTube
+				// if (this.youTubeCode) {
+				// 	const codeVideo = this.youTubeCode;
+				// 	const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`
+				// 	const iframe = document.createElement('iframe');
+				// 	iframe.setAttribute('allowfullscreen', '');
 
-					const autoplay = this.options.setAutoplayYoutube ? 'autoplay;' : '';
-					iframe.setAttribute('allow', `${autoplay}; encrypted-media`);
+				// 	const autoplay = this.options.setAutoplayYoutube ? 'autoplay;' : '';
+				// 	iframe.setAttribute('allow', `${autoplay}; encrypted-media`);
 
-					iframe.setAttribute('src', urlVideo);
+				// 	iframe.setAttribute('src', urlVideo);
 
-					if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
-						const youtubePlace = this.targetOpen.element.querySelector('.popup__text').setAttribute(`${this.options.youtubePlaceAttribute}`, '');
-					}
-					this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
-				}
+				// 	if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
+				// 		const youtubePlace = this.targetOpen.element.querySelector('.popup__text').setAttribute(`${this.options.youtubePlaceAttribute}`, '');
+				// 	}
+				// 	this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
+				// }
 				if (this.options.hashSettings.location) {
 					// Отримання хешу та його виставлення
 					this._getHash();
@@ -228,7 +220,7 @@ class Popup {
 				}
 				else this._reopen = false;
 
-				this.targetOpen.element.setAttribute('aria-hidden', 'false');
+				// this.targetOpen.element.setAttribute('aria-hidden', 'false');
 
 				// Запам'ятаю це відчинене вікно. Воно буде останнім відкритим
 				this.previousOpen.selector = this.targetOpen.selector;
@@ -250,9 +242,8 @@ class Popup {
 						popup: this
 					}
 				}));
-				this.popupLogging(`Відкрив попап`);
 
-			} else this.popupLogging(`Йой, такого попапу немає. Перевірте коректність введення. `);
+			}
 		}
 	}
 	close(selectorValue) {
@@ -271,14 +262,14 @@ class Popup {
 			}
 		}));
 
-		// YouTube
-		if (this.youTubeCode) {
-			if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`))
-				this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = '';
-		}
+		// // YouTube
+		// if (this.youTubeCode) {
+		// 	if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`))
+		// 		this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = '';
+		// }
 		this.previousOpen.element.classList.remove(this.options.classes.popupActive);
-		// aria-hidden
-		this.previousOpen.element.setAttribute('aria-hidden', 'true');
+		// // aria-hidden
+		// this.previousOpen.element.setAttribute('aria-hidden', 'true');
 		if (!this._reopen) {
 			document.documentElement.classList.remove(this.options.classes.bodyActive);
 			!this.bodyLock ? bodyUnlock() : null;
@@ -304,7 +295,6 @@ class Popup {
 			this._focusTrap();
 		}, 50);
 
-		this.popupLogging(`Закрив попап`);
 	}
 	// Отримання хешу 
 	_getHash() {
@@ -320,9 +310,9 @@ class Popup {
 
 		const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace('.', "#")}"]`);
 
-		this.youTubeCode = buttons.getAttribute(this.options.youtubeAttribute) ?
-			buttons.getAttribute(this.options.youtubeAttribute) :
-			null;
+		// this.youTubeCode = buttons.getAttribute(this.options.youtubeAttribute) ?
+		// 	buttons.getAttribute(this.options.youtubeAttribute) :
+		// 	null;
 
 		if (buttons && classInHash) this.open(classInHash);
 	}
@@ -354,10 +344,6 @@ class Popup {
 		} else {
 			focusable[0].focus();
 		}
-	}
-	// Функція виведення в консоль
-	popupLogging(message) {
-		this.options.logging ? FLS(`[Попапос]: ${message}`) : null;
 	}
 }
 // Запускаємо та додаємо в об'єкт модулів

@@ -79,7 +79,6 @@
 													</summary>
 													<div class="tab-checkout__spoller-body">
 														<div class="tab-checkout__content">
-															
 															<div class="tab-checkout__item">
 																<p class="tab-checkout__subtitle">
 																	1. Оберіть тип доставки
@@ -297,7 +296,7 @@
 																			</label>
 																			<div data-select-enter class="input__sub-item">
 																				<input data-select-input autocomplete="off" type="text" name="form[]" hidden>
-																				<select id="selectTopic" name="form[]" data-class-modif="type-btn" data-speed="200" data-show-selected data-scroll="250" data-search>
+																				<select id="selectTopic" name="form[]" data-class-modif="type-2" data-speed="200" data-show-selected data-scroll="250" data-search>
 																					<option value data-show data-class="item-placeholder">Оберіть тему вітання</option>
 																					<option value="1">Тема вітання №1</option>
 																					<option value="2">Тема вітання №2</option>
@@ -346,7 +345,7 @@
 																			<div class="illustrations">
 																				<label class="illustrations__item illustrations__item--add">
 																					<input type="file" class="illustrations__input" id="customImageInput" accept="image/*" hidden>
-																					<span class="illustrations__price">₴0</span>
+																					<span class="illustrations__price price-label">₴0</span>
 																					<div class="illustrations__bg">
 																						<div class="illustrations__bg-item">
 																							<div class="illustrations__icon icon-picture-add"></div>
@@ -357,49 +356,49 @@
 																				</label>
 																				<label class="illustrations__item">
 																					<input type="radio" name="illustration" class="illustrations__input" value="image1" hidden>
-																					<span class="illustrations__price">₴50</span>
+																					<span class="illustrations__price price-label">₴50</span>
 																					<div class="illustrations__img">
 																						<img class="ibg" src="@img/illustrations/illust-01.jpg" alt="Illustration 1">
 																					</div>
 																				</label>
 																				<label class="illustrations__item">
 																					<input type="radio" name="illustration" class="illustrations__input" value="image2" hidden>
-																					<span class="illustrations__price">₴50</span>
+																					<span class="illustrations__price price-label">₴50</span>
 																					<div class="illustrations__img">
 																						<img class="ibg" src="@img/illustrations/illust-02.jpg" alt="Illustration 2">
 																					</div>
 																				</label>
 																				<label class="illustrations__item">
 																					<input type="radio" name="illustration" class="illustrations__input" value="image3" hidden>
-																					<span class="illustrations__price">₴50</span>
+																					<span class="illustrations__price price-label">₴50</span>
 																					<div class="illustrations__img">
 																						<img class="ibg" src="@img/illustrations/illust-03.jpg" alt="Illustration 3">
 																					</div>
 																				</label>
 																				<label class="illustrations__item">
 																					<input type="radio" name="illustration" class="illustrations__input" value="image4" hidden>
-																					<span class="illustrations__price">₴50</span>
+																					<span class="illustrations__price price-label">₴50</span>
 																					<div class="illustrations__img">
 																						<img class="ibg" src="@img/illustrations/illust-04.jpg" alt="Illustration 4">
 																					</div>
 																				</label>
 																				<label class="illustrations__item">
 																					<input type="radio" name="illustration" class="illustrations__input" value="image5" hidden>
-																					<span class="illustrations__price">₴50</span>
+																					<span class="illustrations__price price-label">₴50</span>
 																					<div class="illustrations__img">
 																						<img class="ibg" src="@img/illustrations/illust-05.jpg" alt="Illustration 5">
 																					</div>
 																				</label>
 																				<label class="illustrations__item">
 																					<input type="radio" name="illustration" class="illustrations__input" value="image6" hidden>
-																					<span class="illustrations__price">₴50</span>
+																					<span class="illustrations__price price-label">₴50</span>
 																					<div class="illustrations__img">
 																						<img class="ibg" src="@img/illustrations/illust-06.jpg" alt="Illustration 6">
 																					</div>
 																				</label>
 																				<label class="illustrations__item">
 																					<input type="radio" name="illustration" class="illustrations__input" value="image7" hidden>
-																					<span class="illustrations__price">₴50</span>
+																					<span class="illustrations__price price-label">₴50</span>
 																					<div class="illustrations__img">
 																						<img class="ibg" src="@img/illustrations/illust-07.jpg" alt="Illustration 7">
 																					</div>
@@ -416,7 +415,7 @@
 																				Вигляд електронної листівки
 																			</span>
 																		</div>
-																		<div class="e-card _no-img _has-text">
+																		<div class="e-card _has-text">
 																			<div class="e-card__logo icon-logo"></div>
 																			<div class="e-card__header">
 																				<div class="e-card__title">
@@ -462,7 +461,6 @@
 													</summary>
 													<div class="tab-checkout__spoller-body">
 														<div class="tab-checkout__content">
-															
 															<div class="tab-checkout__item">
 																<p class="tab-checkout__subtitle">
 																	1. Оберіть тип доставки
@@ -630,26 +628,393 @@
 																		</p>
 																	</div>
 																</div>
-																<p class="tab-checkout__subtitle">
-																	Оберіть подарункове оформлення
-																</p>
+															
 																<div class="tab-checkout__slider slider-checkout swiper">
-																	<div class="slider-checkout__wrapper swiper-wrapper">
-																		<div class="slider-checkout__slide swiper-slide"></div>
+																	<div class="slider-checkout__nav">
+																		<p class="slider-checkout__subtitle">
+																			Оберіть подарункове оформлення
+																		</p>
+																		<div class="slider-checkout__group">
+																			<button type="button" class="slider-checkout__button swiper-button-prev icon-arrow-down"></button>
+																			<button type="button" class="slider-checkout__button swiper-button-next icon-arrow-down"></button>
+																		</div>
 																	</div>
-																	<div class="slider-checkout__pagination swiper-pagination"></div>
-																	<button type="button" class="slider-checkout__button swiper-button-prev icon-arrow-down"></button>
-																	<button type="button" class="slider-checkout__button swiper-button-next icon-arrow-down"></button>
+																	<div class="slider-checkout__wrapper swiper-wrapper">
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_sm">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-07.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Персикова коробка з голограмою
+																					</div>
+																					<div class="card-slider__subtitle">
+																						14,5 х 12,5 х 2,5 см
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_sm">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-07.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Персикова коробка з голограмою
+																					</div>
+																					<div class="card-slider__subtitle">
+																						14,5 х 12,5 х 2,5 см
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_sm">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-07.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Персикова коробка з голограмою
+																					</div>
+																					<div class="card-slider__subtitle">
+																						14,5 х 12,5 х 2,5 см
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_sm">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-07.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Персикова коробка з голограмою
+																					</div>
+																					<div class="card-slider__subtitle">
+																						14,5 х 12,5 х 2,5 см
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_sm">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-07.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Персикова коробка з голограмою
+																					</div>
+																					<div class="card-slider__subtitle">
+																						14,5 х 12,5 х 2,5 см
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_sm">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-07.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Персикова коробка з голограмою
+																					</div>
+																					<div class="card-slider__subtitle">
+																						14,5 х 12,5 х 2,5 см
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																
+																<div class="tab-checkout__slider slider-checkout slider-checkout_visible swiper">
+																	<div class="slider-checkout__nav">
+																		<p class="slider-checkout__subtitle">
+																			Додайте фізичний сертифікат до листівки
+																		</p>
+																		<div class="slider-checkout__group">
+																			<button type="button" class="slider-checkout__button swiper-button-prev icon-arrow-down"></button>
+																			<button type="button" class="slider-checkout__button swiper-button-next icon-arrow-down"></button>
+																		</div>
+																	</div>
+																	<div class="slider-checkout__wrapper swiper-wrapper">
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_lg">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-04.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Фокстрот
+																					</div>
+																					<div class="card-slider__subtitle">
+																						Мережа супермаркетів електроніки та комп’ютерних ігор
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<select  name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
+																						<option value="1" checked>100 грн</option>
+																						<option value="2">200 грн</option>
+																						<option value="3">500 грн</option>
+																						<option value="4">1000 грн</option>
+																						<option value="5">1500 грн</option>
+																						<option value="6">3000 грн</option>
+																						<option value="7">10000 грн</option>
+																					</select>
+																					<div data-quantity class="quantity quantity_type-1">
+																						<div class="quantity__item">
+																							<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+																							<div class="quantity__block">
+																								<div class="quantity__input">
+																									<input data-quantity-value  type="text" name="" placeholder="0" value="1">
+																									<span>шт</span>
+																								</div>
+																							</div>
+																							<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+																						</div>
+																					</div>
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_lg">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-04.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Фокстрот
+																					</div>
+																					<div class="card-slider__subtitle">
+																						Мережа супермаркетів електроніки та комп’ютерних ігор
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<select  name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
+																						<option value="1" checked>100 грн</option>
+																						<option value="2">200 грн</option>
+																						<option value="3">500 грн</option>
+																						<option value="4">1000 грн</option>
+																						<option value="5">1500 грн</option>
+																						<option value="6">3000 грн</option>
+																						<option value="7">10000 грн</option>
+																					</select>
+																					<div data-quantity class="quantity quantity_type-1">
+																						<div class="quantity__item">
+																							<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+																							<div class="quantity__block">
+																								<div class="quantity__input">
+																									<input data-quantity-value  type="text" name="" placeholder="0" value="1">
+																									<span>шт</span>
+																								</div>
+																							</div>
+																							<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+																						</div>
+																					</div>
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_lg">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-04.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Фокстрот
+																					</div>
+																					<div class="card-slider__subtitle">
+																						Мережа супермаркетів електроніки та комп’ютерних ігор
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<select  name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
+																						<option value="1" checked>100 грн</option>
+																						<option value="2">200 грн</option>
+																						<option value="3">500 грн</option>
+																						<option value="4">1000 грн</option>
+																						<option value="5">1500 грн</option>
+																						<option value="6">3000 грн</option>
+																						<option value="7">10000 грн</option>
+																					</select>
+																					<div data-quantity class="quantity quantity_type-1">
+																						<div class="quantity__item">
+																							<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+																							<div class="quantity__block">
+																								<div class="quantity__input">
+																									<input data-quantity-value  type="text" name="" placeholder="0" value="1">
+																									<span>шт</span>
+																								</div>
+																							</div>
+																							<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+																						</div>
+																					</div>
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div class="card-slider card-slider_lg">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-04.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Фокстрот
+																					</div>
+																					<div class="card-slider__subtitle">
+																						Мережа супермаркетів електроніки та комп’ютерних ігор
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<select  name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
+																						<option value="1" checked>100 грн</option>
+																						<option value="2">200 грн</option>
+																						<option value="3">500 грн</option>
+																						<option value="4">1000 грн</option>
+																						<option value="5">1500 грн</option>
+																						<option value="6">3000 грн</option>
+																						<option value="7">10000 грн</option>
+																					</select>
+																					<div data-quantity class="quantity quantity_type-1">
+																						<div class="quantity__item">
+																							<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+																							<div class="quantity__block">
+																								<div class="quantity__input">
+																									<input data-quantity-value  type="text" name="" placeholder="0" value="1">
+																									<span>шт</span>
+																								</div>
+																							</div>
+																							<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+																						</div>
+																					</div>
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<a href="#" class="card-slider-link" aria-label="link">
+																				<div class="card-slider-link__head">
+																					<p>Дивись більше<br> 
+																						брендів у нашому каталозі</p>
+																				</div>
+																				<div class="card-slider-link__icon icon-arrow-down"></div>
+																				<div class="card-slider-link__images">
+																					<img src="@img/checkout/item-09.jpg" width="64" height="42" alt="Image">
+																					<img src="@img/checkout/item-10.jpg" width="64" height="42" alt="Image">
+																					<img src="@img/checkout/item-11.jpg" width="64" height="42" alt="Image">
+																				</div>
+																			</a>
+																		</div>
+																	</div>
+																</div>
+																
+															</div>
+															<div class="tab-checkout__row row-gap-16">
+																<button type="submit" class="tab-checkout__btn btn btn_dark">Продовжити</button>
+																<div class="checkbox">
+																	<input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input">
+																	<label for="formAgreement" class="checkbox__label icon-checkbox">
+																		<span>Не передзвонювати мені для підтвердження замовлення</span>
+																	</label>
 																</div>
 															</div>
-															<button type="submit" class="tab-checkout__btn btn btn_dark">Продовжити</button>
-															<div class="checkbox">
-																<input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input _req">
-																<label for="formAgreement" class="checkbox__label"><span>Я даю свое согласие на обработку персональных данных в соответствии с <a href="">Условиями</a>*</span></label>
-															</div>
-
-
-
 															
 														</div>
 													</div>

@@ -3,63 +3,22 @@
 .select {
 	min-width: 0;
 	position: relative;
-
-	// &.select_type-btn {
-	// 	position: absolute;
-	// 	top: 0;
-	// 	right: 0;
-	// 	width: 100%;
-	// 	pointer-events: none;
-	// 	.select__body {
-	// 		display: flex;
-	// 		justify-content: flex-end;
-	// 	}
-	// 	.select__title {
-	// 		pointer-events: all;
-	// 		@media (min-width:$mobileSmall){
-	// 			width: toRem(40);
-	// 			height: toRem(40);
-	// 		}
-	// 		@media (max-width:$mobileSmall){
-	// 			width: toRem(48);
-	// 			height: toRem(48);
-	// 		}
-	// 	}
-	// 	.select__value {
-	// 		padding: 0;
-	// 		justify-content: center;
-	// 	}
-	// 	.select__content {
-	// 		display: none;
-	// 	}
-	// 	.select__option {
-	// 		pointer-events: all;
-	// 	}
-	// }
 	// .select__body
 	&__body {
 		position: relative;
 	}
 	// .select__title
 	&__title {
-		// color: inherit;
-		// border: 1px solid #d9d9d9;
-		// background-color: #fff;
-		// cursor: pointer;
-		// border-radius: 4px;
-		
 		text-align: left;
 		width: 100%;
 		caret-color: inherit;
 		border: toRem(1.5) solid transparent;
 		font-weight: 500;
 		border-radius: toRem(24);
-		// padding: toRem(0) toRem(16); 
 		background-color: var(--gray-1);
 		color: var(--dark-violet);
 		cursor: pointer;
 		transition: background-color .3s ease, color .3s ease, border .3s ease, outline .3s ease;
-
 		._select-open &,
 		._select-focus & {
 			background-color: var(--gray-2);
@@ -75,20 +34,28 @@
 		display: flex;
 		min-width: 0;
 		align-items: center;
-		// height: toRem(30);
 	
-		padding: toRem(10) toRem(16);
 		gap: toRem(10);
 		> * {
 			flex: 1 1 auto;
 		}
-		@media (min-width:$mobileSmall){
-			min-height: toRem(40);
-			font-size: toRem(13);
+		.select_type-1 &,
+		.select_type-2 & {
+			padding: toRem(10) toRem(16);
+			@media (min-width:$mobileSmall){
+				min-height: toRem(40);
+				font-size: toRem(13);
+			}
+			@media (max-width:$mobileSmall){
+				min-height: toRem(48);
+				font-size: toRem(14);
+			}
 		}
-		@media (max-width:$mobileSmall){
-			min-height: toRem(48);
-			font-size: toRem(14);
+		.select_type-3 & {
+			padding: toRem(6) toRem(12);
+			min-height: toRem(30);
+			font-size: toRem(11);
+			gap: toRem(3);
 		}
 		&:after {
 			// icon-arrow-down ---
@@ -116,6 +83,7 @@
 			._select-open & {
 				transform: rotate(-180deg);
 			}
+			
 		}
 		&._select-pseudo-label {
 			&::before {
@@ -176,7 +144,9 @@
 		border-radius: toRem(24);
 		box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.16);
 		overflow: hidden;
-		
+		.select_type-3 & {
+			padding: toRem(4) 0;
+		}
 		._select-open & {
 			min-height: toRem(56);
 		}
@@ -188,6 +158,9 @@
 		overflow-x: hidden;
 		// Максимальна висота
 		max-height: toRem(200);
+		.select_type-3 & {
+			padding: 0 toRem(4);
+		}
 		// Стилі скроллбару
 		.simplebar-scrollbar {
 			&::before {
@@ -210,9 +183,16 @@
 		font-weight: 500;
 		border-radius: toRem(16);		
 		transition: background-color .3s ease;
+		.select_type-3 & {
+			font-size: toRem(11);
+			padding: toRem(6) toRem(10);
+		}
 		&.icon-check {
 			&::before {
 				order: 2;
+				.select_type-3 & {
+					display: none;
+				}
 			}
 		}
 		@media (min-width:$mobileSmall){

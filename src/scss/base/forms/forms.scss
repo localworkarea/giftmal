@@ -317,6 +317,7 @@ textarea.input {
 }
 
 
+// options ==========================
 .option {
   display: grid;
   grid-template-columns: repeat(auto-fit,minmax(130px, 1fr));
@@ -397,6 +398,80 @@ textarea.input {
 }
 
 
+// checkbox =========================
+.checkbox {
+  @extend  %fonsSize13-14;
+  position: relative;
+  // .checkbox__input
+  &__input {
+    display: none;
+    &:checked {
+      + .checkbox__label {
+        &::after {
+          background-color: var(--dark-violet);
+          border-color: var(--dark-violet);
+        }
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  // .checkbox__label
+  &__label {
+    display: inline-flex;
+    align-items: flex-start;
+    line-height: 1.5;
+    gap: toRem(8);
+    cursor: pointer;
+    color: var(--fade-violet-2);
+    position: relative;
+    @media (any-hover: hover){
+      &:hover{
+        &::after {
+          border-color: var(--dark-violet);
+        }
+      }
+    }
+    &:before {
+      position: absolute;
+      top: toRem(0);
+      left: toRem(0.5);
+      z-index: 2;
+      font-size: toRem(16);
+      color: var(--white);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    &::after {
+      content: '';
+      position: relative;
+      z-index: 1;
+      order: 1;
+      width: toRem(16);
+      height: toRem(16);
+      flex: 0 0 toRem(16);
+      border-radius: 6px;
+      border: toRem(1.5) solid var(--fade-violet-2);
+      transition: border-color .3s ease, background-color .2s ease;
+    }
+    span {
+      order: 2;
+      display: inline-block;
+    }
+    a {
+      color: var(--violet);
+      transition: color .3s ease;
+      @media (any-hover: hover){
+        &:hover{
+          color: var(--dark-violet);
+        }
+      }
+    }
+  }
+}
+
+
 
 // <BUTTONS>
 // Сніппет (HTML): btn
@@ -424,7 +499,7 @@ textarea.input {
 
 // <QUANTITY>
 // Сніппет (HTML): qa
-// @import "quantity";
+@import "quantity";
 
 // <RANGE>
 // Сніппет (HTML):

@@ -206,6 +206,16 @@ export let formValidate = {
 		}
 		return error;
 	},
+	handleValueSetClass(inputElement) {
+    let quantityWrapper = inputElement.closest('[data-quantity]');
+    if (quantityWrapper) {
+        if (inputElement.value.trim() !== '') {
+            quantityWrapper.classList.add('_value-set');
+        } else {
+            quantityWrapper.classList.remove('_value-set');
+        }
+    }
+	},
 	validateInput(formRequiredItem) {
 		let error = 0;
 		if (formRequiredItem.dataset.required === "email") {
@@ -246,6 +256,13 @@ export let formValidate = {
 	addError(formRequiredItem) {
 		formRequiredItem.classList.add('_form-error');
 		formRequiredItem.parentElement.classList.add('_form-error');
+
+		// Если это поле data-quantity, добавляем ошибку к data-quantity
+    let quantityWrapper = formRequiredItem.closest('[data-quantity]');
+    if (quantityWrapper) {
+        quantityWrapper.classList.add('_form-error');
+    }
+
 		let inputError = formRequiredItem.parentElement.querySelector('.form__error');
 		if (inputError) formRequiredItem.parentElement.removeChild(inputError);
 		if (formRequiredItem.dataset.error) {
@@ -255,6 +272,13 @@ export let formValidate = {
 	removeError(formRequiredItem) {
 		formRequiredItem.classList.remove('_form-error');
 		formRequiredItem.parentElement.classList.remove('_form-error');
+
+		// Если это поле data-quantity, убираем ошибку у data-quantity
+    let quantityWrapper = formRequiredItem.closest('[data-quantity]');
+    if (quantityWrapper) {
+        quantityWrapper.classList.remove('_form-error');
+    }
+
 		if (formRequiredItem.parentElement.querySelector('.form__error')) {
 			formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector('.form__error'));
 		}
@@ -412,31 +436,198 @@ export function formSubmit() {
 
 }
 // Модуль форми "кількість"
+// export function formQuantity() {
+// 	document.addEventListener("click", function (e) {
+//     let targetElement = e.target;
+    
+//     if (targetElement.closest('[data-quantity-plus]') || targetElement.closest('[data-quantity-minus]')) {
+//         const quantityElement = targetElement.closest('[data-quantity]');
+//         const valueElement = quantityElement.querySelector('[data-quantity-value]');
+//         const minusButton = quantityElement.querySelector('[data-quantity-minus]');
+//         const plusButton = quantityElement.querySelector('[data-quantity-plus]');
+//         let value = parseInt(valueElement.value) || 0; // Если пусто, то 0
+
+//         const min = +valueElement.dataset.quantityMin || 1;
+//         const max = +valueElement.dataset.quantityMax || Infinity;
+
+//         if (targetElement.hasAttribute('data-quantity-plus')) {
+//             if (value === 0) {
+//                 value = min; // Если изначально пусто, ставим min
+//             } else {
+//                 value++;
+//             }
+//             if (value >= max) {
+//                 value = max;
+//             }
+//         } else {
+//             value--;
+//             if (value < min) {
+//                 value = min;
+//             }
+//         }
+
+//         valueElement.value = value;
+//         updateQuantityState(quantityElement);
+//     }
+// 	});
+
+// 	// Запрещаем ввод любых символов, кроме цифр
+// 	document.addEventListener("input", function (e) {
+// 	    if (e.target.matches('[data-quantity-value]')) {
+// 	        e.target.value = e.target.value.replace(/\D/g, ''); // Удаляем все нечисловые символы
+			
+// 					let quantityWrapper = e.target.closest('[data-quantity]');
+// 	        if (quantityWrapper) {
+// 	            updateQuantityState(quantityWrapper);
+// 	            formValidate.handleValueSetClass(e.target);
+// 	        }
+// 	    }
+// 	});
+
+// 	// Ограничиваем вводимое значение в пределах min и max
+// 	document.addEventListener("change", function (e) {
+// 	    if (e.target.matches('[data-quantity-value]')) {
+// 	        const valueElement = e.target;
+// 	        const quantityElement = valueElement.closest('[data-quantity]');
+			
+// 	        let value = parseInt(valueElement.value) || 0;
+// 	        const min = +valueElement.dataset.quantityMin || 1;
+// 	        const max = +valueElement.dataset.quantityMax || Infinity;
+
+// 	        if (value < min) {
+// 	            value = min;
+// 	        } else if (value > max) {
+// 	            value = max;
+// 	        }
+
+// 	        valueElement.value = value;
+// 	        updateQuantityState(quantityElement);
+// 	    }
+// 	});
+
+// 	// При загрузке страницы проверяем инпуты и отключаем кнопки "-" и "+"
+// 	document.addEventListener("DOMContentLoaded", function () {
+// 	    document.querySelectorAll('[data-quantity]').forEach(quantityElement => {
+// 	        updateQuantityState(quantityElement);
+// 	    });
+// 	});
+
+// 	// Функция для обновления состояния счетчика
+// 	function updateQuantityState(quantityElement) {
+// 	    const valueElement = quantityElement.querySelector('[data-quantity-value]');
+// 	    const minusButton = quantityElement.querySelector('[data-quantity-minus]');
+// 	    const plusButton = quantityElement.querySelector('[data-quantity-plus]');
+	
+// 	    let value = parseInt(valueElement.value) || 0;
+// 	    const min = +valueElement.dataset.quantityMin || 1;
+// 	    const max = +valueElement.dataset.quantityMax || Infinity;
+
+// 	    // Добавляем или убираем классы _value-empty и _value-set
+// 	    if (valueElement.value.trim() === "") {
+// 	        quantityElement.classList.add('_value-empty');
+// 	        quantityElement.classList.remove('_value-set');
+// 	    } else {
+// 	        quantityElement.classList.remove('_value-empty');
+// 	        quantityElement.classList.add('_value-set');
+// 	    }
+
+// 	    // Управляем состоянием кнопок
+// 	    minusButton.disabled = value <= min;
+// 	    plusButton.disabled = value >= max;
+// 	}
+
+// }
+
+// Модуль формы "количество"
 export function formQuantity() {
-	document.addEventListener("click", function (e) {
-		let targetElement = e.target;
-		if (targetElement.closest('[data-quantity-plus]') || targetElement.closest('[data-quantity-minus]')) {
-			const valueElement = targetElement.closest('[data-quantity]').querySelector('[data-quantity-value]');
-			let value = parseInt(valueElement.value);
-			if (targetElement.hasAttribute('data-quantity-plus')) {
-				value++;
-				if (+valueElement.dataset.quantityMax && +valueElement.dataset.quantityMax < value) {
-					value = valueElement.dataset.quantityMax;
-				}
+    document.addEventListener("click", function (e) {
+        let targetElement = e.target;
+        let quantityElement = targetElement.closest("[data-quantity]");
+        if (!quantityElement) return;
+
+        let valueElement = quantityElement.querySelector("[data-quantity-value]");
+        let minusButton = quantityElement.querySelector("[data-quantity-minus]");
+        let plusButton = quantityElement.querySelector("[data-quantity-plus]");
+        
+        let value = parseInt(valueElement.value) || 0;
+        let min = parseInt(valueElement.dataset.quantityMin) || 1;
+        let max = parseInt(valueElement.dataset.quantityMax) || Infinity;
+
+        if (targetElement.closest("[data-quantity-plus]")) {
+            value = Math.min(value + 1, max);
+        } else if (targetElement.closest("[data-quantity-minus]")) {
+            value = Math.max(value - 1, min);
+        } else {
+            return;
+        }
+
+        valueElement.value = value;
+        updateQuantityState(quantityElement);
+        formValidate.validateInput(valueElement); // Добавили валидацию
+    });
+
+    document.addEventListener("input", function (e) {
+        if (!e.target.matches("[data-quantity-value]")) return;
+        
+        let valueElement = e.target;
+        valueElement.value = valueElement.value.replace(/\D/g, ""); // Убираем все нечисловые символы
+
+        let quantityElement = valueElement.closest("[data-quantity]");
+        if (quantityElement) {
+            updateQuantityState(quantityElement);
+            formValidate.handleValueSetClass(valueElement); // Обновляем класс _value-set
+        }
+    });
+
+    document.addEventListener("change", function (e) {
+        if (!e.target.matches("[data-quantity-value]")) return;
+
+        let valueElement = e.target;
+        let quantityElement = valueElement.closest("[data-quantity]");
+        let min = parseInt(valueElement.dataset.quantityMin) || 1;
+        let max = parseInt(valueElement.dataset.quantityMax) || Infinity;
+
+        let value = parseInt(valueElement.value) || 0;
+        valueElement.value = Math.max(min, Math.min(value, max));
+
+        updateQuantityState(quantityElement);
+        formValidate.validateInput(valueElement); // Валидация после изменения
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("[data-quantity]").forEach(updateQuantityState);
+    });
+
+    function updateQuantityState(quantityElement) {
+			let valueElement = quantityElement.querySelector("[data-quantity-value]");
+			let minusButton = quantityElement.querySelector("[data-quantity-minus]");
+			let plusButton = quantityElement.querySelector("[data-quantity-plus]");
+
+			let value = valueElement.value.trim(); // Учитываем пустые строки
+
+			// Добавляем классы при загрузке и изменении
+			if (value === "" || value === "0") {
+					quantityElement.classList.add("_value-empty");
+					quantityElement.classList.remove("_value-set");
 			} else {
-				--value;
-				if (+valueElement.dataset.quantityMin) {
-					if (+valueElement.dataset.quantityMin > value) {
-						value = valueElement.dataset.quantityMin;
-					}
-				} else if (value < 1) {
-					value = 1;
-				}
+					quantityElement.classList.add("_value-set");
+					quantityElement.classList.remove("_value-empty");
 			}
-			targetElement.closest('[data-quantity]').querySelector('[data-quantity-value]').value = value;
-		}
-	});
+
+			// Отключаем кнопки, если достигнуты границы
+			let min = parseInt(valueElement.dataset.quantityMin) || 1;
+			let max = parseInt(valueElement.dataset.quantityMax) || Infinity;
+			minusButton.disabled = parseInt(value) <= min;
+			plusButton.disabled = parseInt(value) >= max;
+
+			// Проверяем ошибки
+			formValidate.validateInput(valueElement);
+	}
 }
+
+
+
+
 
 /*
 export function formRating() {

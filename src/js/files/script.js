@@ -93,6 +93,33 @@ document.addEventListener("DOMContentLoaded", () => {
      
     }
     updateOrderCheckoutElHeights();
+
+
+    // == card-slider елементи =============================================
+    const slidersCheckout = document.querySelectorAll(".slider-checkout");
+    slidersCheckout.forEach(slider => {
+        const cardSliders = slider.querySelectorAll(".card-slider");
+        
+        if (cardSliders.length > 0) {
+            cardSliders.forEach(card => {
+              card.addEventListener("click", function () {
+                const isQuantity = event.target.closest(".quantity, .select_type-3");
+                
+                if (isQuantity) {
+                    return;
+                }
+
+                if (card.classList.contains("checked")) {
+                    card.classList.remove("checked");
+                } else {
+                    cardSliders.forEach(item => item.classList.remove("checked"));
+                    card.classList.add("checked");
+                }
+            });
+            });
+        }
+    });
+    // =======================================
     
   
     let lastWidth = window.innerWidth;
