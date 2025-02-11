@@ -190,7 +190,7 @@
 .icon-food:before {
   content: ""
 }
-.icon.webpt:before {
+.icon-gift:before {
   content: ""
 }
 .icon-group-of-people:before {
@@ -3474,29 +3474,29 @@ textarea.input {
   font-weight: 600;
   color: var(--fade-violet-2)
 }
-.webpt-card {
+.gift-card {
   display: grid;
   grid-template-columns: 47% 1fr;
   background-color: var(--white)
 }
-.webpt-card__img {
+.gift-card__img {
   overflow: hidden
 }
-.webpt-card__img img {
+.gift-card__img img {
   aspect-ratio: 158/103
 }
-.webpt-card__body {
+.gift-card__body {
   display: flex;
   flex-direction: column;
   gap: .5rem;
   font-weight: 600;
   line-height: 1.2
 }
-.webpt-card__name {
+.gift-card__name {
   flex: 1
 }
-.webpt-card__date,
-.webpt-card__type {
+.gift-card__date,
+.gift-card__type {
   color: var(--fade-violet-2)
 }
 @media (min-width:30.06125em) {
@@ -3684,10 +3684,10 @@ textarea.input {
   .e-card__card-t {
     margin-bottom: .5rem
   }
-  .webpt-card__name {
+  .gift-card__name {
     font-size: .75rem
   }
-  .webpt-card__price {
+  .gift-card__price {
     margin-top: .625rem;
     font-size: 1.125rem;
     font-size: 1.125rem
@@ -3747,12 +3747,12 @@ textarea.input {
     max-width: 15rem;
     margin-inline: auto
   }
-  .webpt-card {
+  .gift-card {
     border-radius: 1.5rem;
     padding: .5rem;
     gap: .9375rem
   }
-  .webpt-card__img {
+  .gift-card__img {
     border-radius: 1rem
   }
 }
@@ -3879,12 +3879,12 @@ textarea.input {
   .e-card__header {
     padding: .875rem 0 1.5rem
   }
-  .webpt-card {
+  .gift-card {
     border-radius: 1.25rem;
     padding: .5625rem;
     gap: .625rem
   }
-  .webpt-card__img {
+  .gift-card__img {
     border-radius: .875rem
   }
 }
@@ -4124,10 +4124,10 @@ textarea.input {
   .e-card__card-t {
     margin-bottom: .75rem
   }
-  .webpt-card__name {
+  .gift-card__name {
     font-size: .625rem
   }
-  .webpt-card__price {
+  .gift-card__price {
     margin-top: 1rem;
     font-size: .9375rem
   }
