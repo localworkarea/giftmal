@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250212152929">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250212183814">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -512,7 +512,7 @@
 					<p>2. Приклад додавання атрибуту <b>data-one-select</b> для батьківського елементу для двох селектів, який при відкритті одного закриває інший.</p><br>
 					<div data-one-select class="tab-checkout__items items-cl-2">
 						<div class="input__item">
-							<p><b>Select з полем для пошуку</b></p><br>
+							<p><b>Select з полем для пошуку</b> (data-class-modif="type-2")</p><br>
 							<label for="departmentCity" class="input__label">
 								Місто
 							</label>
@@ -530,7 +530,7 @@
 							</select>
 						</div>
 						<div class="input__item">
-							<p><b>Select без поля пошуку</b></p><br>
+							<p><b>Select без поля пошуку</b> (data-class-modif="type-2")</p><br>
 							<label for="department" class="input__label">
 								Відділення
 							</label>
@@ -554,8 +554,8 @@
 							</select>
 						</div>
 					</div>
-					<br><br>
-					<p>Select з типом <b> data-class-modif="type-3"</b>, використовуєтсья у карточках слайдеру на сторінці Checkout</p><br>
+					<br>
+					<p>3. Select з типом <b> data-class-modif="type-3"</b>, використовуєтсья у карточках слайдеру на сторінці Checkout</p><br>
 					<div style="max-width: 120px;">
 						<select name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
 							<option value="1" checked>100 грн</option>
@@ -567,6 +567,16 @@
 							<option value="7">10000 грн</option>
 						</select>
 					</div>
+					<br>
+					<p>4. Select з типом <b> data-class-modif="type-4"</b></p><br>
+					<select name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="300" data-required>
+						<option value data-class="item-placeholder">$ 500</option>
+						<option value="1">₴ 500</option>
+						<option value="2">₴ 1 000</option>
+						<option value="3">₴ 1 500</option>
+						<option value="4">₴ 2 000</option>
+						<option value="5">₴ 2 500</option>
+					</select>
 				</div>
 				<div style="padding: 30px 0 60px; border-top: 1px solid gray">
 					<p><b>Календар і час (datepicker) ...</b></p><br>
@@ -581,11 +591,11 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250212152929"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250212152929"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250212152929"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250212152929"></script>
-	<script src="js/app.min.js?_v=20250212152929"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250212183814"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250212183814"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250212183814"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250212183814"></script>
+	<script src="js/app.min.js?_v=20250212183814"></script>
 </body>
 
 </html>

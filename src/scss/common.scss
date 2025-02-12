@@ -169,6 +169,12 @@
   padding: toRem(0) toRem(24) toRem(24);
 }
 
+%bgClrPopups {
+  background-color: var(--dark-violet-opacity);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+}
+
 .txt-accent {
   line-height: 1.5;
   color: var(--fade-violet-2);
