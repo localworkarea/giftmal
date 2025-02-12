@@ -162,6 +162,13 @@
   }
 }
 
+%bgMobilePopup {
+  position: relative;
+  box-shadow: 0 -4px 40px 0 rgba(33, 5, 41, 0.12);
+  border-radius: toRem(24) toRem(24) 0 0 ;
+  padding: toRem(0) toRem(24) toRem(24);
+}
+
 .txt-accent {
   line-height: 1.5;
   color: var(--fade-violet-2);

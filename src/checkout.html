@@ -805,7 +805,7 @@
 																	</div>
 																	<div class="slider-checkout__wrapper swiper-wrapper">
 																		<div class="slider-checkout__slide swiper-slide">
-																			<div class="card-slider card-slider_lg">
+																			<div data-popup="#popupSliderCheckout" class="card-slider card-slider_lg">
 																				<div class="card-slider__head">
 																					<div class="card-slider__box">
 																						<span class="card-slider__price price-label">$50</span>
@@ -851,7 +851,7 @@
 																			</div>
 																		</div>
 																		<div class="slider-checkout__slide swiper-slide">
-																			<div class="card-slider card-slider_lg">
+																			<div data-popup="#popupSliderCheckout2" data-popup-width="480.98,max" class="card-slider card-slider_lg">
 																				<div class="card-slider__head">
 																					<div class="card-slider__box">
 																						<span class="card-slider__price price-label">$50</span>
@@ -897,7 +897,7 @@
 																			</div>
 																		</div>
 																		<div class="slider-checkout__slide swiper-slide">
-																			<div class="card-slider card-slider_lg">
+																			<div data-popup="#popupSliderCheckout" data-popup-width="480.98,max" class="card-slider card-slider_lg">
 																				<div class="card-slider__head">
 																					<div class="card-slider__box">
 																						<span class="card-slider__price price-label">$50</span>
@@ -943,7 +943,53 @@
 																			</div>
 																		</div>
 																		<div class="slider-checkout__slide swiper-slide">
-																			<div class="card-slider card-slider_lg">
+																			<div data-popup="#popupSliderCheckout" data-popup-width="480.98,max" class="card-slider card-slider_lg">
+																				<div class="card-slider__head">
+																					<div class="card-slider__box">
+																						<span class="card-slider__price price-label">$50</span>
+																						<span class="card-slider__check icon-check"></span>
+																					</div>
+																					<img class="ibg" src="@img/checkout/item-04.jpg" width="184" height="116" alt="Image">
+																				</div>
+																				<div class="card-slider__body">
+																					<div class="card-slider__title">
+																						Фокстрот
+																					</div>
+																					<div class="card-slider__subtitle">
+																						Мережа супермаркетів електроніки та комп’ютерних ігор
+																					</div>
+																				</div>
+																				<div class="card-slider__footer">
+																					<select  name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
+																						<option value="1" checked>100 грн</option>
+																						<option value="2">200 грн</option>
+																						<option value="3">500 грн</option>
+																						<option value="4">1000 грн</option>
+																						<option value="5">1500 грн</option>
+																						<option value="6">3000 грн</option>
+																						<option value="7">10000 грн</option>
+																					</select>
+																					<div data-quantity class="quantity quantity_type-1">
+																						<div class="quantity__item">
+																							<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+																							<div class="quantity__block">
+																								<div class="quantity__input">
+																									<input data-quantity-value  type="text" name="" placeholder="0" value="1">
+																									<span>шт</span>
+																								</div>
+																							</div>
+																							<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+																						</div>
+																					</div>
+																					<div class="card-slider__checked icon-check">
+																						<span>Обрати</span>
+																						<span>Обрано</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="slider-checkout__slide swiper-slide">
+																			<div data-popup="#popupSliderCheckout" data-popup-width="480.98,max" class="card-slider card-slider_lg">
 																				<div class="card-slider__head">
 																					<div class="card-slider__box">
 																						<span class="card-slider__price price-label">$50</span>
@@ -1313,6 +1359,7 @@
 		<script src="files/air-datepicker/air-datepicker.min.js"></script>
 		<script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
 		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+		@@include('html/_popup-mb.htm',{})
 		@@include('html/_js.htm',{})
 	</body>
 </html>

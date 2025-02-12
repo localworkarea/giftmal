@@ -1,61 +1,80 @@
 body::after {
 	content: "";
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: var(--dark-violet-opacity);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
 	opacity: 0;
-	transition: opacity 0.8s ease 0s;
+	transition: opacity 0.3s ease 0s;
 	pointer-events: none;
 	z-index: 149;
 }
 .popup-show body::after {
 	opacity: 1;
 }
+
 .popup {
 	position: fixed;
+	z-index: 150;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
-	padding: 30px 10px;
-	transition: visibility 0.8s ease 0s;
-	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.3s ease 0.3s;
+	// overflow: auto;
 	pointer-events: none;
-}
-.popup_show {
-	z-index: 150;
-	visibility: visible;
-	overflow: auto;
-	pointer-events: auto;
-}
-.popup_show .popup__content {
-	visibility: visible;
-	transform: scale(1);
-}
-.popup__wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	min-height: 100%;
-	flex: 1 1 auto;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.popup__content {
-	visibility: hidden;
-	transform: scale(0);
-	transition: transform 0.3s ease 0s;
-	background-color: #eee;
-	padding: 20px;
-	width: 100%;
-	max-width: 900px;
-	border-radius: 20px;
-	.lock & {
-		visibility: visible;
+	&.popup_show {
+		opacity: 1;
+		pointer-events: auto !important;
+		transition-delay: 0s;
+	}
+	// .popup__wrapper
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-end;
+		min-height: 100%;
+		flex: 1 1 auto;
+		width: 100%;
+	}
+	
+	// .popup__content
+	&__content {
+		background-color: #eee;
+		width: 100%;
+		max-width: 900px;
+		@extend %bgMobilePopup;
+		transform: translate(0%,100%) !important;
+		transition: transform 0.45s ease 0s, ;
+		.popup_show & {
+				transform: translate(0,0%) !important;
+				transition-delay: 0s;
+			}
+		}
+
+	// .popup__close
+	&__close {
+		width: 100%;
+		height: toRem(32);
+		outline: none;
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			top: toRem(8);
+			left: 50%;
+			transform: translate(-50%,0);
+			width: toRem(70);
+			height: toRem(5);
+			border-radius: toRem(5);
+			background-color: var(--fade-violet-1);
+		}
 	}
 }
+

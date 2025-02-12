@@ -7,7 +7,7 @@
 		<div class="wrapper">
 			@@include('html/_header.htm',{})
 			<main class="page">
-				<div class="page__container" style="padding-inline: 20px; font-size: 18px; padding-block:30px 300px; line-height: 1.1; background-color: #f8f8f8a6; max-width: 900px;">
+				<div class="page__container" style="padding-inline: 20px; font-size: 18px; padding-block:30px 300px; line-height: 1.2; background-color: #f8f8f8a6; max-width: 900px;">
 
 					<p>Посилання на сторінки:</p><br>
 					<ul style="padding-bottom: 30px; border-bottom: 1px solid gray">
@@ -254,6 +254,8 @@
 							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Кнопки кількість</b></p><br>
 							<p>Якщо значення не вказано додається класс помилки <b>_form-error</b></p><p>Можна вказувати атрибути з потрібними значеннями <b>data-quantity-min="1" data-quantity-max="3"</b>. Окремо є можливість ввести цифри у сам інпут</p>
 							<br>
+							<p><b>1. Кнопки за замовчуванням</b></p>
+							<br>
 							<div data-quantity class="quantity">
 								<div class="quantity__item">
 									<div class="quantity__block">
@@ -286,8 +288,8 @@
 								<div class="quantity__warning">Залишились: <span>3</span> шт</div>
 							</div>
 							<br>
-							<p>Кнопка кількість з классом <b>quantity_type-1</b></p><br>
-							<div style="max-width: 150px;">
+							<p><b>2. Тип 1 з класом quantity_type-1</b> (сторінка Checkout, карточки у слайдері)</p><br>
+							<div style="max-width: 90px;">
 								<div data-quantity class="quantity quantity_type-1">
 									<div class="quantity__item">
 										<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
@@ -411,7 +413,154 @@
 								</div>
 							</div>
 							<br><br>
-							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Функціонал</b></p><br>
+							<div style="padding: 30px 0 60px; border-top: 1px solid gray">
+								<p><b>Функціонал Dropdown (Select)</b></p><br>
+								<p>Для дропдаунів використовується кастомний Select. Функціонал дозволяє як завгодно стилізувати стандартний елемент форми Select. Для підключення того чи іншого функціоналу використовуються різні HTML-атрибути</p><br>
+								<p><b>Атрибути для тегу SELECT:</b></p><br>
+									<li>
+										<b>disabled</b> – недоступний
+									</li><br>
+									<li>
+										<b>multiple</b> – мультивибір
+									</li><br>
+									<li>
+										<b>data-class-modif=имя класса</b> – модифікатор до конкретного селекту. У результаті вийде select select_ім’я класу
+									</li><br>
+									<li>
+										<b>data-checkbox</b> – стилізація елементів по checkbox (тільки для multiple)
+									</li><br>
+									<li>
+										<b>data-tags</b> – режим тегів (тільки для multiple) дозволяє вставляти вибрані значення у вигляді тегів з хрестиком для видалення. Також є можливість виводити ці теги в будь-якому зазначеному місці, вказавши селектор блоку як значення атрибуту
+									</li><br>
+									<li>
+										<b>data-scroll</b> – включить прокрутку для списку, зазначене число для атрибуту обмежить висоту контейнера випадаючого списку
+									</li><br>
+									<li>
+										<b>data-show-selected</b> – вимикає приховування вибраного елемента
+									</li><br>
+									<li>
+										<b>data-search</b> – дозволяє шукати за списком
+									</li><br>
+									<li>
+										<b>data-speed</b> – дозволяє вказати швидкість відкриття/закриття списку в мілісекундах за замовчуванням 150
+									</li><br>
+									<li>
+										<b>data-open</b> – селект відкритий відразу
+									</li><br>
+									<li>
+										<b>data-submit</b> – відправляє форму при зміні селекту
+									</li><br>
+									<li>
+										<b>data-pseudo-label=заголовок</b> – додає псевдоелемент до заголовка селекту із зазначеним текстом, а також клас _select-pseudo-label
+									</li><br><br>
+
+									<p><b>Атрибути для тегу OPTION:</b></p><br>
+									<li>
+										<b>data-class=имя класса</b> – додає клас										
+									</li><br>
+									<li>
+										<b>data-asset=путь к картинке или текст</b> – додає в елемент списку структуру двох колонок із зазначеними даними										
+									</li><br>
+									<li>
+										<b>data-href=адрес ссылки</b> – додає посилання до елементу списку										
+									</li><br>
+									<li>
+										<b>data-href-blank</b> – відкриє посилання у новому вікні										
+									</li><br><br>
+									
+									<p><b>Атрибути для інших елементів</b></p><br>
+									<li>
+										<b>data-one-select</b> – селекти всередині об’єкта з цим атрибутом будуть відкриватися лише по одному. Тобто при відкритті селекту інший відкритий селект закривається.								
+									</li><br><br>
+									<p><b>1. Елемент написання або вибору теми:</b> об'єднює input та select батьківським атрибутом <b>data-select-enter</b>. Поле вводу для тексту робить як пошук із випадаючого списку, так і записує останнє введенне значення у прихований input <b>data-select-input</b>. Стилізація елементу за атрибутом <b>data-class-modif="type-2"</b></p><br>
+									<div class="input__item">
+										<label for="selectTopic" class="input__label">
+											Оберіть або напишіть тему вітання
+										</label>
+										<div data-select-enter class="input__sub-item">
+											<input data-select-input autocomplete="off" type="text" name="form[]" hidden>
+											<select id="selectTopic" name="form[]" data-class-modif="type-2" data-speed="200" data-show-selected data-scroll="250" data-search>
+												<option value data-show data-class="item-placeholder">Оберіть тему вітання</option>
+												<option value="1">Тема вітання №1</option>
+												<option value="2">Тема вітання №2</option>
+												<option value="3">Тема вітання №3</option>
+												<option value="4">Тема вітання №4</option>
+												<option value="5">Тема вітання №5</option>
+												<option value="6">Тема вітання №6</option>
+												<option value="7">Тема вітання №7</option>
+												<option value="8">Тема вітання №8</option>
+												<option value="9">Тема вітання №9</option>
+												<option value="10">Тема вітання №10</option>
+											</select>
+										</div>
+									</div>
+									<br><br>
+
+									<p>2. Приклад додавання атрибуту <b>data-one-select</b> для батьківського елементу для двох селектів, який при відкритті одного закриває інший.</p><br>
+									<div data-one-select class="tab-checkout__items items-cl-2">
+										<div class="input__item">
+											<p><b>Select з полем для пошуку</b></p><br>
+											<label for="departmentCity" class="input__label">
+												Місто
+											</label>
+											<select id="departmentCity" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="250" data-search  data-required >
+												<option value data-class="item-placeholder">Місто</option>
+												<option value="2">Київ</option>
+												<option value="3">Львів</option>
+												<option value="4">Харків</option>
+												<option value="5">Дніпро</option>
+												<option value="6">Івано-Франківськ</option>
+												<option value="7">Одеса</option>
+												<option value="8">Рівне</option>
+												<option value="9">Житомир</option>
+												<option value="10">Луцьк</option>
+											</select>
+										</div>
+										<div class="input__item">
+											<p><b>Select без поля пошуку</b></p><br>
+											<label for="department" class="input__label">
+												Відділення
+											</label>
+											<select id="department" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="400"  data-required >
+												<option value data-class="item-placeholder">Відділення</option>
+												<option value="2">Відд №1. Драгоманова, 10А Відд №1. Драгоманова, 10А</option>
+												<option value="3">Відд №2. Пирогівський шлях, 15</option>
+												<option value="4">Відд №3. Богатирський, 20А</option>
+												<option value="5">Відд №4. Слобажанська, 25</option>
+												<option value="6">Відд №5. Драгоманова, 30</option>
+												<option value="7">Відд №6. Драгоманова, 35</option>
+												<option value="8">Відд №10. Драгоманова, 40в</option>
+												<option value="9">Відд №11. Драгоманова, 45</option>
+												<option value="10">Відд №18. Драгоманова, 50</option>
+												<option value="11">Відд №19. Драгоманова, 55б</option>
+												<option value="12">Відд №20. Драгоманова, 65</option>
+												<option value="13">Відд №21. Драгоманова, 135</option>
+												<option value="14">Відд №22. Драгоманова, 215</option>
+												<option value="15">Відд №23. Драгоманова, 1</option>
+												<option value="16">Відд №24. Драгоманова, 1а</option>
+											</select>
+										</div>
+									</div>
+									<br><br>
+									<p>Select з типом <b> data-class-modif="type-3"</b>, використовуєтсья у карточках слайдеру на сторінці Checkout</p><br>
+									<div style="max-width: 120px;">
+										<select  name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
+											<option value="1" checked>100 грн</option>
+											<option value="2">200 грн</option>
+											<option value="3">500 грн</option>
+											<option value="4">1000 грн</option>
+											<option value="5">1500 грн</option>
+											<option value="6">3000 грн</option>
+											<option value="7">10000 грн</option>
+										</select>
+									</div>
+							</div>
+							<div style="padding: 30px 0 60px; border-top: 1px solid gray">
+								<p><b>Календар і час (datepicker) ...</b></p><br>
+							</div>
+							<div style="padding: 30px 0 60px; border-top: 1px solid gray">
+								<p><b>Функціонал ...</b></p><br>
+							</div>
 				</div>
 			</main>
 			@@include('html/_footer.htm',{})

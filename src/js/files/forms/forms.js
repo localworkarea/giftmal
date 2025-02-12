@@ -538,7 +538,7 @@ export function formSubmit() {
 
 // }
 
-// Модуль формы "количество"
+// Модуль форми "кількість"
 export function formQuantity() {
     document.addEventListener("click", function (e) {
         let targetElement = e.target;

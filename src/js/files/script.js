@@ -97,28 +97,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // == card-slider елементи =============================================
     const slidersCheckout = document.querySelectorAll(".slider-checkout");
+
     slidersCheckout.forEach(slider => {
         const cardSliders = slider.querySelectorAll(".card-slider");
-        
+    
         if (cardSliders.length > 0) {
             cardSliders.forEach(card => {
-              card.addEventListener("click", function () {
-                const isQuantity = event.target.closest(".quantity, .select_type-3");
-                
-                if (isQuantity) {
-                    return;
-                }
-
-                if (card.classList.contains("checked")) {
-                    card.classList.remove("checked");
-                } else {
-                    cardSliders.forEach(item => item.classList.remove("checked"));
-                    card.classList.add("checked");
-                }
-            });
+                card.addEventListener("click", function (event) {
+                    const isQuantity = event.target.closest(".quantity, .select_type-3");
+                    
+                    if (isQuantity) {
+                        return;
+                    }
+                    
+                    if (!card.classList.contains("checked")) {
+                        cardSliders.forEach(item => item.classList.remove("checked"));
+                        card.classList.add("checked");
+                    }
+                });
             });
         }
     });
+    
     // =======================================
     
   
@@ -475,14 +475,118 @@ if (illustrationInput) {
 
 
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   const popup = document.querySelector(".popup");
+//   const popupContent = popup.querySelector(".popup__content");
+//   const popupTop = popup.querySelector(".popup__close");
+//   let startY = 0;
+//   let currentY = 0;
+//   let isDragging = false;
+//   let initialHeight = popupContent.offsetHeight;
+  
+//   popupTop.addEventListener("touchstart", (e) => {
+//       startY = e.touches[0].clientY;
+//       currentY = startY;
+//       isDragging = true;
+//   });
+
+//   popupTop.addEventListener("touchmove", (e) => {
+//       if (!isDragging) return;
+//       currentY = e.touches[0].clientY;
+//       let deltaY = currentY - startY;
+
+//       if (deltaY > 100) {
+//           flsModules.popup.close(); 
+//           setTimeout(() => {
+//             popupContent.style.height = "";
+//           }, 300);
+          
+//       } else {
+//           // Потягивание вверх (увеличение высоты)
+//           let newHeight = initialHeight - deltaY;
+//           popupContent.style.height = `${newHeight}px`;
+//       }
+//   });
+
+//   popupTop.addEventListener("touchend", () => {
+//       isDragging = false;
+//       let deltaY = currentY - startY;
+      
+//       if (deltaY > 100) {
+//           setTimeout(() => {
+//             popupContent.style.transform = "";
+//             popupContent.style.height = "";
+//           }, 300);
+//       } else {
+//           popupContent.style.height = "${deltaY}px";
+//       }
+//   });
+// });
 
 
 
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  // Получаем все попапы на странице
+  const popups = document.querySelectorAll(".popup");
 
+  popups.forEach(popup => {
+    const popupContent = popup.querySelector(".popup__content");
+    const popupTop = popup.querySelector(".popup__close");
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+    let initialHeight = popupContent.offsetHeight;
 
+    // Обработчик начала касания
+    popupTop.addEventListener("touchstart", (e) => {
+        startY = e.touches[0].clientY;
+        currentY = startY;
+        isDragging = true;
+
+        // Обновляем начальную высоту, чтобы она была актуальной
+        initialHeight = popupContent.offsetHeight;
+    });
+
+    // Обработчик перемещения
+    popupTop.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        currentY = e.touches[0].clientY;
+        let deltaY = currentY - startY;
+
+        if (deltaY > 50) {
+            // Закрываем попап
+            flsModules.popup.close(); 
+            setTimeout(() => {
+              popupContent.style.height = "";
+            }, 300);
+        } else {
+            // Потягивание вверх (увеличение высоты)
+            let newHeight = initialHeight - deltaY;
+            popupContent.style.height = `${newHeight}px`;
+        }
+    });
+
+    // Обработчик завершения касания
+    popupTop.addEventListener("touchend", () => {
+        isDragging = false;
+        let deltaY = currentY - startY;
+
+        if (deltaY > 100) {
+            // Закрытие попапа
+            setTimeout(() => {
+              popupContent.style.transform = "";
+              popupContent.style.height = "";
+            }, 300);
+        } else {
+            // Возвращаем высоту контента
+            popupContent.style.height = `${initialHeight - deltaY}px`;
+        }
+    });
+  });
+});
 
 
 

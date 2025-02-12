@@ -1,6 +1,13 @@
 (() => {
     "use strict";
     const modules_flsModules = {};
+    function addLoadedClass() {
+        if (!document.documentElement.classList.contains("loading")) window.addEventListener("load", (function() {
+            setTimeout((function() {
+                document.documentElement.classList.add("loaded");
+            }), 0);
+        }));
+    }
     let _slideUp = (target, duration = 500, showmore = 0) => {
         if (!target.classList.contains("_slide")) {
             target.classList.add("_slide");
@@ -268,8 +275,8 @@
                 closeEsc: true,
                 bodyLock: true,
                 hashSettings: {
-                    location: false,
-                    goHash: false
+                    location: true,
+                    goHash: true
                 },
                 on: {
                     beforeOpen: function() {},
@@ -325,6 +332,13 @@
                 const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
                 if (buttonOpen) {
                     e.preventDefault();
+                    const popupWidth = buttonOpen.getAttribute("data-popup-width");
+                    if (popupWidth) {
+                        const tempElement = document.createElement("div");
+                        tempElement.dataset.breakpoint = `${popupWidth},max`;
+                        const mdQueriesArray = dataMediaQueries([ tempElement ], "breakpoint");
+                        if (mdQueriesArray && mdQueriesArray.length) if (!mdQueriesArray.some((md => md.matchMedia.matches))) return;
+                    }
                     this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
                     if (this._dataValue !== "error") {
                         if (!this.isOpen) this.lastFocusEl = buttonOpen;
@@ -421,6 +435,10 @@
                 !this.bodyLock ? bodyUnlock() : null;
                 this.isOpen = false;
             }
+            const popupContent = this.targetOpen.element.querySelector(".popup__content");
+            if (popupContent) setTimeout((() => {
+                popupContent.style.height = "";
+            }), 300);
             this._removeHash();
             if (this._selectorOpen) {
                 this.lastClosed.selector = this.previousOpen.selector;
@@ -4730,10 +4748,10 @@
         slidersCheckout.forEach((slider => {
             const cardSliders = slider.querySelectorAll(".card-slider");
             if (cardSliders.length > 0) cardSliders.forEach((card => {
-                card.addEventListener("click", (function() {
+                card.addEventListener("click", (function(event) {
                     const isQuantity = event.target.closest(".quantity, .select_type-3");
                     if (isQuantity) return;
-                    if (card.classList.contains("checked")) card.classList.remove("checked"); else {
+                    if (!card.classList.contains("checked")) {
                         cardSliders.forEach((item => item.classList.remove("checked")));
                         card.classList.add("checked");
                     }
@@ -4919,7 +4937,47 @@
             }));
         }));
     }
+    document.addEventListener("DOMContentLoaded", (() => {
+        const popups = document.querySelectorAll(".popup");
+        popups.forEach((popup => {
+            const popupContent = popup.querySelector(".popup__content");
+            const popupTop = popup.querySelector(".popup__close");
+            let startY = 0;
+            let currentY = 0;
+            let isDragging = false;
+            let initialHeight = popupContent.offsetHeight;
+            popupTop.addEventListener("touchstart", (e => {
+                startY = e.touches[0].clientY;
+                currentY = startY;
+                isDragging = true;
+                initialHeight = popupContent.offsetHeight;
+            }));
+            popupTop.addEventListener("touchmove", (e => {
+                if (!isDragging) return;
+                currentY = e.touches[0].clientY;
+                let deltaY = currentY - startY;
+                if (deltaY > 50) {
+                    modules_flsModules.popup.close();
+                    setTimeout((() => {
+                        popupContent.style.height = "";
+                    }), 300);
+                } else {
+                    let newHeight = initialHeight - deltaY;
+                    popupContent.style.height = `${newHeight}px`;
+                }
+            }));
+            popupTop.addEventListener("touchend", (() => {
+                isDragging = false;
+                let deltaY = currentY - startY;
+                if (deltaY > 100) setTimeout((() => {
+                    popupContent.style.transform = "";
+                    popupContent.style.height = "";
+                }), 300); else popupContent.style.height = `${initialHeight - deltaY}px`;
+            }));
+        }));
+    }));
     window["FLS"] = false;
+    addLoadedClass();
     spollers();
     formFieldsInit({
         viewPass: false,
