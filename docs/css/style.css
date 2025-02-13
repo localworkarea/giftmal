@@ -4640,11 +4640,13 @@ body::after {
   .orders-checkout {
     position: fixed;
     z-index: 150;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100svh;
     height: 100dvh;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
     pointer-events: none
   }
   .orders-checkout::after {
@@ -4722,6 +4724,8 @@ body::after {
     background-color: var(--white);
     box-shadow: 0 -4px 40px 0 rgba(33,5,41,.12);
     transition: border-radius .3s ease;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
