@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"HomePage"
+	})
+	<body>
+		<div class="wrapper">
+			@@include('html/_header.htm',{})
+			<main class="page">
+				<div class="page__container" style="padding-inline: 20px; font-size: 18px; padding-block:30px 300px; line-height: 1.2; background-color: #f8f8f8a6; max-width: 900px;">
+
+					<p>Посилання на сторінки:</p><br>
+					<ul style="padding-bottom: 30px; border-bottom: 1px solid gray">
+						<li>
+							<a href="checkout.html" style="display: block; color:blue">1. checkout page</a>
+						</li>
+					</ul>
+					<br>
+					<p style="font-size: 20px; font-weight: 600;">Інпути та форми</p><br>
+					<p>Якщо до інпута додати data-required атрибут то це поле становитсья обов'язковим для заповнення. При пустому полі і відправці форми буде додаватись помилка</p><br>
+					<p>data-required також робить валідацію за значеннями: <br>
+						1. <b>data-required="email"</b> - для інпутів вводу email<br>
+						2. <b>data-required="sms"</b> - для інпуту вводу коду з SMS.
+					</p><br><br>
+					<p>Додавання до форми атрибута <b>data-goto-error</b> надасть можливість прокручувати до першого поля з помилкою</p>
+
+					<br><br>
+					<form data-dev data-goto-error  action="" method="POST" style="padding: 20px; background-color: #fff; margin-inline: auto; max-width: 600px; ">
+							<div class="input__item">
+								<label for="inp1" class="input__label">
+									Ваше ім'я
+								</label>
+								<input id="inp1" autocomplete="off" type="text" name="form[]" data-error="Назва помилки написана в data-error атрибуті" placeholder="This input" data-required class="input input_sm">
+							</div>
+							<br>
+							<div class="input__item">
+								<label for="inp11" class="input__label">
+									Поле з кнопкою очищення
+								</label>
+								<div class="input__sub-item">
+									<input id="inp11" autocomplete="off" type="text" name="form[]" data-error="Введіть текст" placeholder="This input" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+	
+							<br>
+	
+							<div class="input__item">
+								<label for="inp2" class="input__label">
+									Ваше email
+								</label>
+								<input id="inp2" autocomplete="off" type="email" name="form[]" data-error="Введіть коректний email" placeholder="This input" data-required="email"  class="input input_lg">
+							</div>
+	
+							<br>
+	
+							<div class="input__item">
+								<label for="inp3" class="input__label">
+									Поле вводу отриманого коду з SMS
+								</label>
+								<div class="input__sms-item">
+									<input autocomplete="one-time-code" type="text" name="sms" data-error="Невірний код" data-required="sms"  class="input-sms" maxlength="4" inputmode="numeric">
+									<div class="input__sms-chars input input_sm">
+										<span class="input__sms-char char-placeholder sms-cursor">
+											<span class="char-num"></span>
+											<span class="char-x">X</span>
+										</span>
+										<span class="input__sms-char char-placeholder">
+											<span class="char-num"></span>
+											<span class="char-x">X</span>
+										</span>
+										<span class="input__sms-char char-placeholder">
+											<span class="char-num"></span>
+											<span class="char-x">X</span>
+										</span>
+										<span class="input__sms-char char-placeholder">
+											<span class="char-num"></span>
+											<span class="char-x">X</span>
+										</span>
+									</div>
+								</div>
+							</div>
+	
+							<br>
+							<div class="input__item">
+								<label for="inp5" class="input__label">
+									Номер телефону
+								</label>
+								<input id="inp5" autocomplete="off" type="text" name="phone" placeholder="Номер телефону" value="+380-50-104-88-57" class="input input_sm">
+							</div>
+	
+							<br>
+							<div class="input__item">
+								<label for="inpTelegram" class="input__label">
+									Ваш аккаунт Telegram
+								</label>
+								<div class="input__sub-item">
+									<input id="inpTelegram" autocomplete="off" type="text" name="telegram" data-error="Прив’яжіть аккаунт" placeholder="Прив’язати свій Telegram" data-required class="input input_sm input_social">
+									<div class="input__social-i">
+										<img src="@img/icons/telegram.svg" width="24" height="24" alt="Image">
+									</div>
+									<button disabled type="button" class="input__clear icon-trash"></button>
+								</div>
+							</div>
+							<br>
+							<div class="input__item">
+								<label for="inpFacebook" class="input__label">
+									Ваш аккаунт Facebook
+								</label>
+								<div class="input__sub-item">
+									<input id="inpFacebook" autocomplete="off" type="text" name="telegram" data-error="Прив’яжіть аккаунт" placeholder="Прив’язати свій Facebook" data-required class="input input_sm input_social">
+									<div class="input__social-i">
+										<img src="@img/icons/facebook.svg" width="24" height="24" alt="Image">
+									</div>
+									<button disabled type="button" class="input__clear icon-trash"></button>
+								</div>
+							</div>
+							<br>
+							<div class="option">
+								<div class="option__item">
+									<input id="deliveryEmail" class="option__input" type="radio" name="delivery" value="email" checked>
+									<label for="deliveryEmail" class="option__label">
+										<span class="box"></span>
+										Email
+									</label>
+								</div>
+								<div class="option__item">
+									<input id="deliveryTelegram" class="option__input" type="radio" name="delivery" value="telegram">
+									<label for="deliveryTelegram" class="option__label">
+										<span class="box"></span>
+										Telegram
+									</label>
+								</div>
+								<div class="option__item">
+									<input id="deliveryWhatsapp" class="option__input" type="radio" name="delivery" value="whatsapp">
+									<label for="deliveryWhatsapp" class="option__label">
+										<span class="box"></span>
+										Whatsapp
+									</label>
+								</div>
+								<div class="option__item">
+									<input id="deliveryViber" class="option__input" type="radio" name="delivery" value="viber">
+									<label for="deliveryViber" class="option__label">
+										<span class="box"></span>
+										Viber
+									</label>
+								</div>
+								<div class="option__item">
+									<input id="deliveryFacebook" class="option__input" type="radio" name="delivery" value="facebook">
+									<label for="deliveryFacebook" class="option__label">
+										<span class="box"></span>
+										Facebook
+									</label>
+								</div>
+							</div>
+							<br><br>
+
+							<p>Поля з атрибутом <b>readonly</b>: батьківським елементам і самому інпуту додаються класи _readonly, через що змінюються стилі полей. Якщо є кнопки очищення поля їм додається атрибут disabled="true". Якщо label має "підказки" то до них застосовується display: none</p><br>
+							<div class="tab-checkout__items items-cl-2">
+								<div class="input__item">
+									<label for="inp15" class="input__label">
+										Ваше ім'я
+									</label>
+									<div class="input__sub-item">
+										<input id="inp15" autocomplete="off" type="text" name="firstName" value="Юлія" data-error="Назва помилки написана в data-error атрибуті" placeholder="Ім'я" data-required class="input input_sm" readonly>
+									</div>
+								</div>
+								<div class="input__item">
+									<label for="inp16" class="input__label">
+										Прізвище
+									</label>
+									<div class="input__sub-item">
+										<input id="inp16" autocomplete="off" type="text" name="lastName" value="Михайлова" data-error="Назва помилки написана в data-error атрибуті" placeholder="Прізвище" data-required class="input input_sm" readonly>
+										<button disabled type="button" class="input__clear icon-cross"></button>
+									</div>
+								</div>
+								<div class="input__item">
+									<label for="inp17" class="input__label">
+										Ваше email
+									</label>
+									<div class="input__sub-item">
+										<input id="inp17" autocomplete="off" type="email" name="email" value="yuliiia@gmail.com" data-error="Введіть коректний email" placeholder="example@gmail.com" data-required="email"  class="input input_sm" readonly>
+										<button disabled type="button" class="input__clear icon-cross"></button>
+									</div>
+								</div>
+								<div class="input__item">
+									<label for="inp17" class="input__label">
+										Номер телефону
+									</label>
+									<div class="input__sub-item">
+										<input id="inp17" autocomplete="off" type="tel" name="tel" value="+380-50-104-88-57" data-error="Введіть телефон" placeholder="example@gmail.com" data-required  class="input input_sm" readonly>
+										<button disabled type="button" class="input__clear icon-cross"></button>
+									</div>
+								</div>
+							</div>
+						
+							
+	
+							<br><br>
+							<button type="submit" class="button btn btn_dark" style="margin-top: 15px; padding: 10px; border: 1px solid #000; border-radius: 24px">Send</button>
+
+					</form>
+					<br><br><br>
+					<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Окремі елементи</b></p><br>
+					<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+						Змінити
+					</button>
+					<br>
+					<button type="button" class="edit-btn icon-phone-sms txt-13" aria-label="send code again">
+						Надіслати код повторно
+					</button>
+					<br>
+					<button type="button" class="tab-checkout__btn btn btn_dark">Кнопка Dark</button>
+					<br>
+					<button type="button" disabled class="tab-checkout__btn btn btn_dark">disabled</button>
+					<br>
+					<button type="button" class="tab-checkout__btn btn btn_light">Кнопка Light</button>
+					<br>
+					<div class="dropdown-arrow icon-arrow-down"></div>
+					<br>
+					<div class="toggle-switch">
+						<input id="toogleSwitch" type="checkbox" class="toggle-switch__input">
+						<label for="toogleSwitch" class="toggle-switch__label"></label>
+					</div>
+					<br>
+					<div class="checkbox">
+						<input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input">
+						<label for="formAgreement" class="checkbox__label icon-checkbox">
+							<span>Не передзвонювати мені для підтвердження замовлення <a href="#">Договір посилання</a></span>
+						</label>
+					</div>
+					<br>
+
+					<p style="padding: 30px 0 0; border-top: 1px solid gray">Функція в JS <b>startCountdown()</b> запускає таймер зворотнього відліку. Час відліку встановлюється в атрибуті data-timer </p><br>
+					<p class="txt-accent txt-13">
+						Не прийшов код? Отримати повторно через <span data-timer="1.5">00 : 00</span> сек
+					</p>
+			
+					<br><br>
+					<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>International Telephone Input v25.3.0</b>, https://github.com/jackocnr/intl-tel-input.git</p><br>
+					<p>В проєкті налаштовано 2 мови (ru, uk) для перекладу тексту дропдауна з англійської. Переклад працює на основі вибраної мови сайту; мова за замовчуванням - англійська. Щоб додати необхідну мову перекладу, необхідно виконати налаштування у app.js (intlTelInput()). Доступно 37 мов. На сторінках, які використовують інтуп міжнародних телефонів файли плагіну підключені через тег <b>script</b> внизу сторінки</p>
+					<br>
+					<p>За замовчуванням буде відображатися код країни користувача</p><br>
+					<div class="input__item input-intl-item">
+						<label for="intlTelInp" class="input__label">
+							Ваш номер телефону
+						</label>
+						<input id="intlTelInp" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+					</div>
+					
+					<br><br>
+							<p style="padding: 30px 0 0; border-top: 1px solid gray">
+								<b>Label з підказками.</b> Використовується <a href="tippy.js" target="_blank" style="color: blue">tippy.js</a> Щоб підказка коректно вставлялась оберніть потрібний текст у span (див. html). Текст підказки вноситься в дата атрибут <b>data-tippy-content</b>. Підключено через CDN 
+							</p>
+							<br>
+							<div class="input__item">
+								<label for="inp12" class="input__label">
+									<span class="info-label">
+										<span data-tippy-content="Впишіть ваше Ім’я" class="info-label__info icon-info"></span>
+										Колір за замовчуванням
+									</span>
+								</label>
+								<label for="codeCard" class="input__label">
+									<span class="info-label">
+										<span data-tippy-content="Якщо у вас декілька сертифікатів, то введіть їх через кому" class="info-label__info info-label__info_light icon-info"></span>
+										Колір підказки світлий з класом info-label__info_light
+									</span>
+								</label>
+								<div class="input__sub-item">
+									<input id="inp12" autocomplete="off" type="text" name="form[]" data-error="Введіть текст" placeholder="Ім'я" value="Юлія" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<br><br>
+							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Кнопки кількість</b></p><br>
+							<p>Якщо значення не вказано додається класс помилки <b>_form-error</b></p><p>Можна вказувати атрибути з потрібними значеннями <b>data-quantity-min="1" data-quantity-max="3"</b>. Окремо є можливість ввести цифри у сам інпут</p>
+							<br>
+							<p><b>1. Кнопки за замовчуванням</b></p>
+							<br>
+							<div data-quantity class="quantity">
+								<div class="quantity__item">
+									<div class="quantity__block">
+										<div class="quantity__input">
+											<input data-quantity-value type="text" name="" placeholder="0" value="" data-required>
+											<span>шт</span>
+										</div>
+									</div>
+									<div class="quantity__btns">
+										<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+										<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+									</div>
+								</div>
+								<div class="quantity__error">Ви обрали останній товар</div>
+							</div>
+							<br>
+							<div data-quantity class="quantity">
+								<div class="quantity__item">
+									<div class="quantity__block">
+										<div class="quantity__input">
+											<input data-quantity-value  type="text" name=""  data-quantity-min="1" data-quantity-max="3" placeholder="0" value="2" data-required>
+											<span>шт</span>
+										</div>
+									</div>
+									<div class="quantity__btns">
+										<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+										<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+									</div>
+								</div>
+								<div class="quantity__warning">Залишились: <span>3</span> шт</div>
+							</div>
+							<br>
+							<p><b>2. Тип 1 з класом quantity_type-1</b> (сторінка Checkout, карточки у слайдері)</p><br>
+							<div style="max-width: 90px;">
+								<div data-quantity class="quantity quantity_type-1">
+									<div class="quantity__item">
+										<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+										<div class="quantity__block">
+											<div class="quantity__input">
+												<input data-quantity-value  type="text" name="" placeholder="0" value="1">
+												<span>шт</span>
+											</div>
+										</div>
+										<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+									</div>
+								</div>
+							</div>
+							<br>
+							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Електронна листівка</b></p><br>
+							<p style="text-align: center;">Вигляд листівки за замовчуванням</p>
+							<br>
+							<div style="max-width: 400px; margin-inline: auto;">
+								<div class="e-card">
+									<div class="e-card__logo icon-logo"></div>
+									<div class="e-card__header">
+										<div class="e-card__title">
+											З Днем народження!
+										</div>
+										<div class="e-card__text txt-11">
+											Вітаю з твоїм днем! Бажаю миру, любові та щастя. Нехай усі твої мрії збуваються!
+										</div>
+									</div>
+									<div class="e-card__image">
+										<div class="e-card__icon icon-picture-add-2"></div>
+										<div class="e-card__wrapper-img">
+											<!-- <img class="ibg" src="img/checkout/item-06.jpg" alt="Image"> -->
+										</div>
+									</div>
+									<div class="e-card__card">
+										<p class="e-card__card-t txt-11">Ваша подарункова картка</p>
+										<div class="e-card__gift gift-card">
+											<div class="gift-card__img">
+												<img src="img/checkout/item-02.jpg" class="ibg" width="158" height="103" alt="Image">
+											</div>
+											<div class="gift-card__body">
+												<div class="gift-card__name">The cake</div>
+												<div class="gift-card__type txt-11">Електронний • 1 шт</div>
+												<div class="gift-card__date txt-11">Дійсний до: 31.01.28</div>
+												<div class="gift-card__price">₴ <span>400</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br>
+							<p style="text-align: center;">Додайте класс <b>_no-img</b> і поле для picture плавно скриється</p>
+							<br>
+							<div style="max-width: 400px; margin-inline: auto;">
+								<div class="e-card _no-img">
+									<div class="e-card__logo icon-logo"></div>
+									<div class="e-card__header">
+										<div class="e-card__title">
+											З Днем народження!
+										</div>
+										<div class="e-card__text txt-11">
+											Вітаю з твоїм днем! Бажаю миру, любові та щастя. Нехай усі твої мрії збуваються!
+										</div>
+									</div>
+									<div class="e-card__image">
+										<div class="e-card__icon icon-picture-add-2"></div>
+										<div class="e-card__wrapper-img">
+											<!-- <img class="ibg" src="img/checkout/item-06.jpg" alt="Image"> -->
+										</div>
+									</div>
+									<div class="e-card__card">
+										<p class="e-card__card-t txt-11">Ваша подарункова картка</p>
+										<div class="e-card__gift gift-card">
+											<div class="gift-card__img">
+												<img src="img/checkout/item-02.jpg" class="ibg" width="158" height="103" alt="Image">
+											</div>
+											<div class="gift-card__body">
+												<div class="gift-card__name">The cake</div>
+												<div class="gift-card__type txt-11">Електронний • 1 шт</div>
+												<div class="gift-card__date txt-11">Дійсний до: 31.01.28</div>
+												<div class="gift-card__price">₴ <span>400</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br><br>
+							<p style="text-align: center;">Додайте класс <b>_has-text</b> щоб змінити колір вибранного/введенного тексту.</p>
+							<br>
+							<div style="max-width: 400px; margin-inline: auto;">
+								<div class="e-card _has-text">
+									<div class="e-card__logo icon-logo"></div>
+									<div class="e-card__header">
+										<div class="e-card__title">
+											З Днем народження!
+										</div>
+										<div class="e-card__text txt-11">
+											Вітаю з твоїм днем! Бажаю миру, любові та щастя. Нехай усі твої мрії збуваються!
+										</div>
+									</div>
+									<div class="e-card__image">
+										<div class="e-card__icon icon-picture-add-2"></div>
+										<div class="e-card__wrapper-img">
+											<img class="ibg" src="img/checkout/item-06.jpg" alt="Image">
+										</div>
+									</div>
+									<div class="e-card__card">
+										<p class="e-card__card-t txt-11">Ваша подарункова картка</p>
+										<div class="e-card__gift gift-card">
+											<div class="gift-card__img">
+												<img src="img/checkout/item-02.jpg" class="ibg" width="158" height="103" alt="Image">
+											</div>
+											<div class="gift-card__body">
+												<div class="gift-card__name">The cake</div>
+												<div class="gift-card__type txt-11">Електронний • 1 шт</div>
+												<div class="gift-card__date txt-11">Дійсний до: 31.01.28</div>
+												<div class="gift-card__price">₴ <span>400</span></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<br><br>
+							<div style="padding: 30px 0 60px; border-top: 1px solid gray">
+								<p><b>Функціонал Dropdown (Select)</b></p><br>
+								<p>Для дропдаунів використовується кастомний Select. Функціонал дозволяє як завгодно стилізувати стандартний елемент форми Select. Для підключення того чи іншого функціоналу використовуються різні HTML-атрибути</p><br>
+								<p><b>Атрибути для тегу SELECT:</b></p><br>
+									<li>
+										<b>disabled</b> – недоступний
+									</li><br>
+									<li>
+										<b>multiple</b> – мультивибір
+									</li><br>
+									<li>
+										<b>data-class-modif=имя класса</b> – модифікатор до конкретного селекту. У результаті вийде select select_ім’я класу
+									</li><br>
+									<li>
+										<b>data-checkbox</b> – стилізація елементів по checkbox (тільки для multiple)
+									</li><br>
+									<li>
+										<b>data-tags</b> – режим тегів (тільки для multiple) дозволяє вставляти вибрані значення у вигляді тегів з хрестиком для видалення. Також є можливість виводити ці теги в будь-якому зазначеному місці, вказавши селектор блоку як значення атрибуту
+									</li><br>
+									<li>
+										<b>data-scroll</b> – включить прокрутку для списку, зазначене число для атрибуту обмежить висоту контейнера випадаючого списку
+									</li><br>
+									<li>
+										<b>data-show-selected</b> – вимикає приховування вибраного елемента
+									</li><br>
+									<li>
+										<b>data-search</b> – дозволяє шукати за списком
+									</li><br>
+									<li>
+										<b>data-speed</b> – дозволяє вказати швидкість відкриття/закриття списку в мілісекундах за замовчуванням 150
+									</li><br>
+									<li>
+										<b>data-open</b> – селект відкритий відразу
+									</li><br>
+									<li>
+										<b>data-submit</b> – відправляє форму при зміні селекту
+									</li><br>
+									<li>
+										<b>data-pseudo-label=заголовок</b> – додає псевдоелемент до заголовка селекту із зазначеним текстом, а також клас _select-pseudo-label
+									</li><br><br>
+
+									<p><b>Атрибути для тегу OPTION:</b></p><br>
+									<li>
+										<b>data-class=имя класса</b> – додає клас										
+									</li><br>
+									<li>
+										<b>data-asset=путь к картинке или текст</b> – додає в елемент списку структуру двох колонок із зазначеними даними										
+									</li><br>
+									<li>
+										<b>data-href=адрес ссылки</b> – додає посилання до елементу списку										
+									</li><br>
+									<li>
+										<b>data-href-blank</b> – відкриє посилання у новому вікні										
+									</li><br><br>
+									
+									<p><b>Атрибути для інших елементів</b></p><br>
+									<li>
+										<b>data-one-select</b> – селекти всередині об’єкта з цим атрибутом будуть відкриватися лише по одному. Тобто при відкритті селекту інший відкритий селект закривається.								
+									</li><br><br>
+									<p><b>1. Елемент написання або вибору теми:</b> об'єднює input та select батьківським атрибутом <b>data-select-enter</b>. Поле вводу для тексту робить як пошук із випадаючого списку, так і записує останнє введенне значення у прихований input <b>data-select-input</b>. Стилізація елементу за атрибутом <b>data-class-modif="type-2"</b></p><br>
+									<div class="input__item">
+										<label for="selectTopic" class="input__label">
+											Оберіть або напишіть тему вітання
+										</label>
+										<div data-select-enter class="input__sub-item">
+											<input data-select-input autocomplete="off" type="text" name="form[]" hidden>
+											<select id="selectTopic" name="form[]" data-class-modif="type-2" data-speed="200" data-show-selected data-scroll="250" data-search>
+												<option value data-show data-class="item-placeholder">Оберіть тему вітання</option>
+												<option value="1">Тема вітання №1</option>
+												<option value="2">Тема вітання №2</option>
+												<option value="3">Тема вітання №3</option>
+												<option value="4">Тема вітання №4</option>
+												<option value="5">Тема вітання №5</option>
+												<option value="6">Тема вітання №6</option>
+												<option value="7">Тема вітання №7</option>
+												<option value="8">Тема вітання №8</option>
+												<option value="9">Тема вітання №9</option>
+												<option value="10">Тема вітання №10</option>
+											</select>
+										</div>
+									</div>
+									<br><br>
+
+									<p>2. Приклад додавання атрибуту <b>data-one-select</b> для батьківського елементу для двох селектів, який при відкритті одного закриває інший.</p><br>
+									<div data-one-select class="tab-checkout__items items-cl-2">
+										<div class="input__item">
+											<p><b>Select з полем для пошуку</b> (data-class-modif="type-2")</p><br>
+											<label for="departmentCity" class="input__label">
+												Місто
+											</label>
+											<select id="departmentCity" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="250" data-search  data-required >
+												<option value data-class="item-placeholder">Місто</option>
+												<option value="2">Київ</option>
+												<option value="3">Львів</option>
+												<option value="4">Харків</option>
+												<option value="5">Дніпро</option>
+												<option value="6">Івано-Франківськ</option>
+												<option value="7">Одеса</option>
+												<option value="8">Рівне</option>
+												<option value="9">Житомир</option>
+												<option value="10">Луцьк</option>
+											</select>
+										</div>
+										<div class="input__item">
+											<p><b>Select без поля пошуку</b> (data-class-modif="type-2")</p><br>
+											<label for="department" class="input__label">
+												Відділення
+											</label>
+											<select id="department" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="400"  data-required >
+												<option value data-class="item-placeholder">Відділення</option>
+												<option value="2">Відд №1. Драгоманова, 10А Відд №1. Драгоманова, 10А</option>
+												<option value="3">Відд №2. Пирогівський шлях, 15</option>
+												<option value="4">Відд №3. Богатирський, 20А</option>
+												<option value="5">Відд №4. Слобажанська, 25</option>
+												<option value="6">Відд №5. Драгоманова, 30</option>
+												<option value="7">Відд №6. Драгоманова, 35</option>
+												<option value="8">Відд №10. Драгоманова, 40в</option>
+												<option value="9">Відд №11. Драгоманова, 45</option>
+												<option value="10">Відд №18. Драгоманова, 50</option>
+												<option value="11">Відд №19. Драгоманова, 55б</option>
+												<option value="12">Відд №20. Драгоманова, 65</option>
+												<option value="13">Відд №21. Драгоманова, 135</option>
+												<option value="14">Відд №22. Драгоманова, 215</option>
+												<option value="15">Відд №23. Драгоманова, 1</option>
+												<option value="16">Відд №24. Драгоманова, 1а</option>
+											</select>
+										</div>
+									</div>
+									<br>
+									<p>3. Select з типом <b> data-class-modif="type-3"</b>, використовуєтсья у карточках слайдеру на сторінці Checkout</p><br>
+									<div style="max-width: 120px;">
+										<select  name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
+											<option value="1" checked>100 грн</option>
+											<option value="2">200 грн</option>
+											<option value="3">500 грн</option>
+											<option value="4">1000 грн</option>
+											<option value="5">1500 грн</option>
+											<option value="6">3000 грн</option>
+											<option value="7">10000 грн</option>
+										</select>
+									</div>
+									<br>
+									<p>4. Select з типом <b> data-class-modif="type-4"</b></p><br>
+									<select name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="300"  data-required >
+										<option value data-class="item-placeholder">$ 500</option>
+										<option value="1">₴ 500</option>
+										<option value="2">₴ 1 000</option>
+										<option value="3">₴ 1 500</option>
+										<option value="4">₴ 2 000</option>
+										<option value="5">₴ 2 500</option>
+									</select>
+									<br>
+									<p>5. Select з типом <b> data-class-modif="type-5"</b></p><br>
+									<select name="" data-class-modif="type-5" data-speed="200" data-show-selected data-scroll="300">
+										<option data-class="pay-visa" data-asset="../img/cards/visa-mc.svg" value="1">Банківська картка</option>
+										<option data-class="pay-apple" data-asset="../img/cards/apple-pay.svg" value="2">Apple Pay</option>
+										<option data-class="pay-google" data-asset="../img/cards/google-pay.svg" value="3">Google Pay</option>
+									</select>
+							</div>
+							<div style="padding: 30px 0 60px; border-top: 1px solid gray">
+								<p><b>Календар і час (datepicker) ...</b></p><br>
+							</div>
+							<div style="padding: 30px 0 60px; border-top: 1px solid gray">
+								<p><b>Функціонал ...</b></p><br>
+							</div>
+				</div>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		<script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+		<script src="files/intl-tel-input/intlTelInputLng.js"></script>
+		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+		@@include('html/_js.htm',{})
+	</body>
+</html>
