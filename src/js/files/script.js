@@ -209,8 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // == drag spollerPopup elements ==========================================
 
-  function initDragSpoiler() {
-    if (!mediaQuery900.matches) return; // Запуск только при ширине >= 900px
+  // function initDragSpoiler() {
+  //   if (!mediaQuery900.matches) return; // Запуск только при ширине >= 900px
   
     const spollerPopup = document.querySelectorAll("[data-spollers-popup]");
     spollerPopup.forEach((popup) => {
@@ -239,6 +239,29 @@ document.addEventListener("DOMContentLoaded", () => {
         let deltaY = currentY - startY;
   
         if (deltaY > 100) {
+          // const spollerBlock = ordersHead.closest("details");
+          // if (spollerBlock) {
+          //   const spollerTitle = spollerBlock.querySelector("summary");
+          //   if (spollerTitle) {
+          //     spollerTitle.click();
+          //   }
+          // }
+          
+          // setTimeout(() => {
+          //   ordersBody.style.height = "";
+          // }, 300);
+        } else {
+          let newHeightBody = initialHeightBody - deltaY;
+          ordersBody.style.height = `${newHeightBody}px`;
+        }
+      });
+  
+      ordersHead.addEventListener("touchend", () => {
+        isDragging = false;
+        // currentY = e.touches[0].clientY;
+        let deltaY = currentY - startY;
+  
+        if (deltaY > 100) {
           const spollerBlock = ordersHead.closest("details");
           if (spollerBlock) {
             const spollerTitle = spollerBlock.querySelector("summary");
@@ -250,28 +273,18 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
             ordersBody.style.height = "";
           }, 300);
-        } else {
-          let newHeightBody = initialHeightBody - deltaY;
-          ordersBody.style.height = `${newHeightBody}px`;
         }
       });
-  
-      ordersHead.addEventListener("touchend", () => {
-        isDragging = false;
-      });
     });
-  }
+  // }
+  // initDragSpoiler();
   
-  // Запуск при загрузке
-  initDragSpoiler();
-  
-  // Отслеживание изменений размера экрана
-  mediaQuery900.addEventListener('change', initDragSpoiler);
+  // mediaQuery900.addEventListener('change', initDragSpoiler);
   
 
   
 
-});
+}); // end DOMContentLoaded
 
 /* таймер обратного отсчета */
 function startCountdown() {

@@ -4851,50 +4851,47 @@
                 }), 300); else popupContent.style.height = `${initialHeight - deltaY}px`;
             }));
         }));
-        function initDragSpoiler() {
-            if (!mediaQuery900.matches) return;
-            const spollerPopup = document.querySelectorAll("[data-spollers-popup]");
-            spollerPopup.forEach((popup => {
-                const ordersHead = popup.querySelector(".orders-checkout__head");
-                const ordersBody = popup.querySelector(".orders-checkout__body");
-                popup.parentElement.closest(".orders-checkout__mob-wr");
-                let startY = 0;
-                let currentY = 0;
-                let isDragging = false;
-                let initialHeightBody = 0;
-                ordersHead.addEventListener("touchstart", (e => {
-                    const spollerBlock = ordersHead.closest("details");
-                    if (!spollerBlock || !spollerBlock.open) return;
-                    startY = e.touches[0].clientY;
-                    currentY = startY;
-                    isDragging = true;
-                    initialHeightBody = ordersBody.offsetHeight;
-                }));
-                ordersHead.addEventListener("touchmove", (e => {
-                    if (!isDragging) return;
-                    currentY = e.touches[0].clientY;
-                    let deltaY = currentY - startY;
-                    if (deltaY > 100) {
-                        const spollerBlock = ordersHead.closest("details");
-                        if (spollerBlock) {
-                            const spollerTitle = spollerBlock.querySelector("summary");
-                            if (spollerTitle) spollerTitle.click();
-                        }
-                        setTimeout((() => {
-                            ordersBody.style.height = "";
-                        }), 300);
-                    } else {
-                        let newHeightBody = initialHeightBody - deltaY;
-                        ordersBody.style.height = `${newHeightBody}px`;
-                    }
-                }));
-                ordersHead.addEventListener("touchend", (() => {
-                    isDragging = false;
-                }));
+        const spollerPopup = document.querySelectorAll("[data-spollers-popup]");
+        spollerPopup.forEach((popup => {
+            const ordersHead = popup.querySelector(".orders-checkout__head");
+            const ordersBody = popup.querySelector(".orders-checkout__body");
+            popup.parentElement.closest(".orders-checkout__mob-wr");
+            let startY = 0;
+            let currentY = 0;
+            let isDragging = false;
+            let initialHeightBody = 0;
+            ordersHead.addEventListener("touchstart", (e => {
+                const spollerBlock = ordersHead.closest("details");
+                if (!spollerBlock || !spollerBlock.open) return;
+                startY = e.touches[0].clientY;
+                currentY = startY;
+                isDragging = true;
+                initialHeightBody = ordersBody.offsetHeight;
             }));
-        }
-        initDragSpoiler();
-        mediaQuery900.addEventListener("change", initDragSpoiler);
+            ordersHead.addEventListener("touchmove", (e => {
+                if (!isDragging) return;
+                currentY = e.touches[0].clientY;
+                let deltaY = currentY - startY;
+                if (deltaY > 100) ; else {
+                    let newHeightBody = initialHeightBody - deltaY;
+                    ordersBody.style.height = `${newHeightBody}px`;
+                }
+            }));
+            ordersHead.addEventListener("touchend", (() => {
+                isDragging = false;
+                let deltaY = currentY - startY;
+                if (deltaY > 100) {
+                    const spollerBlock = ordersHead.closest("details");
+                    if (spollerBlock) {
+                        const spollerTitle = spollerBlock.querySelector("summary");
+                        if (spollerTitle) spollerTitle.click();
+                    }
+                    setTimeout((() => {
+                        ordersBody.style.height = "";
+                    }), 300);
+                }
+            }));
+        }));
     }));
     function startCountdown() {
         const timerElement = document.querySelector("[data-timer]");
