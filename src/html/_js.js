@@ -99,3 +99,25 @@ const mediaQuery = window.matchMedia('(max-width: 30.061em)');
 mediaQuery.addEventListener('change', toggleDatepicker);
 toggleDatepicker(mediaQuery);
 
+
+
+
+
+const spollerPopup = document.querySelectorAll("[data-spollers-popup]");
+spollerPopup.forEach(popup => {
+  const ordersHead = popup.querySelector('.orders-checkout__head');
+  const ordersBody = popup.querySelector('.orders-checkout__body');
+  let startY = 0;
+  let currentY = 0;
+  let isDragging = false;
+
+    // Обработчик начала касания
+  ordersHead.addEventListener("touchstart", (e) => {
+      startY = e.touches[0].clientY;
+      currentY = startY;
+      isDragging = true;
+
+  });
+
+  
+});

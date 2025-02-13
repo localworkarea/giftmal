@@ -64,71 +64,45 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===============================================
   
   // == update height elements ================
-  function updateOrderCheckoutElHeights() {
+  function updateOrderCheckoutElHeights(e) {
     const mainCart = document.querySelector('.orders-checkout__cart_main');
-    if (mainCart) {
-        const spoller = mainCart.querySelector('.orders-checkout__spoller');
-        if (spoller) {
-            const head = spoller.querySelector('.orders-checkout__head');
-            const total = mainCart.querySelector('.orders-checkout__total');
-            const wrapper = spoller.querySelector('.orders-checkout__wrapper');
-            const body = spoller.querySelector('.orders-checkout__body');
+    if (!mainCart) return;
 
-            if (head && total && wrapper && body) {
-                const viewportHeight = window.innerHeight;
-                const cartHeight = mainCart.offsetHeight;
-                const headHeight = head.offsetHeight;
-                const totalHeight = total.offsetHeight;
+    const spoller = mainCart.querySelector('.orders-checkout__spoller');
+    const head = spoller.querySelector('.orders-checkout__head');
+    const total = mainCart.querySelector('.orders-checkout__total');
+    const wrapper = spoller.querySelector('.orders-checkout__wrapper');
+    const body = spoller.querySelector('.orders-checkout__body');
 
-                spoller.style.setProperty('--height', `${totalHeight}px`);
+    if (!head || !total || !wrapper || !body) return;
 
-                if (cartHeight > (viewportHeight - 260)) {
-                    const newHeight = viewportHeight - 260 - headHeight - totalHeight;
-                    body.style.height = `${newHeight}px`;
-                    wrapper.classList.add('_more-content');
-                } else {
-                    body.style.height = ''; 
-                    wrapper.classList.remove('_more-content');
-                }
-            }
+    const viewportHeight = window.innerHeight;
+    const cartHeight = mainCart.offsetHeight;
+    const headHeight = head.offsetHeight;
+    const totalHeight = total.offsetHeight;
+
+    if (window.matchMedia('(min-width: 56.311em)').matches) {
+        spoller.style.setProperty('--height', `${totalHeight}px`);
+
+        if (cartHeight > (viewportHeight - 260)) {
+            const newHeight = viewportHeight - 260 - headHeight - totalHeight;
+            body.style.height = `${newHeight}px`;
+            wrapper.classList.add('_more-content');
+        } else {
+            body.style.height = '';
+            wrapper.classList.remove('_more-content');
         }
+    } else {
+        body.style.height = '';
+        wrapper.classList.remove('_more-content');
+        spoller.style.removeProperty('--height');
     }
-}
+  }
 
-updateOrderCheckoutElHeights();
+  const mediaQuery900 = window.matchMedia('(min-width: 56.311em)');
+  mediaQuery900.addEventListener('change', updateOrderCheckoutElHeights);
 
-
-  // function updateOrderCheckoutElHeights() {
-  //   const cart = document.querySelector('.orders-checkout__cart_main');
-  //   if (cart) {
-  //     const cartSpoller = document.querySelector('.orders-checkout__spoller');
-  //     const head = document.querySelector('.orders-checkout__head');
-  //     const total = document.querySelector('.orders-checkout__total');
-  //     const wrapper = document.querySelector('.orders-checkout__wrapper');
-  //     const body = document.querySelector('.orders-checkout__body');
-  
-  
-  //       if (cart && head && total && wrapper) {
-  //         const viewportHeight = window.innerHeight;
-  //         const cartHeight = cart.offsetHeight;
-  //         const headHeight = head.offsetHeight;
-  //         const totalHeight = total.offsetHeight;
-          
-  //         cartSpoller.style.setProperty('--height', `${totalHeight}px`);
-  
-  //         if (cartHeight > (viewportHeight - 260)) {
-  //           const newHeight = viewportHeight - 260 - headHeight - totalHeight;
-  //           body.style.height = `${newHeight}px`;
-  //           wrapper.classList.add('_more-content');
-  //         } else {
-  //           body.style.height = ''; 
-  //           wrapper.classList.remove('_more-content');
-  //         }
-  //       }
-       
-  //   }
-  //   }
-  //   updateOrderCheckoutElHeights();
+  updateOrderCheckoutElHeights();
 
 
     // == card-slider елементи =============================================
@@ -175,6 +149,126 @@ updateOrderCheckoutElHeights();
     });
 
   
+  // == drag popup elements ==========================================
+      // Получаем все попапы на странице
+  const popups = document.querySelectorAll(".popup");
+  popups.forEach(popup => {
+    const popupContent = popup.querySelector(".popup__content");
+    const popupTop = popup.querySelector(".popup__close");
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+    let initialHeight = popupContent.offsetHeight;
+
+    // Обработчик начала касания
+    popupTop.addEventListener("touchstart", (e) => {
+        startY = e.touches[0].clientY;
+        currentY = startY;
+        isDragging = true;
+
+        // Обновляем начальную высоту, чтобы она была актуальной
+        initialHeight = popupContent.offsetHeight;
+    });
+
+    // Обработчик перемещения
+    popupTop.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        currentY = e.touches[0].clientY;
+        let deltaY = currentY - startY;
+
+        if (deltaY > 50) {
+            // Закрываем попап
+            flsModules.popup.close(); 
+            setTimeout(() => {
+              popupContent.style.height = "";
+            }, 300);
+        } else {
+            // Потягивание вверх (увеличение высоты)
+            let newHeight = initialHeight - deltaY;
+            popupContent.style.height = `${newHeight}px`;
+        }
+    });
+
+    // Обработчик завершения касания
+    popupTop.addEventListener("touchend", () => {
+        isDragging = false;
+        let deltaY = currentY - startY;
+
+        if (deltaY > 100) {
+            // Закрытие попапа
+            setTimeout(() => {
+              popupContent.style.transform = "";
+              popupContent.style.height = "";
+            }, 300);
+        } else {
+            // Возвращаем высоту контента
+            popupContent.style.height = `${initialHeight - deltaY}px`;
+        }
+    });
+  });
+
+  // == drag spollerPopup elements ==========================================
+
+  function initDragSpoiler() {
+    if (!mediaQuery900.matches) return; // Запуск только при ширине >= 900px
+  
+    const spollerPopup = document.querySelectorAll("[data-spollers-popup]");
+    spollerPopup.forEach((popup) => {
+      const ordersHead = popup.querySelector(".orders-checkout__head");
+      const ordersBody = popup.querySelector(".orders-checkout__body");
+      const ordersMobWr = popup.parentElement.closest(".orders-checkout__mob-wr");
+  
+      let startY = 0;
+      let currentY = 0;
+      let isDragging = false;
+      let initialHeightBody = 0;
+  
+      ordersHead.addEventListener("touchstart", (e) => {
+        const spollerBlock = ordersHead.closest("details");
+        if (!spollerBlock || !spollerBlock.open) return;
+  
+        startY = e.touches[0].clientY;
+        currentY = startY;
+        isDragging = true;
+        initialHeightBody = ordersBody.offsetHeight;
+      });
+  
+      ordersHead.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+        currentY = e.touches[0].clientY;
+        let deltaY = currentY - startY;
+  
+        if (deltaY > 100) {
+          const spollerBlock = ordersHead.closest("details");
+          if (spollerBlock) {
+            const spollerTitle = spollerBlock.querySelector("summary");
+            if (spollerTitle) {
+              spollerTitle.click();
+            }
+          }
+          
+          setTimeout(() => {
+            ordersBody.style.height = "";
+          }, 300);
+        } else {
+          let newHeightBody = initialHeightBody - deltaY;
+          ordersBody.style.height = `${newHeightBody}px`;
+        }
+      });
+  
+      ordersHead.addEventListener("touchend", () => {
+        isDragging = false;
+      });
+    });
+  }
+  
+  // Запуск при загрузке
+  initDragSpoiler();
+  
+  // Отслеживание изменений размера экрана
+  mediaQuery900.addEventListener('change', initDragSpoiler);
+  
+
   
 
 });
@@ -510,70 +604,6 @@ if (illustrationInput) {
 }
 
 
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Получаем все попапы на странице
-  const popups = document.querySelectorAll(".popup");
-
-  popups.forEach(popup => {
-    const popupContent = popup.querySelector(".popup__content");
-    const popupTop = popup.querySelector(".popup__close");
-    let startY = 0;
-    let currentY = 0;
-    let isDragging = false;
-    let initialHeight = popupContent.offsetHeight;
-
-    // Обработчик начала касания
-    popupTop.addEventListener("touchstart", (e) => {
-        startY = e.touches[0].clientY;
-        currentY = startY;
-        isDragging = true;
-
-        // Обновляем начальную высоту, чтобы она была актуальной
-        initialHeight = popupContent.offsetHeight;
-    });
-
-    // Обработчик перемещения
-    popupTop.addEventListener("touchmove", (e) => {
-        if (!isDragging) return;
-        currentY = e.touches[0].clientY;
-        let deltaY = currentY - startY;
-
-        if (deltaY > 50) {
-            // Закрываем попап
-            flsModules.popup.close(); 
-            setTimeout(() => {
-              popupContent.style.height = "";
-            }, 300);
-        } else {
-            // Потягивание вверх (увеличение высоты)
-            let newHeight = initialHeight - deltaY;
-            popupContent.style.height = `${newHeight}px`;
-        }
-    });
-
-    // Обработчик завершения касания
-    popupTop.addEventListener("touchend", () => {
-        isDragging = false;
-        let deltaY = currentY - startY;
-
-        if (deltaY > 100) {
-            // Закрытие попапа
-            setTimeout(() => {
-              popupContent.style.transform = "";
-              popupContent.style.height = "";
-            }, 300);
-        } else {
-            // Возвращаем высоту контента
-            popupContent.style.height = `${initialHeight - deltaY}px`;
-        }
-    });
-  });
-});
 
 
 
