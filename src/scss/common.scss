@@ -306,6 +306,12 @@
   padding: toRem(8) toRem(24);
   border-radius: toRem(24);
   transition: background-color .3s ease, color .3s ease;
+  @extend  %fonsSize13-14;
+  &_sm {
+    @media (min-width:$mobileSmall){
+     min-height: toRem(40); 
+   }
+  }
   &_dark {
     background-color: var(--violet);
     color: var(--white);
@@ -385,6 +391,7 @@
 
 
 .info-label {
+  display: inline-flex;
   position: relative;
   padding-left: toRem(25);
   ._readonly & {
@@ -413,10 +420,26 @@
         }
       }
     }
+    &_light {
+      &.icon-info {
+        &::before {
+          background-color: var(--white);
+        }
+        @media (any-hover: hover){
+          &:hover{
+            &::before {
+              background-color: var(--fade-violet-2);
+              color: var(--white);
+            }
+          }
+        }
+      }
+    }
     ._readonly & {
       display: none;
     }
   }
+
 }
 
 

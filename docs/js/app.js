@@ -4873,7 +4873,7 @@
                     if (!isDragging) return;
                     currentY = e.touches[0].clientY;
                     let deltaY = currentY - startY;
-                    if (deltaY > 100) {
+                    if (deltaY > 50) {
                         const spollerBlock = ordersHead.closest("details");
                         if (spollerBlock) {
                             const spollerTitle = spollerBlock.querySelector("summary");

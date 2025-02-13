@@ -218,6 +218,19 @@
 					<br>
 					<div class="dropdown-arrow icon-arrow-down"></div>
 					<br>
+					<div class="toggle-switch">
+						<input id="toogleSwitch" type="checkbox" class="toggle-switch__input">
+						<label for="toogleSwitch" class="toggle-switch__label"></label>
+					</div>
+					<br>
+					<div class="checkbox">
+						<input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input">
+						<label for="formAgreement" class="checkbox__label icon-checkbox">
+							<span>Не передзвонювати мені для підтвердження замовлення <a href="#">Договір посилання</a></span>
+						</label>
+					</div>
+					<br>
+
 					<p style="padding: 30px 0 0; border-top: 1px solid gray">Функція в JS <b>startCountdown()</b> запускає таймер зворотнього відліку. Час відліку встановлюється в атрибуті data-timer </p><br>
 					<p class="txt-accent txt-13">
 						Не прийшов код? Отримати повторно через <span data-timer="1.5">00 : 00</span> сек
@@ -236,13 +249,21 @@
 					</div>
 					
 					<br><br>
-							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Label з підказками.</b> Використовується <a href="tippy.js" target="_blank" style="color: blue">tippy.js</a> Щоб підказка коректно вставлялась оберніть потрібний текст у span (див. html). Текст підказки вноситься в дата атрибут <b>data-tippy-content</b>. Підключено через CDN </p>
+							<p style="padding: 30px 0 0; border-top: 1px solid gray">
+								<b>Label з підказками.</b> Використовується <a href="tippy.js" target="_blank" style="color: blue">tippy.js</a> Щоб підказка коректно вставлялась оберніть потрібний текст у span (див. html). Текст підказки вноситься в дата атрибут <b>data-tippy-content</b>. Підключено через CDN 
+							</p>
 							<br>
 							<div class="input__item">
 								<label for="inp12" class="input__label">
 									<span class="info-label">
 										<span data-tippy-content="Впишіть ваше Ім’я" class="info-label__info icon-info"></span>
-										Ім’я
+										Колір за замовчуванням
+									</span>
+								</label>
+								<label for="codeCard" class="input__label">
+									<span class="info-label">
+										<span data-tippy-content="Якщо у вас декілька сертифікатів, то введіть їх через кому" class="info-label__info info-label__info_light icon-info"></span>
+										Колір підказки світлий з класом info-label__info_light
 									</span>
 								</label>
 								<div class="input__sub-item">
@@ -563,6 +584,13 @@
 										<option value="3">₴ 1 500</option>
 										<option value="4">₴ 2 000</option>
 										<option value="5">₴ 2 500</option>
+									</select>
+									<br>
+									<p>5. Select з типом <b> data-class-modif="type-5"</b></p><br>
+									<select name="" data-class-modif="type-5" data-speed="200" data-show-selected data-scroll="300">
+										<option data-class="pay-visa" data-asset="../img/cards/visa-mc.svg" value="1">Банківська картка</option>
+										<option data-class="pay-apple" data-asset="../img/cards/apple-pay.svg" value="2">Apple Pay</option>
+										<option data-class="pay-google" data-asset="../img/cards/google-pay.svg" value="3">Google Pay</option>
 									</select>
 							</div>
 							<div style="padding: 30px 0 60px; border-top: 1px solid gray">

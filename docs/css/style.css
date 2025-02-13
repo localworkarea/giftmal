@@ -13,17 +13,17 @@
   font-style: normal
 }
 @font-face {
-  font-family: icons;
-  font-display: swap;
-  src: url(../fonts/icons.woff2) format("woff2");
-  font-weight: 400;
-  font-style: normal
-}
-@font-face {
   font-family: FixelDisplay;
   font-display: swap;
   src: url(../fonts/FixelDisplay-SemiBold.woff2) format("woff2");
   font-weight: 600;
+  font-style: normal
+}
+@font-face {
+  font-family: icons;
+  font-display: swap;
+  src: url(../fonts/icons.woff2) format("woff2");
+  font-weight: 400;
   font-style: normal
 }
 [class*=icon-]::before {
@@ -36,6 +36,42 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
+}
+.icon-calendar:before {
+  content: ""
+}
+.icon-electronic:before {
+  content: ""
+}
+.icon-gift-box:before {
+  content: ""
+}
+.icon-lock:before {
+  content: ""
+}
+.icon-no-money-exchange:before {
+  content: ""
+}
+.icon-number-1:before {
+  content: ""
+}
+.icon-number-2:before {
+  content: ""
+}
+.icon-number-3:before {
+  content: ""
+}
+.icon-number-4:before {
+  content: ""
+}
+.icon-number-5:before {
+  content: ""
+}
+.icon-physical:before {
+  content: ""
+}
+.icon-balance:before {
+  content: ""
 }
 .icon-checkbox:before {
   content: ""
@@ -79,9 +115,6 @@
 .icon-bag:before {
   content: ""
 }
-.icon-balance:before {
-  content: ""
-}
 .icon-basket:before {
   content: ""
 }
@@ -90,9 +123,6 @@
 }
 .icon-cake:before {
   content: ""
-}
-.icon-calendar:before {
-  content: ""
 }
 .icon-car:before {
   content: ""
@@ -159,9 +189,6 @@
 }
 .icon-edit:before {
   content: ""
-}
-.icon-electronic:before {
-  content: ""
 }
 .icon-electronics:before {
   content: ""
@@ -240,9 +267,6 @@
 }
 .icon-phone-sms:before {
   content: ""
-}
-.icon-physical:before {
-  content: ""
 }
 .icon-physical-shop:before {
   content: ""
@@ -327,9 +351,11 @@
   --fade-violet-3: #4d3754;
   --gray-2: #ebebeb;
   --gray-3: #F6F6F6;
+  --gray-4: #BDB8BE;
   --disabled-pink: #e2cce7;
   --beige: #fde1bb;
   --red: #cc3235;
+  --red-2: #E45259;
   --green: #47b27c;
   --vibrant-pink: #ff7fab;
   --yellow: #f9c736;
@@ -461,6 +487,9 @@ textarea {
   color: var(--dark-violet);
   cursor: pointer;
   transition: background-color .3s ease,color .3s ease,border .3s ease,outline .3s ease
+}
+.input_white {
+  background-color: var(--white)
 }
 .input_lg {
   min-height: 3rem;
@@ -726,6 +755,41 @@ textarea.input {
   border-radius: 50%;
   transition: background-color .3s ease
 }
+.toggle-switch {
+  position: relative
+}
+.toggle-switch__input {
+  display: none
+}
+.toggle-switch__input:checked+.toggle-switch__label {
+  background-color: var(--dark-violet)
+}
+.toggle-switch__input:checked+.toggle-switch__label::before {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+  background-color: var(--white)
+}
+.toggle-switch__label {
+  cursor: pointer;
+  display: inline-flex;
+  background-color: var(--white);
+  position: relative;
+  width: 3.5rem;
+  border-radius: 2rem;
+  padding: .25rem;
+  transition: background-color .3s ease
+}
+.toggle-switch__label::before {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--fade-violet-1);
+  transition: background-color .3s ease,-webkit-transform .3s ease;
+  transition: transform .3s ease,background-color .3s ease;
+  transition: transform .3s ease,background-color .3s ease,-webkit-transform .3s ease
+}
 .checkbox {
   position: relative
 }
@@ -801,7 +865,8 @@ textarea.input {
 ._select-open .select__title {
   background-color: var(--gray-2)
 }
-.select_type-4._select-open .select__title {
+.select_type-4._select-open .select__title,
+.select_type-5._select-open .select__title {
   background-color: var(--white);
   box-shadow: 0 4px 40px 0 rgba(33,5,41,.16);
   border-radius: 1.5rem 1.5rem 0 0
@@ -811,7 +876,8 @@ textarea.input {
   outline-color: var(--red);
   color: var(--red)
 }
-.select--show-top.select_type-4._select-open .select__title {
+.select--show-top.select_type-4._select-open .select__title,
+.select--show-top.select_type-5._select-open .select__title {
   box-shadow: 0 -40px -40px 0 rgba(33,5,41,.16);
   border-radius: 0 0 1.5rem 1.5rem
 }
@@ -828,8 +894,12 @@ textarea.input {
 .select_type-2 .select__value {
   padding: .625rem 1rem
 }
-.select_type-4 .select__value {
+.select_type-4 .select__value,
+.select_type-5 .select__value {
   padding: .40625rem .5rem .40625rem 1rem
+}
+.select_type-5 .select__value {
+  font-size: .9375rem
 }
 .select_type-3 .select__value {
   padding: .375rem .75rem;
@@ -864,7 +934,8 @@ textarea.input {
   -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg)
 }
-.select_type-4 .select__value:after {
+.select_type-4 .select__value:after,
+.select_type-5 .select__value:after {
   flex: 0 0 2rem;
   width: 2rem;
   height: 2rem;
@@ -882,7 +953,8 @@ textarea.input {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: var(--fade-violet-1)
+  color: var(--fade-violet-1);
+  line-height: 1.6
 }
 ._select-active .select__content {
   color: var(--dark-violet)
@@ -961,7 +1033,8 @@ textarea.input {
 .select_type-3 .select__options {
   padding: .25rem 0
 }
-.select_type-4 .select__options {
+.select_type-4 .select__options,
+.select_type-5 .select__options {
   top: 100%;
   border-radius: 0 0 1.5rem 1.5rem;
   box-shadow: 0 40px 40px 0 rgba(33,5,41,.16)
@@ -997,6 +1070,9 @@ textarea.input {
   font-size: .6875rem;
   padding: .375rem .625rem
 }
+.select_type-5 .select__option {
+  font-size: .9375rem
+}
 .select__option.icon-check::before {
   order: 2
 }
@@ -1014,7 +1090,15 @@ textarea.input {
 }
 .select__row {
   display: inline-flex;
-  align-items: center
+  align-items: center;
+  gap: .5rem
+}
+.select_type-5 .select__row {
+  gap: 1rem
+}
+.select_type-5 .select__asset {
+  width: auto;
+  height: 1rem
 }
 .select--show-top .select__options {
   top: auto;
@@ -3228,10 +3312,16 @@ body::after {
 .icon-logo:hover {
   color: var(--violet)
 }
+.card-balance__row.row-code,
+.card-balance__row.row-denomination,
+.card-balance__switch,
 .card-slider-link__head,
 .slider-checkout__subtitle {
   font-weight: 500
 }
+.balance-card__main-txt,
+.btn,
+.card-balance__block,
 .card-slider__checked,
 .checkbox,
 .edit-btn,
@@ -3245,6 +3335,8 @@ body::after {
 .card-slider_sm .card-slider__title {
   font-weight: 500
 }
+.balance-card__title,
+.card-balance__sub-title,
 .card-slider_lg .card-slider__title,
 .orders-checkout__lines {
   font-weight: 500
@@ -3464,6 +3556,7 @@ body::after {
   margin-bottom: .5rem
 }
 .info-label {
+  display: inline-flex;
   position: relative;
   padding-left: 1.5625rem
 }
@@ -3483,6 +3576,9 @@ body::after {
   border-radius: 50%;
   background-color: var(--gray-2);
   transition: background-color .3s ease,color .3s ease
+}
+.info-label__info_light.icon-info::before {
+  background-color: var(--white)
 }
 ._readonly .info-label__info {
   display: none
@@ -3744,7 +3840,8 @@ body::after {
 .item-orders__btn {
   font-size: 1.25rem
 }
-.tab-checkout_my-data {
+.tab-checkout_my-data,
+.tab-checkout_payment {
   background-color: var(--white)
 }
 .tab-checkout {
@@ -4164,6 +4261,180 @@ body::after {
   -webkit-transform: translate(0,-28%) rotate(49deg);
   transform: translate(0,-28%) rotate(49deg)
 }
+.balance-card__item {
+  display: grid;
+  border-radius: 1.5rem;
+  background-color: var(--dark-violet);
+  color: var(--fade-violet-1);
+  padding: 1.5rem;
+  line-height: 1.5
+}
+.balance-card__item:not(:last-child) {
+  margin-bottom: .5rem
+}
+.balance-card__item._not-active {
+  background-color: var(--gray-1);
+  color: var(--gray-4)
+}
+.balance-card__title {
+  color: var(--white)
+}
+._not-active .balance-card__title {
+  color: var(--gray-4)
+}
+._not-active .balance-card__main-txt {
+  color: var(--dark-violet)
+}
+.balance-card__bottom {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 1.75rem;
+  color: #fff;
+  line-height: 1.1
+}
+._not-active .balance-card__bottom {
+  gap: .5rem;
+  color: var(--gray-4)
+}
+.balance-card__card-img {
+  height: auto
+}
+.balance-card__lock::before {
+  font-size: 2rem;
+  color: var(--dark-violet);
+  display: none
+}
+._not-active .balance-card__lock::before {
+  display: block
+}
+.card-balance {
+  display: grid;
+  gap: 1.5rem;
+  border-radius: 1.5rem;
+  background-color: var(--gray-1)
+}
+.card-balance__switch {
+  display: flex;
+  align-items: center;
+  line-height: 1.4
+}
+.card-balance__enter {
+  display: grid;
+  gap: .5rem
+}
+.card-balance__enter .input {
+  letter-spacing: .5em
+}
+.card-balance__enter .input::-webkit-input-placeholder {
+  letter-spacing: 0
+}
+.card-balance__enter .input:-ms-input-placeholder {
+  letter-spacing: 0
+}
+.card-balance__enter .input::-ms-input-placeholder {
+  letter-spacing: 0
+}
+.card-balance__enter .input::placeholder {
+  letter-spacing: 0
+}
+.card-balance__enter .form__error {
+  position: absolute;
+  bottom: -1rem
+}
+.card-balance__body {
+  font-weight: 500
+}
+.card-balance__title:not(:last-child) {
+  margin-bottom: 1.5rem
+}
+.card-balance__item {
+  display: grid
+}
+.card-balance__sub-title {
+  font-weight: 600;
+  line-height: 1;
+  color: var(--fade-violet-2);
+  gap: .375rem;
+  align-items: center
+}
+.card-balance__sub-title.icon-arrow-down::before {
+  order: 2;
+  font-weight: 600;
+  font-size: .75rem
+}
+.card-balance__sub-title:not(:last-child) {
+  margin-bottom: .75rem
+}
+.card-balance__row {
+  display: flex;
+  align-items: center;
+  gap: .5rem
+}
+._expired .card-balance__row.row-code,
+._used .card-balance__row.row-code {
+  color: var(--fade-violet-1)
+}
+._activadet .card-balance__row.row-denomination {
+  color: var(--green)
+}
+._expired .card-balance__row.row-denomination,
+._used .card-balance__row.row-denomination {
+  color: var(--fade-violet-1)
+}
+._activadet .card-balance__row.row-status {
+  color: var(--green)
+}
+._expired .card-balance__row.row-status,
+._used .card-balance__row.row-status {
+  color: var(--red-2)
+}
+.card-balance__row.row-pin {
+  gap: .5rem
+}
+.card-balance__row-icon {
+  position: relative
+}
+.card-balance__row-icon::before {
+  display: none;
+  font-size: 1rem
+}
+._edit .card-balance__row-icon::before {
+  display: block
+}
+.card-balance__row-icon::after {
+  content: "";
+  display: none;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%
+}
+._activadet .card-balance__row-icon::after {
+  display: block;
+  background-color: var(--green)
+}
+._expired .card-balance__row-icon::after,
+._used .card-balance__row-icon::after {
+  display: block;
+  background-color: var(--red-2)
+}
+.btn-circle {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 2.5rem;
+  transition: background-color .3s ease,color .3s ease
+}
+.btn-circle_dark {
+  background-color: var(--violet)
+}
+.btn-circle_dark::before {
+  color: var(--white);
+  font-size: 1.5rem
+}
 .swiper {
   overflow: hidden
 }
@@ -4234,7 +4505,8 @@ body::after {
     min-height: 2.5rem;
     font-size: .8125rem
   }
-  .select_type-4 .select__value {
+  .select_type-4 .select__value,
+  .select_type-5 .select__value {
     min-height: 2.5rem;
     font-size: .8125rem
   }
@@ -4254,10 +4526,16 @@ body::after {
   .iti__country {
     font-size: .8125rem
   }
+  .card-balance__row.row-code,
+  .card-balance__row.row-denomination,
+  .card-balance__switch,
   .card-slider-link__head,
   .slider-checkout__subtitle {
     font-size: .9375rem
   }
+  .balance-card__main-txt,
+  .btn,
+  .card-balance__block,
   .card-slider__checked,
   .checkbox,
   .edit-btn,
@@ -4271,6 +4549,8 @@ body::after {
   .card-slider_sm .card-slider__title {
     font-size: .8125rem
   }
+  .balance-card__title,
+  .card-balance__sub-title,
   .card-slider_lg .card-slider__title,
   .orders-checkout__lines {
     font-size: .6875rem
@@ -4283,6 +4563,9 @@ body::after {
   }
   .txt-15 {
     font-size: .9375rem
+  }
+  .btn_sm {
+    min-height: 2.5rem
   }
   .checkout__top {
     padding-block: 1rem
@@ -4339,7 +4622,8 @@ body::after {
   .item-orders__title {
     font-size: .6875rem
   }
-  .tab-checkout_my-data {
+  .tab-checkout_my-data,
+  .tab-checkout_payment {
     border-radius: 0 0 1.5rem 1.5rem
   }
   .tab-checkout__items.items-cl-2,
@@ -4469,6 +4753,30 @@ body::after {
     width: 4rem;
     border-radius: .2625rem
   }
+  .balance-card__item {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem
+  }
+  .balance-card__main-txt {
+    grid-column: 2/3;
+    grid-row: 1/3
+  }
+  .balance-card__card-img {
+    width: 3rem
+  }
+  .card-balance {
+    padding: 1rem
+  }
+  .card-balance__switch {
+    gap: .5rem
+  }
+  .card-balance__enter {
+    grid-template-columns: 1fr 7.5625rem;
+    align-items: end
+  }
+  .card-balance__title {
+    font-size: .6875rem
+  }
 }
 @media (min-width:30.06125em)and (any-hover:hover) {
   .card-slider_sm:not(.checked):hover {
@@ -4477,6 +4785,20 @@ body::after {
   .card-slider_sm:not(.checked):hover .card-slider__checked {
     background-color: var(--dark-violet);
     color: var(--white)
+  }
+}
+@media (min-width:34.43625em) {
+  .card-balance__item:nth-child(1) .card-balance__sub-title {
+    display: inline-flex
+  }
+  .card-balance__item {
+    gap: .5rem
+  }
+  .card-balance__sub-title {
+    display: none
+  }
+  .card-balance__row {
+    min-height: 2.5rem
   }
 }
 @media (min-width:37.56125em) {
@@ -4558,6 +4880,9 @@ body::after {
     background: linear-gradient(to right,rgba(255,255,255,0) 0,#fff 100%);
     pointer-events: none
   }
+  .card-balance__item {
+    grid-template-columns: 16% 22% 1fr 22%
+  }
 }
 @media (min-width:56.31125em)and (min-width:77.06125em) {
   .slider-checkout_visible::before {
@@ -4573,7 +4898,8 @@ body::after {
   .orders-checkout__body,
   .orders-checkout__total,
   .tab-checkout__body,
-  .tab-checkout_my-data {
+  .tab-checkout_my-data,
+  .tab-checkout_payment {
     padding: 2rem
   }
   .slider-checkout {
@@ -4622,7 +4948,8 @@ body::after {
   .orders-checkout__body,
   .orders-checkout__total,
   .tab-checkout__body,
-  .tab-checkout_my-data {
+  .tab-checkout_my-data,
+  .tab-checkout_payment {
     padding: 1.5rem
   }
   .e-card__image {
@@ -4821,6 +5148,24 @@ body::after {
   .checkout__phone {
     display: none
   }
+  .card-balance__item {
+    grid-template-columns: 1fr 38%;
+    gap: 1.5rem
+  }
+  .card-balance__item .card-balance__block:nth-child(3) {
+    grid-column: 1/3
+  }
+  .card-balance__item .card-balance__block:nth-child(4) {
+    grid-column: 1/3
+  }
+  .card-balance__item:not(:last-child) {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: .09375rem solid var(--gray-2)
+  }
+  .card-balance__sub-title {
+    display: inline-flex
+  }
 }
 @media (max-width:30.06125em) {
   .input_sm {
@@ -4865,7 +5210,8 @@ body::after {
     min-height: 3rem;
     font-size: .875rem
   }
-  .select_type-4 .select__value {
+  .select_type-4 .select__value,
+  .select_type-5 .select__value {
     min-height: 2.875rem;
     font-size: .875rem
   }
@@ -4892,10 +5238,16 @@ body::after {
   .popup-slider-checkout__nav-item .quantity .quantity__input {
     left: auto
   }
+  .card-balance__row.row-code,
+  .card-balance__row.row-denomination,
+  .card-balance__switch,
   .card-slider-link__head,
   .slider-checkout__subtitle {
     font-size: .875rem
   }
+  .balance-card__main-txt,
+  .btn,
+  .card-balance__block,
   .card-slider__checked,
   .checkbox,
   .edit-btn,
@@ -4909,6 +5261,8 @@ body::after {
   .card-slider_sm .card-slider__title {
     font-size: .75rem
   }
+  .balance-card__title,
+  .card-balance__sub-title,
   .card-slider_lg .card-slider__title,
   .orders-checkout__lines {
     font-size: .75rem
@@ -4979,7 +5333,8 @@ body::after {
   .item-orders__title {
     font-size: .75rem
   }
-  .tab-checkout_my-data {
+  .tab-checkout_my-data,
+  .tab-checkout_payment {
     border-radius: 1.5rem 1.5rem 1.5rem 1.5rem
   }
   .tab-checkout__items.items-cl-2,
@@ -5114,6 +5469,28 @@ body::after {
     width: 3rem;
     border-radius: .5rem
   }
+  .balance-card__item {
+    gap: .5rem
+  }
+  .balance-card__title {
+    font-weight: 600;
+    font-size: .875rem
+  }
+  .balance-card__bottom {
+    margin-top: 1rem
+  }
+  .balance-card__card-img {
+    width: 3.75rem
+  }
+  .card-balance {
+    padding: 1.5rem
+  }
+  .card-balance__switch {
+    gap: 1rem
+  }
+  .card-balance__title {
+    font-size: .875rem
+  }
 }
 @media (min-width:30.06125em)and (max-width:90.06125em) {
   .option {
@@ -5139,7 +5516,8 @@ body::after {
   .orders-checkout__body,
   .orders-checkout__total,
   .tab-checkout__body,
-  .tab-checkout_my-data {
+  .tab-checkout_my-data,
+  .tab-checkout_payment {
     padding: clamp(1.5rem ,-.5687083333rem + 3.3333333333vw ,2rem)
   }
 }
@@ -5162,6 +5540,11 @@ body::after {
 @media (min-width:56.31125em)and (min-width:56.31125em)and (max-width:77.06125em) {
   .slider-checkout_visible::before {
     right: clamp(-2rem ,-.1431024096rem + -2.4096385542vw ,-1.5rem)
+  }
+}
+@media (max-width:56.31125em)and (min-width:34.43625em) {
+  .card-balance__item {
+    grid-template-columns: 17% 20% 1fr 7.9375rem
   }
 }
 @media (any-hover:hover) {
@@ -5241,6 +5624,10 @@ body::after {
     background-color: var(--dark-violet);
     color: var(--white)
   }
+  .info-label__info_light.icon-info:hover::before {
+    background-color: var(--fade-violet-2);
+    color: var(--white)
+  }
   .checkout__continue:hover {
     color: var(--fade-violet-3)
   }
@@ -5258,6 +5645,9 @@ body::after {
   }
   .card-slider-link:hover .card-slider-link__head {
     color: var(--white)
+  }
+  .btn-circle_dark:hover {
+    background-color: var(--dark-violet)
   }
 }
 @media (-webkit-min-device-pixel-ratio:2),

@@ -23,7 +23,8 @@
 		._select-focus & {
 			background-color: var(--gray-2);
 		}
-		.select_type-4._select-open & {
+		.select_type-4._select-open &,
+		.select_type-5._select-open & {
 			background-color: var(--white);
 			// box-shadow: 0 4px 50px 0 rgba(33, 5, 41, 0.12), 0 4px 7px 0 rgba(33, 5, 41, 0.04);
 			box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.16);
@@ -35,7 +36,8 @@
 			color: var(--red);
 		}
 	}
-	&--show-top.select_type-4._select-open {
+	&--show-top.select_type-4._select-open,
+	&--show-top.select_type-5._select-open  {
 		.select__title {
 			box-shadow: 0 -40px -40px 0 rgba(33, 5, 41, 0.16);
 			border-radius: 0 0 toRem(24) toRem(24);
@@ -63,7 +65,8 @@
 				font-size: toRem(14);
 			}
 		}
-		.select_type-4 & {
+		.select_type-4 &,
+		.select_type-5 & {
 			padding: toRem(6.5) toRem(8) toRem(6.5) toRem(16);
 			@media (min-width:$mobileSmall){
 				min-height: toRem(40);
@@ -73,6 +76,9 @@
 				min-height: toRem(46);
 				font-size: toRem(14);
 			}
+		}
+		.select_type-5 & {
+				font-size: toRem(15);
 		}
 		.select_type-3 & {
 			padding: toRem(6) toRem(12);
@@ -106,7 +112,8 @@
 			._select-open & {
 				transform: rotate(-180deg);
 			}
-			.select_type-4 & {
+			.select_type-4 &,
+			.select_type-5 & {
 				flex: 0 0 toRem(32);
 				width: toRem(32);
 				height: toRem(32);
@@ -131,6 +138,7 @@
 		white-space: nowrap;
 		// white-space: normal;
 		color: var(--fade-violet-1);
+		line-height: 1.6;
 		._select-active & {
 			color: var(--dark-violet);
 		}
@@ -155,6 +163,7 @@
 		height: 100%;
 		outline: none;
 		font-weight: 500;
+		// line-height: 2;
 		._select-active & {
 			color: var(--dark-violet);
 		}
@@ -183,7 +192,8 @@
 		.select_type-3 & {
 			padding: toRem(4) 0;
 		}
-		.select_type-4 & {
+		.select_type-4 &,
+		.select_type-5 &  {
 			top: 100%;
 			border-radius: 0 0 toRem(24) toRem(24);
 			box-shadow: 0 40px 40px 0 rgba(33, 5, 41, 0.16);
@@ -228,6 +238,9 @@
 			font-size: toRem(11);
 			padding: toRem(6) toRem(10);
 		}
+		.select_type-5 & {
+			font-size: toRem(15);
+		}
 		&.icon-check {
 			&::before {
 				order: 2;
@@ -262,8 +275,16 @@
 	&__row {
 		display: inline-flex;
 		align-items: center;
+		gap: toRem(8);
+		.select_type-5 & {
+			gap: toRem(16);
+		}
 	}
 	&__asset {
+		.select_type-5 & {
+			width: auto;
+			height: toRem(16);
+		}
 	}
 	&__text {
 	}

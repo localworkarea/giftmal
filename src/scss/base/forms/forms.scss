@@ -22,6 +22,10 @@ textarea {
 	color: var(--dark-violet);
 	cursor: pointer;
 	transition: background-color .3s ease, color .3s ease, border .3s ease, outline .3s ease;
+  // .input_white
+  &_white {
+    background-color: var(--white);
+  }
 	&_sm {
     @media (min-width:$mobileSmall){
       min-height: toRem(40);
@@ -396,6 +400,44 @@ textarea.input {
     }
   }
 }
+
+.toggle-switch {
+  position: relative;
+	// .toggle-switch__input
+	&__input {
+    display: none;
+    &:checked {
+      + .toggle-switch__label {
+        background-color: var(--dark-violet);
+        &::before {
+          transform: translateX(100%);
+          background-color: var(--white);
+        }
+      }
+    }
+	}
+  // .toggle-switch__label
+  &__label {
+    cursor: pointer;
+    display: inline-flex;
+    background-color: var(--white);
+    position: relative;
+    width: toRem(56);
+    border-radius: toRem(32);
+    padding: toRem(4);
+    transition: background-color .3s ease;
+    &::before {
+      content: '';
+      display: block;
+      width: toRem(24);
+      height: toRem(24);
+      border-radius: 50%;
+      background-color: var(--fade-violet-1);
+      transition: transform .3s ease, background-color .3s ease;
+    }
+  }
+}
+
 
 
 // checkbox =========================
