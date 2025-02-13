@@ -99,8 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  const mediaQuery900 = window.matchMedia('(min-width: 56.311em)');
-  mediaQuery900.addEventListener('change', updateOrderCheckoutElHeights);
+  const mediaQuery900min = window.matchMedia('(min-width: 56.311em)');
+  mediaQuery900min.addEventListener('change', updateOrderCheckoutElHeights);
 
   updateOrderCheckoutElHeights();
 
@@ -209,9 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // == drag spollerPopup elements ==========================================
 
-  // function initDragSpoiler() {
-  //   if (!mediaQuery900.matches) return; // Запуск только при ширине >= 900px
-  
+  function initDragSpoiler() {
     const spollerPopup = document.querySelectorAll("[data-spollers-popup]");
     spollerPopup.forEach((popup) => {
       const ordersHead = popup.querySelector(".orders-checkout__head");
@@ -239,29 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let deltaY = currentY - startY;
   
         if (deltaY > 100) {
-          // const spollerBlock = ordersHead.closest("details");
-          // if (spollerBlock) {
-          //   const spollerTitle = spollerBlock.querySelector("summary");
-          //   if (spollerTitle) {
-          //     spollerTitle.click();
-          //   }
-          // }
-          
-          // setTimeout(() => {
-          //   ordersBody.style.height = "";
-          // }, 300);
-        } else {
-          let newHeightBody = initialHeightBody - deltaY;
-          ordersBody.style.height = `${newHeightBody}px`;
-        }
-      });
-  
-      ordersHead.addEventListener("touchend", () => {
-        isDragging = false;
-        // currentY = e.touches[0].clientY;
-        let deltaY = currentY - startY;
-  
-        if (deltaY > 100) {
           const spollerBlock = ordersHead.closest("details");
           if (spollerBlock) {
             const spollerTitle = spollerBlock.querySelector("summary");
@@ -273,13 +248,36 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
             ordersBody.style.height = "";
           }, 300);
+        } else {
+          let newHeightBody = initialHeightBody - deltaY;
+          ordersBody.style.height = `${newHeightBody}px`;
         }
       });
-    });
-  // }
-  // initDragSpoiler();
   
-  // mediaQuery900.addEventListener('change', initDragSpoiler);
+      ordersHead.addEventListener("touchend", () => {
+        isDragging = false;
+        // let deltaY = currentY - startY;
+        // if (deltaY > 100) {
+        //   const spollerBlock = ordersHead.closest("details");
+        //   if (spollerBlock) {
+        //     const spollerTitle = spollerBlock.querySelector("summary");
+        //     if (spollerTitle) {
+        //       spollerTitle.click();
+        //     }
+        //   }
+          
+        //   setTimeout(() => {
+        //     ordersBody.style.height = "";
+        //   }, 300);
+        // }
+      });
+    });
+  }
+  initDragSpoiler();
+
+  const mediaQuery900max = window.matchMedia('(max-width: 56.311em)');
+  mediaQuery900max.addEventListener('change', initDragSpoiler);
+  
   
 
   
