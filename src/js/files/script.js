@@ -51,16 +51,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // TABS ================================================================
   const stepButtons = document.querySelectorAll(".steps-checkout__btn");
   const tabs = document.querySelectorAll(".checkout__tab");
-
+  
   stepButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
       stepButtons.forEach(btn => btn.classList.remove("step-active"));
       button.classList.add("step-active");
-
-      tabs.forEach(tab => tab.classList.remove("tab-active"));
+  
+      tabs.forEach(tab => {
+        tab.classList.remove("tab-active");
+        tab.setAttribute("hidden", "true");
+      });
+  
       tabs[index].classList.add("tab-active");
+      tabs[index].removeAttribute("hidden");
     });
   });
+  
   // ===============================================
   
   // == update height elements ================

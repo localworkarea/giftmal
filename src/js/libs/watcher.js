@@ -2,7 +2,7 @@
 import { isMobile, uniqArray, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 
-// Спостерігач об'єктів [всевидюче око]
+// Спостерігач об'єктів
 // data-watch - можна писати значення для застосування кастомного коду
 // data-watch-root - батьківський елемент всередині якого спостерігати за об'єктом
 // data-watch-margin -відступ
@@ -17,6 +17,7 @@ class ScrollWatcher {
 		}
 		this.config = Object.assign(defaultConfig, props);
 		this.observer;
+		this.visibleOrders = new Set(); // відстеження data-watch зі значенням "orders" (сторінка Checkout)
 		!document.documentElement.classList.contains('watcher') ? this.scrollWatcherRun() : null;
 	}
 	// Оновлюємо конструктор
@@ -31,7 +32,6 @@ class ScrollWatcher {
 	// Конструктор спостерігачів
 	scrollWatcherConstructor(items) {
 		if (items.length) {
-			this.scrollWatcherLogging(`Прокинувся, стежу за об'єктами (${items.length})...`);
 			// Унікалізуємо параметри
 			let uniqParams = uniqArray(Array.from(items).map(function (item) {
 				// Обчислення автоматичного Threshold
@@ -80,8 +80,6 @@ class ScrollWatcher {
 				// Ініціалізація спостерігача зі своїми налаштуваннями
 				this.scrollWatcherInit(groupItems, configWatcher);
 			});
-		} else {
-			this.scrollWatcherLogging("Сплю, немає об'єктів для стеження. ZzzZZzz");
 		}
 	}
 	// Функція створення налаштувань
@@ -91,13 +89,10 @@ class ScrollWatcher {
 		// Батько, у якому ведеться спостереження
 		if (document.querySelector(paramsWatch.root)) {
 			configWatcher.root = document.querySelector(paramsWatch.root);
-		} else if (paramsWatch.root !== 'null') {
-			this.scrollWatcherLogging(`Эмм... батьківського об'єкта ${paramsWatch.root} немає на сторінці`);
 		}
 		// Відступ спрацьовування
 		configWatcher.rootMargin = paramsWatch.margin;
 		if (paramsWatch.margin.indexOf('px') < 0 && paramsWatch.margin.indexOf('%') < 0) {
-			this.scrollWatcherLogging(`йой, налаштування data-watch-margin потрібно задавати в PX або %`);
 			return
 		}
 		// Точки спрацьовування
@@ -136,23 +131,17 @@ class ScrollWatcher {
 			// Бачимо об'єкт
 			// Додаємо клас
 			!targetElement.classList.contains('_watcher-view') ? targetElement.classList.add('_watcher-view') : null;
-			this.scrollWatcherLogging(`Я бачу ${targetElement.classList}, додав клас _watcher-view`);
 		} else {
 			// Не бачимо об'єкт
 			// Забираємо клас
 			targetElement.classList.contains('_watcher-view') ? targetElement.classList.remove('_watcher-view') : null;
-			this.scrollWatcherLogging(`Я не бачу ${targetElement.classList}, прибрав клас _watcher-view`);
 		}
 	}
 	// Функція відключення стеження за об'єктом
 	scrollWatcherOff(targetElement, observer) {
 		observer.unobserve(targetElement);
-		this.scrollWatcherLogging(`Я перестав стежити за ${targetElement.classList}`);
 	}
-	// Функція виведення в консоль
-	scrollWatcherLogging(message) {
-		this.config.logging ? FLS(`[Спостерігач]: ${message}`) : null;
-	}
+
 	// Функція обробки спостереження
 	scrollWatcherCallback(entry, observer) {
 		const targetElement = entry.target;
@@ -160,6 +149,23 @@ class ScrollWatcher {
 		this.scrollWatcherIntersecting(entry, targetElement);
 		// Якщо є атрибут data-watch-once прибираємо стеження
 		targetElement.hasAttribute('data-watch-once') && entry.isIntersecting ? this.scrollWatcherOff(targetElement, observer) : null;
+
+		// Якщо елемент має data-watch="orders"
+    if (targetElement.dataset.watch === "orders") {
+			if (entry.isIntersecting) {
+					this.visibleOrders.add(targetElement);
+			} else {
+					this.visibleOrders.delete(targetElement);
+			}
+
+			// Управление классом _watch-orders у <html>
+			if (this.visibleOrders.size > 0) {
+					document.documentElement.classList.add("_watch-orders");
+			} else {
+					document.documentElement.classList.remove("_watch-orders");
+			}
+	}
+
 		// Створюємо свою подію зворотного зв'язку
 		document.dispatchEvent(new CustomEvent("watcherCallback", {
 			detail: {

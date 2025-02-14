@@ -239,6 +239,7 @@
     height: 100dvh;
     transform: translate3d(0,0,0);
     pointer-events: none;
+    transition: opacity .3s;
     &::after {
       content: "";
       position: fixed;
@@ -257,7 +258,10 @@
         opacity: 1;
       }
     }
-
+   // якщо до html елементу додан класс _watch-orders
+   ._watch-orders & {
+      opacity: 0;
+   }
   }
   // .orders-checkout__cart
   &__cart {
@@ -343,6 +347,10 @@
       
       ._spoller-popup-active & {
         border-radius: toRem(24) toRem(24) 0 0 ;
+      }
+      // якщо до html елементу додан класс _watch-orders
+      ._watch-orders & {
+        pointer-events: none;
       }
     }
 	}
@@ -665,7 +673,6 @@
 
 .tab-checkout {
   width: 100%;
-	
   // .tab-checkout_my-data
 	&_my-data {
     @extend %padding32-24;
