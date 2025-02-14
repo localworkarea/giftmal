@@ -261,6 +261,7 @@ class Popup {
 			}
 		}));
 
+
 		this.previousOpen.element.classList.remove(this.options.classes.popupActive);
 		if (!this._reopen) {
 			document.documentElement.classList.remove(this.options.classes.bodyActive);

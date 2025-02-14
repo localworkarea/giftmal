@@ -1353,13 +1353,10 @@ textarea.input {
 }
 .iti__dropdown-content {
   background-color: var(--iti-dropdown-bg);
-  padding: .5rem;
   width: 100%!important
 }
 .iti__dropdown-content.icon-search::before {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
   font-size: 1.5rem
 }
 .iti--inline-dropdown .iti__dropdown-content {
@@ -1374,8 +1371,7 @@ textarea.input {
   border-width: 0;
   outline: 0;
   border-radius: 1.5rem;
-  margin-bottom: .5rem;
-  min-height: 2.5rem
+  margin-bottom: .5rem
 }
 .iti__search-input::-webkit-input-placeholder {
   color: var(--fade-violet-2)
@@ -1407,7 +1403,6 @@ textarea.input {
 .iti__country {
   align-items: center;
   padding: 8px;
-  min-height: 2.5rem;
   border-radius: 1rem;
   display: grid;
   grid-template-columns: 1.5rem 2rem 1fr;
@@ -1455,16 +1450,25 @@ textarea.input {
   cursor: pointer
 }
 .iti--fullscreen-popup.iti--container {
-  background-color: var(--dark-violet-opacity);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   position: fixed;
+  background-color: var(--dark-violet-opacity);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 6.25rem 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start
+}
+.popup .iti--fullscreen-popup.iti--container {
+  position: absolute;
+  background-color: rgba(0,0,0,0);
+  backdrop-filter: unset;
+  -webkit-backdrop-filter: unset;
+  padding: 0
 }
 .iti--fullscreen-popup .iti__dropdown-content {
   display: flex;
@@ -3177,6 +3181,11 @@ body::after {
   border-radius: .3125rem;
   background-color: var(--fade-violet-1)
 }
+#popupIti .popup__body {
+  position: relative;
+  height: 100%;
+  min-height: 18.75rem
+}
 .popup-slider-checkout {
   font-weight: 500;
   font-size: .875rem
@@ -4519,11 +4528,17 @@ body::after {
   .iti__selected-dial-code {
     min-height: 2.5rem
   }
+  .iti__dropdown-content.icon-search::before {
+    right: 1rem;
+    top: 1rem
+  }
   .iti__search-input {
+    min-height: 2.5rem;
     font-size: .8125rem;
     padding: 0 .5rem
   }
   .iti__country {
+    min-height: 2.5rem;
     font-size: .8125rem
   }
   .card-balance__row.row-code,
@@ -4814,6 +4829,7 @@ body::after {
 }
 @media (min-width:48.06125em) {
   .iti__dropdown-content {
+    padding: .5rem;
     border-radius: 1.5rem
   }
 }
@@ -5134,7 +5150,12 @@ body::after {
 }
 @media (max-width:48.06125em) {
   .iti__dropdown-content {
+    padding: 2rem 1.5rem 1.5rem;
     border-radius: 1.5rem 1.5rem 0 0
+  }
+  .popup .iti__dropdown-content {
+    padding: 0;
+    border-radius: 0
   }
 }
 @media (max-width:40.68625em) {
@@ -5231,12 +5252,22 @@ body::after {
   .iti__selected-dial-code {
     min-height: 3rem
   }
+  .iti__dropdown-content.icon-search::before {
+    right: 2.5rem;
+    top: 2.75rem
+  }
+  .popup .iti__dropdown-content.icon-search::before {
+    top: .75rem;
+    right: 1rem
+  }
   .iti__search-input {
+    min-height: 3rem;
     font-size: .875rem;
     padding: 0 1rem;
     background-color: var(--gray-1)
   }
   .iti__country {
+    min-height: 3rem;
     font-size: .875rem
   }
   .popup-slider-checkout__nav-item .select__content {

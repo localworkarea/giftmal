@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250214122411">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250214170324">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -70,283 +70,9 @@
 									</button>
 								</div>
 								<div class="checkout__tabs">
-									<!-- Оплата -->
-									<div class="checkout__tab tab-checkout tab-checkout_payment tab-active">
-										<div class="tab-checkout__head">
-											<p class="tab-checkout__title">
-												Оплата
-											</p>
-										</div>
-										<div class="tab-checkout__item">
-											<p class="tab-checkout__subtitle">
-												1. Баланс giftmall
-											</p>
-											<div class="tab-checkout__items">
-												<div class="balance-card">
-													<div class="balance-card__item">
-														<div class="balance-card__title">
-															Ваш активний баланс giftmall
-														</div>
-														<div class="balance-card__main-txt">
-															Ми використаємо ваш баланс у якості знижки.
-															Щоб сплатити повністю замовлення, доплатіть різницю внизу.
-														</div>
-														<div class="balance-card__bottom">
-															<img class="balance-card__card-img" src="img/cards/giftmall-card.png" width="48" height="32" alt="Image">
-															<div class="balance-card__balance">
-																<span>2 000</span> грн
-															</div>
-															<div class="balance-card__lock icon-lock"></div>
-														</div>
-													</div>
-													<div class="balance-card__item _not-active">
-														<div class="balance-card__title">
-															Ваш активний баланс giftmall
-														</div>
-														<div class="balance-card__main-txt">
-															Ви не можете використати свій баланс при оплаті даного замовлення.
-														</div>
-														<div class="balance-card__bottom ">
-															<img class="balance-card__card-img" src="img/cards/giftmall-card.png" width="48" height="32" alt="Image">
-															<div class="balance-card__balance">
-																<span>2 000</span> грн
-															</div>
-															<div class="balance-card__lock icon-lock"></div>
-														</div>
-													</div>
-												</div>
-												<div class="card-balance">
-													<div class="card-balance__switch">
-														<div class="toggle-switch">
-															<input id="toogleSwitch" type="checkbox" class="toggle-switch__input">
-															<label for="toogleSwitch" class="toggle-switch__label"></label>
-														</div>
-														<p>Поповнити баланс з інших карток giftmall</p>
-													</div>
-													<form data-dev class="card-balance__enter">
-														<div class="input__item">
-															<label for="codeCard" class="input__label">
-																<span class="info-label">
-																	<span data-tippy-content="Якщо у вас декілька сертифікатів, то введіть їх через кому" class="info-label__info info-label__info_light icon-info"></span>
-																	Введіть код з Картки giftmall сюди
-																</span>
-															</label>
-															<div class="input__sub-item">
-																<input id="codeCard" autocomplete="off" type="text" name="codeCard" data-error="Введіть код" placeholder="Код з картки" data-required class="input input_sm input_white">
-															</div>
-														</div>
-														<button type="submit" class="card-balance__sent btn btn_dark btn_sm">Поповнити</button>
-													</form>
-													<div class="card-balance__body">
-														<p class="card-balance__title">Мої картки</p>
-														<div class="card-balance__list">
-
-															<div class="card-balance__item _edit">
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title">Код картки</div>
-																	<div class="card-balance__row row-code">Z90XQ1O</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
-																	<div class="card-balance__row row-denomination">500 грн</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
-																	<div class="card-balance__row row-status">
-																		<span class="card-balance__row-icon icon-attantion"></span>
-																		Введіть PIN-Code для активації
-																	</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title">PIN-Code</div>
-																	<div class="card-balance__row row-pin">
-																		<input autocomplete="off" type="text" name="pinCode" placeholder="1 2 3 4" data-required class="card-balance__row-input input input_sm input_white">
-																		<button type="button" class="card-balance__row-btn btn-circle btn-circle_dark icon-arrow-next"></button>
-																	</div>
-																</div>
-															</div>
-
-															<div class="card-balance__item _activadet">
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title">Код картки</div>
-																	<div class="card-balance__row row-code">Z90XQ1O</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
-																	<div class="card-balance__row row-denomination">+500 грн</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
-																	<div class="card-balance__row row-status">
-																		<span class="card-balance__row-icon icon-attantion"></span>
-																		Активований
-																	</div>
-																</div>
-															</div>
-															<div class="card-balance__item _expired">
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title">Код картки</div>
-																	<div class="card-balance__row row-code">Z90XQ1O</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
-																	<div class="card-balance__row row-denomination">-</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
-																	<div class="card-balance__row row-status">
-																		<span class="card-balance__row-icon icon-attantion"></span>
-																		Протермінований
-																	</div>
-																</div>
-															</div>
-															<div class="card-balance__item _used">
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title">Код картки</div>
-																	<div class="card-balance__row row-code">Z90XQ1O</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
-																	<div class="card-balance__row row-denomination">-</div>
-																</div>
-																<div class="card-balance__block">
-																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
-																	<div class="card-balance__row row-status">
-																		<span class="card-balance__row-icon icon-attantion"></span>
-																		Вже використаний
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="tab-checkout__item">
-											<p class="tab-checkout__subtitle">
-												2. Оберіть спосіб оплати, щоб доплатити різницю
-											</p>
-											<div class="tab-checkout__items">
-												<select name="" data-class-modif="type-5" data-speed="200" data-show-selected data-scroll="300">
-													<option data-class="pay-visa" data-asset="img/cards/visa-mc.svg" value="1">Банківська картка</option>
-													<option data-class="pay-apple" data-asset="img/cards/apple-pay.svg" value="2">Apple Pay</option>
-													<option data-class="pay-google" data-asset="img/cards/google-pay.svg" value="3">Google Pay</option>
-												</select>
-											</div>
-										</div>
-										<div class="tab-checkout__item _d-none-pc">
-											<div data-spollers="900.98,max" class="orders-checkout__spoller">
-												<details data-watch="orders" class="orders-checkout__orders">
-													<summary class="orders-checkout__head">
-														<div class="orders-checkout__info">
-															<p>Ваші замовлення <span>(2)</span></p>
-														</div>
-														<div class="orders-checkout__arrow icon-arrow-down">
-															<div><span>2400</span> грн</div>
-														</div>
-													</summary>
-													<div class="orders-checkout__wrapper">
-														<div class="orders-checkout__body">
-															<button type="button" class="orders-checkout__change edit-btn icon-edit" aria-label="change orders">
-																Змінити
-															</button>
-															<div class="orders-checkout__type">
-																<div class="orders-checkout__sub-head">
-																	<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
-																	<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
-																</div>
-																<div class="orders-checkout__item item-orders">
-																	<div class="item-orders__img">
-																		<img class="ibg" src="img/checkout/item-01.jpg" width="106" height="69" alt="Image">
-																	</div>
-																	<div class="item-orders__body">
-																		<p class="item-orders__title">TVORCHI. Майстер-клас “Малювання Епоксидною смолою”</p>
-																		<div class="item-orders__amount"><span>2</span>шт</div>
-																		<div class="item-orders__price"><span>2 x</span> <span>800.00</span> грн</div>
-																	</div>
-																	<div class="item-orders__button">
-																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
-																	</div>
-																</div>
-																<div class="orders-checkout__item item-orders">
-																	<div class="item-orders__img">
-																		<img class="ibg" src="img/checkout/item-03.jpg" width="106" height="69" alt="Image">
-																	</div>
-																	<div class="item-orders__body">
-																		<p class="item-orders__title">Дизайнерська листівка</p>
-																		<div class="item-orders__amount"><span>1</span>шт</div>
-																		<div class="item-orders__price"><span></span> <span>50.00</span> грн</div>
-																	</div>
-																	<div class="item-orders__button">
-																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
-																	</div>
-																</div>
-															</div>
-															<div class="orders-checkout__type">
-																<div class="orders-checkout__sub-head">
-																	<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
-																	<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
-																</div>
-																<div class="orders-checkout__item item-orders">
-																	<div class="item-orders__img">
-																		<img class="ibg" src="img/checkout/item-05.jpg" width="106" height="69" alt="Image">
-																	</div>
-																	<div class="item-orders__body">
-																		<p class="item-orders__title">Дизайнерська листівка</p>
-																		<div class="item-orders__amount"><span>1</span>шт</div>
-																		<div class="item-orders__price"><span></span> <span>50.00</span>грн</div>
-																	</div>
-																	<div class="item-orders__button">
-																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</details>
-											</div>
-										</div>
-										<div class="tab-checkout__row row-gap-16">
-											<div class="orders-checkout__total _d-none-pc">
-												<div class="orders-checkout__lines">
-													<p class="orders-checkout__text">
-														Загальна сума
-													</p>
-													<div class="orders-checkout__sum">
-														<span>2 450</span> грн
-													</div>
-												</div>
-												<div class="orders-checkout__lines">
-													<p class="orders-checkout__text">
-														Доставка
-													</p>
-													<div class="orders-checkout__sum">
-														За тарифами Нової Пошти
-													</div>
-												</div>
-												<div class="orders-checkout__lines">
-													<p class="orders-checkout__text">
-														Списаний баланс
-													</p>
-													<div class="orders-checkout__sum">
-														<span>-2 450</span> грн
-													</div>
-												</div>
-												<div class="orders-checkout__lines lines-total">
-													<p class="orders-checkout__text">
-														До оплати
-													</p>
-													<div class="orders-checkout__sum">
-														<span>2400</span> грн
-													</div>
-												</div>
-											</div>
-											<button type="submit" class="tab-checkout__btn btn btn_dark">Перейти до оплати</button>
-										</div>
-									</div>
 
 									<!-- Мої контактні дані -->
-									<form data-dev data-goto-error method="post" class="checkout__tab tab-checkout tab-checkout_my-data ">
+									<form data-dev data-goto-error class="checkout__tab tab-checkout tab-checkout_my-data tab-active">
 										<div class="tab-checkout__head">
 											<p class="tab-checkout__title">
 												Мої контактні дані
@@ -1696,6 +1422,281 @@
 										</div>
 									</div>
 
+									<!-- Оплата -->
+									<div class="checkout__tab tab-checkout tab-checkout_payment ">
+										<div class="tab-checkout__head">
+											<p class="tab-checkout__title">
+												Оплата
+											</p>
+										</div>
+										<div class="tab-checkout__item">
+											<p class="tab-checkout__subtitle">
+												1. Баланс giftmall
+											</p>
+											<div class="tab-checkout__items">
+												<div class="balance-card">
+													<div class="balance-card__item">
+														<div class="balance-card__title">
+															Ваш активний баланс giftmall
+														</div>
+														<div class="balance-card__main-txt">
+															Ми використаємо ваш баланс у якості знижки.
+															Щоб сплатити повністю замовлення, доплатіть різницю внизу.
+														</div>
+														<div class="balance-card__bottom">
+															<img class="balance-card__card-img" src="img/cards/giftmall-card.png" width="48" height="32" alt="Image">
+															<div class="balance-card__balance">
+																<span>2 000</span> грн
+															</div>
+															<div class="balance-card__lock icon-lock"></div>
+														</div>
+													</div>
+													<div class="balance-card__item _not-active">
+														<div class="balance-card__title">
+															Ваш активний баланс giftmall
+														</div>
+														<div class="balance-card__main-txt">
+															Ви не можете використати свій баланс при оплаті даного замовлення.
+														</div>
+														<div class="balance-card__bottom ">
+															<img class="balance-card__card-img" src="img/cards/giftmall-card.png" width="48" height="32" alt="Image">
+															<div class="balance-card__balance">
+																<span>2 000</span> грн
+															</div>
+															<div class="balance-card__lock icon-lock"></div>
+														</div>
+													</div>
+												</div>
+												<div class="card-balance">
+													<div class="card-balance__switch">
+														<div class="toggle-switch">
+															<input id="toogleSwitch" type="checkbox" class="toggle-switch__input">
+															<label for="toogleSwitch" class="toggle-switch__label"></label>
+														</div>
+														<p>Поповнити баланс з інших карток giftmall</p>
+													</div>
+													<form data-dev class="card-balance__enter">
+														<div class="input__item">
+															<label for="codeCard" class="input__label">
+																<span class="info-label">
+																	<span data-tippy-content="Якщо у вас декілька сертифікатів, то введіть їх через кому" class="info-label__info info-label__info_light icon-info"></span>
+																	Введіть код з Картки giftmall сюди
+																</span>
+															</label>
+															<div class="input__sub-item">
+																<input id="codeCard" autocomplete="off" type="text" name="codeCard" data-error="Введіть код" placeholder="Код з картки" data-required class="input input_sm input_white">
+															</div>
+														</div>
+														<button type="submit" class="card-balance__sent btn btn_dark btn_sm">Поповнити</button>
+													</form>
+													<div class="card-balance__body">
+														<p class="card-balance__title">Мої картки</p>
+														<div class="card-balance__list">
+
+															<div class="card-balance__item _edit">
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title">Код картки</div>
+																	<div class="card-balance__row row-code">Z90XQ1O</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
+																	<div class="card-balance__row row-denomination">500 грн</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
+																	<div class="card-balance__row row-status">
+																		<span class="card-balance__row-icon icon-attantion"></span>
+																		Введіть PIN-Code для активації
+																	</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title">PIN-Code</div>
+																	<div class="card-balance__row row-pin">
+																		<input autocomplete="off" type="text" name="pinCode" placeholder="1 2 3 4" data-required class="card-balance__row-input input input_sm input_white">
+																		<button type="button" class="card-balance__row-btn btn-circle btn-circle_dark icon-arrow-next"></button>
+																	</div>
+																</div>
+															</div>
+
+															<div class="card-balance__item _activadet">
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title">Код картки</div>
+																	<div class="card-balance__row row-code">Z90XQ1O</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
+																	<div class="card-balance__row row-denomination">+500 грн</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
+																	<div class="card-balance__row row-status">
+																		<span class="card-balance__row-icon icon-attantion"></span>
+																		Активований
+																	</div>
+																</div>
+															</div>
+															<div class="card-balance__item _expired">
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title">Код картки</div>
+																	<div class="card-balance__row row-code">Z90XQ1O</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
+																	<div class="card-balance__row row-denomination">-</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
+																	<div class="card-balance__row row-status">
+																		<span class="card-balance__row-icon icon-attantion"></span>
+																		Протермінований
+																	</div>
+																</div>
+															</div>
+															<div class="card-balance__item _used">
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title">Код картки</div>
+																	<div class="card-balance__row row-code">Z90XQ1O</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
+																	<div class="card-balance__row row-denomination">-</div>
+																</div>
+																<div class="card-balance__block">
+																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
+																	<div class="card-balance__row row-status">
+																		<span class="card-balance__row-icon icon-attantion"></span>
+																		Вже використаний
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-checkout__item">
+											<p class="tab-checkout__subtitle">
+												2. Оберіть спосіб оплати, щоб доплатити різницю
+											</p>
+											<div class="tab-checkout__items">
+												<select name="" data-class-modif="type-5" data-speed="200" data-show-selected data-scroll="300">
+													<option data-class="pay-visa" data-asset="img/cards/visa-mc.svg" value="1">Банківська картка</option>
+													<option data-class="pay-apple" data-asset="img/cards/apple-pay.svg" value="2">Apple Pay</option>
+													<option data-class="pay-google" data-asset="img/cards/google-pay.svg" value="3">Google Pay</option>
+												</select>
+											</div>
+										</div>
+										<div class="tab-checkout__item _d-none-pc">
+											<div data-spollers="900.98,max" class="orders-checkout__spoller">
+												<details data-watch="orders" class="orders-checkout__orders">
+													<summary class="orders-checkout__head">
+														<div class="orders-checkout__info">
+															<p>Ваші замовлення <span>(2)</span></p>
+														</div>
+														<div class="orders-checkout__arrow icon-arrow-down">
+															<div><span>2400</span> грн</div>
+														</div>
+													</summary>
+													<div class="orders-checkout__wrapper">
+														<div class="orders-checkout__body">
+															<button type="button" class="orders-checkout__change edit-btn icon-edit" aria-label="change orders">
+																Змінити
+															</button>
+															<div class="orders-checkout__type">
+																<div class="orders-checkout__sub-head">
+																	<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
+																	<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
+																</div>
+																<div class="orders-checkout__item item-orders">
+																	<div class="item-orders__img">
+																		<img class="ibg" src="img/checkout/item-01.jpg" width="106" height="69" alt="Image">
+																	</div>
+																	<div class="item-orders__body">
+																		<p class="item-orders__title">TVORCHI. Майстер-клас “Малювання Епоксидною смолою”</p>
+																		<div class="item-orders__amount"><span>2</span>шт</div>
+																		<div class="item-orders__price"><span>2 x</span> <span>800.00</span> грн</div>
+																	</div>
+																	<div class="item-orders__button">
+																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
+																	</div>
+																</div>
+																<div class="orders-checkout__item item-orders">
+																	<div class="item-orders__img">
+																		<img class="ibg" src="img/checkout/item-03.jpg" width="106" height="69" alt="Image">
+																	</div>
+																	<div class="item-orders__body">
+																		<p class="item-orders__title">Дизайнерська листівка</p>
+																		<div class="item-orders__amount"><span>1</span>шт</div>
+																		<div class="item-orders__price"><span></span> <span>50.00</span> грн</div>
+																	</div>
+																	<div class="item-orders__button">
+																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
+																	</div>
+																</div>
+															</div>
+															<div class="orders-checkout__type">
+																<div class="orders-checkout__sub-head">
+																	<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
+																	<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
+																</div>
+																<div class="orders-checkout__item item-orders">
+																	<div class="item-orders__img">
+																		<img class="ibg" src="img/checkout/item-05.jpg" width="106" height="69" alt="Image">
+																	</div>
+																	<div class="item-orders__body">
+																		<p class="item-orders__title">Дизайнерська листівка</p>
+																		<div class="item-orders__amount"><span>1</span>шт</div>
+																		<div class="item-orders__price"><span></span> <span>50.00</span>грн</div>
+																	</div>
+																	<div class="item-orders__button">
+																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</details>
+											</div>
+										</div>
+										<div class="tab-checkout__row row-gap-16">
+											<div class="orders-checkout__total _d-none-pc">
+												<div class="orders-checkout__lines">
+													<p class="orders-checkout__text">
+														Загальна сума
+													</p>
+													<div class="orders-checkout__sum">
+														<span>2 450</span> грн
+													</div>
+												</div>
+												<div class="orders-checkout__lines">
+													<p class="orders-checkout__text">
+														Доставка
+													</p>
+													<div class="orders-checkout__sum">
+														За тарифами Нової Пошти
+													</div>
+												</div>
+												<div class="orders-checkout__lines">
+													<p class="orders-checkout__text">
+														Списаний баланс
+													</p>
+													<div class="orders-checkout__sum">
+														<span>-2 450</span> грн
+													</div>
+												</div>
+												<div class="orders-checkout__lines lines-total">
+													<p class="orders-checkout__text">
+														До оплати
+													</p>
+													<div class="orders-checkout__sum">
+														<span>2400</span> грн
+													</div>
+												</div>
+											</div>
+											<button type="submit" class="tab-checkout__btn btn btn_dark">Перейти до оплати</button>
+										</div>
+									</div>
+
 								</div>
 							</div>
 							<aside class="checkout__orders orders-checkout">
@@ -1843,13 +1844,14 @@
 			</div>
 		</main>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250214122411"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250214122411"></script>
-	<script src="files/rolldate/rolldate.js?_v=20250214122411"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250214122411"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250214122411"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250214122411"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214122411"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250214170324"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250214170324"></script>
+	<script src="files/rolldate/rolldate.js?_v=20250214170324"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250214170324"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250214170324"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250214170324"></script>
+	<!-- <script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214170324"></script> -->
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214170324"></script>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -1915,8 +1917,20 @@
 		</div>
 	</div>
 
+	<div id="popupIti" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body">
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 
-	<script src="js/app.min.js?_v=20250214122411"></script>
+
+	<script src="js/app.min.js?_v=20250214170324"></script>
 </body>
 
 </html>

@@ -1791,6 +1791,10 @@ var factoryOutput = (() => {
       }
       if (this.options.useFullscreenPopup && !this.options.dropdownContainer) {
         this.options.dropdownContainer = document.body;
+        // const popupBody = document.querySelector("#popupIti .popup__body");
+        // if (popupBody) {
+        //   this.options.dropdownContainer = popupBody;
+        // }
       }
       this.isAndroid = typeof navigator !== "undefined" ? /Android/i.test(navigator.userAgent) : false;
       this.isRTL = !!this.telInput.closest("[dir=rtl]");

@@ -5033,7 +5033,7 @@
             language = null;
         }
         intlTelInputs.forEach((input => {
-            window.intlTelInput(input, {
+            const iti = window.intlTelInput(input, {
                 initialCountry: "auto",
                 geoIpLookup: callback => {
                     fetch("https://ipapi.co/json").then((res => res.json())).then((data => callback(data.country_code))).catch((() => callback("us")));
@@ -5042,8 +5042,48 @@
                 separateDialCode: true,
                 nationalMode: true,
                 formatOnDisplay: true,
-                i18n: language
+                i18n: language,
+                useFullscreenPopup: window.innerWidth <= 900.98
             });
+            if (iti.options.useFullscreenPopup) {
+                const popupBody = document.querySelector("#popupIti .popup__body");
+                if (popupBody) iti.options.dropdownContainer = popupBody;
+                let dropdownOpened = false;
+                if (typeof iti._openDropdown === "function" && typeof iti._closeDropdown === "function") {
+                    const originalShowDropdown = iti._openDropdown;
+                    const originalCloseDropdown = iti._closeDropdown;
+                    iti._openDropdown = function() {
+                        if (!dropdownOpened) {
+                            dropdownOpened = true;
+                            modules_flsModules.popup.open("#popupIti");
+                            setTimeout((() => {
+                                originalShowDropdown.call(iti);
+                            }), 50);
+                        }
+                    };
+                    iti._closeDropdown = function() {
+                        if (dropdownOpened) {
+                            dropdownOpened = false;
+                            originalCloseDropdown.call(iti);
+                            modules_flsModules.popup.close("#popupIti");
+                        }
+                    };
+                    const handlePopupClose = event => {
+                        const currentPopup = event.detail.popup;
+                        if (currentPopup?.targetOpen?.selector === "#popupIti") iti._closeDropdown();
+                    };
+                    document.addEventListener("beforePopupClose", handlePopupClose);
+                    document.addEventListener("afterPopupClose", handlePopupClose);
+                    if (typeof iti.destroy === "function") {
+                        const originalDestroy = iti.destroy;
+                        iti.destroy = function() {
+                            document.removeEventListener("beforePopupClose", handlePopupClose);
+                            document.removeEventListener("afterPopupClose", handlePopupClose);
+                            originalDestroy.call(iti);
+                        };
+                    }
+                }
+            }
         }));
     }
     tippy("[data-tippy-content]", {

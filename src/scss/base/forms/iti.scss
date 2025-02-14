@@ -128,20 +128,35 @@
 }
 .iti__dropdown-content {
   background-color: var(--iti-dropdown-bg);
-  padding: toRem(8);
 	width: 100% !important;
   @media (min-width:$mobile){
+    padding: toRem(8);
     border-radius: toRem(24);
   }
   @media (max-width:$mobile){
+    padding: toRem(32) toRem(24) toRem(24);
     border-radius: toRem(24) toRem(24) 0 0;
+    .popup & {
+      padding: 0;
+      border-radius: 0;
+    }
   }
   &.icon-search {
     &::before {
       position: absolute;
-      top: toRem(16);
-      right: toRem(16);
       font-size: toRem(24);
+      @media (min-width:$mobileSmall){
+        right: toRem(16);
+        top: toRem(16);
+      }
+      @media (max-width:$mobileSmall){
+        right: toRem(40);
+        top: toRem(44);      
+        .popup & {
+          top: toRem(12);
+          right: toRem(16);
+        }
+      }
     }
   }
 }
@@ -158,16 +173,17 @@
   outline: none;
   border-radius: toRem(24);
   margin-bottom: toRem(8);
-  min-height: toRem(40);
   &::placeholder {
     color: var(--fade-violet-2);
   }
   @media (min-width:$mobileSmall){
+    min-height: toRem(40);
     font-size: toRem(13);
     padding: toRem(0) toRem(8);
     
   }
   @media (max-width:$mobileSmall){
+    min-height: toRem(48);
     font-size: toRem(14);
     padding: toRem(0) toRem(16);
     background-color: var(--gray-1);
@@ -200,16 +216,17 @@
   // display: flex;
   align-items: center;
   padding: 8px;
-  min-height: toRem(40);
   border-radius: toRem(16);
   display: grid;
   grid-template-columns: toRem(24) toRem(32) 1fr;
   outline: none;
   gap: toRem(8);
   @media (min-width:$mobileSmall){
+    min-height: toRem(40);
     font-size: toRem(13); 
   }
   @media (max-width:$mobileSmall){
+    min-height: toRem(48);
      font-size: toRem(14); 
   }
   .iti__country-name {
@@ -260,17 +277,30 @@
 }
 
 .iti--fullscreen-popup.iti--container {
-  background-color: var(--dark-violet-opacity);
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   position: fixed;
+
+  background-color: var(--dark-violet-opacity);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+
+
   // padding: var(--iti-mobile-popup-margin);
   padding: toRem(100) 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  .popup & {
+    position: absolute;
+    background-color: transparent;
+    backdrop-filter: unset;
+    -webkit-backdrop-filter: unset;
+    padding: 0;
+  }
 }
 .iti--fullscreen-popup .iti__dropdown-content {
   display: flex;
