@@ -601,20 +601,51 @@ function toggleDatepicker(e) {
         typeMonth: 'text',
         localeMonth: getLocalizedMonths(currentLang),
         lang: getLocalizedRolldateText(currentLang),
-        trigger: 'tap'
+        trigger: 'tap',
+        init: function() {
+          flsModules.popup.open('#popupRolldate');
+        },
+        cancel: function() {
+            flsModules.popup.close('#popupRolldate');
+        },
+        confirm: function(date) {
+            flsModules.popup.close('#popupRolldate');
+        },
       });
     }
 
+    
+    
     if (!rt && document.querySelector(timepickerSelector)) {
       const timeFormat = ['ru', 'uk'].includes(currentLang) ? 'hh:mm' : 'hh:mm A';
-
+      if (rt) {
+        rt.destroy(); // Если плагин поддерживает метод destroy, используйте его
+      }
       rt = new Rolldate({
           el: timepickerSelector,
           format: timeFormat,
           minStep: 1,
-          trigger: 'tap'
+          lang: getLocalizedRolldateText(currentLang),
+          trigger: 'tap',
+          init: function() {
+            flsModules.popup.open('#popupRolldate');
+          },
+          cancel: function() {
+              flsModules.popup.close('#popupRolldate');
+          },
+          confirm: function(date) {
+              flsModules.popup.close('#popupRolldate');
+          },
+        });
+      }
+      
+      document.addEventListener("beforePopupClose", (event) => {
+        if (event.detail.popup.targetOpen.selector === "#popupRolldate") {
+          rd?.hide();
+          rt?.hide();
+        }
       });
-    }
+
   } else {
     if (rd) { rd = null; }
     if (rt) { rt = null; }
@@ -648,7 +679,7 @@ toggleDatepicker(mediaQuery);
 
 
 
-
+// == Add picture to the radio button =============================================
 const illustrationInput = document.getElementById("customImageInput");
 if (illustrationInput) {
   illustrationInput.addEventListener("change", function (event) {
@@ -672,9 +703,9 @@ if (illustrationInput) {
   // Снимаем выбор с пользовательского инпута, если кликнули на любой radio-инпут
   document.querySelectorAll('.illustrations__input[type="radio"]').forEach(radio => {
     radio.addEventListener("change", function () {
-      document.getElementById("customImageInput").value = ""; // Сбрасываем input file
-      document.querySelector('.illustrations__item--add').classList.remove('_added'); // Убираем класс _added
-      document.querySelector(".illustrations__item--add .illustrations__img").innerHTML = ""; // Очищаем превью
+      document.getElementById("customImageInput").value = "";
+      document.querySelector('.illustrations__item--add').classList.remove('_added');
+      document.querySelector(".illustrations__item--add .illustrations__img").innerHTML = "";
     });
   });
 }

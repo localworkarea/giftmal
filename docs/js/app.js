@@ -4695,7 +4695,6 @@
             return configWatcher;
         }
         scrollWatcherCreate(configWatcher) {
-            console.log(configWatcher);
             this.observer = new IntersectionObserver(((entries, observer) => {
                 entries.forEach((entry => {
                     this.scrollWatcherCallback(entry, observer);
@@ -5143,17 +5142,43 @@
                 typeMonth: "text",
                 localeMonth: getLocalizedMonths(currentLang),
                 lang: getLocalizedRolldateText(currentLang),
-                trigger: "tap"
+                trigger: "tap",
+                init: function() {
+                    modules_flsModules.popup.open("#popupRolldate");
+                },
+                cancel: function() {
+                    modules_flsModules.popup.close("#popupRolldate");
+                },
+                confirm: function(date) {
+                    modules_flsModules.popup.close("#popupRolldate");
+                }
             });
             if (!rt && document.querySelector(timepickerSelector)) {
                 const timeFormat = [ "ru", "uk" ].includes(currentLang) ? "hh:mm" : "hh:mm A";
+                if (rt) rt.destroy();
                 rt = new Rolldate({
                     el: timepickerSelector,
                     format: timeFormat,
                     minStep: 1,
-                    trigger: "tap"
+                    lang: getLocalizedRolldateText(currentLang),
+                    trigger: "tap",
+                    init: function() {
+                        modules_flsModules.popup.open("#popupRolldate");
+                    },
+                    cancel: function() {
+                        modules_flsModules.popup.close("#popupRolldate");
+                    },
+                    confirm: function(date) {
+                        modules_flsModules.popup.close("#popupRolldate");
+                    }
                 });
             }
+            document.addEventListener("beforePopupClose", (event => {
+                if (event.detail.popup.targetOpen.selector === "#popupRolldate") {
+                    rd?.hide();
+                    rt?.hide();
+                }
+            }));
         } else {
             if (rd) rd = null;
             if (rt) rt = null;

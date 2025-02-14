@@ -91,6 +91,11 @@ body::after {
 	height: 100%;
 	min-height: toRem(300);
 }
+#popupRolldate .popup__body {
+	position: relative;
+	height: 100%;
+	min-height: toRem(314);
+}
 
 
 // popup-slider-checkout =========================

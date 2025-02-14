@@ -3002,6 +3002,9 @@ textarea.input {
   left: 0;
   z-index: 999
 }
+.popup .rolldate-container .rolldate-mask {
+  display: none
+}
 .rolldate-container .rolldate-panel {
   position: fixed;
   bottom: 0;
@@ -3029,6 +3032,18 @@ textarea.input {
   height: .3125rem;
   border-radius: 100px;
   background-color: var(--fade-violet-1)
+}
+.popup .rolldate-container .rolldate-panel {
+  position: relative;
+  background: rgba(0,0,0,0);
+  -webkit-transform: unset;
+  transform: unset;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: unset
+}
+.popup .rolldate-container .rolldate-panel::before {
+  display: none
 }
 .rolldate-container .rolldate-btn {
   position: absolute;
@@ -3185,6 +3200,11 @@ body::after {
   position: relative;
   height: 100%;
   min-height: 18.75rem
+}
+#popupRolldate .popup__body {
+  position: relative;
+  height: 100%;
+  min-height: 19.625rem
 }
 .popup-slider-checkout {
   font-weight: 500;

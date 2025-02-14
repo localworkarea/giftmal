@@ -254,7 +254,15 @@
           // 在微信中输入框在底部时，偶现按钮点击范围被挤压，暂定增加按钮高度
           box.className = 'rolldate-container' + (!!navigator.userAgent.match(/MicroMessenger/i) ? ' wx' : '');
           box.innerHTML = $html;
-          document.body.appendChild(box);
+        //   document.body.appendChild(box);
+
+          const popupBody = document.querySelector("#popupRolldate .popup__body");
+            if (popupBody) {
+              popupBody.appendChild(box);
+            } else {
+              document.body.appendChild(box);
+            }
+
 
           _this.scroll = {};
 
@@ -353,9 +361,12 @@
                   el.blur();
               }
           }
-          if (_this.$('.rolldate-container')) {
-              return;
-          }
+        //   if (_this.$('.rolldate-container')) {
+        //       return;
+        //   }
+        if (_this.$('.rolldate-container')) {
+            _this.destroy(true);  // Уничтожаем старый элемент
+        }
           if (config.init && config.init.call(_this) === false) {
               return;
           }
@@ -384,53 +395,8 @@
           _this.tap(cancel, function () {
               _this.hide(1);
           });
-        //   _this.tap(confirm, function () {
-        //       var config = _this.config,
-        //           el = void 0,
-        //           date = config.format,
-        //           newDate = new Date();
 
-        //       for (var f in _this.scroll) {
-        //           var d = _this.getSelected(_this.scroll[f]);
-
-        //           date = date.replace(f, d);
-        //           if (f == 'YYYY') {
-        //               newDate.setFullYear(d);
-        //           } else if (f == 'MM') {
-        //               newDate.setMonth(d - 1);
-        //           } else if (f == 'DD') {
-        //               newDate.setDate(d);
-        //           } else if (f == 'hh') {
-        //               newDate.setHours(d);
-        //           } else if (f == 'mm') {
-        //               newDate.setMinutes(d);
-        //           } else if (f == 'ss') {
-        //               newDate.setSeconds(d);
-        //           }
-        //       }
-        //       if (config.confirm) {
-        //           var flag = config.confirm.call(_this, date);
-        //           if (flag === false) {
-        //               return false;
-        //           } else if (flag) {
-        //               date = flag;
-        //           }
-        //       }
-        //       if (config.el) {
-        //           el = _this.$(config.el);
-        //           if (el.nodeName.toLowerCase() == 'input') {
-        //               el.value = date;
-        //           } else {
-        //               el.innerText = date;
-        //           }
-        //           el.bindDate = newDate;
-        //       } else {
-        //           _this.bindDate = newDate;
-        //       }
-        //       _this.hide();
-        //   });
-        
-        _this.tap(confirm, function () {
+          _this.tap(confirm, function () {
             var config = _this.config,
                 el = void 0,
                 date = config.format,
@@ -484,7 +450,7 @@
                 _this.bindDate = newDate;
             }
         
-            _this.hide();
+            _this.hide(1);
         });
         
         
@@ -519,10 +485,16 @@
        
         setTimeout(function () {
             var el = _this.$('.rolldate-container');
-            if (el && el.parentNode) {
+            const popupBody = document.querySelector("#popupRolldate .popup__body");
+            // if (el && el.parentNode) {
+            //     document.body.removeChild(el);
+            // }
+            if (popupBody && el && el.parentNode === popupBody) {
+                popupBody.removeChild(el);
+              } else if (el && el.parentNode) {
                 document.body.removeChild(el);
-            }
-        }, 200);
+              }
+        }, 100);
         
       },
  

@@ -20,6 +20,9 @@
   left: 0;
   z-index: 999;
 	@extend %bgClrPopups;
+  .popup & {
+    display: none;
+  }
 }
 
 .rolldate-container .rolldate-panel {
@@ -46,6 +49,18 @@
     height: toRem(5);
     border-radius: 100px;
     background-color: var(--fade-violet-1);
+
+  }
+  .popup & {
+    &::before {
+      display: none;
+    }
+    position: relative;
+    background: transparent;
+    transform: unset;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: unset;
   }
 }
 

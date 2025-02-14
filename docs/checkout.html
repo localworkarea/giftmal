@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250214170324">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250214193307">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -203,7 +203,7 @@
 												</div>
 											</div>
 										</div>
-										<button type="submit" class="tab-checkout__btn btn btn_dark">Отримати код</button>
+										<button data-watch="orders" type="submit" class="tab-checkout__btn btn btn_dark">Отримати код</button>
 									</form>
 
 									<!-- Дані для замовлення -->
@@ -1844,14 +1844,13 @@
 			</div>
 		</main>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250214170324"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250214170324"></script>
-	<script src="files/rolldate/rolldate.js?_v=20250214170324"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250214170324"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250214170324"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250214170324"></script>
-	<!-- <script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214170324"></script> -->
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214170324"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250214193307"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250214193307"></script>
+	<script src="files/rolldate/rolldate.js?_v=20250214193307"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250214193307"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250214193307"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250214193307"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214193307"></script>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -1922,15 +1921,25 @@
 			<div class="popup__content">
 				<button data-close type="button" class="popup__close" aria-label="close">
 				</button>
-				<div class="popup__body">
-				</div>
+				<div class="popup__body"></div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div id="popupRolldate" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body"></div>
 			</div>
 		</div>
 	</div>
 	</div>
 
 
-	<script src="js/app.min.js?_v=20250214170324"></script>
+	<script src="js/app.min.js?_v=20250214193307"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250214170324">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250214193307">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -622,11 +622,99 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250214170324"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250214170324"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250214170324"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214170324"></script>
-	<script src="js/app.min.js?_v=20250214170324"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250214193307"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250214193307"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250214193307"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214193307"></script>
+	<div id="popupSliderCheckout" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body">
+					<!-- popup-slider-checkout -->
+					<div class="popup-slider-checkout">
+						<p class="popup-slider-checkout__title">
+							Оберіть кіль-сть та номінал
+						</p>
+						<div class="popup-slider-checkout__items">
+							<div class="popup-slider-checkout__item item-popup-slider-checkout">
+								<div class="item-popup-slider-checkout__image">
+									<img class="ibg" src="img/checkout/item-04.jpg" width="75" height="48" alt="Image">
+								</div>
+								<div class="item-popup-slider-checkout__body">
+									<div class="item-popup-slider-checkout__title">Фокстрот</div>
+									<div class="item-popup-slider-checkout__subtitle">Подарункова картка</div>
+								</div>
+								<button type="button" class="item-popup-slider-checkout__btn icon-trash" aria-label="button"></button>
+							</div>
+						</div>
+						<div class="popup-slider-checkout__nav">
+							<div class="popup-slider-checkout__nav-item">
+								<select name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="300" data-required>
+									<option value data-class="item-placeholder">$ 500</option>
+									<option value="1">₴ 500</option>
+									<option value="2">₴ 1 000</option>
+									<option value="3">₴ 1 500</option>
+									<option value="4">₴ 2 000</option>
+									<option value="5">₴ 2 500</option>
+								</select>
+							</div>
+							<div class="popup-slider-checkout__nav-item">
+								<div data-quantity class="quantity">
+									<div class="quantity__item">
+										<div class="quantity__block">
+											<div class="quantity__input">
+												<input data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="10" placeholder="0" value="1">
+												<span>шт</span>
+											</div>
+										</div>
+										<div class="quantity__btns">
+											<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+											<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="popup-slider-checkout__count">
+							<p>Сума</з>
+							<div class="popup-slider-checkout__total"><span>500</span> грн</div>
+						</div>
+						<div class="popup-slider-checkout__btns">
+							<button type="button" class=" popup-slider-checkout__btn btn btn_dark">Підтвердити</button>
+						</div>
+					</div>
+					<!-- END of popup-slider-checkout -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupIti" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body"></div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div id="popupRolldate" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body"></div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+	<script src="js/app.min.js?_v=20250214193307"></script>
 </body>
 
 </html>
