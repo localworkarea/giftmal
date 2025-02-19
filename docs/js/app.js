@@ -78,6 +78,9 @@
         if (target.hidden) return _slideDown(target, duration); else return _slideUp(target, duration);
     };
     let bodyLockStatus = true;
+    let bodyLockToggle = (delay = 500) => {
+        if (document.documentElement.classList.contains("lock")) bodyUnlock(delay); else bodyLock(delay);
+    };
     let bodyUnlock = (delay = 500) => {
         if (bodyLockStatus) {
             const lockPaddingElements = document.querySelectorAll("[data-lp]");
@@ -237,6 +240,14 @@
                 }
             }
         }
+    }
+    function menuInit() {
+        if (document.querySelector("[data-menu]")) document.addEventListener("click", (function(e) {
+            if (bodyLockStatus && e.target.closest("[data-menu]")) {
+                bodyLockToggle();
+                document.documentElement.classList.toggle("menu-open");
+            }
+        }));
     }
     function functions_menuClose() {
         bodyUnlock();
@@ -437,6 +448,8 @@
                             popup: this
                         }
                     }));
+                    const popupId = this.targetOpen.element.id;
+                    if (popupId) document.documentElement.classList.add(`${popupId}-show`);
                     this.targetOpen.element.classList.add(this.options.classes.popupActive);
                     document.documentElement.classList.add(this.options.classes.bodyActive);
                     if (!this._reopen) !this.bodyLock ? bodyLock() : null; else this._reopen = false;
@@ -465,6 +478,10 @@
                     popup: this
                 }
             }));
+            if (this.previousOpen.element) {
+                const popupId = this.previousOpen.element.id;
+                if (popupId) document.documentElement.classList.remove(`${popupId}-show`);
+            }
             this.previousOpen.element.classList.remove(this.options.classes.popupActive);
             if (!this._reopen) {
                 document.documentElement.classList.remove(this.options.classes.bodyActive);
@@ -4728,6 +4745,32 @@
     }
     modules_flsModules.watcher = new ScrollWatcher({});
     let addWindowScrollEvent = false;
+    function headerScroll() {
+        addWindowScrollEvent = true;
+        const header = document.querySelector("header.header");
+        const headerShow = header.hasAttribute("data-scroll-show");
+        const headerShowTimer = header.dataset.scrollShow ? header.dataset.scrollShow : 500;
+        const startPoint = header.dataset.scroll ? header.dataset.scroll : 1;
+        let scrollDirection = 0;
+        let timer;
+        document.addEventListener("windowScroll", (function(e) {
+            const scrollTop = window.scrollY;
+            clearTimeout(timer);
+            if (scrollTop >= startPoint) {
+                !header.classList.contains("_header-scroll") ? header.classList.add("_header-scroll") : null;
+                if (headerShow) {
+                    if (scrollTop > scrollDirection) header.classList.contains("_header-show") ? header.classList.remove("_header-show") : null; else !header.classList.contains("_header-show") ? header.classList.add("_header-show") : null;
+                    timer = setTimeout((() => {
+                        !header.classList.contains("_header-show") ? header.classList.add("_header-show") : null;
+                    }), headerShowTimer);
+                }
+            } else {
+                header.classList.contains("_header-scroll") ? header.classList.remove("_header-scroll") : null;
+                if (headerShow) header.classList.contains("_header-show") ? header.classList.remove("_header-show") : null;
+            }
+            scrollDirection = scrollTop <= 0 ? 0 : scrollTop;
+        }));
+    }
     setTimeout((() => {
         if (addWindowScrollEvent) {
             let windowScroll = new Event("windowScroll");
@@ -4992,9 +5035,37 @@
         initDragSpoiler();
         const mediaQuery900max = window.matchMedia("(max-width: 56.311em)");
         mediaQuery900max.addEventListener("change", initDragSpoiler);
+        const popupButtons = document.querySelectorAll(".cabinet-header__button");
+        if (popupButtons.length > 0) {
+            document.querySelector(".card-cabinet");
+            function toggleModalShow(button) {
+                const parentElement = button.parentElement;
+                if (button.classList.contains("_modal-show")) {
+                    button.classList.remove("_modal-show");
+                    parentElement.classList.remove("_modal-show");
+                } else {
+                    document.querySelectorAll("._modal-show").forEach((el => {
+                        el.classList.remove("_modal-show");
+                        el.parentElement.classList.remove("_modal-show");
+                    }));
+                    button.classList.add("_modal-show");
+                    parentElement.classList.add("_modal-show");
+                }
+            }
+            popupButtons.forEach((button => {
+                button.addEventListener("click", (function(e) {
+                    toggleModalShow(button);
+                }));
+            }));
+            document.addEventListener("click", (function(e) {
+                if (!Array.from(popupButtons).some((button => button.contains(e.target)))) document.querySelectorAll("._modal-show").forEach((el => {
+                    el.classList.remove("_modal-show");
+                    el.parentElement.classList.remove("_modal-show");
+                }));
+            }));
+        }
     }));
-    function startCountdown() {
-        const timerElement = document.querySelector("[data-timer]");
+    function startCountdown(timerElement, callback) {
         if (!timerElement) return;
         const totalMinutes = parseFloat(timerElement.getAttribute("data-timer"));
         let totalSeconds = Math.floor(totalMinutes * 60);
@@ -5009,12 +5080,38 @@
             if (totalSeconds <= 0) {
                 clearInterval(interval);
                 timerElement.textContent = "00 : 00";
+                if (callback) callback();
                 return;
             }
             timerElement.textContent = formatTime(totalSeconds);
         }), 1e3);
     }
-    startCountdown();
+    document.querySelectorAll("[data-timer]").forEach((timerElement => {
+        startCountdown(timerElement);
+    }));
+    document.querySelectorAll("[data-timer-set]").forEach((element => {
+        const timerElement = element.querySelector("[data-timer]");
+        if (timerElement) {
+            element.classList.add("_timer-active");
+            startCountdown(timerElement, (() => {
+                setTimeout((() => {
+                    element.classList.remove("_timer-active");
+                }), 2e3);
+            }));
+        }
+    }));
+    document.querySelectorAll("[data-timer-set]").forEach((element => {
+        const button = element.querySelector("[data-timer-btn]");
+        const timerElement = element.querySelector("[data-timer]");
+        if (button && timerElement) button.addEventListener("click", (function() {
+            startCountdown(timerElement, (() => {
+                setTimeout((() => {
+                    element.classList.remove("_timer-active");
+                }), 2e3);
+            }));
+            element.classList.add("_timer-active");
+        }));
+    }));
     const intlTelInputs = document.querySelectorAll("[data-intl-number]");
     if (intlTelInputs.length > 0) {
         const siteLang = document.documentElement.lang.slice(0, 2);
@@ -5085,7 +5182,8 @@
             }
         }));
     }
-    tippy("[data-tippy-content]", {
+    const tooltipElements = document.querySelectorAll("[data-tippy-content]");
+    if (tooltipElements.length > 0) tippy(tooltipElements, {
         placement: "bottom"
     });
     const timeFormatsAir = {
@@ -5225,8 +5323,143 @@
             }));
         }));
     }
+    const brands = [ {
+        name: "Nails&Cocktails",
+        logo: "img/search/nails.png"
+    }, {
+        name: "Фокстрот",
+        logo: "img/search/foxtrot.png"
+    }, {
+        name: "Сільпо",
+        logo: "img/search/silpo.png"
+    }, {
+        name: "Winetime",
+        logo: "img/search/winetime.png"
+    }, {
+        name: "The Cake",
+        logo: "img/search/thecake.png"
+    }, {
+        name: "Nails&Cocktails дублікат",
+        logo: "img/search/nails.png"
+    }, {
+        name: "Фокстрот дублікат для тесту",
+        logo: "img/search/foxtrot.png"
+    }, {
+        name: "Сільпо дублікат",
+        logo: "img/search/silpo.png"
+    }, {
+        name: "Winetime тестуємо",
+        logo: "img/search/winetime.png"
+    }, {
+        name: "The Cake тест",
+        logo: "img/search/thecake.png"
+    }, {
+        name: "Apollo",
+        logo: "img/search/apollo.png",
+        isTop: true
+    }, {
+        name: "Comfy",
+        logo: "img/search/comfy.png",
+        isTop: true
+    }, {
+        name: "Diesel",
+        logo: "img/search/diesel.png",
+        isTop: true
+    }, {
+        name: "Eva",
+        logo: "img/search/eva.png",
+        isTop: true
+    }, {
+        name: "Springfield",
+        logo: "img/search/springfield.png"
+    }, {
+        name: "Фора",
+        logo: "img/search/fora.png"
+    }, {
+        name: "Фонтант",
+        logo: "img/search/fontan.png"
+    } ];
+    let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    document.querySelectorAll(".search").forEach((searchElement => {
+        const searchInput = searchElement.querySelector(".search__input");
+        const searchList = searchElement.querySelector(".search__list");
+        const searchHeader = searchElement.querySelector(".search__header");
+        const searchBox = searchElement.querySelector(".search__box");
+        const searchNull = searchElement.querySelector(".search__null");
+        function updateUI(type) {
+            searchList.innerHTML = "";
+            searchHeader.innerHTML = "";
+            searchNull.style.display = "none";
+            if (type === "history" && searchHistory.length > 0) {
+                searchHeader.innerHTML = `\n        <div class="search__history">\n          Історія пошуку \n          <button type="button" class="search__clear-btn">Очистити</button>\n        </div>\n      `;
+                searchHeader.querySelector(".search__clear-btn").addEventListener("click", clearHistory);
+                renderList(searchHistory);
+            } else if (type === "top") {
+                searchHeader.innerHTML = `\n        <div class="search__top">\n          Топ запитів \n          <a href="#" class="search__top-link">Інші рекомендації</a>\n        </div>\n      `;
+                renderList(brands.filter((brand => brand.isTop)), true);
+            }
+        }
+        function renderList(items, isTop = false) {
+            searchNull.style.display = items.length === 0 ? "block" : "none";
+            items.forEach((brand => {
+                const item = document.createElement("button");
+                item.classList.add("search__item");
+                if (isTop) item.classList.add("search__item--top");
+                item.innerHTML = `\n        <img src="${brand.logo}" width="37" height="24" class="search__logo" alt="${brand.name}">\n        <span class="search__name">${brand.name}</span>\n        <span class="search__icon icon-search"></span>\n      `;
+                item.addEventListener("click", (() => {
+                    searchInput.value = brand.name;
+                    searchList.innerHTML = "";
+                    searchHeader.innerHTML = "";
+                    searchNull.style.display = "none";
+                    addToHistory(brand);
+                }));
+                searchList.appendChild(item);
+            }));
+        }
+        function addToHistory(brand) {
+            if (!searchHistory.some((item => item.name === brand.name))) {
+                searchHistory.unshift(brand);
+                if (searchHistory.length > 7) searchHistory.pop();
+                localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+            }
+        }
+        function clearHistory() {
+            searchHistory = [];
+            localStorage.removeItem("searchHistory");
+            updateUI("top");
+        }
+        searchInput.addEventListener("focus", (() => {
+            searchInput.classList.add("_input-focus");
+            searchElement.classList.add("_input-focus");
+            searchBox.style.pointerEvents = "all";
+            if (searchInput.value) searchInput.dispatchEvent(new Event("input")); else updateUI(searchHistory.length > 0 ? "history" : "top");
+        }));
+        searchInput.addEventListener("input", (() => {
+            searchHeader.innerHTML = "";
+            searchList.innerHTML = "";
+            searchNull.style.display = "none";
+            const query = searchInput.value.toUpperCase();
+            if (query.length > 0) {
+                const filteredBrands = brands.filter((brand => brand.name.toUpperCase().includes(query)));
+                renderList(filteredBrands);
+            } else updateUI(searchHistory.length > 0 ? "history" : "top");
+        }));
+        searchInput.addEventListener("blur", (() => {
+            setTimeout((() => {
+                searchList.innerHTML = "";
+                searchHeader.innerHTML = "";
+                searchNull.style.display = "none";
+                searchBox.style.pointerEvents = "none";
+            }), 350);
+            setTimeout((() => {
+                searchInput.classList.remove("_input-focus");
+                searchElement.classList.remove("_input-focus");
+            }), 0);
+        }));
+    }));
     window["FLS"] = false;
     addLoadedClass();
+    menuInit();
     spollers();
     formFieldsInit({
         viewPass: false,
@@ -5234,4 +5467,5 @@
     });
     formSubmit();
     formQuantity();
+    headerScroll();
 })();

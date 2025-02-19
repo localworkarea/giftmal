@@ -85,3 +85,103 @@
 	</div>
 </div>
 
+<div id="popupCabinet" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close" aria-label="close">
+			</button>
+			<div class="popup__body popup-body-cabinet">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="popupSearch" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close" aria-label="close">
+			</button>
+			<div class="popup__body popup-body-search">
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="popupCart" class="popup">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close icon-cross" aria-label="close">
+			</button>
+			<div class="popup__body">
+				<div class="popup-cart">
+					<div class="popup-cart__header">
+						<p>Мій кошик <span>(2 замовлення)</span></p>
+						<button type="button" class="popup-cart__edit edit-btn icon-edit txt-13" aria-label="change">
+							Змінити <span>замовлення</span>
+						</button>
+					</div>
+					<div data-timer-set class="popup-cart__buttons timer">
+						<p class="popup-cart__reserv">
+							Резерв: <span data-timer="0.5"> 00 : 00</span>
+						</p>
+						<button type="button" data-timer-btn class="popup-cart__continue edit-btn icon-clock-timer txt-13" aria-label="continue">
+							Продовжити резерв
+						</button>
+					</div>
+					<div class="popup-cart__content">
+						<div class="orders-checkout__type">
+							<div class="orders-checkout__sub-head">
+								<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
+								<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
+							</div>
+							<div class="orders-checkout__item item-orders">
+								<div class="item-orders__img">
+									<img class="ibg" src="@img/checkout/item-02.jpg" width="106" height="69" alt="Image">
+								</div>
+								<div class="item-orders__body">
+									<p class="item-orders__title">The Cake</p>
+									<div class="item-orders__amount"><span>2</span>шт</div>
+									<div class="item-orders__price"><span>2 x</span> <span>400.00</span>грн</div>
+								</div>
+								<div class="item-orders__button">
+									<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
+								</div>
+							</div>
+						</div>
+						<div class="orders-checkout__type">
+							<div class="orders-checkout__sub-head">
+								<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
+								<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
+							</div>
+							<div class="orders-checkout__item item-orders">
+								<div class="item-orders__img">
+									<img class="ibg" src="@img/checkout/item-04.jpg" width="106" height="69" alt="Image">
+								</div>
+								<div class="item-orders__body">
+									<p class="item-orders__title">Фокстрот</p>
+									<div class="item-orders__amount"><span>1</span>шт</div>
+									<div class="item-orders__price"><span></span> <span>400.00</span>грн</div>
+								</div>
+								<div class="item-orders__button">
+									<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="popup-cart__footer">
+						<div class="popup-cart__footer-wr">
+							<div class="popup-cart__total">
+								<p>Разом до сплати</p>
+								<p class="popup-cart__sum"><span>2 100</span> грн</p>
+							</div>
+							<a href="#" class="popup-cart__btn btn btn_dark" aria-label="to pay">Перейти до оплати</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

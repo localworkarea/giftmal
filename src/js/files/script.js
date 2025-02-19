@@ -286,162 +286,115 @@ document.addEventListener("DOMContentLoaded", () => {
   
   
 
+  // == Обработка клика элементов Хедера cabinet-header__button ====================
+    const popupButtons = document.querySelectorAll('.cabinet-header__button');
+    if (popupButtons.length > 0) {
+      const cardCabinet = document.querySelector('.card-cabinet');
+
+      function toggleModalShow(button) {
+        const parentElement = button.parentElement;
+        if (button.classList.contains('_modal-show')) {
+          button.classList.remove('_modal-show');
+          parentElement.classList.remove('_modal-show');
+        } else {
+          document.querySelectorAll('._modal-show').forEach(el => {
+            el.classList.remove('_modal-show');
+            el.parentElement.classList.remove('_modal-show');
+          });
+          button.classList.add('_modal-show');
+          parentElement.classList.add('_modal-show');
+        }
+      }
+  
+      popupButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+          toggleModalShow(button);
+        });
+      });
+  
+      // Глобальный обработчик для закрытия модальных окон
+      document.addEventListener('click', function (e) {
+        if (!Array.from(popupButtons).some(button => button.contains(e.target))) {
+          document.querySelectorAll('._modal-show').forEach(el => {
+            el.classList.remove('_modal-show');
+            el.parentElement.classList.remove('_modal-show');
+          });
+        }
+      });
+    }
+    // =================================
+  
   
 
 }); // end DOMContentLoaded
 
 /* таймер обратного отсчета */
-function startCountdown() {
-  const timerElement = document.querySelector("[data-timer]");
+function startCountdown(timerElement, callback) {
   if (!timerElement) return;
 
   const totalMinutes = parseFloat(timerElement.getAttribute('data-timer'));
   let totalSeconds = Math.floor(totalMinutes * 60);
 
-  // форматирования времени в формате MM : SS
   function formatTime(seconds) {
-      const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
-      const secs = String(seconds % 60).padStart(2, '0');
-      return `${mins} : ${secs}`;
+    const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const secs = String(seconds % 60).padStart(2, '0');
+    return `${mins} : ${secs}`;
   }
 
-  //  начальное значение 
   timerElement.textContent = formatTime(totalSeconds);
 
-  // Запускаем обратный отсчет
   const interval = setInterval(() => {
-      totalSeconds--;
+    totalSeconds--;
 
-      if (totalSeconds <= 0) {
-          clearInterval(interval);
-          timerElement.textContent = "00 : 00";
-          return;
+    if (totalSeconds <= 0) {
+      clearInterval(interval);
+      timerElement.textContent = "00 : 00";
+      if (callback) {
+        callback();
       }
+      return;
+    }
 
-      // Обновляем отображение времени
-      timerElement.textContent = formatTime(totalSeconds);
+    timerElement.textContent = formatTime(totalSeconds);
   }, 1000);
 }
-startCountdown();
 
+document.querySelectorAll('[data-timer]').forEach(timerElement => {
+  startCountdown(timerElement);
+});
+
+// Запуск таймеров при загрузке страницы
+document.querySelectorAll("[data-timer-set]").forEach(element => {
+  const timerElement = element.querySelector("[data-timer]");
+  
+  if (timerElement) {
+    element.classList.add("_timer-active");
+    startCountdown(timerElement, () => {
+      setTimeout(() => {
+        element.classList.remove("_timer-active");
+      }, 2000); // Удаление класса через 2 секунды после окончания таймера
+    });
+  }
+});
+
+// Вешаем обработчики на кнопки
+document.querySelectorAll("[data-timer-set]").forEach(element => {
+  const button = element.querySelector("[data-timer-btn]");
+  const timerElement = element.querySelector("[data-timer]");
+  
+  if (button && timerElement) {
+    button.addEventListener("click", function () {
+      startCountdown(timerElement, () => {
+        setTimeout(() => {
+          element.classList.remove("_timer-active");
+        }, 2000);
+      });
+      element.classList.add("_timer-active");
+    });
+  }
+});
 
 // === International Telephone Input ========================== 
-
-// switch (siteLang) {
-//   case 'ar':
-//     language = ar;
-//     break;
-//   case 'bg':
-//       language = bg;
-//       break;
-//   case 'bn':
-//     language = bn;
-//     break;
-//   case 'bs':
-//     language = bs;
-//     break;
-//   case 'ca':
-//     language = ca;
-//     break;
-//   case 'cs':
-//     language = cs;
-//     break;
-//   case 'da':
-//     language = da;
-//     break;
-//   case 'de':
-//     language = de;
-//     break;
-//   case 'el':
-//     language = el;
-//     break;
-//   case 'en':
-//     language = en;
-//     break;
-//   case 'es':
-//     language = es;
-//     break;
-//   case 'fa':
-//     language = fa;
-//     break;
-//   case 'fi':
-//     language = fi;
-//     break;
-//   case 'fr':
-//     language = fr;
-//     break;
-//   case 'hi':
-//     language = hi;
-//     break;
-//   case 'hr':
-//     language = hr;
-//     break;
-//   case 'hu':
-//     language = hu;
-//     break;
-//   case 'id':
-//     language = id;
-//     break;
-//   case 'it':
-//     language = it;
-//     break;
-//   case 'ja':
-//     language = ja;
-//     break;
-//   case 'ko':
-//     language = ko;
-//     break;
-//   case 'mr':
-//     language = mr;
-//     break;
-//   case 'nl':
-//     language = nl;
-//     break;
-//   case 'no':
-//     language = no;
-//     break;
-//   case 'pl':
-//     language = pl;
-//     break;
-//   case 'pt':
-//     language = pt;
-//     break;
-//   case 'ro':
-//     language = ro;
-//     break;
-//   case 'ru':
-//     language = ru;
-//     break;
-//   case 'sk':
-//     language = sk;
-//     break;
-//   case 'sv':
-//     language = sv;
-//     break;
-//   case 'te':
-//     language = te;
-//     break;
-//   case 'th':
-//     language = th;
-//     break;
-//   case 'tr':
-//     language = tr;
-//     break;
-//   case 'uk':
-//     language = uk;
-//     break;
-//   case 'ur':
-//     language = ur;
-//     break;
-//   case 'vi':
-//     language = vi;
-//     break;
-//   case 'zh':
-//     language = zh;
-//     break;
-//   default:
-//     language = null; // Английский будет по умолчанию
-// }
 
 /* 
   *International Telephone Input v25.3.0
@@ -545,11 +498,12 @@ if (intlTelInputs.length > 0) {
 
 /* tippy settins */
 // ==============================================================
-tippy('[data-tippy-content]', {
-  placement: 'bottom',
-});
-
-
+const tooltipElements = document.querySelectorAll("[data-tippy-content]");
+if (tooltipElements.length > 0) {
+  tippy(tooltipElements, {
+    placement: "bottom",
+  });
+}
 
 
 /* Календарь, переключение между двумя плагинами по ширине 480рх (30.061em): air-datepicker и Rolldate-full 
@@ -710,4 +664,145 @@ if (illustrationInput) {
   });
 }
 
+
+// == SEARCH INPUTS BRANDS ============================
+const brands = [
+  { name: "Nails&Cocktails", logo: "img/search/nails.png" },
+  { name: "Фокстрот", logo: "img/search/foxtrot.png" },
+  { name: "Сільпо", logo: "img/search/silpo.png" },
+  { name: "Winetime", logo: "img/search/winetime.png" },
+  { name: "The Cake", logo: "img/search/thecake.png" },
+  { name: "Nails&Cocktails дублікат", logo: "img/search/nails.png" },
+  { name: "Фокстрот дублікат для тесту", logo: "img/search/foxtrot.png" },
+  { name: "Сільпо дублікат", logo: "img/search/silpo.png" },
+  { name: "Winetime тестуємо", logo: "img/search/winetime.png" },
+  { name: "The Cake тест", logo: "img/search/thecake.png" },
+  { name: "Apollo", logo: "img/search/apollo.png", isTop: true },
+  { name: "Comfy", logo: "img/search/comfy.png", isTop: true },
+  { name: "Diesel", logo: "img/search/diesel.png", isTop: true },
+  { name: "Eva", logo: "img/search/eva.png", isTop: true },
+  { name: "Springfield", logo: "img/search/springfield.png" },
+  { name: "Фора", logo: "img/search/fora.png" },
+  { name: "Фонтант", logo: "img/search/fontan.png" }
+];
+
+// Історія пошуку для всіх інпутів загальна
+let searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+
+document.querySelectorAll('.search').forEach(searchElement => {
+  const searchInput = searchElement.querySelector('.search__input');
+  const searchList = searchElement.querySelector('.search__list');
+  const searchHeader = searchElement.querySelector('.search__header');
+  const searchBox = searchElement.querySelector('.search__box');
+  const searchNull = searchElement.querySelector('.search__null');
+
+  function updateUI(type) {
+    searchList.innerHTML = "";
+    searchHeader.innerHTML = "";
+    searchNull.style.display = "none";
+
+    if (type === "history" && searchHistory.length > 0) {
+      searchHeader.innerHTML = `
+        <div class="search__history">
+          Історія пошуку 
+          <button type="button" class="search__clear-btn">Очистити</button>
+        </div>
+      `;
+      searchHeader.querySelector('.search__clear-btn').addEventListener("click", clearHistory);
+      renderList(searchHistory);
+    } else if (type === "top") {
+      searchHeader.innerHTML = `
+        <div class="search__top">
+          Топ запитів 
+          <a href="#" class="search__top-link">Інші рекомендації</a>
+        </div>
+      `;
+      renderList(brands.filter(brand => brand.isTop), true);
+    }
+  }
+
+  function renderList(items, isTop = false) {
+    // Если список пуст – показываем блок с сообщением
+    searchNull.style.display = items.length === 0 ? "block" : "none";
+
+    items.forEach(brand => {
+      const item = document.createElement("button");
+      item.classList.add("search__item");
+      if (isTop) item.classList.add("search__item--top");
+      item.innerHTML = `
+        <img src="${brand.logo}" width="37" height="24" class="search__logo" alt="${brand.name}">
+        <span class="search__name">${brand.name}</span>
+        <span class="search__icon icon-search"></span>
+      `;
+      item.addEventListener("click", () => {
+        // Записываем выбранное значение в инпут
+        searchInput.value = brand.name;
+        searchList.innerHTML = "";
+        searchHeader.innerHTML = "";
+        searchNull.style.display = "none";
+        addToHistory(brand);
+      });
+      searchList.appendChild(item);
+    });
+  }
+
+  function addToHistory(brand) {
+    if (!searchHistory.some(item => item.name === brand.name)) {
+      searchHistory.unshift(brand);
+      if (searchHistory.length > 7) searchHistory.pop();
+      localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    }
+  }
+
+  function clearHistory() {
+    searchHistory = [];
+    localStorage.removeItem("searchHistory");
+    updateUI("top");
+  }
+
+  // При фокусе на инпут добавляем класс _input-focus и включаем pointerEvents для блока
+  // Если в инпуте уже есть значение – запускаем фильтрацию (как при событии input)
+  searchInput.addEventListener("focus", () => {
+    searchInput.classList.add("_input-focus");
+    searchElement.classList.add("_input-focus");
+    searchBox.style.pointerEvents = "all";
+    if (searchInput.value) {
+      // Запускаем обработчик input, чтобы отобразить список совпадений или сообщение searchNull
+      searchInput.dispatchEvent(new Event("input"));
+    } else {
+      updateUI(searchHistory.length > 0 ? "history" : "top");
+    }
+  });
+
+  // Обработчик ввода: фильтруем бренды по введённому запросу и выводим список или сообщение
+  searchInput.addEventListener("input", () => {
+    searchHeader.innerHTML = "";
+    searchList.innerHTML = "";
+    searchNull.style.display = "none";
+
+    const query = searchInput.value.toUpperCase();
+    if (query.length > 0) {
+      const filteredBrands = brands.filter(brand => brand.name.toUpperCase().includes(query));
+      renderList(filteredBrands);
+    } else {
+      updateUI(searchHistory.length > 0 ? "history" : "top");
+    }
+  });
+
+  // При потере фокуса скрываем список и удаляем классы
+  searchInput.addEventListener("blur", () => {
+    setTimeout(() => {
+      searchList.innerHTML = "";
+      searchHeader.innerHTML = "";
+      searchNull.style.display = "none";
+      searchBox.style.pointerEvents = "none";
+    }, 350);
+    setTimeout(() => {
+      searchInput.classList.remove("_input-focus");
+      searchElement.classList.remove("_input-focus");
+    }, 0);
+  });
+});
+
+// == END OF SEARCH INPUTS BRANDS ============================
 

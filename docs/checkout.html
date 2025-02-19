@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250214193307">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250219145311">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -22,20 +22,20 @@
 						<a href="index.html" class="checkout__logo icon-logo" aria-label="link to home page"></a>
 						<div class="checkout__phone item-dropdwn">
 							<div class="item-dropdwn__main">
-								<a href="tel:+380674681088" aria-label="phone number">
+								<a href="tel:+380674681088" class="item-dropdwn__link-top" aria-label="phone number">
 									+380 67 468 10 88
 								</a>
 								<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown"></button>
 							</div>
 							<ul class="item-dropdwn__list">
 								<li class="item-dropdwn__item">
-									<a href="tel:+380674681088" class="item-dropdwn__phone" aria-label="phone number">+380 67 468 10 88</a>
+									<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
 								</li>
 								<li class="item-dropdwn__item">
-									<a href="tel:+380924681092" class="item-dropdwn__phone" aria-label="phone number">+380 92 468 10 92</a>
+									<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
 								</li>
 								<li class="item-dropdwn__item">
-									<a href="tel:+380964681096" class="item-dropdwn__phone" aria-label="phone number">+380 96 468 10 96</a>
+									<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
 								</li>
 							</ul>
 						</div>
@@ -1844,13 +1844,13 @@
 			</div>
 		</main>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250214193307"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250214193307"></script>
-	<script src="files/rolldate/rolldate.js?_v=20250214193307"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250214193307"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250214193307"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250214193307"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250214193307"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250219145311"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250219145311"></script>
+	<script src="files/rolldate/rolldate.js?_v=20250219145311"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250219145311"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250219145311"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250219145311"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250219145311"></script>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -1938,8 +1938,108 @@
 	</div>
 	</div>
 
+	<div id="popupCabinet" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-body-cabinet">
 
-	<script src="js/app.min.js?_v=20250214193307"></script>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupSearch" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-body-search">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupCart" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close icon-cross" aria-label="close">
+				</button>
+				<div class="popup__body">
+					<div class="popup-cart">
+						<div class="popup-cart__header">
+							<p>Мій кошик <span>(2 замовлення)</span></p>
+							<button type="button" class="popup-cart__edit edit-btn icon-edit txt-13" aria-label="change">
+								Змінити <span>замовлення</span>
+							</button>
+						</div>
+						<div data-timer-set class="popup-cart__buttons timer">
+							<p class="popup-cart__reserv">
+								Резерв: <span data-timer="0.5"> 00 : 00</span>
+							</p>
+							<button type="button" data-timer-btn class="popup-cart__continue edit-btn icon-clock-timer txt-13" aria-label="continue">
+								Продовжити резерв
+							</button>
+						</div>
+						<div class="popup-cart__content">
+							<div class="orders-checkout__type">
+								<div class="orders-checkout__sub-head">
+									<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
+									<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
+								</div>
+								<div class="orders-checkout__item item-orders">
+									<div class="item-orders__img">
+										<img class="ibg" src="img/checkout/item-02.jpg" width="106" height="69" alt="Image">
+									</div>
+									<div class="item-orders__body">
+										<p class="item-orders__title">The Cake</p>
+										<div class="item-orders__amount"><span>2</span>шт</div>
+										<div class="item-orders__price"><span>2 x</span> <span>400.00</span>грн</div>
+									</div>
+									<div class="item-orders__button">
+										<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
+									</div>
+								</div>
+							</div>
+							<div class="orders-checkout__type">
+								<div class="orders-checkout__sub-head">
+									<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
+									<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
+								</div>
+								<div class="orders-checkout__item item-orders">
+									<div class="item-orders__img">
+										<img class="ibg" src="img/checkout/item-04.jpg" width="106" height="69" alt="Image">
+									</div>
+									<div class="item-orders__body">
+										<p class="item-orders__title">Фокстрот</p>
+										<div class="item-orders__amount"><span>1</span>шт</div>
+										<div class="item-orders__price"><span></span> <span>400.00</span>грн</div>
+									</div>
+									<div class="item-orders__button">
+										<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="popup-cart__footer">
+							<div class="popup-cart__footer-wr">
+								<div class="popup-cart__total">
+									<p>Разом до сплати</p>
+									<p class="popup-cart__sum"><span>2 100</span> грн</p>
+								</div>
+								<a href="#" class="popup-cart__btn btn btn_dark" aria-label="to pay">Перейти до оплати</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="js/app.min.js?_v=20250219145311"></script>
 </body>
 
 </html>

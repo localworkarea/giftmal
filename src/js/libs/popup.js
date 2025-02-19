@@ -212,6 +212,12 @@ class Popup {
 					}
 				}));
 
+				 // Добавляем класс для <html> с ID попапа
+				 const popupId = this.targetOpen.element.id; // Получаем ID попапа
+				 if (popupId) {
+						 document.documentElement.classList.add(`${popupId}-show`);
+				 }
+
 				this.targetOpen.element.classList.add(this.options.classes.popupActive);
 				document.documentElement.classList.add(this.options.classes.bodyActive);
 
@@ -261,6 +267,13 @@ class Popup {
 			}
 		}));
 
+		if (this.previousOpen.element) {
+			// Получаем ID последнего открытого попапа
+			const popupId = this.previousOpen.element.id;
+			if (popupId) {
+					document.documentElement.classList.remove(`${popupId}-show`);
+			}
+		}
 
 		this.previousOpen.element.classList.remove(this.options.classes.popupActive);
 		if (!this._reopen) {

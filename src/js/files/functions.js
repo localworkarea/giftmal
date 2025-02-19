@@ -446,14 +446,22 @@ export function tabs() {
 }
 // Модуль роботи з меню (бургер) =======================================================================================================================================================================================================================
 export function menuInit() {
-	if (document.querySelector(".icon-menu")) {
+	if (document.querySelector("[data-menu]")) {
 		document.addEventListener("click", function (e) {
-			if (bodyLockStatus && e.target.closest('.icon-menu')) {
+			if (bodyLockStatus && e.target.closest('[data-menu]')) {
 				bodyLockToggle();
 				document.documentElement.classList.toggle("menu-open");
 			}
 		});
 	};
+	// if (document.querySelector(".icon-menu")) {
+	// 	document.addEventListener("click", function (e) {
+	// 		if (bodyLockStatus && e.target.closest('.icon-menu')) {
+	// 			bodyLockToggle();
+	// 			document.documentElement.classList.toggle("menu-open");
+	// 		}
+	// 	});
+	// };
 }
 export function menuOpen() {
 	bodyLock();

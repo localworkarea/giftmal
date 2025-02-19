@@ -66,6 +66,24 @@
 %padding32-24 {
   @include adaptiveValue("padding", 32, 24,0,1232.98,992.98);
  }
+ %fonsSize23-20 {
+  font-weight: 500;
+  @media (min-width:$mobileSmall){
+     font-size: toRem(23); 
+  }
+  @media (max-width:$mobileSmall){
+     font-size: toRem(20); 
+  }
+ }
+ %fonsSize15-20 {
+  font-weight: 500;
+  @media (min-width:$mobileSmall){
+     font-size: toRem(15); 
+  }
+  @media (max-width:$mobileSmall){
+     font-size: toRem(20); 
+  }
+ }
  %fonsSize15-14 {
   font-weight: 500;
   @media (min-width:$mobileSmall){
@@ -93,6 +111,15 @@
      font-size: toRem(12);
    }
  }
+ %fonsSize11-14 {
+  font-weight: 500;
+   @media (min-width:$mobileSmall){
+     font-size: toRem(11);
+   }
+   @media (max-width:$mobileSmall){
+     font-size: toRem(14);
+   }
+ }
  %fonsSize11-12 {
   font-weight: 500;
    @media (min-width:$mobileSmall){
@@ -113,6 +140,15 @@
    }
    @media (max-width:$mobileSmall){
      font-size: toRem(12);
+   }
+ }
+ .txt-11-14 {
+  font-weight: 500;
+   @media (min-width:$mobileSmall){
+     font-size: toRem(11);
+   }
+   @media (max-width:$mobileSmall){
+     font-size: toRem(14);
    }
  }
  .txt-13 {
@@ -171,7 +207,8 @@
   position: relative;
   box-shadow: 0 -4px 40px 0 rgba(33, 5, 41, 0.12);
   border-radius: toRem(24) toRem(24) 0 0 ;
-  padding: toRem(0) toRem(24) toRem(24);
+  // padding: toRem(0) toRem(24) toRem(24);
+  padding: toRem(32) toRem(24) toRem(24);
 }
 
 %bgClrPopups {
@@ -196,17 +233,24 @@
   font-weight: 500;
   line-height: 0.8;
   padding: toRem(0) toRem(8);
-
+  max-width: fit-content;
+  &._active {
+    z-index: 5;
+  }
 	// .item-dropdwn__main
 	&__main {
     position: relative;
     font-weight: 500;
     line-height: 0.8;
-    z-index: 2;
+    z-index: 3;
     display: flex;
     align-items: center;
     gap: toRem(6);
     padding: toRem(8) toRem(8);
+	}
+	// .item-dropdwn__link-top
+	&__link-top {
+    @extend %flexCenterGap8;
 	}
   // .item-dropdwn__btn
   &__btn {
@@ -231,13 +275,14 @@
     width: 100%;
     top: toRem(-8);
     left: 0;
-    z-index: 1;
+    z-index: 2;
     padding: toRem(38) toRem(8) toRem(8);
+    color: var(--fade-violet-2);
   
     &::before {
       content: "";
       position: absolute;
-      z-index: -1;
+      z-index: 1;
       top: 0;
       left: 0;
       width: 100%;
@@ -256,6 +301,8 @@
   }
   // .item-dropdwn__item
   &__item {
+    position: relative;
+    z-index: 2;
     transition: opacity .2s ease;
     opacity: 0;
     ._active & {
@@ -264,15 +311,16 @@
       transition-delay: .15s;
     }
   }
-  // .item-dropdwn__phone
-  &__phone {
-    display: block;
+  // .item-dropdwn__link
+  &__link {
+    @extend %flexCenterGap8;
     border-radius: toRem(16);
     padding: toRem(11) toRem(8);
-    transition: background-color .3s ease;
+    transition: background-color .3s ease, color .3s ease;
     @media (any-hover: hover){
       &:hover{
         background-color: var(--gray-2);
+        color: var(--dark-violet);
       }
     }
   }
@@ -293,18 +341,21 @@
   }
   @media (any-hover: hover){
     &:hover{
-      color: var(--fade-violet-2);
+      color: var(--dark-violet);
     }
   }
 }
 
 .btn {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: toRem(8);
   width: 100%;
   min-height: toRem(48);
-  padding: toRem(8) toRem(24);
+  padding: toRem(2) toRem(24);
   border-radius: toRem(24);
+  line-height: 1.35;
   transition: background-color .3s ease, color .3s ease;
   @extend  %fonsSize13-14;
   &_sm {
@@ -341,6 +392,29 @@
   &:disabled {
     background-color: var(--disabled-pink);
     color: var(--white);
+  }
+}
+
+.btn-circle {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  width: toRem(40);
+  height: toRem(40);
+  flex: 0 0 toRem(40);
+  transition: background-color .3s ease, color .3s ease;
+  // .btn-circle_dark
+  &_dark {
+    background-color: var(--violet);
+    &::before {
+      color: var(--white);
+      font-size: toRem(24);
+    }
+    @media (any-hover: hover){
+      &:hover{
+        background-color: var(--dark-violet);
+      }
+    }
   }
 }
 
@@ -386,9 +460,6 @@
     }
   }
 }
-
-
-
 
 .info-label {
   display: inline-flex;
@@ -442,7 +513,15 @@
 
 }
 
-
+// == timer =========================
+.timer {
+  &._timer-active {
+    [data-timer-btn] {
+      display: none;
+    }
+  }
+}
+// ====================
 
 /* tippy js */
 .tippy-box[data-animation="fade"][data-state="hidden"] {
