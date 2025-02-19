@@ -3370,6 +3370,9 @@ body::after {
   background-color: #b2afb3;
   border-radius: 4px
 }
+.page {
+  background-color: var(--gray-1)
+}
 [class*=__container] {
   width: 100%;
   margin-inline: auto;
@@ -3429,6 +3432,7 @@ body::after {
 .card-slider__checked,
 .checkbox,
 .edit-btn,
+.filters__button,
 .item-orders__amount,
 .item-orders__price,
 .orders-checkout__info,
@@ -3464,6 +3468,7 @@ body::after {
 .card-cabinet__header,
 .card-cabinet__item,
 .edit-btn,
+.filters__button,
 .item-dropdwn__link,
 .item-dropdwn__link-top,
 .iti,
@@ -3655,6 +3660,10 @@ body::after {
   border-radius: 1.5rem;
   line-height: 1.35;
   transition: background-color .3s ease,color .3s ease
+}
+.btn_sm-2 {
+  min-height: 2.5rem;
+  font-size: .8125rem
 }
 .btn_dark {
   background-color: var(--violet);
@@ -3935,8 +3944,9 @@ body::after {
   flex: 0 0 2rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--gray-1)
 }
 .card-cabinet__arrow::before {
@@ -4011,8 +4021,7 @@ body::after {
   background-color: var(--white);
   padding: .5rem;
   opacity: 0;
-  transition: opacity .15s;
-  pointer-events: none
+  transition: opacity .15s
 }
 ._input-focus .search__box {
   opacity: 1
@@ -4074,6 +4083,41 @@ body::after {
   max-width: fit-content;
   margin-inline: auto
 }
+.sub-header {
+  padding-top: 4.5rem;
+  padding-bottom: .5rem
+}
+.filters__button {
+  padding: .5rem 1rem
+}
+.filters__button.is-open::before {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg)
+}
+.filters__button:before {
+  order: 3;
+  font-weight: 500;
+  font-size: 1rem;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease,-webkit-transform .3s ease
+}
+.filters_type-1 .filters__button:before {
+  margin-left: .5rem
+}
+.filters_type-1 .filters__button {
+  min-height: 2.5rem;
+  background-color: var(--gray-1);
+  border-radius: 1.375rem
+}
+.button-filters__icon {
+  display: grid
+}
+.button-filters__icon::before {
+  font-size: 1.5rem
+}
 .checkout {
   flex: 1;
   display: flex;
@@ -4098,8 +4142,7 @@ body::after {
   transform: rotate(90deg)
 }
 .checkout__wrapper {
-  flex: 1;
-  background-color: var(--gray-1)
+  flex: 1
 }
 .checkout__tabs {
   position: relative
@@ -5007,6 +5050,13 @@ body::after {
   .popup-cart__total:not(:last-child) {
     margin-bottom: 1rem
   }
+  .wrapper {
+    background-color: var(--white)
+  }
+  .page {
+    border-radius: 2.5rem 2.5rem 0 0;
+    padding-bottom: 7.5rem
+  }
   .popup-cart__sum {
     font-size: 1.4375rem
   }
@@ -5031,6 +5081,7 @@ body::after {
   .card-slider__checked,
   .checkbox,
   .edit-btn,
+  .filters__button,
   .item-orders__amount,
   .item-orders__price,
   .orders-checkout__info,
@@ -5152,10 +5203,6 @@ body::after {
   }
   .checkout__continue::before {
     font-weight: 600
-  }
-  .checkout__wrapper {
-    border-radius: 2.5rem 2.5rem 0 0;
-    padding-bottom: 7.5rem
   }
   .checkout__title-main {
     font-size: .9375rem;
@@ -6135,6 +6182,16 @@ body::after {
   .popup-slider-checkout__nav-item .quantity .quantity__input {
     left: auto
   }
+  .wrapper {
+    background-color: var(--gray-1)
+  }
+  .checkout-page .wrapper {
+    background-color: var(--white)
+  }
+  .page {
+    border-radius: 2rem 2rem 0 0;
+    padding-bottom: 3.125rem
+  }
   .popup-cart__sum {
     font-size: 1.25rem
   }
@@ -6159,6 +6216,7 @@ body::after {
   .card-slider__checked,
   .checkbox,
   .edit-btn,
+  .filters__button,
   .item-orders__amount,
   .item-orders__price,
   .orders-checkout__info,
@@ -6283,10 +6341,6 @@ body::after {
   }
   .checkout__continue::before {
     font-size: 1.5rem
-  }
-  .checkout__wrapper {
-    border-radius: 2rem 2rem 0 0;
-    padding-bottom: 3.125rem
   }
   .checkout__container {
     padding-inline: .5rem

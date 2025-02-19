@@ -14,6 +14,11 @@ import { flsModules } from "./modules.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  const checkoutPage = document.querySelector('.checkout');
+  if (checkoutPage) {
+    document.documentElement.classList.add('checkout-page');
+  }
+
   // ITEM-DROPDOWN ===================================================
   const itemDropdowns = document.querySelectorAll(".item-dropdwn");
   const itemButtons = document.querySelectorAll(".item-dropdwn__btn");
@@ -287,43 +292,78 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   // == Обработка клика элементов Хедера cabinet-header__button ====================
-    const popupButtons = document.querySelectorAll('.cabinet-header__button');
-    if (popupButtons.length > 0) {
-      const cardCabinet = document.querySelector('.card-cabinet');
+  const popupButtons = document.querySelectorAll('.cabinet-header__button');
 
-      function toggleModalShow(button) {
-        const parentElement = button.parentElement;
-        if (button.classList.contains('_modal-show')) {
-          button.classList.remove('_modal-show');
-          parentElement.classList.remove('_modal-show');
-        } else {
-          document.querySelectorAll('._modal-show').forEach(el => {
-            el.classList.remove('_modal-show');
-            el.parentElement.classList.remove('_modal-show');
-          });
-          button.classList.add('_modal-show');
-          parentElement.classList.add('_modal-show');
+  function toggleModalShow(button) {
+    const parentElement = button.parentElement;
+    if (button.classList.contains('_modal-show')) {
+      button.classList.remove('_modal-show');
+      parentElement.classList.remove('_modal-show');
+    } else {
+      document.querySelectorAll('._modal-show').forEach(el => {
+        el.classList.remove('_modal-show');
+        if (el.parentElement) {
+          el.parentElement.classList.remove('_modal-show');
         }
-      }
-  
-      popupButtons.forEach(button => {
-        button.addEventListener('click', function (e) {
-          toggleModalShow(button);
-        });
       });
-  
-      // Глобальный обработчик для закрытия модальных окон
-      document.addEventListener('click', function (e) {
-        if (!Array.from(popupButtons).some(button => button.contains(e.target))) {
-          document.querySelectorAll('._modal-show').forEach(el => {
-            el.classList.remove('_modal-show');
-            el.parentElement.classList.remove('_modal-show');
-          });
+      button.classList.add('_modal-show');
+      parentElement.classList.add('_modal-show');
+    }
+  }
+
+  popupButtons.forEach(button => {
+    button.addEventListener('click', function (e) {
+      const popupValue = button.dataset.popup; // например "#popupCabinet" или "#popupCart"
+
+      if (popupValue === "#popupCabinet") {
+        if (window.matchMedia('(min-width: 30.061em)').matches) {
+          e.stopPropagation();
+        }
+        toggleModalShow(button);
+
+      } else if (popupValue === "#popupCart") {
+        toggleModalShow(button);
+      }
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    const clickInsideButton = Array.from(popupButtons).some(button => button.contains(e.target));
+    const openModalElements = document.querySelectorAll('._modal-show');
+    const clickInsideModal = Array.from(openModalElements).some(el => el.contains(e.target));
+
+    if (!clickInsideButton && !clickInsideModal) {
+      openModalElements.forEach(el => {
+        el.classList.remove('_modal-show');
+        if (el.parentElement) {
+          el.parentElement.classList.remove('_modal-show');
         }
       });
     }
+  });
     // =================================
   
+
+  // == Работа с фильтрами на странице data-filters =================
+  const filterSections = document.querySelectorAll('[data-filters]');
+  
+  filterSections.forEach(section => {
+    const filterType = section.getAttribute('data-filters');
+    if (filterType) {
+      section.classList.add(`filters_${filterType}`);
+    }
+
+    const button = section.querySelector('[data-filters-title]');
+
+    button.addEventListener('click', () => {
+      const wrapper = section.querySelector('[data-filters-wrapper]');
+      wrapper.classList.toggle('is-open');
+      button.classList.toggle('is-open');
+    });
+  });
+  
+
+  // =================================
   
 
 }); // end DOMContentLoaded
@@ -696,6 +736,16 @@ document.querySelectorAll('.search').forEach(searchElement => {
   const searchBox = searchElement.querySelector('.search__box');
   const searchNull = searchElement.querySelector('.search__null');
 
+  // Функция закрытия/очистки выпадающего списка для конкретного блока поиска
+  function closeUI() {
+    searchList.innerHTML = "";
+    searchHeader.innerHTML = "";
+    searchNull.style.display = "none";
+    searchBox.style.pointerEvents = "none";
+    searchInput.classList.remove("_input-focus");
+    searchElement.classList.remove("_input-focus");
+  }
+
   function updateUI(type) {
     searchList.innerHTML = "";
     searchHeader.innerHTML = "";
@@ -705,18 +755,26 @@ document.querySelectorAll('.search').forEach(searchElement => {
       searchHeader.innerHTML = `
         <div class="search__history">
           Історія пошуку 
-          <button type="button" class="search__clear-btn">Очистити</button>
+          <button class="search__clear-btn">Очистити</button>
         </div>
       `;
-      searchHeader.querySelector('.search__clear-btn').addEventListener("click", clearHistory);
+      // При клике на "Очистити" вызываем clearHistory, при этом не закрываем список
+      searchHeader.querySelector('.search__clear-btn')
+        .addEventListener("click", e => clearHistory(e));
       renderList(searchHistory);
     } else if (type === "top") {
       searchHeader.innerHTML = `
         <div class="search__top">
           Топ запитів 
-          <a href="#" class="search__top-link">Інші рекомендації</a>
+          <button class="search__top-link">Інші рекомендації</button>
         </div>
       `;
+      // При клике на "Інші рекомендації" окно не закрывается
+      searchHeader.querySelector('.search__top-link')
+        .addEventListener("click", e => {
+          e.stopPropagation(); // не закрываем окно
+          updateUI("top");
+        });
       renderList(brands.filter(brand => brand.isTop), true);
     }
   }
@@ -724,9 +782,10 @@ document.querySelectorAll('.search').forEach(searchElement => {
   function renderList(items, isTop = false) {
     // Если список пуст – показываем блок с сообщением
     searchNull.style.display = items.length === 0 ? "block" : "none";
-
+  
     items.forEach(brand => {
       const item = document.createElement("button");
+      item.setAttribute("type", "button"); // Задаем явный тип
       item.classList.add("search__item");
       if (isTop) item.classList.add("search__item--top");
       item.innerHTML = `
@@ -734,17 +793,21 @@ document.querySelectorAll('.search').forEach(searchElement => {
         <span class="search__name">${brand.name}</span>
         <span class="search__icon icon-search"></span>
       `;
-      item.addEventListener("click", () => {
-        // Записываем выбранное значение в инпут
+      item.addEventListener("click", (e) => {
+        e.stopPropagation(); // чтобы клик не всплывал и не влиял на popup
+        // Записываем выбранное значение в инпут, закрываем окно и обновляем историю
         searchInput.value = brand.name;
         searchList.innerHTML = "";
         searchHeader.innerHTML = "";
         searchNull.style.display = "none";
         addToHistory(brand);
+        // Закрываем окно после выбора элемента
+        closeUI();
       });
       searchList.appendChild(item);
     });
   }
+  
 
   function addToHistory(brand) {
     if (!searchHistory.some(item => item.name === brand.name)) {
@@ -754,20 +817,23 @@ document.querySelectorAll('.search').forEach(searchElement => {
     }
   }
 
-  function clearHistory() {
+  // Функция теперь принимает событие, чтобы можно было вызвать stopPropagation
+  function clearHistory(e) {
+    e.stopPropagation();
     searchHistory = [];
     localStorage.removeItem("searchHistory");
     updateUI("top");
+    // Переводим фокус обратно в инпут, чтобы окно оставалось открытым
+    searchInput.focus();
   }
 
-  // При фокусе на инпут добавляем класс _input-focus и включаем pointerEvents для блока
-  // Если в инпуте уже есть значение – запускаем фильтрацию (как при событии input)
+  // При фокусе на инпут: добавляем классы, включаем pointerEvents и запускаем фильтрацию, если значение уже есть
   searchInput.addEventListener("focus", () => {
     searchInput.classList.add("_input-focus");
     searchElement.classList.add("_input-focus");
     searchBox.style.pointerEvents = "all";
     if (searchInput.value) {
-      // Запускаем обработчик input, чтобы отобразить список совпадений или сообщение searchNull
+      // Запускаем обработчик input, чтобы отобразить список совпадений або повідомлення searchNull
       searchInput.dispatchEvent(new Event("input"));
     } else {
       updateUI(searchHistory.length > 0 ? "history" : "top");
@@ -782,27 +848,25 @@ document.querySelectorAll('.search').forEach(searchElement => {
 
     const query = searchInput.value.toUpperCase();
     if (query.length > 0) {
-      const filteredBrands = brands.filter(brand => brand.name.toUpperCase().includes(query));
+      const filteredBrands = brands.filter(brand =>
+        brand.name.toUpperCase().includes(query)
+      );
       renderList(filteredBrands);
     } else {
       updateUI(searchHistory.length > 0 ? "history" : "top");
     }
   });
 
-  // При потере фокуса скрываем список и удаляем классы
-  searchInput.addEventListener("blur", () => {
-    setTimeout(() => {
-      searchList.innerHTML = "";
-      searchHeader.innerHTML = "";
-      searchNull.style.display = "none";
-      searchBox.style.pointerEvents = "none";
-    }, 350);
-    setTimeout(() => {
-      searchInput.classList.remove("_input-focus");
-      searchElement.classList.remove("_input-focus");
-    }, 0);
+  // Вместо закрытия по blur – закрываем окно, если кликнули вне области текущего блока поиска
+  document.addEventListener("click", (e) => {
+    // Если клик произошёл вне текущего search-элемента...
+    if (!e.target.closest('.search')) {
+      closeUI();
+    }
   });
 });
+
+
 
 // == END OF SEARCH INPUTS BRANDS ============================
 

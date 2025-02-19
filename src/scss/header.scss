@@ -419,8 +419,11 @@
     flex: 0 0 toRem(32);
     aspect-ratio: 1;
     border-radius: 50%;
-    display: grid;
-    place-items: center;
+    // display: grid;
+    // place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--gray-1);
     &::before {
       transform: rotate(-90deg);
@@ -436,13 +439,6 @@
   &__footer {
   }
 }
-
-.sub-header {
-  // .sub-header__container-b
-  &__container-b {
-  }
-}
-
 
 .search {
   position: relative;
@@ -512,7 +508,7 @@
     padding: toRem(8);
     opacity: 0;
     transition: opacity .15s;
-    pointer-events: none;
+    // pointer-events: none;
     ._input-focus & {
       opacity: 1;
     }
@@ -625,9 +621,6 @@
     margin-inline: auto;
 	}
 }
-
-
-
 
 
 .menu {
@@ -765,7 +758,6 @@
 	}
 }
 
-
 .lang-menu {
   @media (min-width:toEm(700.98)){
       display: none;
@@ -849,9 +841,6 @@
   }
 }
 
-
-
-
 //Burger Icon
 .icon-menu {
   @media (min-width:toEm(700.98)){
@@ -924,4 +913,110 @@
       height: toRem(12.5);
     }
 	}
+}
+
+
+
+
+// == SUB HEADER ========================
+.sub-header {
+  padding-top: toRem(72);
+  padding-bottom: toRem(8);
+  // .sub-header__filters
+  &__filters {
+  }
+
+}
+
+.filters {
+  // .filters__button
+  &__button {
+    @extend %flexCenterGap8;
+    @extend %fonsSize13-14;
+    padding: toRem(8) toRem(16);
+    &.is-open {
+      &::before {
+        transform: rotate(-180deg);
+      }
+    }
+    &:before {
+      order: 3 ;
+      font-weight: 500;
+      font-size: toRem(16);
+      transform-origin: 50% 50%;
+      transition: transform .3s ease;
+      .filters_type-1 & {
+        margin-left: toRem(8);
+      }
+    }
+    .filters_type-1 & {
+      min-height: toRem(40);
+      background-color: var(--gray-1);
+      border-radius: toRem(22);
+    }
+  }
+  // .filters__wrapper
+  &__wrapper {
+  }
+  // .filters__header
+  &__header {
+  }
+  // .filters__subtitle
+  &__subtitle {
+  }
+  // .filters__count
+  &__count {
+  }
+  // .filters__body
+  &__body {
+  }
+  // .filters__list
+  &__list {
+  }
+  // .filters__item
+  &__item {
+  }
+  // .filters__input
+  &__input {
+  }
+  // .filters__label
+  &__label {
+  }
+  // .filters__icon
+  &__icon {
+  }
+  // .filters__name
+  &__name {
+  }
+  // .filters__checkbox
+  &__checkbox {
+  }
+  // .filters__footer
+  &__footer {
+  }
+  // .filters__clear
+  &__clear {
+  }
+  // .filters__show
+  &__show {
+  }
+}
+
+.button-filters {
+  // .button-filters__icon
+  &__icon {
+    display: grid;
+    &::before {
+      font-size: toRem(24);
+    }
+  }
+  // .button-filters__title
+  &__title {
+  }
+  // .button-filters__name
+  &__name {
+  }
+  // .button-filters__subtitle
+  &__subtitle {
+  }
 }

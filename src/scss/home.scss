@@ -65,15 +65,15 @@
   // .checkout__wrapper
   &__wrapper {
     flex: 1;
-    background-color: var(--gray-1);
-    @media (min-width:$mobileSmall){
-      border-radius: toRem(40) toRem(40) 0 0; 
-      padding-bottom: toRem(120);
-    }
-    @media (max-width:$mobileSmall){
-      border-radius: toRem(32) toRem(32) 0 0; 
-      padding-bottom: toRem(50);
-    }
+    // background-color: var(--gray-1);
+    // @media (min-width:$mobileSmall){
+    //   border-radius: toRem(40) toRem(40) 0 0; 
+    //   padding-bottom: toRem(120);
+    // }
+    // @media (max-width:$mobileSmall){
+    //   border-radius: toRem(32) toRem(32) 0 0; 
+    //   padding-bottom: toRem(50);
+    // }
   }
   // .checkout__container
   &__container {

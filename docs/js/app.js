@@ -90,6 +90,8 @@
                 }));
                 document.body.style.paddingRight = "";
                 document.documentElement.classList.remove("lock");
+                const header = document.querySelector(".main-header");
+                if (header) header.style.paddingRight = "";
             }), delay);
             bodyLockStatus = false;
             setTimeout((function() {
@@ -106,6 +108,8 @@
             }));
             document.body.style.paddingRight = lockPaddingValue;
             document.documentElement.classList.add("lock");
+            const header = document.querySelector(".main-header");
+            if (header) header.style.paddingRight = lockPaddingValue;
             bodyLockStatus = false;
             setTimeout((function() {
                 bodyLockStatus = true;
@@ -4747,7 +4751,7 @@
     let addWindowScrollEvent = false;
     function headerScroll() {
         addWindowScrollEvent = true;
-        const header = document.querySelector("header.header");
+        const header = document.querySelector("[data-scroll]");
         const headerShow = header.hasAttribute("data-scroll-show");
         const headerShowTimer = header.dataset.scrollShow ? header.dataset.scrollShow : 500;
         const startPoint = header.dataset.scroll ? header.dataset.scroll : 1;
@@ -4864,6 +4868,8 @@
     const da = new DynamicAdapt("max");
     da.init();
     document.addEventListener("DOMContentLoaded", (() => {
+        const checkoutPage = document.querySelector(".checkout");
+        if (checkoutPage) document.documentElement.classList.add("checkout-page");
         const itemDropdowns = document.querySelectorAll(".item-dropdwn");
         const itemButtons = document.querySelectorAll(".item-dropdwn__btn");
         itemDropdowns.forEach((dropdown => {
@@ -5036,34 +5042,49 @@
         const mediaQuery900max = window.matchMedia("(max-width: 56.311em)");
         mediaQuery900max.addEventListener("change", initDragSpoiler);
         const popupButtons = document.querySelectorAll(".cabinet-header__button");
-        if (popupButtons.length > 0) {
-            document.querySelector(".card-cabinet");
-            function toggleModalShow(button) {
-                const parentElement = button.parentElement;
-                if (button.classList.contains("_modal-show")) {
-                    button.classList.remove("_modal-show");
-                    parentElement.classList.remove("_modal-show");
-                } else {
-                    document.querySelectorAll("._modal-show").forEach((el => {
-                        el.classList.remove("_modal-show");
-                        el.parentElement.classList.remove("_modal-show");
-                    }));
-                    button.classList.add("_modal-show");
-                    parentElement.classList.add("_modal-show");
-                }
-            }
-            popupButtons.forEach((button => {
-                button.addEventListener("click", (function(e) {
-                    toggleModalShow(button);
-                }));
-            }));
-            document.addEventListener("click", (function(e) {
-                if (!Array.from(popupButtons).some((button => button.contains(e.target)))) document.querySelectorAll("._modal-show").forEach((el => {
+        function toggleModalShow(button) {
+            const parentElement = button.parentElement;
+            if (button.classList.contains("_modal-show")) {
+                button.classList.remove("_modal-show");
+                parentElement.classList.remove("_modal-show");
+            } else {
+                document.querySelectorAll("._modal-show").forEach((el => {
                     el.classList.remove("_modal-show");
-                    el.parentElement.classList.remove("_modal-show");
+                    if (el.parentElement) el.parentElement.classList.remove("_modal-show");
                 }));
-            }));
+                button.classList.add("_modal-show");
+                parentElement.classList.add("_modal-show");
+            }
         }
+        popupButtons.forEach((button => {
+            button.addEventListener("click", (function(e) {
+                const popupValue = button.dataset.popup;
+                if (popupValue === "#popupCabinet") {
+                    if (window.matchMedia("(min-width: 30.061em)").matches) e.stopPropagation();
+                    toggleModalShow(button);
+                } else if (popupValue === "#popupCart") toggleModalShow(button);
+            }));
+        }));
+        document.addEventListener("click", (function(e) {
+            const clickInsideButton = Array.from(popupButtons).some((button => button.contains(e.target)));
+            const openModalElements = document.querySelectorAll("._modal-show");
+            const clickInsideModal = Array.from(openModalElements).some((el => el.contains(e.target)));
+            if (!clickInsideButton && !clickInsideModal) openModalElements.forEach((el => {
+                el.classList.remove("_modal-show");
+                if (el.parentElement) el.parentElement.classList.remove("_modal-show");
+            }));
+        }));
+        const filterSections = document.querySelectorAll("[data-filters]");
+        filterSections.forEach((section => {
+            const filterType = section.getAttribute("data-filters");
+            if (filterType) section.classList.add(`filters_${filterType}`);
+            const button = section.querySelector("[data-filters-title]");
+            button.addEventListener("click", (() => {
+                const wrapper = section.querySelector("[data-filters-wrapper]");
+                wrapper.classList.toggle("is-open");
+                button.classList.toggle("is-open");
+            }));
+        }));
     }));
     function startCountdown(timerElement, callback) {
         if (!timerElement) return;
@@ -5386,16 +5407,28 @@
         const searchHeader = searchElement.querySelector(".search__header");
         const searchBox = searchElement.querySelector(".search__box");
         const searchNull = searchElement.querySelector(".search__null");
+        function closeUI() {
+            searchList.innerHTML = "";
+            searchHeader.innerHTML = "";
+            searchNull.style.display = "none";
+            searchBox.style.pointerEvents = "none";
+            searchInput.classList.remove("_input-focus");
+            searchElement.classList.remove("_input-focus");
+        }
         function updateUI(type) {
             searchList.innerHTML = "";
             searchHeader.innerHTML = "";
             searchNull.style.display = "none";
             if (type === "history" && searchHistory.length > 0) {
-                searchHeader.innerHTML = `\n        <div class="search__history">\n          Історія пошуку \n          <button type="button" class="search__clear-btn">Очистити</button>\n        </div>\n      `;
-                searchHeader.querySelector(".search__clear-btn").addEventListener("click", clearHistory);
+                searchHeader.innerHTML = `\n        <div class="search__history">\n          Історія пошуку \n          <button class="search__clear-btn">Очистити</button>\n        </div>\n      `;
+                searchHeader.querySelector(".search__clear-btn").addEventListener("click", (e => clearHistory(e)));
                 renderList(searchHistory);
             } else if (type === "top") {
-                searchHeader.innerHTML = `\n        <div class="search__top">\n          Топ запитів \n          <a href="#" class="search__top-link">Інші рекомендації</a>\n        </div>\n      `;
+                searchHeader.innerHTML = `\n        <div class="search__top">\n          Топ запитів \n          <button class="search__top-link">Інші рекомендації</button>\n        </div>\n      `;
+                searchHeader.querySelector(".search__top-link").addEventListener("click", (e => {
+                    e.stopPropagation();
+                    updateUI("top");
+                }));
                 renderList(brands.filter((brand => brand.isTop)), true);
             }
         }
@@ -5403,15 +5436,18 @@
             searchNull.style.display = items.length === 0 ? "block" : "none";
             items.forEach((brand => {
                 const item = document.createElement("button");
+                item.setAttribute("type", "button");
                 item.classList.add("search__item");
                 if (isTop) item.classList.add("search__item--top");
                 item.innerHTML = `\n        <img src="${brand.logo}" width="37" height="24" class="search__logo" alt="${brand.name}">\n        <span class="search__name">${brand.name}</span>\n        <span class="search__icon icon-search"></span>\n      `;
-                item.addEventListener("click", (() => {
+                item.addEventListener("click", (e => {
+                    e.stopPropagation();
                     searchInput.value = brand.name;
                     searchList.innerHTML = "";
                     searchHeader.innerHTML = "";
                     searchNull.style.display = "none";
                     addToHistory(brand);
+                    closeUI();
                 }));
                 searchList.appendChild(item);
             }));
@@ -5423,10 +5459,12 @@
                 localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
             }
         }
-        function clearHistory() {
+        function clearHistory(e) {
+            e.stopPropagation();
             searchHistory = [];
             localStorage.removeItem("searchHistory");
             updateUI("top");
+            searchInput.focus();
         }
         searchInput.addEventListener("focus", (() => {
             searchInput.classList.add("_input-focus");
@@ -5444,17 +5482,8 @@
                 renderList(filteredBrands);
             } else updateUI(searchHistory.length > 0 ? "history" : "top");
         }));
-        searchInput.addEventListener("blur", (() => {
-            setTimeout((() => {
-                searchList.innerHTML = "";
-                searchHeader.innerHTML = "";
-                searchNull.style.display = "none";
-                searchBox.style.pointerEvents = "none";
-            }), 350);
-            setTimeout((() => {
-                searchInput.classList.remove("_input-focus");
-                searchElement.classList.remove("_input-focus");
-            }), 0);
+        document.addEventListener("click", (e => {
+            if (!e.target.closest(".search")) closeUI();
         }));
     }));
     window["FLS"] = false;

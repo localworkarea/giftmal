@@ -137,6 +137,12 @@ export let bodyUnlock = (delay = 500) => {
 			});
 			document.body.style.paddingRight = ''
 			document.documentElement.classList.remove("lock")
+
+			const header = document.querySelector('.main-header');
+			if (header) {
+				header.style.paddingRight = '';
+			}
+
 		}, delay)
 		bodyLockStatus = false
 		setTimeout(function () {
@@ -154,6 +160,11 @@ export let bodyLock = (delay = 500) => {
 
 		document.body.style.paddingRight = lockPaddingValue
 		document.documentElement.classList.add("lock")
+
+		const header = document.querySelector('.main-header');
+		if (header) {
+			header.style.paddingRight = lockPaddingValue;
+		}
 
 		bodyLockStatus = false
 		setTimeout(function () {
