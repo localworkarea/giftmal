@@ -1,13 +1,16 @@
 * {
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 5px;
   }
   &::-webkit-scrollbar-track {
     background-color: transparent; 
+    padding: toRem(1);
   }
   &::-webkit-scrollbar-thumb {
     background-color: #B2AFB3;
     border-radius: 4px;
+    border: 1px solid transparent; /* Добавляем прозрачную границу для ползунка */
+    background-clip: padding-box; 
   }
 }
 
@@ -24,13 +27,25 @@
 }
 .page {
   background-color: var(--gray-1);
+  @media (max-width: toEm(700.98)) and (min-width:$mobileSmall) {
+      padding-top: toRem(124);
+      .checkout-page & {
+        padding-top: 0;
+      }
+  }
   @media (min-width:$mobileSmall){
     border-radius: toRem(40) toRem(40) 0 0; 
-    padding-bottom: toRem(120);
+    .checkout-page & {
+      padding-bottom: toRem(120);
+    }
   }
   @media (max-width:$mobileSmall){
     border-radius: toRem(32) toRem(32) 0 0; 
-    padding-bottom: toRem(50);
+    padding-top: toRem(134);
+    .checkout-page & {
+      padding-top: 0;
+      padding-bottom: toRem(50);
+    }
   }
 }
 

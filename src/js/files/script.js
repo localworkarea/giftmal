@@ -1,6 +1,6 @@
 // Підключення функціоналу "Чертоги Фрілансера"
 // import { tr } from "intl-tel-input/i18n";
-import { isMobile } from "./functions.js";
+import { isMobile, bodyLockToggle } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
 
@@ -346,24 +346,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // == Работа с фильтрами на странице data-filters =================
   const filterSections = document.querySelectorAll('[data-filters]');
-  
+
   filterSections.forEach(section => {
     const filterType = section.getAttribute('data-filters');
     if (filterType) {
       section.classList.add(`filters_${filterType}`);
     }
-
+  
     const button = section.querySelector('[data-filters-title]');
-
+  
     button.addEventListener('click', () => {
       const wrapper = section.querySelector('[data-filters-wrapper]');
       wrapper.classList.toggle('is-open');
       button.classList.toggle('is-open');
+      bodyLockToggle();
+  
+      if (wrapper.classList.contains('is-open')) {
+        adjustWrapperMaxHeight(wrapper);
+      }
+    });
+  });
+  
+  function adjustWrapperMaxHeight(wrapper) {
+    const viewportHeight = window.innerHeight;
+    const wrapperRect = wrapper.getBoundingClientRect();
+    const spaceBelow = viewportHeight - wrapperRect.top;
+  
+    wrapper.style.maxHeight = `${spaceBelow - 24}px`;
+  }
+  
+  window.addEventListener('resize', () => {
+    const openWrappers = document.querySelectorAll('.filters__wrapper.is-open');
+    openWrappers.forEach(wrapper => {
+      adjustWrapperMaxHeight(wrapper);
     });
   });
   
 
   // =================================
+
+
+
+    // sub-header__link_more клик по кнопке "больше"=========
+      const mediaQuery480min = window.matchMedia('(min-width: 43.811em)');
+  
+      function handleTabletChange(e) {
+          if (e.matches) {
+              // Код выполняется, когда ширина экрана больше 43.811em
+              const moreButton = document.querySelector('.sub-header__link_more');
+              if (moreButton) {
+                  const moreSubMenu = moreButton.nextElementSibling;
+                  
+                  moreButton.addEventListener('click', function(event) {
+                      event.stopPropagation(); // Останавливаем всплытие события
+                      moreButton.classList.toggle('is-open');
+                      moreSubMenu.classList.toggle('is-open');
+                  });
+                  
+                  document.addEventListener('click', function(event) {
+                      if (!moreSubMenu.contains(event.target) && !moreButton.contains(event.target)) {
+                          moreButton.classList.remove('is-open');
+                          moreSubMenu.classList.remove('is-open');
+                      }
+                  });
+              }
+          }
+      }
+  
+      handleTabletChange(mediaQuery480min);
+      mediaQuery480min.addEventListener('change', handleTabletChange);
+
+
+      
+      const filterButtons = document.querySelectorAll('[data-open-filters]');
+      const mediaQuery480max = window.matchMedia('(max-width: 43.811em)');
+        if (filterButtons.length > 0) {
+          const mobileFilterWrapper = document.querySelector('.filters__wrapper_mob');
+        
+          filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+              if (mediaQuery480max.matches) { // Проверяем текущее состояние медиа-запроса
+                mobileFilterWrapper.classList.toggle('is-open');
+              }
+            });
+          });
+        
+          mediaQuery480max.addEventListener('change', (e) => {
+            if (!e.matches && mobileFilterWrapper.classList.contains('is-open')) {
+              mobileFilterWrapper.classList.remove('is-open');
+            }
+          });
+        }
+      
+  
   
 
 }); // end DOMContentLoaded
