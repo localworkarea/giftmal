@@ -1,6 +1,6 @@
 // Підключення функціоналу "Чертоги Фрілансера"
 // import { tr } from "intl-tel-input/i18n";
-import { isMobile, bodyLockToggle } from "./functions.js";
+import { isMobile, bodyLockToggle, _slideToggle, _slideUp, _slideDown } from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
 
@@ -118,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // == card-slider елементи =============================================
     const slidersCheckout = document.querySelectorAll(".slider-checkout");
-
     slidersCheckout.forEach(slider => {
         const cardSliders = slider.querySelectorAll(".card-slider");
     
@@ -344,47 +343,314 @@ document.addEventListener("DOMContentLoaded", () => {
     // =================================
   
 
-  // == Работа с фильтрами на странице data-filters =================
-  const filterSections = document.querySelectorAll('[data-filters]');
 
-  filterSections.forEach(section => {
-    const filterType = section.getAttribute('data-filters');
-    if (filterType) {
-      section.classList.add(`filters_${filterType}`);
+
+      // == Работа с фильтрами на странице data-filters =================
+      const filterSections = document.querySelectorAll('[data-filters]');
+
+      filterSections.forEach(section => {
+          const filterType = section.getAttribute('data-filters');
+          if (filterType) {
+              section.classList.add(`filters_${filterType}`);
+          }
+      
+          const spollers = section.querySelectorAll('[data-filters-spoller]');
+          spollers.forEach(spoller => {
+              const spollerBody = spoller.nextElementSibling;
+              _slideUp(spollerBody, 0);
+      
+              spoller.addEventListener('click', function() {
+                  const isOpening = spollerBody.hidden || spollerBody.style.height === '0px';
+                  _slideToggle(spollerBody, 300, 0, 200);
+      
+                  if (isOpening) {
+                      spollerBody.classList.add('is-open');
+                  } else {
+                      spollerBody.classList.remove('is-open');
+                  }
+              });
+          });
+      
+          const button = section.querySelector('[data-filters-title]');
+          const wrapper = section.querySelector('[data-filters-wrapper]');
+          const input = section.querySelector('[data-filters-input]');
+      
+          button.addEventListener('click', (event) => {
+              // Если  есть `search` и клик был по `input`, не закрываем `wrapper`
+              if (section.hasAttribute('data-filters-search') && event.target === input) {
+                  return;
+              }
+      
+              wrapper.classList.toggle('is-open');
+              button.classList.toggle('is-open');
+      
+              const openSpollerBodies = wrapper.querySelectorAll('[data-filters-spoller-body].is-open');
+              openSpollerBodies.forEach(spollerBody => {
+                  _slideUp(spollerBody, 300);
+                  spollerBody.classList.remove('is-open');
+              });
+      
+              if (wrapper.classList.contains('is-open')) {
+                  adjustWrapperPosition(wrapper);
+                  adjustWrapperMaxHeight(wrapper);
+              }
+          });
+      
+          if (input) {
+              input.addEventListener('focus', () => {
+                  if (!wrapper.classList.contains('is-open')) {
+                      wrapper.classList.add('is-open');
+                      button.classList.add('is-open');
+                      adjustWrapperPosition(wrapper);
+                      adjustWrapperMaxHeight(wrapper);
+                  }
+              });
+          }
+      });
+      
+      // Фильтрация при вводе в поиске
+      document.querySelectorAll('[data-filters-search]').forEach(filterSection => {
+          const input = filterSection.querySelector('[data-filters-input]');
+          const list = filterSection.querySelector('.filters__list');
+      
+          if (!input || !list) return;
+      
+          input.addEventListener('input', () => {
+              const searchValue = input.value.trim().toLowerCase();
+              const items = list.querySelectorAll('.filters__item');
+              let hasResults = false;
+      
+              items.forEach(item => {
+                  const itemText = item.querySelector('.filters__name').textContent.trim().toLowerCase();
+                  if (itemText.includes(searchValue)) {
+                      item.hidden = false;
+                      hasResults = true;
+                  } else {
+                      item.hidden = true;
+                  }
+              });
+      
+              // Удаляем старый блок "ничего не найдено"
+              const noResultsItem = list.querySelector('.filters__no-results');
+              if (noResultsItem) noResultsItem.remove();
+      
+              // Если ничего не найдено, добавляем элемент
+              if (!hasResults) {
+                  const noResults = document.createElement('li');
+                  noResults.classList.add('filters__item', 'filters__no-results');
+                  noResults.innerHTML = `<div class="filters__label"><span class="filters__name">За вашим запитом нічого не знайдено</span></div>`;
+                  list.appendChild(noResults);
+              }
+          });
+      });
+      
+      // Глобальное закрытие фильтра при клике вне элемента
+      document.addEventListener('click', (event) => {
+          filterSections.forEach(section => {
+              if (section.hasAttribute('data-filters-close')) {
+                  const wrapper = section.querySelector('[data-filters-wrapper]');
+                  const button = section.querySelector('[data-filters-title]');
+                  const input = section.querySelector('[data-filters-input]');
+      
+                  // НЕ закрываем, если клик был по input
+                  if (input && input.contains(event.target)) {
+                      return;
+                  }
+      
+                  if (!section.contains(event.target) && wrapper.classList.contains('is-open')) {
+                      wrapper.classList.remove('is-open');
+                      button.classList.remove('is-open');
+      
+                      const openSpollerBodies = wrapper.querySelectorAll('[data-filters-spoller-body].is-open');
+                      openSpollerBodies.forEach(spollerBody => {
+                          _slideUp(spollerBody, 0);
+                          spollerBody.classList.remove('is-open');
+                      });
+                  }
+              }
+          });
+      
+          // Обработка клика на кнопку очистки
+          if (event.target.matches('.filters__clear') && !event.target.disabled) {
+              const wrapper = event.target.closest('[data-filters-wrapper]');
+              clearFilters(wrapper);
+          }
+      });
+    
+      let resizeTimeout2;
+      let lastWidth2 = window.innerWidth;
+      let lastHeight2 = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+          clearTimeout(resizeTimeout2);
+          requestAnimationFrame(() => {
+              const currentWidth = window.innerWidth;
+              const currentHeight = window.innerHeight;
+              // Если размеры изменяются, обновляем последние значения
+              if (currentWidth !== lastWidth2 || currentHeight !== lastHeight2) {
+                  lastWidth2 = currentWidth;
+                  lastHeight2 = currentHeight;
+              }
+            
+              resizeTimeout2 = setTimeout(() => {
+                  const openWrappers = document.querySelectorAll('.filters__wrapper.is-open');
+                  openWrappers.forEach(wrapper => {
+                      adjustWrapperMaxHeight(wrapper);
+                      adjustWrapperPosition(wrapper);
+                  });
+              }, 300);
+          });
+      });
+      
+      document.addEventListener('change', (event) => {
+        if (event.target.type === 'checkbox' && event.target.matches('[data-filters-body] input[type="checkbox"]')) {
+          const wrapper = event.target.closest('[data-filters-wrapper]');
+          updateButtonState(wrapper);
+          updateCount(wrapper);
+      
+          // Добавляем или удаляем класс _checked у непосредственного родителя checkbox
+          const parentElement = event.target.parentElement;
+          if (event.target.checked) {
+            parentElement.classList.add('_checked');
+          } else {
+            parentElement.classList.remove('_checked');
+          }
+        }
+      });
+
+    function adjustWrapperPosition(wrapper) {
+      if (!wrapper) return;
+  
+      const parent = wrapper.closest('[data-filters]');
+      if (!parent) return;
+  
+      const parentRect = parent.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      const spaceToRight = viewportWidth - parentRect.right;
+  
+      if (spaceToRight < 150) {
+          wrapper.classList.add('_align-right');
+          wrapper.classList.remove('_align-left');
+      } else {
+          wrapper.classList.add('_align-left');
+          wrapper.classList.remove('_align-right');
+      }
+    }
+    
+    function adjustWrapperMaxHeight(wrapper) {
+      const viewportHeight = window.innerHeight;
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const spaceBelow = viewportHeight - wrapperRect.top;
+  
+      const head = wrapper.querySelector('[data-filters-head]');
+      const footer = wrapper.querySelector('[data-filters-footer]');
+      const body = wrapper.querySelector('[data-filters-body]');
+  
+      const headHeight = head ? head.offsetHeight : 0;
+      const footerHeight = footer ? footer.offsetHeight : 0;
+      let availableHeight = spaceBelow - headHeight - footerHeight - 24;
+  
+      if (body) {
+          // Если места меньше 250px, устанавливаем фиксированную max-height
+          if (spaceBelow < 250) {
+              availableHeight = Math.max(110, availableHeight); // Минимум 110px, чтобы не скрывался контент
+          }
+  
+          body.style.maxHeight = `${availableHeight}px`;
+          wrapper.dataset.maxHeight = availableHeight;
+  
+          // Проверяем, есть ли вложенные элементы, превышающие availableHeight
+          let isContentOverflowing = false;
+          const childElements = body.querySelectorAll('*');
+  
+          for (let element of childElements) {
+              if (element.scrollHeight > availableHeight) {
+                  isContentOverflowing = true;
+                  break;
+              }
+          }
+  
+          if (isContentOverflowing) {
+              body.classList.add('_more-content');
+          } else {
+              body.classList.remove('_more-content');
+          }
+      }
     }
   
-    const button = section.querySelector('[data-filters-title]');
-  
-    button.addEventListener('click', () => {
-      const wrapper = section.querySelector('[data-filters-wrapper]');
-      wrapper.classList.toggle('is-open');
-      button.classList.toggle('is-open');
-      bodyLockToggle();
-  
-      if (wrapper.classList.contains('is-open')) {
-        adjustWrapperMaxHeight(wrapper);
+    function updateButtonState(wrapper) {
+      const footer = wrapper.querySelector('[data-filters-footer]');
+      const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
+      
+      let anyChecked = Array.from(inputs).some(input => input.checked);
+      
+      if (footer) {
+        const buttons = footer.querySelectorAll('button');
+        buttons.forEach(button => {
+          button.disabled = !anyChecked;
+        });
       }
-    });
-  });
+    }
   
-  function adjustWrapperMaxHeight(wrapper) {
-    const viewportHeight = window.innerHeight;
-    const wrapperRect = wrapper.getBoundingClientRect();
-    const spaceBelow = viewportHeight - wrapperRect.top;
+    function clearFilters(wrapper) {
+      const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
+      
+      inputs.forEach(input => {
+        input.checked = false;
+        const parentElement = input.parentElement;
+        parentElement.classList.remove('_checked');
+      });
+    
+      updateButtonState(wrapper);
+      updateCount(wrapper);
+    }
+    
+    function updateCount(wrapper) {
+      const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
+      const count = Array.from(inputs).filter(input => input.checked).length;
+      const countSpanEl = wrapper.querySelector('.filters__count');
+      const countSpan = wrapper.querySelector('.filters__count span');
+      if (countSpan) {
+        countSpan.textContent = `(${count})`;
+        if (count > 0) {
+          countSpanEl.classList.add('_show');
+        } else {
+          countSpanEl.classList.remove('_show');
+        }
+      }
+    }
+    
   
-    wrapper.style.maxHeight = `${spaceBelow - 24}px`;
-  }
-  
-  window.addEventListener('resize', () => {
-    const openWrappers = document.querySelectorAll('.filters__wrapper.is-open');
-    openWrappers.forEach(wrapper => {
-      adjustWrapperMaxHeight(wrapper);
-    });
-  });
+
   
 
   // =================================
 
+     // == Открыть/закрыть каталог сертификатов на моб. =======================
+     const filterButtons = document.querySelectorAll('[data-open-filters]');
+     const mediaQuery480max = window.matchMedia('(max-width: 43.811em)');
+     
+     if (filterButtons.length > 0) {
+         const mobileFilterWrapper = document.querySelector('.filters__wrapper_mob');
+     
+         filterButtons.forEach(button => {
+             button.addEventListener('click', (event) => {
+                 event.preventDefault();
+                 event.stopPropagation();
+                 if (mediaQuery480max.matches) {
+                     mobileFilterWrapper.classList.toggle('is-open');
+                 }
+             });
+         });
+     
+         mediaQuery480max.addEventListener('change', (e) => {
+             if (!e.matches && mobileFilterWrapper.classList.contains('is-open')) {
+                 mobileFilterWrapper.classList.remove('is-open');
+             }
+         });
+     }
+     
+       // ===========================================================
 
 
     // sub-header__link_more клик по кнопке "больше"=========
@@ -392,7 +658,6 @@ document.addEventListener("DOMContentLoaded", () => {
   
       function handleTabletChange(e) {
           if (e.matches) {
-              // Код выполняется, когда ширина экрана больше 43.811em
               const moreButton = document.querySelector('.sub-header__link_more');
               if (moreButton) {
                   const moreSubMenu = moreButton.nextElementSibling;
@@ -417,31 +682,15 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaQuery480min.addEventListener('change', handleTabletChange);
 
 
-      
-      const filterButtons = document.querySelectorAll('[data-open-filters]');
-      const mediaQuery480max = window.matchMedia('(max-width: 43.811em)');
-        if (filterButtons.length > 0) {
-          const mobileFilterWrapper = document.querySelector('.filters__wrapper_mob');
-        
-          filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-              if (mediaQuery480max.matches) { // Проверяем текущее состояние медиа-запроса
-                mobileFilterWrapper.classList.toggle('is-open');
-              }
-            });
-          });
-        
-          mediaQuery480max.addEventListener('change', (e) => {
-            if (!e.matches && mobileFilterWrapper.classList.contains('is-open')) {
-              mobileFilterWrapper.classList.remove('is-open');
-            }
-          });
-        }
+   
       
   
   
 
 }); // end DOMContentLoaded
+
+
+
 
 /* таймер обратного отсчета */
 function startCountdown(timerElement, callback) {

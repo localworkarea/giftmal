@@ -200,12 +200,11 @@
         </div>
         <div class="header__sub-header sub-header">
           <div class="sub-header__container-b">
-            <div data-filters="type-1" class="sub-header__filters filters">
+            <div data-filters="type-1" data-filters-close class="sub-header__filters filters">
               <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
                 <div class="button-filters__icon icon-sertificates"></div>
                 <div class="button-filters__title">
                   <div class="button-filters__name">Категорії по сертифікатам</div>
-                  <!-- <div class="button-filters__subtitle">Sub</div> -->
                 </div>
               </button>
               <div data-filters-wrapper class="filters__wrapper filters__wrapper_mob">
@@ -384,24 +383,544 @@
         </div>
       </header>
 			<main class="page">
-        <section class="__container">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolorum quam debitis animi exercitationem quae dicta et deserunt! Distinctio, officiis? Nesciunt qui doloremque nostrum sunt aliquam, ut fugiat nobis placeat?</p><br><br><br><br>
+        <div class="banner">
+          <div class="banner__container">
+            <div class="banner__img">
+              <picture>
+                <source srcset="@img/home/netflix.jpg" media="(min-width: 30.061em)" type="image/jpg">
+                <source srcset="@img/home/netflix-mob.jpg" media="(max-width: 30.061em)" type="image/jpg">
+                <img class="ibg" src="@img/home/netflix.jpg" width="1200" height="273" alt="image">
+              </picture>
+            </div>
+          </div>
+        </div>
+        <section class="main">
+          <div class="main__container">
+            <h1 class="main__title title-av">Оберіть бажаний сертифікат бренду</h1>
+            <div  class="main__filters">
+              <div data-filters="type-2" data-filters-close data-da=".popup-body-filters-all,480.98,0" class="filters filters-category">
+                <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
+                  <div class="button-filters__title">
+                    <div class="button-filters__name">Усі Категорії</div>
+                  </div>
+                </button>
+                <div data-filters-wrapper class="filters__wrapper">
+                  <div data-filters-head class="filters__header">
+                    <div class="filters__subtitle">Оберіть категорію</div>
+                    <div class="filters__count">обрано <span>(0)</span></div>
+                  </div>
+                  <div data-filters-body class="filters__body">
+                    <div class="filters__body-wr">
+                      <div class="filters__sub-list">
+                        <div data-filters-spoller class="filters__sub-item">
+                          <button type="button" class="filters__link icon-arrow-down" aria-label="open sublist">
+                            <span class="filters__icon icon-sertificates"></span>
+                            <span class="filters__name">Подарункові Сертифікати </span>
+                          </button>
+                        </div>
+                        <ul data-filters-spoller-body class="filters__list">
+                          <li class="filters__item">
+                            <input type="checkbox" id="charity-certificates" name="category" class="filters__input">
+                            <label for="charity-certificates" class="filters__label">
+                              <span class="filters__icon icon-charity"></span>
+                              <span class="filters__name">Благодійні сертифікати</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="children-goods" name="category" class="filters__input">
+                            <label for="children-goods" class="filters__label">
+                              <span class="filters__icon icon-children"></span>
+                              <span class="filters__name">Дитячі товари</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="services" name="category" class="filters__input">
+                            <label for="services" class="filters__label">
+                              <span class="filters__icon icon-services"></span>
+                              <span class="filters__name">Послуги та сервіси</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="impressions" name="category" class="filters__input">
+                            <label for="impressions" class="filters__label">
+                              <span class="filters__icon icon-impressions"></span>
+                              <span class="filters__name">Враження</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="cosmetics" name="category" class="filters__input">
+                            <label for="cosmetics" class="filters__label">
+                              <span class="filters__icon icon-cosmetics"></span>
+                              <span class="filters__name">Косметика та парфюмерія</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="online-stores" name="category" class="filters__input">
+                            <label for="online-stores" class="filters__label">
+                              <span class="filters__icon icon-e-comm"></span>
+                              <span class="filters__name">Інтернет-магазини</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="jewelry" name="category" class="filters__input">
+                            <label for="jewelry" class="filters__label">
+                              <span class="filters__icon icon-jewelry"></span>
+                              <span class="filters__name">Ювелірні вироби</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="home-goods" name="category" class="filters__input">
+                            <label for="home-goods" class="filters__label">
+                              <span class="filters__icon icon-home-goods"></span>
+                              <span class="filters__name">Товари для дому</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="pharmacy" name="category" class="filters__input">
+                            <label for="pharmacy" class="filters__label">
+                              <span class="filters__icon icon-drugs"></span>
+                              <span class="filters__name">Аптеки та медицина</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="clothing" name="category" class="filters__input">
+                            <label for="clothing" class="filters__label">
+                              <span class="filters__icon icon-clothes"></span>
+                              <span class="filters__name">Одяг та взуття</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="wine" name="category" class="filters__input">
+                            <label for="wine" class="filters__label">
+                              <span class="filters__icon icon-wine"></span>
+                              <span class="filters__name">Вино та міцні напої</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="appliances" name="category" class="filters__input">
+                            <label for="appliances" class="filters__label">
+                              <span class="filters__icon icon-electronics"></span>
+                              <span class="filters__name">Побутова техніка та електроніка</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="pet-supplies" name="category" class="filters__input">
+                            <label for="pet-supplies" class="filters__label">
+                              <span class="filters__icon icon-zoo"></span>
+                              <span class="filters__name">Зоотовари</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="fuel" name="category" class="filters__input">
+                            <label for="fuel" class="filters__label">
+                              <span class="filters__icon icon-petrol"></span>
+                              <span class="filters__name">Паливо</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="food-products" name="category" class="filters__input">
+                            <label for="food-products" class="filters__label">
+                              <span class="filters__icon icon-food"></span>
+                              <span class="filters__name">Продукти харчування</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="lingerie" name="category" class="filters__input">
+                            <label for="lingerie" class="filters__label">
+                              <span class="filters__icon icon-underclothes"></span>
+                              <span class="filters__name">Спідня білизна</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="sport-goods" name="category" class="filters__input">
+                            <label for="sport-goods" class="filters__label">
+                              <span class="filters__icon icon-sport"></span>
+                              <span class="filters__name">Товари для спорту</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="restaurants" name="category" class="filters__input">
+                            <label for="restaurants" class="filters__label">
+                              <span class="filters__icon icon-restorountes"></span>
+                              <span class="filters__name">Ресторани</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="books" name="category" class="filters__input">
+                            <label for="books" class="filters__label">
+                              <span class="filters__icon icon-book"></span>
+                              <span class="filters__name">Книжки</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="accessories" name="category" class="filters__input">
+                            <label for="accessories" class="filters__label">
+                              <span class="filters__icon icon-accessories"></span>
+                              <span class="filters__name">Аксесуари</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                          <li class="filters__item">
+                            <input type="checkbox" id="fishing-hunting" name="category" class="filters__input">
+                            <label for="fishing-hunting" class="filters__label">
+                              <span class="filters__icon icon-fishing"></span>
+                              <span class="filters__name">Риболовля та мисливство</span>
+                              <span class="filters__checkbox icon-checkbox"></span>
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="filters__sub-list">
+                        <div class="filters__sub-item">
+                          <input type="checkbox" id="postcards" name="category" class="filters__input">
+                          <label for="postcards" class="filters__label">
+                            <span class="filters__icon icon-postcard"></span>
+                            <span class="filters__name">Листівки</span>
+                            <span class="filters__checkbox icon-checkbox"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="filters__sub-list">
+                        <div class="filters__sub-item">
+                          <input type="checkbox" id="boxes" name="category" class="filters__input">
+                          <label for="boxes" class="filters__label">
+                            <span class="filters__icon icon-boxes"></span>
+                            <span class="filters__name">Коробки</span>
+                            <span class="filters__checkbox icon-checkbox"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-filters-footer class="filters__footer">
+                    <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
+                    <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
+                  </div>
+                </div>
+              </div>
+              <div data-filters="type-2" data-filters-close data-da=".popup-body-filters-types,480.98,0" class="filters filters-type">
+                <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
+                  <div class="button-filters__title">
+                    <div class="button-filters__name">Тип сертифікатів</div>
+                    <div class="button-filters__subtitle">Фізичні та електронні сертифікати</div>
+                  </div>
+                </button>
+                <div data-filters-wrapper class="filters__wrapper">
+                  <div data-filters-head class="filters__header">
+                    <div class="filters__subtitle">Оберіть тип</div>
+                  </div>
+                  <div data-filters-body class="filters__body">
+                    <ul class="filters__list">
+                      <li class="filters__item">
+                        <input type="checkbox" id="all-certificates" name="category-type" class="filters__input">
+                        <label for="all-certificates" class="filters__label">
+                          <span class="filters__name">Усі сертифікати</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="physical-certificates" name="category-type" class="filters__input">
+                        <label for="physical-certificates" class="filters__label">
+                          <span class="filters__name">Фізичні сертифікати</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="electronic-certificates" name="category-type" class="filters__input">
+                        <label for="electronic-certificates" class="filters__label">
+                          <span class="filters__name">Електронні сертифікати</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div data-filters="type-2" data-filters-close data-da=".popup-body-filters-types,480.98,1" class="filters filters-for">
+                <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
+                  <div class="button-filters__title">
+                    <div class="button-filters__name">Для кого</div>
+                  </div>
+                </button>
+                <div data-filters-wrapper class="filters__wrapper">
+                  <div data-filters-head class="filters__header">
+                    <div class="filters__subtitle">Оберіть для кого</div>
+                  </div>
+                  <div data-filters-body class="filters__body">
+                    <ul class="filters__list">
+                      <li class="filters__item">
+                        <input type="checkbox" id="for-everyone" name="category-for" class="filters__input">
+                        <label for="for-everyone" class="filters__label">
+                          <span class="filters__name">Для усіх</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="for-two" name="category-for" class="filters__input">
+                        <label for="for-two" class="filters__label">
+                          <span class="filters__name">Для двох</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="for-children" name="category-for" class="filters__input">
+                        <label for="for-children" class="filters__label">
+                          <span class="filters__name">Дітям</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="for-girlfriend" name="category-for" class="filters__input">
+                        <label for="for-girlfriend" class="filters__label">
+                          <span class="filters__name">Дівчині</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="for-beloved" name="category-for" class="filters__input">
+                        <label for="for-beloved" class="filters__label">
+                          <span class="filters__name">Коханим</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="for-woman" name="category-for" class="filters__input">
+                        <label for="for-woman" class="filters__label">
+                          <span class="filters__name">Жінці</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="for-man" name="category-for" class="filters__input">
+                        <label for="for-man" class="filters__label">
+                          <span class="filters__name">Чоловіку</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="for-boyfriend" name="category-for" class="filters__input">
+                        <label for="for-boyfriend" class="filters__label">
+                          <span class="filters__name">Хлопцю</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                    </ul>
+                    
+                  </div>
+                </div>
+              </div>
+              <div data-filters="type-2" data-filters-close data-da=".popup-body-filters-types,480.98,3" class="filters filters-denomination">
+                <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
+                  <div class="button-filters__title">
+                    <div class="button-filters__name">Номінал</div>
+                    <div class="button-filters__subtitle">50 — 2 000 грн</div>
+                  </div>
+                </button>
+                <div data-filters-wrapper class="filters__wrapper">
+                  <div data-filters-body class="filters__body">
+                    <div data-range class="filter__price price-filter">
+                      <div class="price-filter__top">
+                        <p>Мін</p> <p>Мак (₴<span>50 000</span>)</p>
+                      </div>
+                      <div data-range-item class="price-filter__range"></div>
+											<div class="price-filter__inputs">
+                        <div class="price-filter__input-wr">
+                          <span class="price-filter__prefix">₴</span> 
+                          <input data-range-from="50" autocomplete="off" type="text" value="1000" name="form[]" class="price-filter__input">
+                        </div>
+                        <span>—</span>
+                        <div class="price-filter__input-wr">
+                          <span class="price-filter__prefix">₴</span> 
+                          <input data-range-to="50000" autocomplete="off" type="text" value="20000" name="form[]" class="price-filter__input">
+                        </div>
+											</div>
+										</div>
+                  </div>
+                  <div data-filters-footer class="filters__footer">
+                    <button type="button" class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
+                  </div>
+                </div>
+              </div>
+              <div data-filters="type-2" data-filters-close data-da=".popup-body-filters-types,480.98,2" data-filters-search class="filters filters-location">
+                <div data-filters-title class="filters__button button-filters icon-arrow-down">
+                  <input data-filters-input class="filters__search" type="text" autocomplete="off" placeholder="Місто">
+                </div>
+                <div data-filters-wrapper class="filters__wrapper">
+                  <div data-filters-head class="filters__header">
+                    <div class="filters__subtitle">Оберіть aбо впишіть місто</div>
+                    <div class="filters__count">обрано <span>(0)</span></div>
+                  </div>
+                  <div data-filters-body class="filters__body">
+                    <ul class="filters__list">
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Kyiv" name="category-city" class="filters__input">
+                        <label for="city-Kyiv" class="filters__label">
+                          <span class="filters__name">Київ</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Lviv" name="category-city" class="filters__input">
+                        <label for="city-Lviv" class="filters__label">
+                          <span class="filters__name">Львів</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Kharkiv" name="category-city" class="filters__input">
+                        <label for="city-Kharkiv" class="filters__label">
+                          <span class="filters__name">Харків</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Odesa" name="category-city" class="filters__input">
+                        <label for="city-Odesa" class="filters__label">
+                          <span class="filters__name">Одеса</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Dnipro" name="category-city" class="filters__input">
+                        <label for="city-Dnipro" class="filters__label">
+                          <span class="filters__name">Дніпро</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Sumy" name="category-city" class="filters__input">
+                        <label for="city-Sumy" class="filters__label">
+                          <span class="filters__name">Суми</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Vinnytsia" name="category-city" class="filters__input">
+                        <label for="city-Vinnytsia" class="filters__label">
+                          <span class="filters__name">Вінниця</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Cherkasy" name="category-city" class="filters__input">
+                        <label for="city-Cherkasy" class="filters__label">
+                          <span class="filters__name">Черкаси</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Poltava" name="category-city" class="filters__input">
+                        <label for="city-Poltava" class="filters__label">
+                          <span class="filters__name">Полтава</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Mykolaiv" name="category-city" class="filters__input">
+                        <label for="city-Mykolaiv" class="filters__label">
+                          <span class="filters__name">Миколаїв</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-KryvyiRih" name="category-city" class="filters__input">
+                        <label for="city-KryvyiRih" class="filters__label">
+                          <span class="filters__name">Кривий Ріг</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Zaporizhzhia" name="category-city" class="filters__input">
+                        <label for="city-Zaporizhzhia" class="filters__label">
+                          <span class="filters__name">Запоріжжя</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Lutsk" name="category-city" class="filters__input">
+                        <label for="city-Lutsk" class="filters__label">
+                          <span class="filters__name">Луцьк</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Kherson" name="category-city" class="filters__input">
+                        <label for="city-Kherson" class="filters__label">
+                          <span class="filters__name">Херсон</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Brovary" name="category-city" class="filters__input">
+                        <label for="city-Brovary" class="filters__label">
+                          <span class="filters__name">Бровари</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Chernihiv" name="category-city" class="filters__input">
+                        <label for="city-Chernihiv" class="filters__label">
+                          <span class="filters__name">Чернігів</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Chernivtsi" name="category-city" class="filters__input">
+                        <label for="city-Chernivtsi" class="filters__label">
+                          <span class="filters__name">Чернівці</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                      <li class="filters__item">
+                        <input type="checkbox" id="city-Khmelnytskyi" name="category-city" class="filters__input">
+                        <label for="city-Khmelnytskyi" class="filters__label">
+                          <span class="filters__name">Хмельницький</span>
+                          <span class="filters__checkbox icon-checkbox"></span>
+                        </label>
+                      </li>
+                    </ul>
+                  </div>
+                  <div data-filters-footer class="filters__footer">
+                    <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
+                    <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" data-popup="#popupFiltersAll" data-popup-width="480.98,max" class="main__filters-btn" aria-label="open popup"></button>
+              <button type="button" data-popup="#popupFiltersTypes" data-popup-width="480.98,max" class="main__filters-btn" aria-label="open popup"></button>
+            </div>
+
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+          </div>
         </section>
       </main>
     </div>

@@ -102,7 +102,7 @@
   <div class="fixed-element"></div>
 </div>
 
-<div data-filters="type-1" data-filters-link class="sub-header__filters filters">
+<div data-filters="type-2" data-filters-close class="sub-header__filters filters">
   <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
     <div class="button-filters__icon icon-sertificates"></div>
     <div class="button-filters__title">
@@ -133,27 +133,160 @@
             <span class="filters__checkbox"></span>
           </label>
         </li>
-        <li class="filters__item">
-          <input type="checkbox" id="services" name="category" class="filters__input">
-          <label for="services" class="filters__label">
-            <span class="filters__icon"></span>
-            <span class="filters__name">Послуги та сервіси</span>
-            <span class="filters__checkbox"></span>
-          </label>
-        </li>
-        <li class="filters__item">
-          <input type="checkbox" id="fishing-hunting" name="category" class="filters__input">
-          <label for="fishing-hunting" class="filters__label">
-            <span class="filters__icon"></span>
-            <span class="filters__name">Риболовля та мисливство</span>
-            <span class="filters__checkbox"></span>
-          </label>
-        </li>
       </ul>
     </div>
     <div data-filters-footer class="filters__footer">
       <button type="button" class="filters__clear" aria-label="clear all">Очистити все</button>
       <button type="button" class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(25)</span></button>
+    </div>
+  </div>
+</div>
+<div data-filters="type-2" data-filters-close class="sub-header__filters filters">
+  <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
+    <div class="button-filters__icon icon-sertificates"></div>
+    <div class="button-filters__title">
+      <div class="button-filters__name">Категорії по сертифікатам</div>
+      <div class="button-filters__subtitle">Sub</div>
+    </div>
+  </button>
+  <div data-filters-wrapper class="filters__wrapper">
+    <div data-filters-body class="filters__body">
+      <ul class="filters__list">
+        <li class="filters__item">
+          <input type="checkbox" id="charity-certificates" name="category" class="filters__input">
+          <label for="charity-certificates" class="filters__label">
+            <span class="filters__icon"></span>
+            <span class="filters__name">Благодійні сертифікати</span>
+            <span class="filters__checkbox"></span>
+          </label>
+        </li>
+        <li class="filters__item">
+          <input type="checkbox" id="children-goods" name="category" class="filters__input">
+          <label for="children-goods" class="filters__label">
+            <span class="filters__icon"></span>
+            <span class="filters__name">Дитячі товари</span>
+            <span class="filters__checkbox"></span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="main__filters">
+  <div data-filters="type-2" data-filters-close class="filters filters-category"></div>
+  <div data-filters="type-1" data-filters-close class="filters"></div>
+  <div data-filters="type-2"  class="filters"></div>
+</div>
+
+
+
+<div data-filters="type-2" data-filters-close class="sub-header__filters filters">
+  <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
+    <div class="button-filters__icon icon-sertificates"></div>
+    <div class="button-filters__title">
+      <div class="button-filters__name">Категорії по сертифікатам</div>
+      <div class="button-filters__subtitle">Sub</div>
+    </div>
+  </button>
+  <div data-filters-wrapper class="filters__wrapper">
+    <div data-filters-head class="filters__header">
+      <div class="filters__subtitle">Оберіть категорію</div>
+      <div class="filters__count">обрано <span>(0)</span></div>
+    </div>
+    <div data-filters-body class="filters__body">
+      <div class="filters__sub-list">
+        <div data-filters-spoller class="filters__sub-item">
+          <button type="button" class="filters__link icon-arrow-down" aria-label="open sublist">
+            <span class="filters__icon icon-sertificates"></span>
+            <span class="filters__name">Подарункові Сертифікати </span>
+          </button>
+        </div>
+        <ul data-filters-spoller-body class="filters__list">
+          <li class="filters__item">
+            <input type="checkbox" id="charity-certificates" name="category" class="filters__input">
+            <label for="charity-certificates" class="filters__label">
+              <span class="filters__icon icon-charity"></span>
+              <span class="filters__name">Благодійні сертифікати</span>
+              <span class="filters__checkbox icon-checkbox"></span>
+            </label>
+          </li>
+          <li class="filters__item">
+            <input type="checkbox" id="fishing-hunting" name="category" class="filters__input">
+            <label for="fishing-hunting" class="filters__label">
+              <span class="filters__icon icon-fishing"></span>
+              <span class="filters__name">Риболовля та мисливство</span>
+              <span class="filters__checkbox icon-checkbox"></span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="filters__sub-list">
+        <div class="filters__sub-item">
+          <input type="checkbox" id="postcards" name="category" class="filters__input">
+          <label for="postcards" class="filters__label">
+            <span class="filters__icon icon-postcard"></span>
+            <span class="filters__name">Листівки</span>
+            <span class="filters__checkbox icon-checkbox"></span>
+          </label>
+        </div>
+      </div>
+      <div class="filters__sub-list">
+        <div class="filters__sub-item">
+          <input type="checkbox" id="boxes" name="category" class="filters__input">
+          <label for="boxes" class="filters__label">
+            <span class="filters__icon icon-boxes"></span>
+            <span class="filters__name">Коробки</span>
+            <span class="filters__checkbox icon-checkbox"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div data-filters-footer class="filters__footer">
+      <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
+      <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
+    </div>
+  </div>
+</div>
+
+<div data-filters="type-2" data-filters-close data-filters-search class="filters filters-location">
+  <div data-filters-input class="filters__button button-filters icon-arrow-down">
+    <input class="filters__search" type="text" autocomplete="off" placeholder="Місто">
+  </div>
+  <div data-filters-wrapper class="filters__wrapper">
+    <div data-filters-head class="filters__header">
+      <div class="filters__subtitle">Оберіть aбо впишіть місто</div>
+      <div class="filters__count">обрано <span>(0)</span></div>
+    </div>
+    <div data-filters-body class="filters__body">
+      <ul class="filters__list">
+        <li class="filters__item">
+          <input type="checkbox" id="city-Kyiv" name="category-city" class="filters__input">
+          <label for="city-Kyiv" class="filters__label">
+            <span class="filters__name">Київ</span>
+            <span class="filters__checkbox icon-checkbox"></span>
+          </label>
+        </li>
+        <li class="filters__item">
+          <input type="checkbox" id="city-Lviv" name="category-city" class="filters__input">
+          <label for="city-Lviv" class="filters__label">
+            <span class="filters__name">Львів</span>
+            <span class="filters__checkbox icon-checkbox"></span>
+          </label>
+        </li>
+        <li class="filters__item">
+          <input type="checkbox" id="city-Kharkiv" name="category-city" class="filters__input">
+          <label for="city-Kharkiv" class="filters__label">
+            <span class="filters__name">Харків</span>
+            <span class="filters__checkbox icon-checkbox"></span>
+          </label>
+        </li>
+
+      </ul>
+    </div>
+    <div data-filters-footer class="filters__footer">
+      <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
+      <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
     </div>
   </div>
 </div>

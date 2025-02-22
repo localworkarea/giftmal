@@ -77,7 +77,7 @@ export let _slideUp = (target, duration = 500, showmore = 0) => {
 		}, duration);
 	}
 }
-export let _slideDown = (target, duration = 500, showmore = 0) => {
+export let _slideDown = (target, duration = 500, showmore = 0, maxHeight = 0) => {
 	if (!target.classList.contains('_slide')) {
 		target.classList.add('_slide');
 		target.hidden = target.hidden ? false : null;
@@ -90,6 +90,12 @@ export let _slideDown = (target, duration = 500, showmore = 0) => {
 		target.style.marginTop = 0;
 		target.style.marginBottom = 0;
 		target.offsetHeight;
+
+		if (maxHeight > 0) {
+			height = Math.max(100, Math.min(height, maxHeight));
+	}
+	
+
 		target.style.transitionProperty = "height, margin, padding";
 		target.style.transitionDuration = duration + 'ms';
 		target.style.height = height + 'px';
@@ -98,7 +104,11 @@ export let _slideDown = (target, duration = 500, showmore = 0) => {
 		target.style.removeProperty('margin-top');
 		target.style.removeProperty('margin-bottom');
 		window.setTimeout(() => {
-			target.style.removeProperty('height');
+
+			if (maxHeight === 0) { // Удаляем свойство height только если не задан showmore
+				target.style.removeProperty('height');
+			}
+			// target.style.removeProperty('height');
 			target.style.removeProperty('overflow');
 			target.style.removeProperty('transition-duration');
 			target.style.removeProperty('transition-property');
@@ -112,13 +122,21 @@ export let _slideDown = (target, duration = 500, showmore = 0) => {
 		}, duration);
 	}
 }
-export let _slideToggle = (target, duration = 500) => {
-	if (target.hidden) {
-		return _slideDown(target, duration);
+export let _slideToggle = (target, duration = 500, showmore = 0, maxHeight = 0) => {
+	if (target.hidden || target.style.height === '0px') {
+			return _slideDown(target, duration, showmore, maxHeight);
 	} else {
-		return _slideUp(target, duration);
+			return _slideUp(target, duration, showmore);
 	}
-}
+};
+// export let _slideToggle = (target, duration = 500) => {
+// 	if (target.hidden) {
+// 		return _slideDown(target, duration);
+// 	} else {
+// 		return _slideUp(target, duration);
+// 	}
+// }
+
 // Допоміжні модулі блокування прокручування та стрибка ====================================================================================================================================================================================================================================================================================
 export let bodyLockStatus = true
 export let bodyLockToggle = (delay = 500) => {

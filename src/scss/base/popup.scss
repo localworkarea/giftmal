@@ -190,6 +190,24 @@ body::after {
 	}
 }
 
+#popupFiltersAll.popup {
+	.popup__content {
+		background-color: var(--gray-1);
+		padding: toRem(32) toRem(8) 0;
+	}
+	.popup__body {
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+	}
+}
+
+#popupFiltersTypes.popup {
+	.popup__content {
+		background-color: var(--gray-1);
+	}
+}
+
 .popup-cart {
 	flex: 1;
 	display: flex;
