@@ -205,6 +205,38 @@ body::after {
 #popupFiltersTypes.popup {
 	.popup__content {
 		background-color: var(--gray-1);
+		padding: toRem(32) toRem(8) 0;
+	}
+	.popup__body {
+		display: flex;
+		flex-direction: column;
+		.popup-body-filters__header {
+			order: 0;
+		}
+		.popup-body-filters__body {
+			display: flex;
+			flex-direction: column;
+			gap: toRem(5);
+			margin-bottom: toRem(8);
+			.filters-location {
+				order: 3;
+			}
+			.filters-denomination {
+				order: 4;
+			}
+			.filters-for {
+				order: 2;
+			}
+			.filters-type {
+				order: 1;
+			}
+
+		}
+		.popup-body-filters__footer {
+			order: 6;
+			background-color: var(--white);
+			margin-inline: toRem(-8);
+		}
 	}
 }
 

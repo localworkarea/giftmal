@@ -14,6 +14,13 @@ import { flsModules } from "./modules.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  const mediaQuery900min = window.matchMedia('(min-width: 56.311em)');
+  const mediaQuery900max = window.matchMedia('(max-width: 56.311em)');
+  const mediaQuery700max = window.matchMedia('(max-width: 43.811em)');
+  const mediaQuery700min = window.matchMedia('(min-width: 43.811em)');
+  const mediaQuery480max = window.matchMedia('(max-width: 30.061em)');
+  const mediaQuery480min = window.matchMedia('(min-width: 30.061em)');
+
   const checkoutPage = document.querySelector('.checkout');
   if (checkoutPage) {
     document.documentElement.classList.add('checkout-page');
@@ -110,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  const mediaQuery900min = window.matchMedia('(min-width: 56.311em)');
+ 
   mediaQuery900min.addEventListener('change', updateOrderCheckoutElHeights);
 
   updateOrderCheckoutElHeights();
@@ -160,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   
   // == drag popup elements ==========================================
-      // Получаем все попапы на странице
   const popups = document.querySelectorAll(".popup");
   popups.forEach(popup => {
     const popupContent = popup.querySelector(".popup__content");
@@ -218,7 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // == drag spollerPopup elements ==========================================
-
   function initDragSpoiler() {
     const spollerPopup = document.querySelectorAll("[data-spollers-popup]");
     spollerPopup.forEach((popup) => {
@@ -284,8 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   initDragSpoiler();
-
-  const mediaQuery900max = window.matchMedia('(max-width: 56.311em)');
   mediaQuery900max.addEventListener('change', initDragSpoiler);
   
   
@@ -344,70 +347,96 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 
+  // == Работа с фильтрами на странице data-filters =================
+  const filterSections = document.querySelectorAll('[data-filters]')
+  filterSections.forEach(section => {
+      const filterSpollers = section.querySelector('.filters-spoller');
 
-      // == Работа с фильтрами на странице data-filters =================
-      const filterSections = document.querySelectorAll('[data-filters]');
-
-      filterSections.forEach(section => {
-          const filterType = section.getAttribute('data-filters');
-          if (filterType) {
-              section.classList.add(`filters_${filterType}`);
-          }
-      
-          const spollers = section.querySelectorAll('[data-filters-spoller]');
-          spollers.forEach(spoller => {
-              const spollerBody = spoller.nextElementSibling;
-              _slideUp(spollerBody, 0);
-      
-              spoller.addEventListener('click', function() {
-                  const isOpening = spollerBody.hidden || spollerBody.style.height === '0px';
-                  _slideToggle(spollerBody, 300, 0, 200);
-      
-                  if (isOpening) {
-                      spollerBody.classList.add('is-open');
-                  } else {
-                      spollerBody.classList.remove('is-open');
-                  }
-              });
-          });
-      
-          const button = section.querySelector('[data-filters-title]');
-          const wrapper = section.querySelector('[data-filters-wrapper]');
-          const input = section.querySelector('[data-filters-input]');
-      
-          button.addEventListener('click', (event) => {
-              // Если  есть `search` и клик был по `input`, не закрываем `wrapper`
-              if (section.hasAttribute('data-filters-search') && event.target === input) {
-                  return;
-              }
-      
-              wrapper.classList.toggle('is-open');
-              button.classList.toggle('is-open');
-      
-              const openSpollerBodies = wrapper.querySelectorAll('[data-filters-spoller-body].is-open');
-              openSpollerBodies.forEach(spollerBody => {
-                  _slideUp(spollerBody, 300);
+      const filterType = section.getAttribute('data-filters');
+      if (filterType) {
+          section.classList.add(`filters_${filterType}`);
+      }
+  
+      const spollers = section.querySelectorAll('[data-filters-spoller]');
+      spollers.forEach(spoller => {
+          const spollerBody = spoller.nextElementSibling;
+          _slideUp(spollerBody, 0);
+  
+          spoller.addEventListener('click', function() {
+              const isOpening = spollerBody.hidden || spollerBody.style.height === '0px';
+              _slideToggle(spollerBody, 300, 0, 200);
+  
+              if (isOpening) {
+                  spollerBody.classList.add('is-open');
+              } else {
                   spollerBody.classList.remove('is-open');
-              });
-      
-              if (wrapper.classList.contains('is-open')) {
-                  adjustWrapperPosition(wrapper);
-                  adjustWrapperMaxHeight(wrapper);
               }
           });
-      
-          if (input) {
-              input.addEventListener('focus', () => {
-                  if (!wrapper.classList.contains('is-open')) {
-                      wrapper.classList.add('is-open');
-                      button.classList.add('is-open');
-                      adjustWrapperPosition(wrapper);
-                      adjustWrapperMaxHeight(wrapper);
-                  }
-              });
+      });
+  
+      const button = section.querySelector('[data-filters-title]');
+      const wrapper = section.querySelector('[data-filters-wrapper]');
+      const input = section.querySelector('[data-filters-input]');
+
+  
+      button.addEventListener('click', (event) => {
+          // Если  есть `search` и клик был по `input`, не закрываем `wrapper`
+          if (section.hasAttribute('data-filters-search') && event.target === input) {
+              return;
+          }
+  
+          wrapper.classList.toggle('is-open');
+          button.classList.toggle('is-open');
+  
+          const openSpollerBodies = wrapper.querySelectorAll('[data-filters-spoller-body].is-open');
+          openSpollerBodies.forEach(spollerBody => {
+              _slideUp(spollerBody, 300);
+              spollerBody.classList.remove('is-open');
+          });
+  
+          if (wrapper.classList.contains('is-open')) {
+            if (mediaQuery480min.matches) {
+              adjustWrapperMaxHeight(wrapper);
+              adjustWrapperPosition(wrapper);
+            }
+          }
+
+          if (filterSpollers && mediaQuery480max.matches) {
+              _slideToggle(filterSpollers, 300, 0, 140);
           }
       });
-      
+  
+      if (input) {
+          input.addEventListener('focus', () => {
+              if (!wrapper.classList.contains('is-open')) {
+                  wrapper.classList.add('is-open');
+                  button.classList.add('is-open');
+                  
+                  if (mediaQuery480min.matches) {
+                    adjustWrapperMaxHeight(wrapper);
+                    adjustWrapperPosition(wrapper);
+                }
+              }
+          });
+      }
+
+      function handleMediaChange(e) {
+        if (e.matches) {
+            if (e.media === mediaQuery480max.media) {
+              if (filterSpollers) _slideUp(filterSpollers, 0);
+            } else if (e.media === mediaQuery480min.media) {
+              if (filterSpollers) filterSpollers.hidden = false; 
+            }
+        }
+    }
+
+    handleMediaChange(mediaQuery480max);
+    handleMediaChange(mediaQuery480min);
+
+    mediaQuery480max.addEventListener('change', handleMediaChange);
+    mediaQuery480min.addEventListener('change', handleMediaChange);
+  });
+  
       // Фильтрация при вводе в поиске
       document.querySelectorAll('[data-filters-search]').forEach(filterSection => {
           const input = filterSection.querySelector('[data-filters-input]');
@@ -444,7 +473,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
       });
       
-      // Глобальное закрытие фильтра при клике вне элемента
+      // закрытие фильтра при клике вне элемента
       document.addEventListener('click', (event) => {
           filterSections.forEach(section => {
               if (section.hasAttribute('data-filters-close')) {
@@ -508,7 +537,6 @@ document.addEventListener("DOMContentLoaded", () => {
           updateButtonState(wrapper);
           updateCount(wrapper);
       
-          // Добавляем или удаляем класс _checked у непосредственного родителя checkbox
           const parentElement = event.target.parentElement;
           if (event.target.checked) {
             parentElement.classList.add('_checked');
@@ -559,7 +587,7 @@ document.addEventListener("DOMContentLoaded", () => {
           body.style.maxHeight = `${availableHeight}px`;
           wrapper.dataset.maxHeight = availableHeight;
   
-          // Проверяем, есть ли вложенные элементы, превышающие availableHeight
+          // есть ли вложенные элементы, превышающие availableHeight
           let isContentOverflowing = false;
           const childElements = body.querySelectorAll('*');
   
@@ -628,22 +656,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
      // == Открыть/закрыть каталог сертификатов на моб. =======================
      const filterButtons = document.querySelectorAll('[data-open-filters]');
-     const mediaQuery480max = window.matchMedia('(max-width: 43.811em)');
-     
+
      if (filterButtons.length > 0) {
          const mobileFilterWrapper = document.querySelector('.filters__wrapper_mob');
+            filterButtons.forEach(button => {
+              button.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                if (mediaQuery700max.matches) {
+                  adjustWrapperMaxHeight(mobileFilterWrapper);
+                   mobileFilterWrapper.classList.toggle('is-open');
+                }
+              });
+            });
      
-         filterButtons.forEach(button => {
-             button.addEventListener('click', (event) => {
-                 event.preventDefault();
-                 event.stopPropagation();
-                 if (mediaQuery480max.matches) {
-                     mobileFilterWrapper.classList.toggle('is-open');
-                 }
-             });
-         });
-     
-         mediaQuery480max.addEventListener('change', (e) => {
+         mediaQuery700max.addEventListener('change', (e) => {
              if (!e.matches && mobileFilterWrapper.classList.contains('is-open')) {
                  mobileFilterWrapper.classList.remove('is-open');
              }
@@ -654,7 +681,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // sub-header__link_more клик по кнопке "больше"=========
-      const mediaQuery480min = window.matchMedia('(min-width: 43.811em)');
   
       function handleTabletChange(e) {
           if (e.matches) {
@@ -678,8 +704,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
       }
   
-      handleTabletChange(mediaQuery480min);
-      mediaQuery480min.addEventListener('change', handleTabletChange);
+      handleTabletChange(mediaQuery700min);
+      mediaQuery700min.addEventListener('change', handleTabletChange);
 
 
    

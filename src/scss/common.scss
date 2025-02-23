@@ -679,6 +679,14 @@
        flex-direction: column;
     }
   }
+  &.filters-location,
+  &.filters-denomination,
+  &.filters-for,
+  &.filters-type {
+    @media (max-width:$mobileSmall){
+      
+    }
+  }
   // .filters__button
   &__button {
   }
@@ -714,6 +722,7 @@
       pointer-events: none;
       visibility: hidden;
       transition: opacity .2s ease;
+      min-width: toRem(344);
       &.is-open {
         opacity: 1;
         pointer-events: all;
@@ -732,12 +741,16 @@
     }
     .filters-denomination & {
       .filters__body {
-        max-height: 100% !important;
+        @media (min-width:$mobileSmall){
+          max-height: 100% !important;
+        }
       }
     }
     .filters-for & {
       .filters__body { 
-        min-height: toRem(150);
+        @media (min-width:$mobileSmall){
+          min-height: toRem(150);
+        }
       }
     }
     .filters_type-1 & {
@@ -753,10 +766,17 @@
          flex: 1;
          display: flex;
          flex-direction: column;
+        }
       }
-    }
-    @media (min-width:$mobileSmall){
-      min-width: toRem(344);
+      .filters-location &,
+      .filters-denomination &,
+      .filters-for &,
+      .filters-type & {
+        @media (max-width:$mobileSmall){
+          .filters__list {
+            height: inherit;
+          }
+        }
     }
   }
   // .filters__wrapper_mob
@@ -821,6 +841,14 @@
         padding: toRem(4) toRem(16) toRem(21);
       }
     }
+    .filters-location &,
+    .filters-denomination &,
+    .filters-for &,
+    .filters-type & {
+      @media (max-width:$mobileSmall){
+         display: none; 
+      }
+    }
   }
   // .filters__subtitle
   &__subtitle {
@@ -879,6 +907,7 @@
          }
       }
     }
+
   }
 	// .filters__body-wr
 	&__body-wr {
@@ -1074,6 +1103,14 @@
          margin-inline: toRem(-8);
       }
     }
+    .filters-location &,
+    .filters-denomination &,
+    .filters-for &,
+    .filters-type & {
+      @media (max-width:$mobileSmall){
+         display: none; 
+      }
+    }
   }
   // .filters__clear
   &__clear {
@@ -1130,10 +1167,10 @@
     }
     .filters_type-2 & {
       min-height: toRem(56);
-      border-radius: toRem(30);
       padding: toRem(8) toRem(24);
       background-color: var(--white);
       transition: box-shadow .3s ease;
+      @extend %borderRadius30-24;
     }
     .sub-header__filters & {
       @media (max-width: toEm(700.98)){
