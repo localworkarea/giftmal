@@ -60,6 +60,12 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			const select = targetElement.closest('.select').querySelector('select');
 			formValidate.removeError(select); 
 		}
+
+		// Проверяем заполненность формы
+		const form = targetElement.closest('form');
+		if (form) {
+			toggleSubmitButton(form);
+		}
 	});
 
 
@@ -67,6 +73,11 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 
 	// Инициализация состояния кнопок очистки для всех полей при загрузке
 	document.querySelectorAll('.input__sub-item input').forEach(inputElement => {
+		const form = inputElement.closest('form');
+		if (form) {
+			toggleSubmitButton(form);
+		}
+
 		const clearButton = inputElement.parentElement.querySelector('.input__clear');
 		if (clearButton) {
 			clearButton.disabled = inputElement.value.length === 0 || inputElement.hasAttribute('readonly');
@@ -81,6 +92,11 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 				inputElement.value = '';
 				e.target.disabled = true;
 				inputElement.focus();
+
+				const form = inputElement.closest('form');
+				if (form) {
+					toggleSubmitButton(form);
+				}
 			}
 		}
 	});
@@ -154,6 +170,23 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 			}
 		}
 }
+
+	function toggleSubmitButton(form) {
+		const submitButton = form.querySelector('button[type="submit"]');
+		if (!submitButton) return;
+
+		const inputs = form.querySelectorAll('input, textarea');
+		let hasValue = false;
+
+		inputs.forEach(input => {
+				if (input.value.trim() !== '') {
+						hasValue = true;
+				}
+		});
+
+		submitButton.disabled = !hasValue;
+	}
+
 
 
 // == РАБОТА С ПОЛЕМ ВВОДА КОДА СМС ==============================
@@ -362,7 +395,6 @@ export let formValidate = {
 	}
 	
 }
-
 
 // Відправлення форм
 export function formSubmit() {

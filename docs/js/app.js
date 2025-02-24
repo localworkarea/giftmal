@@ -671,8 +671,12 @@
                 const select = targetElement.closest(".select").querySelector("select");
                 formValidate.removeError(select);
             }
+            const form = targetElement.closest("form");
+            if (form) toggleSubmitButton(form);
         }));
         document.querySelectorAll(".input__sub-item input").forEach((inputElement => {
+            const form = inputElement.closest("form");
+            if (form) toggleSubmitButton(form);
             const clearButton = inputElement.parentElement.querySelector(".input__clear");
             if (clearButton) clearButton.disabled = inputElement.value.length === 0 || inputElement.hasAttribute("readonly");
         }));
@@ -683,6 +687,8 @@
                     inputElement.value = "";
                     e.target.disabled = true;
                     inputElement.focus();
+                    const form = inputElement.closest("form");
+                    if (form) toggleSubmitButton(form);
                 }
             }
         }));
@@ -734,6 +740,16 @@
                 }
             }
         }
+    }
+    function toggleSubmitButton(form) {
+        const submitButton = form.querySelector('button[type="submit"]');
+        if (!submitButton) return;
+        const inputs = form.querySelectorAll("input, textarea");
+        let hasValue = false;
+        inputs.forEach((input => {
+            if (input.value.trim() !== "") hasValue = true;
+        }));
+        submitButton.disabled = !hasValue;
     }
     function initSmsInput(inputElement) {
         const smsBody = inputElement.nextElementSibling;
@@ -6965,27 +6981,43 @@
                 if (!e.matches && mobileFilterWrapper.classList.contains("is-open")) mobileFilterWrapper.classList.remove("is-open");
             }));
         }
-        function handleTabletChange(e) {
+        let moreButton, moreSubMenu, clickHandler, outsideClickHandler;
+        function openPopupFiltersWrapper(e) {
             if (e.matches) {
-                const moreButton = document.querySelector(".sub-header__link_more");
+                moreButton = document.querySelector(".sub-header__link_more");
                 if (moreButton) {
-                    const moreSubMenu = moreButton.nextElementSibling;
-                    moreButton.addEventListener("click", (function(event) {
+                    moreSubMenu = moreButton.nextElementSibling;
+                    moreButton.removeEventListener("click", clickHandler);
+                    document.removeEventListener("click", outsideClickHandler);
+                    clickHandler = function(event) {
                         event.stopPropagation();
                         moreButton.classList.toggle("is-open");
                         moreSubMenu.classList.toggle("is-open");
-                    }));
-                    document.addEventListener("click", (function(event) {
+                    };
+                    outsideClickHandler = function(event) {
                         if (!moreSubMenu.contains(event.target) && !moreButton.contains(event.target)) {
                             moreButton.classList.remove("is-open");
                             moreSubMenu.classList.remove("is-open");
                         }
-                    }));
+                    };
+                    moreButton.addEventListener("click", clickHandler);
+                    document.addEventListener("click", outsideClickHandler);
                 }
+            } else if (moreButton) {
+                moreButton.removeEventListener("click", clickHandler);
+                document.removeEventListener("click", outsideClickHandler);
             }
         }
-        handleTabletChange(mediaQuery700min);
-        mediaQuery700min.addEventListener("change", handleTabletChange);
+        openPopupFiltersWrapper(mediaQuery700min);
+        mediaQuery700min.addEventListener("change", openPopupFiltersWrapper);
+        function adjustCardTitleFontSize() {
+            const titles = document.querySelectorAll(".card-certificate__title");
+            titles.forEach((title => {
+                if (mediaQuery480max.matches) if (title.textContent.trim().length > 35) title.style.fontSize = "11px"; else title.style.fontSize = ""; else title.style.fontSize = "";
+            }));
+        }
+        adjustCardTitleFontSize();
+        mediaQuery480max.addEventListener("change", adjustCardTitleFontSize);
     }));
     function startCountdown(timerElement, callback) {
         if (!timerElement) return;
@@ -7061,7 +7093,7 @@
                 nationalMode: true,
                 formatOnDisplay: true,
                 i18n: language,
-                useFullscreenPopup: window.innerWidth <= 900.98
+                useFullscreenPopup: window.innerWidth <= 480.98
             });
             if (iti.options.useFullscreenPopup) {
                 const popupBody = document.querySelector("#popupIti .popup__body");

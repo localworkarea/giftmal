@@ -129,11 +129,11 @@
 .iti__dropdown-content {
   background-color: var(--iti-dropdown-bg);
 	width: 100% !important;
-  @media (min-width:$mobile){
+  @media (min-width:$mobileSmall){
     padding: toRem(8);
     border-radius: toRem(24);
   }
-  @media (max-width:$mobile){
+  @media (max-width:$mobileSmall){
     padding: toRem(32) toRem(24) toRem(24);
     border-radius: toRem(24) toRem(24) 0 0;
     .popup & {
@@ -198,6 +198,7 @@
   // padding: toRem(8);
   // margin: 0;
   margin-right: -4px;
+  overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }

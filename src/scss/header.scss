@@ -1,9 +1,16 @@
 .header {
+  position: relative;
+  // z-index: 6;
   // .header__main-header
   &__main-header {
   }
   // .header__sub-header
   &__sub-header {
+    position: relative;
+    z-index: 4;
+    @media (max-width: toEm(700.98)){
+      z-index: 5;
+    }
   }
 }
 

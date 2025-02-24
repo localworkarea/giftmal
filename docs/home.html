@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250224122219">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250224233602">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -364,7 +364,7 @@
 								<a href="#" class="sub-header__link" aria-label="link">Листівки та коробки</a>
 							</li>
 							<li data-da=".more-sub-list__items,1000.98,first" class="sub-header__item">
-								<a href="#" class="sub-header__link" aria-label="link">Контакти</a>
+								<a href="#" data-popup="#popupContactsUs" class="sub-header__link" aria-label="link">Контакти</a>
 							</li>
 							<li data-da=".more-sub-list__items,1100.98,first" class="sub-header__item">
 								<a href="#" class="sub-header__link" aria-label="link">giftmate для бізнесів</a>
@@ -390,6 +390,7 @@
 					</nav>
 				</div>
 			</div>
+
 		</header>
 		<main class="page">
 			<div class="banner">
@@ -915,32 +916,695 @@
 								</div>
 							</div>
 						</div>
-						<button type="button" data-popup="#popupFiltersAll" data-popup-width="480.98,max" class="main__filters-btn" aria-label="open popup"></button>
-						<button type="button" data-popup="#popupFiltersTypes" data-popup-width="480.98,max" class="main__filters-btn" aria-label="open popup"></button>
+						<button type="button" data-popup="#popupFiltersAll" class="main__filters-btn icon-arrow-down" aria-label="open popup">
+							<span>Категорії</span>
+						</button>
+						<button type="button" data-popup="#popupFiltersTypes" class="main__filters-btn icon-filter" aria-label="open popup">
+							<span>Фільтри</span>
+						</button>
 					</div>
-
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint possimus molestiae numquam, quod aut non eum repellendus a, ipsam nostrum ipsum autem ullam excepturi tempora fugiat consequatur provident, velit dignissimos.</p><br><br><br><br><br><br>
+					<div class="main__card-certificate mb-56 card-grid">
+						<a href="#" class="card-certificate is-disabled" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-01.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Card with is-disabled Class
+								</div>
+								<div class="card-certificate__subtitle">
+									Картка з класом is-disabled
+								</div>
+							</div>
+							<button type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</button>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-02.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Nails & Cocktails
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-03.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Foxstrot
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа комп`ютерної техніки та електроніки
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-04.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Winetime
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа вина, сирів та міцного алкоголю
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-05.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-06.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-07.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-08.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-09.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-10.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-01.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-02.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+					</div>
+					<div class="main__card-top mb-56 card-grid_cl-2">
+						<article class="card-top">
+							<h2 class="card-top__title">Топ місяця</h2>
+							<div class="card-top__wrapper">
+								<div class="card-top__content">
+									<div class="card-top__body">
+										<div class="card-top__name">
+											Foxstrot
+										</div>
+										<div class="card-top__subname">
+											Мережа електронних товарів та комп’ютерних ігор
+										</div>
+									</div>
+									<a href="#" class="card-top__btn btn btn_gray" aria-label="link">Купити від 200 грн</a>
+								</div>
+								<div class="card-top__img">
+									<img src="img/certificates/certificate-03.jpg" width="222" height="145" alt="Image">
+								</div>
+							</div>
+						</article>
+						<article class="card-top">
+							<h2 class="card-top__title">Новинки</h2>
+							<div class="card-top__wrapper">
+								<div class="card-top__content">
+									<div class="card-top__body">
+										<div class="card-top__name">
+											Foxstrot
+										</div>
+										<div class="card-top__subname">
+											Мережа електронних товарів та комп’ютерних ігор
+										</div>
+									</div>
+									<a href="#" class="card-top__btn btn btn_gray" aria-label="link">Купити від 200 грн</a>
+								</div>
+								<div class="card-top__img">
+									<img src="img/certificates/certificate-04.jpg" width="222" height="145" alt="Image">
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="main__card-certificate card-grid">
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-01.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Nails & Cocktails
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<button type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</button>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-02.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Nails & Cocktails
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-03.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Foxstrot
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа комп`ютерної техніки та електроніки
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-04.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Winetime
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа вина, сирів та міцного алкоголю
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-05.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-06.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-07.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-08.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-09.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-10.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-01.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-phisical-filling"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-02.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+						</a>
+					</div>
+					<div class="main__more-btn mb-56">
+						<a href="#" class="more-btn__btn btn btn_dark" aria-label="link">Переглянути більше</a>
+					</div>
 				</div>
 			</section>
 		</main>
 	</div>
-	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250224122219"></script>
-    <script src="https://unpkg.com/tippy.js@6?_v=20250224122219"></script> -->
-	<!-- <script src="files/rolldate/rolldate.js?_v=20250224122219"></script>
-		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250224122219"></script>
-		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250224122219"></script> -->
-	<!-- <script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250224122219"></script>
-		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250224122219"></script> -->
+	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250224233602"></script>
+    <script src="https://unpkg.com/tippy.js@6?_v=20250224233602"></script> -->
+	<!-- <script src="files/rolldate/rolldate.js?_v=20250224233602"></script>
+		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250224233602"></script>
+		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250224233602"></script> -->
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250224233602"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250224233602"></script>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -1161,6 +1825,61 @@
 		</div>
 	</div>
 
-
-	<script src="js/app.min.js?_v=20250224122219"></script>
+	<div id="popupContactsUs" class="popup popup-full">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body">
+					<p class="popup__title">Зв’яжіться з нами</p>
+					<form id="formContactUs" class="popup__contacts-form contacts-form-popup" data-dev method="post">
+						<div class="contacts-form-popup__items">
+							<div class="input__item">
+								<label for="contactUsName" class="input__label">
+									Ваше Ім’я
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="contactUsEmail" class="input__label">
+									Ваш email
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsEmail" autocomplete="off" type="email" name="form[]" data-error="Введіть коректний email" placeholder="Ваш email" data-required="email" class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item input-intl-item">
+								<label for="contactUsTel" class="input__label">
+									Ваш номер телефону
+								</label>
+								<input id="contactUsTel" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+							</div>
+							<div class="input__item">
+								<label for="contactUsTheme" class="input__label">
+									Тема листа
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsTheme" autocomplete="off" type="text" name="form[]" data-error="Вкажіть Тему листа" placeholder="Тема листа" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="contactUsMessage" class="input__label">
+									Ваше повідомлення
+								</label>
+								<textarea id="contactUsMessage" data-autoheight autocomplete="off" type="text" name="form[]" data-error="Впишіть, що вас цікавить тут" placeholder="Напишіть, що вас цікавить тут" data-required class="input input_sm"></textarea>
+							</div>
+						</div>
+						<button form="formContactUs" type="submit" class="btn btn_dark">Зв'язатись з нами</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="js/app.min.js?_v=20250224233602"></script>
 </body>

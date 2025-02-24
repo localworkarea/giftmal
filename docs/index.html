@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250224122219">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250224233602">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -14,10 +14,6 @@
 
 <body>
 	<div class="wrapper">
-		<header class="header">
-			<div class="header__container">
-			</div>
-		</header>
 		<main class="page">
 			<div class="page__container" style="padding-inline: 20px; font-size: 18px; padding-block:30px 300px; line-height: 1.2; background-color: #f8f8f8a6; max-width: 900px;">
 
@@ -28,6 +24,12 @@
 					</li>
 					<li>
 						<a href="home.html" style="display: block; color:blue">2. White Label Solution Page</a>
+					</li>
+					<li>
+						<a href="faq.html" style="display: block; color:blue">3. FAQ</a>
+					</li>
+					<li>
+						<a href="terms.html" style="display: block; color:blue">4. Terms</a>
 					</li>
 				</ul>
 				<br>
@@ -636,10 +638,10 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250224122219"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250224122219"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250224122219"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250224122219"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250224233602"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250224233602"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250224233602"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250224233602"></script>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -860,8 +862,63 @@
 		</div>
 	</div>
 
-
-	<script src="js/app.min.js?_v=20250224122219"></script>
+	<div id="popupContactsUs" class="popup popup-full">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body">
+					<p class="popup__title">Зв’яжіться з нами</p>
+					<form id="formContactUs" class="popup__contacts-form contacts-form-popup" data-dev method="post">
+						<div class="contacts-form-popup__items">
+							<div class="input__item">
+								<label for="contactUsName" class="input__label">
+									Ваше Ім’я
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="contactUsEmail" class="input__label">
+									Ваш email
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsEmail" autocomplete="off" type="email" name="form[]" data-error="Введіть коректний email" placeholder="Ваш email" data-required="email" class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item input-intl-item">
+								<label for="contactUsTel" class="input__label">
+									Ваш номер телефону
+								</label>
+								<input id="contactUsTel" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+							</div>
+							<div class="input__item">
+								<label for="contactUsTheme" class="input__label">
+									Тема листа
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsTheme" autocomplete="off" type="text" name="form[]" data-error="Вкажіть Тему листа" placeholder="Тема листа" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="contactUsMessage" class="input__label">
+									Ваше повідомлення
+								</label>
+								<textarea id="contactUsMessage" data-autoheight autocomplete="off" type="text" name="form[]" data-error="Впишіть, що вас цікавить тут" placeholder="Напишіть, що вас цікавить тут" data-required class="input input_sm"></textarea>
+							</div>
+						</div>
+						<button form="formContactUs" type="submit" class="btn btn_dark">Зв'язатись з нами</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script src="js/app.min.js?_v=20250224233602"></script>
 </body>
 
 </html>

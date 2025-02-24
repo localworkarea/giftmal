@@ -116,6 +116,7 @@ textarea.input {
 	&__label {
 		display: block;
 		font-weight: 600;
+    letter-spacing: 0.02em;
     ._readonly & {
       color: var(--fade-violet-2);
     }

@@ -1166,8 +1166,6 @@
   &__gift {
   }
 }
-  // ._no-img
-  // ._has-text
 
 .gift-card {
   display: grid;
@@ -1968,6 +1966,11 @@
 
 
 
+
+
+
+
+
 // == WHITE LABEL SOLUTION (MAIN PAGE)  =======================================
 // ---------------------------------------------------
 .banner {
@@ -2003,6 +2006,14 @@
     display: grid;
     gap: toRem(8);
     grid-template-columns: repeat(auto-fit,minmax(toRem(165), 1fr));
+    &:not(:last-child) {
+      @media (min-width:$mobileSmall){
+         margin-bottom: toRem(24); 
+      }
+      @media (max-width:$mobileSmall){
+          margin-bottom: toRem(12);
+      }
+    }
   }
 	// .main__filters-btn
 	&__filters-btn {
@@ -2011,7 +2022,270 @@
     }
     @media (max-width:$mobileSmall){
        min-height: toRem(48); 
+       border-radius: toRem(30);
+       padding: toRem(4) toRem(16);
        background-color: var(--white);
+        font-size: toRem(14);
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       gap: toRem(8);
+       &::before {
+        order: 2;
+        font-size: toRem(24);
+       }
     }
 	}
+  // .main__card-certificate
+  &__card-certificate {
+  }
+  // .main__card-top
+  &__card-top {
+  }
+	// .main__more-btn
+	&__more-btn {
+    @media (min-width:$mobileSmall){
+       margin-top: toRem(12); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-top: toRem(32);
+    }
+    .more-btn__btn {
+      max-width: fit-content;
+      margin-inline: auto;
+    }
+	}
+}
+
+
+// === F A Q ===============================
+.faq {
+  @extend  %paddingTbBt56-16;
+  // .faq__container
+  &__container {
+  }
+  // .faq__body
+  &__body {
+    display: grid;
+    gap: toRem(24);
+    @media (min-width:$mobile){
+      grid-template-columns: 1fr 50%;
+    }
+  }
+  // .faq__block
+  &__block {
+  }
+  // .faq__title
+  &__title {
+    @extend %fonsSize32-20;
+    span {
+      color: var(--fade-violet-2);
+    }
+    &:not(:last-child) {
+      margin-bottom: toRem(16);
+    }
+    @media (min-width:$mobileSmall){
+      line-height: 1.2; 
+    }
+    @media (max-width:$mobileSmall){
+      line-height: 1.35;
+    }
+  }
+  // .faq__footer
+  &__footer {
+    @media (min-width:$mobileSmall){
+       max-width: toRem(330); 
+    }
+  }
+  // .faq__subtitle
+  &__subtitle {
+    line-height: 1.5;
+    @extend %fonsSize15-14;
+    color: #4B3451;
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
+    }
+  }
+  // .faq__btn
+  &__btn {
+    @media (min-width:$mobileSmall){
+      max-width: fit-content;
+    }
+  }
+  // .faq__spollers
+  &__spollers {
+    @media (max-width:$mobileSmall){
+       &:not(:last-child) {
+        margin-bottom: toRem(16);
+       } 
+    }
+  }
+}
+
+.spollers-faq {
+  // .spollers-faq__item
+  &__item {
+    background-color: var(--white);
+    @extend %borderRadius30-24;
+    @extend %padding32-24;
+    &:not(:last-child) {
+      margin-bottom: toRem(8);
+    }
+  }
+  // .spollers-faq__title
+  &__title {
+    @extend %flexCenterGap8;
+    @extend %fonsSize23-18;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  // .spollers-faq__arrow
+  &__arrow {
+    ._spoller-active & {
+      transform: rotate(-180deg);
+    }
+  }
+  // .spollers-faq__body
+  &__body {
+    line-height: 1.5;
+  }
+  // .spollers-faq__content
+  &__content {
+    padding-top: toRem(24);
+    color: var(--fade-violet-3);
+    p {
+      &:not(:last-child) {
+        margin-bottom: toRem(16);
+      }
+    }
+  }
+}
+
+
+// === T E R M S =============================
+.terms {
+  @extend %paddingTbBt56-16;
+  // .terms__container
+  &__container {
+  }
+	// .terms__head
+	&__head {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(45); 
+    }
+    @media (max-width:$mobileSmall){
+        margin-bottom: toRem(48);
+    }
+	}
+  // .terms__title
+  &__title {
+    @extend %fonsSize40-20;
+    max-width: toRem(842);
+    line-height: 1.12;
+    span {
+      color: var(--fade-violet-2);
+    }
+    &:not(:last-child) {
+      @media (min-width:$mobileSmall){
+        margin-bottom: toRem(4);
+      }
+      @media (max-width:$mobileSmall){
+        margin-bottom: toRem(10);
+      }
+    }
+  }
+	// .terms__title-sm
+	&__title-sm {
+    line-height: 1.5;
+    @extend %fonsSize15-16;
+    color: var(--fade-violet-2);
+	}
+  // .terms__list
+  &__list {
+    list-style: none;
+    max-width: toRem(1000);
+  }
+  // .terms__item
+  &__item {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 80, 48,0,1440.98,480.98);
+    }
+  }
+  // .terms__subtitle
+  &__subtitle {
+    @extend %flexCenterGap8;
+    gap: toRem(12);
+    @extend %fonsSize23-20;
+    @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,900.98);
+    span {
+      width: toRem(40);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background-color: var(--white);
+      font-size: toRem(15);
+    }
+  }
+  // .terms__sublist
+  &__sublist {
+  }
+  // .terms__subitem
+  &__subitem {
+    @extend %fonsSize18-16;
+    color: rgba(33, 5, 41, 0.7);
+    .accent {
+      color: var(--dark-violet);
+    }
+    a {
+      color: var(--violet);
+    }
+    p:not(:last-child),
+    &:not(:last-child) {
+      margin-bottom: toRem(40);
+    }
+    @media (min-width:$mobileSmall){
+      line-height: 1.38;
+    }
+    @media (max-width:$mobileSmall){
+       line-height: 1.5; 
+    }
+  }
+	// .terms__sub-sublist
+	&__sub-sublist {
+    li {
+      &:not(:last-child) {
+        @media (max-width:$mobileSmall){
+           margin-bottom: toRem(32); 
+        }
+      }
+    }
+	}
+	// .terms__sub-sublist-t
+	&__sub-sublist-t {
+    li {
+      position: relative;
+      padding-left: toRem(20);
+      &:not(:last-child) {
+        @media (min-width:$mobileSmall){
+           margin-bottom: toRem(32); 
+        }
+        @media (max-width:$mobileSmall){
+           margin-bottom: toRem(24); 
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: toRem(8);
+        left: 0;
+        width: toRem(8);
+        height: toRem(8);
+        border-radius: 50%;
+        background-color: var(--dark-violet);
+      }
+    }
+	}
+}
+.sm {
 }
