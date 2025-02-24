@@ -3407,7 +3407,8 @@ body::after {
   padding: 2rem 0 0 0
 }
 #popupSearch.popup .popup__content {
-  background-color: var(--gray-1)
+  background-color: var(--gray-1);
+  padding: 2rem .5rem 0
 }
 #popupSearch.popup .popup__body {
   min-height: 23.75rem
@@ -3432,12 +3433,17 @@ body::after {
 }
 #popupFiltersTypes.popup .popup__body {
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  min-height: 100%
 }
 #popupFiltersTypes.popup .popup__body .popup-body-filters__header {
-  order: 0
+  justify-content: space-between;
+  order: 0;
+  padding: .25rem 1rem 1.3125rem;
+  font-size: .875rem
 }
 #popupFiltersTypes.popup .popup__body .popup-body-filters__body {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: .3125rem;
@@ -3458,7 +3464,8 @@ body::after {
 #popupFiltersTypes.popup .popup__body .popup-body-filters__footer {
   order: 6;
   background-color: var(--white);
-  margin-inline: -.5rem
+  margin-inline: -.5rem;
+  box-shadow: 0 -4px 20px 0 rgba(33,5,41,.12)
 }
 .popup-cart {
   flex: 1;
@@ -3650,6 +3657,7 @@ body::after {
 .title-av {
   line-height: 1.18
 }
+#popupFiltersTypes.popup .popup__body .popup-body-filters__header,
 .button-filters,
 .cabinet-header__button,
 .card-cabinet__balance,
@@ -4063,7 +4071,6 @@ body::after {
   top: calc(100% + .5rem);
   width: 100%;
   background-color: var(--white);
-  box-shadow: 0 4px 40px 0 rgba(33,5,41,.06),0 4px 12px 0 rgba(33,5,41,.06);
   overflow: hidden
 }
 .filters__wrapper._align-right {
@@ -4126,8 +4133,6 @@ body::after {
 }
 .filters__sub-item .filters__link::before {
   order: 3;
-  font-weight: 600;
-  font-size: .875rem;
   -webkit-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
   transition: -webkit-transform .3s ease;
@@ -4245,13 +4250,8 @@ body::after {
   -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg)
 }
-.filters_type-2 .button-filters.is-open {
-  box-shadow: 0 4px 50px 0 rgba(33,5,41,.12),0 4px 10px 0 rgba(33,5,41,.06)
-}
 .button-filters:before {
   order: 3;
-  font-weight: 600;
-  font-size: .875rem;
   -webkit-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
   transition: -webkit-transform .3s ease;
@@ -4268,7 +4268,6 @@ body::after {
 }
 .filters_type-2 .button-filters {
   min-height: 3.5rem;
-  padding: .5rem 1.5rem;
   background-color: var(--white);
   transition: box-shadow .3s ease
 }
@@ -4299,9 +4298,6 @@ body::after {
   text-overflow: ellipsis;
   white-space: nowrap;
   letter-spacing: .02em
-}
-.price-filter {
-  padding: 1.5rem 1.5rem .5rem
 }
 .price-filter__top {
   justify-content: space-between;
@@ -5626,7 +5622,8 @@ body::after {
     pointer-events: none;
     visibility: hidden;
     transition: opacity .2s ease;
-    min-width: 21.5rem
+    min-width: 21.5rem;
+    box-shadow: 0 4px 40px 0 rgba(33,5,41,.06),0 4px 12px 0 rgba(33,5,41,.06)
   }
   .filters__wrapper.is-open {
     opacity: 1;
@@ -5640,8 +5637,25 @@ body::after {
   .filters-for .filters__wrapper .filters__body {
     min-height: 9.375rem
   }
+  .filters__sub-item .filters__link::before {
+    font-weight: 600;
+    font-size: .875rem
+  }
   .filters__footer {
     padding: 1rem 1.5rem
+  }
+  .filters_type-2 .button-filters.is-open {
+    box-shadow: 0 4px 50px 0 rgba(33,5,41,.12),0 4px 10px 0 rgba(33,5,41,.06)
+  }
+  .button-filters:before {
+    font-weight: 600;
+    font-size: .875rem
+  }
+  .filters_type-2 .button-filters {
+    padding: .5rem 1.5rem
+  }
+  .price-filter {
+    padding: 1.5rem 1.5rem .5rem
   }
   .main-header__search-btn {
     display: none
@@ -6948,6 +6962,21 @@ body::after {
     display: flex;
     flex-direction: column
   }
+  .filters.filters-denomination,
+  .filters.filters-for,
+  .filters.filters-location,
+  .filters.filters-type {
+    background-color: var(--white);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    transition: box-shadow .3s ease
+  }
+  .filters.filters-denomination._open,
+  .filters.filters-for._open,
+  .filters.filters-location._open,
+  .filters.filters-type._open {
+    box-shadow: 0 4px 40px 0 rgba(33,5,41,.06),0 4px 12px 0 rgba(33,5,41,.06)
+  }
   .filters__wrapper {
     position: relative
   }
@@ -6959,6 +6988,12 @@ body::after {
     flex: 1;
     display: flex;
     flex-direction: column
+  }
+  .filters-denomination .filters__wrapper,
+  .filters-for .filters__wrapper,
+  .filters-location .filters__wrapper,
+  .filters-type .filters__wrapper {
+    border-radius: 0!important
   }
   .filters-denomination .filters__wrapper .filters__list,
   .filters-for .filters__wrapper .filters__list,
@@ -6986,7 +7021,11 @@ body::after {
     position: relative;
     background-color: var(--gray-1)
   }
-  .filters-category .filters__body .filters__sub-list .filters__list::-webkit-scrollbar {
+  .filters-category .filters__body .filters__list::-webkit-scrollbar,
+  .filters-denomination .filters__body .filters__list::-webkit-scrollbar,
+  .filters-for .filters__body .filters__list::-webkit-scrollbar,
+  .filters-location .filters__body .filters__list::-webkit-scrollbar,
+  .filters-type .filters__body .filters__list::-webkit-scrollbar {
     display: none
   }
   .filters-category .filters__body-wr {
@@ -6995,10 +7034,16 @@ body::after {
     background-color: var(--white);
     box-shadow: 0 4px 40px 0 rgba(33,5,41,.06),0 4px 12px 0 rgba(33,5,41,.06)
   }
-  .filters-category .filters__input:checked+.filters__label .filters__checkbox {
+  .filters__sub-item .filters__link::before {
+    font-size: 1.5rem
+  }
+  .filters__sub-item .filters__link {
+    padding: 1rem .75rem 1rem 1rem
+  }
+  .filters__input:checked+.filters__label .filters__checkbox {
     border-color: var(--dark-violet)
   }
-  .filters-category .filters__checkbox {
+  .filters__checkbox {
     opacity: 1;
     border-color: var(--fade-violet-1)
   }
@@ -7015,8 +7060,23 @@ body::after {
   .filters-type .filters__footer {
     display: none
   }
+  .button-filters:before {
+    font-size: 1.5rem
+  }
+  .filters_type-2 .button-filters {
+    padding: .5rem 1.25rem .5rem 1.5rem
+  }
   .filters-category .button-filters {
     display: none
+  }
+  .filters-type .button-filters__name {
+    margin-bottom: unset
+  }
+  .filters-type .button-filters__subtitle {
+    display: none
+  }
+  .price-filter {
+    padding: 1rem 1.5rem 1rem
   }
   .main-header__sub-wrapper {
     width: 100%

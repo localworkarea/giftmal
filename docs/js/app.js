@@ -6724,7 +6724,7 @@
                 _slideUp(spollerBody, 0);
                 spoller.addEventListener("click", (function() {
                     const isOpening = spollerBody.hidden || spollerBody.style.height === "0px";
-                    _slideToggle(spollerBody, 300, 0, 200);
+                    _slideToggle(spollerBody, 200, 0, 200);
                     if (isOpening) spollerBody.classList.add("is-open"); else spollerBody.classList.remove("is-open");
                 }));
             }));
@@ -6733,27 +6733,30 @@
             const input = section.querySelector("[data-filters-input]");
             button.addEventListener("click", (event => {
                 if (section.hasAttribute("data-filters-search") && event.target === input) return;
+                section.classList.toggle("_open");
                 wrapper.classList.toggle("is-open");
                 button.classList.toggle("is-open");
                 const openSpollerBodies = wrapper.querySelectorAll("[data-filters-spoller-body].is-open");
                 openSpollerBodies.forEach((spollerBody => {
-                    _slideUp(spollerBody, 300);
+                    _slideUp(spollerBody, 200);
                     spollerBody.classList.remove("is-open");
                 }));
                 if (wrapper.classList.contains("is-open")) if (mediaQuery480min.matches) {
                     adjustWrapperMaxHeight(wrapper);
                     adjustWrapperPosition(wrapper);
                 }
-                if (filterSpollers && mediaQuery480max.matches) _slideToggle(filterSpollers, 300, 0, 140);
+                if (filterSpollers && mediaQuery480max.matches) _slideToggle(filterSpollers, 200, 0, 140);
             }));
             if (input) input.addEventListener("focus", (() => {
                 if (!wrapper.classList.contains("is-open")) {
+                    section.classList.add("_open");
                     wrapper.classList.add("is-open");
                     button.classList.add("is-open");
                     if (mediaQuery480min.matches) {
                         adjustWrapperMaxHeight(wrapper);
                         adjustWrapperPosition(wrapper);
                     }
+                    if (filterSpollers && mediaQuery480max.matches) _slideToggle(filterSpollers, 200, 0, 140);
                 }
             }));
             function handleMediaChange(e) {
@@ -6797,8 +6800,10 @@
                     const wrapper = section.querySelector("[data-filters-wrapper]");
                     const button = section.querySelector("[data-filters-title]");
                     const input = section.querySelector("[data-filters-input]");
+                    const filterSpollers = section.querySelector(".filters-spoller");
                     if (input && input.contains(event.target)) return;
                     if (!section.contains(event.target) && wrapper.classList.contains("is-open")) {
+                        section.classList.remove("_open");
                         wrapper.classList.remove("is-open");
                         button.classList.remove("is-open");
                         const openSpollerBodies = wrapper.querySelectorAll("[data-filters-spoller-body].is-open");
@@ -6806,13 +6811,15 @@
                             _slideUp(spollerBody, 0);
                             spollerBody.classList.remove("is-open");
                         }));
+                        if (filterSpollers && mediaQuery480max.matches) _slideUp(filterSpollers, 200);
                     }
                 }
             }));
             if (event.target.matches(".filters__clear") && !event.target.disabled) {
                 const wrapper = event.target.closest("[data-filters-wrapper]");
-                clearFilters(wrapper);
+                if (wrapper) clearFilters(wrapper);
             }
+            if (event.target.matches("[data-filters-footer-types] .filters__clear") && !event.target.disabled) clearGlobalFilters();
         }));
         let resizeTimeout2;
         let lastWidth2 = window.innerWidth;
@@ -6840,6 +6847,7 @@
                 const wrapper = event.target.closest("[data-filters-wrapper]");
                 updateButtonState(wrapper);
                 updateCount(wrapper);
+                updateGlobalFiltersCount();
                 const parentElement = event.target.parentElement;
                 if (event.target.checked) parentElement.classList.add("_checked"); else parentElement.classList.remove("_checked");
             }
@@ -6894,6 +6902,7 @@
             }
         }
         function clearFilters(wrapper) {
+            if (!wrapper) return;
             const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
             inputs.forEach((input => {
                 input.checked = false;
@@ -6912,6 +6921,32 @@
                 countSpan.textContent = `(${count})`;
                 if (count > 0) countSpanEl.classList.add("_show"); else countSpanEl.classList.remove("_show");
             }
+        }
+        function updateGlobalFiltersCount() {
+            const popupFilters = document.querySelector(".popup-body-filters");
+            if (!popupFilters) return;
+            const allCheckedInputs = popupFilters.querySelectorAll('[data-filters-body] input[type="checkbox"]:checked');
+            const countElement = popupFilters.querySelector(".popup-body-filters__header .filters__count span");
+            const footer = popupFilters.querySelector("[data-filters-footer-types]");
+            const clearButton = footer ? footer.querySelector(".filters__clear") : null;
+            const showButton = footer ? footer.querySelector(".filters__show") : null;
+            const selectedCount = allCheckedInputs.length;
+            if (countElement) {
+                countElement.textContent = `(${selectedCount})`;
+                if (selectedCount > 0) countElement.parentElement.classList.add("_show"); else countElement.parentElement.classList.remove("_show");
+            }
+            if (clearButton) clearButton.disabled = selectedCount === 0;
+            if (showButton) showButton.disabled = selectedCount === 0;
+        }
+        function clearGlobalFilters() {
+            const popupFilters = document.querySelector(".popup-body-filters");
+            if (!popupFilters) return;
+            const allInputs = popupFilters.querySelectorAll('[data-filters-body] input[type="checkbox"]');
+            allInputs.forEach((input => {
+                input.checked = false;
+                input.parentElement.classList.remove("_checked");
+            }));
+            updateGlobalFiltersCount();
         }
         const filterButtons = document.querySelectorAll("[data-open-filters]");
         if (filterButtons.length > 0) {

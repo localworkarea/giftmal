@@ -115,6 +115,7 @@ body::after {
 #popupSearch.popup {
 	.popup__content {
 		background-color: var(--gray-1);
+		padding: toRem(32) toRem(8) 0;
 	}
 	.popup__body {
 		min-height: toRem(380);
@@ -210,10 +211,16 @@ body::after {
 	.popup__body {
 		display: flex;
 		flex-direction: column;
+		min-height: 100%;
 		.popup-body-filters__header {
+			@extend %flexCenterGap8;
+			justify-content: space-between;
 			order: 0;
+      padding: toRem(4) toRem(16) toRem(21);
+			font-size: toRem(14);
 		}
 		.popup-body-filters__body {
+			flex: 1;
 			display: flex;
 			flex-direction: column;
 			gap: toRem(5);
@@ -236,6 +243,7 @@ body::after {
 			order: 6;
 			background-color: var(--white);
 			margin-inline: toRem(-8);
+			box-shadow: 0 -4px 20px 0 rgba(33, 5, 41, 0.12);
 		}
 	}
 }

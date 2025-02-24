@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
           spoller.addEventListener('click', function() {
               const isOpening = spollerBody.hidden || spollerBody.style.height === '0px';
-              _slideToggle(spollerBody, 300, 0, 200);
+              _slideToggle(spollerBody, 200, 0, 200);
   
               if (isOpening) {
                   spollerBody.classList.add('is-open');
@@ -385,12 +385,13 @@ document.addEventListener("DOMContentLoaded", () => {
               return;
           }
   
+          section.classList.toggle('_open');
           wrapper.classList.toggle('is-open');
           button.classList.toggle('is-open');
   
           const openSpollerBodies = wrapper.querySelectorAll('[data-filters-spoller-body].is-open');
           openSpollerBodies.forEach(spollerBody => {
-              _slideUp(spollerBody, 300);
+              _slideUp(spollerBody, 200);
               spollerBody.classList.remove('is-open');
           });
   
@@ -402,20 +403,24 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           if (filterSpollers && mediaQuery480max.matches) {
-              _slideToggle(filterSpollers, 300, 0, 140);
+              _slideToggle(filterSpollers, 200, 0, 140);
           }
       });
   
       if (input) {
           input.addEventListener('focus', () => {
               if (!wrapper.classList.contains('is-open')) {
+                  section.classList.add('_open');
                   wrapper.classList.add('is-open');
                   button.classList.add('is-open');
                   
                   if (mediaQuery480min.matches) {
                     adjustWrapperMaxHeight(wrapper);
                     adjustWrapperPosition(wrapper);
-                }
+                  }
+                  if (filterSpollers && mediaQuery480max.matches) {
+                    _slideToggle(filterSpollers, 200, 0, 140);
+                  }
               }
           });
       }
@@ -437,7 +442,6 @@ document.addEventListener("DOMContentLoaded", () => {
     mediaQuery480min.addEventListener('change', handleMediaChange);
   });
   
-      // Фильтрация при вводе в поиске
       document.querySelectorAll('[data-filters-search]').forEach(filterSection => {
           const input = filterSection.querySelector('[data-filters-input]');
           const list = filterSection.querySelector('.filters__list');
@@ -473,20 +477,20 @@ document.addEventListener("DOMContentLoaded", () => {
           });
       });
       
-      // закрытие фильтра при клике вне элемента
       document.addEventListener('click', (event) => {
           filterSections.forEach(section => {
               if (section.hasAttribute('data-filters-close')) {
                   const wrapper = section.querySelector('[data-filters-wrapper]');
                   const button = section.querySelector('[data-filters-title]');
                   const input = section.querySelector('[data-filters-input]');
+                  const filterSpollers = section.querySelector('.filters-spoller');
       
-                  // НЕ закрываем, если клик был по input
                   if (input && input.contains(event.target)) {
                       return;
                   }
       
                   if (!section.contains(event.target) && wrapper.classList.contains('is-open')) {
+                      section.classList.remove('_open');
                       wrapper.classList.remove('is-open');
                       button.classList.remove('is-open');
       
@@ -495,6 +499,9 @@ document.addEventListener("DOMContentLoaded", () => {
                           _slideUp(spollerBody, 0);
                           spollerBody.classList.remove('is-open');
                       });
+                      if (filterSpollers && mediaQuery480max.matches) {
+                        _slideUp(filterSpollers, 200);
+                      }
                   }
               }
           });
@@ -502,7 +509,14 @@ document.addEventListener("DOMContentLoaded", () => {
           // Обработка клика на кнопку очистки
           if (event.target.matches('.filters__clear') && !event.target.disabled) {
               const wrapper = event.target.closest('[data-filters-wrapper]');
-              clearFilters(wrapper);
+              if (wrapper) {
+                clearFilters(wrapper);
+            }
+          }
+
+          // очистка фильтров в мобильном попапе
+          if (event.target.matches('[data-filters-footer-types] .filters__clear') && !event.target.disabled) {
+            clearGlobalFilters();
           }
       });
     
@@ -536,6 +550,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const wrapper = event.target.closest('[data-filters-wrapper]');
           updateButtonState(wrapper);
           updateCount(wrapper);
+
+          updateGlobalFiltersCount();
       
           const parentElement = event.target.parentElement;
           if (event.target.checked) {
@@ -621,6 +637,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
     function clearFilters(wrapper) {
+      if (!wrapper) return;
       const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
       
       inputs.forEach(input => {
@@ -648,7 +665,43 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
     
+    function updateGlobalFiltersCount() {
+      const popupFilters = document.querySelector('.popup-body-filters');
+      if (!popupFilters) return;
   
+      const allCheckedInputs = popupFilters.querySelectorAll('[data-filters-body] input[type="checkbox"]:checked');
+      const countElement = popupFilters.querySelector('.popup-body-filters__header .filters__count span');
+      const footer = popupFilters.querySelector('[data-filters-footer-types]');
+      const clearButton = footer ? footer.querySelector('.filters__clear') : null;
+      const showButton = footer ? footer.querySelector('.filters__show') : null;
+  
+      const selectedCount = allCheckedInputs.length;
+      if (countElement) {
+          countElement.textContent = `(${selectedCount})`;
+          if (selectedCount > 0) {
+              countElement.parentElement.classList.add('_show');
+          } else {
+              countElement.parentElement.classList.remove('_show');
+          }
+      }
+  
+      if (clearButton) clearButton.disabled = selectedCount === 0;
+      if (showButton) showButton.disabled = selectedCount === 0;
+    }
+  
+    // Функция очистки всех фильтров (настроено для попапа с группой фильтров)
+    function clearGlobalFilters() {
+        const popupFilters = document.querySelector('.popup-body-filters');
+        if (!popupFilters) return;
+    
+        const allInputs = popupFilters.querySelectorAll('[data-filters-body] input[type="checkbox"]');
+        allInputs.forEach(input => {
+            input.checked = false;
+            input.parentElement.classList.remove('_checked');
+        });
+      
+        updateGlobalFiltersCount();
+    }
 
   
 
