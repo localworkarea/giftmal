@@ -21,6 +21,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const mediaQuery480max = window.matchMedia('(max-width: 30.061em)');
   const mediaQuery480min = window.matchMedia('(min-width: 30.061em)');
 
+
+    const formatNumb = wNumb({
+      thousand: " ", // Разделитель тысячных
+      decimals: 0,    // Округление до целых
+      mark: "."
+  });
+
+  // Получаем все элементы с классом .numb и применяем форматирование
+  document.querySelectorAll(".numb").forEach((el) => {
+      let num = parseFloat(el.textContent.replace(/\s+/g, "")); // Убираем пробелы перед парсингом
+      if (!isNaN(num)) {
+          el.textContent = formatNumb.to(num);
+      }
+  });
+
+
+
+
   const checkoutPage = document.querySelector('.checkout');
   if (checkoutPage) {
     document.documentElement.classList.add('checkout-page');
@@ -1235,7 +1253,29 @@ if (intlTelInputs.length > 0) {
       formatOnDisplay: true,
       i18n: language,
       useFullscreenPopup: window.innerWidth <= 480.98,
+      customPlaceholder: function (selectedCountryPlaceholder, selectedCountryData) {
+        return selectedCountryPlaceholder.replace(/\d/g, "X").replace(/\s/g, "-");
+      }
     });
+
+    // кастомный класс если совпадает выбранная страна со странной из списка
+    let previousSelectedCountry = null;
+    function updateSelectedClass() {
+        const selectedCountry = iti.getSelectedCountryData();
+        const newSelectedElement = document.querySelector(`.iti__country[data-dial-code="${selectedCountry.dialCode}"]`);
+
+        if (previousSelectedCountry) {
+            previousSelectedCountry.classList.remove("_selected");
+        }
+
+        if (newSelectedElement) {
+            newSelectedElement.classList.add("_selected");
+            previousSelectedCountry = newSelectedElement; 
+        }
+    }
+
+    input.addEventListener("countrychange", updateSelectedClass);
+    updateSelectedClass();
 
     const inputParentPopup = input.closest(".popup");
     let dropdownOpened = false;

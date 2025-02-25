@@ -96,7 +96,8 @@
 	@extend %flexCenterGap8;
 	&:before {
     order: 2;
-		font-size: toRem(16);
+		font-size: toRem(14);
+    font-weight: 600;
 		transition: transform 0.3s ease; // Добавляет плавность анимации
 	}
   @media (min-width:$mobileSmall){
@@ -172,7 +173,7 @@
   border-width: 0;
   outline: none;
   border-radius: toRem(24);
-  margin-bottom: toRem(8);
+  // margin-bottom: toRem(8);
   &::placeholder {
     color: var(--fade-violet-2);
   }
@@ -203,7 +204,7 @@
   -webkit-overflow-scrolling: touch;
 }
 .iti--inline-dropdown .iti__country-list {
-  max-height: 185px;
+  max-height: 160px;
 }
 .iti--flexible-dropdown-width .iti__country-list {
   white-space: nowrap;
@@ -219,9 +220,24 @@
   padding: 8px;
   border-radius: toRem(16);
   display: grid;
-  grid-template-columns: toRem(24) toRem(32) 1fr;
+  grid-template-columns: toRem(24) toRem(32) 1fr auto;
   outline: none;
   gap: toRem(8);
+  &._selected {
+    background-color: var(--light-blue) !important;
+    &::before {
+      order: 5;
+      content: "\e913";
+      font-size: toRem(16);
+      margin-right: toRem(4);
+      @extend %ic;
+    }
+  }
+  @media (any-hover: hover){
+    &:hover{
+      background-color: var(--gray-2);
+    }
+  }
   @media (min-width:$mobileSmall){
     min-height: toRem(40);
     font-size: toRem(13); 
@@ -243,7 +259,7 @@
   color: var(--dark-violet);
 }
 .iti__country.iti__highlight {
-  background-color: var(--iti-hover-color);
+  // background-color: var(--iti-hover-color);
 }
 .iti__country-list .iti__flag, .iti__country-name {
   // margin-right: var(--iti-spacer-horizontal);

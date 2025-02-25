@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250225151624">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250225181144">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -23,7 +23,9 @@
 						</button>
 						<nav class="menu__body">
 							<div class="menu__top">
-								<a href="index.html" class="menu__logo icon-logo" aria-label="link to home page"></a>
+								<a href="index.html" class="menu__logo menu__logo_company" aria-label="link to home page">
+									<img src="img/logo/netflex.jpg" width="40" height="40" alt="Image">
+								</a>
 								<a href="#" class="menu__activate-btn btn btn_dark btn_sm icon-balance" aria-label="balance">
 									Активувати<br> Баланс giftmall
 								</a>
@@ -75,12 +77,9 @@
 					</div>
 					<div class="main-header__sub-wrapper">
 						<div class="main-header__phones item-dropdwn">
-							<div class="item-dropdwn__main">
-								<a href="tel:+380674681088" class="item-dropdwn__link-top" aria-label="phone number">
-									+380 67 468 10 88
-								</a>
-								<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown"></button>
-							</div>
+							<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+								<span>+380 67 468 10 88</span>
+							</button>
 							<ul class="item-dropdwn__list">
 								<li class="item-dropdwn__item">
 									<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
@@ -94,12 +93,9 @@
 							</ul>
 						</div>
 						<div class="main-header__lang item-dropdwn">
-							<div class="item-dropdwn__main">
-								<a href="#" class="item-dropdwn__link-top" aria-label="language">
-									<img src="img/icons/flag-ukraine.svg" width="24" height="17" alt="Image"> UA
-								</a>
-								<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown"></button>
-							</div>
+							<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+								<img src="img/icons/flag-ukraine.svg" width="24" height="17" alt="Image"> <span>UA</span>
+							</button>
 							<ul class="item-dropdwn__list">
 								<li class="item-dropdwn__item">
 									<a href="#" class="item-dropdwn__link" aria-label="language">
@@ -390,7 +386,6 @@
 					</nav>
 				</div>
 			</div>
-
 		</header>
 		<main class="page">
 			<div class="banner">
@@ -933,6 +928,7 @@
 							<span>Фільтри</span>
 						</button>
 					</div>
+
 					<div class="main__card-certificate mb-56 card-grid">
 						<a href="#" class="card-certificate is-disabled" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -958,7 +954,7 @@
 									Картка з класом is-disabled
 								</div>
 							</div>
-							<button type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</button>
+							<div type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1247,45 +1243,45 @@
 							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
 						</a>
 					</div>
-					<div class="main__card-top mb-56 card-grid_cl-2">
-						<article class="card-top">
-							<h2 class="card-top__title">Топ місяця</h2>
-							<div class="card-top__wrapper">
-								<div class="card-top__content">
-									<div class="card-top__body">
-										<div class="card-top__name">
+					<div class="main__card-news mb-56 card-grid_cl-2">
+						<a href="#" class="card-news" aria-label="link to card page">
+							<p class="card-news__title">Топ місяця</p>
+							<div class="card-news__wrapper">
+								<div class="card-news__content">
+									<div class="card-news__body">
+										<div class="card-news__name">
 											Foxstrot
 										</div>
-										<div class="card-top__subname">
+										<div class="card-news__subname">
 											Мережа електронних товарів та комп’ютерних ігор
 										</div>
 									</div>
-									<a href="#" class="card-top__btn btn btn_gray" aria-label="link">Купити від 200 грн</a>
+									<div class="card-news__btn btn btn_gray">Купити від 200 грн</div>
 								</div>
-								<div class="card-top__img">
+								<div class="card-news__img">
 									<img src="img/certificates/certificate-03.jpg" width="222" height="145" alt="Image">
 								</div>
 							</div>
-						</article>
-						<article class="card-top">
-							<h2 class="card-top__title">Новинки</h2>
-							<div class="card-top__wrapper">
-								<div class="card-top__content">
-									<div class="card-top__body">
-										<div class="card-top__name">
+						</a>
+						<a href="#" class="card-news" aria-label="link to card page">
+							<p class="card-news__title">Новинки</p>
+							<div class="card-news__wrapper">
+								<div class="card-news__content">
+									<div class="card-news__body">
+										<div class="card-news__name">
 											Foxstrot
 										</div>
-										<div class="card-top__subname">
+										<div class="card-news__subname">
 											Мережа електронних товарів та комп’ютерних ігор
 										</div>
 									</div>
-									<a href="#" class="card-top__btn btn btn_gray" aria-label="link">Купити від 200 грн</a>
+									<div class="card-news__btn btn btn_gray">Купити від 200 грн</div>
 								</div>
-								<div class="card-top__img">
+								<div class="card-news__img">
 									<img src="img/certificates/certificate-04.jpg" width="222" height="145" alt="Image">
 								</div>
 							</div>
-						</article>
+						</a>
 					</div>
 					<div class="main__card-certificate card-grid">
 						<a href="#" class="card-certificate" aria-label="link to card page">
@@ -1312,7 +1308,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<button type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</button>
+							<div type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1608,13 +1604,13 @@
 			</section>
 		</main>
 	</div>
-	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250225151624"></script>
-    <script src="https://unpkg.com/tippy.js@6?_v=20250225151624"></script> -->
-	<!-- <script src="files/rolldate/rolldate.js?_v=20250225151624"></script>
-		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250225151624"></script>
-		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250225151624"></script> -->
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250225151624"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250225151624"></script>
+	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250225181144"></script>
+    <script src="https://unpkg.com/tippy.js@6?_v=20250225181144"></script> -->
+	<!-- <script src="files/rolldate/rolldate.js?_v=20250225181144"></script>
+		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250225181144"></script>
+		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250225181144"></script> -->
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250225181144"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250225181144"></script>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -1668,7 +1664,7 @@
 						</div>
 						<div class="popup-slider-checkout__count">
 							<p>Сума</з>
-							<div class="popup-slider-checkout__total"><span>500</span> грн</div>
+							<div class="popup-slider-checkout__total"><span class="numb">500</span> грн</div>
 						</div>
 						<div class="popup-slider-checkout__btns">
 							<button type="button" class=" popup-slider-checkout__btn btn btn_dark">Підтвердити</button>
@@ -1751,7 +1747,7 @@
 							<div class="orders-checkout__type">
 								<div class="orders-checkout__sub-head">
 									<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
-									<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
+									<div class="orders-checkout__subtotoal"><span class="numb">2050</span> грн</div>
 								</div>
 								<div class="orders-checkout__item item-orders">
 									<div class="item-orders__img">
@@ -1760,7 +1756,7 @@
 									<div class="item-orders__body">
 										<p class="item-orders__title">The Cake</p>
 										<div class="item-orders__amount"><span>2</span>шт</div>
-										<div class="item-orders__price"><span>2 x</span> <span>400.00</span>грн</div>
+										<div class="item-orders__price"><span>2 x</span> <span class="numb">400.00</span> грн</div>
 									</div>
 									<div class="item-orders__button">
 										<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
@@ -1770,7 +1766,7 @@
 							<div class="orders-checkout__type">
 								<div class="orders-checkout__sub-head">
 									<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
-									<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
+									<div class="orders-checkout__subtotoal"><span class="numb">400</span> грн</div>
 								</div>
 								<div class="orders-checkout__item item-orders">
 									<div class="item-orders__img">
@@ -1779,7 +1775,7 @@
 									<div class="item-orders__body">
 										<p class="item-orders__title">Фокстрот</p>
 										<div class="item-orders__amount"><span>1</span>шт</div>
-										<div class="item-orders__price"><span></span> <span>400.00</span>грн</div>
+										<div class="item-orders__price"><span></span> <span class="numb">400.00</span> грн</div>
 									</div>
 									<div class="item-orders__button">
 										<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
@@ -1791,7 +1787,7 @@
 							<div class="popup-cart__footer-wr">
 								<div class="popup-cart__total">
 									<p>Разом до сплати</p>
-									<p class="popup-cart__sum"><span>2 100</span> грн</p>
+									<p class="popup-cart__sum"><span class="numb">2100</span> грн</p>
 								</div>
 								<a href="#" class="popup-cart__btn btn btn_dark" aria-label="to pay">Перейти до оплати</a>
 							</div>
@@ -1891,5 +1887,5 @@
 		</div>
 	</div>
 	</div>
-	<script src="js/app.min.js?_v=20250225151624"></script>
+	<script src="js/app.min.js?_v=20250225181144"></script>
 </body>

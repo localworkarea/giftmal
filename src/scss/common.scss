@@ -384,37 +384,32 @@
   &._active {
     z-index: 5;
   }
-	// .item-dropdwn__main
-	&__main {
+	// .item-dropdwn__btn
+	&__btn {
     position: relative;
-    font-weight: 500;
-    line-height: 0.8;
     z-index: 3;
     display: flex;
     align-items: center;
     gap: toRem(6);
     padding: toRem(8) toRem(8);
-	}
-	// .item-dropdwn__link-top
-	&__link-top {
+    transition: color .3s ease;
     @extend %flexCenterGap8;
-	}
-  // .item-dropdwn__btn
-  &__btn {
-    ._no-el & {
-      display: none;
-    }
-    &::before {
+    &:before {
       cursor: pointer;
-      order: 2;
-      font-size: toRem(16);
-      font-weight: 700;
+      order: 3;
+      font-size: toRem(14);
+      font-weight: 600;
       transition: transform .3s ease;
       ._active & {
         transform: rotate(-180deg);
       }
     }
-  }
+    @media (any-hover: hover){
+      &:hover{
+        color: var(--violet);
+      }
+    }
+	}
   // .item-dropdwn__list
   &__list {
     position: absolute;
@@ -1465,10 +1460,10 @@
   background-color: var(--white);
   @extend %borderRadius30-24;
   padding: toRem(8);
-  transition: box-shadow .3s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: box-shadow .3s ease;
   @media (any-hover: hover){
     &:hover{
       box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.12);

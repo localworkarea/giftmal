@@ -2,11 +2,11 @@
 <html lang="uk">
 
 <head>
-	<title> giftmall | Checkout </title>
+	<title>Checkout</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250225151624">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250225181144">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -19,12 +19,9 @@
 				<a href="index.html" class="checkout__continue icon-arrow-down" aria-label="continue shopping">Продовжити покупки</a>
 				<a href="index.html" class="checkout__logo icon-logo" aria-label="link to home page"></a>
 				<div class="checkout__phone item-dropdwn">
-					<div class="item-dropdwn__main">
-						<a href="tel:+380674681088" class="item-dropdwn__link-top" aria-label="phone number">
-							+380 67 468 10 88
-						</a>
-						<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown"></button>
-					</div>
+					<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+						<span>+380 67 468 10 88</span>
+					</button>
 					<ul class="item-dropdwn__list">
 						<li class="item-dropdwn__item">
 							<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
@@ -595,7 +592,7 @@
 																				<p>Ваші замовлення <span>(2)</span></p>
 																			</div>
 																			<div class="orders-checkout__arrow icon-arrow-down">
-																				<div><span>2400</span> грн</div>
+																				<div><span class="numb">2400</span> грн</div>
 																			</div>
 																		</summary>
 																		<div class="orders-checkout__wrapper">
@@ -606,7 +603,7 @@
 																				<div class="orders-checkout__type">
 																					<div class="orders-checkout__sub-head">
 																						<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
-																						<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
+																						<div class="orders-checkout__subtotoal"><span class="numb">2050</span> грн</div>
 																					</div>
 																					<div class="orders-checkout__item item-orders">
 																						<div class="item-orders__img">
@@ -614,8 +611,8 @@
 																						</div>
 																						<div class="item-orders__body">
 																							<p class="item-orders__title">TVORCHI. Майстер-клас “Малювання Епоксидною смолою”</p>
-																							<div class="item-orders__amount"><span>2</span>шт</div>
-																							<div class="item-orders__price"><span>2 x</span> <span>800.00</span> грн</div>
+																							<div class="item-orders__amount"><span>2</span> шт</div>
+																							<div class="item-orders__price"><span>2 x</span> <span class="numb">800.00</span> грн</div>
 																						</div>
 																						<div class="item-orders__button">
 																							<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -627,8 +624,8 @@
 																						</div>
 																						<div class="item-orders__body">
 																							<p class="item-orders__title">Дизайнерська листівка</p>
-																							<div class="item-orders__amount"><span>1</span>шт</div>
-																							<div class="item-orders__price"><span></span> <span>50.00</span> грн</div>
+																							<div class="item-orders__amount"><span>1</span> шт</div>
+																							<div class="item-orders__price"><span></span> <span class="numb">50.00</span> грн</div>
 																						</div>
 																						<div class="item-orders__button">
 																							<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -638,7 +635,7 @@
 																				<div class="orders-checkout__type">
 																					<div class="orders-checkout__sub-head">
 																						<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
-																						<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
+																						<div class="orders-checkout__subtotoal"><span class="numb">400</span> грн</div>
 																					</div>
 																					<div class="orders-checkout__item item-orders">
 																						<div class="item-orders__img">
@@ -646,8 +643,8 @@
 																						</div>
 																						<div class="item-orders__body">
 																							<p class="item-orders__title">Дизайнерська листівка</p>
-																							<div class="item-orders__amount"><span>1</span>шт</div>
-																							<div class="item-orders__price"><span></span> <span>50.00</span>грн</div>
+																							<div class="item-orders__amount"><span>1</span> шт</div>
+																							<div class="item-orders__price"><span></span> <span class="numb">50.00</span> грн</div>
 																						</div>
 																						<div class="item-orders__button">
 																							<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -666,7 +663,7 @@
 																			Загальна сума
 																		</p>
 																		<div class="orders-checkout__sum">
-																			<span>2 450</span> грн
+																			<span class="numb">2 450</span> грн
 																		</div>
 																	</div>
 																	<div class="orders-checkout__lines">
@@ -682,7 +679,7 @@
 																			Списаний баланс
 																		</p>
 																		<div class="orders-checkout__sum">
-																			<span>-2 450</span> грн
+																			<span class="numb">-2 450</span> грн
 																		</div>
 																	</div>
 																	<div class="orders-checkout__lines lines-total">
@@ -690,7 +687,7 @@
 																			До оплати
 																		</p>
 																		<div class="orders-checkout__sum">
-																			<span>2400</span> грн
+																			<span class="numb">2400</span> грн
 																		</div>
 																	</div>
 																</div>
@@ -1071,13 +1068,13 @@
 																				</div>
 																				<div class="card-slider__footer">
 																					<select name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
-																						<option value="1" checked>100 грн</option>
-																						<option value="2">200 грн</option>
-																						<option value="3">500 грн</option>
-																						<option value="4">1000 грн</option>
-																						<option value="5">1500 грн</option>
-																						<option value="6">3000 грн</option>
-																						<option value="7">10000 грн</option>
+																						<option data-class="numb" value="1" checked>100 грн</option>
+																						<option data-class="numb" value="2">200 грн</option>
+																						<option data-class="numb" value="3">500 грн</option>
+																						<option data-class="numb" value="4">1000 грн</option>
+																						<option data-class="numb" value="5">1500 грн</option>
+																						<option data-class="numb" value="6">3000 грн</option>
+																						<option data-class="numb" value="7">10000 грн</option>
 																					</select>
 																					<div data-quantity class="quantity quantity_type-1">
 																						<div class="quantity__item">
@@ -1117,13 +1114,13 @@
 																				</div>
 																				<div class="card-slider__footer">
 																					<select name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
-																						<option value="1" checked>100 грн</option>
-																						<option value="2">200 грн</option>
-																						<option value="3">500 грн</option>
-																						<option value="4">1000 грн</option>
-																						<option value="5">1500 грн</option>
-																						<option value="6">3000 грн</option>
-																						<option value="7">10000 грн</option>
+																						<option data-class="numb" value="1" checked>100 грн</option>
+																						<option data-class="numb" value="2">200 грн</option>
+																						<option data-class="numb" value="3">500 грн</option>
+																						<option data-class="numb" value="4">1000 грн</option>
+																						<option data-class="numb" value="5">1500 грн</option>
+																						<option data-class="numb" value="6">3000 грн</option>
+																						<option data-class="numb" value="7">10000 грн</option>
 																					</select>
 																					<div data-quantity class="quantity quantity_type-1">
 																						<div class="quantity__item">
@@ -1163,13 +1160,13 @@
 																				</div>
 																				<div class="card-slider__footer">
 																					<select name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
-																						<option value="1" checked>100 грн</option>
-																						<option value="2">200 грн</option>
-																						<option value="3">500 грн</option>
-																						<option value="4">1000 грн</option>
-																						<option value="5">1500 грн</option>
-																						<option value="6">3000 грн</option>
-																						<option value="7">10000 грн</option>
+																						<option data-class="numb" value="1" checked>100 грн</option>
+																						<option data-class="numb" value="2">200 грн</option>
+																						<option data-class="numb" value="3">500 грн</option>
+																						<option data-class="numb" value="4">1000 грн</option>
+																						<option data-class="numb" value="5">1500 грн</option>
+																						<option data-class="numb" value="6">3000 грн</option>
+																						<option data-class="numb" value="7">10000 грн</option>
 																					</select>
 																					<div data-quantity class="quantity quantity_type-1">
 																						<div class="quantity__item">
@@ -1177,7 +1174,7 @@
 																							<div class="quantity__block">
 																								<div class="quantity__input">
 																									<input data-quantity-value type="text" name="" placeholder="0" value="1">
-																									<span>шт</span>
+																									<span> шт</span>
 																								</div>
 																							</div>
 																							<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
@@ -1209,13 +1206,13 @@
 																				</div>
 																				<div class="card-slider__footer">
 																					<select name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
-																						<option value="1" checked>100 грн</option>
-																						<option value="2">200 грн</option>
-																						<option value="3">500 грн</option>
-																						<option value="4">1000 грн</option>
-																						<option value="5">1500 грн</option>
-																						<option value="6">3000 грн</option>
-																						<option value="7">10000 грн</option>
+																						<option data-class="numb" value="1" checked>100 грн</option>
+																						<option data-class="numb" value="2">200 грн</option>
+																						<option data-class="numb" value="3">500 грн</option>
+																						<option data-class="numb" value="4">1000 грн</option>
+																						<option data-class="numb" value="5">1500 грн</option>
+																						<option data-class="numb" value="6">3000 грн</option>
+																						<option data-class="numb" value="7">10000 грн</option>
 																					</select>
 																					<div data-quantity class="quantity quantity_type-1">
 																						<div class="quantity__item">
@@ -1223,7 +1220,7 @@
 																							<div class="quantity__block">
 																								<div class="quantity__input">
 																									<input data-quantity-value type="text" name="" placeholder="0" value="1">
-																									<span>шт</span>
+																									<span> шт</span>
 																								</div>
 																							</div>
 																							<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
@@ -1255,13 +1252,13 @@
 																				</div>
 																				<div class="card-slider__footer">
 																					<select name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
-																						<option value="1" checked>100 грн</option>
-																						<option value="2">200 грн</option>
-																						<option value="3">500 грн</option>
-																						<option value="4">1000 грн</option>
-																						<option value="5">1500 грн</option>
-																						<option value="6">3000 грн</option>
-																						<option value="7">10000 грн</option>
+																						<option data-class="numb" value="1" checked>100 грн</option>
+																						<option data-class="numb" value="2">200 грн</option>
+																						<option data-class="numb" value="3">500 грн</option>
+																						<option data-class="numb" value="4">1000 грн</option>
+																						<option data-class="numb" value="5">1500 грн</option>
+																						<option data-class="numb" value="6">3000 грн</option>
+																						<option data-class="numb" value="7">10000 грн</option>
 																					</select>
 																					<div data-quantity class="quantity quantity_type-1">
 																						<div class="quantity__item">
@@ -1269,7 +1266,7 @@
 																							<div class="quantity__block">
 																								<div class="quantity__input">
 																									<input data-quantity-value type="text" name="" placeholder="0" value="1">
-																									<span>шт</span>
+																									<span> шт</span>
 																								</div>
 																							</div>
 																							<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
@@ -1308,7 +1305,7 @@
 																				<p>Ваші замовлення <span>(2)</span></p>
 																			</div>
 																			<div class="orders-checkout__arrow icon-arrow-down">
-																				<div><span>2400</span> грн</div>
+																				<div><span class="numb">2400</span> грн</div>
 																			</div>
 																		</summary>
 																		<div class="orders-checkout__wrapper">
@@ -1319,7 +1316,7 @@
 																				<div class="orders-checkout__type">
 																					<div class="orders-checkout__sub-head">
 																						<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
-																						<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
+																						<div class="orders-checkout__subtotoal"><span class="numb">2050</span> грн</div>
 																					</div>
 																					<div class="orders-checkout__item item-orders">
 																						<div class="item-orders__img">
@@ -1327,8 +1324,8 @@
 																						</div>
 																						<div class="item-orders__body">
 																							<p class="item-orders__title">TVORCHI. Майстер-клас “Малювання Епоксидною смолою”</p>
-																							<div class="item-orders__amount"><span>2</span>шт</div>
-																							<div class="item-orders__price"><span>2 x</span> <span>800.00</span> грн</div>
+																							<div class="item-orders__amount"><span>2</span> шт</div>
+																							<div class="item-orders__price"><span>2 x</span> <span class="numb">800.00</span> грн</div>
 																						</div>
 																						<div class="item-orders__button">
 																							<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1340,8 +1337,8 @@
 																						</div>
 																						<div class="item-orders__body">
 																							<p class="item-orders__title">Дизайнерська листівка</p>
-																							<div class="item-orders__amount"><span>1</span>шт</div>
-																							<div class="item-orders__price"><span></span> <span>50.00</span> грн</div>
+																							<div class="item-orders__amount"><span>1</span> шт</div>
+																							<div class="item-orders__price"><span></span> <span class="numb">50.00</span> грн</div>
 																						</div>
 																						<div class="item-orders__button">
 																							<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1351,7 +1348,7 @@
 																				<div class="orders-checkout__type">
 																					<div class="orders-checkout__sub-head">
 																						<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
-																						<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
+																						<div class="orders-checkout__subtotoal"><span class="numb">400</span> грн</div>
 																					</div>
 																					<div class="orders-checkout__item item-orders">
 																						<div class="item-orders__img">
@@ -1359,8 +1356,8 @@
 																						</div>
 																						<div class="item-orders__body">
 																							<p class="item-orders__title">Дизайнерська листівка</p>
-																							<div class="item-orders__amount"><span>1</span>шт</div>
-																							<div class="item-orders__price"><span></span> <span>50.00</span>грн</div>
+																							<div class="item-orders__amount"><span>1</span> шт</div>
+																							<div class="item-orders__price"><span></span> <span class="numb">50.00</span>грн</div>
 																						</div>
 																						<div class="item-orders__button">
 																							<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1379,7 +1376,7 @@
 																			Загальна сума
 																		</p>
 																		<div class="orders-checkout__sum">
-																			<span>2 450</span> грн
+																			<span class="numb">2 450</span> грн
 																		</div>
 																	</div>
 																	<div class="orders-checkout__lines">
@@ -1395,7 +1392,7 @@
 																			Списаний баланс
 																		</p>
 																		<div class="orders-checkout__sum">
-																			<span>-2 450</span> грн
+																			<span class="numb">-2 450</span> грн
 																		</div>
 																	</div>
 																	<div class="orders-checkout__lines lines-total">
@@ -1403,7 +1400,7 @@
 																			До оплати
 																		</p>
 																		<div class="orders-checkout__sum">
-																			<span>2400</span> грн
+																			<span class="numb">2400</span> грн
 																		</div>
 																	</div>
 																</div>
@@ -1446,7 +1443,7 @@
 														<div class="balance-card__bottom">
 															<img class="balance-card__card-img" src="img/cards/giftmall-card.png" width="48" height="32" alt="Image">
 															<div class="balance-card__balance">
-																<span>2 000</span> грн
+																<span class="numb">2 000</span> грн
 															</div>
 															<div class="balance-card__lock icon-lock"></div>
 														</div>
@@ -1461,7 +1458,7 @@
 														<div class="balance-card__bottom ">
 															<img class="balance-card__card-img" src="img/cards/giftmall-card.png" width="48" height="32" alt="Image">
 															<div class="balance-card__balance">
-																<span>2 000</span> грн
+																<span class="numb">2 000</span> грн
 															</div>
 															<div class="balance-card__lock icon-lock"></div>
 														</div>
@@ -1500,7 +1497,7 @@
 																</div>
 																<div class="card-balance__block">
 																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
-																	<div class="card-balance__row row-denomination">500 грн</div>
+																	<div class="card-balance__row row-denomination numb">500 грн</div>
 																</div>
 																<div class="card-balance__block">
 																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
@@ -1525,7 +1522,7 @@
 																</div>
 																<div class="card-balance__block">
 																	<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
-																	<div class="card-balance__row row-denomination">+500 грн</div>
+																	<div class="card-balance__row row-denomination numb">+500 грн</div>
 																</div>
 																<div class="card-balance__block">
 																	<div class="card-balance__sub-title icon-arrow-down">Статус</div>
@@ -1594,7 +1591,7 @@
 															<p>Ваші замовлення <span>(2)</span></p>
 														</div>
 														<div class="orders-checkout__arrow icon-arrow-down">
-															<div><span>2400</span> грн</div>
+															<div><span class="numb">2400</span> грн</div>
 														</div>
 													</summary>
 													<div class="orders-checkout__wrapper">
@@ -1605,7 +1602,7 @@
 															<div class="orders-checkout__type">
 																<div class="orders-checkout__sub-head">
 																	<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
-																	<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
+																	<div class="orders-checkout__subtotoal"><span class="numb">2050</span> грн</div>
 																</div>
 																<div class="orders-checkout__item item-orders">
 																	<div class="item-orders__img">
@@ -1613,8 +1610,8 @@
 																	</div>
 																	<div class="item-orders__body">
 																		<p class="item-orders__title">TVORCHI. Майстер-клас “Малювання Епоксидною смолою”</p>
-																		<div class="item-orders__amount"><span>2</span>шт</div>
-																		<div class="item-orders__price"><span>2 x</span> <span>800.00</span> грн</div>
+																		<div class="item-orders__amount"><span>2</span> шт</div>
+																		<div class="item-orders__price"><span>2 x</span> <span class="numb">800.00</span> грн</div>
 																	</div>
 																	<div class="item-orders__button">
 																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1626,8 +1623,8 @@
 																	</div>
 																	<div class="item-orders__body">
 																		<p class="item-orders__title">Дизайнерська листівка</p>
-																		<div class="item-orders__amount"><span>1</span>шт</div>
-																		<div class="item-orders__price"><span></span> <span>50.00</span> грн</div>
+																		<div class="item-orders__amount"><span>1</span> шт</div>
+																		<div class="item-orders__price"><span></span> <span class="numb">50.00</span> грн</div>
 																	</div>
 																	<div class="item-orders__button">
 																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1637,7 +1634,7 @@
 															<div class="orders-checkout__type">
 																<div class="orders-checkout__sub-head">
 																	<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
-																	<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
+																	<div class="orders-checkout__subtotoal"><span class="numb">400</span> грн</div>
 																</div>
 																<div class="orders-checkout__item item-orders">
 																	<div class="item-orders__img">
@@ -1645,8 +1642,8 @@
 																	</div>
 																	<div class="item-orders__body">
 																		<p class="item-orders__title">Дизайнерська листівка</p>
-																		<div class="item-orders__amount"><span>1</span>шт</div>
-																		<div class="item-orders__price"><span></span> <span>50.00</span>грн</div>
+																		<div class="item-orders__amount"><span>1</span> шт</div>
+																		<div class="item-orders__price"><span></span> <span class="numb">50.00</span>грн</div>
 																	</div>
 																	<div class="item-orders__button">
 																		<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1665,7 +1662,7 @@
 														Загальна сума
 													</p>
 													<div class="orders-checkout__sum">
-														<span>2 450</span> грн
+														<span class="numb">2 450</span> грн
 													</div>
 												</div>
 												<div class="orders-checkout__lines">
@@ -1681,7 +1678,7 @@
 														Списаний баланс
 													</p>
 													<div class="orders-checkout__sum">
-														<span>-2 450</span> грн
+														<span class="numb">-2 450</span> грн
 													</div>
 												</div>
 												<div class="orders-checkout__lines lines-total">
@@ -1689,7 +1686,7 @@
 														До оплати
 													</p>
 													<div class="orders-checkout__sum">
-														<span>2400</span> грн
+														<span class="numb">2400</span> грн
 													</div>
 												</div>
 											</div>
@@ -1712,7 +1709,7 @@
 														</button>
 													</div>
 													<div class="orders-checkout__arrow icon-arrow-down">
-														<div><span>2400</span>грн</div>
+														<div><span class="numb">2400</span> грн</div>
 													</div>
 												</summary>
 												<div class="orders-checkout__wrapper orders-checkout__wrapper_main">
@@ -1720,7 +1717,7 @@
 														<div class="orders-checkout__type">
 															<div class="orders-checkout__sub-head">
 																<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
-																<div class="orders-checkout__subtotoal"><span>2050</span>грн</div>
+																<div class="orders-checkout__subtotoal"><span class="numb">2050</span> грн</div>
 															</div>
 															<div class="orders-checkout__item item-orders">
 																<div class="item-orders__img">
@@ -1728,8 +1725,8 @@
 																</div>
 																<div class="item-orders__body">
 																	<p class="item-orders__title">TVORCHI. Майстер-клас “Малювання Епоксидною смолою”</p>
-																	<div class="item-orders__amount"><span>2</span>шт</div>
-																	<div class="item-orders__price"><span>2 x</span> <span>800.00</span>грн</div>
+																	<div class="item-orders__amount"><span>2</span> шт</div>
+																	<div class="item-orders__price"><span>2 x</span> <span class="numb">800.00</span> грн</div>
 																</div>
 																<div class="item-orders__button">
 																	<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1741,8 +1738,8 @@
 																</div>
 																<div class="item-orders__body">
 																	<p class="item-orders__title">The Cake</p>
-																	<div class="item-orders__amount"><span>2</span>шт</div>
-																	<div class="item-orders__price"><span>2 x</span> <span>400.00</span>грн</div>
+																	<div class="item-orders__amount"><span>2</span> шт</div>
+																	<div class="item-orders__price"><span>2 x</span> <span class="numb">400.00</span> грн</div>
 																</div>
 																<div class="item-orders__button">
 																	<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1754,8 +1751,8 @@
 																</div>
 																<div class="item-orders__body">
 																	<p class="item-orders__title">Дизайнерська листівка</p>
-																	<div class="item-orders__amount"><span>1</span>шт</div>
-																	<div class="item-orders__price"><span></span> <span>50.00</span>грн</div>
+																	<div class="item-orders__amount"><span>1</span> шт</div>
+																	<div class="item-orders__price"><span></span> <span class="numb">50.00</span>грн</div>
 																</div>
 																<div class="item-orders__button">
 																	<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1766,7 +1763,7 @@
 															<div class="orders-checkout__sub-head">
 																<!-- <p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p> -->
 																<p class="orders-checkout__type-txt icon-physical">Фізичні сертифікати</p>
-																<div class="orders-checkout__subtotoal"><span>400</span>грн</div>
+																<div class="orders-checkout__subtotoal"><span class="numb">400</span>грн</div>
 															</div>
 															<div class="orders-checkout__item item-orders">
 																<div class="item-orders__img">
@@ -1774,8 +1771,8 @@
 																</div>
 																<div class="item-orders__body">
 																	<p class="item-orders__title">Фокстрот</p>
-																	<div class="item-orders__amount"><span>1</span>шт</div>
-																	<div class="item-orders__price"><span></span> <span>400.00</span>грн</div>
+																	<div class="item-orders__amount"><span>1</span> шт</div>
+																	<div class="item-orders__price"><span></span> <span class="numb">400.00</span>грн</div>
 																</div>
 																<div class="item-orders__button">
 																	<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1787,8 +1784,8 @@
 																</div>
 																<div class="item-orders__body">
 																	<p class="item-orders__title">Дизайнерська листівка</p>
-																	<div class="item-orders__amount"><span>1</span>шт</div>
-																	<div class="item-orders__price"><span></span> <span>50.00</span>грн</div>
+																	<div class="item-orders__amount"><span>1</span> шт</div>
+																	<div class="item-orders__price"><span></span> <span class="numb">50.00</span>грн</div>
 																</div>
 																<div class="item-orders__button">
 																	<button type="button" class="item-orders__btn icon-cross" aria-label="delete item"></button>
@@ -1805,7 +1802,7 @@
 													Загальна сума
 												</p>
 												<div class="orders-checkout__sum">
-													<span>2 450</span> грн
+													<span class="numb">2 450</span> грн
 												</div>
 											</div>
 											<div class="orders-checkout__lines">
@@ -1821,7 +1818,7 @@
 													Списаний баланс
 												</p>
 												<div class="orders-checkout__sum">
-													<span>-2 450</span> грн
+													<span class="numb">-2 450</span> грн
 												</div>
 											</div>
 											<div class="orders-checkout__lines lines-total">
@@ -1829,7 +1826,7 @@
 													До оплати
 												</p>
 												<div class="orders-checkout__sum">
-													<span>2400</span> грн
+													<span class="numb">2400</span> грн
 												</div>
 											</div>
 										</div>
@@ -1845,13 +1842,13 @@
 			</div>
 		</main>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250225151624"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250225151624"></script>
-	<script src="files/rolldate/rolldate.js?_v=20250225151624"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250225151624"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250225151624"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250225151624"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250225151624"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250225181144"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250225181144"></script>
+	<script src="files/rolldate/rolldate.js?_v=20250225181144"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250225181144"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250225181144"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250225181144"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250225181144"></script>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -1905,7 +1902,7 @@
 						</div>
 						<div class="popup-slider-checkout__count">
 							<p>Сума</з>
-							<div class="popup-slider-checkout__total"><span>500</span> грн</div>
+							<div class="popup-slider-checkout__total"><span class="numb">500</span> грн</div>
 						</div>
 						<div class="popup-slider-checkout__btns">
 							<button type="button" class=" popup-slider-checkout__btn btn btn_dark">Підтвердити</button>
@@ -1988,7 +1985,7 @@
 							<div class="orders-checkout__type">
 								<div class="orders-checkout__sub-head">
 									<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
-									<div class="orders-checkout__subtotoal"><span>2050</span> грн</div>
+									<div class="orders-checkout__subtotoal"><span class="numb">2050</span> грн</div>
 								</div>
 								<div class="orders-checkout__item item-orders">
 									<div class="item-orders__img">
@@ -1997,7 +1994,7 @@
 									<div class="item-orders__body">
 										<p class="item-orders__title">The Cake</p>
 										<div class="item-orders__amount"><span>2</span>шт</div>
-										<div class="item-orders__price"><span>2 x</span> <span>400.00</span>грн</div>
+										<div class="item-orders__price"><span>2 x</span> <span class="numb">400.00</span> грн</div>
 									</div>
 									<div class="item-orders__button">
 										<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
@@ -2007,7 +2004,7 @@
 							<div class="orders-checkout__type">
 								<div class="orders-checkout__sub-head">
 									<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
-									<div class="orders-checkout__subtotoal"><span>400</span> грн</div>
+									<div class="orders-checkout__subtotoal"><span class="numb">400</span> грн</div>
 								</div>
 								<div class="orders-checkout__item item-orders">
 									<div class="item-orders__img">
@@ -2016,7 +2013,7 @@
 									<div class="item-orders__body">
 										<p class="item-orders__title">Фокстрот</p>
 										<div class="item-orders__amount"><span>1</span>шт</div>
-										<div class="item-orders__price"><span></span> <span>400.00</span>грн</div>
+										<div class="item-orders__price"><span></span> <span class="numb">400.00</span> грн</div>
 									</div>
 									<div class="item-orders__button">
 										<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
@@ -2028,7 +2025,7 @@
 							<div class="popup-cart__footer-wr">
 								<div class="popup-cart__total">
 									<p>Разом до сплати</p>
-									<p class="popup-cart__sum"><span>2 100</span> грн</p>
+									<p class="popup-cart__sum"><span class="numb">2100</span> грн</p>
 								</div>
 								<a href="#" class="popup-cart__btn btn btn_dark" aria-label="to pay">Перейти до оплати</a>
 							</div>
@@ -2128,7 +2125,7 @@
 		</div>
 	</div>
 	</div>
-	<script src="js/app.min.js?_v=20250225151624"></script>
+	<script src="js/app.min.js?_v=20250225181144"></script>
 </body>
 
 </html>

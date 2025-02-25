@@ -249,7 +249,7 @@
       transform-origin: 50% 50%;
       &::before {
         font-weight: 600;
-        font-size: toRem(16);
+        font-size: toRem(14);
       }
     }
     @media (max-width: toEm(1050.98)){
@@ -712,6 +712,24 @@
   }
   // .menu__logo
   &__logo {
+  }
+  // .menu__logo_company
+  &__logo_company {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    @media (min-width:$mobileSmall){
+      width: toRem(40);
+      flex: 0 0 toRem(40);
+    }
+    @media (max-width:$mobileSmall){
+      width: toRem(48);
+      flex: 0 0 toRem(48);
+    }
   }
   // .menu__lang
   &__lang {
