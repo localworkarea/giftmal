@@ -2058,6 +2058,82 @@
 }
 
 
+
+.card-top {
+  position: relative;
+  overflow: hidden;
+  line-height: 1.2;
+  @extend %borderRadius30-24;
+  background-color: var(--white);
+  @extend %padding32-24;
+  // .card-top__title
+  &__title {
+    @extend %fonsSize32-20;
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 32, 20,0,1440.98,480.98);
+    }
+  }
+  // .card-top__wrapper
+  &__wrapper {
+    display: grid;
+    align-items: flex-end;
+    @include adaptiveValue("gap", 32, 24,0,1440.98,480.98);
+    @media (min-width:$mobileSmall){
+      grid-template-columns: 52% 1fr;
+    }
+  }
+  // .card-top__content
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  // .card-top__body
+  &__body {
+    margin-bottom: toRem(42);
+    @extend %fonsSize15-14;
+  }
+  // .card-top__name
+  &__name {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 16, 4,0,1440.98,480.98);
+    }
+  }
+  // .card-top__subname
+  &__subname {
+    color: var(--fade-violet-2);
+  }
+  // .card-top__btn
+  &__btn {
+    @media (max-width:$mobileSmall){
+       max-width: fit-content; 
+       padding: toRem(2) toRem(12) !important;
+    }
+  }
+  // .card-top__img
+  &__img {
+    @media (max-width:$mobileSmall){
+       position: absolute;
+       max-width: 38%;
+       z-index: 0; 
+       right: 0;
+       bottom: 0;
+
+       transform-origin: 50% 50%;
+       transform: translate(0,7%) rotate(7.67deg);
+    }
+    img {
+      @extend %borderRadius22-16;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+
+
 // === F A Q ===============================
 .faq {
   @extend  %paddingTbBt56-16;
@@ -2286,6 +2362,4 @@
       }
     }
 	}
-}
-.sm {
 }

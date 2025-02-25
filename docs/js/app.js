@@ -492,19 +492,18 @@
                 }.bind(this));
             }
         }
-        open(selectorValue) {
+        open(selectorValue, options = {}) {
             if (bodyLockStatus) {
                 this.bodyLock = document.documentElement.classList.contains("lock") && !this.isOpen ? true : false;
                 if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") {
                     this.targetOpen.selector = selectorValue;
                     this._selectorOpen = true;
                 }
-                if (this.isOpen) {
+                if (document.documentElement.classList.contains("menu-open")) document.documentElement.classList.remove("menu-open");
+                if (this.isOpen && !options.keepParentOpen) {
                     this._reopen = true;
                     this.close();
                 }
-                if (!this._selectorOpen) this.targetOpen.selector = this.lastClosed.selector;
-                if (!this._reopen) this.previousActiveElement = document.activeElement;
                 this.targetOpen.element = document.querySelector(this.targetOpen.selector);
                 if (this.targetOpen.element) {
                     if (this.options.hashSettings.location) {
@@ -521,7 +520,7 @@
                     if (popupId) document.documentElement.classList.add(`${popupId}-show`);
                     this.targetOpen.element.classList.add(this.options.classes.popupActive);
                     document.documentElement.classList.add(this.options.classes.bodyActive);
-                    if (!this._reopen) !this.bodyLock ? bodyLock() : null; else this._reopen = false;
+                    if (!this._reopen && !options.keepParentOpen) !this.bodyLock ? bodyLock() : null; else this._reopen = false;
                     this.previousOpen.selector = this.targetOpen.selector;
                     this.previousOpen.element = this.targetOpen.element;
                     this._selectorOpen = false;
@@ -538,7 +537,7 @@
                 }
             }
         }
-        close(selectorValue) {
+        close(selectorValue, options = {}) {
             if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") this.previousOpen.selector = selectorValue;
             if (!this.isOpen || !bodyLockStatus) return;
             this.options.on.beforeClose(this);
@@ -552,12 +551,22 @@
                 if (popupId) document.documentElement.classList.remove(`${popupId}-show`);
             }
             this.previousOpen.element.classList.remove(this.options.classes.popupActive);
-            if (!this._reopen) {
+            const openPopups = document.querySelectorAll(`.${this.options.classes.popupActive}`);
+            if (openPopups.length === 0) {
                 document.documentElement.classList.remove(this.options.classes.bodyActive);
                 !this.bodyLock ? bodyUnlock() : null;
                 this.isOpen = false;
+            } else {
+                if (selectorValue === "#popupIti" && openPopups.length > 0) {
+                    this.previousOpen.element = openPopups[openPopups.length - 1];
+                    this.previousOpen.selector = `#${this.previousOpen.element.id}`;
+                    this.isOpen = true;
+                }
+                setTimeout((() => {
+                    this._focusTrap();
+                }), 50);
             }
-            const popupContent = this.targetOpen.element.querySelector(".popup__content");
+            const popupContent = this.previousOpen.element.querySelector(".popup__content");
             if (popupContent) setTimeout((() => {
                 popupContent.style.height = "";
             }), 300);
@@ -572,9 +581,7 @@
                     popup: this
                 }
             }));
-            setTimeout((() => {
-                this._focusTrap();
-            }), 50);
+            this.eventsPopup();
         }
         _getHash() {
             if (this.options.hashSettings.location) this.hash = this.targetOpen.selector.includes("#") ? this.targetOpen.selector : this.targetOpen.selector.replace(".", "#");
@@ -604,8 +611,9 @@
             }
         }
         _focusTrap() {
+            if (!this.previousOpen.element) return;
             const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
-            if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else focusable[0].focus();
+            if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else if (focusable.length > 0) focusable[0].focus();
         }
     }
     modules_flsModules.popup = new Popup({});
@@ -2936,37 +2944,59 @@
             const fromValue = rangeItem.querySelector("[data-range-from]");
             const toValue = rangeItem.querySelector("[data-range-to]");
             const item = rangeItem.querySelector("[data-range-item]");
+            const filterWrapper = rangeItem.closest("[data-filters-wrapper]");
+            const clearButton = filterWrapper?.querySelector(".filters__clear") || null;
+            const showButton = filterWrapper?.querySelector(".filters__show") || null;
+            const defaultFrom = Number(fromValue.dataset.rangeFrom);
+            const defaultTo = Number(toValue.dataset.rangeTo);
             initialize(item, {
                 start: [ Number(fromValue.value), Number(toValue.value) ],
                 connect: true,
                 step: 10,
                 range: {
-                    min: [ Number(fromValue.dataset.rangeFrom) ],
-                    max: [ Number(toValue.dataset.rangeTo) ]
+                    min: [ defaultFrom ],
+                    max: [ defaultTo ]
                 },
                 format: wNumb({
                     decimals: 0,
                     thousand: " "
                 })
             });
-            item.noUiSlider.on("update", (function(values, handle) {
+            const updateFooterButtons = () => {
+                if (!filterWrapper) return;
+                const currentFrom = Number(fromValue.value.replace(/\s+/g, ""));
+                const currentTo = Number(toValue.value.replace(/\s+/g, ""));
+                const isChanged = currentFrom !== defaultFrom || currentTo !== defaultTo;
+                if (clearButton) clearButton.disabled = !isChanged;
+                if (showButton) showButton.disabled = !isChanged;
+            };
+            item.noUiSlider.on("update", (function(values) {
                 fromValue.value = values[0];
                 toValue.value = values[1];
+                updateFooterButtons();
             }));
             const updateSlider = () => {
                 let from = Number(fromValue.value.replace(/\s+/g, ""));
                 let to = Number(toValue.value.replace(/\s+/g, ""));
-                const min = Number(fromValue.dataset.rangeFrom);
-                const max = Number(toValue.dataset.rangeTo);
+                const min = defaultFrom;
+                const max = defaultTo;
                 from = Math.min(Math.max(from, min), max);
                 to = Math.min(Math.max(to, min), max);
                 from = Math.round(from / 10) * 10;
                 to = Math.round(to / 10) * 10;
                 if (from > to) [from, to] = [ to, from ];
                 item.noUiSlider.set([ from, to ]);
+                updateFooterButtons();
             };
             fromValue.addEventListener("change", updateSlider);
             toValue.addEventListener("change", updateSlider);
+            if (clearButton) clearButton.addEventListener("click", (() => {
+                item.noUiSlider.set([ defaultFrom, defaultTo ]);
+                fromValue.value = defaultFrom;
+                toValue.value = defaultTo;
+                clearButton.disabled = true;
+                showButton.disabled = true;
+            }));
         }));
     }
     rangeInit();
@@ -6859,14 +6889,52 @@
             }));
         }));
         document.addEventListener("change", (event => {
-            if (event.target.type === "checkbox" && event.target.matches('[data-filters-body] input[type="checkbox"]')) {
+            if (event.target.matches('[data-filters-body] input[type="checkbox"], [data-filters-body] input[type="radio"]')) {
                 const wrapper = event.target.closest("[data-filters-wrapper]");
                 updateButtonState(wrapper);
                 updateCount(wrapper);
                 updateGlobalFiltersCount();
                 const parentElement = event.target.parentElement;
-                if (event.target.checked) parentElement.classList.add("_checked"); else parentElement.classList.remove("_checked");
+                if (event.target.type === "checkbox") if (event.target.checked) parentElement.classList.add("_checked"); else parentElement.classList.remove("_checked");
+                if (event.target.type === "radio") {
+                    const groupName = event.target.name;
+                    const allRadios = wrapper.querySelectorAll(`input[name="${groupName}"]`);
+                    allRadios.forEach((radio => {
+                        const radioParent = radio.closest(".filters__item");
+                        radioParent.classList.remove("_checked");
+                        radio.dataset.wasChecked = "false";
+                    }));
+                    if (event.target.checked) {
+                        event.target.dataset.wasChecked = "true";
+                        parentElement.classList.add("_checked");
+                    }
+                }
             }
+        }));
+        document.querySelectorAll('[data-filters-body] input[type="radio"]').forEach((radio => {
+            radio.addEventListener("click", (function() {
+                if (this.dataset.wasChecked === "true") {
+                    this.checked = false;
+                    this.dataset.wasChecked = "false";
+                    this.closest(".filters__item").classList.remove("_checked");
+                    updateButtonState(this.closest("[data-filters-wrapper]"));
+                    updateCount(this.closest("[data-filters-wrapper]"));
+                    updateGlobalFiltersCount();
+                } else {
+                    const groupName = this.name;
+                    const wrapper = this.closest("[data-filters-wrapper]");
+                    const allRadios = wrapper.querySelectorAll(`input[name="${groupName}"]`);
+                    allRadios.forEach((radio => {
+                        radio.closest(".filters__item").classList.remove("_checked");
+                        radio.dataset.wasChecked = "false";
+                    }));
+                    this.dataset.wasChecked = "true";
+                    this.closest(".filters__item").classList.add("_checked");
+                    updateButtonState(wrapper);
+                    updateCount(wrapper);
+                    updateGlobalFiltersCount();
+                }
+            }));
         }));
         function adjustWrapperPosition(wrapper) {
             if (!wrapper) return;
@@ -6908,8 +6976,8 @@
         }
         function updateButtonState(wrapper) {
             const footer = wrapper.querySelector("[data-filters-footer]");
-            const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
-            let anyChecked = Array.from(inputs).some((input => input.checked));
+            const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]:checked, [data-filters-body] input[type="radio"]:checked');
+            const anyChecked = inputs.length > 0;
             if (footer) {
                 const buttons = footer.querySelectorAll("button");
                 buttons.forEach((button => {
@@ -6919,18 +6987,24 @@
         }
         function clearFilters(wrapper) {
             if (!wrapper) return;
-            const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
-            inputs.forEach((input => {
+            const checkboxes = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
+            checkboxes.forEach((input => {
                 input.checked = false;
-                const parentElement = input.parentElement;
-                parentElement.classList.remove("_checked");
+                input.parentElement.classList.remove("_checked");
+            }));
+            const radios = wrapper.querySelectorAll('[data-filters-body] input[type="radio"]');
+            radios.forEach((radio => {
+                radio.checked = false;
+                radio.dataset.wasChecked = "false";
+                radio.closest(".filters__item").classList.remove("_checked");
             }));
             updateButtonState(wrapper);
             updateCount(wrapper);
+            updateGlobalFiltersCount();
         }
         function updateCount(wrapper) {
-            const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]');
-            const count = Array.from(inputs).filter((input => input.checked)).length;
+            const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]:checked, [data-filters-body] input[type="radio"]:checked');
+            const count = inputs.length;
             const countSpanEl = wrapper.querySelector(".filters__count");
             const countSpan = wrapper.querySelector(".filters__count span");
             if (countSpan) {
@@ -6941,7 +7015,7 @@
         function updateGlobalFiltersCount() {
             const popupFilters = document.querySelector(".popup-body-filters");
             if (!popupFilters) return;
-            const allCheckedInputs = popupFilters.querySelectorAll('[data-filters-body] input[type="checkbox"]:checked');
+            const allCheckedInputs = popupFilters.querySelectorAll('[data-filters-body] input[type="checkbox"]:checked, [data-filters-body] input[type="radio"]:checked');
             const countElement = popupFilters.querySelector(".popup-body-filters__header .filters__count span");
             const footer = popupFilters.querySelector("[data-filters-footer-types]");
             const clearButton = footer ? footer.querySelector(".filters__clear") : null;
@@ -6954,6 +7028,7 @@
             if (clearButton) clearButton.disabled = selectedCount === 0;
             if (showButton) showButton.disabled = selectedCount === 0;
         }
+        updateGlobalFiltersCount();
         function clearGlobalFilters() {
             const popupFilters = document.querySelector(".popup-body-filters");
             if (!popupFilters) return;
@@ -6962,8 +7037,24 @@
                 input.checked = false;
                 input.parentElement.classList.remove("_checked");
             }));
+            const allRadios = popupFilters.querySelectorAll('[data-filters-body] input[type="radio"]');
+            allRadios.forEach((radio => {
+                radio.checked = false;
+                radio.dataset.wasChecked = "false";
+                radio.closest(".filters__item").classList.remove("_checked");
+            }));
             updateGlobalFiltersCount();
         }
+        document.querySelectorAll("[data-filters-wrapper]").forEach((wrapper => {
+            const selectedInputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]:checked, [data-filters-body] input[type="radio"]:checked');
+            selectedInputs.forEach((input => {
+                const parentElement = input.closest(".filters__item");
+                parentElement.classList.add("_checked");
+                input.dataset.wasChecked = "true";
+            }));
+            updateButtonState(wrapper);
+            updateCount(wrapper);
+        }));
         const filterButtons = document.querySelectorAll("[data-open-filters]");
         if (filterButtons.length > 0) {
             const mobileFilterWrapper = document.querySelector(".filters__wrapper_mob");
@@ -7095,17 +7186,20 @@
                 i18n: language,
                 useFullscreenPopup: window.innerWidth <= 480.98
             });
-            if (iti.options.useFullscreenPopup) {
-                const popupBody = document.querySelector("#popupIti .popup__body");
-                if (popupBody) iti.options.dropdownContainer = popupBody;
-                let dropdownOpened = false;
+            const inputParentPopup = input.closest(".popup");
+            let dropdownOpened = false;
+            const popupBody = document.querySelector("#popupIti .popup__body");
+            if (iti.options.useFullscreenPopup && popupBody) {
+                iti.options.dropdownContainer = popupBody;
                 if (typeof iti._openDropdown === "function" && typeof iti._closeDropdown === "function") {
                     const originalShowDropdown = iti._openDropdown;
                     const originalCloseDropdown = iti._closeDropdown;
                     iti._openDropdown = function() {
                         if (!dropdownOpened) {
                             dropdownOpened = true;
-                            modules_flsModules.popup.open("#popupIti");
+                            modules_flsModules.popup.open("#popupIti", {
+                                keepParentOpen: !!inputParentPopup
+                            });
                             setTimeout((() => {
                                 originalShowDropdown.call(iti);
                             }), 50);
@@ -7115,7 +7209,11 @@
                         if (dropdownOpened) {
                             dropdownOpened = false;
                             originalCloseDropdown.call(iti);
-                            modules_flsModules.popup.close("#popupIti");
+                            if (document.querySelector("#popupIti.popup_show")) setTimeout((() => {
+                                modules_flsModules.popup.close("#popupIti", {
+                                    keepParentOpen: !!inputParentPopup
+                                });
+                            }), 50);
                         }
                     };
                     const handlePopupClose = event => {

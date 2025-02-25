@@ -254,32 +254,37 @@
                 </button>
                 <div data-filters-wrapper class="filters__wrapper">
                   <div data-filters-head class="filters__header">
-                    <div class="filters__subtitle">Оберіть тип</div>
+                    <div class="filters__subtitle">Оберіть категорію</div>
+                    <div class="filters__count">обрано <span>(0)</span></div>
                   </div>
                   <div data-filters-body class="filters__body filters-spoller">
                     <ul class="filters__list">
                       <li class="filters__item">
-                        <input type="checkbox" id="all-certificates" name="category-type" class="filters__input">
+                        <input type="radio" id="all-certificates" name="category-type" checked class="filters__input">
                         <label for="all-certificates" class="filters__label">
                           <span class="filters__name">Усі сертифікати</span>
-                          <span class="filters__checkbox icon-checkbox"></span>
+                          <span class="filters__radio"></span>
                         </label>
                       </li>
                       <li class="filters__item">
-                        <input type="checkbox" id="physical-certificates" name="category-type" class="filters__input">
+                        <input type="radio" id="physical-certificates" name="category-type" class="filters__input">
                         <label for="physical-certificates" class="filters__label">
                           <span class="filters__name">Фізичні сертифікати</span>
-                          <span class="filters__checkbox icon-checkbox"></span>
+                          <span class="filters__radio"></span>
                         </label>
                       </li>
                       <li class="filters__item">
-                        <input type="checkbox" id="electronic-certificates" name="category-type" class="filters__input">
+                        <input type="radio" id="electronic-certificates" name="category-type" class="filters__input">
                         <label for="electronic-certificates" class="filters__label">
                           <span class="filters__name">Електронні сертифікати</span>
-                          <span class="filters__checkbox icon-checkbox"></span>
+                          <span class="filters__radio"></span>
                         </label>
                       </li>
                     </ul>
+                  </div>
+                  <div data-filters-footer class="filters__footer">
+                    <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
+                    <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
                   </div>
                 </div>
               </div>
@@ -291,7 +296,8 @@
                 </button>
                 <div data-filters-wrapper class="filters__wrapper">
                   <div data-filters-head class="filters__header">
-                    <div class="filters__subtitle">Оберіть для кого</div>
+                    <div class="filters__subtitle">Оберіть категорію</div>
+                    <div class="filters__count">обрано <span>(0)</span></div>
                   </div>
                   <div data-filters-body class="filters__body filters-spoller">
                     <ul class="filters__list">
@@ -352,7 +358,10 @@
                         </label>
                       </li>
                     </ul>
-                    
+                  </div>
+                  <div data-filters-footer class="filters__footer">
+                    <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
+                    <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
                   </div>
                 </div>
               </div>
@@ -378,13 +387,14 @@
                         <span>—</span>
                         <div class="price-filter__input-wr">
                           <span class="price-filter__prefix">₴</span> 
-                          <input data-range-to="50000" autocomplete="off" type="text" value="20000" name="form[]" class="price-filter__input">
+                          <input data-range-to="50000" autocomplete="off" type="text" value="50000" name="form[]" class="price-filter__input">
                         </div>
 											</div>
 										</div>
                   </div>
                   <div data-filters-footer class="filters__footer">
-                    <button type="button" class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
+                    <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
+                    <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
                   </div>
                 </div>
               </div>
