@@ -190,39 +190,92 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 
 
 // == РАБОТА С ПОЛЕМ ВВОДА КОДА СМС ==============================
+// function initSmsInput(inputElement) {
+// 	const smsBody = inputElement.nextElementSibling;
+// 	const charElements = smsBody.querySelectorAll('.input__sms-char');
+
+// 	inputElement.addEventListener('input', () => {
+// 		let value = inputElement.value.replace(/\D/g, "").slice(0, charElements.length);
+// 		inputElement.value = value;
+
+// 		charElements.forEach((charEl, index) => {
+// 			const charNum = charEl.querySelector('.char-num');
+// 			const charPlaceholder = charEl.querySelector('.char-x');
+
+// 			if (value[index]) {
+// 				charNum.style.display = 'inline';
+// 				charNum.textContent = value[index];
+// 				charPlaceholder.style.display = 'none';
+// 			} else {
+// 				charNum.style.display = 'none';
+// 				charNum.textContent = '';
+// 				charPlaceholder.style.display = 'inline';
+// 			}
+
+// 			charEl.classList.remove("sms-cursor");
+// 		});
+
+// 		// Добавление курсора 
+// 		if (value.length < charElements.length) {
+// 			charElements[value.length].classList.add("sms-cursor");
+// 		} else {
+// 			charElements[charElements.length - 1].classList.add("sms-cursor");
+// 		}
+// 	});
+// }
+
 function initSmsInput(inputElement) {
-	const smsBody = inputElement.nextElementSibling;
-	const charElements = smsBody.querySelectorAll('.input__sms-char');
+    const smsBody = inputElement.nextElementSibling;
+    const charElements = smsBody.querySelectorAll('.input__sms-char');
 
-	inputElement.addEventListener('input', () => {
-		let value = inputElement.value.replace(/\D/g, "").slice(0, charElements.length);
-		inputElement.value = value;
+    function updateCursorPosition(valueLength) {
+        charElements.forEach((charEl) => {
+            charEl.classList.remove("sms-cursor", "_back");
+        });
 
-		charElements.forEach((charEl, index) => {
-			const charNum = charEl.querySelector('.char-num');
-			const charPlaceholder = charEl.querySelector('.char-x');
+        // Перемещаем sms-cursor и _back на предыдущий символ, когда символы удаляются
+        if (valueLength === 0) {
+            charElements[0].classList.add("sms-cursor");
+        } else if (valueLength < charElements.length) {
+            charElements[valueLength - 1].classList.add("sms-cursor", "_back");
+        } else {
+            charElements[charElements.length - 1].classList.add("sms-cursor", "_back");
+        }
+    }
 
-			if (value[index]) {
-				charNum.style.display = 'inline';
-				charNum.textContent = value[index];
-				charPlaceholder.style.display = 'none';
-			} else {
-				charNum.style.display = 'none';
-				charNum.textContent = '';
-				charPlaceholder.style.display = 'inline';
-			}
+    inputElement.addEventListener('input', () => {
+        let value = inputElement.value.replace(/\D/g, "").slice(0, charElements.length);
+        inputElement.value = value;
 
-			charEl.classList.remove("sms-cursor");
-		});
+        charElements.forEach((charEl, index) => {
+            const charNum = charEl.querySelector('.char-num');
+            const charPlaceholder = charEl.querySelector('.char-x');
 
-		// Добавление курсора 
-		if (value.length < charElements.length) {
-			charElements[value.length].classList.add("sms-cursor");
-		} else {
-			charElements[charElements.length - 1].classList.add("sms-cursor");
-		}
-	});
+            if (value[index]) {
+                charNum.style.display = 'inline';
+                charNum.textContent = value[index];
+                charPlaceholder.style.display = 'none';
+            } else {
+                charNum.style.display = 'none';
+                charNum.textContent = '';
+                charPlaceholder.style.display = 'inline';
+            }
+        });
+
+        updateCursorPosition(value.length);
+    });
+
+    inputElement.addEventListener('keydown', (event) => {
+        if (event.key === 'Backspace') {
+            setTimeout(() => {
+                let valueLength = inputElement.value.length;
+                updateCursorPosition(valueLength);
+            }, 0);
+        }
+    });
 }
+
+
 
 
 // Валідація форм

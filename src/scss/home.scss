@@ -157,6 +157,8 @@
   // .steps-checkout__btn
   &__btn {
     color: var(--fade-violet-1);
+    font-weight: 600;
+    letter-spacing: 0.02em;
     display: grid;
     align-items: center;
     grid-template-columns: auto auto; 
@@ -165,14 +167,36 @@
     &.step-active {
       color: var(--dark-violet);
     }
-    &.step-completed {}
+    &.step-completed {
+      color: var(--fade-violet-2) !important;
+      .steps-checkout__complete {
+        &::before {
+          color: var(--fade-violet-2) !important;
+        }
+      }
+    }
+    @media (any-hover: hover){
+      &:hover{
+        color: var(--dark-violet);
+        .steps-checkout__num {
+          color: var(--dark-violet);
+        }
+      }
+    }
     @media (min-width:$mobileSmall){
        font-size: toRem(11); 
-    }
-    @media (max-width:$mobileSmall){
+      }
+      @media (max-width:$mobileSmall){
       font-size: toRem(10); 
     }
   }
+	// .steps-checkout__txt
+	&__txt {
+    letter-spacing: 0.02em;
+    @media (max-width:$mobileSmall){
+      line-height: 1.1;
+    }
+	}
   // .steps-checkout__circle
   &__circle {
     aspect-ratio: 1;
@@ -193,7 +217,9 @@
     aspect-ratio: 1;
     border-radius: 50%;
     color: var(--white);
-    background-color: var(--fade-violet-1);
+    background-color: var(--gray-1);
+    color: var(--fade-violet-1);
+    transition: color .3s ease,background-color .3s ease;
     @media (min-width:$mobileSmall){
       width: toRem(24);
     }
@@ -203,6 +229,7 @@
     }
     .step-active & {
       background-color: var(--dark-violet);
+      color: var(--white) !important;
     }
     .step-completed & {
       display: none;
@@ -318,12 +345,15 @@
         
       }
       .orders-checkout__body {
-        // height: toRem(300) !important;
         height: toRem(300);
         padding-bottom: toRem(24) !important;
+        padding-right: toRem(3) !important;
       }
-      .orders-checkout__total {
-        display: none
+      .orders-checkout__lines {
+        display: none;
+        &.lines-total {
+          display: flex;
+        }
       }
     }
   }
@@ -537,12 +567,6 @@
     @extend %flexCenterGap8;
     @extend %fonsSize11-12;
     justify-content: space-between;
-    @media (min-width:$mobileSmall){
-      font-weight: 600;
-    }
-    @media (max-width:$mobileSmall){
-       font-weight: 500; 
-    }
     &:not(:last-child) {
       @media (min-width:$mobileSmall){
         margin-bottom: toRem(13); 
@@ -553,8 +577,9 @@
     }
     &.lines-total {
       .orders-checkout__text {
+        font-weight: 500;
         color: var(--dark-violet);
-        font-size: toRem(14); 
+        @extend %fonsSize13-14;
       }
       .orders-checkout__sum {
         @media (min-width:$mobileSmall){
@@ -705,7 +730,6 @@
 	// .tab-checkout__head
 	&__head {
     @extend %flexCenterGap8;
-    @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
     @media (min-width:$mobileSmall){
       justify-content: space-between;
     }
@@ -718,18 +742,18 @@
   &__title {
     line-height: 1.1;
     font-weight: 500;
-    @include adaptiveValue("font-size", 28, 20,0,1440.98,480.98);
+    @include adaptiveValue("font-size", 28, 20,0,1500.98,480.98);
   }
   // .tab-checkout__item
   &__item {
     @include adaptiveValue("padding-bottom", 32, 24,0,1440.98,480.98);
-    @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
+    @extend  %marginBt32-24;
     border-bottom: toRem(1.5) solid var(--gray-1);
   }
   // .tab-checkout__subtitle
   &__subtitle {
-    font-weight: 500;
     line-height: 1.1;
+    @extend %fonsSize15-14;
     &:not(:last-child) {
       margin-bottom: toRem(16);
     }
@@ -764,7 +788,7 @@
       }
     }
     &:not(:last-child) {
-      @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
+      @extend  %marginBt32-24;
     }
   }
 	// .tab-checkout__row
@@ -835,7 +859,7 @@
 	&__body {
     background-color: var(--white);
     border-radius: toRem(24) toRem(24) toRem(24) toRem(24); 
-    overflow: hidden; 
+    // overflow: hidden; 
     @extend %padding32-24;
     &:first-child {
       @media (min-width:$mobileSmall){
@@ -905,6 +929,8 @@
 	}
   // .tab-checkout__slider
   &__slider {
+    overflow: hidden;
+    @include adaptiveValue("margin-inline", -32, -24,0,1232.98,992.98);
     &:not(:last-child) {
       margin-bottom: toRem(16);
     }
@@ -1039,16 +1065,6 @@
   &__logo {
     display: flex;
     justify-content: center;
-    @media (min-width:$mobileSmall){
-       padding-bottom: toRem(18); 
-    }
-    @media (max-width:$mobileSmall){
-        padding-bottom: toRem(14); 
-        
-    }
-    @media (max-width:$mobileSmall){
-        
-    }
     &::before {
       color: var(--violet);
       @media (min-width:$mobileSmall){
@@ -1069,12 +1085,12 @@
       opacity: 1;
     }
     @media (min-width:toEm(900.98)){
-      padding: toRem(18) toRem(00) toRem(32);
+      padding: toRem(28) toRem(0) toRem(32);
       max-width: toRem(240);
       margin-inline: auto;
     }
     @media (max-width:toEm(900.98)){
-      padding: toRem(14) toRem(0) toRem(24); 
+      padding: toRem(20) toRem(0) toRem(24); 
       
     }
   }
@@ -1239,6 +1255,7 @@
 .slider-checkout {
   position: relative;
   z-index: 5;
+  margin-inline: auto;
   @include adaptiveValue("max-width", 744,535,0,1232.98,900.98);
   &_visible {
     overflow: visible !important;
@@ -1313,6 +1330,12 @@
     &.swiper-button-next {
       &::before {
         transform: rotate(-90deg);
+      }
+    }
+    &.swiper-button-disabled {
+      background-color: var(--gray-2);
+      &::before {
+        color: var(--dark-violet);
       }
     }
     
@@ -1684,7 +1707,6 @@
       color: var(--gray-4);
     }
     @media (max-width:$mobileSmall){
-      font-weight: 600;
       font-size: toRem(14);        
     }
   }
@@ -1710,7 +1732,7 @@
     color: #fff;
     line-height: 1.1;
     ._not-active & {
-      gap: toRem(8);
+      // gap: toRem(8);
       color: var(--gray-4);
     }
     @media (max-width:$mobileSmall){
@@ -1720,6 +1742,7 @@
   // .balance-card__card-img
   &__card-img {
     height: auto;
+    box-shadow: 0 3px 25px 0 rgba(33, 5, 41, 0.06);
     @media (min-width:$mobileSmall){
       width: toRem(48);
     }
@@ -1862,7 +1885,6 @@
   // .card-balance__sub-title
   &__sub-title {
     @extend  %fonsSize11-12;
-    font-weight: 600;
     line-height: 1;
     color: var(--fade-violet-2);
     gap: toRem(6);
@@ -2189,7 +2211,7 @@
     @extend %fonsSize15-14;
     color: #4B3451;
     &:not(:last-child) {
-      @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
+      @extend  %marginBt32-24;
     }
   }
   // .faq__btn

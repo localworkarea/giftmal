@@ -403,7 +403,6 @@ body::after {
 		p {
 			span {
 				@extend  %fonsSize11-12;
-				font-weight: 600;
 			}
 			&:not(:last-child) {
 				@media (min-width:$mobileSmall){

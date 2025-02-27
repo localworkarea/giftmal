@@ -28,9 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
       mark: "."
   });
 
-  // Получаем все элементы с классом .numb и применяем форматирование
   document.querySelectorAll(".numb").forEach((el) => {
-      let num = parseFloat(el.textContent.replace(/\s+/g, "")); // Убираем пробелы перед парсингом
+      let num = parseFloat(el.textContent.replace(/\s+/g, ""));
       if (!isNaN(num)) {
           el.textContent = formatNumb.to(num);
       }
@@ -1382,14 +1381,15 @@ function getLocalizedMonths(lang) {
   return (locales[lang] && locales[lang].months) || defaultMonths;
 }
 
-function getLocalizedRolldateText(lang) {
+function getLocalizedRolldateText(lang, isTime = false) {
   const translations = {
-    'uk': { title: 'Вибрати дату', cancel: 'Відмінити', confirm: 'Вибрати' },
-    'ru': { title: 'Выбрать дату', cancel: 'Отменить', confirm: 'Выбрать' },
-    'en': { title: 'Select date', cancel: 'Cancel', confirm: 'Confirm' }
+    'uk': { title: isTime ? 'Вибрати час' : 'Вибрати дату', cancel: 'Відмінити', confirm: 'Вибрати' },
+    'ru': { title: isTime ? 'Выбрать время' : 'Выбрать дату', cancel: 'Отменить', confirm: 'Выбрать' },
+    'en': { title: isTime ? 'Select time' : 'Select date', cancel: 'Cancel', confirm: 'Confirm' }
   };
   return translations[lang] || translations['en']; // Если нет перевода — используем 'en'
 }
+
 
 function toggleDatepicker(e) {
   if (e.matches) {
@@ -1405,7 +1405,7 @@ function toggleDatepicker(e) {
         minStep: 1,
         typeMonth: 'text',
         localeMonth: getLocalizedMonths(currentLang),
-        lang: getLocalizedRolldateText(currentLang),
+        lang: getLocalizedRolldateText(currentLang, false),
         trigger: 'tap',
         init: function() {
           flsModules.popup.open('#popupRolldate');
@@ -1430,7 +1430,7 @@ function toggleDatepicker(e) {
           el: timepickerSelector,
           format: timeFormat,
           minStep: 1,
-          lang: getLocalizedRolldateText(currentLang),
+          lang: getLocalizedRolldateText(currentLang, true),
           trigger: 'tap',
           init: function() {
             flsModules.popup.open('#popupRolldate');
@@ -1460,7 +1460,18 @@ function toggleDatepicker(e) {
         dateFormat: 'dd.MM.yyyy',
         minDate: '01.01.1900',
         autoClose: true,
-        locale: locales[currentLang] || locales['en']
+        locale: locales[currentLang] || locales['en'],
+        onShow: function(isFinished) {
+          if (!isFinished || !dp.$el) return;
+          const parent = dp.$el.parentElement; 
+          if (parent) parent.classList.add('_show-picker');
+        },
+        onHide: function(isFinished) {
+          if (!isFinished || !dp.$el) return;
+          const parent = dp.$el.parentElement; 
+          if (parent) parent.classList.remove('_show-picker');
+        }
+    
       });
     }
 
@@ -1470,7 +1481,17 @@ function toggleDatepicker(e) {
         onlyTimepicker: true,
         autoClose: true,
         timeFormat: timeFormatAir,  // Локализованный формат времени (с резервом на en)
-        locale: locales[currentLang] || locales['en']
+        onShow: function(isFinished) {
+          if (!isFinished || !tp.$el) return;
+          const parent = tp.$el.parentElement;  
+          if (parent) parent.classList.add('_show-picker');
+        },
+        onHide: function(isFinished) {
+          if (!isFinished || !tp.$el) return;
+          const parent = tp.$el.parentElement; 
+          if (parent) parent.classList.remove('_show-picker');
+        }
+    
       });
     }
   }

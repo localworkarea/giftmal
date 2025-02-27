@@ -42,8 +42,16 @@ textarea {
 	}
   &_social {
     padding: toRem(10) toRem(44); 
+    &[disabled] {
+      @media (any-hover: hover){
+        &:hover{
+          background-color: var(--gray-1);
+        }
+      }
+    }
   }
 	&._form-focus {
+
 	}
 	&._form-error {
 		border-color: var(--red);
@@ -58,6 +66,12 @@ textarea {
       background-color: var(--gray-2);
       &::placeholder {
         color: var(--fade-violet-2);
+      }
+      ~ .input__choise {
+        background-color: var(--dark-violet);
+        &::before {
+          color: var(--white);
+        }
       }
     }
   }
@@ -101,31 +115,26 @@ textarea.input {
 		position: relative;
 		min-width: 0;
 		.form__error {
-			font-weight: 600;
+      @extend %fonsSize11-12;
 			margin-top: toRem(8);
 			color: var(--red);
-			@media (min-width:$mobileSmall){
-				font-size: toRem(11); 
-		 	}
-		 	@media (max-width:$mobileSmall){
-				font-size: toRem(12); 
-		 	}
 		}
+    &._readonly {
+      .input__label {
+        pointer-events: none;
+      }
+    }
 	}
   // .input__label
 	&__label {
-		display: block;
-		font-weight: 600;
-    letter-spacing: 0.02em;
+    @extend %fonsSize11-12;
     ._readonly & {
       color: var(--fade-violet-2);
     }
 		@media (min-width:$mobileSmall){
-			 font-size: toRem(11); 
 			 margin-bottom: toRem(12);
 		}
 		@media (max-width:$mobileSmall){
-				font-size: toRem(12); 
 				margin-bottom: toRem(14);
 		}
 	}
@@ -192,9 +201,26 @@ textarea.input {
     transition: opacity .3s;
     pointer-events: none;
     border-radius: 50%;
-    background-color: var(--dark-violet);
     display: grid;
     place-items: center;
+    transition: background-color .3s ease;
+    ._show-picker & {
+      background-color: var(--dark-violet);
+    }
+    &::before {
+      position: relative;
+      left: .5px;
+      transition: color .3s ease;
+      ._show-picker & {
+        color: var(--white);
+      }
+      @media (min-width:$mobileSmall){
+        font-size: toRem(20);
+      }
+      @media (max-width:$mobileSmall){
+        font-size: toRem(24); 
+      }
+    }
     @media (min-width:$mobileSmall){
       top: toRem(4.5);
       width: toRem(32);
@@ -205,17 +231,6 @@ textarea.input {
       width: toRem(40);
       height: toRem(40);
         
-    }
-
-
-    &::before {
-      color: var(--white);
-      @media (min-width:$mobileSmall){
-        font-size: toRem(20);
-      }
-      @media (max-width:$mobileSmall){
-         font-size: toRem(24); 
-      }
     }
     &.icon-calendar {
     }
@@ -237,7 +252,7 @@ textarea.input {
 			cursor: pointer;
 		}
 		&:not(:last-child) {
-			margin-bottom: toRem(16);
+			margin-bottom: toRem(8);
 		}
 		@media (any-hover: hover){
 			&:hover{
@@ -304,15 +319,19 @@ textarea.input {
 		&.sms-cursor::after {
 			content: "|";
 			position: absolute;
-			right: toRem(-3);
+      left: -1.5px;
 			font-size: toRem(13);
 			color: var(--dark-violet);
 			opacity: 0;
 			animation: blink 1s infinite;
 			._form-focus & {
-				opacity: 1;
+        opacity: 1;
 			}
 		}
+    &._back::after {
+      left: unset;
+      right: toRem(-3);
+    }
 		&.sms-placeholder {
 		}
 	}
