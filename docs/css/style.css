@@ -654,6 +654,10 @@ textarea.input {
 .input__sms-item._form-focus .sms-cursor::after {
   opacity: 1
 }
+.input__sms-item._form-focus ._back::after {
+  left: unset;
+  right: -.1875rem
+}
 .input__sms-chars {
   display: flex;
   align-items: center;
@@ -702,20 +706,16 @@ textarea.input {
 ._form-error .input__sms-char .char-x {
   color: var(--red)
 }
-.input__sms-char.sms-cursor::after {
+.input__sms-char::after {
   content: "|";
   position: absolute;
   z-index: 2;
-  left: -1.5px;
+  left: -.09375rem;
   font-size: .8125rem;
   color: var(--dark-violet);
   opacity: 0;
   -webkit-animation: blink 1s infinite;
   animation: blink 1s infinite
-}
-.input__sms-char._back::after {
-  left: unset;
-  right: -.1875rem
 }
 @-webkit-keyframes blink {
   50% {
@@ -1148,12 +1148,14 @@ textarea.input {
   top: auto;
   bottom: calc(100% + .5rem);
   border-radius: 1.5rem;
-  box-shadow: 0 4px 40px 0 rgba(33,5,41,.16)
+  box-shadow: 0 4px 40px 0 rgba(33,5,41,.16);
+  max-height: 18.75rem
 }
 .select--show-top.select_type-4 .select__options {
   bottom: 100%;
   border-radius: 1.5rem 1.5rem 0 0;
-  box-shadow: 0 -40px 40px 0 rgba(33,5,41,.16)
+  box-shadow: 0 -40px 40px 0 rgba(33,5,41,.16);
+  max-height: 18.75rem
 }
 ._select-tag {
   cursor: pointer
@@ -5077,7 +5079,8 @@ body::after {
 }
 .tab-checkout__body {
   background-color: var(--white);
-  border-radius: 1.5rem 1.5rem 1.5rem 1.5rem
+  border-radius: 1.5rem 1.5rem 1.5rem 1.5rem;
+  overflow: hidden
 }
 .tab-checkout__body:not(:last-child) {
   margin-bottom: .5rem
@@ -5098,9 +5101,6 @@ body::after {
 .tab-checkout__summary._spoller-active .tab-checkout__arrow {
   -webkit-transform: rotate(-180deg);
   transform: rotate(-180deg)
-}
-.tab-checkout__slider {
-  overflow: hidden
 }
 .tab-checkout__slider:not(:last-child) {
   margin-bottom: 1rem
@@ -5257,6 +5257,12 @@ body::after {
 }
 .slider-checkout_visible {
   overflow: visible!important
+}
+.slider-checkout_visible::before {
+  background: linear-gradient(to right,rgba(255,255,255,0) 0,#fff 100%)
+}
+.slider-checkout_visible::after {
+  background: linear-gradient(to left,rgba(255,255,255,0) 0,#fff 100%)
 }
 .slider-checkout__nav {
   display: flex;
@@ -6654,6 +6660,7 @@ body::after {
   .gift-card__img {
     border-radius: 1rem
   }
+  .slider-checkout_visible::after,
   .slider-checkout_visible::before {
     content: "";
     position: absolute;
@@ -6661,16 +6668,10 @@ body::after {
     bottom: 0;
     height: calc(100% - 2.5rem);
     width: 50px;
-    background: linear-gradient(to right,rgba(255,255,255,0) 0,#fff 100%);
     pointer-events: none
   }
   .card-balance__item {
     grid-template-columns: 16% 22% 1fr 22%
-  }
-}
-@media (min-width:56.31125em)and (min-width:77.06125em) {
-  .slider-checkout_visible::before {
-    right: -2rem
   }
 }
 @media (min-width:62.06125em) {
@@ -6718,6 +6719,12 @@ body::after {
   }
   .slider-checkout {
     max-width: 46.5rem
+  }
+  .slider-checkout_visible::before {
+    right: -2rem
+  }
+  .slider-checkout_visible::after {
+    left: -2rem
   }
 }
 @media (min-width:81.31125em) {
@@ -8192,10 +8199,11 @@ body::after {
   .slider-checkout {
     max-width: clamp(33.4375rem ,-2.0114495482rem + 62.9518072289vw ,46.5rem)
   }
-}
-@media (min-width:56.31125em)and (min-width:56.31125em)and (max-width:77.06125em) {
   .slider-checkout_visible::before {
     right: clamp(-2rem ,-.1431024096rem + -2.4096385542vw ,-1.5rem)
+  }
+  .slider-checkout_visible::after {
+    left: clamp(-2rem ,-.1431024096rem + -2.4096385542vw ,-1.5rem)
   }
 }
 @media (max-width:56.31125em)and (min-width:34.43625em) {

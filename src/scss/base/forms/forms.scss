@@ -258,6 +258,10 @@ textarea.input {
       .sms-cursor::after {
         opacity: 1;
       }
+      ._back::after {
+        left: unset;
+        right: toRem(-3);
+      }
     }
 		@media (any-hover: hover){
 			&:hover{
@@ -321,22 +325,21 @@ textarea.input {
 			}
 		}
 		
-		&.sms-cursor::after {
-			content: "|";
-			position: absolute;
+		// &.sms-cursor::after {
+    // }
+    // &._back::after {
+    //   left: unset;
+    //   right: toRem(-3);
+    // }
+    &::after {
+      content: "|";
+      position: absolute;
       z-index: 2;
-      left: -1.5px;
-			font-size: toRem(13);
-			color: var(--dark-violet);
-			opacity: 0;
-			animation: blink 1s infinite;
-			// ._form-focus & {
-      //   opacity: 1;
-			// }
-		}
-    &._back::after {
-      left: unset;
-      right: toRem(-3);
+      left: toRem(-1.5);
+      font-size: toRem(13);
+      color: var(--dark-violet);
+      opacity: 0;
+      animation: blink 1s infinite;
     }
 		&.sms-placeholder {
 		}

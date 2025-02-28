@@ -859,7 +859,7 @@
 	&__body {
     background-color: var(--white);
     border-radius: toRem(24) toRem(24) toRem(24) toRem(24); 
-    // overflow: hidden; 
+    overflow: hidden; 
     @extend %padding32-24;
     &:first-child {
       @media (min-width:$mobileSmall){
@@ -929,7 +929,7 @@
 	}
   // .tab-checkout__slider
   &__slider {
-    overflow: hidden;
+    // overflow: hidden;
     @include adaptiveValue("margin-inline", -32, -24,0,1232.98,992.98);
     &:not(:last-child) {
       margin-bottom: toRem(16);
@@ -1259,7 +1259,8 @@
   @include adaptiveValue("max-width", 744,535,0,1232.98,900.98);
   &_visible {
     overflow: visible !important;
-    &::before {
+    &::before,
+    &::after {
       @media (min-width: toEm(900.98)) {
         content: '';
         position: absolute;
@@ -1267,12 +1268,17 @@
         bottom: 0;
         height: calc(100% - toRem(40));
         width: 50px;
-        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
-        @include adaptiveValue("right", -32, -24, 2, 1232.98, 900.98);
         pointer-events: none;
       }
     }
-    
+    &::before {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+      @include adaptiveValue("right", -32, -24, 2, 1232.98, 900.98);
+    }
+    &::after {
+      background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+      @include adaptiveValue("left", -32, -24, 2, 1232.98, 900.98);
+    }
   }
   @media (min-width:$mobileSmall){
      padding-bottom: toRem(16); 
