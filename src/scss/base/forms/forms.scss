@@ -21,11 +21,7 @@ textarea {
 	background-color: var(--gray-1);
 	color: var(--dark-violet);
 	cursor: pointer;
-	transition: background-color .3s ease, color .3s ease, border .3s ease, outline .3s ease;
-  // .input_white
-  &_white {
-    background-color: var(--white);
-  }
+	transition: background-color .3s ease, color .3s ease, border .3s ease, outline .3s ease, box-shadow .3s ease;
 	&_sm {
     @media (min-width:$mobileSmall){
       min-height: toRem(40);
@@ -37,7 +33,7 @@ textarea {
     }
 	}
 	&_lg {
-		min-height: toRem(48);
+    min-height: toRem(48);
 		font-size: toRem(15);
 	}
   &_social {
@@ -52,15 +48,34 @@ textarea {
   }
 	&._form-focus {
 
-	}
+  }
 	&._form-error {
 		border-color: var(--red);
 		outline-color: var(--red);
 		color: var(--red);
 	}
 	&.intl-input {
-		padding-left: toRem(16) !important;
+    padding-left: toRem(16) !important;
 	}
+  // .input_white
+  &_white {
+    letter-spacing: 0.25em;
+    background-color: var(--white) !important;
+    &._form-focus {
+      box-shadow: 0 4px 20px 0 rgba(33, 5, 41, 0.07);
+    }
+    &::placeholder {
+      letter-spacing: 0;
+    }
+    @media (any-hover: hover){
+      &:hover{
+        box-shadow: 0 4px 20px 0 rgba(33, 5, 41, 0.07);
+        &::placeholder {
+          color: var(--dark-violet) !important;
+        }
+      }
+    }
+  }
   @media (any-hover: hover){
     &:hover{
       background-color: var(--gray-2);
@@ -75,6 +90,7 @@ textarea {
       }
     }
   }
+
   &._readonly {
     min-height: auto;
     padding: 0;

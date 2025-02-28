@@ -99,315 +99,335 @@
       }
   }
 
-
   Rolldate.prototype = {
-      constructor: Rolldate,
-      baseData: function baseData() {
-          return {
-              domId: {
-                  YYYY: 'rolldate-year',
-                  MM: 'rolldate-month',
-                  DD: 'rolldate-day',
-                  hh: 'rolldate-hour',
-                  mm: 'rolldate-min',
-                  ss: 'rolldate-sec'
-              },
-              opts: { //Plug-in default configuration
-                  el: '',
-                //   format: 'YYYY-MM-DD',
-                  format: 'YYYY-MM-DD hh:mm A',
-                  beginYear: 2000,
-                  endYear: 2100,
-                  init: null,
-                  moveEnd: null,
-                  confirm: null,
-                  cancel: null,
-                  minStep: 1,
-                  trigger: 'tap',
-                  lang: { title: 'Title', cancel: 'Cancel', confirm: 'Confirm', year: 'year', month: 'month', day: 'day', hour: 'hour', min: 'min', sec: 'sec' },
-                  typeMonth: 'numeric',
-                  localeMonth: 'January_February_March_April_May_June_July_August_September_October_November_December'
-              }
-          };
-      },
-      extend: function extend(config) {
-          var _this = this,
-              opts = _this.baseData().opts;
+    constructor: Rolldate,
+    baseData: function baseData() {
+        return {
+            domId: {
+                YYYY: 'rolldate-year',
+                MM: 'rolldate-month',
+                DD: 'rolldate-day',
+                hh: 'rolldate-hour',
+                mm: 'rolldate-min',
+                ss: 'rolldate-sec'
+            },
+            opts: { //Plug-in default configuration
+                el: '',
+              //   format: 'YYYY-MM-DD',
+                format: 'YYYY-MM-DD hh:mm A',
+                beginYear: 2000,
+                endYear: 2100,
+                init: null,
+                moveEnd: null,
+                confirm: null,
+                cancel: null,
+                minStep: 1,
+                trigger: 'tap',
+                lang: { title: 'Title', cancel: 'Cancel', confirm: 'Confirm', year: 'year', month: 'month', day: 'day', hour: 'hour', min: 'min', sec: 'sec' },
+                typeMonth: 'numeric',
+                localeMonth: 'January_February_March_April_May_June_July_August_September_October_November_December'
+            }
+        };
+    },
+    extend: function extend(config) {
+        var _this = this,
+            opts = _this.baseData().opts;
 
-          for (var key in opts) {
-              if (opts[key] && Object.prototype.toString.call(opts[key]) == '[object Object]') {
-                  for (var key2 in config[key]) {
-                      opts[key][key2] = config[key][key2] == undefined ? opts[key][key2] : config[key][key2];
+        for (var key in opts) {
+            if (opts[key] && Object.prototype.toString.call(opts[key]) == '[object Object]') {
+                for (var key2 in config[key]) {
+                    opts[key][key2] = config[key][key2] == undefined ? opts[key][key2] : config[key][key2];
+                }
+            } else {
+                opts[key] = config[key] || opts[key];
+            }
+        }
+        _this.config = opts;
+    },
+    createUI: function createUI() {
+        var _this = this,
+            data = _this.baseData(),
+            config = _this.config,
+            domId = data.domId,
+            FormatArr = config.format.split(/-|\/|\s|:/g),
+            len = FormatArr.length,
+            ul = '',
+            date = config.el ? _this.$(config.el).bindDate || new Date() : _this.bindDate || new Date(),
+            itemClass = '',
+            lang = config.lang,
+            typeMonth = config.typeMonth,
+            localeMonth = typeof config.localeMonth === 'string' ? config.localeMonth.split('_') : config.localeMonth;
+            _this.scroll = {};
+        for (var i = 0; i < len; i++) {
+            var f = FormatArr[i],
+                domMndex = 0;
+
+            ul += '<div id="' + domId[f] + '"><ul class="wheel-scroll">';
+
+            if (f == 'YYYY') {
+                for (var j = config.beginYear; j <= config.endYear; j++) {
+                    itemClass = j == date.getFullYear() ? 'active' : '';
+
+                    ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + j + '</li>';
+                    domMndex++;
+                }
+            } else if (f == 'MM') {
+                for (var k = 1; k <= 12; k++) {
+                    itemClass = k == date.getMonth() + 1 ? 'active' : '';
+                    if (typeMonth === 'text') {
+                        ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + localeMonth[domMndex] + '</li>';
+                    } else {
+                        ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (k < 10 ? '0' + k : k) + '</li>';
+                    }
+                    domMndex++;
+                }
+            } else if (f == 'DD') {
+                var day = _this.bissextile(date.getFullYear(), date.getMonth() + 1);
+                for (var l = 1; l <= day; l++) {
+                    itemClass = l == date.getDate() ? 'active' : '';
+
+                    ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (l < 10 ? '0' + l : l) + '</li>';
+                    domMndex++;
+                }
+            } 
+          //   else if (f == 'hh') {
+          //       for (var m = 0; m <= 23; m++) {
+          //           itemClass = m == date.getHours() ? 'active' : '';
+
+          //           ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
+          //           domMndex++;
+          //       }
+          //   } 
+          else if (f == 'hh') {
+              // Если формат 12-часовой
+              if (config.format.includes('A')) {
+                  for (var m = 1; m <= 12; m++) { // Часы от 1 до 12 для 12-часового формата
+                      itemClass = (m == (date.getHours() % 12 || 12)) ? 'active' : '';
+                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
+                      domMndex++;
                   }
               } else {
-                  opts[key] = config[key] || opts[key];
+                  // Если формат 24-часовой
+                  for (var m = 0; m <= 23; m++) { // Часы от 0 до 23 для 24-часового формата
+                      itemClass = m == date.getHours() ? 'active' : '';
+                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
+                      domMndex++;
+                  }
               }
           }
-          _this.config = opts;
-      },
-      createUI: function createUI() {
-          var _this = this,
-              data = _this.baseData(),
-              config = _this.config,
-              domId = data.domId,
-              FormatArr = config.format.split(/-|\/|\s|:/g),
-              len = FormatArr.length,
-              ul = '',
-              date = config.el ? _this.$(config.el).bindDate || new Date() : _this.bindDate || new Date(),
-              itemClass = '',
-              lang = config.lang,
-              typeMonth = config.typeMonth,
-              localeMonth = typeof config.localeMonth === 'string' ? config.localeMonth.split('_') : config.localeMonth;
+            else if (f == 'mm') {
+                for (var n = 0; n <= 59; n += config.minStep) {
+                    itemClass = n == date.getMinutes() ? 'active' : '';
 
-          for (var i = 0; i < len; i++) {
-              var f = FormatArr[i],
-                  domMndex = 0;
-
-              ul += '<div id="' + domId[f] + '"><ul class="wheel-scroll">';
-
-              if (f == 'YYYY') {
-                  for (var j = config.beginYear; j <= config.endYear; j++) {
-                      itemClass = j == date.getFullYear() ? 'active' : '';
-
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + j + '</li>';
-                      domMndex++;
-                  }
-              } else if (f == 'MM') {
-                  for (var k = 1; k <= 12; k++) {
-                      itemClass = k == date.getMonth() + 1 ? 'active' : '';
-                      if (typeMonth === 'text') {
-                          ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + localeMonth[domMndex] + '</li>';
-                      } else {
-                          ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (k < 10 ? '0' + k : k) + '</li>';
-                      }
-                      domMndex++;
-                  }
-              } else if (f == 'DD') {
-                  var day = _this.bissextile(date.getFullYear(), date.getMonth() + 1);
-                  for (var l = 1; l <= day; l++) {
-                      itemClass = l == date.getDate() ? 'active' : '';
-
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (l < 10 ? '0' + l : l) + '</li>';
-                      domMndex++;
-                  }
-              } 
-            //   else if (f == 'hh') {
-            //       for (var m = 0; m <= 23; m++) {
-            //           itemClass = m == date.getHours() ? 'active' : '';
-
-            //           ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
-            //           domMndex++;
-            //       }
-            //   } 
-            else if (f == 'hh') {
-                // Если формат 12-часовой
-                if (config.format.includes('A')) {
-                    for (var m = 1; m <= 12; m++) { // Часы от 1 до 12 для 12-часового формата
-                        itemClass = (m == (date.getHours() % 12 || 12)) ? 'active' : '';
-                        ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
-                        domMndex++;
-                    }
-                } else {
-                    // Если формат 24-часовой
-                    for (var m = 0; m <= 23; m++) { // Часы от 0 до 23 для 24-часового формата
-                        itemClass = m == date.getHours() ? 'active' : '';
-                        ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
-                        domMndex++;
-                    }
+                    ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (n < 10 ? '0' + n : n) + '</li>';
+                    domMndex++;
                 }
-            }
-              else if (f == 'mm') {
-                  for (var n = 0; n <= 59; n += config.minStep) {
-                      itemClass = n == date.getMinutes() ? 'active' : '';
+            } else if (f == 'ss') {
+                for (var o = 0; o <= 59; o++) {
+                    itemClass = o == date.getSeconds() ? 'active' : '';
 
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (n < 10 ? '0' + n : n) + '</li>';
-                      domMndex++;
-                  }
-              } else if (f == 'ss') {
-                  for (var o = 0; o <= 59; o++) {
-                      itemClass = o == date.getSeconds() ? 'active' : '';
-
-                      ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (o < 10 ? '0' + o : o) + '</li>';
-                      domMndex++;
-                  }
-              } 
-            //   else if (f == 'hh') {
-            //     for (var m = 1; m <= 12; m++) { // Теперь от 1 до 12
-            //         itemClass = (m == (date.getHours() % 12 || 12)) ? 'active' : '';
-            //         ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
-            //         domMndex++;
-            //     }
-            // } 
-            else if (f == 'A') { // Добавляем выбор AM/PM
-                var periods = ['AM', 'PM'];
-                for (var p = 0; p < 2; p++) {
-                    itemClass = (periods[p] === (date.getHours() >= 12 ? 'PM' : 'AM')) ? 'active' : '';
-                    ul += '<li class="wheel-item ' + itemClass + '" data-index="' + p + '">' + periods[p] + '</li>';
+                    ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (o < 10 ? '0' + o : o) + '</li>';
+                    domMndex++;
                 }
-            }
-            
-              ul += '</ul></div>';
-          }
-          var $html = '<div class="rolldate-mask"></div>\n            <div class="rolldate-panel">\n                <header>\n                    <span class="rolldate-btn rolldate-cancel">' + lang.cancel + '</span>\n                    ' + lang.title + '\n                    <span class="rolldate-btn rolldate-confirm">' + lang.confirm + '</span>\n                </header>\n                <section class="rolldate-content">\n                    <div class="rolldate-dim mask-top"></div>\n                    <div class="rolldate-dim mask-bottom"></div>\n                    <div class="rolldate-wrapper">\n                        ' + ul + '\n                    </div>\n                </section>\n            </div>',
-              box = document.createElement("div");
-
-          // 在微信中输入框在底部时，偶现按钮点击范围被挤压，暂定增加按钮高度
-          box.className = 'rolldate-container' + (!!navigator.userAgent.match(/MicroMessenger/i) ? ' wx' : '');
-          box.innerHTML = $html;
-        //   document.body.appendChild(box);
-
-          const popupBody = document.querySelector("#popupRolldate .popup__body");
-            if (popupBody) {
-              popupBody.appendChild(box);
-            } else {
-              document.body.appendChild(box);
-            }
-
-
-          _this.scroll = {};
-
-          var _loop = function _loop(_i) {
-              var $id = domId[FormatArr[_i]];
-
-              _this.scroll[FormatArr[_i]] = new bscroll_min('#' + $id, {
-                  wheel: {
-                      selectedIndex: 0
-                  }
-              });
-
-              var that = _this.scroll[FormatArr[_i]],
-                  active = _this.$('#' + $id + ' .active'),
-                  index = active ? active.getAttribute('data-index') : Math.round(date.getMinutes() / config.minStep);
-
-              that.wheelTo(index);
-              // 滚动结束
-              that.on('scrollEnd', function () {
-                  if (config.moveEnd) {
-                      config.moveEnd.call(_this, that);
-                  }
-                  if ([domId['YYYY'], domId['MM']].indexOf(that.wrapper.id) != -1 && _this.scroll['YYYY'] && _this.scroll['MM'] && _this.scroll['DD']) {
-                      var prevDay = _this.getSelected(_this.scroll['DD']),
-                          _day = _this.bissextile(_this.getSelected(_this.scroll['YYYY']), _this.getSelected(_this.scroll['MM'])),
-                          li = '';
-
-                      if (_day != _this.$('#' + domId['DD'] + ' li', 1).length) {
-
-                          for (var _l = 1; _l <= _day; _l++) {
-                              li += '<li class="wheel-item">' + (_l < 10 ? '0' + _l : _l) + '</li>';
-                          }
-                          _this.$('#' + domId['DD'] + ' ul').innerHTML = li;
-                          _this.scroll['DD'].refresh();
-                      }
-                  }
-              });
-          };
-
-          for (var _i = 0; _i < len; _i++) {
-              _loop(_i);
-          }
-          _this.$('.rolldate-panel').className = 'rolldate-panel fadeIn';
-      },
-      $: function $(selector, flag) {
-          if (typeof selector != 'string' && selector.nodeType) {
-              return selector;
-          }
-
-          return flag ? document.querySelectorAll(selector) : document.querySelector(selector);
-      },
-      tap: function tap(el, fn) {
-          var _this = this,
-              hasTouch = "ontouchstart" in window;
-
-          if (hasTouch && _this.config.trigger == 'tap') {
-              var o = {};
-              el.addEventListener('touchstart', function (e) {
-                  var t = e.touches[0];
-
-                  o.startX = t.pageX;
-                  o.startY = t.pageY;
-                  o.sTime = +new Date();
-              });
-              el.addEventListener('touchend', function (e) {
-                  var t = e.changedTouches[0];
-
-                  o.endX = t.pageX;
-                  o.endY = t.pageY;
-                  if (+new Date() - o.sTime < 300) {
-                      if (Math.abs(o.endX - o.startX) + Math.abs(o.endY - o.startY) < 20) {
-                          e.preventDefault();
-                          fn.call(this, e);
-                      }
-                  }
-                  o = {};
-              });
-          } else {
-              el.addEventListener('click', function (e) {
-                  fn.call(this, e);
-              });
-          }
-      },
-      show: function show() {
-          var _this = this,
-              config = _this.config,
-              el = void 0;
-
-          if (config.el) {
-              el = _this.$(config.el);
-
-              if (!el.bindRolldate) {
-                  return;
-              }
-              if (el.nodeName.toLowerCase() == 'input') {
-                  el.blur();
+            } 
+          //   else if (f == 'hh') {
+          //     for (var m = 1; m <= 12; m++) { // Теперь от 1 до 12
+          //         itemClass = (m == (date.getHours() % 12 || 12)) ? 'active' : '';
+          //         ul += '<li class="wheel-item ' + itemClass + '" data-index="' + domMndex + '">' + (m < 10 ? '0' + m : m) + '</li>';
+          //         domMndex++;
+          //     }
+          // } 
+          else if (f == 'A') { // Добавляем выбор AM/PM
+              var periods = ['AM', 'PM'];
+              for (var p = 0; p < 2; p++) {
+                  itemClass = (periods[p] === (date.getHours() >= 12 ? 'PM' : 'AM')) ? 'active' : '';
+                  ul += '<li class="wheel-item ' + itemClass + '" data-index="' + p + '">' + periods[p] + '</li>';
               }
           }
-        //   if (_this.$('.rolldate-container')) {
-        //       return;
-        //   }
-        if (_this.$('.rolldate-container')) {
-            _this.destroy(true);  // Уничтожаем старый элемент
+          
+            ul += '</ul></div>';
         }
-          if (config.init && config.init.call(_this) === false) {
-              return;
+        var $html = '<div class="rolldate-mask"></div>\n            <div class="rolldate-panel">\n                <header>\n                    <span class="rolldate-btn rolldate-cancel">' + lang.cancel + '</span>\n                    ' + lang.title + '\n                    <span class="rolldate-btn rolldate-confirm">' + lang.confirm + '</span>\n                </header>\n                <section class="rolldate-content">\n                    <div class="rolldate-dim mask-top"></div>\n                    <div class="rolldate-dim mask-bottom"></div>\n                    <div class="rolldate-wrapper">\n                        ' + ul + '\n                    </div>\n                </section>\n            </div>',
+            box = document.createElement("div");
+
+        // 在微信中输入框在底部时，偶现按钮点击范围被挤压，暂定增加按钮高度
+        box.className = 'rolldate-container' + (!!navigator.userAgent.match(/MicroMessenger/i) ? ' wx' : '');
+        box.innerHTML = $html;
+      //   document.body.appendChild(box);
+
+        const popupBody = document.querySelector("#popupRolldate .popup__body");
+          if (popupBody) {
+            popupBody.appendChild(box);
+          } else {
+            document.body.appendChild(box);
           }
 
-          _this.createUI();
-          _this.event();
-      },
-      hide: function hide(flag) {
-          var _this = this,
-              el = _this.$('.rolldate-panel.fadeIn');
 
-          if (el) {
-              el.className = 'rolldate-panel fadeOut';
-              _this.destroy(flag);
-          }
-      },
-      event: function event() {
-          var _this = this,
-              mask = _this.$('.rolldate-mask'),
-              cancel = _this.$('.rolldate-cancel'),
-              confirm = _this.$('.rolldate-confirm');
+        _this.scroll = {};
 
-          _this.tap(mask, function () {
-              _this.hide(1);
-          });
-          _this.tap(cancel, function () {
-              _this.hide(1);
-          });
+        var _loop = function _loop(_i) {
+            var $id = domId[FormatArr[_i]];
 
-          _this.tap(confirm, function () {
+            if (_this.scroll[FormatArr[_i]]) {
+                _this.scroll[FormatArr[_i]].destroy();
+            }
+
+            _this.scroll[FormatArr[_i]] = new bscroll_min('#' + $id, {
+                wheel: {
+                    selectedIndex: 0
+                }
+            });
+
+            var that = _this.scroll[FormatArr[_i]],
+                active = _this.$('#' + $id + ' .active'),
+                index = active ? active.getAttribute('data-index') : Math.round(date.getMinutes() / config.minStep);
+
+            that.wheelTo(index);
+            // 滚动结束
+            that.on('scrollEnd', function () {
+                if (config.moveEnd) {
+                    config.moveEnd.call(_this, that);
+                }
+            
+                if ([domId['YYYY'], domId['MM']].includes(that.wrapper.id) && _this.scroll['YYYY'] && _this.scroll['MM'] && _this.scroll['DD']) {
+                    var prevDay = _this.getSelected(_this.scroll['DD']),
+                        _day = _this.bissextile(_this.getSelected(_this.scroll['YYYY']), _this.getSelected(_this.scroll['MM'])),
+                        li = '';
+            
+                    if (_day !== _this.$('#' + domId['DD'] + ' li', 1).length) {
+                        for (var _l = 1; _l <= _day; _l++) {
+                            li += '<li class="wheel-item">' + (_l < 10 ? '0' + _l : _l) + '</li>';
+                        }
+                        _this.$('#' + domId['DD'] + ' ul').innerHTML = li;
+            
+                        // Удаляем старый bscroll_min перед обновлением списка
+                        if (_this.scroll['DD']) {
+                            _this.scroll['DD'].destroy();
+                        }
+            
+                        // Создаем новый bscroll_min для обновленного списка
+                        _this.scroll['DD'] = new bscroll_min('#' + domId['DD'], { wheel: { selectedIndex: 0 } });
+            
+                        // Устанавливаем выбранный день обратно (чтобы он не сбрасывался)
+                        var newIndex = Math.min(prevDay - 1, _day - 1); // Предотвращаем выход за границы массива
+                        _this.scroll['DD'].wheelTo(newIndex);
+                    }
+                }
+            });
+            
+        };
+
+        for (var _i = 0; _i < len; _i++) {
+            _loop(_i);
+        }
+        _this.$('.rolldate-panel').className = 'rolldate-panel fadeIn';
+    },
+    $: function $(selector, flag) {
+        if (typeof selector != 'string' && selector.nodeType) {
+            return selector;
+        }
+
+        return flag ? document.querySelectorAll(selector) : document.querySelector(selector);
+    },
+    tap: function tap(el, fn) {
+        var _this = this,
+            hasTouch = "ontouchstart" in window;
+
+        if (hasTouch && _this.config.trigger == 'tap') {
+            var o = {};
+            el.addEventListener('touchstart', function (e) {
+                var t = e.touches[0];
+
+                o.startX = t.pageX;
+                o.startY = t.pageY;
+                o.sTime = +new Date();
+            });
+            el.addEventListener('touchend', function (e) {
+                var t = e.changedTouches[0];
+
+                o.endX = t.pageX;
+                o.endY = t.pageY;
+                if (+new Date() - o.sTime < 300) {
+                    if (Math.abs(o.endX - o.startX) + Math.abs(o.endY - o.startY) < 20) {
+                        e.preventDefault();
+                        fn.call(this, e);
+                    }
+                }
+                o = {};
+            });
+        } else {
+            el.addEventListener('click', function (e) {
+                fn.call(this, e);
+            });
+        }
+    },
+    show: function show() {
+        var _this = this,
+            config = _this.config,
+            el = void 0;
+
+        if (config.el) {
+            el = _this.$(config.el);
+
+            if (!el.bindRolldate) {
+                return;
+            }
+            if (el.nodeName.toLowerCase() == 'input') {
+                el.blur();
+            }
+        }
+      //   if (_this.$('.rolldate-container')) {
+      //       return;
+      //   }
+      if (_this.$('.rolldate-container')) {
+          _this.destroy(true);  // Уничтожаем старый элемент
+      }
+        if (config.init && config.init.call(_this) === false) {
+            return;
+        }
+
+        _this.createUI();
+        _this.event();
+    },
+    hide: function hide(flag) {
+        var _this = this,
+            el = _this.$('.rolldate-panel.fadeIn');
+
+        if (el) {
+            el.className = 'rolldate-panel fadeOut';
+            _this.destroy(flag);
+        }
+    },
+    event: function event() {
+        var _this = this,
+            mask = _this.$('.rolldate-mask'),
+            cancel = _this.$('.rolldate-cancel'),
+            confirm = _this.$('.rolldate-confirm');
+    
+        // Убираем старые обработчики перед добавлением новых
+        mask.removeEventListener('click', _this.hide);
+        cancel.removeEventListener('click', _this.hide);
+        confirm.removeEventListener('click', _this.confirmSelection);
+    
+        _this.tap(mask, function () {
+            _this.hide(1);
+        });
+        _this.tap(cancel, function () {
+            _this.hide(1);
+        });
+    
+        _this.confirmSelection = function () {
             var config = _this.config,
                 el = void 0,
                 date = config.format,
                 newDate = new Date(),
-                ampm = 'AM'; // По умолчанию AM
-        
+                ampm = 'AM';
+    
             for (var f in _this.scroll) {
                 var d = _this.getSelected(_this.scroll[f]);
-        
+    
                 if (f === 'A') {
-                    ampm = d; // Получаем 'AM' или 'PM'
+                    ampm = d;
                 } else {
                     date = date.replace(f, d);
                     if (f == 'YYYY') {
@@ -431,17 +451,15 @@
                     }
                 }
             }
-        
-            // Проверяем и заменяем AM/PM в строке
+    
             if (date.indexOf('A') !== -1) {
-                date = date.replace(/A/g, ampm); // Заменяем все символы A на AM или PM
+                date = date.replace(/A/g, ampm);
             }
-        
-            // Выводим результат в инпут
+    
             if (config.el) {
                 el = _this.$(config.el);
                 if (el.nodeName.toLowerCase() == 'input') {
-                    el.value = date; // Передаем строку с AM/PM
+                    el.value = date;
                 } else {
                     el.innerText = date;
                 }
@@ -449,55 +467,54 @@
             } else {
                 _this.bindDate = newDate;
             }
-        
+    
             _this.hide(1);
-        });
-        
-        
-      },
-      bissextile: function bissextile(year, month) {
-          var day = void 0;
-          if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
-              day = 31;
-          } else if (month == 4 || month == 6 || month == 11 || month == 9) {
-              day = 30;
-          } else if (month == 2) {
-              if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
-                  //闰年
-                  day = 29;
-              } else {
-                  day = 28;
-              }
-          }
-          return day;
-      },
-      destroy: function destroy(flag) {
-          var _this = this,
-              config = _this.config;
+        };
+    
+        _this.tap(confirm, _this.confirmSelection);
+    },
+    bissextile: function bissextile(year, month) {
+        var day = void 0;
+        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+            day = 31;
+        } else if (month == 4 || month == 6 || month == 11 || month == 9) {
+            day = 30;
+        } else if (month == 2) {
+            if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+                //闰年
+                day = 29;
+            } else {
+                day = 28;
+            }
+        }
+        return day;
+    },
+    destroy: function destroy(flag) {
+        var _this = this,
+            config = _this.config;
 
-          for (var i in _this.scroll) {
-              _this.scroll[i].destroy();
-          }
+        for (var i in _this.scroll) {
+            _this.scroll[i].destroy();
+        }
 
-          if (flag && config.cancel) {
-              config.cancel.call(_this);
-          }
-       
-        setTimeout(function () {
-            var el = _this.$('.rolldate-container');
-            const popupBody = document.querySelector("#popupRolldate .popup__body");
-            // if (el && el.parentNode) {
-            //     document.body.removeChild(el);
-            // }
-            if (popupBody && el && el.parentNode === popupBody) {
-                popupBody.removeChild(el);
-              } else if (el && el.parentNode) {
-                document.body.removeChild(el);
-              }
-        }, 100);
-        
-      },
- 
+        if (flag && config.cancel) {
+            config.cancel.call(_this);
+        }
+     
+      setTimeout(function () {
+          var el = _this.$('.rolldate-container');
+          const popupBody = document.querySelector("#popupRolldate .popup__body");
+        //   if (el && el.parentNode) {
+        //       document.body.removeChild(el);
+        //   }
+          if (popupBody && el && el.parentNode === popupBody) {
+              popupBody.removeChild(el);
+            } else if (el && el.parentNode) {
+              document.body.removeChild(el);
+            }
+      }, 100);
+      
+    },
     getSelected: function getSelected(scroll) {
         var _this = this,
             el = this.$('#' + scroll.wrapper.id + ' li', 1)[scroll.getSelectedIndex()],
@@ -521,13 +538,14 @@
     
         return value;
     }
-    
-    
-    
-    
   };
+
+
+
   Rolldate.version = version;
 
   return Rolldate;
+
+  
 
 }));
