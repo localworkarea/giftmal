@@ -254,6 +254,11 @@ textarea.input {
 		&:not(:last-child) {
 			margin-bottom: toRem(8);
 		}
+    &._form-focus {
+      .sms-cursor::after {
+        opacity: 1;
+      }
+    }
 		@media (any-hover: hover){
 			&:hover{
 				.input__sms-chars {
@@ -319,14 +324,15 @@ textarea.input {
 		&.sms-cursor::after {
 			content: "|";
 			position: absolute;
+      z-index: 2;
       left: -1.5px;
 			font-size: toRem(13);
 			color: var(--dark-violet);
 			opacity: 0;
 			animation: blink 1s infinite;
-			._form-focus & {
-        opacity: 1;
-			}
+			// ._form-focus & {
+      //   opacity: 1;
+			// }
 		}
     &._back::after {
       left: unset;

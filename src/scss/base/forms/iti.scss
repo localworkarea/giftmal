@@ -173,7 +173,6 @@
   border-width: 0;
   outline: none;
   border-radius: toRem(24);
-  // margin-bottom: toRem(8);
   &::placeholder {
     color: var(--fade-violet-2);
   }
@@ -188,6 +187,7 @@
     font-size: toRem(14);
     padding: toRem(0) toRem(16);
     background-color: var(--gray-1);
+    margin-bottom: toRem(8);
       
   }
 }

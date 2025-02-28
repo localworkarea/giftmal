@@ -1294,6 +1294,7 @@ if (intlTelInputs.length > 0) {
 
             setTimeout(() => {
               originalShowDropdown.call(iti);
+              updateSelectedClass();
             }, 50);
           }
         };

@@ -7262,6 +7262,7 @@
                             });
                             setTimeout((() => {
                                 originalShowDropdown.call(iti);
+                                updateSelectedClass();
                             }), 50);
                         }
                     };

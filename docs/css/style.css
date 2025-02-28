@@ -651,6 +651,9 @@ textarea.input {
 .input__sms-item:not(:last-child) {
   margin-bottom: .5rem
 }
+.input__sms-item._form-focus .sms-cursor::after {
+  opacity: 1
+}
 .input__sms-chars {
   display: flex;
   align-items: center;
@@ -702,15 +705,13 @@ textarea.input {
 .input__sms-char.sms-cursor::after {
   content: "|";
   position: absolute;
+  z-index: 2;
   left: -1.5px;
   font-size: .8125rem;
   color: var(--dark-violet);
   opacity: 0;
   -webkit-animation: blink 1s infinite;
   animation: blink 1s infinite
-}
-._form-focus .input__sms-char.sms-cursor::after {
-  opacity: 1
 }
 .input__sms-char._back::after {
   left: unset;
@@ -7371,7 +7372,8 @@ body::after {
     min-height: 3rem;
     font-size: .875rem;
     padding: 0 1rem;
-    background-color: var(--gray-1)
+    background-color: var(--gray-1);
+    margin-bottom: .5rem
   }
   .iti__country {
     min-height: 3rem;
