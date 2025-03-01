@@ -161,8 +161,14 @@ body {
 @import "footer";
 @import "base/pagging";
 
+// Підключення стилів компонентів
+@import "base/breadcrumbs";
+@import "base/social-share";
+@import "base/blog-card";
+
 // Підключення стилів окремих сторінок
 @import "home";
 @import "pages/error";
 @import "pages/blog";
+@import "pages/blog-inner";
 

@@ -8,7 +8,7 @@
 // При необхідності підключаємо додаткові модулі слайдера, вказуючи їх у {} через кому
 // Приклад: { Navigation, Autoplay }
 import Swiper from 'swiper';
-import { Navigation, FreeMode } from 'swiper/modules';
+import { Navigation, FreeMode, Pagination } from 'swiper/modules';
 /*
 Основні модулі слайдера:
 Navigation, Pagination, Autoplay, 
@@ -93,6 +93,51 @@ function initSliders() {
 			}
 		});
 	}
+
+	// Ініціалізація слайдера для статей блогу
+	if (document.querySelector('.blog-inner__related-slider')) {
+		new Swiper('.blog-inner__related-slider', {
+			modules: [Navigation, Pagination],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 1,
+			spaceBetween: 8,
+			speed: 500,
+			loop: true, // Нескінченна прокрутка
+			
+			pagination: {
+				el: '.blog-inner__related-pagination',
+				clickable: true,
+				type: 'bullets',
+				dynamicBullets: true,
+			},
+			
+			breakpoints: {
+				320: {
+					slidesPerView: 2,
+					spaceBetween: 8,
+				},
+				480: {
+					slidesPerView: 2,
+					spaceBetween: 8,
+				},
+				768: {
+					slidesPerView: 3,
+					spaceBetween: 8,
+				},
+				992: {
+					slidesPerView: 4, // 4 картки на десктопах
+					spaceBetween: 8,
+				},
+			},
+			
+			navigation: {
+				prevEl: '.blog-inner__related-button-prev',
+				nextEl: '.blog-inner__related-button-next',
+			},
+		});
+	}
+	
 	// if (document.querySelector('.swiper')) { // Вказуємо склас потрібного слайдера
 	// 	// Створюємо слайдер
 	// 	new Swiper('.swiper', { // Вказуємо склас потрібного слайдера
