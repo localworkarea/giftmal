@@ -1,5 +1,21 @@
 // <SELECT>
 // Сніппет (HTML): sel
+[data-select-enter] {
+	.select {
+		.select__body {
+			&._nothing-found_ {
+				.select__options {
+					visibility: hidden;
+				}
+				.select__value {
+					&::after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
 .select {
 	min-width: 0;
 	position: relative;
@@ -29,11 +45,39 @@
 			// box-shadow: 0 4px 50px 0 rgba(33, 5, 41, 0.12), 0 4px 7px 0 rgba(33, 5, 41, 0.04);
 			box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.16);
 			border-radius: toRem(24) toRem(24) 0 0;
+			@media (any-hover: hover){
+				&:hover{
+					.select__value {
+						&::after {
+							background-color: var(--white);
+							color: var(--dark-violet);
+						}
+					}
+				}
+			}
+		}
+		.select_type-4 &,
+		.select_type-5 & {
+			@media (any-hover: hover){
+				&:hover{
+					.select__value {
+						&::after {
+							background-color: var(--dark-violet);
+							color: var(--white);
+						}
+					}
+				}
+			}
 		}
 		._form-error & {
 			border-color: var(--red);
 			outline-color: var(--red);
 			color: var(--red);
+		}
+		@media (any-hover: hover){
+			&:hover{
+				background-color: var(--gray-2);
+			}
 		}
 	}
 	&--show-top.select_type-4._select-open,
@@ -56,29 +100,31 @@
 		.select_type-1 &,
 		.select_type-2 & {
 			padding: toRem(10) toRem(16);
+			@extend %fonsSize13-14;
 			@media (min-width:$mobileSmall){
 				min-height: toRem(40);
-				font-size: toRem(13);
+				// font-size: toRem(13);
 			}
 			@media (max-width:$mobileSmall){
 				min-height: toRem(48);
-				font-size: toRem(14);
+				// font-size: toRem(14);
 			}
 		}
 		.select_type-4 &,
 		.select_type-5 & {
 			padding: toRem(6.5) toRem(8) toRem(6.5) toRem(16);
+			@extend %fonsSize13-14;
 			@media (min-width:$mobileSmall){
 				min-height: toRem(40);
-				font-size: toRem(13);
+				// font-size: toRem(13);
 			}
 			@media (max-width:$mobileSmall){
 				min-height: toRem(46);
-				font-size: toRem(14);
+				// font-size: toRem(14);
 			}
 		}
 		.select_type-5 & {
-				font-size: toRem(15);
+				// font-size: toRem(15);
 		}
 		.select_type-3 & {
 			padding: toRem(6) toRem(12);
@@ -184,11 +230,17 @@
 		top: calc(100% + toRem(8));
 		min-width: 100%;
 		left: 0;
-		padding: toRem(8) 0;
+		// padding: toRem(8) 0;
+		padding: toRem(8) toRem(2) toRem(8) toRem(8);
 		background-color: var(--white);
 		border-radius: toRem(24);
 		box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.16);
 		overflow: hidden;
+
+		// ._nothing-found_ & {
+		// 	visibility: hidden;
+		// }
+		
 		.select_type-3 & {
 			padding: toRem(4) 0;
 		}
@@ -204,7 +256,7 @@
 	}
 	// .select__scroll
 	&__scroll {
-		padding: 0 toRem(8);
+		// padding: 0 toRem(8);
 		overflow-y: auto;
 		overflow-x: hidden;
 		// Максимальна висота
@@ -234,13 +286,17 @@
 		font-weight: 500;
 		border-radius: toRem(16);		
 		transition: background-color .3s ease;
+		&:not(:last-child) {
+			margin-bottom: toRem(8);
+		}
 		.select_type-3 & {
 			font-size: toRem(11);
 			padding: toRem(6) toRem(10);
 		}
 		.select_type-5 & {
-			font-size: toRem(15);
+			// font-size: toRem(15);
 		}
+		@extend %fonsSize13-14;
 		&.icon-check {
 			&::before {
 				order: 2;
@@ -249,12 +305,20 @@
 				}
 			}
 		}
-		@media (min-width:$mobileSmall){
-			font-size: toRem(13);
+		&._option-disabled {
+			pointer-events: none;
+			color: var(--fade-violet-1);
+			&::after {
+				content:'Немає у наявності';
+				font-size: toRem(11);
+				letter-spacing: 0.02em;
+			}
 		}
-		@media (max-width:$mobileSmall){
-			font-size: toRem(14);
+		&._nothing-found {
+			pointer-events: none;
+			margin: 0;
 		}
+		
 		&._select-selected {
 			background-color: var(--light-blue);
 		}
@@ -295,6 +359,7 @@
 			bottom: calc(100% + toRem(8));
 			border-radius: toRem(24);
 			box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.16);
+			max-height: toRem(300);
 		}
 	}
 	&--show-top.select_type-4 {
@@ -302,6 +367,7 @@
 			bottom: 100%;
 			border-radius: toRem(24) toRem(24) 0 0;
 			box-shadow: 0 -40px 40px 0 rgba(33, 5, 41, 0.16);
+			max-height: toRem(300);
 		}
 	}
 

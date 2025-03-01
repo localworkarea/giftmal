@@ -274,6 +274,15 @@ class SelectConstructor {
 	}
 	// Сеттер значення заголовка селекту
 	setSelectTitleValue(selectItem, originalSelect) {
+		// Перед обновлением заголовка снова скрываем `_nothing-found`, если он есть
+	const selectItemOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
+	const nothingFoundOption = selectItemOptions.querySelector(`.${this.selectClasses.classSelectOption}._nothing-found`);
+
+	if (nothingFoundOption && !originalSelect.hasAttribute('data-searching')) {
+    nothingFoundOption.hidden = true;
+	}
+
+
 		const selectItemBody = this.getSelectElement(selectItem, this.selectClasses.classSelectBody).selectElement;
 		const selectItemTitle = this.getSelectElement(selectItem, this.selectClasses.classSelectTitle).selectElement;
 		if (selectItemTitle) selectItemTitle.remove();
@@ -387,24 +396,6 @@ class SelectConstructor {
 			return selectOptionsHTML;
 		}
 	}
-	// // Конструктор конкретного елемента списку
-	// getOption(selectOption, originalSelect) {
-	// 	// Якщо елемент вибрано та увімкнено режим мультивибору, додаємо клас
-	// 	const selectOptionSelected = selectOption.selected && originalSelect.multiple ? ` ${this.selectClasses.classSelectOptionSelected}` : '';
-	// 	// Якщо елемент вибраний і немає налаштування data-show-selected, приховуємо елемент
-	// 	const selectOptionHide = selectOption.selected && !originalSelect.hasAttribute('data-show-selected') && !originalSelect.multiple ? `hidden` : ``;
-	// 	// Якщо для елемента зазначений клас додаємо
-	// 	const selectOptionClass = selectOption.dataset.class ? ` ${selectOption.dataset.class}` : '';
-	// 	// Якщо вказано режим посилання
-	// 	const selectOptionLink = selectOption.dataset.href ? selectOption.dataset.href : false;
-	// 	const selectOptionLinkTarget = selectOption.hasAttribute('data-href-blank') ? `target="_blank"` : '';
-	// 	// Будуємо та повертаємо конструкцію елемента
-	// 	let selectOptionHTML = ``;
-	// 	selectOptionHTML += selectOptionLink ? `<a ${selectOptionLinkTarget} ${selectOptionHide} href="${selectOptionLink}" data-value="${selectOption.value}" class="${this.selectClasses.classSelectOption}${selectOptionClass}${selectOptionSelected}">` : `<button ${selectOptionHide} class="${this.selectClasses.classSelectOption}${selectOptionClass}${selectOptionSelected}" data-value="${selectOption.value}" type="button">`;
-	// 	selectOptionHTML += this.getSelectElementContent(selectOption);
-	// 	selectOptionHTML += selectOptionLink ? `</a>` : `</button>`;
-	// 	return selectOptionHTML;
-	// }
 	getOption(selectOption, originalSelect) {
     // Якщо елемент вибрано та увімкнено режим мультивибору, додаємо клас
     let selectOptionSelected = '';
@@ -460,13 +451,18 @@ class SelectConstructor {
     
     return selectOptionHTML;
 	}
-
 	// Сеттер елементів списку (options)
 	setOptions(selectItem, originalSelect) {
 		// Отримуємо об'єкт тіла псевдоселекту
 		const selectItemOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
 		// Запускаємо конструктор елементів списку (options) та додаємо в тіло псевдоселекту
 		selectItemOptions.innerHTML = this.getOptions(originalSelect);
+
+		  // Скрываем `_nothing-found` после генерации списка
+			const nothingFoundOption = selectItemOptions.querySelector(`.${this.selectClasses.classSelectOption}._nothing-found`);
+			if (nothingFoundOption) {
+					nothingFoundOption.hidden = true;
+			}
 	}
 	// Визначаємо, де видобразити випадаючий список
 	setOptionsPosition(selectItem) {
@@ -551,6 +547,21 @@ class SelectConstructor {
 			}
 			//Оновлюємо заголовок селекту
 			this.setSelectTitleValue(selectItem, originalSelect);
+
+			// Убеждаемся, что `_nothing-found` скрыт после выбора опции
+			const selectItemOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
+			const nothingFoundOption = selectItemOptions.querySelector(`.${this.selectClasses.classSelectOption}._nothing-found`);
+			if (nothingFoundOption) {
+			    nothingFoundOption.hidden = true;
+			}
+
+			// Дополнительно убираем класс `_nothing-found_` у `select__body`
+			const selectBody = this.getSelectElement(selectItem, this.selectClasses.classSelectBody).selectElement;
+			selectBody.classList.remove('_nothing-found_');
+
+
+
+
 			// Викликаємо реакцію на зміну селекту
 			this.setSelectChange(originalSelect);
 		}
@@ -589,87 +600,58 @@ class SelectConstructor {
 			this.getSelectElement(selectItem, this.selectClasses.classSelectTitle).selectElement.disabled = false;
 		}
 	}
-	// Обробник пошуку за елементами списку
-	// searchActions(selectItem) {
-	// 	const originalSelect = this.getSelectElement(selectItem).originalSelect;
-	// 	const selectInput = this.getSelectElement(selectItem, this.selectClasses.classSelectInput).selectElement;
-	// 	const selectOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
-	// 	const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption} `);
-
-	// 	// // робота з data-select-input якщо є батьківський атрибут data-select-enter
-	// 	// const parentWithEnter = selectItem.closest('[data-select-enter]');
-	// 	// const hiddenInput = parentWithEnter ? parentWithEnter.querySelector('[data-select-input]') : null;
-
-	// 	const _this = this;
-	// 	selectInput.addEventListener("input", function () {
-	// 		selectOptionsItems.forEach(selectOptionsItem => {
-	// 			if (selectOptionsItem.textContent.toUpperCase().includes(selectInput.value.toUpperCase())) {
-	// 				selectOptionsItem.hidden = false;
-	// 			} else {
-	// 				selectOptionsItem.hidden = true;
-	// 			}
-	// 		});
-	// 		// // якщо є схований інпут передаємо йому введене значення
-	// 		// if (hiddenInput) {
-	// 		// 	hiddenInput.value = selectInput.value;
-	// 		// }
-		
-	// 		// Якщо список закритий відкриваємо
-	// 		selectOptions.hidden === true ? _this.selectAction(selectItem) : null;
-	// 	});
-	// 	// Додатково обробник для вибору опції
-	// 	selectOptionsItems.forEach(selectOptionsItem => {
-	// 		selectOptionsItem.addEventListener("click", function () {
-	// 			// 	// якщо є схований інпут передаємо йому вибране зі списку значення
-	// 			// if (hiddenInput) {
-	// 			// 	hiddenInput.value = selectOptionsItem.textContent;
-	// 			// }
-	// 				// Після вибору опції очищаємо атрибут hidden для всіх
-	// 				selectOptionsItems.forEach(item => {
-	// 					setTimeout(() => {
-	// 						item.hidden = false;
-	// 					}, 300);
-	// 				});
-					
-	// 		});
-	// 	});
-	// 	// // якщо є схований інпут передаємо йому значення при втраті фокусу
-	// 	// if (hiddenInput) {
-	// 	// 		selectInput.addEventListener("blur", function () {
-	// 	// 			hiddenInput.value = selectInput.value;
-	// 	// 		});
-	// 	// }
-	// }
-
-
 // Обробник пошуку за елементами списку
 searchActions(selectItem) {
 	const originalSelect = this.getSelectElement(selectItem).originalSelect;
 	const selectInput = this.getSelectElement(selectItem, this.selectClasses.classSelectInput).selectElement;
 	const selectOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
-	const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption} `);
+	const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption}`);
 
-	// робота з data-select-input якщо є батьківський атрибут data-select-enter
+	// Работа с data-select-input если есть родитель с атрибутом data-select-enter
 	const parentWithEnter = selectItem.closest('[data-select-enter]');
 	const hiddenInput = parentWithEnter ? parentWithEnter.querySelector('[data-select-input]') : null;
 
 	const _this = this;
 	selectInput.addEventListener("input", function () {
-		selectOptionsItems.forEach(selectOptionsItem => {
-			if (selectOptionsItem.textContent.toUpperCase().includes(selectInput.value.toUpperCase())) {
-				selectOptionsItem.hidden = false;
-			} else {
-				selectOptionsItem.hidden = true;
-			}
+		// Фиксируем, что сейчас выполняется поиск
+		originalSelect.setAttribute('data-searching', 'true');
+
+		let hasVisibleOptions = false;
+		const nothingFoundOption = selectOptions.querySelector(`.${_this.selectClasses.classSelectOption}._nothing-found`);
+		const selectBody = _this.getSelectElement(selectItem, _this.selectClasses.classSelectBody).selectElement;
+	
+			selectOptionsItems.forEach(selectOptionsItem => {
+				if (selectOptionsItem.classList.contains('_nothing-found')) return; // Игнорируем _nothing-found
+				if (selectOptionsItem.textContent.toUpperCase().includes(selectInput.value.toUpperCase())) {
+						selectOptionsItem.hidden = false;
+						hasVisibleOptions = true;
+				} else {
+						selectOptionsItem.hidden = true;
+				}
 		});
+
+
 		// якщо є схований інпут передаємо йому введене значення
 		if (hiddenInput) {
 			hiddenInput.value = selectInput.value;
-			// console.log("Скрытый инпут обновлен:", hiddenInput.value);
+		}
+
+		// Если нет видимых элементов, показываем "_nothing-found"
+		if (nothingFoundOption) {
+			if (!hasVisibleOptions) {
+					nothingFoundOption.hidden = false;
+					selectBody.classList.add('_nothing-found_');
+			} else {
+					nothingFoundOption.hidden = true;
+					selectBody.classList.remove('_nothing-found_');
+			}
 		}
 	
 		// Якщо список закритий відкриваємо
-		selectOptions.hidden === true ? _this.selectAction(selectItem) : null;
+		// selectOptions.hidden === true ? _this.selectAction(selectItem) : null;
+		if (selectOptions.hidden) {
+			_this.selectAction(selectItem);
+		}
 	});
 	// Додатково обробник для вибору опції
 	selectOptionsItems.forEach(selectOptionsItem => {
@@ -677,26 +659,24 @@ searchActions(selectItem) {
 				// якщо є схований інпут передаємо йому вибране зі списку значення
 			if (hiddenInput) {
 				hiddenInput.value = selectOptionsItem.textContent;
-				// console.log("Выбрана опция:", hiddenInput.value);
 			}
 				// Після вибору опції очищаємо атрибут hidden для всіх
-			selectOptionsItems.forEach(item => {
-				setTimeout(() => {
-					item.hidden = false;
-				}, 300);
-			});
+			setTimeout(() => {
+				selectOptionsItems.forEach(item => {
+					if (!item.classList.contains('_nothing-found')) {
+            item.hidden = false;
+        	}
+				});
+			}, 300);
 		});
 	});
 	// якщо є схований інпут передаємо йому значення при втраті фокусу
 	if (hiddenInput) {
 		selectInput.addEventListener("blur", function () {
 			hiddenInput.value = selectInput.value;
-			// console.log("Фокус потерян, сохраненное значение:", hiddenInput.value);
 		});
 	}
 }
-
-
 
 
 

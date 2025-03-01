@@ -762,6 +762,12 @@
     function initSmsInput(inputElement) {
         const smsBody = inputElement.nextElementSibling;
         const charElements = smsBody.querySelectorAll(".input__sms-char");
+        function updateCursorPosition(valueLength) {
+            charElements.forEach((charEl => {
+                charEl.classList.remove("sms-cursor", "_back");
+            }));
+            if (valueLength === 0) charElements[0].classList.add("sms-cursor"); else if (valueLength < charElements.length) charElements[valueLength - 1].classList.add("sms-cursor", "_back"); else charElements[charElements.length - 1].classList.add("sms-cursor", "_back");
+        }
         inputElement.addEventListener("input", (() => {
             let value = inputElement.value.replace(/\D/g, "").slice(0, charElements.length);
             inputElement.value = value;
@@ -777,9 +783,14 @@
                     charNum.textContent = "";
                     charPlaceholder.style.display = "inline";
                 }
-                charEl.classList.remove("sms-cursor");
             }));
-            if (value.length < charElements.length) charElements[value.length].classList.add("sms-cursor"); else charElements[charElements.length - 1].classList.add("sms-cursor");
+            updateCursorPosition(value.length);
+        }));
+        inputElement.addEventListener("keydown", (event => {
+            if (event.key === "Backspace") setTimeout((() => {
+                let valueLength = inputElement.value.length;
+                updateCursorPosition(valueLength);
+            }), 0);
         }));
     }
     let formValidate = {
@@ -1178,6 +1189,9 @@
             }), 0);
         }
         setSelectTitleValue(selectItem, originalSelect) {
+            const selectItemOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
+            const nothingFoundOption = selectItemOptions.querySelector(`.${this.selectClasses.classSelectOption}._nothing-found`);
+            if (nothingFoundOption && !originalSelect.hasAttribute("data-searching")) nothingFoundOption.hidden = true;
             const selectItemBody = this.getSelectElement(selectItem, this.selectClasses.classSelectBody).selectElement;
             const selectItemTitle = this.getSelectElement(selectItem, this.selectClasses.classSelectTitle).selectElement;
             if (selectItemTitle) selectItemTitle.remove();
@@ -1277,6 +1291,8 @@
         setOptions(selectItem, originalSelect) {
             const selectItemOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
             selectItemOptions.innerHTML = this.getOptions(originalSelect);
+            const nothingFoundOption = selectItemOptions.querySelector(`.${this.selectClasses.classSelectOption}._nothing-found`);
+            if (nothingFoundOption) nothingFoundOption.hidden = true;
         }
         setOptionsPosition(selectItem) {
             const originalSelect = this.getSelectElement(selectItem).originalSelect;
@@ -1341,6 +1357,11 @@
                     this.selectAction(selectItem);
                 }
                 this.setSelectTitleValue(selectItem, originalSelect);
+                const selectItemOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
+                const nothingFoundOption = selectItemOptions.querySelector(`.${this.selectClasses.classSelectOption}._nothing-found`);
+                if (nothingFoundOption) nothingFoundOption.hidden = true;
+                const selectBody = this.getSelectElement(selectItem, this.selectClasses.classSelectBody).selectElement;
+                selectBody.classList.remove("_nothing-found_");
                 this.setSelectChange(originalSelect);
             }
         }
@@ -1371,28 +1392,43 @@
             }
         }
         searchActions(selectItem) {
-            this.getSelectElement(selectItem).originalSelect;
+            const originalSelect = this.getSelectElement(selectItem).originalSelect;
             const selectInput = this.getSelectElement(selectItem, this.selectClasses.classSelectInput).selectElement;
             const selectOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
-            const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption} `);
+            const selectOptionsItems = selectOptions.querySelectorAll(`.${this.selectClasses.classSelectOption}`);
             const parentWithEnter = selectItem.closest("[data-select-enter]");
             const hiddenInput = parentWithEnter ? parentWithEnter.querySelector("[data-select-input]") : null;
             const _this = this;
             selectInput.addEventListener("input", (function() {
+                originalSelect.setAttribute("data-searching", "true");
+                let hasVisibleOptions = false;
+                const nothingFoundOption = selectOptions.querySelector(`.${_this.selectClasses.classSelectOption}._nothing-found`);
+                const selectBody = _this.getSelectElement(selectItem, _this.selectClasses.classSelectBody).selectElement;
                 selectOptionsItems.forEach((selectOptionsItem => {
-                    if (selectOptionsItem.textContent.toUpperCase().includes(selectInput.value.toUpperCase())) selectOptionsItem.hidden = false; else selectOptionsItem.hidden = true;
+                    if (selectOptionsItem.classList.contains("_nothing-found")) return;
+                    if (selectOptionsItem.textContent.toUpperCase().includes(selectInput.value.toUpperCase())) {
+                        selectOptionsItem.hidden = false;
+                        hasVisibleOptions = true;
+                    } else selectOptionsItem.hidden = true;
                 }));
                 if (hiddenInput) hiddenInput.value = selectInput.value;
-                selectOptions.hidden === true ? _this.selectAction(selectItem) : null;
+                if (nothingFoundOption) if (!hasVisibleOptions) {
+                    nothingFoundOption.hidden = false;
+                    selectBody.classList.add("_nothing-found_");
+                } else {
+                    nothingFoundOption.hidden = true;
+                    selectBody.classList.remove("_nothing-found_");
+                }
+                if (selectOptions.hidden) _this.selectAction(selectItem);
             }));
             selectOptionsItems.forEach((selectOptionsItem => {
                 selectOptionsItem.addEventListener("click", (function() {
                     if (hiddenInput) hiddenInput.value = selectOptionsItem.textContent;
-                    selectOptionsItems.forEach((item => {
-                        setTimeout((() => {
-                            item.hidden = false;
-                        }), 300);
-                    }));
+                    setTimeout((() => {
+                        selectOptionsItems.forEach((item => {
+                            if (!item.classList.contains("_nothing-found")) item.hidden = false;
+                        }));
+                    }), 300);
                 }));
             }));
             if (hiddenInput) selectInput.addEventListener("blur", (function() {
@@ -7226,6 +7262,7 @@
                             });
                             setTimeout((() => {
                                 originalShowDropdown.call(iti);
+                                updateSelectedClass();
                             }), 50);
                         }
                     };
@@ -7268,29 +7305,30 @@
         ru: "HH:MM"
     };
     const currentLang = document.documentElement.lang || "en";
-    const timeFormatAir = timeFormatsAir[currentLang] || timeFormatsAir["en"];
+    timeFormatsAir[currentLang] || timeFormatsAir["en"];
     const datepickerSelector = "[data-datepicker]";
     const timepickerSelector = "[data-datepicker-time]";
     let dp = null, tp = null;
     let rd = null, rt = null;
+    let timePickers = [];
     function getLocalizedMonths(lang) {
         const defaultMonths = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
         return locales[lang] && locales[lang].months || defaultMonths;
     }
-    function getLocalizedRolldateText(lang) {
+    function getLocalizedRolldateText(lang, isTime = false) {
         const translations = {
             uk: {
-                title: "Вибрати дату",
+                title: isTime ? "Вибрати час" : "Вибрати дату",
                 cancel: "Відмінити",
                 confirm: "Вибрати"
             },
             ru: {
-                title: "Выбрать дату",
+                title: isTime ? "Выбрать время" : "Выбрать дату",
                 cancel: "Отменить",
                 confirm: "Выбрать"
             },
             en: {
-                title: "Select date",
+                title: isTime ? "Select time" : "Select date",
                 cancel: "Cancel",
                 confirm: "Confirm"
             }
@@ -7307,6 +7345,8 @@
                 tp.destroy();
                 tp = null;
             }
+            timePickers.forEach((picker => picker?.remove?.()));
+            timePickers = [];
             if (!rd && document.querySelector(datepickerSelector)) rd = new Rolldate({
                 el: datepickerSelector,
                 format: "DD/MM/YYYY",
@@ -7315,7 +7355,7 @@
                 minStep: 1,
                 typeMonth: "text",
                 localeMonth: getLocalizedMonths(currentLang),
-                lang: getLocalizedRolldateText(currentLang),
+                lang: getLocalizedRolldateText(currentLang, false),
                 trigger: "tap",
                 init: function() {
                     modules_flsModules.popup.open("#popupRolldate");
@@ -7329,12 +7369,11 @@
             });
             if (!rt && document.querySelector(timepickerSelector)) {
                 const timeFormat = [ "ru", "uk" ].includes(currentLang) ? "hh:mm" : "hh:mm A";
-                if (rt) rt.destroy();
                 rt = new Rolldate({
                     el: timepickerSelector,
                     format: timeFormat,
                     minStep: 1,
-                    lang: getLocalizedRolldateText(currentLang),
+                    lang: getLocalizedRolldateText(currentLang, true),
                     trigger: "tap",
                     init: function() {
                         modules_flsModules.popup.open("#popupRolldate");
@@ -7356,24 +7395,136 @@
         } else {
             if (rd) rd = null;
             if (rt) rt = null;
+            modules_flsModules.popup.close("#popupRolldate");
             if (!dp && document.querySelector(datepickerSelector)) dp = new AirDatepicker(datepickerSelector, {
                 dateFormat: "dd.MM.yyyy",
                 minDate: "01.01.1900",
-                autoClose: true,
-                locale: locales[currentLang] || locales["en"]
+                locale: locales[currentLang] || locales["en"],
+                onShow: function(isFinished) {
+                    if (!isFinished || !dp.$el) return;
+                    const parent = dp.$el.parentElement;
+                    if (parent) parent.classList.add("_show-picker");
+                },
+                onHide: function(isFinished) {
+                    if (!isFinished || !dp.$el) return;
+                    const parent = dp.$el.parentElement;
+                    if (parent) parent.classList.remove("_show-picker");
+                }
             });
-            if (!tp && document.querySelector(timepickerSelector)) tp = new AirDatepicker(timepickerSelector, {
-                timepicker: true,
-                onlyTimepicker: true,
-                autoClose: true,
-                timeFormat: timeFormatAir,
-                locale: locales[currentLang] || locales["en"]
-            });
+            document.querySelectorAll(timepickerSelector).forEach((input => {
+                const format = input.dataset.format === "12" ? 12 : 24;
+                const picker = createTimePicker(input, format);
+                timePickers.push(picker);
+            }));
         }
     }
     const mediaQuery = window.matchMedia("(max-width: 30.061em)");
     mediaQuery.addEventListener("change", toggleDatepicker);
     toggleDatepicker(mediaQuery);
+    function createTimePicker(input, format = 24) {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("timepicker");
+        const body = document.createElement("div");
+        body.classList.add("timepicker__body");
+        if (format === 12) body.classList.add("_am-pm");
+        const hourBlock = createTimeBlock("hours", format === 12 ? 12 : 24, (value => {
+            updateTime(input, value, "hour", format);
+        }));
+        const minuteBlock = createTimeBlock("minutes", 60, (value => {
+            updateTime(input, value, "minute", format);
+        }));
+        body.appendChild(hourBlock);
+        body.appendChild(createSeparator());
+        body.appendChild(minuteBlock);
+        let amPmBlock = null;
+        if (format === 12) {
+            amPmBlock = createTimeBlock("am-pm", 2, (value => {
+                updateTime(input, value, "ampm", format);
+            }), [ "AM", "PM" ]);
+            body.appendChild(createSeparator());
+            body.appendChild(amPmBlock);
+        }
+        wrapper.appendChild(body);
+        document.body.appendChild(wrapper);
+        input.addEventListener("focus", (() => showTimePicker(input, wrapper)));
+        document.addEventListener("click", (e => {
+            if (!wrapper.contains(e.target) && e.target !== input) wrapper.style.display = "none";
+        }));
+        window.addEventListener("resize", (() => {
+            wrapper.style.display = "none";
+        }));
+    }
+    function createTimeBlock(type, max, callback, labels = null) {
+        const block = document.createElement("div");
+        block.classList.add("timepicker__block", type);
+        const item = document.createElement("div");
+        item.classList.add("timepicker__item");
+        const selected = document.createElement("div");
+        selected.classList.add("timepicker__selected");
+        selected.textContent = labels ? labels[0] : "00";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.classList.add("timepicker__open", "icon-arrow-down");
+        button.addEventListener("click", (() => toggleList(list, item)));
+        item.appendChild(selected);
+        item.appendChild(button);
+        block.appendChild(item);
+        const list = document.createElement("ul");
+        list.classList.add("timepicker__list");
+        list.style.height = "0";
+        for (let i = 0; i < max; i++) {
+            const li = document.createElement("li");
+            const value = labels ? labels[i] : i.toString().padStart(2, "0");
+            li.textContent = value;
+            li.dataset.value = labels ? labels[i] : i;
+            li.addEventListener("click", (() => {
+                callback(li.dataset.value);
+                selected.textContent = value;
+                list.style.height = "0";
+                list.classList.remove("open");
+                item.classList.remove("open");
+            }));
+            list.appendChild(li);
+        }
+        block.appendChild(list);
+        return block;
+    }
+    function createSeparator() {
+        const separator = document.createElement("div");
+        separator.classList.add("timepicker__sep");
+        separator.textContent = ":";
+        return separator;
+    }
+    function showTimePicker(input, wrapper) {
+        const rect = input.getBoundingClientRect();
+        wrapper.style.top = `${rect.bottom + window.scrollY}px`;
+        wrapper.style.left = `${rect.left + window.scrollX}px`;
+        wrapper.style.display = "block";
+    }
+    function toggleList(list, item) {
+        list.classList.toggle("open");
+        item.classList.toggle("open");
+        list.style.height = list.classList.contains("open") ? "148px" : "0";
+    }
+    function updateTime(input, value, type, format) {
+        let [hours, minutes] = input.value ? input.value.split(":").map((num => isNaN(num) ? 0 : Number(num))) : [ 0, 0 ];
+        let ampm = "AM";
+        if (format === 12) {
+            const parts = input.value.split(" ");
+            if (parts.length === 2) ampm = parts[1];
+        }
+        if (type === "hour") {
+            hours = parseInt(value);
+            if (format === 12 && ampm === "PM" && hours !== 12) hours += 12;
+            if (format === 12 && ampm === "AM" && hours === 12) hours = 0;
+        }
+        if (type === "minute") minutes = parseInt(value) || 0;
+        if (type === "ampm") ampm = value;
+        if (format === 12) {
+            let displayHour = hours % 12 || 12;
+            input.value = `${displayHour.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${ampm}`;
+        } else input.value = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+    }
     const illustrationInput = document.getElementById("customImageInput");
     if (illustrationInput) {
         illustrationInput.addEventListener("change", (function(event) {

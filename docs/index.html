@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250225181144">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250228192432">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -301,16 +301,18 @@
 				</div>
 				<br><br>
 				<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Кнопки кількість</b></p><br>
-				<p>Якщо значення не вказано додається класс помилки <b>_form-error</b></p>
+				<p>Якщо значення в тег input не вказано додається класс помилки <b><span style="color: red;">_form-error</span></b></p>
 				<p>Можна вказувати атрибути з потрібними значеннями <b>data-quantity-min="1" data-quantity-max="3"</b>. Окремо є можливість ввести цифри у сам інпут</p>
 				<br>
 				<p><b>1. Кнопки за замовчуванням</b></p>
 				<br>
+
+				<p>Приклад 1: input з пустим значенням value='', автоматично додається код помилки, що надає йому червоний бордер та колір. Щоб при потребі окремо додати червоний бордер і колір тексту, тоді треба задати класс <span style="color: red;">_form-error</span> для input а також батьківському елементу</p><br>
 				<div data-quantity class="quantity">
 					<div class="quantity__item">
 						<div class="quantity__block">
-							<div class="quantity__input">
-								<input data-quantity-value type="text" name="" placeholder="0" value="" data-required>
+							<div class="quantity__input _form-error">
+								<input data-quantity-value type="text" name="" placeholder="0" value="1" class="_form-error">
 								<span>шт</span>
 							</div>
 						</div>
@@ -547,80 +549,83 @@
 					<br><br>
 
 					<p>2. Приклад додавання атрибуту <b>data-one-select</b> для батьківського елементу для двох селектів, який при відкритті одного закриває інший.</p><br>
-					<div data-one-select class="tab-checkout__items items-cl-2">
-						<div class="input__item">
-							<p><b>Select з полем для пошуку</b> (data-class-modif="type-2")</p><br>
-							<label for="departmentCity" class="input__label">
-								Місто
-							</label>
-							<select id="departmentCity" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="250" data-search data-required>
-								<option value data-class="item-placeholder">Місто</option>
-								<option value="2">Київ</option>
-								<option value="3">Львів</option>
-								<option value="4">Харків</option>
-								<option value="5">Дніпро</option>
-								<option value="6">Івано-Франківськ</option>
-								<option value="7">Одеса</option>
-								<option value="8">Рівне</option>
-								<option value="9">Житомир</option>
-								<option value="10">Луцьк</option>
+					<div>
+						<div data-one-select class="tab-checkout__items items-cl-2">
+							<div class="input__item">
+								<p><b>Select з полем для пошуку</b> (data-class-modif="type-2")</p><br>
+								<label for="departmentCity" class="input__label">
+									Місто
+								</label>
+								<select id="departmentCity" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="250" data-search data-required>
+									<option value data-class="item-placeholder">Місто</option>
+									<option value="2">Київ</option>
+									<option value="3">Львів</option>
+									<option value="4">Харків</option>
+									<option value="5">Дніпро</option>
+									<option value="6">Івано-Франківськ</option>
+									<option value="7">Одеса</option>
+									<option value="8">Рівне</option>
+									<option value="9">Житомир</option>
+									<option value="10">Луцьк</option>
+								</select>
+							</div>
+							<div class="input__item">
+								<p><b>Select без поля пошуку</b> (data-class-modif="type-2")</p><br>
+								<label for="department" class="input__label">
+									Відділення
+								</label>
+								<select id="department" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="400" data-required>
+									<option value data-class="item-placeholder">Відділення</option>
+									<option value="2">Відд №1. Драгоманова, 10А Відд №1. Драгоманова, 10А</option>
+									<option value="3">Відд №2. Пирогівський шлях, 15</option>
+									<option value="4">Відд №3. Богатирський, 20А</option>
+									<option value="5">Відд №4. Слобажанська, 25</option>
+									<option value="6">Відд №5. Драгоманова, 30</option>
+									<option value="7">Відд №6. Драгоманова, 35</option>
+									<option value="8">Відд №10. Драгоманова, 40в</option>
+									<option value="9">Відд №11. Драгоманова, 45</option>
+									<option value="10">Відд №18. Драгоманова, 50</option>
+									<option value="11">Відд №19. Драгоманова, 55б</option>
+									<option value="12">Відд №20. Драгоманова, 65</option>
+									<option value="13">Відд №21. Драгоманова, 135</option>
+									<option value="14">Відд №22. Драгоманова, 215</option>
+									<option value="15">Відд №23. Драгоманова, 1</option>
+									<option value="16">Відд №24. Драгоманова, 1а</option>
+								</select>
+							</div>
+						</div>
+						<br>
+						<p>3. Select з типом <b> data-class-modif="type-3"</b>, використовуєтсья у карточках слайдеру на сторінці Checkout</p><br>
+						<div style="max-width: 120px;">
+							<select name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
+								<option value="1" checked>100 грн</option>
+								<option value="2">200 грн</option>
+								<option value="3">500 грн</option>
+								<option value="4">1000 грн</option>
+								<option value="5">1500 грн</option>
+								<option value="6">3000 грн</option>
+								<option value="7">10000 грн</option>
 							</select>
 						</div>
-						<div class="input__item">
-							<p><b>Select без поля пошуку</b> (data-class-modif="type-2")</p><br>
-							<label for="department" class="input__label">
-								Відділення
-							</label>
-							<select id="department" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="400" data-required>
-								<option value data-class="item-placeholder">Відділення</option>
-								<option value="2">Відд №1. Драгоманова, 10А Відд №1. Драгоманова, 10А</option>
-								<option value="3">Відд №2. Пирогівський шлях, 15</option>
-								<option value="4">Відд №3. Богатирський, 20А</option>
-								<option value="5">Відд №4. Слобажанська, 25</option>
-								<option value="6">Відд №5. Драгоманова, 30</option>
-								<option value="7">Відд №6. Драгоманова, 35</option>
-								<option value="8">Відд №10. Драгоманова, 40в</option>
-								<option value="9">Відд №11. Драгоманова, 45</option>
-								<option value="10">Відд №18. Драгоманова, 50</option>
-								<option value="11">Відд №19. Драгоманова, 55б</option>
-								<option value="12">Відд №20. Драгоманова, 65</option>
-								<option value="13">Відд №21. Драгоманова, 135</option>
-								<option value="14">Відд №22. Драгоманова, 215</option>
-								<option value="15">Відд №23. Драгоманова, 1</option>
-								<option value="16">Відд №24. Драгоманова, 1а</option>
-							</select>
-						</div>
-					</div>
-					<br>
-					<p>3. Select з типом <b> data-class-modif="type-3"</b>, використовуєтсья у карточках слайдеру на сторінці Checkout</p><br>
-					<div style="max-width: 120px;">
-						<select name="form[]" data-class-modif="type-3" data-speed="200" data-show-selected data-scroll="150">
-							<option value="1" checked>100 грн</option>
-							<option value="2">200 грн</option>
-							<option value="3">500 грн</option>
-							<option value="4">1000 грн</option>
-							<option value="5">1500 грн</option>
-							<option value="6">3000 грн</option>
-							<option value="7">10000 грн</option>
+						<br>
+						<p>4. Select з типом <b> data-class-modif="type-4"</b></p><br>
+						<select name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="300" data-required>
+							<option value data-class="item-placeholder">$ 500</option>
+							<option value="1">₴ 500</option>
+							<option value="2">₴ 1 000</option>
+							<option disabled data-class="_option-disabled" value="3">₴ 1 500</option>
+							<option value="4">₴ 2 000</option>
+							<option value="5">₴ 2 500</option>
+						</select>
+						<br>
+						<p>5. Select з типом <b> data-class-modif="type-5"</b></p><br>
+						<select name="" data-class-modif="type-5" data-speed="200" data-show-selected data-scroll="300">
+							<option data-class="pay-visa" data-asset="img/cards/visa-mc.svg" value="">Банківська картка</option>
+							<option data-class="pay-visa" data-asset="img/cards/visa-mc.svg" value="1">Банківська картка</option>
+							<option data-class="pay-apple" data-asset="img/cards/apple-pay.svg" value="2">Apple Pay</option>
+							<option data-class="pay-google" data-asset="img/cards/google-pay.svg" value="3">Google Pay</option>
 						</select>
 					</div>
-					<br>
-					<p>4. Select з типом <b> data-class-modif="type-4"</b></p><br>
-					<select name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="300" data-required>
-						<option value data-class="item-placeholder">$ 500</option>
-						<option value="1">₴ 500</option>
-						<option value="2">₴ 1 000</option>
-						<option value="3">₴ 1 500</option>
-						<option value="4">₴ 2 000</option>
-						<option value="5">₴ 2 500</option>
-					</select>
-					<br>
-					<p>5. Select з типом <b> data-class-modif="type-5"</b></p><br>
-					<select name="" data-class-modif="type-5" data-speed="200" data-show-selected data-scroll="300">
-						<option data-class="pay-visa" data-asset="img/cards/visa-mc.svg" value="1">Банківська картка</option>
-						<option data-class="pay-apple" data-asset="img/cards/apple-pay.svg" value="2">Apple Pay</option>
-						<option data-class="pay-google" data-asset="img/cards/google-pay.svg" value="3">Google Pay</option>
-					</select>
 				</div>
 				<div style="padding: 30px 0 60px; border-top: 1px solid gray">
 					<p><b>Календар і час (datepicker) ...</b></p><br>
@@ -638,10 +643,10 @@
 			</div>
 		</footer>
 	</div>
-	<script src="https://unpkg.com/@popperjs/core@2?_v=20250225181144"></script>
-	<script src="https://unpkg.com/tippy.js@6?_v=20250225181144"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250225181144"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250225181144"></script>
+	<script src="https://unpkg.com/@popperjs/core@2?_v=20250228192432"></script>
+	<script src="https://unpkg.com/tippy.js@6?_v=20250228192432"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250228192432"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250228192432"></script>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -681,7 +686,7 @@
 									<div class="quantity__item">
 										<div class="quantity__block">
 											<div class="quantity__input">
-												<input data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="10" placeholder="0" value="1">
+												<input data-quantity-value type="text" name="" data-quantity-min="0" data-quantity-max="10" placeholder="0" value="0">
 												<span>шт</span>
 											</div>
 										</div>
@@ -876,7 +881,7 @@
 									Ваше Ім’я
 								</label>
 								<div class="input__sub-item">
-									<input id="contactUsName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+									<input id="contactUsName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
 									<button disabled type="button" class="input__clear icon-cross"></button>
 								</div>
 							</div>
@@ -885,7 +890,7 @@
 									Ваш email
 								</label>
 								<div class="input__sub-item">
-									<input id="contactUsEmail" autocomplete="off" type="email" name="form[]" data-error="Введіть коректний email" placeholder="Ваш email" data-required="email" class="input input_sm">
+									<input id="contactUsEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email" class="input input_sm">
 									<button disabled type="button" class="input__clear icon-cross"></button>
 								</div>
 							</div>
@@ -918,7 +923,7 @@
 		</div>
 	</div>
 	</div>
-	<script src="js/app.min.js?_v=20250225181144"></script>
+	<script src="js/app.min.js?_v=20250228192432"></script>
 </body>
 
 </html>

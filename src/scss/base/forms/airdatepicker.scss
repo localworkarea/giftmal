@@ -621,7 +621,8 @@
   transform: translateX(var(--adp-transition-offset))
 }
 .air-datepicker.-from-bottom- {
-  transform: translateY(var(--adp-transition-offset))
+  // transform: translateY(var(--adp-transition-offset))
+  transform: translateY(-8px);
 }
 .air-datepicker.-from-left- {
   transform: translateX(calc(var(--adp-transition-offset) * -1))
