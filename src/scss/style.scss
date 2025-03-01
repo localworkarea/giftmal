@@ -159,8 +159,10 @@ body {
 // Підключення стилів окремих блоків
 @import "header";
 @import "footer";
+@import "base/pagging";
 
 // Підключення стилів окремих сторінок
 @import "home";
 @import "pages/error";
+@import "pages/blog";
 

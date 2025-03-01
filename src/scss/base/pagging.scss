@@ -1,19 +1,85 @@
 .pagging {
+	$item-size: toRem(32);
+	$icon-size: toRem(22);
+	$border-radius: toRem(20);
+	$active-shadow: 0 toRem(4) toRem(16) 0 var(--pagging-shadow);
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	// .pagging__arrow
-	&__arrow {
-	}
-	// .pagging__list
-	&__list {
+	gap: toRem(16);
+
+	%interactive-item {
 		display: flex;
-		li {
+		align-items: center;
+		justify-content: center;
+		width: $item-size;
+		height: $item-size;
+		border-radius: $border-radius;
+		color: var(--dark-violet);
+		transition: all 0.3s ease;
+		
+		@media (any-hover: hover) {
+			&:hover:not(._active):not(._disabled) {
+				background-color: var(--pagging-hover-bg);
+			}
 		}
 	}
-	// .pagging__item
+
+	&__arrow {
+		@extend %interactive-item;
+		position: relative;
+		
+		&.icon-arrow-down {
+			&:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				font-size: $icon-size;
+				transform: translate(-50%, -50%);
+			}
+			
+			&._prev {
+				&:before {
+					transform: translate(-50%, -50%) rotate(90deg);
+				}
+			}
+			
+			&._next {
+				&:before {
+					transform: translate(-50%, -50%) rotate(-90deg);
+				}
+			}
+		}
+
+		&:active {
+			transform: translateY(toRem(1));
+		}
+		
+		&._disabled {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+	}
+
+	&__list {
+		display: flex;
+		gap: toRem(8);
+		
+		li {
+			display: flex;
+		}
+	}
+
 	&__item {
+		@extend %interactive-item;
+		font-size: toRem(14);
+		font-weight: 500;
+		
 		&._active {
+			color: var(--white);
+			background-color: var(--dark-violet);
+			box-shadow: $active-shadow;
 		}
 	}
 }
