@@ -1,0 +1,217 @@
+.error__page {
+  .page__logo {
+    margin: toRem(54) auto 0;
+    display: block;
+    width: toRem(90);
+    font-size: toRem(40);
+    @media (max-width: $mobileSmall) {
+      font-size: toRem(32);
+      margin-top: toRem(36);
+    }
+  }
+  .page {
+    @media (max-width: toEm(700.98)) and (min-width: $mobileSmall) {
+      padding-top: 0;
+    }
+  }
+
+  .error {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    &__container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    &__content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: toRem(140) 0;
+      @media (max-width: $mobileSmall) {
+        padding: toRem(80) 0 toRem(200);
+      }
+    }
+    &__title {
+      font-size: clamp(toRem(71), 8vw, toRem(120));
+      color: var(--dark-violet);
+    }
+    &__subtitle {
+      line-height: 1.2;
+      font-size: clamp(toRem(20), 4vw, toRem(40));
+      color: var(--fade-violet-2);
+      margin-bottom: toRem(32);
+      @media (max-width: $mobile) {
+        margin-bottom: toRem(16);
+      }
+    }
+    &__text {
+      font-size: clamp(toRem(14), 1.5vw, toRem(15));
+      line-height: 1.5;
+      color: var(--fade-violet-2);
+      margin-bottom: toRem(32);
+      br {
+        @media (max-width: $mobileSmall) {
+          display: none;
+        }
+      }
+    }
+    &__button {
+      min-width: toRem(180);
+      max-width: toRem(200);
+      margin: 0 auto;
+    }
+    &__cards {
+      position: fixed;
+      bottom: toRem(30);
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      width: calc(100% - 2rem);
+      margin: 0 auto toRem(30);
+      @media (max-width: $mobile) {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+      }
+      @media (max-height: toRem(540)) {
+        position: absolute;
+      }
+    }
+
+    @mixin card-position($top: null, $bottom: null, $left: null, $right: null, $delay: 0s, $animation: 1) {
+      top: $top;
+      bottom: $bottom;
+      left: $left;
+      right: $right;
+      animation-delay: $delay;
+      will-change: transform;
+      animation: #{if($animation == 1, "floatingCard1", if($animation == 2, "floatingCard2", "floatingCard3"))} 
+                 #{if($animation == 1, "4s", if($animation == 2, "5s", "6s"))} 
+                 ease-in-out infinite;
+    }
+
+    &__card {
+      position: absolute;
+      width: toRem(92);
+      will-change: transform;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+
+      // Card positions
+      &--1 { @include card-position($bottom: 15%, $left: 2%, $delay: -0.2s, $animation: 1); }
+      &--2 { @include card-position($bottom: 0%, $left: 0%, $delay: -1.5s, $animation: 2); }
+      &--3 { @include card-position($bottom: 0%, $left: 10%, $delay: -0.8s, $animation: 3); }
+      &--4 { @include card-position($bottom: 0%, $left: 19%, $delay: -2.1s, $animation: 1); }
+      &--5 { @include card-position($bottom: 0%, $left: 27%, $delay: -1.2s, $animation: 2); }
+      &--6 { @include card-position($bottom: 0%, $right: 27%, $delay: -0.5s, $animation: 3); }
+      &--7 { @include card-position($bottom: 0%, $right: 18%, $delay: -1.8s, $animation: 1); }
+      &--8 { @include card-position($bottom: 0%, $right: 9%, $delay: -0.3s, $animation: 2); }
+      &--9 { @include card-position($bottom: 0%, $right: 0%, $delay: -1.6s, $animation: 3); }
+      &--10 { @include card-position($bottom: 17%, $right: 0%, $delay: -0.9s, $animation: 1); }
+      &--11 { @include card-position($bottom: 35%, $right: 0%, $delay: -2.2s, $animation: 2); }
+      &--12 { @include card-position($bottom: 34%, $left: 0%, $delay: -1.4s, $animation: 3); }
+
+      @media (max-width: $tablet) {
+        &--3 { @include card-position($bottom: 0%, $left: 13%, $delay: -0.8s, $animation: 3); }
+        &--4 { @include card-position($bottom: 0%, $left: 24%, $delay: -2.1s, $animation: 1); }
+        &--5 { @include card-position($bottom: 0%, $left: 34%, $delay: -1.2s, $animation: 2); }
+        &--6 { @include card-position($bottom: 0%, $right: 34%, $delay: -0.5s, $animation: 3); }
+        &--7 { @include card-position($bottom: 0%, $right: 22%, $delay: -1.8s, $animation: 1); }
+        &--8 { @include card-position($bottom: 0%, $right: 11%, $delay: -0.3s, $animation: 2); }
+      }
+
+      @media (max-width: $mobile) {
+        width: 100%;
+        position: relative;
+        bottom: unset;
+        left: unset;
+        right: unset;
+        animation: none;
+        &--12 { order: 1; }
+        &--1 { order: 2; }
+        &--2 { order: 3; transform: rotate(-30deg); }
+        &--9 { order: 5; transform: rotate(115deg); }
+        &--11 { order: 4; }
+
+        &--3,
+        &--4,
+        &--5,
+        &--6,
+        &--7,
+        &--8,
+        &--10 { display: none; }
+      }
+
+      @media (max-width: $mobileSmall) {
+        width: toRem(71);
+      }
+    }
+  }
+
+  &.error__page--404 {
+    @media (max-width: $mobile) {
+      background: none;
+    }
+    
+    .error__cards {
+      padding-top: 80vh;
+      @media (max-width: $mobile) {
+        padding-top: 75vh;
+      }
+    }
+    
+    .error__content {
+      @media (max-width: toEm(700.98)) and (min-width: $mobileSmall) {
+        padding: toRem(64) 0 toRem(200);
+      }
+    }
+    
+    .page {
+      @media (max-width: toEm(700.98)) and (min-width: $mobileSmall) {
+        margin-top: toRem(125);
+        padding-top: 0;
+      }
+      @media (max-width: $mobileSmall) {
+        margin-top: toRem(145);
+        padding-top: 0;
+      }
+    }
+  }
+  
+  &.error__page--503 {
+    background-color: var(--gray-1);
+    .page {
+      border-radius: 0;
+      background: var(--gray-1);
+      @media (max-width: $tablet) {
+        padding-top: 0;
+      }
+    }
+  }
+}
+
+@keyframes floatingCard1 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0); }
+  50% { transform: translate3d(toRem(4), toRem(-12), 0) rotate(3deg); }
+}
+
+@keyframes floatingCard2 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0); }
+  33% { transform: translate3d(toRem(-8), toRem(-20), 0) rotate(-3deg); }
+  66% { transform: translate3d(toRem(8), toRem(-8), 0) rotate(2deg); }
+}
+
+@keyframes floatingCard3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1) rotate(0); }
+  25% { transform: translate3d(0, toRem(-14), 0) scale(1.03) rotate(-2deg); }
+  75% { transform: translate3d(0, toRem(-18), 0) scale(0.97) rotate(2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .error__card {
+    animation: none !important;
+    transform: none !important;
+  }
+}
