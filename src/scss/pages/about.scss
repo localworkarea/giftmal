@@ -1,8 +1,15 @@
+// Local variables
+$image-border-radius-desktop: toRem(40);
+$image-border-radius-mobile: toRem(24);
+$stats-grid-gap: toRem(8);
+$stats-icon-size: toRem(40);
+
 .about__page {
-  background-color: var(--gray-3);
+  // Empty for potential future use
 }
 
 .about {
+  $root: &;
   padding: toRem(64) 0 toRem(80);
   
   @media (max-width: $tablet) {
@@ -23,16 +30,17 @@
     padding: 0 toRem(16);
   }
 
-  
+  // Image section
   &__image {
     position: relative;
     overflow: hidden;
-    border-radius: toRem(40);
+    border-radius: $image-border-radius-desktop;
     box-shadow: var(--card-shadow);
     margin-bottom: toRem(56);
     min-height: toRem(235);
+    
     @media (max-width: $mobile) {
-      border-radius: toRem(24);
+      border-radius: $image-border-radius-mobile;
     }
     
     img {
@@ -40,6 +48,7 @@
       height: auto;
       object-fit: cover;
       display: block;
+      
       @media (max-width: $mobile) {
         position: absolute;
         top: 0;
@@ -50,8 +59,8 @@
     }
   }
   
+  // Stats section
   &__stats {
-    
     &-title {
       font-size: toRem(13);
       font-weight: 500;
@@ -67,7 +76,7 @@
     &-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: toRem(8);
+      gap: $stats-grid-gap;
       counter-reset: stats-counter;
       
       @media (max-width: $tablet) {
@@ -86,6 +95,7 @@
       box-shadow: var(--item-shadow);
       counter-increment: stats-counter;
       justify-content: space-between;
+      
       @media (max-width: $mobileSmall) {
         flex-direction: column;
         align-items: flex-start;
@@ -110,7 +120,7 @@
         }
       }
 
-      br{
+      br {
         @media (max-width: $mobileSmall) {
           display: none;
         }
@@ -121,8 +131,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: toRem(40);
-      height: toRem(40);
+      width: $stats-icon-size;
+      height: $stats-icon-size;
       border-radius: 50%;
       background-color: var(--gray-3);
       flex-shrink: 0;
@@ -148,7 +158,27 @@
   }
 }
 
+// About partners section
+.about-partners {
+  background: var(--white);
+  border-top-left-radius: $image-border-radius-desktop;
+  border-top-right-radius: $image-border-radius-desktop;
+  padding: toRem(120) 0 toRem(80);
+  
+  @media (max-width: $tablet) {
+    padding: toRem(80) 0;
+  }
+  
+  @media (max-width: $mobile) {
+    padding: toRem(56) 0 toRem(28);
+    border-top-left-radius: $image-border-radius-mobile;
+    border-top-right-radius: $image-border-radius-mobile;
+  }
+}
+
+// About CTA section
 .about-cta {
+  background: var(--white);
   padding: toRem(40) 0 toRem(80);
   
   @media (max-width: $tablet) {
@@ -158,23 +188,4 @@
   @media (max-width: $mobile) {
     padding: toRem(28) 0 toRem(56);
   }
-
-}
-
-.about-partners {
-  background: var(--white);
-  border-top-left-radius: toRem(40);
-  border-top-right-radius: toRem(40);
-  padding: toRem(120) 0 toRem(80);
-  @media (max-width: $tablet) {
-    padding: toRem(80) 0;
-  }
-  @media (max-width: $mobile) {
-    padding: toRem(56) 0 toRem(28);
-  }
-}
-
-.about-cta{
-  background: var(--white);
-  padding-bottom: toRem(80);
 }
