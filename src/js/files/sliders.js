@@ -95,92 +95,67 @@ function initSliders() {
 	}
 
 	// Ініціалізація слайдера для статей блогу
-	if (document.querySelector('.blog-inner__related-slider')) {
-		new Swiper('.blog-inner__related-slider', {
-			modules: [Navigation, Pagination],
-			observer: true,
-			observeParents: true,
-			slidesPerView: 1,
-			spaceBetween: 8,
-			speed: 500,
-			loop: true, // Нескінченна прокрутка
-			
-			pagination: {
-				el: '.blog-inner__related-pagination',
-				clickable: true,
-				type: 'bullets',
-				dynamicBullets: true,
-			},
-			
-			breakpoints: {
-				320: {
-					slidesPerView: 2,
-					spaceBetween: 8,
-				},
-				480: {
-					slidesPerView: 2,
-					spaceBetween: 8,
-				},
-				768: {
-					slidesPerView: 3,
-					spaceBetween: 8,
-				},
-				992: {
-					slidesPerView: 4, // 4 картки на десктопах
-					spaceBetween: 8,
-				},
-			},
-			
+	const blogSliders = [
+		{
+			selector: '.blog-inner__related-slider',
 			navigation: {
 				prevEl: '.blog-inner__related-button-prev',
 				nextEl: '.blog-inner__related-button-next',
 			},
-		});
-	}
-	
-	// Ініціалізація слайдера для рекомендацій
-	if (document.querySelector('.blog__recommendations-slider')) {
-		new Swiper('.blog__recommendations-slider', {
-			modules: [Navigation, Pagination],
-			observer: true,
-			observeParents: true,
-			slidesPerView: 1,
-			spaceBetween: 8,
-			speed: 500,
-			loop: true, // Нескінченна прокрутка
-			
-			pagination: {
-				el: '.blog__recommendations-pagination',
-				clickable: true,
-				type: 'bullets',
-				dynamicBullets: true,
-			},
-			
-			breakpoints: {
-				320: {
-					slidesPerView: 2,
-					spaceBetween: 8,
-				},
-				480: {
-					slidesPerView: 2,
-					spaceBetween: 8,
-				},
-				768: {
-					slidesPerView: 3,
-					spaceBetween: 8,
-				},
-				992: {
-					slidesPerView: 4, // 4 картки на десктопах
-					spaceBetween: 8,
-				},
-			},
-			
+			pagination: '.blog-inner__related-pagination'
+		},
+		{
+			selector: '.blog__recommendations-slider',
 			navigation: {
 				prevEl: '.blog__recommendations-button-prev',
 				nextEl: '.blog__recommendations-button-next',
 			},
-		});
-	}
+			pagination: '.blog__recommendations-pagination'
+		}
+	];
+
+	// Initialize all blog sliders with shared configuration
+	blogSliders.forEach(slider => {
+		if (document.querySelector(slider.selector)) {
+			new Swiper(slider.selector, {
+				modules: [Navigation, Pagination],
+				observer: true,
+				observeParents: true,
+				slidesPerView: 1,
+				spaceBetween: 8,
+				speed: 500,
+				loop: true,
+				
+				pagination: {
+					el: slider.pagination,
+					clickable: true,
+					type: 'bullets',
+					dynamicBullets: true,
+				},
+				
+				breakpoints: {
+					320: {
+						slidesPerView: 2,
+						spaceBetween: 8,
+					},
+					480: {
+						slidesPerView: 2,
+						spaceBetween: 8,
+					},
+					768: {
+						slidesPerView: 3,
+						spaceBetween: 8,
+					},
+					992: {
+						slidesPerView: 4,
+						spaceBetween: 8,
+					},
+				},
+				
+				navigation: slider.navigation,
+			});
+		}
+	});
 }
 
 
