@@ -34,6 +34,12 @@ flsFunctions.spollers();
 // flsFunctions.tabs();
 
 /*
+Модуль "Відео плеєр"
+*/
+import videoPlayer from "./modules/videoPlayer.js";
+videoPlayer();
+
+/*
 Модуль "Показати ще"
 Документація: https://template.fls.guru/template-docs/modul-pokazat-eshhjo.html
 Сніппет (HTML): showmore

@@ -14,6 +14,15 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: toRem(80); /* Adjust based on header height */
+  
+  @media (max-width:$mobile){
+    scroll-padding-top: toRem(60); /* Smaller value for mobile */
+  }
+}
+
 .wrapper {
   @media (min-width:toEm(700.98)){
     background-color: var(--white);
