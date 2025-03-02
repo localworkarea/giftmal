@@ -1,0 +1,208 @@
+.cta-form {
+  $card-border-radius: toRem(20);
+  $badge-mobile-padding: toRem(8) toRem(16) toRem(16);
+  
+  background-color: var(--dark-violet);
+  border-radius: toRem(40);
+  position: relative;
+  
+  @media (max-width: $mobile) {
+    border-radius: toRem(32);
+    width: 90%;
+  }
+  
+  &__content {
+    padding: toRem(56);
+    max-width: toRem(780);
+    box-sizing: content-box;
+    
+    @media (max-width: $tablet) {
+      max-width: toRem(450);
+    }
+    
+    @media (max-width: $mobile) {
+      max-width: toRem(360);
+      padding: toRem(24);
+    }
+    
+    @media (max-width: $mobileSmall) {
+      max-width: toRem(260);
+    }
+  }
+  
+  &__title {
+    font-size: toRem(40);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: toRem(46);
+    
+    span {
+      color: var(--fade-violet-1);
+    }
+    
+    @media (max-width: $tablet) {
+      font-size: toRem(28);
+      margin-bottom: toRem(24);
+    }
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(23);
+      margin-bottom: toRem(48);
+    }
+  }
+  
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: toRem(16) toRem(24);
+    background-color: var(--white);
+    color: var(--dark-violet);
+    font-size: toRem(15);
+    font-weight: 500;
+    border-radius: toRem(100);
+    text-align: center;
+    transition: background-color 0.3s ease;
+    
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--fade-violet-1);
+      }
+    }
+    
+    @media (max-width: $mobile) {
+      padding: toRem(15) toRem(24);
+      font-size: toRem(14);
+    }
+  }
+  
+  &__visuals {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  &__badge {
+    position: absolute;
+    top: toRem(-50);
+    right: toRem(50);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--disabled-pink);
+    padding: toRem(16) toRem(36) toRem(24);
+    border-radius: toRem(24);
+    z-index: 3;
+    max-width: toRem(145);
+    text-align: center;
+    
+    @media (max-width: $mobile) {
+      top: unset;
+      right: toRem(-40);
+      padding: $badge-mobile-padding;
+      border-radius: toRem(16);
+    }
+    
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: toRem(40);
+      height: toRem(40);
+      background-color: var(--white);
+      border-radius: toRem(100);
+      
+      @media (max-width: $mobile) {
+        width: toRem(32);
+        height: toRem(32);
+      }
+    }
+    
+    &-number {
+      font-size: toRem(23);
+      font-weight: 500;
+      color: var(--dark-violet);
+      margin: toRem(12) 0 toRem(6);
+      
+      @media (max-width: $mobile) {
+        font-size: toRem(14);
+      }
+    }
+    
+    &-text {
+      font-size: toRem(11);
+      color: var(--fade-violet-2);
+      line-height: 1.4;
+      
+      @media (max-width: $mobile) {
+        font-size: toRem(12);
+      }
+    }
+  }
+  
+  &__card {
+    background-color: var(--gray-1);
+    border-radius: $card-border-radius;
+    padding: toRem(16);
+    width: toRem(230);
+    margin-right: toRem(115);
+    top: toRem(55);
+    position: relative;
+    
+    @media (max-width: $mobile) {
+      display: none;
+    }
+    
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: toRem(8);
+      color: var(--fade-violet-2);
+      font-weight: 500;
+    }
+    
+    &-label {
+      font-size: toRem(14);
+    }
+    
+    &-percent {
+      font-size: toRem(11);
+    }
+    
+    &-balance {
+      font-size: toRem(23);
+      font-weight: 500;
+      color: var(--dark-violet);
+      margin-bottom: toRem(44);
+    }
+    
+    &-chart {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      
+      img {
+        position: relative;
+        margin-left: toRem(10);
+      }
+    }
+    
+    &-action {
+      display: block;
+      text-align: center;
+      font-size: toRem(11);
+      font-weight: 600;
+      color: var(--dark-violet);
+      background-color: var(--white);
+      padding: toRem(12) toRem(16);
+      border-radius: toRem(100);
+    }
+  }
+} 

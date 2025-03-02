@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"About Us"
+	})
+	<body>
+		<div class="wrapper about__page">
+        <header data-scroll="50" data-scroll-show class="header">
+            @@include('html/_header-main.htm',{})
+            @@include('html/_header-sub.htm',{})
+        </header>
+		    <main class="page">
+            <section class="about">
+              <div class="about__container">
+                @@include('html/_page-header.htm',{
+                  "title":"Ми — міжнародний дистриб'ютор",
+                  "highlitedTitle":"подарункових сертифікатів",
+                  "subtitle":"Постійно працюємо над розширенням каталогу брендів, щоб зробити пошук подарунка простим та швидким."
+                })
+                
+                <div class="about__image">
+                  <img src="@img/about/image_1.jpg" width="1140" height="380" alt="Міжнародний дистриб'ютор подарункових сертифікатів">
+                </div>
+                
+                <div class="about__stats">
+                  <h2 class="about__stats-title">Про нас</h2>
+                  <div class="about__stats-grid">
+                    <div class="about__stats-item">
+                      <div class="about__stats-text">11 років <br> на ринку</div>
+                      <div class="about__stats-icon">
+                        <img src="@img/icons/icon-calendar.svg" width="24" height="24" alt="11 років на ринку">
+                      </div>
+                    </div>
+                    <div class="about__stats-item">
+                      <div class="about__stats-text">5 000+ <br> клієнтів</div>
+                      <div class="about__stats-icon">
+                        <img src="@img/icons/icon-user.svg" width="24" height="24" alt="5 000+ клієнтів">
+                      </div>
+                    </div>
+                    <div class="about__stats-item">
+                      <div class="about__stats-text">4 країни <br> у Європі</div>
+                      <div class="about__stats-icon">
+                        <img src="@img/icons/icon-flag.svg" width="24" height="24" alt="4 країни у Європі">
+                      </div>
+                    </div>
+                    <div class="about__stats-item">
+                      <div class="about__stats-text">370+ <br> брендів</div>
+                      <div class="about__stats-icon">
+                        <img src="@img/icons/icon-cards.svg" width="24" height="24" alt="370+ брендів">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            
+            <section class="about-partners">
+              <div class="about-partners__container">
+                @@include('html/_partners-grid.htm',{})
+              </div>
+            </section>
+            
+            <section class="about-cta">
+              <div class="about-cta__container">
+                @@include('html/_cta-form.htm',{})
+              </div>
+            </section>
+          
+        </main>
+    </div>
+    <script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
+    <script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+    @@include('html/_popup-mb.htm',{})
+    @@include('html/_js.htm',{})
+  </body>
+</html> 
