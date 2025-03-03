@@ -1,0 +1,122 @@
+.partners-grid {
+  // Local variables
+  $item-mobile-height: toRem(90);
+  $item-desktop-height: toRem(125);
+  $grid-gap-mobile: toRem(12);
+  $grid-gap-desktop: toRem(8);
+  
+  display: flex;
+  justify-content: space-between;
+  gap: toRem(32);
+  
+  @media (max-width: $tablet) {
+    flex-direction: column;
+  }
+  
+  @media (max-width: $mobile) {
+    gap: toRem(40);
+  }
+  
+  &__header {
+    display: flex;
+    flex-direction: column;
+    max-width: toRem(370);
+    
+    @media (max-width: $tablet) {
+      max-width: 100%;
+    }
+    
+    @media (max-width: $mobile) {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__wrapper {
+    max-width: toRem(580);
+  }
+  
+  &__title {
+    font-size: toRem(40);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--dark-violet);
+    margin-bottom: toRem(33);
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(23);
+      margin-bottom: toRem(24);
+    }
+  }
+  
+  &__description {
+    font-size: toRem(15);
+    line-height: 1.5;
+    color: var(--fade-violet-2);
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(14);
+    }
+  }
+  
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $grid-gap-desktop;
+    
+    @media (max-width: $mobile) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $grid-gap-mobile;
+      margin-bottom: toRem(32);
+    }
+  }
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $item-desktop-height;
+    padding: toRem(16);
+    background-color: var(--gray-1);
+    border-radius: toRem(24);
+    transition: 
+      background-color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--white);
+        box-shadow: var(--card-shadow-hover);
+        transform: translateY(toRem(-2));
+      }
+    }
+    
+    @media (max-width: $mobile) {
+      height: $item-mobile-height;
+      padding: toRem(16) toRem(12);
+      border-radius: toRem(18);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  
+  &__note {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    color: var(--fade-violet-2);
+    font-size: toRem(15);
+    
+    @media (max-width: $tablet) {
+      display: none;
+    }
+    
+    img {
+      margin-right: toRem(8);
+    }
+  }
+} 

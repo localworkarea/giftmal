@@ -1,0 +1,39 @@
+.social-share {
+  display: flex;
+  align-items: center;
+  gap: toRem(12);
+  font-size: toRem(13);
+  
+  @media (max-width:$mobile){
+    font-size: toRem(12);
+  }
+  
+  &__title {
+    color: var(--dark-violet);
+    font-weight: 500;
+  }
+  
+  &__link {
+    color: var(--dark-violet);
+    transition: opacity 0.3s ease;
+    font-size: toRem(20);
+    width: toRem(32);
+    height: toRem(32); 
+    border-radius: 50%;
+    background-color: var(--gray-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    @media (any-hover: hover){
+      &:hover {
+        background-color: var(--primary-hover);
+        transition: background-color 0.3s ease;
+      }
+    }
+    
+    @media (max-width:$mobile){
+      font-size: toRem(18);
+    }
+  }
+} 

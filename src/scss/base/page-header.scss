@@ -1,0 +1,48 @@
+.page-header {
+  display: flex;
+  gap: toRem(40);
+  margin-bottom: toRem(40);
+  align-items: center;
+  
+  @media (max-width: $tablet) {
+    gap: toRem(16);
+    margin-bottom: toRem(32);
+  }
+  
+  @media (max-width: $mobile) {
+    flex-direction: column;
+    margin-bottom: toRem(24);
+  }
+  
+  &__title {
+    font-size: toRem(40);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--dark-violet);
+    @media (max-width: $tablet) {
+      font-size: toRem(30);
+    }
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(23);
+    }
+    
+    &-highlighted {
+      display: inline-block;
+      color: var(--fade-violet-2);
+      position: relative;
+    }
+  }
+  
+  &__subtitle {
+    font-size: toRem(18);
+    line-height: 1.5;
+    color: var(--fade-violet-3);
+    max-width: toRem(390);
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(14);
+      max-width: 100%;
+    }
+  }
+} 

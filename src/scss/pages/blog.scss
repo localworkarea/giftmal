@@ -1,0 +1,107 @@
+.blog {
+  @extend %paddingTbBt56-16;
+  
+  &__title {
+    font-size: toRem(40);
+    &:not(:last-child) {
+      margin-bottom: toRem(32);
+    }
+    @media (max-width:$mobile){
+      font-size: toRem(23);
+    }
+  }
+  
+  &__filters {
+    @media (min-width:$mobileSmall){
+      margin-bottom: toRem(32);
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(24);
+    }
+  }
+  
+  &__grid {
+    display: grid;
+    gap: toRem(8);
+    grid-template-columns: repeat(2, 1fr);
+    
+    @media (min-width:$tablet){
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media (min-width:$pc){
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    margin-bottom: toRem(32);
+    @media (min-width:$mobileSmall){
+      margin-bottom: toRem(48);
+    }
+  }
+
+}
+
+.blog-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: toRem(4);
+  
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: toRem(8);
+    width: auto;
+    min-width: toRem(40);
+    padding: toRem(16) toRem(24);
+    background-color: transparent;
+    border-radius: toRem(20);
+    font-size: toRem(15);
+    font-weight: 500;
+    color: var(--dark-violet);
+    transition: all 0.3s ease;
+    @media (max-width:$mobile){
+      font-size: toRem(12);
+      padding: toRem(12) toRem(20);
+    }
+    
+    &__name {
+      font-size: toRem(14);
+      font-weight: 500;
+      color: inherit;
+      transition: background-color 0.3s ease;
+    }
+    
+    @media (any-hover: hover){
+      &:hover {
+        background-color: var(--pagging-hover-bg);
+      }
+    }
+    
+    &.active {
+      color: var(--white);
+      background-color: var(--dark-violet);
+      box-shadow: 0 toRem(4) toRem(16) 0 var(--pagging-shadow);
+
+      .blog-filter__name {
+        color: var(--white);
+      }
+    }
+  }
+}
+
+.blog-inner__related-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: toRem(24);
+    
+    @media (max-width:$mobile){
+        margin-bottom: toRem(16);
+    }
+}
+
+.blog-inner__related-nav {
+    display: flex;
+    align-items: center;
+}

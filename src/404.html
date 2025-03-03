@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+  @@include('html/_head.htm',{
+    "title":"404 - Сторінка не знайдена"
+  })
+  <body>
+    <div class="wrapper error__page error__page--404">
+      <header data-scroll="50" data-scroll-show class="header">
+        @@include('html/_header-main.htm',{})
+        @@include('html/_header-sub.htm',{})
+      </header>
+      <main class="page">
+        <section class="error">
+          <div class="error__container">
+            <div class="error__content">
+              <h1 class="error__title">404</h1>
+              <p class="error__subtitle">Сторінка не знайдена</p>
+              <a href="index.html" class="error__button btn btn_dark" aria-label="перейти на головну">До головної</a>
+            </div>
+            @@include('html/_error-cards.htm',{})
+          </div>
+        </section>
+      </main>
+    </div>
+		@@include('html/_popup-mb.htm',{})
+		<script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
+		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+		@@include('html/_js.htm',{})
+  </body>
+</html> 

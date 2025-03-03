@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+  @@include('html/_head.htm',{
+    "title":"503 - Сайт тимчасово не працює"
+  })
+  <body>
+    <div class="wrapper error__page error__page--503">
+      <header data-scroll="50" data-scroll-show class="header">
+        <a href="index.html" class="page__logo icon-logo" aria-label="link to home page"></a>
+      </header>
+      <main class="page">
+        <section class="error">
+          <div class="error__container">
+            <div class="error__content">
+              <h1 class="error__title">503</h1>
+              <p class="error__subtitle">Сайт тимчасово не працює</p>
+              <p class="error__text">Це тимчасова несправність, над якою ми вже працюємо.<br> Повернітся на сайт трохи пізніше.</p>
+            </div>
+            @@include('html/_error-cards.htm',{})
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
+		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+    @@include('html/_js.htm',{})
+  </body>
+</html> 

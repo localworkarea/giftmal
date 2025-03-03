@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"Blog"
+	})
+	<body>
+		<div class="wrapper blog__page">
+      <header data-scroll="50" data-scroll-show class="header">
+        @@include('html/_header-main.htm',{})
+        @@include('html/_header-sub.htm',{})
+      </header>
+			<main class="page">
+        <section class="blog">
+          <div class="blog__container">
+            <h1 class="blog__title title-av">Про головне у нашому блозі</h1>
+            <!-- Optional filters -->
+            <!-- <div class="blog__filters">
+              <div class="blog-filter">
+                <button type="button" class="blog-filter__btn active" data-category="all">
+                  <span class="blog-filter__name">Усі</span>
+                </button>
+                <button type="button" class="blog-filter__btn" data-category="greetings">
+                  <span class="blog-filter__name">Вітання</span>
+                </button>
+                <button type="button" class="blog-filter__btn" data-category="savings">
+                  <span class="blog-filter__name">Заощадження</span>
+                </button>
+                <button type="button" class="blog-filter__btn" data-category="motivation">
+                  <span class="blog-filter__name">Мотивація</span>
+                </button>
+              </div>
+            </div> -->
+            <div class="blog__grid">
+              @@include('html/_blog-card.htm',{ 
+                "link": "#", 
+                "attributes": "data-category=\"greetings\"", 
+                "title": "З Днем народження чоловіка", 
+                "date": "27.08.24" })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"savings\"",
+                "title": "Як сертифікати допомагають зменшити витрати",
+                "date": "25.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"motivation\"",
+                "title": "Можливості сертифікатів у програмі мотивації",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"greetings\"",
+                "title": "З Днем народження дівчини",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"savings\"",
+                "title": "З Днем народження чоловіка",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"motivation\"",
+                "title": "З Днем народження хлопця",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"greetings\"",
+                "title": "З Днем народження колеги",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"savings\"",
+                "title": "Як сертифікати допомагають зменшити податковий тиск для підприємства",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"motivation\"",
+                "title": "З Днем народження чоловіка",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"greetings\"",
+                "title": "З днем народження внучки від дідуся та бабусі",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"savings\"",
+                "title": "Можливості сертифікатів у програмі мотивації",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"motivation\"",
+                "title": "Як подарункові сертифікати зменшують податковий тиск для підприємств",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"greetings\"",
+                "title": "Найпопулярніші подарунки працівникам та співробіникам",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"savings\"",
+                "title": "Розробка програми лояльності для Агробізнесу",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"motivation\"",
+                "title": "З Днем народження чоловіка",
+                "date": "27.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"motivation\"",
+                "title": "Мотивація співробітників: нові підходи",
+                "date": "24.08.24"
+              })
+              @@include('html/_blog-card.htm',{
+                "link": "#",
+                "attributes": "data-category=\"greetings\"",
+                "title": "З Днем народження мами",
+                "date": "23.08.24"
+              })
+            </div>
+            <div class="blog__pagination">
+              @@include('html/_pagging.htm',{})
+            </div>
+          </div>
+        </section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_popup-mb.htm',{})
+    <script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
+		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+		@@include('html/_js.htm',{})
+	</body>
+</html> 

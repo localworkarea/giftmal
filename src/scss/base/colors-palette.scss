@@ -32,5 +32,11 @@
 	--light-blue: #edf3ff;
 	// =================================================================
 
-
+	// UI Components ============
+	--pagging-hover-bg: rgba(33, 5, 41, 0.05);
+	--pagging-shadow: rgba(33, 5, 41, 0.16);
+	--card-shadow: 0 toRem(4) toRem(24) rgba(0, 0, 0, 0.05);
+	--card-shadow-hover: 0 toRem(4) toRem(12) rgba(0, 0, 0, 0.05);
+	--item-shadow: 0 toRem(4) toRem(24) rgba(0, 0, 0, 0.08);
+	// =================================================================
 }

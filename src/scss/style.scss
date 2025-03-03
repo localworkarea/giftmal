@@ -159,6 +159,20 @@ body {
 // Підключення стилів окремих блоків
 @import "header";
 @import "footer";
+@import "base/pagging";
+
+// Підключення стилів компонентів
+@import "base/breadcrumbs";
+@import "base/social-share";
+@import "base/blog-card";
+@import "base/cta-form";
+@import "base/partners-grid";
+@import "base/page-header";
 
 // Підключення стилів окремих сторінок
 @import "home";
+@import "pages/error";
+@import "pages/blog";
+@import "pages/blog-inner";
+@import "pages/about";
+
