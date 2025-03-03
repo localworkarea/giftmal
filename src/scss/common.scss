@@ -44,16 +44,26 @@ html {
   }
   @media (min-width:$mobileSmall){
     border-radius: toRem(40) toRem(40) 0 0; 
+    &:not(:last-child) {
+      border-radius: toRem(40); 
+    }
     .checkout-page & {
       padding-bottom: toRem(120);
     }
   }
   @media (max-width:$mobileSmall){
-    border-radius: toRem(32) toRem(32) 0 0; 
+    border-radius: toRem(24) toRem(24) 0 0; 
+    &:not(:last-child) {
+      border-radius: toRem(24);
+    }
     padding-top: toRem(134);
     .checkout-page & {
       padding-top: 0;
       padding-bottom: toRem(50);
+      border-radius: toRem(32) toRem(32) 0 0; 
+      &:not(:last-child) {
+        border-radius: toRem(32);
+      }
     }
   }
 }
@@ -295,6 +305,14 @@ html {
     gap: toRem(8);
   }
 
+  %borderRadiusTop40-24 {
+    @media (min-width:$mobileSmall){
+       border-radius: toRem(40) toRem(40) 0 0; 
+    }
+    @media (max-width:$mobileSmall){
+        border-radius: toRem(24) toRem(24) 0 0; 
+    }
+  }
   %borderRadius30-24 {
     @media (min-width:$mobileSmall){
        border-radius: toRem(30); 
