@@ -1,3 +1,564 @@
-//====================================================================================================
+.footer {
+  background-color: var(--dark-violet);
+  color: var(--white);
+  @include adaptiveValue("margin-top", 56, 46,0,1400.98,480.98);
+  @include adaptiveValue("padding-top", 80, 56,0,1400.98,480.98);
+  @include adaptiveValue("padding-bottom", 56, 24,0,1400.98,480.98);
+  @extend  %borderRadiusTop40-24;
+  // .footer__container
+  &__container {
+    @media (max-width: toEm(1264)) and (min-width:$mobileSmall) {
+      padding-inline: toRem(32);
+    }
+  }
+  // .footer__top
+  &__top {
+    @media (min-width:$mobile){
+      display: grid;
+      gap: toRem(24);
+      grid-template-columns: 1fr 1fr 1fr 29%;
+      margin-bottom: toRem(80);
+    }
+    @media (max-width:$mobile){
+       margin-bottom: toRem(24); 
+    }
+  }
+  // .footer__spollers
+  &__spollers {
+  }
+  // .footer__contacts
+  &__contacts {
+  }
+  // .footer__bottom
+  &__bottom {
+    display: grid;
+    @media (min-width:$tablet){
+      grid-template-columns: auto auto 22% 29%;
+    }
+    @media (max-width:$tablet) and (min-width: toEm(600.98)) {
+      grid-template-columns: auto auto;      
+    }
+    @media (min-width:toEm(600.98)){
+      gap: toRem(24);
+    }
+  }
+  // .footer__logo
+  &__logo {
+  }
+  // .footer__testimonials
+  &__testimonials {
+  }
+  // .footer__global
+  &__global {
+  }
+  // .footer__app
+  &__app {
+  }
+  // .footer__design
+  &__design {
+    @extend %fonsSize11-14;
+    color: var(--fade-violet-1);
+    @media (max-width: toEm(600.98)){
+      padding-top: toRem(24);
+      border-top: toRem(1.5) solid rgba(122, 105, 127, 0.3);
+    }
+    @media (min-width:$mobileSmall){
+      letter-spacing: 0.02em;
+      font-weight: 600; 
+    }
+  }
+}
 
-//====================================================================================================
+%flexColumnFooter {
+  display: flex;
+  @media (min-width:toEm(600.98)){
+    gap: toRem(12);
+    flex-direction: column;
+  }
+  @media (max-width: toEm(600.98)){
+    gap: toRem(16);
+    flex-direction: column-reverse;      
+  }
+}
+
+%mbFooterBottom {
+  @media (max-width: toEm(600.98)){
+    &:nth-child(1),
+    &:nth-child(2) {
+      margin-bottom: toRem(32);
+    }
+    &:nth-child(3) {
+      margin-bottom: toRem(24);
+    }
+  }
+}
+
+.footer-name {
+  @media (min-width:$mobile){
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--fade-violet-1);
+     font-size: toRem(11);
+     line-height: .77;
+  }
+  @media (max-width:$mobile){
+     font-size: toRem(18);
+     line-height: 1.11; 
+  }
+}
+
+.spollers-footer {
+  @media (max-width:$mobile){
+     padding-block: toRem(24); 
+     border-top: toRem(1.5) solid rgba(122, 105, 127, 0.3);
+  }
+	// .spollers-footer__details
+	&__details {
+	}
+  // .spollers-footer__title
+  &__title {
+    @media (min-width:$mobile){
+      margin-bottom: toRem(16); 
+      line-height: .77;
+    }
+     @media (max-width:$mobile){
+        line-height: 1.11; 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+     }
+  }
+  // .spollers-footer__title-name
+  &__title-name {
+  }
+  // .spollers-footer__title-icon
+  &__title-icon {
+    @media (min-width:$mobile){
+      display: none; 
+    }
+    @media (max-width:$mobile){
+       display: grid;
+       place-items: center;
+       width: toRem(32);
+       aspect-ratio: 1;
+       border-radius: 50%;
+       background-color: var(--fade-violet-3);
+       transition: transform .3s ease;
+       ._spoller-active & {
+          transform: rotate(-180deg); 
+       }
+       &::before {
+        position: relative;
+        top: toRem(1.5);
+        font-weight: 400;
+        font-size: toRem(24);
+       } 
+    }
+  }
+  // .spollers-footer__body
+  &__body {
+  }
+  // .spollers-footer__list
+  &__list {
+    @media (max-width:$mobile){
+       padding-top: toRem(24); 
+    }
+  }
+  // .spollers-footer__item
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: toRem(17);
+    }
+    @media (max-width:$mobile){
+      line-height: 1.43; 
+    }
+  }
+  // .spollers-footer__link
+  &__link {
+    @extend %fonsSize13-14;
+    transition: color .2s ease;
+    @media (any-hover: hover){
+      &:hover{
+        color: var(--fade-violet-1);
+      }
+    }
+    @media (max-width:$mobile){
+       color: var(--fade-violet-1); 
+    }
+  }
+}
+
+.contacts-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: toRem(32);
+  @media (min-width:$mobile){
+      
+  }
+  @media (max-width:$mobile){
+    padding-block: toRem(24); 
+    border-top: toRem(1.5) solid rgba(122, 105, 127, 0.3); 
+    border-bottom: toRem(1.5) solid rgba(122, 105, 127, 0.3); 
+  }
+  // .contacts-footer__block
+  &__block {
+    @extend %flexCenterGap8;
+    gap: toRem(32) toRem(8);
+    @media (min-width:$mobile){
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    @media (max-width:$mobile){
+      align-items: flex-start;
+       flex-direction: column; 
+    }
+  }
+  // .contacts-footer__item
+  &__item {
+  }
+  // .contacts-footer__name
+  &__name {
+    @media (min-width:$mobile){
+      margin-bottom: toRem(14); 
+    }
+    @media (max-width:$mobile){
+       margin-bottom: toRem(32); 
+        line-height: 1.11; 
+     }
+  }
+  // .contacts-footer__phones
+  &__phones {
+    @media (min-width:$mobile){
+      margin-left: toRem(-16);
+    }
+    &._active {
+      .item-dropdwn__btn {
+        color: var(--fade-violet-2) !important;
+      } 
+    }      
+    &.item-dropdwn {
+      @media (min-width:$mobile){
+         font-size: toRem(15); 
+      }
+      @media (max-width:$mobile){
+        font-size: toRem(18);    
+        padding: 0;
+      }
+      .item-dropdwn__btn {
+        @media (any-hover: hover){
+          &:hover{
+            color: var(--fade-violet-1);
+          }
+        }
+        @media (max-width:$mobile){
+           display: none; 
+        }
+      }
+      .item-dropdwn__list {
+        @media (max-width:$mobile){
+           position: relative; 
+           padding: 0;
+           top: 0;
+           pointer-events: all;
+           &::before {
+            display: none;
+           }
+        }
+      }
+      .item-dropdwn__item {
+        @media (max-width:$mobile){
+            pointer-events: all;
+            opacity: 1;
+            &:not(:last-child) {
+              margin-bottom: toRem(32);
+            }
+        }
+      }
+      .item-dropdwn__link {
+        @media (max-width:$mobile){
+           padding: 0; 
+           color: var(--white);
+           opacity: .6;
+        }
+      }
+    }
+  }
+  // .contacts-footer__social
+  &__social {
+  }
+  // .contacts-footer__form
+  &__form {
+  }
+}
+
+.social-footer {
+  @extend %flexCenterGap8;
+  position: relative;
+  @media (min-width:$mobile){
+    top: toRem(-8);
+  }
+  // .social-footer__item
+  &__item {
+  }
+  // .social-footer__link
+  &__link {
+    @media (any-hover: hover){
+      &:hover{
+        svg {
+          path {
+            &:nth-child(1) {
+              fill: var(--fade-violet-3);
+            }
+            &:nth-child(2) {
+              fill: var(--white);
+            }
+          }
+        }
+      }
+    }
+    svg {
+      path {
+        transition: fill .2s ease;
+      }
+    }
+  }
+}
+
+.email-form {
+  .form__error {
+    @extend %fonsSize11-12;
+    margin-top: toRem(8);
+    color: var(--red);
+  }
+  // .email-form__form
+  &__form {
+  }
+  // .email-form__item
+  &__item {
+  }
+  // .email-form__label
+  &__label {
+    margin-bottom: toRem(24);
+    @extend %fonsSize13-14;
+    @media (min-width:toEm(1100.98)){
+      max-width: 75%;
+    }
+    @media (min-width:$mobile){
+      line-height: 1.46; 
+    }
+    @media (max-width:$mobile){
+      line-height: 1.5; 
+    }
+    @media (max-width:$mobile) and (min-width:$mobileSmall) {
+      max-width: 75%;
+    }
+  }
+  // .email-form__sub-item
+  &__sub-item {
+    position: relative;
+    @media (any-hover: hover){
+      &:hover{
+        .email-form__btn {
+          background-color: var(--dark-violet);
+          &::before {
+            color: var(--white);
+          }
+        }
+        .input {
+          background-color: var(--white);
+          color: var(--dark-violet);
+          &::placeholder {
+            color: var(--dark-violet) !important;
+          }
+        }
+      }
+    }
+    .input {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      &::placeholder {
+        color: var(--white) !important;
+      }
+    }
+  }
+  // .email-form__btn
+  &__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: background-color .3s ease;
+    &::before {
+      transform: rotate(-90deg);
+      font-size: toRem(24);
+      position: relative;
+      left: 2px;
+      transition: color .3s ease;
+    }
+    @media (min-width:$mobileSmall){
+      top: 4px;
+      right: 4px;
+      width: toRem(32);
+    }
+    @media (max-width:$mobileSmall){
+      width: toRem(48);
+    }
+  }
+}
+
+.logo-footer {
+  @media (max-width:$mobile){
+     display: flex;
+     justify-content: space-between; 
+     align-items: flex-end;
+     padding-bottom: toRem(24);
+  }
+  // .logo-footer__logo
+  &__logo {
+    line-height: .8;
+    &:not(:last-child) {
+      @media (min-width:$mobile){
+        margin-bottom: toRem(12);
+      }
+    }
+    &:before {
+      color: var(--white);
+      font-size: toRem(40);
+      transition: color .2s ease;
+    }
+    @media (any-hover: hover){
+      &:hover{
+        &::before {
+          color: var(--fade-violet-1);
+        }
+      }
+    }
+  }
+  // .logo-footer__txt
+  &__txt {
+    font-weight: 600;
+    font-size: toRem(11);
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+    color: var(--fade-violet-1);
+  }
+}
+
+
+.testimonials-footer {
+  @extend %flexColumnFooter;
+  @extend %mbFooterBottom;
+  // .testimonials-footer__imgs
+  &__imgs {
+    @extend %flexCenterGap8;
+    gap: toRem(24);
+    img {
+      width: auto;
+      height: toRem(32);
+    }
+  }
+  // .testimonials-footer__link
+  &__link {
+    @extend %fonsSize11-14;
+    color: var(--fade-violet-1);
+    @media (min-width:$mobileSmall){
+      letter-spacing: 0.02em;
+      font-weight: 600; 
+    }
+  }
+}
+
+.global-footer {
+  @extend %flexColumnFooter;
+  @extend %mbFooterBottom;
+  // .global-footer__list
+  &__list {
+    @extend %flexCenterGap8;
+    flex-wrap: wrap;
+    @media (min-width:$mobileSmall){
+      gap: toRem(4);
+    }
+    @media (max-width:$mobileSmall){
+      gap: toRem(14);
+    }
+  }
+  // .global-footer__item
+  &__item {
+  }
+  // .global-footer__link
+  &__link {
+    img {
+      height: auto;
+      @media (min-width:$mobileSmall){
+        width: toRem(36);
+      }
+      @media (max-width:$mobileSmall){
+        width: toRem(48);          
+      }
+    }
+  }
+  // .global-footer__global
+  &__global {
+    @extend %fonsSize11-14;
+    color: var(--fade-violet-1);
+    @media (min-width:$mobileSmall){
+      letter-spacing: 0.02em;
+      font-weight: 600; 
+   }
+  }
+}
+
+.app-footer {
+  @extend %flexColumnFooter;
+  @extend %mbFooterBottom;
+  // align-items: flex-end;
+  // .app-footer__block
+  &__block {
+    @extend %flexCenterGap8;
+    justify-content: space-between;
+  }
+  // .app-footer__apps
+  &__apps {
+    @extend %flexCenterGap8;
+    @media (max-width:$mobileSmall){
+       gap: toRem(16); 
+       
+    }
+  }
+  // .app-footer__link
+  &__link {
+    border: 0.62px solid rgba(255, 255, 255, 0.5);
+    @media (min-width:$mobileSmall){
+      padding: toRem(3) toRem(4);
+      border-radius: toRem(8);
+    }
+    @media (max-width:$mobileSmall){
+      padding: toRem(8);  
+      border-radius: toRem(12);    
+      flex: 1;  
+    }
+    img {
+      width: auto;
+      @media (min-width:$mobileSmall){
+        height: toRem(24);
+      }
+      @media (max-width:$mobileSmall){
+        height: toRem(30);
+      }
+    }
+  }
+  // .app-footer__txt
+  &__txt {
+    @extend %fonsSize11-14;
+    color: var(--fade-violet-1);
+    @media (min-width:$mobileSmall){
+       font-weight: 600; 
+    }
+  }
+}

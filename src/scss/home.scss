@@ -217,13 +217,14 @@
     aspect-ratio: 1;
     border-radius: 50%;
     color: var(--white);
-    background-color: var(--gray-1);
     color: var(--fade-violet-1);
     transition: color .3s ease,background-color .3s ease;
     @media (min-width:$mobileSmall){
+      background-color: var(--gray-1);
       width: toRem(24);
     }
     @media (max-width:$mobileSmall){
+      background-color: var(--white);
       width: toRem(16);
       font-size: toRem(9); 
     }

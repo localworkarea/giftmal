@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<title>CART</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20250303182613">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header data-scroll="50" data-scroll-show class="header">
+			<div class="header__main-header main-header">
+				<div class="main-header__container-c">
+					<div class="main-header__menu menu">
+						<button type="button" class="menu__open icon-menu" data-menu aria-label="close menu">
+							<span class="icon-menu__lines"><span></span></span>
+						</button>
+						<nav class="menu__body">
+							<div class="menu__top">
+								<a href="index.html" class="menu__logo menu__logo_company" aria-label="link to home page">
+									<img src="img/logo/netflex.jpg" width="40" height="40" alt="Image">
+								</a>
+								<a href="#" class="menu__activate-btn btn btn_dark btn_sm icon-balance" aria-label="balance">
+									Активувати<br> Баланс giftmall
+								</a>
+								<button type="button" class="menu__close icon-cross" data-menu aria-label="close menu"></button>
+							</div>
+							<ul class="menu__lang lang-menu">
+								<li class="lang-menu__item">
+									<a href="#" class="lang-menu__link _active" aria-label="language">
+										<img src="img/icons/flag-ukraine.svg" width="24" height="8" alt="Image">
+										<span>UA</span>
+									</a>
+								</li>
+								<li class="lang-menu__item">
+									<a href="#" class="lang-menu__link" aria-label="language">
+										<img src="img/icons/flag-poland.svg" width="24" height="8" alt="Image">
+										<span>PL</span>
+									</a>
+								</li>
+								<li class="lang-menu__item">
+									<a href="#" class="lang-menu__link" aria-label="language">
+										<img src="img/icons/flag-english.svg" width="24" height="8" alt="Image">
+										<span>ENG</span>
+									</a>
+								</li>
+							</ul>
+							<ul class="menu__list">
+								<li class="menu__item"><a href="#" data-open-filters class="menu__link icon-arrow-down" aria-label="open popup">
+										<span class="menu__link-icon icon-sertificates"></span>
+										<span class="menu__link-t">Категорії по сертифікатам</span>
+									</a></li>
+								<li class="menu__item"><a href="#" class="menu__link icon-arrow-down" aria-label="open popup">
+										<span class="menu__link-icon icon-user"></span>
+										<span class="menu__link-t">Мій Кабінет</span>
+									</a></li>
+								<li class="menu__item"><a href="#" class="menu__link icon-arrow-down" aria-label="open popup">
+										<span class="menu__link-icon icon-basket"></span>
+										<span class="menu__link-t">Мій Кошик</span>
+									</a></li>
+							</ul>
+							<ul class="menu__list-c list-c-menu">
+								<li class="list-c-menu__item">
+									<a href="tel:+380674681088" class="list-c-menu__link">+380 67 468 10 88</a>
+								</li>
+								<li class="list-c-menu__item">
+									<a href="tel:+380445993810" class="list-c-menu__link">+380 44 599 38 10</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="main-header__sub-wrapper">
+						<div class="main-header__phones item-dropdwn">
+							<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+								<span>+380 67 468 10 88</span>
+							</button>
+							<ul class="item-dropdwn__list">
+								<li class="item-dropdwn__item">
+									<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
+								</li>
+								<li class="item-dropdwn__item">
+									<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
+								</li>
+								<li class="item-dropdwn__item">
+									<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
+								</li>
+							</ul>
+						</div>
+						<div class="main-header__lang item-dropdwn">
+							<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+								<img src="img/icons/flag-ukraine.svg" width="24" height="17" alt="Image"> <span>UA</span>
+							</button>
+							<ul class="item-dropdwn__list">
+								<li class="item-dropdwn__item">
+									<a href="#" class="item-dropdwn__link" aria-label="language">
+										<img src="img/icons/flag-poland.svg" width="24" height="17" alt="Image"> PL
+									</a>
+								</li>
+								<li class="item-dropdwn__item">
+									<a href="#" class="item-dropdwn__link" aria-label="language">
+										<img src="img/icons/flag-english.svg" width="24" height="17" alt="Image"> ENG
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div data-da=".main-header,900.98" class="main-header__search">
+							<button data-popup="#popupSearch" data-popup-width="480.98,max" type="button" aria-label="open popup" class="main-header__search-btn icon-search">Пошук по брендам</button>
+							<div data-da=".popup-body-search,480.98" class="search">
+								<div class="search__wrapper icon-search">
+									<input autocomplete="off" type="text" class="search__input" placeholder="Пошук по брендам">
+								</div>
+								<div class="search__box">
+									<div class="search__header"></div>
+									<div class="search__list"></div>
+									<div class="search__null">
+										<div class="search__null-wr">
+											<p class="search__null-txt">У нас немає таких сертифікатів</p>
+											<p class="search__null-txt-acc">Спробуй пошукати щось схоже у нашому каталозі</p>
+											<a href="#" class="search__null-link btn btn_dark">Перейти до каталогу</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="main-header__activate">
+							<a href="#" class="main-header__activate-btn btn btn_dark btn_sm icon-balance" aria-label="balance">
+								Активувати<br> Баланс giftmall
+							</a>
+						</div>
+						<div class="main-header__cabinet cabinet-header">
+							<button data-popup="#popupCabinet" data-popup-width="480.98,max" type="button" aria-label="open popup" class=" cabinet-header__button">
+								<div class="cabinet-header__user icon-user"></div>
+								<div class="cabinet-header__body">
+									<div class="cabinet-header__txt">Мій кабінет</div>
+									<div class="cabinet-header__txt">Увійти</div>
+								</div>
+								<div class="cabinet-header__arrow icon-arrow-down"></div>
+							</button>
+							<div data-da=".popup-body-cabinet,480.98" class="cabinet-header__card card-cabinet">
+								<div class="card-cabinet__header">
+									<p>Мій кабінет</p>
+									<p>+380-50-104-88-57</p>
+								</div>
+								<a href="#" class="card-cabinet__balance" aria-label="link">
+									<div class="card-cabinet__img">
+										<img src="img/cards/giftmall-card.png" width="51" height="34" alt="Image">
+									</div>
+									<div class="card-cabinet__info">
+										<p class="card-cabinet__info-t">Мій Баланс</p>
+										<p class="card-cabinet__info-b"><span>2 000</span> грн</p>
+									</div>
+								</a>
+								<div class="card-cabinet__list">
+									<a href="#" class="card-cabinet__item icon-user-editing" aria-label="link">
+										<span class="card-cabinet__item-t">Мої Дані</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="#" class="card-cabinet__item icon-balance" aria-label="link">
+										<span class="card-cabinet__item-t">Мій Баланс</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="#" class="card-cabinet__item icon-basket" aria-label="link">
+										<span class="card-cabinet__item-t">Мої Замовлення</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="#" class="card-cabinet__item icon-sertificates" aria-label="link">
+										<span class="card-cabinet__item-t">Мої Сертифікати</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="#" class="card-cabinet__item icon-exit" aria-label="link">
+										<span class="card-cabinet__item-t">Вийти</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+								</div>
+								<div class="card-cabinet__footer">
+									<a href="#" class="card-cabinet__item" aria-label="link">
+										<span class="card-cabinet__item-t">Адмін Панель</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="#" class="card-cabinet__item" aria-label="link">
+										<span class="card-cabinet__item-t">Бізнес аккаунт</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="main-header__card">
+							<button data-popup="#popupCart" type="button" aria-label="open popup" class=" cabinet-header__button">
+								<div class="cabinet-header__user icon-basket"></div>
+								<div class="cabinet-header__body">
+									<div class="cabinet-header__txt">Кошик</div>
+									<div class="cabinet-header__txt"><span>5</span> товарів</div>
+								</div>
+								<div class="cabinet-header__arrow icon-arrow-down"></div>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header__sub-header sub-header">
+				<div class="sub-header__container-b">
+					<div data-filters="type-1" data-filters-close class="sub-header__filters filters">
+						<button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
+							<div class="button-filters__icon icon-sertificates"></div>
+							<div class="button-filters__title">
+								<div class="button-filters__name">Категорії по сертифікатам</div>
+							</div>
+						</button>
+						<div data-filters-wrapper class="filters__wrapper filters__wrapper_mob">
+							<div data-filters-head class="filters__header">
+								<a href="#" data-open-filters class="filters__back-mob icon-arrow-down">Назад до меню</a>
+							</div>
+							<nav data-filters-body class="filters__body">
+								<ul class="filters__list">
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="charity-certificates">
+											<span class="filters__icon icon-charity"></span>
+											<span class="filters__name">Благодійні сертифікати</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="children-goods">
+											<span class="filters__icon icon-children"></span>
+											<span class="filters__name">Дитячі товари</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="services">
+											<span class="filters__icon icon-services"></span>
+											<span class="filters__name">Послуги та сервіси</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="impressions">
+											<span class="filters__icon icon-impressions"></span>
+											<span class="filters__name">Враження</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="cosmetics">
+											<span class="filters__icon icon-cosmetics"></span>
+											<span class="filters__name">Косметика та парфюмерія</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="online-stores">
+											<span class="filters__icon icon-e-comm"></span>
+											<span class="filters__name">Інтернет-магазини</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="jewelry">
+											<span class="filters__icon icon-jewelry"></span>
+											<span class="filters__name">Ювелірні вироби</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="home-goods">
+											<span class="filters__icon icon-home-goods"></span>
+											<span class="filters__name">Товари для дому</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="pharmacy">
+											<span class="filters__icon icon-drugs"></span>
+											<span class="filters__name">Аптеки та медицина</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="clothing">
+											<span class="filters__icon icon-clothes"></span>
+											<span class="filters__name">Одяг та взуття</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="wine">
+											<span class="filters__icon icon-wine"></span>
+											<span class="filters__name">Вино та міцні напої</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="appliances">
+											<span class="filters__icon icon-electronics"></span>
+											<span class="filters__name">Побутова техніка та електроніка</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="pet-supplies">
+											<span class="filters__icon icon-zoo"></span>
+											<span class="filters__name">Зоотовари</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="fuel">
+											<span class="filters__icon icon-petrol"></span>
+											<span class="filters__name">Паливо</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="food-products">
+											<span class="filters__icon icon-food"></span>
+											<span class="filters__name">Продукти харчування</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="lingerie">
+											<span class="filters__icon icon-underclothes"></span>
+											<span class="filters__name">Спідня білизна</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="sport-goods">
+											<span class="filters__icon icon-sport"></span>
+											<span class="filters__name">Товари для спорту</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="restaurants">
+											<span class="filters__icon icon-restorountes"></span>
+											<span class="filters__name">Ресторани</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="books">
+											<span class="filters__icon icon-book"></span>
+											<span class="filters__name">Книжки</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="accessories">
+											<span class="filters__icon icon-accessories"></span>
+											<span class="filters__name">Аксесуари</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="fishing-hunting">
+											<span class="filters__icon icon-fishing"></span>
+											<span class="filters__name">Риболовля та мисливство</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<nav class="sub-header__nav">
+						<ul class="sub-header__list">
+							<li data-da=".more-sub-list__items,700.98,first" class="sub-header__item">
+								<a href="#" class="sub-header__link" aria-label="link">Каталог</a>
+							</li>
+							<li data-da=".more-sub-list__items,701.98,first" class="sub-header__item">
+								<a href="#" class="sub-header__link" aria-label="link">Подарункова картка giftmall</a>
+							</li>
+							<li data-da=".more-sub-list__items,900.98,first" class="sub-header__item item-line">
+								<a href="#" class="sub-header__link" aria-label="link">Листівки та коробки</a>
+							</li>
+							<li data-da=".more-sub-list__items,1000.98,first" class="sub-header__item">
+								<a href="#" data-popup="#popupContactsUs" class="sub-header__link" aria-label="link">Контакти</a>
+							</li>
+							<li data-da=".more-sub-list__items,1100.98,first" class="sub-header__item">
+								<a href="#" class="sub-header__link" aria-label="link">giftmate для бізнесів</a>
+							</li>
+							<li class="sub-header__item more-sub-list">
+								<button type="button" class="sub-header__link sub-header__link_more icon-arrow-down" aria-label="open sub list"><span>Більше</span></button>
+								<ul data-da=".menu__body,700.98,3" class="more-sub-list__items">
+									<li class="sub-header__item">
+										<a href="#" class="sub-header__link" aria-label="link">Про нас</a>
+									</li>
+									<li class="sub-header__item">
+										<a href="#" class="sub-header__link" aria-label="link">Оплата і доставка</a>
+									</li>
+									<li class="sub-header__item">
+										<a href="#" class="sub-header__link" aria-label="link">Платформа винагород</a>
+									</li>
+									<li class="sub-header__item">
+										<a href="#" class="sub-header__link" aria-label="link">Постачальникам</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div data-spollers="768.98,max" data-one-spoller class="footer__top">
+					<div class="footer__spollers spollers-footer">
+						<details data-open class="spollers-footer__details">
+							<summary class="spollers-footer__title">
+								<span class="spollers-footer__title-name footer-name">Товари</span>
+								<span class="spollers-footer__title-icon icon-arrow-down"></span>
+							</summary>
+							<div class="spollers-footer__body">
+								<ul class="spollers-footer__list">
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Каталог Брендів
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Подарункова Картка GiftMall
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Листівки та Коробки
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Сертифікати на Паливо
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Для бізнесів
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Постачальникам
+										</a>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</div>
+					<div class="footer__spollers spollers-footer">
+						<details class="spollers-footer__details">
+							<summary class="spollers-footer__title">
+								<span class="spollers-footer__title-name footer-name">Про компанію</span>
+								<span class="spollers-footer__title-icon icon-arrow-down"></span>
+							</summary>
+							<div class="spollers-footer__body">
+								<ul class="spollers-footer__list">
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Про нас
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Контакти
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Оплата та Доставка
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Блог
+										</a>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</div>
+					<div class="footer__spollers spollers-footer">
+						<details class="spollers-footer__details">
+							<summary class="spollers-footer__title">
+								<span class="spollers-footer__title-name footer-name">Інформація</span>
+								<span class="spollers-footer__title-icon icon-arrow-down"></span>
+							</summary>
+							<div class="spollers-footer__body">
+								<ul class="spollers-footer__list">
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											FAQ
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											АРІ Документація
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Мапа Сайту
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Мобільний додаток
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Договір оферти
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Політика конфеденційності
+										</a>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</div>
+					<div class="footer__contacts contacts-footer">
+						<div class="contacts-footer__block">
+							<div class="contacts-footer__item">
+								<div class="contacts-footer__name footer-name">Контакти</div>
+								<div class="contacts-footer__phones item-dropdwn">
+									<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+										<span>+380 67 468 10 88</span>
+									</button>
+									<ul class="item-dropdwn__list">
+										<li class="item-dropdwn__item">
+											<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
+										</li>
+										<li class="item-dropdwn__item">
+											<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
+										</li>
+										<li class="item-dropdwn__item">
+											<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<ul class="contacts-footer__social social-footer">
+								<li class="social-footer__item">
+									<a href="#" class="social-footer__link" aria-label="link">
+										<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z" fill="white" />
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M8.80001 9.69744C8.80001 10.6347 9.54031 11.3949 10.4525 11.3949C11.3656 11.3949 12.1049 10.6347 12.1049 9.69744C12.1049 8.76019 11.3646 8 10.4525 8C9.54031 8 8.80001 8.76019 8.80001 9.69744ZM9.03607 23.2V12.615H11.8689V23.2H9.03607ZM20.3672 23.2H23.2V16.696C23.2 11.6412 17.9084 11.825 16.5902 14.3134V12.615H13.7574V23.2H16.5902V17.8074C16.5902 14.8119 20.3672 14.5665 20.3672 17.8074V23.2Z" fill="#210529" />
+										</svg>
+									</a>
+								</li>
+								<li class="social-footer__item">
+									<a href="#" class="social-footer__link" aria-label="link">
+										<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z" fill="white" />
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M12 17.911V14.8888H14.1818V13.3777C14.1818 12.3758 14.5649 11.4149 15.2469 10.7064C15.9288 9.99795 16.8538 9.59993 17.8182 9.59993H20V12.6222H17.8182C17.6253 12.6222 17.4403 12.7018 17.3039 12.8435C17.1675 12.9851 17.0909 13.1773 17.0909 13.3777V14.8888H20L19.2727 17.911H17.0909V23.1999H14.1818V17.911H12Z" fill="#210529" />
+										</svg>
+									</a>
+								</li>
+								<li class="social-footer__item">
+									<a href="#" class="social-footer__link" aria-label="link">
+										<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z" fill="white" />
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M9.60001 12.9999C9.60001 12.0982 9.95822 11.2334 10.5958 10.5958C11.2335 9.95815 12.0983 9.59993 13 9.59993H19.8C20.7017 9.59993 21.5665 9.95815 22.2042 10.5958C22.8418 11.2334 23.2 12.0982 23.2 12.9999V19.7999C23.2 20.7017 22.8418 21.5665 22.2042 22.2041C21.5665 22.8417 20.7017 23.1999 19.8 23.1999H13C12.0983 23.1999 11.2335 22.8417 10.5958 22.2041C9.95822 21.5665 9.60001 20.7017 9.60001 19.7999V12.9999ZM16.3998 19.9698C18.3715 19.9698 19.9698 18.3714 19.9698 16.3998C19.9698 14.4281 18.3715 12.8298 16.3998 12.8298C14.4282 12.8298 12.8298 14.4281 12.8298 16.3998C12.8298 18.3714 14.4282 19.9698 16.3998 19.9698ZM14.5967 18.2029C14.1185 17.7247 13.8498 17.0761 13.8498 16.3998C13.8498 15.7235 14.1185 15.0749 14.5967 14.5966C15.0749 14.1184 15.7235 13.8498 16.3998 13.8498C17.0761 13.8498 17.7247 14.1184 18.203 14.5966C18.6812 15.0749 18.9498 15.7235 18.9498 16.3998C18.9498 17.0761 18.6812 17.7247 18.203 18.2029C17.7247 18.6811 17.0761 18.9498 16.3998 18.9498C15.7235 18.9498 15.0749 18.6811 14.5967 18.2029ZM20.2248 13.3398C20.6473 13.3398 20.9898 12.9973 20.9898 12.5748C20.9898 12.1523 20.6473 11.8098 20.2248 11.8098C19.8023 11.8098 19.4598 12.1523 19.4598 12.5748C19.4598 12.9973 19.8023 13.3398 20.2248 13.3398Z" fill="#210529" />
+										</svg>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="contacts-footer__form email-form">
+							<form class="email-form__form" data-dev method="post">
+								<div class="email-form__item">
+									<label for="email-form" class="email-form__label">
+										Будьте першими та дізнавайтесь про наші новинки та спеціальні пропозиції
+									</label>
+									<div class="email-form__sub-item">
+										<input id="email-form" autocomplete="off" type="email" name="email" data-error="Ви ввели невірний формат" placeholder="Ваш Email" data-required="email" class="input input_sm">
+										<button type="submit" class="email-form__btn icon-arrow-down"></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="footer__bottom">
+					<div data-da=".footer__top,768.98,0" class="footer__logo logo-footer">
+						<a href="index.html" class="logo-footer__logo icon-logo" aria-label="link"></a>
+						<p class="logo-footer__txt">Всі права захищені<br>
+							"GiftMall" Copyright©2024</p>
+					</div>
+					<div class="footer__testimonials testimonials-footer">
+						<div class="testimonials-footer__imgs">
+							<img src="img/icons/opineo.svg" width="120" height="32" alt="Image">
+							<img src="img/icons/google.svg" width="143" height="30" alt="Image">
+						</div>
+						<a href="#" class="testimonials-footer__link" aria-label="link">Дивись Відгуки</a>
+					</div>
+					<div class="footer__global global-footer">
+						<ul class="global-footer__list">
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-austria.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-belgia.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-english.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-germany.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-poland.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-spain.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-switzarland.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-ukraine.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-austria.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+						</ul>
+						<a href="#" class="global-footer__global" aria-label="link">GiftMall Global</a>
+					</div>
+					<div class="footer__app app-footer">
+						<div class="app-footer__apps">
+							<a href="#" class="app-footer__link" aria-label="link">
+								<img src="img/icons/download-app-store-light.svg" width="106" height="37" alt="Image">
+							</a>
+							<a href="#" class="app-footer__link" aria-label="link">
+								<img src="img/icons/download-google-play-light.svg" width="106" height="37" alt="Image">
+							</a>
+						</div>
+						<div class="app-footer__block">
+							<p class="app-footer__txt">Завантажуй наш мобільний додаток</p>
+							<div data-da=".footer__bottom,600.98,last" class="footer__design">
+								<p>
+									By Other Land
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<div id="popupSliderCheckout" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body">
+					<!-- popup-slider-checkout -->
+					<div class="popup-slider-checkout">
+						<p class="popup-slider-checkout__title">
+							Оберіть кіль-сть та номінал
+						</p>
+						<div class="popup-slider-checkout__items">
+							<div class="popup-slider-checkout__item item-popup-slider-checkout">
+								<div class="item-popup-slider-checkout__image">
+									<img class="ibg" src="img/checkout/item-04.jpg" width="75" height="48" alt="Image">
+								</div>
+								<div class="item-popup-slider-checkout__body">
+									<div class="item-popup-slider-checkout__title">Фокстрот</div>
+									<div class="item-popup-slider-checkout__subtitle">Подарункова картка</div>
+								</div>
+								<button type="button" class="item-popup-slider-checkout__btn icon-trash" aria-label="button"></button>
+							</div>
+						</div>
+						<div class="popup-slider-checkout__nav">
+							<div class="popup-slider-checkout__nav-item">
+								<select name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="300" data-required>
+									<option value data-class="item-placeholder">$ 500</option>
+									<option value="1">₴ 500</option>
+									<option value="2">₴ 1 000</option>
+									<option value="3">₴ 1 500</option>
+									<option value="4">₴ 2 000</option>
+									<option value="5">₴ 2 500</option>
+								</select>
+							</div>
+							<div class="popup-slider-checkout__nav-item">
+								<div data-quantity class="quantity">
+									<div class="quantity__item">
+										<div class="quantity__block">
+											<div class="quantity__input">
+												<input data-quantity-value type="text" name="" data-quantity-min="0" data-quantity-max="10" placeholder="0" value="0">
+												<span>шт</span>
+											</div>
+										</div>
+										<div class="quantity__btns">
+											<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+											<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="popup-slider-checkout__count">
+							<p>Сума</з>
+							<div class="popup-slider-checkout__total"><span class="numb">500</span> грн</div>
+						</div>
+						<div class="popup-slider-checkout__btns">
+							<button type="button" class=" popup-slider-checkout__btn btn btn_dark">Підтвердити</button>
+						</div>
+					</div>
+					<!-- END of popup-slider-checkout -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupIti" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body"></div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div id="popupRolldate" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body"></div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div id="popupCabinet" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-body-cabinet">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupSearch" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-body-search">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupCart" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close icon-cross" aria-label="close">
+				</button>
+				<div class="popup__body">
+					<div class="popup-cart">
+						<div class="popup-cart__header">
+							<p>Мій кошик <span>(2 замовлення)</span></p>
+							<button type="button" class="popup-cart__edit edit-btn icon-edit txt-13" aria-label="change">
+								Змінити <span>замовлення</span>
+							</button>
+						</div>
+						<div data-timer-set class="popup-cart__buttons timer">
+							<p class="popup-cart__reserv">
+								Резерв: <span data-timer="0.5"> 00 : 00</span>
+							</p>
+							<button type="button" data-timer-btn class="popup-cart__continue edit-btn icon-clock-timer txt-13" aria-label="continue">
+								Продовжити резерв
+							</button>
+						</div>
+						<div class="popup-cart__content">
+							<div class="orders-checkout__type">
+								<div class="orders-checkout__sub-head">
+									<p class="orders-checkout__type-txt icon-electronic">Електронні сертифікати</p>
+									<div class="orders-checkout__subtotoal"><span class="numb">2050</span> грн</div>
+								</div>
+								<div class="orders-checkout__item item-orders">
+									<div class="item-orders__img">
+										<img class="ibg" src="img/checkout/item-02.jpg" width="106" height="69" alt="Image">
+									</div>
+									<div class="item-orders__body">
+										<p class="item-orders__title">The Cake</p>
+										<div class="item-orders__amount"><span>2</span>шт</div>
+										<div class="item-orders__price"><span>2 x</span> <span class="numb">400.00</span> грн</div>
+									</div>
+									<div class="item-orders__button">
+										<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
+									</div>
+								</div>
+							</div>
+							<div class="orders-checkout__type">
+								<div class="orders-checkout__sub-head">
+									<p class="orders-checkout__type-txt icon-phisical-filling">Фізичні сертифікати</p>
+									<div class="orders-checkout__subtotoal"><span class="numb">400</span> грн</div>
+								</div>
+								<div class="orders-checkout__item item-orders">
+									<div class="item-orders__img">
+										<img class="ibg" src="img/checkout/item-04.jpg" width="106" height="69" alt="Image">
+									</div>
+									<div class="item-orders__body">
+										<p class="item-orders__title">Фокстрот</p>
+										<div class="item-orders__amount"><span>1</span>шт</div>
+										<div class="item-orders__price"><span></span> <span class="numb">400.00</span> грн</div>
+									</div>
+									<div class="item-orders__button">
+										<button type="button" class="item-orders__btn icon-trash" aria-label="delete item"></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="popup-cart__footer">
+							<div class="popup-cart__footer-wr">
+								<div class="popup-cart__total">
+									<p>Разом до сплати</p>
+									<p class="popup-cart__sum"><span class="numb">2100</span> грн</p>
+								</div>
+								<a href="#" class="popup-cart__btn btn btn_dark" aria-label="to pay">Перейти до оплати</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupFiltersAll" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-body-filters-all">
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="popupFiltersTypes" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-body-filters">
+					<div class="popup-body-filters__header">
+						<div>Фільтрувати замовлення</div>
+						<div class="filters__count">обрано <span>(0)</span></div>
+					</div>
+					<div class="popup-body-filters__body">
+
+					</div>
+					<div data-filters-footer-types class="popup-body-filters__footer filters__footer">
+						<button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
+						<button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupContactsUs" class="popup popup-full">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body">
+					<p class="popup__title">Зв’яжіться з нами</p>
+					<form id="formContactUs" class="popup__contacts-form contacts-form-popup" data-dev method="post">
+						<div class="contacts-form-popup__items">
+							<div class="input__item">
+								<label for="contactUsName" class="input__label">
+									Ваше Ім’я
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="contactUsEmail" class="input__label">
+									Ваш email
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email" class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item input-intl-item">
+								<label for="contactUsTel" class="input__label">
+									Ваш номер телефону
+								</label>
+								<input id="contactUsTel" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+							</div>
+							<div class="input__item">
+								<label for="contactUsTheme" class="input__label">
+									Тема листа
+								</label>
+								<div class="input__sub-item">
+									<input id="contactUsTheme" autocomplete="off" type="text" name="form[]" data-error="Вкажіть Тему листа" placeholder="Тема листа" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="contactUsMessage" class="input__label">
+									Ваше повідомлення
+								</label>
+								<textarea id="contactUsMessage" data-autoheight autocomplete="off" type="text" name="form[]" data-error="Впишіть, що вас цікавить тут" placeholder="Напишіть, що вас цікавить тут" data-required class="input input_sm"></textarea>
+							</div>
+						</div>
+						<button form="formContactUs" type="submit" class="btn btn_dark">Зв'язатись з нами</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250303182613"></script>
+    <script src="https://unpkg.com/tippy.js@6?_v=20250303182613"></script> -->
+	<!-- <script src="files/rolldate/rolldate.js?_v=20250303182613"></script>
+		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250303182613"></script>
+		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250303182613"></script> -->
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250303182613"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250303182613"></script>
+	<script src="js/app.min.js?_v=20250303182613"></script>
+</body>
