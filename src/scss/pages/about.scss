@@ -283,9 +283,14 @@ $small-gap: toRem(8);
     &--2 {
       text-align: right;
       padding-top: toRem(22);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
       
       @media (max-width: toEm(932)) {
         padding-top: 0;
+        align-items: flex-start;
       }
       
       .mission__image-block--wrapper {
@@ -318,6 +323,9 @@ $small-gap: toRem(8);
           left: 0;
           bottom: -50%;
         }
+        @media (max-width: $mobile) {
+          bottom: -65%;
+        }
         
         p {
           margin-bottom: 0;
@@ -330,10 +338,13 @@ $small-gap: toRem(8);
     overflow: hidden;
     border-radius: toRem(24);
     box-shadow: var(--card-shadow);
+    max-width: toRem(350);
     @media (max-width: $mobile) {
       max-width: toRem(250);
      }
     img{
+      width: 100%;
+      height:auto;
      @media (max-width: $mobile) {
       width: 100%;
       height:auto;
@@ -391,13 +402,16 @@ $small-gap: toRem(8);
     &--blue {
       background-color: var(--electric-blue);
       color: var(--white);
-      right: -7%;
+      right: -9%;
       left: unset;
       bottom: 0;
       
       @media (max-width: toEm(932)) {
         right: 0;
         bottom: toRem(-140);
+      }
+      @media (max-width: $mobile) {
+        bottom: toRem(-120);
       }
       
       p {
