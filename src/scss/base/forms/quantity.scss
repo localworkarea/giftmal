@@ -157,6 +157,7 @@
 		font-weight: 600;
 		font-size: toRem(11);
 		line-height: 1.45;
+		letter-spacing: 0.02em;
 		&:not(:last-child) {
 			margin-bottom: toRem(6);
 		}

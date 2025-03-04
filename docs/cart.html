@@ -6,14 +6,14 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250303182613">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250304224917">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
 </head>
 
 <body>
-	<div class="wrapper">
+	<div class="wrapper divider-wrapper">
 		<header data-scroll="50" data-scroll-show class="header">
 			<div class="header__main-header main-header">
 				<div class="main-header__container-c">
@@ -388,7 +388,269 @@
 			</div>
 		</header>
 		<main class="page">
+			<section class="cart">
+				<div class="cart__container-b">
+					<div class="cart__header header-cart mb-8-16">
+						<div class="header-cart__body">
+							<div class="header-cart__top">
+								<div class="header-cart__block">
+									<h1 class="header-cart__title">Мій Кошик (2 замовлення)</h1>
+									<div data-timer-set class="header-cart__timer timer">
+										<button type="button" data-timer-btn class="edit-btn icon-clock-timer txt-13" aria-label="continue">
+											Продовжити <span>резерв</span>
+										</button>
+										<p class="timer__txt txt-13">
+											Резерв <span data-timer="0.3"> 00 : 00</span>
+										</p>
+									</div>
+								</div>
+								<button type="button" class="header-cart__clear edit-btn icon-phone-sms txt-13 icon-trash">Очистити кошик</button>
+							</div>
+							<div class="header-cart__message icon-phisical-filling">
+								<p>Відправка фізичних сертифікатів: Пн — Пт. Замовлення після 09:00 ранку будуть відправлені наступного дня.</p>
+							</div>
+						</div>
+					</div>
+					<div data-one-select class="cart__wrapper">
+						<div class="cart__orders">
+							<div class="cart__order br-24">
+								<div class="cart__head">
+									<h2 class="cart__subtitle">Замовлення 1</h2>
+									<p class="cart__type icon-electronic">Електронні сертифікати</p>
+								</div>
+								<div class="cart__item item-cart">
+									<div class="item-cart__info">
+										<div class="item-cart__img">
+											<img class="ibg" src="img/certificates/certificate-01.jpg" width="83" height="56" alt="Image">
+										</div>
+										<h3 class="item-cart__title">The Cake</h3>
+										<p class="item-cart__subtitle">Подарункова картка</p>
+									</div>
+									<div class="item-cart__buttons">
+										<div class="item-cart__select">
+											<select name="form[]" data-class-modif="type-6" data-speed="200" data-show-selected data-scroll="220" data-required>
+												<option value data-class="item-placeholder">₴ 500</option>
+												<option value="1">₴ 500</option>
+												<option value="2">₴ 1 000</option>
+												<option data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500</option>
+												<option value="4">₴ 2 000</option>
+												<option value="5">₴ 2 500</option>
+												<option value="6">₴ 3 000</option>
+												<option value="7">₴ 3 500</option>
+											</select>
+										</div>
+										<div data-quantity class="item-cart__quantity quantity">
+											<div class="quantity__item">
+												<div class="quantity__block">
+													<div class="quantity__input">
+														<input data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="10" placeholder="0" value="1">
+														<span>шт</span>
+													</div>
+												</div>
+												<div class="quantity__btns">
+													<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+													<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+												</div>
+											</div>
 
+										</div>
+									</div>
+									<div class="item-cart__trash">
+										<button type="button" class="item-cart__delete icon-trash"></button>
+									</div>
+								</div>
+								<div class="cart__item item-cart item-cart_disabled">
+									<div class="item-cart__info">
+										<div class="item-cart__img">
+											<img class="ibg" src="img/certificates/certificate-01.jpg" width="83" height="56" alt="Image">
+										</div>
+										<h3 class="item-cart__title">The Cake</h3>
+										<p class="item-cart__subtitle">Подарункова картка</p>
+									</div>
+									<div class="item-cart__buttons">
+										<div class="item-cart__select">
+											<select name="form[]" data-class-modif="type-6" data-speed="200" data-show-selected data-scroll="220" data-required>
+												<option value data-class="item-placeholder">₴ 500</option>
+												<option value="1">₴ 500</option>
+												<option value="2">₴ 1 000</option>
+												<option data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500</option>
+												<option value="4">₴ 2 000</option>
+												<option value="5">₴ 2 500</option>
+												<option value="6">₴ 3 000</option>
+												<option value="7">₴ 3 500</option>
+											</select>
+										</div>
+										<div data-quantity class="item-cart__quantity quantity">
+											<div class="quantity__item">
+												<div class="quantity__block">
+													<div class="quantity__input">
+														<input data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="10" placeholder="0" value="1">
+														<span>шт</span>
+													</div>
+												</div>
+												<div class="quantity__btns">
+													<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+													<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									<div class="item-cart__trash">
+										<button type="button" class="item-cart__delete icon-trash"></button>
+									</div>
+									<div class="item-cart__disabled">Цього товару вже немає у наявності</div>
+								</div>
+								<div class="cart__item item-cart">
+									<div class="item-cart__info">
+										<div class="item-cart__img">
+											<img class="ibg" src="img/certificates/certificate-02.jpg" width="83" height="56" alt="Image">
+										</div>
+										<h3 class="item-cart__title">Фокстрот</h3>
+										<p class="item-cart__subtitle">Подарункова картка</p>
+									</div>
+									<div class="item-cart__buttons">
+										<div class="item-cart__select">
+											<select name="form[]" data-class-modif="type-7" data-speed="200" data-show-selected data-scroll="220" data-required>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value data-class="item-placeholder">₴ 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="1">₴ 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="2">₴ 1 000</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500 </option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="4">₴ 2 000</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="5">₴ 2 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="6">₴ 3 000</option>
+											</select>
+										</div>
+										<div data-quantity class="item-cart__quantity quantity _form-error">
+											<div class="quantity__item">
+												<div class="quantity__block">
+													<div class="quantity__input">
+														<input data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="15" placeholder="0" value="2" data-required>
+														<span>шт</span>
+													</div>
+												</div>
+												<div class="quantity__btns">
+													<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+													<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+												</div>
+											</div>
+											<div class="quantity__error">Ви обрали останній товар</div>
+										</div>
+									</div>
+									<div class="item-cart__trash">
+										<button type="button" class="item-cart__delete icon-trash"></button>
+									</div>
+								</div>
+								<div class="cart__item item-cart">
+									<div class="item-cart__info">
+										<div class="item-cart__img">
+											<img class="ibg" src="img/certificates/certificate-03.jpg" width="83" height="56" alt="Image">
+										</div>
+										<h3 class="item-cart__title">TVORCHI</h3>
+										<p class="item-cart__subtitle">Майстер клас “Малювання епоксидною смолою”</p>
+									</div>
+									<div class="item-cart__buttons">
+										<div class="item-cart__select">
+											<select name="form[]" data-class-modif="type-7" data-speed="200" data-show-selected data-scroll="220" data-required>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value data-class="item-placeholder">₴ 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="1">₴ 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="2">₴ 1 000</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500 </option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="4">₴ 2 000</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="5">₴ 2 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="6">₴ 3 000</option>
+											</select>
+										</div>
+										<div data-quantity class="item-cart__quantity quantity _form-error">
+											<div class="quantity__item">
+												<div class="quantity__block">
+													<div class="quantity__input">
+														<input data-quantity-value type="text" name="" data-quantity-min="" data-quantity-max="" placeholder="0" value="99" data-required>
+														<span>шт</span>
+													</div>
+												</div>
+												<div class="quantity__btns">
+													<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+													<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+												</div>
+											</div>
+											<div class="quantity__error">Ви перевищили макс. суму замовлення: ₴50 000</div>
+										</div>
+									</div>
+									<div class="item-cart__trash">
+										<button type="button" class="item-cart__delete icon-trash"></button>
+									</div>
+								</div>
+
+							</div>
+							<div class="cart__order br-24">
+								<div class="cart__head">
+									<h2 class="cart__subtitle">Замовлення 2</h2>
+									<p class="cart__type icon-phisical-filling">Фізичні сертифікати</p>
+								</div>
+								<div class="cart__item item-cart">
+									<div class="item-cart__info">
+										<div class="item-cart__img">
+											<img class="ibg" src="img/certificates/certificate-04.jpg" width="83" height="56" alt="Image">
+										</div>
+										<h3 class="item-cart__title">Eva</h3>
+										<p class="item-cart__subtitle">Подарункова картка</p>
+									</div>
+									<div class="item-cart__buttons">
+										<div class="item-cart__select">
+											<select name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="300" data-required>
+												<option value data-class="item-placeholder">₴ 500</option>
+												<option value="1">₴ 500</option>
+												<option value="2">₴ 1 000</option>
+												<option disabled data-class="_option-disabled" value="3">₴ 1 500</option>
+												<option value="4">₴ 2 000</option>
+												<option value="5">₴ 2 500</option>
+											</select>
+										</div>
+										<div data-quantity class="item-cart__quantity quantity">
+											<div class="quantity__item">
+												<div class="quantity__block">
+													<div class="quantity__input">
+														<input data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="15" placeholder="0" value="2" data-required>
+														<span>шт</span>
+													</div>
+												</div>
+												<div class="quantity__btns">
+													<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+													<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+												</div>
+											</div>
+											<div class="quantity__warning">Залишились: <span>3</span> шт</div>
+										</div>
+									</div>
+									<div class="item-cart__trash">
+										<button type="button" class="item-cart__delete icon-trash"></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="cart__total total-cart">
+							<div class="total-cart__item">
+								<div class="total-cart__header">
+									<div class="total-cart__order">
+										<div class="total-cart__txt icon-electronic">Замовлення 1</div>
+										<div class="total-cart__subtotal"><span class="numb">2000</span> грн</div>
+									</div>
+									<div class="total-cart__order">
+										<div class="total-cart__txt icon-phisical-filling">Замовлення 2</div>
+										<div class="total-cart__subtotal"><span class="numb">400</span> грн</div>
+									</div>
+								</div>
+								<div data-da=".cart__wrapper,480.98,last" class="total-cart__footer">
+									<div class="total-cart__subtxt">Разом до сплати</div>
+									<div class="total-cart__total"><span class="numb">2400</span> грн</div>
+									<a href="#" class="total-cart__payment btn btn_dark btn_sm">Перейти до оплати</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</main>
 		<footer class="footer">
 			<div class="footer__container">
@@ -933,12 +1195,12 @@
 		</div>
 	</div>
 	</div>
-	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250303182613"></script>
-    <script src="https://unpkg.com/tippy.js@6?_v=20250303182613"></script> -->
-	<!-- <script src="files/rolldate/rolldate.js?_v=20250303182613"></script>
-		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250303182613"></script>
-		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250303182613"></script> -->
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250303182613"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250303182613"></script>
-	<script src="js/app.min.js?_v=20250303182613"></script>
+	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250304224917"></script>
+    <script src="https://unpkg.com/tippy.js@6?_v=20250304224917"></script> -->
+	<!-- <script src="files/rolldate/rolldate.js?_v=20250304224917"></script>
+		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250304224917"></script>
+		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250304224917"></script> -->
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250304224917"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250304224917"></script>
+	<script src="js/app.min.js?_v=20250304224917"></script>
 </body>

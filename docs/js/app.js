@@ -848,7 +848,7 @@
                 } else {
                     charNum.style.display = "none";
                     charNum.textContent = "";
-                    charPlaceholder.style.display = "inline";
+                    charPlaceholder.style.display = "inline-block";
                 }
             }));
             updateCursorPosition(value.length);
@@ -868,10 +868,6 @@
                 if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) error += this.validateInput(formRequiredItem);
             }));
             return error;
-        },
-        handleValueSetClass(inputElement) {
-            let quantityWrapper = inputElement.closest("[data-quantity]");
-            if (quantityWrapper) if (inputElement.value.trim() !== "") quantityWrapper.classList.add("_value-set"); else quantityWrapper.classList.remove("_value-set");
         },
         validateInput(formRequiredItem) {
             let error = 0;
@@ -909,8 +905,6 @@
         addError(formRequiredItem) {
             formRequiredItem.classList.add("_form-error");
             formRequiredItem.parentElement.classList.add("_form-error");
-            let quantityWrapper = formRequiredItem.closest("[data-quantity]");
-            if (quantityWrapper) quantityWrapper.classList.add("_form-error");
             let inputError = formRequiredItem.parentElement.querySelector(".form__error");
             if (inputError) formRequiredItem.parentElement.removeChild(inputError);
             if (formRequiredItem.dataset.error) formRequiredItem.parentElement.insertAdjacentHTML("beforeend", `<div class="form__error">${formRequiredItem.dataset.error}</div>`);
@@ -918,8 +912,6 @@
         removeError(formRequiredItem) {
             formRequiredItem.classList.remove("_form-error");
             formRequiredItem.parentElement.classList.remove("_form-error");
-            let quantityWrapper = formRequiredItem.closest("[data-quantity]");
-            if (quantityWrapper) quantityWrapper.classList.remove("_form-error");
             if (formRequiredItem.parentElement.querySelector(".form__error")) formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector(".form__error"));
         },
         addSuccess(formRequiredItem) {
@@ -1042,61 +1034,34 @@
     function formQuantity() {
         document.addEventListener("click", (function(e) {
             let targetElement = e.target;
-            let quantityElement = targetElement.closest("[data-quantity]");
-            if (!quantityElement) return;
-            let valueElement = quantityElement.querySelector("[data-quantity-value]");
-            quantityElement.querySelector("[data-quantity-minus]");
-            quantityElement.querySelector("[data-quantity-plus]");
-            let value = parseInt(valueElement.value) || 0;
-            let min = parseInt(valueElement.dataset.quantityMin) || 1;
-            let max = parseInt(valueElement.dataset.quantityMax) || 1 / 0;
-            if (targetElement.closest("[data-quantity-plus]")) value = Math.min(value + 1, max); else if (targetElement.closest("[data-quantity-minus]")) value = Math.max(value - 1, min); else return;
-            valueElement.value = value;
-            updateQuantityState(quantityElement);
-            formValidate.validateInput(valueElement);
+            if (targetElement.closest("[data-quantity-plus]") || targetElement.closest("[data-quantity-minus]")) {
+                const quantityElement = targetElement.closest("[data-quantity]");
+                const valueElement = quantityElement.querySelector("[data-quantity-value]");
+                const minusButton = quantityElement.querySelector("[data-quantity-minus]");
+                const plusButton = quantityElement.querySelector("[data-quantity-plus]");
+                let value = parseInt(valueElement.value) || 0;
+                const min = valueElement.dataset.quantityMin ? parseInt(valueElement.dataset.quantityMin) : 1;
+                const max = valueElement.dataset.quantityMax ? parseInt(valueElement.dataset.quantityMax) : 1 / 0;
+                if (targetElement.hasAttribute("data-quantity-plus")) value = Math.min(value + 1, max); else value = Math.max(value - 1, min);
+                valueElement.value = value;
+                updateButtonsState(minusButton, plusButton, value, min, max);
+            }
+        }));
+        document.querySelectorAll("[data-quantity]").forEach((quantityElement => {
+            const valueElement = quantityElement.querySelector("[data-quantity-value]");
+            const minusButton = quantityElement.querySelector("[data-quantity-minus]");
+            const plusButton = quantityElement.querySelector("[data-quantity-plus]");
+            const min = valueElement.dataset.quantityMin ? parseInt(valueElement.dataset.quantityMin) : 1;
+            const max = valueElement.dataset.quantityMax ? parseInt(valueElement.dataset.quantityMax) : 1 / 0;
+            updateButtonsState(minusButton, plusButton, parseInt(valueElement.value) || min, min, max);
         }));
         document.addEventListener("input", (function(e) {
-            if (!e.target.matches("[data-quantity-value]")) return;
-            let valueElement = e.target;
-            valueElement.value = valueElement.value.replace(/\D/g, "");
-            let quantityElement = valueElement.closest("[data-quantity]");
-            if (quantityElement) {
-                updateQuantityState(quantityElement);
-                formValidate.handleValueSetClass(valueElement);
-            }
+            if (e.target.matches("[data-quantity-value]")) e.target.value = e.target.value.replace(/\D/g, "");
         }));
-        document.addEventListener("change", (function(e) {
-            if (!e.target.matches("[data-quantity-value]")) return;
-            let valueElement = e.target;
-            let quantityElement = valueElement.closest("[data-quantity]");
-            let min = parseInt(valueElement.dataset.quantityMin) || 1;
-            let max = parseInt(valueElement.dataset.quantityMax) || 1 / 0;
-            let value = parseInt(valueElement.value) || 0;
-            valueElement.value = Math.max(min, Math.min(value, max));
-            updateQuantityState(quantityElement);
-            formValidate.validateInput(valueElement);
-        }));
-        document.addEventListener("DOMContentLoaded", (function() {
-            document.querySelectorAll("[data-quantity]").forEach(updateQuantityState);
-        }));
-        function updateQuantityState(quantityElement) {
-            let valueElement = quantityElement.querySelector("[data-quantity-value]");
-            let minusButton = quantityElement.querySelector("[data-quantity-minus]");
-            let plusButton = quantityElement.querySelector("[data-quantity-plus]");
-            let value = valueElement.value.trim();
-            if (value === "" || value === "0") {
-                quantityElement.classList.add("_value-empty");
-                quantityElement.classList.remove("_value-set");
-            } else {
-                quantityElement.classList.add("_value-set");
-                quantityElement.classList.remove("_value-empty");
-            }
-            let min = parseInt(valueElement.dataset.quantityMin) || 1;
-            let max = parseInt(valueElement.dataset.quantityMax) || 1 / 0;
-            minusButton.disabled = parseInt(value) <= min;
-            plusButton.disabled = parseInt(value) >= max;
-            formValidate.validateInput(valueElement);
-        }
+    }
+    function updateButtonsState(minusButton, plusButton, value, min, max) {
+        if (minusButton) minusButton.disabled = value <= min;
+        if (plusButton) plusButton.disabled = value >= max;
     }
     class SelectConstructor {
         constructor(props, data = null) {
@@ -1349,9 +1314,11 @@
             if (selectOption.dataset.href) selectOptionLink = selectOption.dataset.href;
             let selectOptionLinkTarget = "";
             if (selectOption.hasAttribute("data-href-blank")) selectOptionLinkTarget = `target="_blank"`;
+            let disabledText = selectOption.dataset.disabled ? `<span class="select__disabled">${selectOption.dataset.disabled}</span>` : "";
             let selectOptionHTML = ``;
             if (selectOptionLink) selectOptionHTML += `<a ${selectOptionLinkTarget} ${selectOptionHide} href="${selectOptionLink}" data-value="${selectOption.value}" class="${this.selectClasses.classSelectOption}${selectOptionClass}${selectOptionSelected}${selectOptionSelectedClass}">`; else selectOptionHTML += `<button ${selectOptionHide} class="${this.selectClasses.classSelectOption}${selectOptionClass}${selectOptionSelected}${selectOptionSelectedClass}" data-value="${selectOption.value}" type="button">`;
             selectOptionHTML += this.getSelectElementContent(selectOption);
+            selectOptionHTML += disabledText;
             if (selectOptionLink) selectOptionHTML += `</a>`; else selectOptionHTML += `</button>`;
             return selectOptionHTML;
         }
@@ -6943,6 +6910,24 @@
             scrollDirection = scrollTop <= 0 ? 0 : scrollTop;
         }));
     }
+    function footerScroll() {
+        const totalCartFooter = document.querySelector(".total-cart__footer");
+        const mediaQuery480max = window.matchMedia("(max-width: 30.061em)");
+        if (!totalCartFooter) return;
+        const checkFooterPosition = () => {
+            if (!mediaQuery480max.matches) {
+                totalCartFooter.classList.remove("_fixed");
+                return;
+            }
+            const rect = totalCartFooter.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            const isFixed = rect.bottom >= windowHeight && rect.top < windowHeight;
+            totalCartFooter.classList.toggle("_fixed", isFixed);
+        };
+        document.addEventListener("windowScroll", checkFooterPosition);
+        mediaQuery480max.addEventListener("change", checkFooterPosition);
+        checkFooterPosition();
+    }
     setTimeout((() => {
         if (addWindowScrollEvent) {
             let windowScroll = new Event("windowScroll");
@@ -8155,4 +8140,5 @@
     formSubmit();
     formQuantity();
     headerScroll();
+    footerScroll();
 })();

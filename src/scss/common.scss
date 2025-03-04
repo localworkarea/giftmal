@@ -24,13 +24,24 @@ html {
 }
 
 .wrapper {
-  @media (min-width:toEm(700.98)){
-    background-color: var(--white);
-  }
+  background-color: var(--white);
   @media (max-width:toEm(700.98)){
     background-color: var(--gray-1);
-    .checkout-page & {
+    .checkout-page &,
+    &.divider-wrapper {
       background-color: var(--white);
+    }
+    &.divider-wrapper {
+      .page {
+        @media (max-width: toEm(700.98)) and (min-width: $mobileSmall) {
+          margin-top: toRem(125);
+          padding-top: 0;
+        }
+        @media (max-width: $mobileSmall) {
+          margin-top: toRem(145);
+          padding-top: 0;
+        }
+      }
     }
   }
 }
@@ -101,6 +112,17 @@ html {
 %padding32-24 {
   @include adaptiveValue("padding", 32, 24,0,1232.98,992.98);
  }
+ %paddingBlock56 {
+  padding-block: toRem(56);
+ }
+ %paddingBottom120-56 {
+  @media (min-width:$mobileSmall){
+    padding-bottom: toRem(120);
+  }
+  @media (max-width:$mobileSmall){
+    padding-bottom: toRem(56);
+  }
+ }
  %paddingTbBt56-16 {
   @include adaptiveValue("padding-top", 56,16,0,1440.98,480.98);
   @include adaptiveValue("padding-bottom", 56,40,0,1440.98,480.98);
@@ -119,6 +141,14 @@ html {
  %fonsSize32-20 {
   @media (min-width:$mobileSmall){
      font-size: toRem(32); 
+  }
+  @media (max-width:$mobileSmall){
+     font-size: toRem(20); 
+  }
+ }
+ %fonsSize28-20 {
+  @media (min-width:$mobileSmall){
+     font-size: toRem(28); 
   }
   @media (max-width:$mobileSmall){
      font-size: toRem(20); 
@@ -198,6 +228,8 @@ html {
  }
  %fonsSize11-14 {
    @media (min-width:$mobileSmall){
+      font-weight: 600;
+      letter-spacing: 0.02em;
      font-size: toRem(11);
    }
    @media (max-width:$mobileSmall){
@@ -298,12 +330,40 @@ html {
       margin-bottom: toRem(24); 
     }
   }
+  .mb-24-8 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(24); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(8); 
+    }
+  }
+  .mb-8-16 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(8); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(16); 
+    }
+  }
+  .mb-16-8 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(16); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(8); 
+    }
+  }
   
   %flexCenterGap8 {
     display: flex;
     align-items: center;
     gap: toRem(8);
   }
+
+  // .br-24 {
+  //   border-radius: toRem(24);
+  // }
 
   %borderRadiusTop40-24 {
     @media (min-width:$mobileSmall){

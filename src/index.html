@@ -40,6 +40,9 @@
 						<li>
 							<a href="cart.html" style="display: block; color:blue">5. Cart</a>
 						</li>
+						<li>
+							<a href="cart-empty.html" style="display: block; color:blue">6. Cart Empty</a>
+						</li>
 					</ul>
 					<br>
 					<p style="font-size: 20px; font-weight: 600;">Інпути та форми</p><br>
@@ -310,17 +313,17 @@
 							</div>
 							<br><br>
 							<p style="padding: 30px 0 0; border-top: 1px solid gray"><b>Кнопки кількість</b></p><br>
-							<p>Якщо значення в тег input не вказано додається класс помилки <b><span style="color: red;">_form-error</span></b></p><p>Можна вказувати атрибути з потрібними значеннями <b>data-quantity-min="1" data-quantity-max="3"</b>. Окремо є можливість ввести цифри у сам інпут</p>
+							<p>Можна вказувати атрибути з потрібними значеннями <b>data-quantity-min="1" data-quantity-max="3"</b>. Окремо є можливість ввести цифри у сам інпут</p>
 							<br>
 							<p><b>1. Кнопки за замовчуванням</b></p>
 							<br>
 
-							<p>Приклад 1: input з пустим значенням value='', автоматично додається код помилки, що надає йому червоний бордер та колір. Щоб при потребі окремо додати червоний бордер і колір тексту, тоді треба задати класс <span style="color: red;">_form-error</span> для input а також батьківському елементу</p><br>
-							<div data-quantity class="quantity">
+							<p>Щоб додати червоний бордер і колір тексту задайте класс <span style="color: red;">_form-error</span> для батьківського елементу з атрибутом data-quantity</p><br>
+							<div data-quantity class="quantity _form-error">
 								<div class="quantity__item">
 									<div class="quantity__block">
-										<div class="quantity__input _form-error">
-											<input data-quantity-value type="text" name="" placeholder="0" value="1" class="_form-error">
+										<div class="quantity__input ">
+											<input data-quantity-value type="text" name="" placeholder="0" value="1" >
 											<span>шт</span>
 										</div>
 									</div>
@@ -621,7 +624,7 @@
 											<option value data-class="item-placeholder">$ 500</option>
 											<option value="1">₴ 500</option>
 											<option value="2">₴ 1 000</option>
-											<option disabled data-class="_option-disabled" value="3">₴ 1 500</option>
+											<option data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500</option>
 											<option value="4">₴ 2 000</option>
 											<option value="5">₴ 2 500</option>
 										</select>

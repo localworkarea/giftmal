@@ -120,6 +120,37 @@ export function headerScroll() {
 		scrollDirection = scrollTop <= 0 ? 0 : scrollTop;
 	});
 }
+
+// == Elements position bottom total-cart__footer =====
+export function footerScroll() {
+	const totalCartFooter = document.querySelector('.total-cart__footer');
+	const mediaQuery480max = window.matchMedia('(max-width: 30.061em)');
+
+	if (!totalCartFooter) return;
+
+	const checkFooterPosition = () => {
+		if (!mediaQuery480max.matches) {
+			totalCartFooter.classList.remove('_fixed');
+			return;
+		}
+
+		const rect = totalCartFooter.getBoundingClientRect();
+		const windowHeight = window.innerHeight;
+
+		const isFixed = rect.bottom >= windowHeight && rect.top < windowHeight;
+
+		totalCartFooter.classList.toggle('_fixed', isFixed);
+	};
+
+	document.addEventListener("windowScroll", checkFooterPosition);
+	mediaQuery480max.addEventListener('change', checkFooterPosition);
+
+	checkFooterPosition();
+}
+
+
+
+
 // Модуль анімація цифрового лічильника
 export function digitsCounter() {
 	// Функція ініціалізації

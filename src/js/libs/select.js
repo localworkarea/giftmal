@@ -431,6 +431,9 @@ class SelectConstructor {
     if (selectOption.hasAttribute('data-href-blank')) {
         selectOptionLinkTarget = `target="_blank"`;
     }
+
+		 // Проверяем наличие data-disabled и создаем нужную разметку
+		 let disabledText = selectOption.dataset.disabled ? `<span class="select__disabled">${selectOption.dataset.disabled}</span>` : '';
     
     // Будуємо та повертаємо конструкцію елемента
     let selectOptionHTML = ``;
@@ -442,6 +445,7 @@ class SelectConstructor {
 	
 	
     selectOptionHTML += this.getSelectElementContent(selectOption);
+		selectOptionHTML += disabledText; // Добавляем span с текстом, если есть data-disabled
     
     if (selectOptionLink) {
         selectOptionHTML += `</a>`;

@@ -904,6 +904,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
    
+ 
+
       
   
   
@@ -1827,8 +1829,6 @@ document.querySelectorAll('.search').forEach(searchElement => {
   });
 });
 // == END OF SEARCH INPUTS BRANDS ============================
-
-
 
 
 

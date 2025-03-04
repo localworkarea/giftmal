@@ -1,0 +1,88 @@
+
+.timepicker {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  // .timepicker__body
+  &__body {
+    position: relative;
+    top: 8px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: toRem(8);
+    background-color: #fff;
+    border-radius: toRem(24);
+    padding: toRem(24);
+    box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.1);
+    overflow: hidden;
+    // max-height: toRem(200);
+    font-size: toRem(13);
+    &._am-pm {
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+    }
+  }
+  // .timepicker__block
+  &__block {
+    border: 1.50px solid #f2f2f2;
+    border-radius: toRem(12);
+    // padding: toRem(8);
+    padding: toRem(4);
+    height: min-content;
+  }
+  // .timepicker__item
+  &__item {
+    // padding: toRem(4);
+    padding: toRem(8);
+    @extend %flexCenterGap8;
+    gap: toRem(10);
+  }
+  // .timepicker__selected
+  &__selected {
+  }
+  // .timepicker__list
+  &__list {
+    overflow-y: auto;
+    transition: margin .3s, padding .3s, height .3s;
+    margin: 0;
+    height: 0;
+    &.open {
+    }
+    li {
+      cursor: pointer;
+      border-radius: toRem(12);
+      padding: toRem(6) toRem(0) toRem(6) toRem(8);
+      transition: background-color .2s ease, color .2s ease;
+      @media (any-hover: hover){
+        &:hover{
+          background-color: var(--dark-violet);
+          color: var(--white);
+        }
+      }
+    }
+  }
+  // .timepicker__open
+  &__open {
+    &::before {
+      transition: transform .3s ease;
+      font-weight: 600;
+      font-size: toRem(14);
+      .open & {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  // .timepicker__sep
+  &__sep {
+    font-size: toRem(15);
+    position: relative;
+    top: toRem(10);
+    width: toRem(4);
+    text-align: center;
+  }
+}
+.hours {
+}
+.icon-arrow-down {
+}
+.minuts {
+}
