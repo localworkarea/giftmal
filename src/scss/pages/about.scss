@@ -330,6 +330,15 @@ $small-gap: toRem(8);
     overflow: hidden;
     border-radius: toRem(24);
     box-shadow: var(--card-shadow);
+    @media (max-width: $mobile) {
+      max-width: toRem(250);
+     }
+    img{
+     @media (max-width: $mobile) {
+      width: 100%;
+      height:auto;
+     }
+    }
   }
 
   .mobile-visible {
@@ -411,6 +420,9 @@ $small-gap: toRem(8);
     @media (max-width: toEm(1080)) {
       font-size: toRem(12);
     }
+    @media (max-width: $mobile) {
+      padding-right: toRem(12);
+     }
   }
   
   &__item-content-inner {
