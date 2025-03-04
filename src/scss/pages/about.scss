@@ -666,12 +666,9 @@ $small-gap: toRem(8);
         margin-bottom: 0;
       }
       
-      svg {
+      img {
+        margin: 0;
         margin-right: $small-gap;
-        
-        path {
-          fill: var(--electric-blue);
-        }
       }
     }
   }
