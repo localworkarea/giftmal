@@ -149,8 +149,6 @@ export function footerCartScroll() {
 }
 
 
-
-
 // Модуль анімація цифрового лічильника
 export function digitsCounter() {
 	// Функція ініціалізації
