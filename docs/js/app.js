@@ -1063,6 +1063,46 @@
         if (minusButton) minusButton.disabled = value <= min;
         if (plusButton) plusButton.disabled = value >= max;
     }
+    function formAmount() {
+        const inputAmount = document.querySelector("[data-amount]");
+        if (!inputAmount) return;
+        const minEl = document.querySelector(".amount__min");
+        const maxEl = document.querySelector(".amount__max");
+        const amountBlock = document.querySelector(".amount");
+        const minAmount = parseInt(inputAmount.dataset.amountMin, 10);
+        const maxAmount = parseInt(inputAmount.dataset.amountMax, 10);
+        const formatNumbAmount = wNumb({
+            thousand: " ",
+            decimals: 0
+        });
+        function validateAndFormat(input) {
+            const value = input.value.replace(/[^0-9]/g, "");
+            const numValue = parseInt(value, 10);
+            input.classList.remove("_form-error");
+            minEl.classList.remove("_form-error");
+            maxEl.classList.remove("_form-error");
+            amountBlock.classList.remove("_form-error");
+            amountBlock.classList.remove("_form-success");
+            if (!value) return;
+            if (isNaN(numValue)) {
+                input.classList.add("_form-error");
+                amountBlock.classList.add("_form-error");
+                return;
+            }
+            if (numValue < minAmount) {
+                minEl.classList.add("_form-error");
+                amountBlock.classList.add("_form-error");
+            } else if (numValue > maxAmount) {
+                maxEl.classList.add("_form-error");
+                amountBlock.classList.add("_form-error");
+            } else amountBlock.classList.add("_form-success");
+            input.value = formatNumbAmount.to(numValue);
+        }
+        if (inputAmount.value) validateAndFormat(inputAmount);
+        inputAmount.addEventListener("input", (function() {
+            validateAndFormat(inputAmount);
+        }));
+    }
     class SelectConstructor {
         constructor(props, data = null) {
             let defaultConfig = {
@@ -8139,6 +8179,7 @@
     });
     formSubmit();
     formQuantity();
+    formAmount();
     headerScroll();
     footerScroll();
 })();

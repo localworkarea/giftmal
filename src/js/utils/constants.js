@@ -1,7 +1,7 @@
 export const BREAKPOINTS = {
-	tablet: 991.98,
-	mobile: 767.98,
-	smallMobile: 479.98,
+	tablet: 992.98,
+	mobile: 768.98,
+	smallMobile: 480.98,
 	xsMobile: 320,
 };
 

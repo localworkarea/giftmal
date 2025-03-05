@@ -88,6 +88,11 @@ textarea {
           color: var(--white);
         }
       }
+      .amount__input {
+        &::placeholder {
+          color: var(--fade-violet-2);
+        }
+      }
     }
   }
 
@@ -483,8 +488,6 @@ textarea.input {
   }
 }
 
-
-
 // checkbox =========================
 .checkbox {
   @extend  %fonsSize13-14;
@@ -557,6 +560,71 @@ textarea.input {
     }
   }
 }
+
+// amount input =====================
+.amount {
+  &._form-error {}
+	// .amount__block
+	&__block {
+    display: flex;
+    align-items: center;
+    padding-left: 36%;
+    ._form-error & {
+      border-color: var(--red);
+    }
+    &:not(:last-child) {
+      margin-bottom: toRem(6.5);
+    }
+	}
+  // .amount__item
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: toRem(3);
+    @extend %fonsSize13-14;
+    line-height: 1.46;
+  }
+  // .amount__currency
+  &__currency {
+    color: var(--fade-violet-2);
+    
+    ._form-error & {
+      color: var(--red);
+    }
+    ._form-success & {
+      color: var(--dark-violet);
+    }
+  }
+	// .amount__input
+	&__input {
+    display: inline-block;
+  	caret-color: inherit;
+  	outline: none;
+    padding-inline: 1px;
+    ._form-error & {
+      color: var(--red);
+    }
+	}
+  // .amount__minmax
+  &__minmax {
+    @extend %fonsSize11-12;
+    color: var(--fade-violet-2);
+    line-height: 1.36;
+  }
+  // .amount__min
+  &__min {
+   &._form-error {
+      color: var(--red);
+    }
+  }
+  // .amount__max
+  &__max {
+    &._form-error {
+       color: var(--red);
+     }
+  }
+}
+
 
 
 

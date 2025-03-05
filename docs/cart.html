@@ -6,14 +6,14 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250304230439">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250305121523">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
 </head>
 
 <body>
-	<div class="wrapper divider-wrapper">
+	<div class="wrapper">
 		<header data-scroll="50" data-scroll-show class="header">
 			<div class="header__main-header main-header">
 				<div class="main-header__container-c">
@@ -443,7 +443,7 @@
 											<div class="quantity__item">
 												<div class="quantity__block">
 													<div class="quantity__input">
-														<input data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="10" placeholder="0" value="1">
+														<input data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="10" placeholder="0" value="2">
 														<span>шт</span>
 													</div>
 												</div>
@@ -598,14 +598,17 @@
 									</div>
 									<div class="item-cart__buttons">
 										<div class="item-cart__select">
-											<select name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="300" data-required>
-												<option value data-class="item-placeholder">₴ 500</option>
-												<option value="1">₴ 500</option>
-												<option value="2">₴ 1 000</option>
-												<option disabled data-class="_option-disabled" value="3">₴ 1 500</option>
-												<option value="4">₴ 2 000</option>
-												<option value="5">₴ 2 500</option>
-											</select>
+											<div class="amount">
+												<div class="amount__block input input_lg">
+													<div class="amount__item">
+														<div class="amount__currency">₴</div>
+														<input type="text" autocomplete="off" data-amount class="amount__input numb" name="amount" placeholder="500" data-amount-min="500" data-amount-max="50000" value="">
+													</div>
+												</div>
+												<div class="amount__minmax">
+													<span class="amount__min">мін ₴500</span> • <span class="amount__max">макс ₴50 000</span>
+												</div>
+											</div>
 										</div>
 										<div data-quantity class="item-cart__quantity quantity">
 											<div class="quantity__item">
@@ -1195,12 +1198,12 @@
 		</div>
 	</div>
 	</div>
-	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250304230439"></script>
-    <script src="https://unpkg.com/tippy.js@6?_v=20250304230439"></script> -->
-	<!-- <script src="files/rolldate/rolldate.js?_v=20250304230439"></script>
-		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250304230439"></script>
-		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250304230439"></script> -->
-	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250304230439"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250304230439"></script>
-	<script src="js/app.min.js?_v=20250304230439"></script>
+	<!-- <script src="https://unpkg.com/@popperjs/core@2?_v=20250305121523"></script>
+    <script src="https://unpkg.com/tippy.js@6?_v=20250305121523"></script> -->
+	<!-- <script src="files/rolldate/rolldate.js?_v=20250305121523"></script>
+		<script src="files/air-datepicker/air-datepickerLng.js?_v=20250305121523"></script>
+		<script src="files/air-datepicker/air-datepicker.min.js?_v=20250305121523"></script> -->
+	<script src="files/intl-tel-input/intlTelInputLng.min.js?_v=20250305121523"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250305121523"></script>
+	<script src="js/app.min.js?_v=20250305121523"></script>
 </body>

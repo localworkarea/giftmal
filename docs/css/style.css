@@ -892,6 +892,51 @@ textarea.input {
   color: var(--violet);
   transition: color .3s ease
 }
+.amount__block {
+  display: flex;
+  align-items: center;
+  padding-left: 36%
+}
+._form-error .amount__block {
+  border-color: var(--red)
+}
+.amount__block:not(:last-child) {
+  margin-bottom: .40625rem
+}
+.amount__item {
+  display: flex;
+  align-items: center;
+  gap: .1875rem;
+  line-height: 1.46
+}
+.amount__currency {
+  color: var(--fade-violet-2)
+}
+._form-error .amount__currency {
+  color: var(--red)
+}
+._form-success .amount__currency {
+  color: var(--dark-violet)
+}
+.amount__input {
+  display: inline-block;
+  caret-color: inherit;
+  outline: 0;
+  padding-inline: 1px
+}
+._form-error .amount__input {
+  color: var(--red)
+}
+.amount__minmax {
+  color: var(--fade-violet-2);
+  line-height: 1.36
+}
+.amount__min._form-error {
+  color: var(--red)
+}
+.amount__max._form-error {
+  color: var(--red)
+}
 [data-select-enter] .select .select__body._nothing-found_ .select__options {
   visibility: hidden
 }
@@ -3818,6 +3863,7 @@ html {
 .icon-logo:hover {
   color: var(--violet)
 }
+.amount__minmax,
 .balance-card__title,
 .card-balance__sub-title,
 .card-slider_lg .card-slider__title,
@@ -4066,6 +4112,12 @@ body::after {
 }
 .edit-btn:not(:last-child) {
   margin-bottom: .375rem
+}
+.icon-trash {
+  color: var(--violet)
+}
+.icon-trash::before {
+  transition: color .3s ease
 }
 .btn {
   display: flex;
@@ -8009,6 +8061,7 @@ body::after {
   .tab-checkout__subtitle {
     font-size: .9375rem
   }
+  .amount__item,
   .balance-card__main-txt,
   .btn,
   .button-filters,
@@ -8068,6 +8121,7 @@ body::after {
     letter-spacing: .02em;
     font-size: .6875rem
   }
+  .amount__minmax,
   .balance-card__title,
   .card-balance__sub-title,
   .card-slider_lg .card-slider__title,
@@ -9535,6 +9589,9 @@ body::after {
     width: 100%;
     background-color: var(--white)
   }
+  .tab-checkout__slider {
+    padding-inline: 1.5rem
+  }
   .e-card__header {
     padding: 1.25rem 0 1.5rem
   }
@@ -10135,13 +10192,6 @@ body::after {
   }
 }
 @media (max-width:43.81125em) {
-  .wrapper {
-    background-color: var(--gray-1)
-  }
-  .checkout-page .wrapper,
-  .wrapper.divider-wrapper {
-    background-color: var(--white)
-  }
   .filters__wrapper_mob {
     position: fixed!important;
     z-index: 10!important;
@@ -10374,12 +10424,6 @@ body::after {
   }
   .total-cart__payment {
     grid-column: span 2
-  }
-}
-@media (max-width:43.81125em)and (max-width:30.06125em) {
-  .wrapper.divider-wrapper .page {
-    margin-top: 9.0625rem;
-    padding-top: 0
   }
 }
 @media (max-width:43.81125em)and (any-hover:none) {
@@ -10615,13 +10659,13 @@ body::after {
   }
   .page {
     border-radius: 1.5rem 1.5rem 0 0;
-    padding-top: 8.375rem
+    margin-top: 8.75rem
   }
   .page:not(:last-child) {
     border-radius: 1.5rem
   }
   .checkout-page .page {
-    padding-top: 0;
+    margin-top: 0;
     padding-bottom: 3.125rem;
     border-radius: 2rem 2rem 0 0
   }
@@ -10692,6 +10736,7 @@ body::after {
   .tab-checkout__subtitle {
     font-size: .875rem
   }
+  .amount__item,
   .balance-card__main-txt,
   .btn,
   .button-filters,
@@ -10749,6 +10794,7 @@ body::after {
   .total-cart__subtxt {
     font-size: .875rem
   }
+  .amount__minmax,
   .balance-card__title,
   .card-balance__sub-title,
   .card-slider_lg .card-slider__title,
@@ -11397,12 +11443,12 @@ body::after {
     bottom: 0;
     -webkit-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
-    z-index: 3;
     background-color: var(--white);
     margin-inline: -.5rem;
     transition: box-shadow .3s ease
   }
   .total-cart__footer._fixed {
+    z-index: 3;
     box-shadow: 0 -4px 40px 0 rgba(33,5,41,.12)
   }
   .total-cart__subtxt {
@@ -11525,18 +11571,12 @@ body::after {
     margin-bottom: clamp(3rem ,1.9979583333rem + 3.3333333333vw ,5rem)
   }
 }
-@media (max-width:43.81125em)and (max-width:43.81125em)and (min-width:30.06125em) {
-  .wrapper.divider-wrapper .page {
-    margin-top: 7.8125rem;
-    padding-top: 0
-  }
-}
 @media (max-width:43.81125em)and (min-width:30.06125em) {
   .page {
-    padding-top: 7.75rem
+    margin-top: 7.75rem
   }
   .checkout-page .page {
-    padding-top: 0
+    margin-top: 0
   }
   .error__page .page {
     padding-top: 0
@@ -11730,6 +11770,18 @@ body::after {
   .input:hover~.input__choise::before {
     color: var(--white)
   }
+  .input:hover .amount__input::-webkit-input-placeholder {
+    color: var(--fade-violet-2)
+  }
+  .input:hover .amount__input:-ms-input-placeholder {
+    color: var(--fade-violet-2)
+  }
+  .input:hover .amount__input::-ms-input-placeholder {
+    color: var(--fade-violet-2)
+  }
+  .input:hover .amount__input::placeholder {
+    color: var(--fade-violet-2)
+  }
   .input__sms-item:hover .input__sms-chars {
     background-color: var(--gray-2)
   }
@@ -11796,6 +11848,9 @@ body::after {
     color: var(--dark-violet)
   }
   .edit-btn:hover {
+    color: var(--dark-violet)
+  }
+  .icon-trash:hover::before {
     color: var(--dark-violet)
   }
   .btn_dark:hover {

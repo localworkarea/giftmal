@@ -935,6 +935,9 @@
     &:not(:last-child) {
       margin-bottom: toRem(16);
     }
+    @media (max-width: toEm(900.98)){
+      padding-inline: toRem(24);
+    }
   }
 }
 
@@ -2835,11 +2838,11 @@
       position: sticky;
       bottom: 0;
       transform: translate3d(0,0,0);
-      z-index: 3;
       background-color: var(--white);
       margin-inline: toRem(-8);
       transition: box-shadow .3s ease;
       &._fixed {
+        z-index: 3;
         box-shadow: 0 -4px 40px 0 rgba(33, 5, 41, 0.12);
       }
     }

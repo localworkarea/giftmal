@@ -25,32 +25,13 @@ html {
 
 .wrapper {
   background-color: var(--white);
-  @media (max-width:toEm(700.98)){
-    background-color: var(--gray-1);
-    .checkout-page &,
-    &.divider-wrapper {
-      background-color: var(--white);
-    }
-    &.divider-wrapper {
-      .page {
-        @media (max-width: toEm(700.98)) and (min-width: $mobileSmall) {
-          margin-top: toRem(125);
-          padding-top: 0;
-        }
-        @media (max-width: $mobileSmall) {
-          margin-top: toRem(145);
-          padding-top: 0;
-        }
-      }
-    }
-  }
 }
 .page {
   background-color: var(--gray-1);
   @media (max-width: toEm(700.98)) and (min-width:$mobileSmall) {
-      padding-top: toRem(124);
+      margin-top: toRem(124);
       .checkout-page & {
-        padding-top: 0;
+        margin-top: 0;
       }
   }
   @media (min-width:$mobileSmall){
@@ -64,12 +45,12 @@ html {
   }
   @media (max-width:$mobileSmall){
     border-radius: toRem(24) toRem(24) 0 0; 
+    margin-top: toRem(140);
     &:not(:last-child) {
       border-radius: toRem(24);
     }
-    padding-top: toRem(134);
     .checkout-page & {
-      padding-top: 0;
+      margin-top: 0;
       padding-bottom: toRem(50);
       border-radius: toRem(32) toRem(32) 0 0; 
       &:not(:last-child) {
@@ -582,6 +563,20 @@ html {
   @media (any-hover: hover){
     &:hover{
       color: var(--dark-violet);
+    }
+  }
+}
+
+.icon-trash {
+  color: var(--violet);
+  &::before {
+    transition: color .3s ease;
+  }
+  @media (any-hover: hover){
+    &:hover{
+      &::before {
+        color: var(--dark-violet);
+      }
     }
   }
 }

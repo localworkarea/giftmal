@@ -106,6 +106,7 @@ flsForms.formSubmit();
 
 /* Модуль форми "кількість" */
 flsForms.formQuantity();
+flsForms.formAmount();
 
 /* Модуль зіркового рейтингу */
 // flsForms.formRating();
