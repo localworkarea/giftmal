@@ -122,7 +122,7 @@ export function headerScroll() {
 }
 
 // == Elements position bottom total-cart__footer =====
-export function footerScroll() {
+export function footerCartScroll() {
 	const totalCartFooter = document.querySelector('.total-cart__footer');
 	const mediaQuery480max = window.matchMedia('(max-width: 30.061em)');
 

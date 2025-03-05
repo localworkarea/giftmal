@@ -6950,7 +6950,7 @@
             scrollDirection = scrollTop <= 0 ? 0 : scrollTop;
         }));
     }
-    function footerScroll() {
+    function footerCartScroll() {
         const totalCartFooter = document.querySelector(".total-cart__footer");
         const mediaQuery480max = window.matchMedia("(max-width: 30.061em)");
         if (!totalCartFooter) return;
@@ -8181,5 +8181,5 @@
     formQuantity();
     formAmount();
     headerScroll();
-    footerScroll();
+    footerCartScroll();
 })();

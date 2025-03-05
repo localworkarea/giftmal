@@ -2836,6 +2836,7 @@
     }
     @media (max-width:$mobileSmall){
       position: sticky;
+      position: -webkit-sticky;
       bottom: 0;
       transform: translate3d(0,0,0);
       background-color: var(--white);
@@ -2879,34 +2880,6 @@
     }
   }
 }
-
-.quantity {
-  // .quantity__item
-  &__item {
-  }
-  // .quantity__block
-  &__block {
-  }
-  // .quantity__input
-  &__input {
-  }
-  // .quantity__btns
-  &__btns {
-  }
-  // .quantity__btn
-  &__btn {
-    // .quantity__btn_minus
-    &_minus {
-    }
-    // .quantity__btn_plus
-    &_plus {
-    }
-  }
-  // .quantity__warning
-  &__warning {
-  }
-}
-
 
 
 
