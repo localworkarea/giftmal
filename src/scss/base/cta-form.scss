@@ -152,6 +152,9 @@
     margin-right: toRem(115);
     top: toRem(55);
     position: relative;
+    *{
+      user-select: none;
+    }
     
     @media (max-width: $mobile) {
       display: none;
@@ -203,6 +206,8 @@
       background-color: var(--white);
       padding: toRem(12) toRem(16);
       border-radius: toRem(100);
+      pointer-events: none;
+      user-select: none;
     }
   }
 } 
