@@ -554,7 +554,8 @@ export function formAmount() {
 	});
 
 	function validateAndFormat(input) {
-			const value = input.value.replace(/[^0-9]/g, '');
+			input.value = input.value.replace(/[^0-9]/g, ''); 
+			const value = input.value;
 			const numValue = parseInt(value, 10);
 
 			input.classList.remove('_form-error');
@@ -594,6 +595,7 @@ export function formAmount() {
 			validateAndFormat(inputAmount);
 	});
 }
+
 
 
 

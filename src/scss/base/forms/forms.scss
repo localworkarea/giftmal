@@ -575,6 +575,18 @@ textarea.input {
     &:not(:last-child) {
       margin-bottom: toRem(6.5);
     }
+    @media (any-hover: hover){
+      &:hover{
+        .amount__currency {
+          color: var(--dark-violet);
+        }
+        .amount__input {
+          &::placeholder {
+            color: var(--dark-violet);
+          }
+        }
+      }
+    }
 	}
   // .amount__item
   &__item {
@@ -583,13 +595,15 @@ textarea.input {
     gap: toRem(3);
     @extend %fonsSize13-14;
     line-height: 1.46;
+   
   }
   // .amount__currency
   &__currency {
     color: var(--fade-violet-2);
     
+    transition: color .3s ease;
     ._form-error & {
-      color: var(--red);
+      color: var(--red) !important;
     }
     ._form-success & {
       color: var(--dark-violet);
@@ -603,6 +617,9 @@ textarea.input {
     padding-inline: 1px;
     ._form-error & {
       color: var(--red);
+    }
+    &::placeholder {
+      transition: color .3s ease;
     }
 	}
   // .amount__minmax

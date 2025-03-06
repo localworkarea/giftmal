@@ -86,7 +86,7 @@
 		}
 		.select_type-7._select-open & {
 			@media (max-width:$mobileSmall){
-				min-width: calc(100vw - toRem(64));
+				min-width: calc(100vw - toRem(62.5));
 				.select__row {
 					color: var(--fade-violet-2);
 				}
@@ -324,7 +324,7 @@
 			}
 			@media (max-width:$mobileSmall){
 				top: 100%;
-				min-width: calc(100vw - toRem(64));
+				min-width: calc(100vw - toRem(62.5));
 				border-radius: 0 0 toRem(24) toRem(24);
 				box-shadow: 0 40px 40px 0 rgba(33, 5, 41, 0.16);
 			}

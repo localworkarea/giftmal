@@ -1,5 +1,6 @@
 import versionNumber from "gulp-version-number";
 import webpHtmlNosvg from "gulp-webp-html-nosvg";
+// import preprocess from 'gulp-preprocess';
 
 export const html = () => {
 	return app.gulp.src(`${app.path.build.html}*.html`)
@@ -9,6 +10,7 @@ export const html = () => {
 				message: "Error: <%= error.message %>"
 			}))
 		)
+	
 		/*
 		.pipe(
 			app.plugins.if(
@@ -30,3 +32,5 @@ export const html = () => {
 		}))
 		.pipe(app.gulp.dest(app.path.build.html));
 }
+
+
