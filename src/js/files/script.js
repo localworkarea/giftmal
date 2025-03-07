@@ -904,7 +904,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
    
- 
+      // == GALLERY -- card page ======================
+      const mainGalleryImage = document.querySelector('[data-gallery-main] img');
+      const galleryButtons = document.querySelectorAll('[data-gallery-button] img');
+      galleryButtons.forEach(button => {
+          button.addEventListener('click', function () {
+              let currentMainSrc = mainGalleryImage.src;
+              mainGalleryImage.src = button.src;
+              button.src = currentMainSrc;
+          });
+      });
+      // ============================
 
       
   

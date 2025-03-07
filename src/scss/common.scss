@@ -93,6 +93,9 @@ html {
 %padding32-24 {
   @include adaptiveValue("padding", 32, 24,0,1232.98,992.98);
  }
+%padding32-16 {
+  @include adaptiveValue("padding", 32, 16,0,1232.98,992.98);
+ }
  %paddingBlock56 {
   padding-block: toRem(56);
  }
