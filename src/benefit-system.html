@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"Система винагород для бізнесу"
+	})
+	<body>
+		<div class="wrapper benefit-system__page">
+            <header data-scroll="50" data-scroll-show class="header">
+                @@include('html/_header-main.htm',{})
+                @@include('html/_header-sub.htm',{})
+            </header>
+			<main class="page">
+                <section class="platform">
+                    <div class="platform__container">
+                        @@include('html/_page-header.htm',{
+                        "title":"Платформа винагород —",
+                        "highlitedTitle":"рішення для вашого зростання",
+                        "subtitle":"Імплементуйте готове рішення для менеджменту лояльності вже сьогодні!"
+                        })
+                        
+                        <div class="platform__image-wrapper">
+                            <div class="platform__image">
+                                <img src="@img/benefits-system/image_1.png" width="1140" height="380" alt="Платформа винагород для бізнесу" loading="eager">
+                            </div>
+                            
+                            <div class="platform__features">
+                                <div class="platform__feature-card">
+                                    <div class="platform__card-number">01</div>
+                                    <div class="platform__card-content">
+                                        <h3 class="platform__card-title">Зручність<br> 
+                                            у користуванні</h3>
+                                        <div class="platform__card-icon">
+                                            <span class="menu__link-icon icon-easy-computer"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="platform__feature-card platform__feature-card--blue">
+                                    <div class="platform__card-number">02</div>
+                                    <div class="platform__card-content">
+                                        <h3 class="platform__card-title">Швидкий <br> 
+                                            Запуск</h3>
+                                        <div class="platform__card-icon">
+                                            <span class="menu__link-icon icon-rocket"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="platform__feature-card">
+                                    <div class="platform__card-number">03</div>
+                                    <div class="platform__card-content">
+                                        <h3 class="platform__card-title">Персональна <br>
+                                            кстомізація</h3>
+                                        <div class="platform__card-icon">
+                                            <span class="menu__link-icon icon-paint"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="cta cta__extra cta__extra--dark">
+                    <div class="cta__container">
+                    @@include('html/_cta-form.htm',{})
+                    </div>
+                </section>
+
+                <section class="rewards-catalog">
+                    <div class="rewards-catalog__container">
+                        <h2 class="rewards-catalog__title">Каталог винагород</h2>
+                        
+                        <div class="rewards-catalog__grid">
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">WOG</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_1.png" alt="WOG" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">Comforta</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_2.png" alt="NOVUS" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">Silpo</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_3.png" alt="CTLP" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">FIZI</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_4.png" alt="FIZI" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">ONE-CLICK</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_5.png" alt="ONE-CLICK" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">Mentoly</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_6.png" alt="Mentoly" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">ONE-CLICK</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_7.png" alt="ONE-CLICK" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">Swarovski</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_8.png" alt="SWAROVSKI" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">The Cake</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_9.png" alt="The Cake" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="rewards-catalog__item">
+                                <div class="rewards-catalog__name">Citrus</div>
+                                <div class="rewards-catalog__logo">
+                                    <img src="@img/rewards/image_10.png" alt="Цитрус" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#" class="rewards-catalog__button btn btn_dark">Дивитись усі винагороди</a>
+                    </div>
+                </section>
+
+                <section class="about-partners benefits-partners">
+                    <div class="about-partners__container benefits-partners__container">
+                    @@include('html/_partners-grid.htm',{})
+                    </div>
+                </section>
+            
+                <section class="cta">
+                    <div class="cta__container">
+                    @@include('html/_cta-form.htm',{})
+                    </div>
+                </section>
+            </main>
+      @@include('html/_footer.htm',{})
+    </div>
+    @@include('html/_popup-mb.htm',{})
+	<script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+    @@include('html/_js.htm',{})
+  </body>
+</html> 

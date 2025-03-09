@@ -127,6 +127,7 @@
       font-weight: 500;
       color: var(--dark-violet);
       margin: toRem(12) 0 toRem(6);
+      white-space: nowrap;
       
       @media (max-width: $mobile) {
         font-size: toRem(14);
@@ -211,3 +212,16 @@
     }
   }
 } 
+
+.cta__extra{
+  .cta-form__card{
+    display: none;
+  }
+  .cta-form__badge{
+    top: unset;
+    bottom: toRem(47);
+  }
+  .cta-form__badge-text{
+    color: var(--fade-violet-3);
+  }
+}

@@ -258,10 +258,14 @@
 .faq__dark{
     background: var(--white);
     .spollers-faq__item {
-        background-color: var(--gray-1);
+      background-color: var(--gray-1);
     }
     .dropdown-arrow{
-        background-color: var(--white);
+      user-select: none;
+      background-color: var(--white);
+      &:hover{
+        background-color: var(--dark-violet);
+      }
     }
 }
 .faq__exeption{
