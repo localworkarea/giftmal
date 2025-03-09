@@ -257,13 +257,23 @@
 
 .faq__dark{
     background: var(--white);
-    padding-top: toRem(120);
     .spollers-faq__item {
         background-color: var(--gray-1);
     }
     .dropdown-arrow{
         background-color: var(--white);
     }
+}
+.faq__exeption{
+  padding-top: toRem(120);
+  @media (max-width: $mobile) {
+    padding-top: toRem(56);
+  }
+  .faq__title{
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
 }
 
 .corporative{
@@ -313,6 +323,8 @@
       width: fit-content;
       @media (max-width: $mobile) {
         height: auto;
+        max-width: toRem(120);
+        width: 100%;
       }
     }
   }
@@ -668,21 +680,13 @@
         background-color: var(--fade-violet-3);
       }
     }
-    
-    @media (any-hover: hover) {
-      &:hover:not(._active) {
-        color: var(--dark-violet);
-        
-        &::before {
-          background-color: var(--dark-violet);
-        }
-      }
-    }
+  
   }
   
   &__tabs {
     flex-grow: 1;
     display: grid;
+    gap: toRem(32);
   }
   
   &__tab {
@@ -693,10 +697,10 @@
     position: relative;
     position: sticky;
     box-shadow: toRem(1) toRem(-16) toRem(16) rgba(0, 0, 0, 0.04);
-    min-height: toRem(535);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-height: toRem(472);
   
     &:nth-child(1) {
       top: 15%;
@@ -712,14 +716,19 @@
       padding: toRem(24);
       border-radius: toRem(32);
       display: block;
-      min-height: toRem(435);
+    }
+
+    br{
+      @media (max-width: $mobile) {
+        display: none;
+      }
     }
   }
   
   &__tab-header {
     gap: toRem(60);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr toRem(250);
     column-gap: toRem(24);
     margin-bottom: toRem(40);
     @media (max-width: $mobile) {
@@ -811,13 +820,13 @@
   }
   
   &__image {
-    width: 100%;
     margin-left: auto;
     margin-top: auto;
-    height: auto;
-    max-width: toRem(300);
-    @media (max-width: $mobile) {
-      max-width: toRem(150);
+    width: auto;
+    max-height: toRem(230);
+    @media (max-width: $tablet) {
+      max-height: toRem(150);
+      max-width: toRem(200);
     }
   }
 }
