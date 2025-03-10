@@ -29,9 +29,9 @@
               <div class="card__aside aside-card">
                 <div class="aside-card__body">
                   <div data-gallery class="aside-card__gallery gallery">
-                    <a href="#" data-gallery-main class="gallery__item" aria-label="gallery">
-                      <img class="ibg" src="@img/certificates/certificate-04.jpg" width="388" height="255" alt="Image">
-                    </a>
+                    <div data-gallery-main class="gallery__item" aria-label="gallery">
+                      <img class="ibg" src="@img/certificates/certificate-06.jpg" width="388" height="255" alt="Image">
+                    </div>
                     <a href="#" data-gallery-button class="gallery__item" aria-label="gallery">
                       <img class="ibg" src="@img/certificates/certificate-02.jpg" width="388" height="255" alt="Image">
                     </a>
@@ -39,7 +39,7 @@
                       <img class="ibg" src="@img/certificates/certificate-03.jpg" width="388" height="255" alt="Image">
                     </a>
                     <a href="#" data-gallery-button class="gallery__item " aria-label="gallery">
-                      <img class="ibg" src="@img/certificates/certificate-06.jpg" width="388" height="255" alt="Image">
+                      <img class="ibg" src="@img/certificates/certificate-04.jpg" width="388" height="255" alt="Image">
                     </a>
                   </div>
                   <div class="aside-card__description">
@@ -53,29 +53,29 @@
                   <h1 class="card__title">
                     Подарункова Картка giftmall
                   </h1>
-                  <div class="card__rating">
+                  <div class="card__rating ">
                     <div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
+                      <a href="#" class="rating__title"><span>4.5</span> (184 відгуків)</a>
                     </div>
-                    <div class="rating__title"><span>4.5</span> (184 відгуків)</div>
                   </div>
                 </div>
                 <div class="card__details">
-                  <div class="card__items">
-                    <div class="card__info-label">
-                      <span class="info-label">
-                        <span data-tippy-content="Виберіть тип сертифікату" class="info-label__info icon-info"></span>
-                        Оберіть тип картки
-                      </span>
-                    </div>
+                  <div class="card__options grid-cl">
                     <div class="card-options">
+                      <div class="card__info-label">
+                        <span class="info-label">
+                          <span data-tippy-content="Фізичні картки доставляються Новою Поштою протягом 2-3 роб. днів. Електронні — одразу у вашому кабінеті." class="info-label__info icon-info"></span>
+                          Оберіть тип картки
+                        </span>
+                      </div>
                       <input id="cardTypeElectronic" class="card-options__input" type="radio" name="cardType" value="electronic">
                       <label for="cardTypeElectronic" class="card-options__label icon-electronic">
                         Електронний
                       </label>
                     </div>
-                    <div class="card-options">
+                    <div class="card-options card-options_msg">
                       <input id="cardTypePhysical" class="card-options__input icon-phisical-filling" type="radio" name="cardType" value="physical">
-                      <label for="cardTypePhysical" class="card-options__label">
+                      <label for="cardTypePhysical" class="card-options__label icon-phisical-filling">
                         Фізичний
                       </label>
                       <div class="card-options__message icon-delivery">
@@ -83,7 +83,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="card__items">
+                  <div class="card__items grid-cl">
                     <div class="card__item">
                       <label for="nominalSelect" class="card__info-label">
                         <span class="info-label">
@@ -128,85 +128,90 @@
                     </div>
                   </div>
                 </div>
-                <div class="card__info info-card">
-                  <div class="info-card__title">Важливо знати</div>
-                  <div class="info-card__description">
-                    Подарункова картка від мережі супермаркетів електроніки та побутової техніки , що займає лідируючі позиції на ринку.
+                <div class="card__info">
+                  <div class="card__info-card info-card">
+                    <div class="info-card__title">Важливо знати</div>
+                    <div class="info-card__description">
+                      Подарункова картка від мережі супермаркетів електроніки та побутової техніки , що займає лідируючі позиції на ринку.
+                    </div>
+                    <a href="#" class="info-card__link icon-arrow-next" aria-label="link">Перейти на сайт партнера</a>
+                    <div class="info-card__body">
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-number-1"></span>
+                        <p class="info-card__text">
+                          1 рік — Термін дії 
+                        </p>
+                      </div>
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-cake"></span>
+                        <p class="info-card__text">
+                          Розбивається на декілька чеків
+                        </p>
+                      </div>
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-no-money-exchange"></span>
+                        <p class="info-card__text">
+                          Не обмінюється на гроші
+                        </p>
+                      </div>
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-puzzle"></span>
+                        <p class="info-card__text">
+                          Сумується з балансом giftmall
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <a href="#" class="info-card__link icon-arrow-next" aria-label="link">Перейти на сайт партнера</a>
-                  <div class="info-card__body">
-                    <div class="info-card__item">
-                      <span class="info-card__icon icon-number-1"></span>
-                      <p class="info-card__text">
-                        1 рік  — Термін дії
-                      </p>
-                    </div>
-                    <div class="info-card__item">
-                      <span class="info-card__icon icon-cake"></span>
-                      <p class="info-card__text">
-                        Розбивається на декілька чеків
-                      </p>
-                    </div>
-                    <div class="info-card__item">
-                      <span class="info-card__icon icon-no-money-exchange"></span>
-                      <p class="info-card__text">
-                        Не обмінюється на гроші
-                      </p>
-                    </div>
-                    <div class="info-card__item">
-                      <span class="info-card__icon icon-puzzle"></span>
-                      <p class="info-card__text">
-                        Сумується з балансом giftmall
-                      </p>
-                    </div>
+                  <div data-spollers class="card__rules rules-spollers">
+                    <details class="rules-spollers__details">
+                      <summary class="rules-spollers__title">
+                        Правила та умови Використання
+                        <span class="rules-spollers__arrow icon-arrow-down"></span>
+                      </summary>
+                      <div class="rules-spollers__body">
+                        <div class="rules-spollers__wrapper">
+                          
+                        </div>
+                        <ul class="rules-spollers__list">
+                          <li class="rules-spollers__item">
+                            <p class="rules-spollers__txt">
+                              Сертифікат giftmall не є платіжним засобом в магазинах партнерів.
+                            </p>
+                          </li>
+                          <li class="rules-spollers__item">
+                            <p class="rules-spollers__txt">
+                              Щоб скористатися, необхідно активувати баланс картки на нашому сайті в особистому кабінеті.
+                            </p>
+                          </li>
+                          <li class="rules-spollers__item">
+                            <p class="rules-spollers__txt">
+                              За активований баланс з картки можна купити будь-який сертифікат бренду в нашому каталозі.
+                            </p>
+                            <p class="rules-spollers__txt--sm">
+                              * За активований баланс неможливо сплатити дану Подарункову Картку giftmall.
+                            </p>
+                          </li>
+                          <li class="rules-spollers__item">
+                            <p class="rules-spollers__txt">
+                              Щоб сплатити за сертифікат бренду, необхідно обрати спосіб оплати через баланс giftmall у кошику.
+                            </p>
+                            <p class="rules-spollers__txt--sm">
+                              * Якщо сума сертифікату бренду перевищує ваш поточний баланс giftmall, то ви можете доплатити різницю через свою банківську картку у кошику.
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </details>
                   </div>
-                </div>
-                <div data-spollers class="card__rules rules-spollers">
-                  <details class="rules-spollers__item">
-                    <summary class="rules-spollers__title">
-                      Правила та умови Використання
-                      <span class="rules-spollers__arrow icon-arrow-down"></span>
-                    </summary>
-                    <div class="rules-spollers__body">
-                      <ul class="rules-spollers__list">
-                        <li class="rules-spollers__item">
-                          <p class="rules-spollers__txt">
-                            Сертифікат giftmall не є платіжним засобом в магазинах партнерів.
-                          </p>
-                        </li>
-                        <li class="rules-spollers__item">
-                          <p class="rules-spollers__txt">
-                            Щоб скористатися, необхідно активувати баланс картки на нашому сайті в особистому кабінеті.
-                          </p>
-                        </li>
-                        <li class="rules-spollers__item">
-                          <p class="rules-spollers__txt">
-                            За активований баланс з картки можна купити будь-який сертифікат бренду в нашому каталозі.
-                          </p>
-                          <p class="rules-spollers__txt--sm">
-                            * За активований баланс неможливо сплатити дану Подарункову Картку giftmall.
-                          </p>
-                        </li>
-                        <li class="rules-spollers__item">
-                          <p class="rules-spollers__txt">
-                            Щоб сплатити за сертифікат бренду, необхідно обрати спосіб оплати через баланс giftmall у кошику.
-                          </p>
-                          <p class="rules-spollers__txt--sm">
-                            * Якщо сума сертифікату бренду перевищує ваш поточний баланс giftmall, то ви можете доплатити різницю через свою банківську картку у кошику.
-                          </p>
-                        </li>
-                      </ul>
-                    </div>
-                  </details>
                 </div>
                 <div class="card__footer">
-                  <div class="card__checkbox checkbox">
+                  <div data-popup="#popupRules" class="card__checkbox checkbox">
                     <input data-checkbox-rules id="rulesAgreement" type="checkbox" name="agreement" class="checkbox__input">
                     <label for="rulesAgreement" class="checkbox__label icon-checkbox">
-                      <span>Погоджуюсь з <u>правилами користування</u> Подарункової Картки giftmall</span>
+                      <span>Погоджуюсь з <span class="underline">правилами користування</span> Подарункової Картки giftmall</span>
                     </label>
                   </div>
-                  <button type="button" disabled class="card__add-button btn btn_dark">Додати у кошик</button>
+                  <button data-card-add type="button" disabled class="card__add-button btn btn_dark">Додати у кошик</button>
                 </div>
               </div>
             </div>

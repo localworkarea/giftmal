@@ -395,13 +395,13 @@
 		&._option-disabled {
 			pointer-events: none;
 			color: var(--fade-violet-1);
-			.select_type-6 & {
+			// .select_type-6 & {
 				@media (max-width:$mobileSmall){
 					 flex-direction: column; 
 					 align-items: flex-start;
 					 gap: toRem(4);
 				}
-			}
+			// }
 		}
 		&._nothing-found {
 			pointer-events: none;

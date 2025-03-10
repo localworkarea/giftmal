@@ -173,6 +173,14 @@ html {
      font-size: toRem(20); 
   }
  }
+ %fonsSize15-18 {
+  @media (min-width:$mobileSmall){
+     font-size: toRem(15); 
+  }
+  @media (max-width:$mobileSmall){
+     font-size: toRem(18); 
+  }
+ }
  %fonsSize15-16 {
   @media (min-width:$mobileSmall){
      font-size: toRem(15); 
