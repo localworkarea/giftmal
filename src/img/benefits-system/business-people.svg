@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 500 300" fill="none">
+  <rect width="500" height="300" fill="#F5F5F7"/>
+  <!-- Фонове зображення офісу -->
+  <rect x="0" y="0" width="500" height="300" fill="#EFEFEF"/>
+  
+  <!-- Бізнесмени -->
+  <g transform="translate(100, 50)">
+    <!-- Перший бізнесмен -->
+    <circle cx="80" cy="70" r="40" fill="#D9D9D9"/> <!-- Голова -->
+    <rect x="60" y="110" width="40" height="100" rx="5" fill="#7749FD"/> <!-- Тіло в костюмі -->
+    <rect x="50" y="110" width="10" height="80" rx="5" fill="#7749FD"/> <!-- Ліва рука -->
+    <rect x="100" y="110" width="10" height="80" rx="5" fill="#7749FD"/> <!-- Права рука -->
+    <rect x="60" y="210" width="15" height="40" rx="5" fill="#333333"/> <!-- Ліва нога -->
+    <rect x="85" y="210" width="15" height="40" rx="5" fill="#333333"/> <!-- Права нога -->
+    
+    <!-- Другий бізнесмен -->
+    <circle cx="220" cy="70" r="40" fill="#D9D9D9"/> <!-- Голова -->
+    <rect x="200" y="110" width="40" height="100" rx="5" fill="#333333"/> <!-- Тіло в костюмі -->
+    <rect x="190" y="110" width="10" height="80" rx="5" fill="#333333"/> <!-- Ліва рука -->
+    <rect x="240" y="110" width="10" height="80" rx="5" fill="#333333"/> <!-- Права рука -->
+    <rect x="200" y="210" width="15" height="40" rx="5" fill="#333333"/> <!-- Ліва нога -->
+    <rect x="225" y="210" width="15" height="40" rx="5" fill="#333333"/> <!-- Права нога -->
+    
+    <!-- Рукостискання -->
+    <rect x="110" y="150" width="80" height="10" rx="5" fill="#D9D9D9"/>
+  </g>
+  
+  <!-- Планшет в руках -->
+  <rect x="175" y="130" width="150" height="90" rx="10" fill="#8DB6F6"/>
+  <rect x="185" y="140" width="130" height="70" rx="5" fill="white"/>
+  
+  <!-- Елементи інтерфейсу на планшеті -->
+  <rect x="195" y="150" width="70" height="10" rx="2" fill="#7749FD"/>
+  <rect x="195" y="170" width="110" height="5" rx="2" fill="#CCCCCC"/>
+  <rect x="195" y="185" width="110" height="5" rx="2" fill="#CCCCCC"/>
+</svg> 
