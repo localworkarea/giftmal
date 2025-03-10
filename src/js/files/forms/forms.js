@@ -258,16 +258,6 @@ export let formValidate = {
 		}
 		return error;
 	},
-	// handleValueSetClass(inputElement) {
-  //   let quantityWrapper = inputElement.closest('[data-quantity]');
-  //   if (quantityWrapper) {
-  //       if (inputElement.value.trim() !== '') {
-  //           quantityWrapper.classList.add('_value-set');
-  //       } else {
-  //           quantityWrapper.classList.remove('_value-set');
-  //       }
-  //   }
-	// },
 	validateInput(formRequiredItem) {
 		let error = 0;
 		if (formRequiredItem.dataset.required === "email") {
@@ -309,12 +299,6 @@ export let formValidate = {
 		formRequiredItem.classList.add('_form-error');
 		formRequiredItem.parentElement.classList.add('_form-error');
 
-		// // Если это поле data-quantity, добавляем ошибку к data-quantity
-    // let quantityWrapper = formRequiredItem.closest('[data-quantity]');
-    // if (quantityWrapper) {
-    //     quantityWrapper.classList.add('_form-error');
-    // }
-
 		let inputError = formRequiredItem.parentElement.querySelector('.form__error');
 		if (inputError) formRequiredItem.parentElement.removeChild(inputError);
 		if (formRequiredItem.dataset.error) {
@@ -324,12 +308,6 @@ export let formValidate = {
 	removeError(formRequiredItem) {
 		formRequiredItem.classList.remove('_form-error');
 		formRequiredItem.parentElement.classList.remove('_form-error');
-
-		// // Если это поле data-quantity, убираем ошибку у data-quantity
-    // let quantityWrapper = formRequiredItem.closest('[data-quantity]');
-    // if (quantityWrapper) {
-    //     quantityWrapper.classList.remove('_form-error');
-    // }
 
 		if (formRequiredItem.parentElement.querySelector('.form__error')) {
 			formRequiredItem.parentElement.removeChild(formRequiredItem.parentElement.querySelector('.form__error'));
@@ -353,13 +331,27 @@ export let formValidate = {
 				el.classList.remove('_form-focus');
 				formValidate.removeError(el);
 
-				// Логика для кнопки очистки
+				// кнопка очистки
 				const clearButton = el.parentElement.querySelector('.input__clear');
 				if (clearButton) {
-					clearButton.disabled = true;  // Делаем кнопку снова неактивной
+					clearButton.disabled = true; 
 				}
 
 			}
+
+			// Очистка инпутов типа file
+			let fileInputs = form.querySelectorAll('input[type="file"]');
+			fileInputs.forEach(fileInput => {
+					fileInput.value = ""; 
+			
+					const previewContainer = fileInput.closest('.add-photo')?.querySelector('.add-photo__img');
+					if (previewContainer) {
+							previewContainer.innerHTML = "";
+							previewContainer.style.display = "none";
+					}
+			});
+
+
 			let checkboxes = form.querySelectorAll('.checkbox__input');
 			if (checkboxes.length > 0) {
 				for (let index = 0; index < checkboxes.length; index++) {
@@ -664,3 +656,31 @@ export function formRating() {
 
 }
 
+export function formAddPhoto() {
+	const fileInput = document.querySelector(".add-photo__input");
+	const previewContainer = document.querySelector(".add-photo__img");
+
+	fileInput.addEventListener("change", function () {
+		if (!fileInput.files.length) return;
+
+		const file = fileInput.files[0];
+		const reader = new FileReader();
+
+		reader.onload = function (e) {
+			previewContainer.innerHTML = `
+				<div class="add-photo__remove icon-cross"></div>
+				<img src="${e.target.result}" alt="Uploaded Image">
+			`;
+			previewContainer.style.display = "inline-block";
+
+			previewContainer.querySelector(".add-photo__remove").addEventListener("click", function (event) {
+				event.stopPropagation();
+				previewContainer.innerHTML = "";
+				previewContainer.style.display = "none";
+				fileInput.value = "";
+			});
+		};
+
+		reader.readAsDataURL(file);
+	});
+}

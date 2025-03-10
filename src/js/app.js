@@ -110,6 +110,7 @@ flsForms.formAmount();
 
 /* Модуль зіркового рейтингу */
 flsForms.formRating();
+flsForms.formAddPhoto();
 
 /* Модуль роботи з select. */
 import './libs/select.js'

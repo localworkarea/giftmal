@@ -917,7 +917,116 @@ document.addEventListener("DOMContentLoaded", () => {
       // ============================
 
       
+
+      // Робота з чекбоксами, кнопками підтвердження, відкриття попапу #popupRules;
+      const popupRules = document.getElementById("popupRules");
+      const popupBody = popupRules.querySelector(".popup-body-rules");
+      const popupMain = popupRules.querySelector(".popup-body-rules__main");
+      const popupContent = popupRules.querySelector(".popup-body-rules__content");
+      const confirmButton = popupRules.querySelector("[data-card-confirm]");
+      const checkboxRules = document.querySelector("[data-checkbox-rules]");
+      const addButton = document.querySelector("[data-card-add]");
+      let isCheckedThroughPopup = false;
+      let isAddButtonHandlerActive = false;
   
+      function openPopup(event) {
+          event.preventDefault();
+          flsModules.popup.open('#popupRules');
+      }
+  
+      function updateAddButtonState() {
+          if (!checkboxRules) return
+          if (!mediaQuery480max.matches) {
+              if (checkboxRules.checked) {
+                  addButton.removeAttribute("disabled");
+              } else {
+                  addButton.setAttribute("disabled", "true");
+              }
+          }
+      }
+  
+      function handleAddButtonClick(event) {
+          if (mediaQuery480max.matches) {
+              openPopup(event);
+          }
+      }
+  
+      function checkMediaQuery() {
+          if (mediaQuery480max.matches) {
+              addButton.removeAttribute("disabled");
+              if (!isAddButtonHandlerActive) {
+                  addButton.addEventListener("click", handleAddButtonClick);
+                  isAddButtonHandlerActive = true;
+              }
+          } else {
+              updateAddButtonState();
+          }
+      }
+  
+      if (checkboxRules) {
+          checkboxRules.addEventListener("click", function (event) {
+              if (!isCheckedThroughPopup) {
+                  event.preventDefault();
+                  openPopup(event);
+              } else {
+                  isCheckedThroughPopup = false;
+                  updateAddButtonState();
+              }
+          });
+      }
+  
+      if (popupContent && confirmButton) {
+        popupContent.addEventListener("scroll", function () {
+            if (popupContent.scrollTop > 5) {
+              popupBody.classList.add("_scroll-active");
+            } else {
+              popupBody.classList.remove("_scroll-active");
+            }
+    
+            const isScrolledToEnd = popupContent.scrollTop + popupContent.clientHeight >= popupContent.scrollHeight - 1;
+            if (isScrolledToEnd) {
+                confirmButton.removeAttribute("disabled");
+                popupBody.classList.add("_scroll-end");
+            } else {
+              popupBody.classList.remove("_scroll-end");
+            }
+        });
+      }
+    
+      confirmButton.addEventListener("click", function () {
+          if (checkboxRules) {
+              checkboxRules.checked = true;
+              isCheckedThroughPopup = true;
+              updateAddButtonState();
+              if (mediaQuery480max.matches) {
+                  addButton.removeEventListener("click", handleAddButtonClick);
+                  isAddButtonHandlerActive = false;
+              }
+              setTimeout(() => {
+                  flsModules.popup.close('#popupRules');
+              }, 100);
+          }
+      });
+  
+        mediaQuery480max.addEventListener("change", checkMediaQuery);
+        checkMediaQuery(); 
+        updateAddButtonState(); 
+      // ==================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
   
 
 }); // end DOMContentLoaded
@@ -1002,235 +1111,6 @@ document.querySelectorAll("[data-timer-set]").forEach(element => {
   *International Telephone Input v25.3.0
  *https://github.com/jackocnr/intl-tel-input.git
 */
-// const intlTelInputs = document.querySelectorAll("[data-intl-number]");
-// if (intlTelInputs.length > 0) {
-  
-//   const siteLang = document.documentElement.lang.slice(0, 2); // Определяем язык сайта
-//   let language;
-  
-//   switch (siteLang) {
-//     case 'ru':
-//       language = ru;
-//       break;
-//     case 'uk':
-//       language = uk;
-//       break;
-//     default:
-//       language = null; // Английский будет по умолчанию
-//   }
-  
-//   intlTelInputs.forEach(input => {
-//     const iti = window.intlTelInput(input, {
-//       initialCountry: 'auto',
-//       geoIpLookup: callback => {
-//         fetch("https://ipapi.co/json")
-//           .then(res => res.json())
-//           .then(data => callback(data.country_code))
-//           .catch(() => callback("us"));
-//       },
-//       strictMode: true,
-//       separateDialCode: true,
-//       nationalMode: true,
-//       formatOnDisplay: true,
-//       i18n: language,
-//       useFullscreenPopup: window.innerWidth <= 480.98,
-//     });
-
-//     //  Проверяем, нужно ли вставлять дропдаун в попап
-//      if (iti.options.useFullscreenPopup) {
-//         const popupBody = document.querySelector("#popupIti .popup__body");
-//         if (popupBody) {
-//           iti.options.dropdownContainer = popupBody;
-//         }
-      
-//         let dropdownOpened = false;
-      
-//         if (typeof iti._openDropdown === "function" && typeof iti._closeDropdown === "function") {
-//           // Сохраняем оригинальные методы
-//           const originalShowDropdown = iti._openDropdown;
-//           const originalCloseDropdown = iti._closeDropdown;
-        
-//           iti._openDropdown = function () {
-//             if (!dropdownOpened) {
-//               dropdownOpened = true;
-//               flsModules.popup.open('#popupIti');
-            
-//               setTimeout(() => {
-//                 originalShowDropdown.call(iti);
-//               }, 50);
-//             }
-//           };
-       
-
-//           iti._closeDropdown = function () {
-//             if (dropdownOpened) {
-//               dropdownOpened = false;
-//               originalCloseDropdown.call(iti);
-//               flsModules.popup.close('#popupIti');
-//             }
-//           };
-
-         
-        
-//           // Обработчик закрытия попапа
-//           const handlePopupClose = (event) => {
-//             const currentPopup = event.detail.popup;
-//             if (currentPopup?.targetOpen?.selector === "#popupIti") {
-//               iti._closeDropdown();
-//             }
-//           };
-        
-//           document.addEventListener("beforePopupClose", handlePopupClose);
-//           document.addEventListener("afterPopupClose", handlePopupClose);
-        
-//           // Очищаем обработчики при уничтожении iti (если поддерживается)
-//           if (typeof iti.destroy === "function") {
-//             const originalDestroy = iti.destroy;
-//             iti.destroy = function () {
-//               document.removeEventListener("beforePopupClose", handlePopupClose);
-//               document.removeEventListener("afterPopupClose", handlePopupClose);
-//               originalDestroy.call(iti);
-//             };
-//           }
-//         }
-      
-//     }
-//   });
-
-// }
-
-// Инициализация всех intlTelInput инпутов
-// const intlTelInputs = document.querySelectorAll("[data-intl-number]");
-
-// if (intlTelInputs.length > 0) {
-//   const siteLang = document.documentElement.lang.slice(0, 2);
-//   let language;
-
-//   switch (siteLang) {
-//     case "ru":
-//       language = ru;
-//       break;
-//     case "uk":
-//       language = uk;
-//       break;
-//     default:
-//       language = null;
-//   }
-
-//   intlTelInputs.forEach((input) => {
-//     const iti = window.intlTelInput(input, {
-//       initialCountry: "auto",
-//       geoIpLookup: (callback) => {
-//         fetch("https://ipapi.co/json")
-//           .then((res) => res.json())
-//           .then((data) => callback(data.country_code))
-//           .catch(() => callback("us"));
-//       },
-//       strictMode: true,
-//       separateDialCode: true,
-//       nationalMode: true,
-//       formatOnDisplay: true,
-//       i18n: language,
-//       useFullscreenPopup: window.innerWidth <= 480.98,
-//     });
-
-//     // Определяем, находится ли input внутри попапа
-//     const inputParentPopup = input.closest(".popup");
-
-//     // Если `iti` находится в попапе → дропдаун будет в `#popupIti`
-//     if (iti.options.useFullscreenPopup && inputParentPopup) {
-//       const popupBody = document.querySelector("#popupIti .popup__body");
-//       if (popupBody) {
-//         iti.options.dropdownContainer = popupBody;
-//       }
-
-//       let dropdownOpened = false;
-//       if (typeof iti._openDropdown === "function" && typeof iti._closeDropdown === "function") {
-//         const originalShowDropdown = iti._openDropdown;
-//         const originalCloseDropdown = iti._closeDropdown;
-
-//         iti._openDropdown = function () {
-//           if (!dropdownOpened) {
-//             dropdownOpened = true;
-//             flsModules.popup.open("#popupIti", { keepParentOpen: !!inputParentPopup });
-
-//             setTimeout(() => {
-//               originalShowDropdown.call(iti);
-//             }, 50);
-//           }
-//         };
-
-//         iti._closeDropdown = function () {
-//           if (dropdownOpened) {
-//             dropdownOpened = false;
-//             originalCloseDropdown.call(iti);
-
-//             setTimeout(() => {
-//               flsModules.popup.close("#popupIti", { keepParentOpen: !!inputParentPopup });
-//             }, 50);
-//           }
-//         };
-//       }
-//     } 
-//     // Если `iti` просто на странице → вставляем дропдаун в `.iti-container`, чтобы не улетал вниз документа
-//     else  if (iti.options.useFullscreenPopup) {
-//       const popupBody = document.querySelector("#popupIti .popup__body");
-//       if (popupBody) {
-//         iti.options.dropdownContainer = popupBody;
-//       }
-    
-//       let dropdownOpened = false;
-    
-//       if (typeof iti._openDropdown === "function" && typeof iti._closeDropdown === "function") {
-//         // Сохраняем оригинальные методы
-//         const originalShowDropdown = iti._openDropdown;
-//         const originalCloseDropdown = iti._closeDropdown;
-      
-//         iti._openDropdown = function () {
-//           if (!dropdownOpened) {
-//             dropdownOpened = true;
-//             flsModules.popup.open('#popupIti');
-          
-//             setTimeout(() => {
-//               originalShowDropdown.call(iti);
-//             }, 50);
-//           }
-//         };
-     
-
-//         iti._closeDropdown = function () {
-//           if (dropdownOpened) {
-//             dropdownOpened = false;
-//             originalCloseDropdown.call(iti);
-//             flsModules.popup.close('#popupIti');
-//           }
-//         };
-      
-//         // Обработчик закрытия попапа
-//         const handlePopupClose = (event) => {
-//           const currentPopup = event.detail.popup;
-//           if (currentPopup?.targetOpen?.selector === "#popupIti") {
-//             iti._closeDropdown();
-//           }
-//         };
-      
-//         document.addEventListener("beforePopupClose", handlePopupClose);
-//         document.addEventListener("afterPopupClose", handlePopupClose);
-      
-//         // Очищаем обработчики при уничтожении iti (если поддерживается)
-//         if (typeof iti.destroy === "function") {
-//           const originalDestroy = iti.destroy;
-//           iti.destroy = function () {
-//             document.removeEventListener("beforePopupClose", handlePopupClose);
-//             document.removeEventListener("afterPopupClose", handlePopupClose);
-//             originalDestroy.call(iti);
-//           };
-//         }
-//       }
-    
-//     }
-//   });
-// }
 
 const intlTelInputs = document.querySelectorAll("[data-intl-number]");
 
@@ -1362,9 +1242,6 @@ if (tooltipElements.length > 0) {
     placement: "bottom",
   });
 }
-
-
-
 
 
 
@@ -1839,8 +1716,3 @@ document.querySelectorAll('.search').forEach(searchElement => {
   });
 });
 // == END OF SEARCH INPUTS BRANDS ============================
-
-
-
-
-

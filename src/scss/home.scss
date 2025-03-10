@@ -1343,10 +1343,11 @@
       }
     }
     &.swiper-button-disabled {
-      background-color: var(--gray-2);
+      background-color: var(--gray-2) !important;
       &::before {
-        color: var(--dark-violet);
+        color: var(--dark-violet) !important;
       }
+      pointer-events: none;
     }
     
   }

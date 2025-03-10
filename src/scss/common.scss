@@ -318,7 +318,9 @@ html {
     opacity: 0;
   }
   
-
+  .pb-120-56 {
+    @include adaptiveValue("padding-bottom", 120, 56,0,1400.98,480.98);
+  }
   .mb-56 {
     margin-bottom: toRem(56);
   }
@@ -347,6 +349,14 @@ html {
     }
     @media (max-width:$mobileSmall){
       margin-bottom: toRem(8); 
+    }
+  }
+  .mb-20-24 {
+    @media (min-width:$mobileSmall){
+      margin-bottom: toRem(20); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(24); 
     }
   }
   .mb-8-16 {
@@ -646,6 +656,24 @@ html {
     min-height: toRem(40);
     font-size: toRem(13);
   }
+  &_sm-3 {
+    padding: toRem(2) toRem(10);
+    @media (min-width:$mobileSmall){
+      min-height: toRem(52);
+      font-size: toRem(15); 
+    }
+    @media (max-width:$mobileSmall){
+      font-size: toRem(14); 
+    }
+  }
+  &_fs15-13 {
+    @media (min-width:$mobileSmall){
+      font-size: toRem(15); 
+    }
+    @media (max-width:$mobileSmall){
+      font-size: toRem(13); 
+    }
+  }
   &_dark {
     background-color: var(--violet);
     color: var(--white);
@@ -675,6 +703,7 @@ html {
   &:disabled {
     background-color: var(--disabled-pink);
     color: var(--white);
+    pointer-events: none;
   }
   &_gray {
     background-color: var(--gray-1);
@@ -693,6 +722,7 @@ html {
     &:disabled {
       background-color: var(--gray-1);
       color: var(--dark-violet);
+      pointer-events: none;
     }
   }
 }

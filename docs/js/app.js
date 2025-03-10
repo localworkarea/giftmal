@@ -934,6 +934,15 @@
                     const clearButton = el.parentElement.querySelector(".input__clear");
                     if (clearButton) clearButton.disabled = true;
                 }
+                let fileInputs = form.querySelectorAll('input[type="file"]');
+                fileInputs.forEach((fileInput => {
+                    fileInput.value = "";
+                    const previewContainer = fileInput.closest(".add-photo")?.querySelector(".add-photo__img");
+                    if (previewContainer) {
+                        previewContainer.innerHTML = "";
+                        previewContainer.style.display = "none";
+                    }
+                }));
                 let checkboxes = form.querySelectorAll(".checkbox__input");
                 if (checkboxes.length > 0) for (let index = 0; index < checkboxes.length; index++) {
                     const checkbox = checkboxes[index];
@@ -1148,6 +1157,26 @@
                 if (index === resultFullItems && resultPartItem) ratingItem.insertAdjacentHTML("beforeend", `<span style="width:${resultPartItem * 100}%"></span>`);
             }));
         }
+    }
+    function formAddPhoto() {
+        const fileInput = document.querySelector(".add-photo__input");
+        const previewContainer = document.querySelector(".add-photo__img");
+        fileInput.addEventListener("change", (function() {
+            if (!fileInput.files.length) return;
+            const file = fileInput.files[0];
+            const reader = new FileReader;
+            reader.onload = function(e) {
+                previewContainer.innerHTML = `\n\t\t\t\t<div class="add-photo__remove icon-cross"></div>\n\t\t\t\t<img src="${e.target.result}" alt="Uploaded Image">\n\t\t\t`;
+                previewContainer.style.display = "inline-block";
+                previewContainer.querySelector(".add-photo__remove").addEventListener("click", (function(event) {
+                    event.stopPropagation();
+                    previewContainer.innerHTML = "";
+                    previewContainer.style.display = "none";
+                    fileInput.value = "";
+                }));
+            };
+            reader.readAsDataURL(file);
+        }));
     }
     class SelectConstructor {
         constructor(props, data = null) {
@@ -7725,6 +7754,69 @@
                 button.src = currentMainSrc;
             }));
         }));
+        const popupRules = document.getElementById("popupRules");
+        const popupBody = popupRules.querySelector(".popup-body-rules");
+        popupRules.querySelector(".popup-body-rules__main");
+        const popupContent = popupRules.querySelector(".popup-body-rules__content");
+        const confirmButton = popupRules.querySelector("[data-card-confirm]");
+        const checkboxRules = document.querySelector("[data-checkbox-rules]");
+        const addButton = document.querySelector("[data-card-add]");
+        let isCheckedThroughPopup = false;
+        let isAddButtonHandlerActive = false;
+        function openPopup(event) {
+            event.preventDefault();
+            modules_flsModules.popup.open("#popupRules");
+        }
+        function updateAddButtonState() {
+            if (!checkboxRules) return;
+            if (!mediaQuery480max.matches) if (checkboxRules.checked) addButton.removeAttribute("disabled"); else addButton.setAttribute("disabled", "true");
+        }
+        function handleAddButtonClick(event) {
+            if (mediaQuery480max.matches) openPopup(event);
+        }
+        function checkMediaQuery() {
+            if (mediaQuery480max.matches) {
+                addButton.removeAttribute("disabled");
+                if (!isAddButtonHandlerActive) {
+                    addButton.addEventListener("click", handleAddButtonClick);
+                    isAddButtonHandlerActive = true;
+                }
+            } else updateAddButtonState();
+        }
+        if (checkboxRules) checkboxRules.addEventListener("click", (function(event) {
+            if (!isCheckedThroughPopup) {
+                event.preventDefault();
+                openPopup(event);
+            } else {
+                isCheckedThroughPopup = false;
+                updateAddButtonState();
+            }
+        }));
+        if (popupContent && confirmButton) popupContent.addEventListener("scroll", (function() {
+            if (popupContent.scrollTop > 5) popupBody.classList.add("_scroll-active"); else popupBody.classList.remove("_scroll-active");
+            const isScrolledToEnd = popupContent.scrollTop + popupContent.clientHeight >= popupContent.scrollHeight - 1;
+            if (isScrolledToEnd) {
+                confirmButton.removeAttribute("disabled");
+                popupBody.classList.add("_scroll-end");
+            } else popupBody.classList.remove("_scroll-end");
+        }));
+        confirmButton.addEventListener("click", (function() {
+            if (checkboxRules) {
+                checkboxRules.checked = true;
+                isCheckedThroughPopup = true;
+                updateAddButtonState();
+                if (mediaQuery480max.matches) {
+                    addButton.removeEventListener("click", handleAddButtonClick);
+                    isAddButtonHandlerActive = false;
+                }
+                setTimeout((() => {
+                    modules_flsModules.popup.close("#popupRules");
+                }), 100);
+            }
+        }));
+        mediaQuery480max.addEventListener("change", checkMediaQuery);
+        checkMediaQuery();
+        updateAddButtonState();
     }));
     function startCountdown(timerElement, callback) {
         if (!timerElement) return;
@@ -8439,6 +8531,7 @@
     formQuantity();
     formAmount();
     formRating();
+    formAddPhoto();
     headerScroll();
     footerCartScroll();
 })();
