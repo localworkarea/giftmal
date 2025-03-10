@@ -156,7 +156,64 @@ function initSliders() {
 			});
 		}
 	});
+	
+	// Ініціалізація слайдера відгуків клієнтів
+	if (document.querySelector('.feedback__slider')) {
+		const mediaQuery = window.matchMedia('(min-width: 768px)');
+		let feedbackSlider;
+		
+		function initFeedbackSlider() {
+			if (mediaQuery.matches) {
+				feedbackSlider = new Swiper('.feedback__slider', {
+					modules: [Navigation, Pagination],
+					observer: true,
+					observeParents: true,
+					slidesPerView: 'auto',
+					spaceBetween: 24,
+					speed: 800,
+					loop: false,
+					watchOverflow: true,
+					centeredSlides: false,
+					initialSlide: 0,
+					navigation: {
+						prevEl: '.feedback__button-prev',
+						nextEl: '.feedback__button-next',
+					},
+					on: {
+						resize: function() {
+							this.update();
+						}
+					}
+				});
+			} else {
+				if (feedbackSlider) {
+					feedbackSlider.destroy();
+					feedbackSlider = undefined;
+				}
+			}
+		}
+		
+		// Ініціалізація при завантаженні сторінки
+		initFeedbackSlider();
+		
+		// Слідкувати за зміною розміру екрану
+		mediaQuery.addEventListener('change', initFeedbackSlider);
+		
+		// Кнопка "Більше відгуків" для мобільної версії
+		const moreButton = document.querySelector('.feedback__mobile-button');
+		if (moreButton) {
+			moreButton.addEventListener('click', function() {
+				const hiddenSlides = document.querySelectorAll('.feedback__slider .swiper-slide:nth-child(n+3)');
+				hiddenSlides.forEach(slide => {
+					slide.style.display = 'block';
+				});
+				moreButton.style.display = 'none';
+			});
+		}
+	}
 }
+
+
 
 
 window.addEventListener("load", function (e) {
