@@ -6872,6 +6872,46 @@
                 navigation: slider.navigation
             });
         }));
+        if (document.querySelector(".feedback__slider")) {
+            const mediaQuery = window.matchMedia("(min-width: 768px)");
+            let feedbackSlider;
+            function initFeedbackSlider() {
+                if (mediaQuery.matches) feedbackSlider = new Swiper(".feedback__slider", {
+                    modules: [ Navigation, Pagination ],
+                    observer: true,
+                    observeParents: true,
+                    slidesPerView: "auto",
+                    spaceBetween: 24,
+                    speed: 800,
+                    loop: false,
+                    watchOverflow: true,
+                    centeredSlides: false,
+                    initialSlide: 0,
+                    navigation: {
+                        prevEl: ".feedback__button-prev",
+                        nextEl: ".feedback__button-next"
+                    },
+                    on: {
+                        resize: function() {
+                            this.update();
+                        }
+                    }
+                }); else if (feedbackSlider) {
+                    feedbackSlider.destroy();
+                    feedbackSlider = void 0;
+                }
+            }
+            initFeedbackSlider();
+            mediaQuery.addEventListener("change", initFeedbackSlider);
+            const moreButton = document.querySelector(".feedback__mobile-button");
+            if (moreButton) moreButton.addEventListener("click", (function() {
+                const hiddenSlides = document.querySelectorAll(".feedback__slider .swiper-slide:nth-child(n+3)");
+                hiddenSlides.forEach((slide => {
+                    slide.style.display = "block";
+                }));
+                moreButton.style.display = "none";
+            }));
+        }
     }
     window.addEventListener("load", (function(e) {
         initSliders();
@@ -8222,6 +8262,169 @@
         document.addEventListener("click", (e => {
             if (!e.target.closest(".search")) closeUI();
         }));
+    }));
+    window.addEventListener("load", (function() {
+        const tabButtons = document.querySelectorAll(".solutions__nav-button");
+        const tabs = document.querySelectorAll(".solutions__tab");
+        const tabsSection = document.querySelector(".solutions");
+        if (!tabButtons.length || !tabs.length || !tabsSection) return;
+        const SCROLL_OFFSET = 100;
+        const SCROLL_THROTTLE = 150;
+        const ACTIVATION_THRESHOLD = .3;
+        const SCROLL_TIMEOUT = 800;
+        let isScrolling = false;
+        let lastScrollTime = 0;
+        let activeTabIndex = -1;
+        let scrollDirection = 0;
+        let lastScrollY = 0;
+        let tabPositions = [];
+        init();
+        function init() {
+            lastScrollY = window.scrollY;
+            tabButtons.forEach(((button, index) => {
+                if (button.classList.contains("_active")) {
+                    activeTabIndex = index;
+                    const tabId = button.getAttribute("data-tab");
+                    const tab = document.getElementById(tabId);
+                    if (tab) tab.classList.add("_active");
+                }
+            }));
+            if (activeTabIndex < 0 && tabButtons.length > 0) {
+                activeTabIndex = 0;
+                tabButtons[0].classList.add("_active");
+                const tabId = tabButtons[0].getAttribute("data-tab");
+                const tab = document.getElementById(tabId);
+                if (tab) tab.classList.add("_active");
+            }
+            addEventListeners();
+            calculateTabPositions();
+            setTimeout((() => {
+                updateNavigationOnScroll();
+            }), 500);
+        }
+        function addEventListeners() {
+            tabButtons.forEach((button => {
+                button.addEventListener("click", handleTabButtonClick);
+            }));
+            window.addEventListener("scroll", handleScroll, {
+                passive: true
+            });
+            window.addEventListener("resize", (() => {
+                calculateTabPositions();
+                setTimeout(updateNavigationOnScroll, 200);
+            }));
+        }
+        function calculateTabPositions() {
+            tabPositions = [];
+            tabs.forEach(((tab, index) => {
+                if (!tab) return;
+                const rect = tab.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                tabPositions.push({
+                    id: tab.id,
+                    top: rect.top + scrollTop - SCROLL_OFFSET,
+                    bottom: rect.bottom + scrollTop,
+                    height: rect.height,
+                    index
+                });
+            }));
+        }
+        function handleTabButtonClick(event) {
+            const button = event.currentTarget;
+            const tabId = button.getAttribute("data-tab");
+            const targetTab = document.getElementById(tabId);
+            if (!targetTab) return;
+            let clickedIndex = -1;
+            tabButtons.forEach(((btn, index) => {
+                if (btn === button) clickedIndex = index;
+            }));
+            tabButtons.forEach((btn => btn.classList.remove("_active")));
+            tabs.forEach((tab => tab.classList.remove("_active")));
+            button.classList.add("_active");
+            activeTabIndex = clickedIndex;
+            scrollToTab(targetTab, tabId);
+        }
+        function scrollToTab(targetTab, tabId) {
+            isScrolling = true;
+            const position = tabPositions.find((pos => pos.id === tabId));
+            if (!position) {
+                isScrolling = false;
+                return;
+            }
+            targetTab.classList.add("_active");
+            window.scrollTo({
+                top: position.top,
+                behavior: "smooth"
+            });
+            const scrollTimer = setTimeout((() => {
+                isScrolling = false;
+                updateNavigationOnScroll();
+            }), SCROLL_TIMEOUT);
+            window.addEventListener("scroll", (function checkScrollEnd() {
+                const currentPos = window.scrollY;
+                if (Math.abs(currentPos - position.top) < 5) {
+                    clearTimeout(scrollTimer);
+                    isScrolling = false;
+                    window.removeEventListener("scroll", checkScrollEnd);
+                }
+            }), {
+                once: false,
+                passive: true
+            });
+        }
+        function handleScroll() {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > lastScrollY) scrollDirection = 1; else if (currentScrollY < lastScrollY) scrollDirection = -1;
+            lastScrollY = currentScrollY;
+            if (isScrolling) return;
+            const now = Date.now();
+            if (now - lastScrollTime < SCROLL_THROTTLE) return;
+            lastScrollTime = now;
+            updateNavigationOnScroll();
+        }
+        function updateNavigationOnScroll() {
+            if (!tabPositions.length) {
+                calculateTabPositions();
+                return;
+            }
+            const windowTop = window.scrollY;
+            const windowBottom = windowTop + window.innerHeight;
+            const windowMiddle = windowTop + window.innerHeight / 2;
+            let bestTabIndex = -1;
+            let bestVisiblePortion = -1;
+            tabPositions.forEach(((position, index) => {
+                if (position.bottom < windowTop || position.top > windowBottom) return;
+                let visibleTop = Math.max(position.top, windowTop);
+                let visibleBottom = Math.min(position.bottom, windowBottom);
+                let visibleHeight = visibleBottom - visibleTop;
+                let visiblePortion = visibleHeight / position.height;
+                const distanceToMiddle = Math.abs((position.top + position.bottom) / 2 - windowMiddle);
+                const normalizedDistance = Math.min(1, distanceToMiddle / window.innerHeight);
+                const centerBonus = (1 - normalizedDistance) * .3;
+                visiblePortion += centerBonus;
+                if (index === activeTabIndex) visiblePortion += .15;
+                if (scrollDirection > 0 && index > activeTabIndex) visiblePortion += .2; else if (scrollDirection < 0 && index < activeTabIndex) visiblePortion += .2;
+                const isAdjacent = Math.abs(index - activeTabIndex) === 1;
+                const effectiveThreshold = isAdjacent ? ACTIVATION_THRESHOLD - .1 : ACTIVATION_THRESHOLD;
+                if (visiblePortion > bestVisiblePortion && visiblePortion >= effectiveThreshold) {
+                    bestVisiblePortion = visiblePortion;
+                    bestTabIndex = index;
+                }
+            }));
+            if (bestTabIndex >= 0 && bestTabIndex !== activeTabIndex) activateTab(bestTabIndex);
+        }
+        function activateTab(index) {
+            activeTabIndex = index;
+            tabButtons.forEach(((button, i) => {
+                if (i === index) {
+                    button.classList.add("_active");
+                    const tabId = button.getAttribute("data-tab");
+                    const tab = document.getElementById(tabId);
+                    tabs.forEach((t => t.classList.remove("_active")));
+                    if (tab) tab.classList.add("_active");
+                } else button.classList.remove("_active");
+            }));
+        }
     }));
     window["FLS"] = false;
     addLoadedClass();
