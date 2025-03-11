@@ -1078,7 +1078,7 @@ $bs_image-border-radius-mobile: toRem(24);
         gap: toRem(24);
         align-items: center;
         
-        svg {
+        .brand-chart {
           max-width: toRem(217);
           width: 100%;
           margin-left: toRem(30);
@@ -1087,15 +1087,7 @@ $bs_image-border-radius-mobile: toRem(24);
             max-width: toRem(157);
             transform: translateY(toRem(-26));
           }
-          
-          path {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            
-            &:hover {
-              opacity: 0.5;
-            }
-          }
+
         }
       }
     }
