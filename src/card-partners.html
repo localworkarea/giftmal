@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 	@@include('html/_head.htm',{
-	"title":"CARD | GIFT"
+	"title":"CARD | PARTNERS"
 	})
 	<body>
 		<div class="wrapper">
@@ -22,7 +22,7 @@
                 <span class="breadcrumbs__separator">
                   <span class="icon-arrow-down"></span>
                 </span>
-                <span class="breadcrumbs__current">Подарункова Картка giftmall </span>
+                <span class="breadcrumbs__current">Фокстрот</span>
               </div> 
             </div>
             <div class="card__main">
@@ -30,13 +30,13 @@
                 <div class="aside-card__body">
                   <div data-gallery class="aside-card__gallery gallery">
                     <div data-gallery-main class="gallery__item" aria-label="gallery">
-                      <img class="ibg" src="@img/certificates/certificate-06.jpg" width="388" height="255" alt="Image">
+                      <img class="ibg" src="@img/certificates/certificate-03.jpg" width="388" height="255" alt="Image">
                     </div>
                     <a href="#" data-gallery-button class="gallery__item" aria-label="gallery">
                       <img class="ibg" src="@img/certificates/certificate-02.jpg" width="388" height="255" alt="Image">
                     </a>
                     <a href="#" data-gallery-button class="gallery__item " aria-label="gallery">
-                      <img class="ibg" src="@img/certificates/certificate-03.jpg" width="388" height="255" alt="Image">
+                      <img class="ibg" src="@img/certificates/certificate-06.jpg" width="388" height="255" alt="Image">
                     </a>
                     <a href="#" data-gallery-button class="gallery__item " aria-label="gallery">
                       <img class="ibg" src="@img/certificates/certificate-04.jpg" width="388" height="255" alt="Image">
@@ -51,7 +51,7 @@
               <div class="card__body">
                 <div class="card__header">
                   <h1 class="card__title">
-                    Подарункова Картка giftmall
+                    Картка Фокстрот
                   </h1>
                   <div class="card__rating ">
                     <div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
@@ -83,25 +83,27 @@
                       </div>
                     </div>
                   </div>
-                  <div class="card__items grid-cl">
+                  <div class="card__items grid-rw">
                     <div class="card__item">
-                      <label for="nominalSelect" class="card__info-label">
-                        <span class="info-label">
-                          <span data-tippy-content="Виберіть номінал" class="info-label__info icon-info"></span>
-                          Оберіть номінал
-                        </span>
-                      </label>
-                      <div class="card__select">
-                        <select id="nominalSelect" name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="220"  data-required >
-                          <option value data-class="item-placeholder">₴ 500</option>
-                          <option value="1" selected>₴ 500</option>
-                          <option value="2">₴ 1 000</option>
-                          <option data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500</option>
-                          <option value="4">₴ 2 000</option>
-                          <option value="5">₴ 2 500</option>
-                          <option value="6">₴ 3 000</option>
-                          <option value="7">₴ 3 500</option>
-                        </select>
+                      <div class="amount">
+                        <div class="amount__head">
+                          <label class="card__info-label">
+                            <span class="info-label">
+                              <span data-tippy-content="Виберіть номінал" class="info-label__info icon-info"></span>
+                              Оберіть номінал
+                            </span>
+                          </label>
+                          <div class="amount__minmax">
+                            <span class="amount__min">мін ₴500</span> • <span class="amount__max">макс ₴50 000</span>
+                          </div>
+                        </div>
+                        <div class="amount__block input input_lg">
+                          <div class="amount__item">
+                            <div class="amount__currency">₴</div>
+                            <input type="text" autocomplete="off" data-amount class="amount__input numb" name="amount" placeholder="500" data-amount-min="500" data-amount-max="50000" value="" inputmode="numeric">
+                          </div>
+                        </div>
+                        <div class="amount__msg">Ви перевищили макс. суму замовлення: ₴50 000</div>
                       </div>
                     </div>
                     <div class="card__item">
@@ -135,29 +137,11 @@
                       Подарункова картка від мережі супермаркетів електроніки та побутової техніки , що займає лідируючі позиції на ринку.
                     </div>
                     <a href="#" class="info-card__link icon-arrow-next" aria-label="link">Перейти на сайт партнера</a>
-                    <div class="info-card__body">
+                    <div class="info-card__body card-one">
                       <div class="info-card__item">
                         <span class="info-card__icon icon-number-1"></span>
                         <p class="info-card__text">
                           1 рік — Термін дії 
-                        </p>
-                      </div>
-                      <div class="info-card__item">
-                        <span class="info-card__icon icon-cake"></span>
-                        <p class="info-card__text">
-                          Розбивається на декілька чеків
-                        </p>
-                      </div>
-                      <div class="info-card__item">
-                        <span class="info-card__icon icon-no-money-exchange"></span>
-                        <p class="info-card__text">
-                          Не обмінюється на гроші
-                        </p>
-                      </div>
-                      <div class="info-card__item">
-                        <span class="info-card__icon icon-puzzle"></span>
-                        <p class="info-card__text">
-                          Сумується з балансом giftmall
                         </p>
                       </div>
                     </div>

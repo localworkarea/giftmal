@@ -1093,6 +1093,7 @@
             maxEl.classList.remove("_form-error");
             amountBlock.classList.remove("_form-error");
             amountBlock.classList.remove("_form-success");
+            amountBlock.classList.remove("_form-error-max");
             if (!value) return;
             if (isNaN(numValue)) {
                 input.classList.add("_form-error");
@@ -1105,6 +1106,7 @@
             } else if (numValue > maxAmount) {
                 maxEl.classList.add("_form-error");
                 amountBlock.classList.add("_form-error");
+                amountBlock.classList.add("_form-error-max");
             } else amountBlock.classList.add("_form-success");
             input.value = formatNumbAmount.to(numValue);
         }
@@ -7775,6 +7777,7 @@
             if (mediaQuery480max.matches) openPopup(event);
         }
         function checkMediaQuery() {
+            if (!addButton) return;
             if (mediaQuery480max.matches) {
                 addButton.removeAttribute("disabled");
                 if (!isAddButtonHandlerActive) {

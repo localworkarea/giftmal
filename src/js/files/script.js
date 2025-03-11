@@ -952,6 +952,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   
       function checkMediaQuery() {
+        if (!addButton) return
           if (mediaQuery480max.matches) {
               addButton.removeAttribute("disabled");
               if (!isAddButtonHandlerActive) {

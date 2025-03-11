@@ -530,7 +530,7 @@ export function formAmount() {
 	const inputAmount = document.querySelector('[data-amount]');
 
 	if (!inputAmount) {
-			return; // Если элемент не найден, выходим из функции
+			return;
 	}
 
 	const minEl = document.querySelector('.amount__min');
@@ -555,6 +555,7 @@ export function formAmount() {
 			maxEl.classList.remove('_form-error');
 			amountBlock.classList.remove('_form-error');
 			amountBlock.classList.remove('_form-success');
+			amountBlock.classList.remove('_form-error-max');
 
 			if (!value) {
 					return;
@@ -572,6 +573,7 @@ export function formAmount() {
 			} else if (numValue > maxAmount) {
 					maxEl.classList.add('_form-error');
 					amountBlock.classList.add('_form-error');
+					amountBlock.classList.add('_form-error-max');
 			} else {
 					amountBlock.classList.add('_form-success');
 			}

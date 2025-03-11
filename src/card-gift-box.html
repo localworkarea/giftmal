@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"CARD | GIFT BOX"
+	})
+	<body>
+		<div class="wrapper">
+      <header data-scroll="50" data-scroll-show class="header">
+        @@include('html/_header-main.htm',{})
+        @@include('html/_header-sub.htm',{})
+      </header>
+			<main class="page">
+        <section class="card card-gift">
+          <div class="card__container">
+            <div class="card__breadcrumbs">
+              <div class="breadcrumbs">
+                <a href="/" class="breadcrumbs__item">Головна</a>
+                <span class="breadcrumbs__separator">
+                  <span class="icon-arrow-down"></span>
+                </span>
+                <a href="catalog.html" class="breadcrumbs__item">Листівки та Коробки</a>
+                <span class="breadcrumbs__separator">
+                  <span class="icon-arrow-down"></span>
+                </span>
+                <span class="breadcrumbs__current">Подарункова коробка</span>
+              </div> 
+            </div>
+            <div class="card__main">
+              <div class="card__aside aside-card">
+                <div class="aside-card__body">
+                  <div data-gallery class="aside-card__gallery gallery">
+                    <div data-gallery-main class="gallery__item" aria-label="gallery">
+                      <img class="ibg" src="@img/gift-box/box-01.jpg" width="388" height="255" alt="Image">
+                    </div>
+                    <a href="#" data-gallery-button class="gallery__item" aria-label="gallery">
+                      <img class="ibg" src="@img/gift-box/box-02.jpg" width="388" height="255" alt="Image">
+                    </a>
+                  </div>
+                  <div class="aside-card__description">
+                    Фізична подарункова коробка персикового кольору з голографічним логотипом giftmall – це дуже ніжна упаковка для подарункового сертифікату.
+                  </div>
+                </div>
+              </div>
+              <div class="card__body">
+                <div class="card__header">
+                  <h1 class="card__title">
+                    Подарункова Коробка
+                  </h1>
+                  <div class="card__rating ">
+                    <div data-rating="" data-rating-value="0" data-rating-size="5" class="rating">
+                      <a href="#" class="rating__title">Ще немає відгуків</a>
+                    </div>
+                  </div>
+                  <div class="card__price">
+                    <p class="card__price-txt"><span class="numb">100</span> грн</p>
+                  </div>
+                </div>
+                <div class="card__details">
+                  <div class="card__items">
+                    <div class="card__item">
+                      <label class="card__info-label">
+                        <span class="info-label">
+                          <span data-tippy-content="Виберіть колір" class="info-label__info icon-info"></span>
+                          Оберіть колір
+                        </span>
+                      </label>
+                      <div class="card__option-gift gift-option">
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorBeige" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorBeige" checked>
+                          <label for="giftBoxColorBeige" class="gift-option__label">
+                            <span class="gift-option__color color-beige"></span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorLavender" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorLavender">
+                          <label for="giftBoxColorLavender" class="gift-option__label">
+                            <span class="gift-option__color color-lavender"></span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorMint" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorMint">
+                          <label for="giftBoxColorMint" class="gift-option__label">
+                            <span class="gift-option__color color-mint"></span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorBlue" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorBlue">
+                          <label for="giftBoxColorBlue" class="gift-option__label">
+                            <span class="gift-option__color color-blue"></span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorYellow" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorYellow">
+                          <label for="giftBoxColorYellow" class="gift-option__label">
+                            <span class="gift-option__color color-yellow"></span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorRed" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorRed">
+                          <label for="giftBoxColorRed" class="gift-option__label">
+                            <span class="gift-option__color color-red"></span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorGreen" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorGreen">
+                          <label for="giftBoxColorGreen" class="gift-option__label">
+                            <span class="gift-option__color color-green"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__items grid-rw">
+                    <div class="card__item">
+                      <label for="quantityInput" class="card__info-label">
+                        <span class="info-label">
+                          <span data-tippy-content="Виберіть кількість" class="info-label__info icon-info"></span>
+                          Оберіть кількість
+                        </span>
+                      </label>
+                      <div data-quantity class="card__quantity quantity">
+												<div class="quantity__item">
+													<div class="quantity__block">
+														<div class="quantity__input">
+															<input id="quantityInput" data-quantity-value  type="text" name=""  data-quantity-min="1" data-quantity-max="10" placeholder="1" value="1">
+															<span>шт</span>
+														</div>
+													</div>
+													<div class="quantity__btns">
+														<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+														<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+													</div>
+												</div>
+											</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card__info">
+                  <div class="card__info-card info-card">
+                    <div class="info-card__title">Важливо знати</div>
+                    <div class="info-card__description">
+                      Фізична подарункова коробка персикового кольору з голографічним логотипом giftmall – це дуже ніжна упаковка для подарункового сертифікату.
+                    </div>
+                    <div class="info-card__body">
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-phisical-filling"></span>
+                        <p class="info-card__text">
+                          Фізичний тип продукту
+                        </p>
+                      </div>
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-number-1"></span>
+                        <p class="info-card__text">
+                          Для паковання лише 1-го сертифікату
+                        </p>
+                      </div>
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-bag"></span>
+                        <p class="info-card__text">
+                          Підходить для великих пакетів
+                        </p>
+                      </div>
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-diamension"></span>
+                        <p class="info-card__text">
+                          Розмір коробки — 14,5 х 12,5 х 2,5 см
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card__footer">
+                  <button type="button" class="card__add-button btn btn_dark">Додати у кошик</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        @@include('html/_best-offer.htm',{
+          "class": "card-offer",
+          "title": "Також купують"
+        })
+        @@include('html/_review-empty.htm',{})
+      </main>
+			@@include('html/_footer.htm',{})
+    </div>
+		@@include('html/_popup-mb.htm',{})
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+		<script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
+		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+		@@include('html/_js.htm',{})
+  </body>

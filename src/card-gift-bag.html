@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"CARD | GIFT BAG"
+	})
+	<body>
+		<div class="wrapper">
+      <header data-scroll="50" data-scroll-show class="header">
+        @@include('html/_header-main.htm',{})
+        @@include('html/_header-sub.htm',{})
+      </header>
+			<main class="page">
+        <section class="card card-gift">
+          <div class="card__container">
+            <div class="card__breadcrumbs">
+              <div class="breadcrumbs">
+                <a href="/" class="breadcrumbs__item">Головна</a>
+                <span class="breadcrumbs__separator">
+                  <span class="icon-arrow-down"></span>
+                </span>
+                <a href="catalog.html" class="breadcrumbs__item">Листівки та Коробки</a>
+                <span class="breadcrumbs__separator">
+                  <span class="icon-arrow-down"></span>
+                </span>
+                <span class="breadcrumbs__current">Подарунковий пакет</span>
+              </div> 
+            </div>
+            <div class="card__main">
+              <div class="card__aside aside-card">
+                <div class="aside-card__body">
+                  <div data-gallery class="aside-card__gallery gallery">
+                    <div data-gallery-main class="gallery__item" aria-label="gallery">
+                      <img class="ibg" src="@img/gift-box/box-03.jpg" width="388" height="255" alt="Image">
+                    </div>
+                  </div>
+                  <div class="aside-card__description">
+                    Великий картонний подарунковий пакет із сатиновою стрічкою. Ідеальне доповнення до фізичної подарункової коробки.
+                  </div>
+                </div>
+              </div>
+              <div class="card__body">
+                <div class="card__header">
+                  <h1 class="card__title">
+                    Подарунковий Пакет (Великий)
+                  </h1>
+                  <div class="card__rating ">
+                    <div data-rating="" data-rating-value="0" data-rating-size="5" class="rating">
+                      <a href="#" class="rating__title">Ще немає відгуків</a>
+                    </div>
+                  </div>
+                  <div class="card__price">
+                    <p class="card__price-txt"><span class="numb">35</span> грн</p>
+                  </div>
+                </div>
+                <div class="card__details">
+                  <div class="card__items grid-cl">
+                    <div class="card__item">
+                      <label class="card__info-label">
+                        <span class="info-label">
+                          <span data-tippy-content="Виберіть розмір" class="info-label__info icon-info"></span>
+                          Оберіть розмір
+                        </span>
+                      </label>
+                      <div class="card__option-gift gift-option">
+                        <div class="gift-option__item">
+                          <input id="giftBoxSizeS" class="gift-option__input" type="radio" name="giftBoxSize" value="giftBoxSizeS" checked>
+                          <label for="giftBoxSizeS" class="gift-option__label">
+                            <span class="gift-option__color color-white">S</span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxSizeM" class="gift-option__input" type="radio" name="giftBoxSize" value="giftBoxSizeM">
+                          <label for="giftBoxSizeM" class="gift-option__label">
+                            <span class="gift-option__color color-white">M</span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxSizeL" class="gift-option__input" type="radio" name="giftBoxSize" value="giftBoxSizeL">
+                          <label for="giftBoxSizeL" class="gift-option__label">
+                            <span class="gift-option__color color-white">L</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card__item">
+                      <label class="card__info-label">
+                        <span class="info-label">
+                          <span data-tippy-content="Виберіть колір" class="info-label__info icon-info"></span>
+                          Оберіть колір
+                        </span>
+                      </label>
+                      <div class="card__option-gift gift-option">
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorBlack" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorBlack" checked>
+                          <label for="giftBoxColorBlack" class="gift-option__label">
+                            <span class="gift-option__color color-black"></span>
+                          </label>
+                        </div>
+                        <div class="gift-option__item">
+                          <input id="giftBoxColorWhite" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorWhite">
+                          <label for="giftBoxColorWhite" class="gift-option__label">
+                            <span class="gift-option__color color-white"></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__items grid-rw">
+                    <div class="card__item">
+                      <label for="quantityInput" class="card__info-label">
+                        <span class="info-label">
+                          <span data-tippy-content="Виберіть кількість" class="info-label__info icon-info"></span>
+                          Оберіть кількість
+                        </span>
+                      </label>
+                      <div data-quantity class="card__quantity quantity">
+												<div class="quantity__item">
+													<div class="quantity__block">
+														<div class="quantity__input">
+															<input id="quantityInput" data-quantity-value  type="text" name=""  data-quantity-min="1" data-quantity-max="10" placeholder="1" value="1">
+															<span>шт</span>
+														</div>
+													</div>
+													<div class="quantity__btns">
+														<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+														<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+													</div>
+												</div>
+											</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card__info">
+                  <div class="card__info-card info-card">
+                    <div class="info-card__title">Важливо знати</div>
+                    <div class="info-card__description">
+                      Великий картонний подарунковий пакет із сатиновою стрічкою. Ідеальне доповнення до фізичної подарункової коробки.
+                    </div>
+                    <div class="info-card__body">
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-phisical-filling"></span>
+                        <p class="info-card__text">
+                          Фізичний тип продукту
+                        </p>
+                      </div>
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-gift-box"></span>
+                        <p class="info-card__text">
+                          Підходить для подарункових коробок
+                        </p>
+                      </div>
+                      <div class="info-card__item">
+                        <span class="info-card__icon icon-diamension"></span>
+                        <p class="info-card__text">
+                          Розмір пакету —<br> 
+                          18 х 21,5 х 8 см
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card__footer">
+                  <button type="button" class="card__add-button btn btn_dark">Додати у кошик</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        @@include('html/_best-offer.htm',{
+          "class": "card-offer",
+          "title": "Також купують"
+        })
+        @@include('html/_review-empty.htm',{})
+      </main>
+			@@include('html/_footer.htm',{})
+    </div>
+		@@include('html/_popup-mb.htm',{})
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+		<script src="files/intl-tel-input/intlTelInputLng.min.js"></script>
+		<script src="files/intl-tel-input/intlTelInputWithUtils.min.js"></script>
+		@@include('html/_js.htm',{})
+  </body>

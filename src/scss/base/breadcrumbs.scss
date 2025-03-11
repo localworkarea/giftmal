@@ -1,12 +1,19 @@
 .breadcrumbs {
   display: flex;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   align-items: center;
+  white-space: nowrap;
+  overflow-x: auto;
   margin-bottom: toRem(24);
   font-size: toRem(13);
   line-height: 1.5;
   font-weight: 500;
   color: var(--fade-violet-2);
+  mask-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 0%, #fff 85%, rgba(255, 255, 255, 0) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 0%, #fff 85%, rgba(255, 255, 255, 0) 100%);
+  &::-webkit-scrollbar {
+    display: none;
+  }
   
   @media (max-width:$mobile){
     margin-bottom: toRem(16);

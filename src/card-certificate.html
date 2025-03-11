@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 	@@include('html/_head.htm',{
-	"title":"CARD | GIFT"
+	"title":"CARD | CERTIFICATE"
 	})
 	<body>
 		<div class="wrapper">
@@ -22,7 +22,7 @@
                 <span class="breadcrumbs__separator">
                   <span class="icon-arrow-down"></span>
                 </span>
-                <span class="breadcrumbs__current">Подарункова Картка giftmall </span>
+                <span class="breadcrumbs__current">Майстер-клас з малювання епоксидною смолою "Resin Art"</span>
               </div> 
             </div>
             <div class="card__main">
@@ -30,7 +30,7 @@
                 <div class="aside-card__body">
                   <div data-gallery class="aside-card__gallery gallery">
                     <div data-gallery-main class="gallery__item" aria-label="gallery">
-                      <img class="ibg" src="@img/certificates/certificate-06.jpg" width="388" height="255" alt="Image">
+                      <img class="ibg" src="@img/certificates/certificate-07.jpg" width="388" height="255" alt="Image">
                     </div>
                     <a href="#" data-gallery-button class="gallery__item" aria-label="gallery">
                       <img class="ibg" src="@img/certificates/certificate-02.jpg" width="388" height="255" alt="Image">
@@ -51,7 +51,7 @@
               <div class="card__body">
                 <div class="card__header">
                   <h1 class="card__title">
-                    Подарункова Картка giftmall
+                    Майстер-клас з малювання епоксидною смолою "Resin Art"
                   </h1>
                   <div class="card__rating ">
                     <div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
@@ -60,7 +60,7 @@
                   </div>
                 </div>
                 <div class="card__details">
-                  <div class="card__options grid-cl">
+                  <div class="card__options grid-rw">
                     <div class="card-options">
                       <div class="card__info-label">
                         <span class="info-label">
@@ -68,40 +68,30 @@
                           Оберіть тип картки
                         </span>
                       </div>
-                      <input id="cardTypeElectronic" class="card-options__input" type="radio" name="cardType" value="electronic">
+                      <input id="cardTypeElectronic" checked class="card-options__input" type="radio" name="cardType" value="electronic">
                       <label for="cardTypeElectronic" class="card-options__label icon-electronic">
                         Електронний
                       </label>
                     </div>
-                    <div class="card-options card-options_msg">
-                      <input id="cardTypePhysical" class="card-options__input icon-phisical-filling" type="radio" name="cardType" value="physical">
-                      <label for="cardTypePhysical" class="card-options__label icon-phisical-filling">
-                        Фізичний
-                      </label>
-                      <div class="card-options__message icon-delivery">
-                        Відправка: з Пн по Пт після 09:00 ранку
-                      </div>
-                    </div>
                   </div>
-                  <div class="card__items grid-cl">
+                  <div class="card__items grid-rw">
                     <div class="card__item">
-                      <label for="nominalSelect" class="card__info-label">
+                      <label class="card__info-label">
                         <span class="info-label">
                           <span data-tippy-content="Виберіть номінал" class="info-label__info icon-info"></span>
                           Оберіть номінал
                         </span>
                       </label>
                       <div class="card__select">
-                        <select id="nominalSelect" name="form[]" data-class-modif="type-4" data-speed="200" data-show-selected data-scroll="220"  data-required >
-                          <option value data-class="item-placeholder">₴ 500</option>
-                          <option value="1" selected>₴ 500</option>
-                          <option value="2">₴ 1 000</option>
-                          <option data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500</option>
-                          <option value="4">₴ 2 000</option>
-                          <option value="5">₴ 2 500</option>
-                          <option value="6">₴ 3 000</option>
-                          <option value="7">₴ 3 500</option>
-                        </select>
+                      	<select name="form[]" data-class-modif="type-8" data-speed="200" data-show-selected data-scroll="300"  data-required >
+													<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value data-class="item-placeholder">₴ 500</option>
+													<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="1">₴ 500</option>
+													<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="2">₴ 1 000</option>
+													<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" data-disabled="Немає в наявності"  data-class="_option-disabled" value="3">₴ 1 500 </option>
+													<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="4">₴ 2 000</option>
+													<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="5">₴ 2 500</option>
+													<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="6">₴ 3 000</option>
+												</select>
                       </div>
                     </div>
                     <div class="card__item">

@@ -528,3 +528,57 @@
 		</div>
 	</div>
 </div>
+
+<div id="popupAvailability" class="popup popup-full">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close" aria-label="close">
+			</button>
+			<div class="popup__body popup-availability">
+				<div class="popup-availability__head">
+					<p class="popup-availability__title popup__title">Сповістити про наявність</p>
+					<p class="popup-availability__subtitle">Подарункова Kартка giftmall</p>
+				</div>
+				<form id="formAvailability" data-popup-message="#popupAvailabilityMsg" class="popup-availability__form" data-dev method="post">
+					<div class="popup-availability__items">
+						<div class="input__item">
+							<label for="formQuestionEmail" class="input__label">
+								Ваш email
+							</label>
+							<div class="input__sub-item">
+								<input id="formQuestionEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email"  class="input input_sm">
+								<button disabled type="button" class="input__clear icon-cross"></button>
+							</div>
+						</div>
+						<div class="input__item input-intl-item">
+							<label for="formQuestionTel" class="input__label">
+								Ваш номер телефону
+							</label>
+							<input id="formQuestionTel" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+						</div>
+					</div>
+					<button form="formAvailability" disabled type="submit" class="btn btn_dark btn_fs15-13">Надіслати заявку</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="popupAvailabilityMsg" class="popup popup-full">
+	<div class="popup__wrapper">
+		<div class="popup__content">
+			<button data-close type="button" class="popup__close" aria-label="close">
+			</button>
+			<div class="popup__body popup-msg">
+				  <div class="popup-msg__head">
+						<span class="popup-msg__icon icon-check"></span>
+				  	<p class="popup-msg__title popup__title">Ми сповістимо про наявність</p>
+				  	<p class="popup-msg__subtitle">Подарункова Kартка giftmall</p>
+				  </div>
+					<p class="popup-msg__bottom">
+						Дякуємо за ваш запит! Ми надішлемо вам сповіщення, щойно товар буде у наявності!
+					</p>
+			</div>
+		</div>
+	</div>
+</div>
