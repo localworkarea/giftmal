@@ -1691,13 +1691,6 @@ textarea.input {
 .iti__v-hide {
   visibility: hidden
 }
-.iti__a11y-text {
-  width: 1px;
-  height: 1px;
-  clip: rect(1px,1px,1px,1px);
-  overflow: hidden;
-  position: absolute
-}
 .iti input.iti__tel-input,
 .iti input.iti__tel-input[type=tel],
 .iti input.iti__tel-input[type=text] {
@@ -1719,6 +1712,13 @@ textarea.input {
   color: var(--dark-violet);
   padding-inline: .75rem;
   transition: background-color .3s ease
+}
+.iti__selected-country .iti__a11y-text {
+  width: 1px;
+  height: 1px;
+  clip: rect(1px,1px,1px,1px);
+  overflow: hidden;
+  position: absolute
 }
 .iti__selected-country-primary {
   display: flex;
@@ -1758,6 +1758,16 @@ textarea.input {
 .iti__dropdown-content.icon-search::before {
   position: absolute;
   font-size: 1.5rem
+}
+.iti__dropdown-content .iti__a11y-text {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  min-height: 2.5rem;
+  display: none
+}
+.iti__dropdown-content .iti__a11y-text.display-block {
+  display: flex
 }
 .iti--inline-dropdown .iti__dropdown-content {
   position: absolute;
@@ -9903,6 +9913,7 @@ body::after {
   .info-card__title,
   .item-orders__amount,
   .item-orders__price,
+  .iti__dropdown-content .iti__a11y-text,
   .orders-checkout__info,
   .orders-checkout__lines.lines-total .orders-checkout__text,
   .orders-checkout__subtotoal,
@@ -13496,6 +13507,7 @@ body::after {
   .info-card__title,
   .item-orders__amount,
   .item-orders__price,
+  .iti__dropdown-content .iti__a11y-text,
   .orders-checkout__info,
   .orders-checkout__lines.lines-total .orders-checkout__text,
   .orders-checkout__subtotoal,

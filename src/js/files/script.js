@@ -1149,6 +1149,45 @@ if (intlTelInputs.length > 0) {
       }
     });
 
+    function updateNoResultsMessage(searchInput, dropdownContent) {
+      if (!dropdownContent) return;
+
+      const countryList = dropdownContent.querySelector(".iti__country-list");
+      const noResultsMessage = dropdownContent.querySelector(".iti__a11y-text");
+
+      if (!noResultsMessage || !countryList) return;
+
+      const observer = new MutationObserver(() => {
+        const isEmpty = countryList.querySelectorAll(".iti__country").length === 0;
+        noResultsMessage.classList.toggle("display-block", isEmpty);
+      });
+
+      observer.observe(countryList, { childList: true });
+
+      setTimeout(() => {
+        const isEmpty = countryList.querySelectorAll(".iti__country").length === 0;
+        noResultsMessage.classList.toggle("display-block", isEmpty);
+      }, 0);
+    }
+
+    function attachSearchInputListener(itiInstance) {
+      setTimeout(() => {
+        const dropdownContent = itiInstance.countryList.parentElement; 
+        if (!dropdownContent) return;
+
+        const searchInput = dropdownContent.querySelector(".iti__search-input");
+        if (searchInput) {
+          searchInput.addEventListener("input", () => updateNoResultsMessage(searchInput, dropdownContent));
+        }
+      }, 100);
+    }
+
+    input.addEventListener("countrychange", () => attachSearchInputListener(iti));
+    attachSearchInputListener(iti);
+    
+    
+
+
     // кастомный класс если совпадает выбранная страна со странной из списка
     let previousSelectedCountry = null;
     function updateSelectedClass() {

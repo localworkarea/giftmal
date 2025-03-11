@@ -37,11 +37,11 @@
   visibility: hidden;
 }
 .iti__a11y-text {
-  width: 1px;
-  height: 1px;
-  clip: rect(1px, 1px, 1px, 1px);
-  overflow: hidden;
-  position: absolute;
+  // width: 1px;
+  // height: 1px;
+  // clip: rect(1px, 1px, 1px, 1px);
+  // overflow: hidden;
+  // position: absolute;
 }
 .iti input.iti__tel-input,
 .iti input.iti__tel-input[type=text],
@@ -79,6 +79,13 @@
 			background-color: var(--gray-2);
 		}
 	}
+  .iti__a11y-text {
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    overflow: hidden;
+    position: absolute;
+  }
 }
 .iti__selected-country-primary {
   display: flex;
@@ -158,6 +165,22 @@
           right: toRem(16);
         }
       }
+    }
+  }
+  .iti__a11y-text {
+    // width: 1px;
+    // height: 1px;
+    // clip: rect(1px, 1px, 1px, 1px);
+    // overflow: hidden;
+    // position: absolute;
+    display: flex;
+    align-items: center;
+    @extend %fonsSize13-14;
+    padding: toRem(16);
+    min-height: toRem(40);
+    display: none;
+    &.display-block {
+      display: flex;
     }
   }
 }

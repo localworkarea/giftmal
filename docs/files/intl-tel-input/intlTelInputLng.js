@@ -8736,7 +8736,7 @@
         noCountrySelected: "Країну не обрано",
         countryListAriaLabel: "Список країн",
         searchPlaceholder: "Пошук",
-        zeroSearchResults: "Результатів не знайдено",
+        zeroSearchResults: "За запитом результатів не знайдено",
         oneSearchResult: "Знайдено 1 результат",
         multipleSearchResults: "Знайдено ${count} результатів",
         ac: "Острів Вознесіння",
