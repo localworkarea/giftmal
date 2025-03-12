@@ -552,24 +552,78 @@
 </div>
 
 
-<div data-simplebar="" style="max-height: 220px" class="select__scroll"><button class="select__option" data-value="1" type="button">₴ 500</button><button class="select__option" data-value="2" type="button">₴ 1 000</button><button class="select__option _option-disabled" data-value="3" type="button">₴ 1 500</button><button class="select__option" data-value="4" type="button">₴ 2 000</button><button class="select__option" data-value="5" type="button">₴ 2 500</button><button class="select__option" data-value="6" type="button">₴ 3 000</button><button class="select__option" data-value="7" type="button">₴ 3 500</button></div>
 
-
-<div id="popupRules" class="popup popup-full">
-	<div class="popup__wrapper">
-		<div class="popup__content">
-			<div class="popup__body popup-body-rules">
-				<div class="popup-body-rules__header">
-				</div>
-				<div class="popup-body-rules__main">
-					<div class="popup-body-rules__content">
-						<!-- тут контент -->
-					</div>
-				</div>
-				<div class="popup-body-rules__footer">
-					<button data-card-confirm disabled type="button" class="popup-body-rules__btn btn btn_dark">Погодитись із правилами</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<form data-dev method="post" class="popup-account__body popup-login__body">
+  <div class="popup-account__head">
+    <div class="popup-account__subhead">
+      <button type="button" class="popup-account__prev icon-arrow-back" aria-label="previous step"></button>
+      <p class="popup-account__txt">Крок <span>1</span> з 2</p>
+    </div>
+    <p class="popup-account__title">Заповніть свій кабінет</p>
+    <p class="popup-account__subtitle">Заповніть свої дані, аби ми могли розпізнати вас та надати необхідні послуги.</p>
+  </div>
+  <div class="popup-account__steps">
+    <div class="popup-account__step _step-active">
+      <div class="popup-account__items">
+        <div class="input__item">
+          <label for="formAccountCard" class="input__label">
+            Номер картки Eridon
+          </label>
+          <div class="input__sub-item">
+            <input id="formAccountCard" autocomplete="off" type="text" name="form[]" data-error="Введіть номер картки Eridon" placeholder="ХХ-ХХ-ХХ" data-required class="input input_sm">
+            <button disabled type="button" class="input__clear icon-cross"></button>
+          </div>
+        </div>
+        <div class="input__item">
+          <label for="formAccountCode" class="input__label">
+            Код ЄДРПОУ
+          </label>
+          <div class="input__sub-item">
+            <input id="formAccountCode" autocomplete="off" type="text" name="form[]" data-error="Введіть код ЄДРПОУ" placeholder="ХХ-ХХ-ХХ-ХХ-ХХ" data-required class="input input_sm">
+            <button disabled type="button" class="input__clear icon-cross"></button>
+          </div>
+        </div>
+      </div>
+      <button type="button" disabled class="popup-account__btn-next btn btn_dark btn_sm-3">Далі</button>
+    </div>
+    <div class="popup-account__step">
+      <div class="popup-account__items">
+        <div class="input__item">
+          <label for="formAccountName" class="input__label">
+            Ваша Стать
+          </label>
+          <div class="gender-option">
+            <div class="gender-option__item">
+              <input id="formAccountGenderFemale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" checked>
+              <label for="formAccountGenderFemale" class="gender-option__label input input_sm">
+                <span>Жіноча</span>
+              </label>
+            </div>
+            <div class="gender-option__item">
+              <input id="formAccountGenderMale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" >
+              <label for="formAccountGenderMale" class="gender-option__label input input_sm">
+                <span>Чоловіча</span>
+              </label>
+            </div>
+            <div class="gender-option__item">
+              <input id="formAccountGenderNoneBinary" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" >
+              <label for="formAccountGenderNoneBinary" class="gender-option__label input input_sm">
+                <span>Небінарна</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="input__item">
+          <label for="formAccountName" class="input__label">
+            Ваше Ім’я
+          </label>
+          <div class="input__sub-item">
+            <input id="formAccountName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+            <button disabled type="button" class="input__clear icon-cross"></button>
+          </div>
+        </div>
+      </div>
+      <button type="submit" disabled class="popup-account__btn-submit btn btn_dark btn_sm-3">Заповнити</button>
+    </div>
+  </div>
+</form>

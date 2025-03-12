@@ -193,6 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isDragging = false;
     let initialHeight = popupContent.offsetHeight;
 
+    if (!popupTop) return
     // Обработчик начала касания
     popupTop.addEventListener("touchstart", (e) => {
         startY = e.touches[0].clientY;
@@ -307,6 +308,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   initDragSpoiler();
   mediaQuery900max.addEventListener('change', initDragSpoiler);
+
+
+  // == popup-login scroll content ==========================
+  const popupLogin = document.querySelectorAll(".popup-login");
+  popupLogin.forEach(popup => {
+      const content = popup.querySelector(".popup-login__content");
+
+      if (!content) return;
+
+      content.addEventListener("scroll", function () {
+          popup.classList.toggle("_scroll-content", content.scrollTop > 5);
+      });
+  });
+
   
   
 
@@ -1026,7 +1041,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
       
   
 
@@ -1389,6 +1403,7 @@ function toggleDatepicker(e) {
     if (!dp && document.querySelector(datepickerSelector)) {
       dp = new AirDatepicker(datepickerSelector, {
         // autoClose: true,
+        // inline: true,
         dateFormat: 'dd.MM.yyyy',
         minDate: '01.01.1900',
         locale: locales[currentLang] || locales['en'],

@@ -3316,6 +3316,9 @@ textarea.input {
   left: 0;
   top: 0
 }
+.popup-show .air-datepicker-global-container {
+  z-index: 155
+}
 .air-datepicker--pointer {
   display: none
 }
@@ -3652,7 +3655,12 @@ body::after {
 .popup-show body::after {
   opacity: 1
 }
-.popup-show.popupIti-show body::after {
+.popup-show.popupLogIn-show body::after {
+  display: none
+}
+.popup-show.popupIti-show body::after,
+.popup-show.popupRolldate-show body::after {
+  display: block;
   z-index: 151
 }
 .popup {
@@ -3725,6 +3733,9 @@ body::after {
   position: relative;
   height: 100%;
   min-height: 18.75rem
+}
+#popupRolldate.popup {
+  z-index: 152
 }
 #popupRolldate.popup .popup__body {
   position: relative;
@@ -4078,6 +4089,190 @@ body::after {
   font-size: 1.5rem;
   color: var(--violet)
 }
+.popup-login {
+  transition: opacity .3s ease 0s;
+  background-color: var(--gray-1);
+  min-height: 100svh
+}
+.popup-login.popup-full .popup__content {
+  max-width: 100%!important;
+  height: 100%;
+  -webkit-transform: translate(0,0);
+  transform: translate(0,0);
+  border-radius: 0!important;
+  background-color: rgba(0,0,0,0);
+  box-shadow: none
+}
+.popup-login__content {
+  overflow-y: auto;
+  z-index: 2
+}
+.popup-account .popup-login__content {
+  display: grid;
+  align-items: center
+}
+.popup-login__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  pointer-events: none;
+  justify-content: space-between
+}
+.popup-login__close {
+  pointer-events: all;
+  background-color: var(--dark-violet);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background-color .2s ease,color .2s ease
+}
+.popup-login__close::before {
+  color: var(--white)
+}
+.popup-login__body {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 30rem;
+  background-color: var(--white);
+  margin-inline: auto;
+  display: grid;
+  gap: 2rem
+}
+.popup-account .popup-login__body {
+  max-width: 43.375rem
+}
+.popup-login__logo-sm {
+  border-radius: .5625rem;
+  background-color: var(--gray-1);
+  display: grid;
+  place-items: center;
+  justify-self: flex-start;
+  padding: .609375rem .609375rem .53125rem;
+  margin-bottom: 1rem;
+  width: -webkit-max-content;
+  width: max-content
+}
+.popup-login__logo-sm img {
+  height: auto;
+  width: 1.23rem
+}
+.popup-login__title {
+  line-height: 1.2
+}
+.popup-login__tel-input:not(:last-child) {
+  margin-bottom: 1rem
+}
+.popup-login__footer {
+  display: grid;
+  gap: 1rem
+}
+.popup-account__subhead {
+  position: relative
+}
+.popup-account__subhead._active {
+  padding-left: 2rem
+}
+.popup-account__prev {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0,-48%);
+  transform: translate(0,-48%);
+  left: 0;
+  display: none
+}
+._active .popup-account__prev {
+  display: block
+}
+.popup-account__prev::before {
+  font-size: 1.5rem;
+  color: var(--fade-violet-2);
+  transition: color .3s ease
+}
+.popup-account__txt {
+  color: var(--fade-violet-2)
+}
+.popup-account__title:not(:last-child) {
+  margin-bottom: 1rem
+}
+.popup-account__subtitle {
+  color: var(--fade-violet-2);
+  line-height: 1.46
+}
+.popup-account__steps {
+  position: relative
+}
+.popup-account__step {
+  visibility: hidden;
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  overflow: hidden
+}
+.popup-account__step._step-active {
+  visibility: visible;
+  position: static;
+  opacity: 1;
+  height: auto
+}
+.popup-account__items {
+  display: grid;
+  gap: 1.5rem 1rem;
+  margin-bottom: 2rem
+}
+.popup-account__items .input__label span {
+  color: var(--fade-violet-1)
+}
+.gender-option {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem
+}
+.gender-option__item {
+  flex: 1
+}
+.gender-option__input {
+  display: none
+}
+.gender-option__input:checked+.gender-option__label {
+  background-color: var(--dark-violet);
+  color: var(--white)!important
+}
+.gender-option__label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fade-violet-1);
+  padding-inline: .75rem
+}
+.brands-login {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none
+}
+.brands-login__img {
+  position: absolute;
+  z-index: 0;
+  height: auto;
+  border-radius: .75rem
+}
+.brands-login__img.img-1 {
+  -webkit-transform: rotate(118deg);
+  transform: rotate(118deg)
+}
+.brands-login__img.img-2 {
+  -webkit-transform: rotate(34deg);
+  transform: rotate(34deg)
+}
+.brands-login__img.img-4 {
+  -webkit-transform: rotate(8deg);
+  transform: rotate(8deg)
+}
 .ibg {
   width: 100%;
   height: 100%;
@@ -4177,6 +4372,7 @@ html {
 .input__label,
 .item-cart__disabled,
 .orders-checkout__lines,
+.popup-account__txt,
 .popup-cart__header p span,
 .select__disabled,
 .select_type-6 .select__asset,
@@ -4254,7 +4450,9 @@ html {
 .orders-checkout__sub-head,
 .orders-checkout__type-txt,
 .phone-checked__item,
+.popup-account__subhead,
 .popup-cart__total,
+.popup-login__header,
 .price-filter__inputs,
 .price-filter__top,
 .review__buttons,
@@ -6797,25 +6995,6 @@ body::after {
 .banner-card__card:nth-child(1) {
   position: relative;
   z-index: 2
-}
-.under-block__container {
-  overflow-y: auto
-}
-.under-block__body {
-  text-align: center
-}
-.under-block__title {
-  margin-bottom: 1rem
-}
-.under-block__txt {
-  line-height: 1.46;
-  margin-bottom: 2rem
-}
-.under-block__subtitle {
-  margin-bottom: 1rem
-}
-.under-block__txt-sm {
-  line-height: 1.46
 }
 .faq__body {
   display: grid;
@@ -10280,6 +10459,22 @@ body::after {
   .popup-cart__total:not(:last-child) {
     margin-bottom: 1rem
   }
+  .popup-login__header {
+    padding: 2rem 2rem 1rem
+  }
+  .popup-login__close {
+    width: 2.5rem
+  }
+  .popup-login__close::before {
+    font-size: 1.5rem
+  }
+  .popup-account__subhead {
+    margin-bottom: 1rem
+  }
+  .popup-account__items {
+    gap: 1.5rem 1rem;
+    grid-template-columns: 1fr 1fr
+  }
   .page {
     border-radius: 2.5rem 2.5rem 0 0
   }
@@ -10306,8 +10501,7 @@ body::after {
   .cart-empty__title,
   .popup-cart__sum,
   .popup__title,
-  .terms__subtitle,
-  .under-block__subtitle {
+  .terms__subtitle {
     font-size: 1.4375rem
   }
   .spollers-faq__title {
@@ -10351,9 +10545,6 @@ body::after {
   .tab-checkout__subtitle {
     font-size: .9375rem
   }
-  .under-block__txt {
-    font-size: .9375rem
-  }
   #popupAvailability.popup .popup-availability__subtitle,
   #popupAvailabilityMsg.popup .popup-msg__bottom,
   #popupAvailabilityMsg.popup .popup-msg__subtitle,
@@ -10382,6 +10573,7 @@ body::after {
   .email-form__label,
   .filters__body,
   .filters__count,
+  .gender-option__label,
   .header-cart__message,
   .info-card__description,
   .info-card__link,
@@ -10393,6 +10585,7 @@ body::after {
   .orders-checkout__info,
   .orders-checkout__lines.lines-total .orders-checkout__text,
   .orders-checkout__subtotoal,
+  .popup-account__subtitle,
   .popup-cart__buttons,
   .popup-cart__total,
   .quantity__item,
@@ -10422,8 +10615,7 @@ body::after {
   .item-review__date {
     font-size: .8125rem
   }
-  .card-certificate__subtitle,
-  .under-block__txt-sm {
+  .card-certificate__subtitle {
     font-size: .8125rem
   }
   .app-footer__txt,
@@ -10449,6 +10641,7 @@ body::after {
   .input__label,
   .item-cart__disabled,
   .orders-checkout__lines,
+  .popup-account__txt,
   .popup-cart__header p span,
   .select__disabled,
   .select_type-6 .select__asset,
@@ -10962,12 +11155,6 @@ body::after {
   .banner-card__subtitle {
     margin-bottom: 2rem
   }
-  .under-block {
-    padding-top: 5rem
-  }
-  .under-block__title {
-    line-height: 1.13
-  }
   .faq__title {
     line-height: 1.2
   }
@@ -11246,6 +11433,45 @@ body::after {
   }
 }
 @media (min-width:43.81125em) {
+  .popup-login.popup-full .popup__content {
+    padding: 8.75rem 2rem 2rem
+  }
+  .popup-account .popup-login__content {
+    padding: 2rem!important
+  }
+  .brands-login__img {
+    width: 7.375rem
+  }
+  .brands-login__img.img-1 {
+    top: 27%;
+    left: 7%
+  }
+  .brands-login__img.img-2 {
+    top: 49%;
+    left: 12%
+  }
+  .brands-login__img.img-3 {
+    bottom: 12%;
+    left: 7%;
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg)
+  }
+  .brands-login__img.img-4 {
+    top: 24%;
+    right: 11%
+  }
+  .brands-login__img.img-5 {
+    top: 57%;
+    right: 9%;
+    -webkit-transform: rotate(-9deg);
+    transform: rotate(-9deg)
+  }
+  .brands-login__img.img-6 {
+    bottom: 8%;
+    right: 6%;
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg)
+  }
   .filters__wrapper_mob .filters__header {
     display: none
   }
@@ -11435,10 +11661,6 @@ body::after {
   }
   .logo-footer__logo:not(:last-child) {
     margin-bottom: .75rem
-  }
-  .under-block__body {
-    margin-inline: auto;
-    max-width: 55.875rem
   }
   .faq__body {
     grid-template-columns: 1fr 50%
@@ -11659,10 +11881,17 @@ body::after {
   #popupRules.popup .popup-body-rules__title {
     font-size: 1.4375rem
   }
+  .popup-login__body {
+    border-radius: 2.5rem
+  }
+  .popup-login__body {
+    padding: 3.375rem
+  }
   .card__title,
   .feedback__title,
-  .terms__title,
-  .under-block__title {
+  .popup-account__title,
+  .popup-login__title,
+  .terms__title {
     font-size: 2.5rem
   }
   .pb-120-56 {
@@ -11759,9 +11988,6 @@ body::after {
   }
   .card-news__name:not(:last-child) {
     margin-bottom: 1rem
-  }
-  .under-block__container {
-    max-height: 13.75rem
   }
   .terms__item:not(:last-child) {
     margin-bottom: 5rem
@@ -13369,6 +13595,42 @@ body::after {
   }
 }
 @media (max-width:43.81125em) {
+  .popup-login.popup-full .popup__content {
+    padding: 4.25rem 1rem 7.5rem
+  }
+  .popup-account .popup-login__content {
+    padding: 4.25rem 1rem 1.5rem!important
+  }
+  .brands-login__img {
+    width: 4.875rem
+  }
+  .brands-login__img.img-1 {
+    bottom: 4%;
+    left: 1rem
+  }
+  .brands-login__img.img-2 {
+    bottom: 4%;
+    left: 20%
+  }
+  .brands-login__img.img-3 {
+    bottom: 4%;
+    left: 50%;
+    -webkit-transform: translate(-50%,0) rotate(-30deg);
+    transform: translate(-50%,0) rotate(-30deg)
+  }
+  .brands-login__img.img-4 {
+    bottom: 4%;
+    right: 21%
+  }
+  .brands-login__img.img-5 {
+    display: none
+  }
+  .brands-login__img.img-6 {
+    bottom: 4%;
+    right: 1rem;
+    -webkit-transform: rotate(118deg);
+    transform: rotate(118deg)
+  }
   .filters__wrapper_mob {
     position: fixed!important;
     z-index: 10!important;
@@ -13987,6 +14249,33 @@ body::after {
   .popup-slider-checkout__nav-item .quantity .quantity__input {
     left: auto
   }
+  .popup-login__header {
+    padding: .75rem 1rem .75rem;
+    background-color: var(--gray-1);
+    border-radius: 0 0 1.5rem 1.5rem;
+    transition: box-shadow .3s ease
+  }
+  ._scroll-content .popup-login__header {
+    box-shadow: 0 4px 20px 0 rgba(33,5,41,.12)
+  }
+  .popup-login__close {
+    width: 2rem
+  }
+  .popup-login__close::before {
+    font-size: 1.5rem
+  }
+  .popup-login__body {
+    border-radius: 1.5rem
+  }
+  .popup-login__body {
+    padding: 1.5rem
+  }
+  .popup-account__subhead {
+    margin-bottom: .75rem
+  }
+  .popup-account__items {
+    gap: 1rem
+  }
   .page {
     border-radius: 1.5rem 1.5rem 0 0;
     margin-top: 8.75rem
@@ -14036,8 +14325,9 @@ body::after {
   }
   .card__title,
   .feedback__title,
-  .terms__title,
-  .under-block__title {
+  .popup-account__title,
+  .popup-login__title,
+  .terms__title {
     font-size: 1.25rem
   }
   .card-news__title,
@@ -14052,8 +14342,7 @@ body::after {
   .cart-empty__title,
   .popup-cart__sum,
   .popup__title,
-  .terms__subtitle,
-  .under-block__subtitle {
+  .terms__subtitle {
     font-size: 1.25rem
   }
   .spollers-faq__title {
@@ -14097,9 +14386,6 @@ body::after {
   .tab-checkout__subtitle {
     font-size: .875rem
   }
-  .under-block__txt {
-    font-size: .6875rem
-  }
   #popupAvailability.popup .popup-availability__subtitle,
   #popupAvailabilityMsg.popup .popup-msg__bottom,
   #popupAvailabilityMsg.popup .popup-msg__subtitle,
@@ -14128,6 +14414,7 @@ body::after {
   .email-form__label,
   .filters__body,
   .filters__count,
+  .gender-option__label,
   .header-cart__message,
   .info-card__description,
   .info-card__link,
@@ -14139,6 +14426,7 @@ body::after {
   .orders-checkout__info,
   .orders-checkout__lines.lines-total .orders-checkout__text,
   .orders-checkout__subtotoal,
+  .popup-account__subtitle,
   .popup-cart__buttons,
   .popup-cart__total,
   .quantity__item,
@@ -14168,8 +14456,7 @@ body::after {
   .item-review__date {
     font-size: .75rem
   }
-  .card-certificate__subtitle,
-  .under-block__txt-sm {
+  .card-certificate__subtitle {
     font-size: .6875rem
   }
   .app-footer__txt,
@@ -14193,6 +14480,7 @@ body::after {
   .input__label,
   .item-cart__disabled,
   .orders-checkout__lines,
+  .popup-account__txt,
   .popup-cart__header p span,
   .select__disabled,
   .select_type-6 .select__asset,
@@ -14806,15 +15094,6 @@ body::after {
   .banner-card__subtitle {
     margin-bottom: 4.4375rem
   }
-  .under-block {
-    padding-top: 3.5rem
-  }
-  .under-block__container {
-    max-height: 18.125rem
-  }
-  .under-block__title {
-    line-height: 1.35
-  }
   .faq__title {
     line-height: 1.35
   }
@@ -15201,9 +15480,6 @@ body::after {
   .card-news__name:not(:last-child) {
     margin-bottom: clamp(.25rem ,-.125765625rem + 1.25vw ,1rem)
   }
-  .under-block__container {
-    max-height: clamp(13.75rem ,20.3169661458rem + -7.2916666667vw ,18.125rem)
-  }
   .terms__item:not(:last-child) {
     margin-bottom: clamp(3rem ,1.9979583333rem + 3.3333333333vw ,5rem)
   }
@@ -15212,10 +15488,17 @@ body::after {
   #popupRules.popup .popup-body-rules__title {
     font-size: clamp(.875rem ,.5809225543rem + .9782608696vw ,1.4375rem)
   }
+  .popup-login__body {
+    border-radius: clamp(1.5rem ,.9771956522rem + 1.7391304348vw ,2.5rem)
+  }
+  .popup-login__body {
+    padding: clamp(1.5rem ,.5197418478rem + 3.2608695652vw ,3.375rem)
+  }
   .card__title,
   .feedback__title,
-  .terms__title,
-  .under-block__title {
+  .popup-account__title,
+  .popup-login__title,
+  .terms__title {
     font-size: clamp(1.25rem ,.5964945652rem + 2.1739130435vw ,2.5rem)
   }
   .pb-120-56 {
@@ -15544,6 +15827,15 @@ body::after {
   #popupReviews.popup .add-photo__remove:hover {
     background-color: var(--dark-violet);
     color: var(--white)
+  }
+  .popup-login__close:hover {
+    background-color: var(--violet)
+  }
+  .popup-account__prev:hover::before {
+    color: var(--dark-violet)
+  }
+  .gender-option__label:hover {
+    color: var(--fade-violet-2)
   }
   .item-dropdwn__btn:hover {
     color: var(--violet)

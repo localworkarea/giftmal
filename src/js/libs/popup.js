@@ -100,11 +100,12 @@ class Popup {
 	eventsPopup() {
 		// Клік по всьому документі
 		document.addEventListener("click", function (e) {
+			const datepickerContainer = document.querySelector("#air-datepicker-global-container");
+			
 			// Клік по кнопці "відкрити"
 			const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
 			if (buttonOpen) {
 				e.preventDefault();
-
 
 				// == якщо є атрибут data-popup-width, визначаємо його значення через функцію dataMediaQueries() та визиваємо відкриття попап тільки на вказанному значені ширині
 				const popupWidth = buttonOpen.getAttribute("data-popup-width");
@@ -125,6 +126,7 @@ class Popup {
 				this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ?
 					buttonOpen.getAttribute(this.options.attributeOpenButton) :
 					'error';
+				// this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ?? 'error';
 				
 				if (this._dataValue !== 'error') {
 					if (!this.isOpen) this.lastFocusEl = buttonOpen;
@@ -137,6 +139,13 @@ class Popup {
 
 				return;
 			}
+
+			//  Не закрываем попап, если клик по календарю
+			 if (datepickerContainer && datepickerContainer.contains(e.target)) {
+				return;
+			}
+		
+
 			// Закриття на порожньому місці (popup__wrapper) та кнопки закриття (popup__close) для закриття
 			const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
 			if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
@@ -176,81 +185,6 @@ class Popup {
 			}.bind(this))
 		}
 	}
-	// open(selectorValue) {
-	// 	if (bodyLockStatus) {
-	// 		// Якщо перед відкриттям попапа був режим lock
-	// 		this.bodyLock = document.documentElement.classList.contains('lock') && !this.isOpen ? true : false;
-
-	// 		// Якщо ввести значення селектора (селектор настроюється в options)
-	// 		if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
-	// 			this.targetOpen.selector = selectorValue;
-	// 			this._selectorOpen = true;
-	// 		}
-	// 		if (this.isOpen) {
-	// 			this._reopen = true;
-	// 			this.close();
-	// 		}
-	// 		if (!this._selectorOpen) this.targetOpen.selector = this.lastClosed.selector;
-	// 		if (!this._reopen) this.previousActiveElement = document.activeElement;
-
-	// 		this.targetOpen.element = document.querySelector(this.targetOpen.selector);
-
-	// 		if (this.targetOpen.element) {
-			
-	// 			if (this.options.hashSettings.location) {
-	// 				// Отримання хешу та його виставлення
-	// 				this._getHash();
-	// 				this._setHash();
-	// 			}
-
-	// 			// До відкриття
-	// 			this.options.on.beforeOpen(this);
-	// 			// Створюємо свою подію після відкриття попапа
-	// 			document.dispatchEvent(new CustomEvent("beforePopupOpen", {
-	// 				detail: {
-	// 					popup: this
-	// 				}
-	// 			}));
-
-	// 			 // Добавляем класс для <html> с ID попапа
-	// 			 const popupId = this.targetOpen.element.id; // Получаем ID попапа
-	// 			 if (popupId) {
-	// 					 document.documentElement.classList.add(`${popupId}-show`);
-	// 			 }
-
-	// 			this.targetOpen.element.classList.add(this.options.classes.popupActive);
-	// 			document.documentElement.classList.add(this.options.classes.bodyActive);
-
-	// 			if (!this._reopen) {
-	// 				!this.bodyLock ? bodyLock() : null;
-	// 			}
-	// 			else this._reopen = false;
-
-
-	// 			// Запам'ятаю це відчинене вікно. Воно буде останнім відкритим
-	// 			this.previousOpen.selector = this.targetOpen.selector;
-	// 			this.previousOpen.element = this.targetOpen.element;
-
-	// 			this._selectorOpen = false;
-
-	// 			this.isOpen = true;
-
-	// 			setTimeout(() => {
-	// 				this._focusTrap();
-	// 			}, 50);
-
-	// 			// Після відкриття
-	// 			this.options.on.afterOpen(this);
-	// 			// Створюємо свою подію після відкриття попапа
-	// 			document.dispatchEvent(new CustomEvent("afterPopupOpen", {
-	// 				detail: {
-	// 					popup: this
-	// 				}
-	// 			}));
-
-	// 		}
-	// 	}
-	// }
 
 	open(selectorValue, options = {}) {
 		if (bodyLockStatus) {
@@ -265,8 +199,13 @@ class Popup {
 				document.documentElement.classList.remove("menu-open");
 			}
 	
-			// **НЕ закрываем предыдущий попап, если передан `keepParentOpen: true`**
-			if (this.isOpen && !options.keepParentOpen) {
+			// // **НЕ закрываем предыдущий попап, если передан `keepParentOpen: true`**
+			// if (this.isOpen && !options.keepParentOpen) {
+			// 	this._reopen = true;
+			// 	this.close();
+			// }
+			// **Не закрываем предыдущий попап, если открывается #popupRolldate**
+			if (this.isOpen && !options.keepParentOpen && selectorValue !== "#popupRolldate") {
 				this._reopen = true;
 				this.close();
 			}
@@ -310,70 +249,7 @@ class Popup {
 			}
 		}
 	}
-	
 
-
-	// close(selectorValue) {
-	// 	if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
-	// 		this.previousOpen.selector = selectorValue;
-	// 	}
-	// 	if (!this.isOpen || !bodyLockStatus) {
-	// 		return;
-	// 	}
-	// 	// До закриття
-	// 	this.options.on.beforeClose(this);
-	// 	// Створюємо свою подію перед закриттям попапа
-	// 	document.dispatchEvent(new CustomEvent("beforePopupClose", {
-	// 		detail: {
-	// 			popup: this
-	// 		}
-	// 	}));
-
-	// 	if (this.previousOpen.element) {
-	// 		// Получаем ID последнего открытого попапа
-	// 		const popupId = this.previousOpen.element.id;
-	// 		if (popupId) {
-	// 				document.documentElement.classList.remove(`${popupId}-show`);
-	// 		}
-	// 	}
-
-	// 	this.previousOpen.element.classList.remove(this.options.classes.popupActive);
-	// 	if (!this._reopen) {
-	// 		document.documentElement.classList.remove(this.options.classes.bodyActive);
-	// 		!this.bodyLock ? bodyUnlock() : null;
-	// 		this.isOpen = false;
-	// 	}
-
-	// 	 // Очистка стилей контента попапа
-	// 	 const popupContent = this.targetOpen.element.querySelector('.popup__content');
-	// 	 if (popupContent) {
-	// 			setTimeout(() => {
-	// 				popupContent.style.height = '';
-	// 			}, 300);
-	// 	 }
-	 
-
-	// 	// Очищення адресного рядка
-	// 	this._removeHash();
-	// 	if (this._selectorOpen) {
-	// 		this.lastClosed.selector = this.previousOpen.selector;
-	// 		this.lastClosed.element = this.previousOpen.element;
-
-	// 	}
-	// 	// Після закриття
-	// 	this.options.on.afterClose(this);
-	// 	// Створюємо свою подію після закриття попапа
-	// 	document.dispatchEvent(new CustomEvent("afterPopupClose", {
-	// 		detail: {
-	// 			popup: this
-	// 		}
-	// 	}));
-
-	// 	setTimeout(() => {
-	// 		this._focusTrap();
-	// 	}, 50);
-
-	// }
 
 	close(selectorValue, options = {}) {
     if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") {
@@ -403,11 +279,11 @@ class Popup {
 			!this.bodyLock ? bodyUnlock() : null;
 			this.isOpen = false;
 		} else {
-				// Если закрыли #popupIti, но остается другой попап, обновляем previousOpen
-				if (selectorValue === "#popupIti" && openPopups.length > 0) {
-						this.previousOpen.element = openPopups[openPopups.length - 1];
-						this.previousOpen.selector = `#${this.previousOpen.element.id}`;
-						this.isOpen = true;
+			
+				if ((selectorValue === "#popupIti" || selectorValue === "#popupRolldate") && openPopups.length > 0) {
+					this.previousOpen.element = openPopups[openPopups.length - 1];
+					this.previousOpen.selector = `#${this.previousOpen.element.id}`;
+					this.isOpen = true;
 				}
 			
 				setTimeout(() => {
@@ -476,14 +352,7 @@ class Popup {
 			e.preventDefault();
 		}
 	}
-	// _focusTrap() {
-	// 	const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
-	// 	if (!this.isOpen && this.lastFocusEl) {
-	// 		this.lastFocusEl.focus();
-	// 	} else {
-	// 		focusable[0].focus();
-	// 	}
-	// }
+
 	_focusTrap() {
     if (!this.previousOpen.element) return; // Защита от ошибок, если нет предыдущего попапа
 

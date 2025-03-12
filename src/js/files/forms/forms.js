@@ -169,6 +169,51 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 				}
 			}
 		}
+
+
+	// Форма в попапе #popupAccount
+	const formPopupAccount = document.querySelector("form.popup-account__body");
+	if (!formPopupAccount) return;
+
+	const steps = formPopupAccount.querySelectorAll(".popup-account__step");
+	const nextButton = formPopupAccount.querySelector(".popup-account__btn-next");
+	const prevButton = formPopupAccount.querySelector(".popup-account__subhead");
+	const stepIndicator = formPopupAccount.querySelector(".popup-account__txt span");
+
+	if (!steps.length || !nextButton || !prevButton || !stepIndicator) return;
+
+	const firstStep = steps[0];
+	const secondStep = steps[1];
+	const inputs = firstStep.querySelectorAll("[data-required]");
+
+	function checkInputs() {
+	    let isFilled = Array.from(inputs).some(input => input.value.trim() !== "");
+	    nextButton.disabled = !isFilled;
+	}
+
+	inputs.forEach(input => {
+	    input.addEventListener("input", checkInputs);
+	});
+
+	nextButton.addEventListener("click", function () {
+	    if (formValidate.getErrors(firstStep) === 0) {
+	        firstStep.classList.remove("_step-active");
+	        secondStep.classList.add("_step-active");
+	        prevButton.classList.add("_active"); 
+	        stepIndicator.textContent = "2";
+	    }
+	});
+
+	prevButton.addEventListener("click", function () {
+	    secondStep.classList.remove("_step-active");
+	    firstStep.classList.add("_step-active");
+	    prevButton.classList.remove("_active"); 
+	    stepIndicator.textContent = "1";
+	    checkInputs();
+	});
+
+
+
 }
 
 	function toggleSubmitButton(form) {
@@ -187,6 +232,8 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 		submitButton.disabled = !hasValue;
 	}
 
+
+	
 
 
 // == РАБОТА С ПОЛЕМ ВВОДА КОДА СМС ==============================

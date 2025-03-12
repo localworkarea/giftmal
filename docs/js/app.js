@@ -512,6 +512,7 @@
         }
         eventsPopup() {
             document.addEventListener("click", function(e) {
+                const datepickerContainer = document.querySelector("#air-datepicker-global-container");
                 const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
                 if (buttonOpen) {
                     e.preventDefault();
@@ -532,6 +533,7 @@
                     }
                     return;
                 }
+                if (datepickerContainer && datepickerContainer.contains(e.target)) return;
                 const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
                 if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
                     e.preventDefault();
@@ -567,7 +569,7 @@
                     this._selectorOpen = true;
                 }
                 if (document.documentElement.classList.contains("menu-open")) document.documentElement.classList.remove("menu-open");
-                if (this.isOpen && !options.keepParentOpen) {
+                if (this.isOpen && !options.keepParentOpen && selectorValue !== "#popupRolldate") {
                     this._reopen = true;
                     this.close();
                 }
@@ -624,7 +626,7 @@
                 !this.bodyLock ? bodyUnlock() : null;
                 this.isOpen = false;
             } else {
-                if (selectorValue === "#popupIti" && openPopups.length > 0) {
+                if ((selectorValue === "#popupIti" || selectorValue === "#popupRolldate") && openPopups.length > 0) {
                     this.previousOpen.element = openPopups[openPopups.length - 1];
                     this.previousOpen.selector = `#${this.previousOpen.element.id}`;
                     this.isOpen = true;
@@ -815,6 +817,38 @@
                 }
             }
         }
+        const formPopupAccount = document.querySelector("form.popup-account__body");
+        if (!formPopupAccount) return;
+        const steps = formPopupAccount.querySelectorAll(".popup-account__step");
+        const nextButton = formPopupAccount.querySelector(".popup-account__btn-next");
+        const prevButton = formPopupAccount.querySelector(".popup-account__subhead");
+        const stepIndicator = formPopupAccount.querySelector(".popup-account__txt span");
+        if (!steps.length || !nextButton || !prevButton || !stepIndicator) return;
+        const firstStep = steps[0];
+        const secondStep = steps[1];
+        const inputs = firstStep.querySelectorAll("[data-required]");
+        function checkInputs() {
+            let isFilled = Array.from(inputs).some((input => input.value.trim() !== ""));
+            nextButton.disabled = !isFilled;
+        }
+        inputs.forEach((input => {
+            input.addEventListener("input", checkInputs);
+        }));
+        nextButton.addEventListener("click", (function() {
+            if (formValidate.getErrors(firstStep) === 0) {
+                firstStep.classList.remove("_step-active");
+                secondStep.classList.add("_step-active");
+                prevButton.classList.add("_active");
+                stepIndicator.textContent = "2";
+            }
+        }));
+        prevButton.addEventListener("click", (function() {
+            secondStep.classList.remove("_step-active");
+            firstStep.classList.add("_step-active");
+            prevButton.classList.remove("_active");
+            stepIndicator.textContent = "1";
+            checkInputs();
+        }));
     }
     function toggleSubmitButton(form) {
         const submitButton = form.querySelector('button[type="submit"]');
@@ -7292,6 +7326,7 @@
             let currentY = 0;
             let isDragging = false;
             let initialHeight = popupContent.offsetHeight;
+            if (!popupTop) return;
             popupTop.addEventListener("touchstart", (e => {
                 startY = e.touches[0].clientY;
                 currentY = startY;
@@ -7364,6 +7399,14 @@
         }
         initDragSpoiler();
         mediaQuery900max.addEventListener("change", initDragSpoiler);
+        const popupLogin = document.querySelectorAll(".popup-login");
+        popupLogin.forEach((popup => {
+            const content = popup.querySelector(".popup-login__content");
+            if (!content) return;
+            content.addEventListener("scroll", (function() {
+                popup.classList.toggle("_scroll-content", content.scrollTop > 5);
+            }));
+        }));
         const popupButtons = document.querySelectorAll(".cabinet-header__button");
         function toggleModalShow(button) {
             const parentElement = button.parentElement;

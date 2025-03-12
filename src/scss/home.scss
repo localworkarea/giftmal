@@ -2314,57 +2314,6 @@
   }
 }
 
-.under-block {
-  @media (min-width:$mobileSmall){
-     padding-top: toRem(80); 
-  }
-  @media (max-width:$mobileSmall){
-    padding-top: toRem(56); 
-  }
-  // .under-block__container
-  &__container {
-    overflow-y: auto;
-    @include adaptiveValue("max-height", 220, 290,0,1440.98,480.98);
-  }
-  // .under-block__body
-  &__body {
-    text-align: center;
-    @media (min-width:$mobile){
-      margin-inline: auto;
-      max-width: toRem(894);
-    }
-  }
-  // .under-block__title
-  &__title {
-    @extend %fonsSize40-20;
-    margin-bottom: toRem(16);
-    @media (min-width:$mobileSmall){
-      line-height: 1.13;
-    }
-    @media (max-width:$mobileSmall){
-       line-height: 1.35; 
-    }
-  }
-  // .under-block__txt
-  &__txt {
-    @extend %fonsSize15-11;
-    line-height: 1.46;
-    margin-bottom: toRem(32);
-  }
-  // .under-block__subtitle
-  &__subtitle {
-    @extend %fonsSize23-20;
-    margin-bottom: toRem(16);
-  }
-  // .under-block__txt-sm
-  &__txt-sm {
-    @extend %fonsSize13-11;
-    line-height: 1.46;
-  }
-}
-
-
-
 
 // === F A Q ===============================
 .faq {
