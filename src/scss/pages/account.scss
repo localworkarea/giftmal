@@ -30,9 +30,14 @@
 
 .tabs-account {
   display: grid;
+  @media (min-width:toEm(820.98)){
+    gap: toRem(56);
+  }
+  @media (max-width: toEm(820.98)) {
+    gap: toRem(20);
+  }
   @media (min-width:toEm(700.98)){
     grid-template-columns: toRem(190) 1fr;
-    gap: toRem(56);
   }
   @media (max-width: toEm(700.98)) and (min-width:$mobileSmall) {
     gap: toRem(32);
@@ -57,7 +62,7 @@
       top: toRem(120);
       margin-bottom: toRem(100);
     }
-    @media (min-width:$mobileSmall){
+    @media (max-width:toEm(700.98)) and (min-width:$mobileSmall){
       margin-bottom: toRem(32);
     }
   }
@@ -90,14 +95,16 @@
     @extend %tabBts;
     @media (max-width: toEm(700.98)){
       justify-content: center;
+      background-color: var(--gray-2);
+      padding-inline: toRem(5);
     }
-    @media (min-width:$mobileSmall){
-      &._tab-active {
+    &._tab-active {
+      @media (min-width:$mobileSmall){
         background-color: var(--white);
       }
     }
-    @media (min-width:toEm(700.98)){
-      &:not(:last-child) {
+    &:not(:last-child) {
+      @media (min-width:toEm(700.98)){
         margin-bottom: toRem(12);
       }
     }
@@ -145,18 +152,24 @@
      margin-bottom: toRem(16);
   }
   &::before {
-    width: toRem(32);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background-color: var(--white);
-    font-size: toRem(20);
-    display: grid;
-    place-items: center;
-    transform: rotate(90deg);
-    padding-top: toRem(2);
+    @media (min-width:$mobileSmall){
+       display: none; 
+    }
+    @media (max-width:$mobileSmall){
+      width: toRem(32);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: var(--white);
+      font-size: toRem(20);
+      display: grid;
+      place-items: center;
+      transform: rotate(90deg);
+      padding-top: toRem(2);
+    }
   }
 }
 
+//-- DATA - ACCOUNT --------------------
 .data-account {
   @extend %padding32-24;
   @include adaptiveValue("border-radius", 40,24,2,1400.98,480.98);
@@ -184,11 +197,6 @@
     @media (min-width:$mobileSmall){
        font-size: toRem(23) !important; 
        margin-bottom: toRem(8);
-    }
-    &::before {
-      @media (min-width:$mobileSmall){
-         display: none; 
-      }
     }
 	}
 	// .data-account__subtitle
@@ -283,12 +291,333 @@
   }
 }
 
+// -- BALANCE - ACCOUNT ----------------
 .balance-account {
-  // .balance-account__body
+	// .balance-account__title
+	&__title {
+    @media (min-width:$mobileSmall){
+       display: none; 
+    }
+	}
+  // .balance-account__balance-card
+  &__balance-card {
+    @extend %padding32-24;
+
+  }
+  // .balance-account__activation
+  &__activation {
+  }
+  // .balance-account__spollers
+  &__spollers {
+  }
+}
+
+.current-balance {
+  color: var(--white);
+  @extend %padding32-24;
+  display: grid;
+  @media (min-width:$tablet){
+    border-radius: toRem(24);
+    background-color: var(--dark-violet);
+    grid-template-columns: auto auto;
+    gap: toRem(20);
+    margin-bottom: toRem(8);
+  }
+  @media (max-width:$tablet){
+    padding: 0;
+    gap: toRem(2);
+    margin-bottom: toRem(16);
+  }
+  // .current-balance__item
+  &__item {
+    @media (max-width:$tablet){
+      border-radius: toRem(24);
+      background-color: var(--dark-violet);
+      padding: toRem(24);
+    }
+  }
+  // .current-balance__title
+  &__title {
+    @extend %fonsSize15-14;
+    margin-bottom: toRem(8);
+  }
+  // .current-balance__subtitle
+  &__subtitle {
+    @extend %fonsSize13-14;
+    max-width: toRem(280);
+    color: var(--fade-violet-1);
+    line-height: 1.5;
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(22); 
+    }
+    @media (max-width:$mobileSmall){
+        margin-bottom: toRem(24);
+    }
+  }
+  // .current-balance__bottom
+  &__bottom {
+    @extend %flexCenterGap8;
+    gap: toRem(16);
+  }
+  // .current-balance__img
+  &__img {
+    width: toRem(60);
+    height: auto;
+    box-shadow: 0 3px 25px 0 rgba(33, 5, 41, 0.06);
+  }
+  // .current-balance__balance
+  &__balance {
+    @include adaptiveValue("font-size", 40, 28,0,1400.98,480.98);
+  }
+	// .current-balance__head
+	&__head {
+    @extend %flexCenterGap8;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    @extend %fonsSize15-14;
+    margin-bottom: toRem(8);
+	}
+	// .current-balance__head-txt
+	&__head-txt {
+  }
+	// .current-balance__btn
+	&__btn {
+    @extend %flexCenterGap8;
+    transition: color .2s ease;
+    &::before {
+      font-size: toRem(24);
+    }
+    @media (any-hover: hover){
+      &:hover{
+        color: var(--fade-violet-1);
+      }
+    }
+	}
+	// .current-balance__history
+	&__history {
+    display: flex;
+    align-items: center;
+    border-radius: toRem(39);
+    background-color: var(--fade-violet-3);
+    @include adaptiveValue("padding", 24, 16,0,1400.98,900.98);
+    min-height: toRem(67);
+    position: relative;
+    z-index: 1;
+    @media (min-width:$mobileSmall){
+      margin-bottom: toRem(18); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(15);
+    }
+    &::after,
+    &::before {
+      content:'';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: toRem(39);
+    }
+    &::after {
+      z-index: -1;
+      background-color: #371E3E;
+      @media (min-width:$mobileSmall){
+        top: toRem(18); 
+      }
+      @media (max-width:$mobileSmall){
+        top: toRem(15);
+      }
+    }
+    &::before {
+      z-index: 0;
+      background-color: var(--fade-violet-3);
+    }
+    * {
+        z-index: 2;
+      }
+	}
+	// .current-balance__list
+	&__list {
+    @extend %flexCenterGap8;
+    flex-wrap: wrap;
+    gap: toRem(12) toRem(8);
+    justify-content: space-between;
+    width: 100%;
+	}
+	// .current-balance__clm
+	&__clm {
+  }
+	// .current-balance__top
+	&__top {
+    opacity: .6;
+    font-size: toRem(11);
+    margin-bottom: toRem(6);
+	}
+	// .current-balance__data
+	&__data {
+    @extend %fonsSize15-14;
+  }
+	// .current-balance__msg
+	&__msg {
+    @extend %fonsSize13-14;
+    color: var(--fade-violet-1);
+    line-height: 1.46;
+	}
+}
+
+.activation-balance {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white);
+  @extend %borderRadius30-24;
+  @extend %padding32-24;
+  // .activation-balance__top
+  &__top {
+    position: relative;
+    z-index: 1;
+    &:not(:last-child) {
+      padding-bottom: toRem(24);
+      margin-bottom: toRem(24);
+      border-bottom: toRem(1.5) solid var(--gray-1);
+    }
+  }
+  // .activation-balance__title
+  &__title {
+    @extend %fonsSize23-20;
+    line-height: 1.35;
+    br {
+      @media (min-width:$mobileSmall){
+         display: none; 
+      }
+    }
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(32); 
+    }
+    @media (max-width:$mobileSmall){
+       margin-bottom: toRem(23);
+    }
+  }
+	// .activation-balance__block
+	&__block {
+    display: grid;
+    gap: toRem(24) toRem(72);
+    align-items: end;
+    @media (min-width:toEm(900.98)){
+      grid-template-columns: 1fr 1fr;
+    }
+	}
+  // .activation-balance__form
+  &__form {
+  }
+	// .activation-balance__items
+	&__items {
+    display: grid;
+    gap: toRem(8);
+    @media (min-width:$mobileSmall){
+      grid-template-columns: 1fr auto;
+    }
+	}
+  // .activation-balance__label
+  &__label {
+    @media (min-width:$mobileSmall){
+      font-size: toRem(15); 
+      margin-bottom: toRem(12);
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(8);
+      font-size: toRem(12);
+       letter-spacing: 0.02em;
+       font-weight: 600; 
+    }
+  }
+  // .activation-balance__form
+  &__form {
+    .input {
+      letter-spacing: 0.25em;
+      &::placeholder {
+        letter-spacing: 0;
+      }
+    }
+  }
+  // .activation-balance__btn
+  &__btn {
+    @media (min-width:$mobileSmall){
+      min-width: toRem(122);
+      height: max-content;
+    }
+  }
+  // .activation-balance__right
+  &__right {
+    @media (min-width:$mobileSmall){
+      max-width: toRem(350);
+    }
+  }
+  // .activation-balance__tippy
+  &__tippy {
+    @extend %fonsSize13-14;
+    color: var(--fade-violet-2);
+    @media (min-width:$mobileSmall){
+        line-height: 1.5;
+    }
+    @media (max-width:$mobileSmall){
+       line-height: 1.5; 
+    }
+    &:not(:last-child) {
+      margin-bottom: toRem(16);
+    }
+  }
+  // .activation-balance__body
+  &__body {
+    &.card-balance__body {}
+    .card-balance__title {
+      @extend %fonsSize13-14;
+    }
+    .card-balance__list {}
+    .card-balance__item {}
+    .card-balance__block {}
+    .card-balance__sub-title {}
+    .card-balance__row {}
+    .card-balance__row-icon {}
+    .card-balance__row-input {
+      letter-spacing: 0.25em;
+      &::placeholder {
+        letter-spacing: 0;
+      }
+    }
+    .card-balance__row-btn {}
+  }
+  // .activation-balance__img
+  &__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    box-shadow: 0 3px 30px 0 rgba(33, 5, 41, 0.06);
+    border-radius: toRem(10);
+    transform: rotate(-8.6deg) translate(25%,-3%);
+    height: auto;
+    @include adaptiveValue("width", 152, 104,0,1400.98,480.98);
+  }
+}
+
+
+.spollers-balance {
+  // .spollers-balance__item
+  &__item {
+  }
+  // .spollers-balance__title
+  &__title {
+  }
+  // .spollers-balance__arrow
+  &__arrow {
+  }
+  // .spollers-balance__body
   &__body {
   }
 }
 
+
+// -- ORDER - ACCOUNT ----------------
 .order-account {
   // .order-account__body
   &__body {

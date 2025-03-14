@@ -4,7 +4,7 @@ import { isMobile, FLS } from "./functions.js";
 import { flsModules } from "./modules.js";
 
 // Підключення з node_modules
-// import tippy from 'tippy.js';
+import tippy from 'tippy.js';
 
 // Підключення стилів з src/scss/libs
 import "../../scss/libs/tippy.scss";

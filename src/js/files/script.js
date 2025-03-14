@@ -5,13 +5,6 @@ import { isMobile, bodyLockToggle, _slideToggle, _slideUp, _slideDown } from "./
 import { flsModules } from "./modules.js";
 
 
-// import AirDatepicker from 'air-datepicker';
-// import 'air-datepicker/air-datepicker.css';
-// import localeEn from 'air-datepicker/locale/en';
-// import localeRu from 'air-datepicker/locale/ru';
-// import localeUk from 'air-datepicker/locale/uk';
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
   const mediaQuery900min = window.matchMedia('(min-width: 56.311em)');
@@ -1286,21 +1279,6 @@ if (intlTelInputs.length > 0) {
 
 
 
-
-
-/* tippy settins */
-// ==============================================================
-const tooltipElements = document.querySelectorAll("[data-tippy-content]");
-if (tooltipElements.length > 0) {
-  tippy(tooltipElements, {
-    placement: "bottom",
-  });
-}
-
-
-
-
-
 /* Календарь, переключение между двумя плагинами по ширине 480рх (30.061em): air-datepicker и Rolldate-full 
 https://air-datepicker.com/ru/docs
 mobile date picker: https://www.npmjs.com/package/rolldate-full?activeTab=readme
@@ -1771,48 +1749,3 @@ document.querySelectorAll('.search').forEach(searchElement => {
   });
 });
 // == END OF SEARCH INPUTS BRANDS ============================
-
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   const stickyFooter = document.querySelector("[data-sticky-parent]");
-//   const stickyFooterEl = document.querySelector("[data-sticky-el]");
-//   const mediaQuery480max = window.matchMedia("(max-width: 30.061em)");
-
-//   if (!stickyFooter || !stickyFooterEl) return;
-
-//   let lastState = null;
-//   const threshold = 5;
-
-//   const checkSticky = () => {
-//       const footerRect = stickyFooter.getBoundingClientRect();
-//       const windowHeight = window.innerHeight;
-
-//       const isBelowViewport = footerRect.bottom > windowHeight + threshold;
-//       const isAboveViewport = footerRect.bottom < windowHeight - threshold;
-//       const isExactMatch = Math.abs(footerRect.bottom - windowHeight) <= threshold;
-
-//       if (isExactMatch) return;
-
-//       if (isBelowViewport && lastState !== true) {
-//           lastState = true;
-//           stickyFooterEl.classList.add("_fixed");
-//       } else if (isAboveViewport && lastState !== false) {
-//           lastState = false;
-//           stickyFooterEl.classList.remove("_fixed");
-//       }
-//   };
-
-//   const handleMediaChange = (event) => {
-//       if (event.matches) {
-//           window.addEventListener("scroll", checkSticky, { passive: true });
-//           checkSticky();
-//       } else {
-//           window.removeEventListener("scroll", checkSticky);
-//           stickyFooterEl.classList.remove("_fixed");
-//       }
-//   };
-
-//   mediaQuery480max.addEventListener("change", handleMediaChange);
-//   handleMediaChange(mediaQuery480max);
-// });

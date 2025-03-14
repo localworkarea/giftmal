@@ -135,13 +135,215 @@
 									</div>
 								</div>
 								<div class="tabs-account__body balance-account">
-									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="data-account__title title-btn icon-arrow-down" aria-label="open menu">Мій баланс</button>
+									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="balance-account__title title-btn icon-arrow-down" aria-label="open menu">Мій баланс</button>
+									<div class="balance-account__balance-current current-balance">
+										<div class="current-balance__item">
+											<div class="current-balance__title">
+												Мій Активний Баланс
+											</div>
+											<div class="current-balance__subtitle">
+												Ваш поточний баланс грошей, який ви можете витрачати на сайті giftmal.
+											</div>
+											<div class="current-balance__bottom">
+												<img class="current-balance__img" src="@img/cards/giftmall-card.png" width="48" height="32" alt="Image">
+												<div class="current-balance__balance">
+													<span class="numb">2000</span> грн
+												</div>
+											</div>
+										</div>
+										<div class="current-balance__item">
+											<div class="current-balance__head">
+												<p class="current-balance__head-txt">Історія Балансу</p>
+												<button type="button" class="current-balance__btn icon-arrow-next" aria-label="open popup balance">Переглянути усе</button>
+											</div>
+											<div class="current-balance__history">
+												<div class="current-balance__list">
+													<div class="current-balance__clm">
+														<p class="current-balance__top">№ Замовлення</p>
+														<p class="current-balance__data">1234567</p>
+													</div>
+													<div class="current-balance__clm">
+														<p class="current-balance__top">Баланс</p>
+														<p class="current-balance__data"><span class="numb">-2000</span> грн</p>
+													</div>
+													<div class="current-balance__clm">
+														<p class="current-balance__top">Статус</p>
+														<p class="current-balance__data">Списання</p>
+													</div>
+													<div class="current-balance__clm">
+														<p class="current-balance__top">Дата</p>
+														<p class="current-balance__data">24.11.26</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="balance-account__balance-current current-balance">
+										<div class="current-balance__item">
+											<div class="current-balance__title">
+												Мій Активний Баланс
+											</div>
+											<div class="current-balance__subtitle">
+												У вас ще немає балансу. Щоб поповнити, активуйте Подарункову Картку giftmall.
+											</div>
+											<div class="current-balance__bottom">
+												<img class="current-balance__img" src="@img/cards/giftmall-card.png" width="48" height="32" alt="Image">
+												<div class="current-balance__balance">
+													<span class="numb">0</span> грн
+												</div>
+											</div>
+										</div>
+										<div class="current-balance__item">
+											<div class="current-balance__head">
+												<p class="current-balance__head-txt">Історія Балансу</p>
+												<button type="button" class="current-balance__btn icon-arrow-next" aria-label="open popup balance">Переглянути усе</button>
+											</div>
+											<div class="current-balance__history">
+												<p class="current-balance__msg">
+													Тут буде відображатись ваша історія.
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="balance-account__activation activation-balance">
+										<div class="activation-balance__top">
+											<p class="activation-balance__title">
+												Активувати<br> Баланс giftmall
+											</p>
+											<div class="activation-balance__block">
+												<form data-dev method="post" class="activation-balance__form">
+													<label for="activationBalance" class="activation-balance__label">
+														Введіть код з Картки giftmall сюди
+													</label>
+													<div class="activation-balance__items">
+														<div class="input__item">
+															<div class="input__sub-item">
+																<input id="activationBalance" autocomplete="off" type="text" name="codeCard"  data-error="Введіть код з картки" placeholder="Код з картки" data-required class="input input_sm ">
+																<button disabled type="button" class="input__clear icon-cross"></button>
+															</div>
+														</div>
+														<button type="submit" class="activation-balance__btn btn btn_dark btn_sm">Активувати</button>
+													</div>
+												</form>
+												<div class="activation-balance__right">
+													<p class="activation-balance__tippy">
+														Щоб поповнити Мій Баланс ви можете ввести код з подарункової картки giftmall і ваші гроші сумуються.
+													</p>
+													<p class="activation-balance__tippy">
+														*  У разі декількох сертифікатів, введіть їх через кому.
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="activation-balance__body card-balance__body">
+											<p class="card-balance__title">Мої картки</p>
+											<div class="card-balance__list">
+												<div class="card-balance__item _edit">
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title">Код картки</div>
+														<div class="card-balance__row row-code">Z90XQ1O</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
+														<div class="card-balance__row row-denomination numb">500 грн</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title icon-arrow-down">Статус</div>
+														<div class="card-balance__row row-status">
+															<span class="card-balance__row-icon icon-attantion"></span> 
+															Введіть PIN-Code для активації
+														</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title">PIN-Code</div>
+														<div class="card-balance__row row-pin">
+															<input autocomplete="off" type="text" name="pinCode" placeholder="1 2 3 4" data-required class="card-balance__row-input input input_sm">
+															<button type="button" class="card-balance__row-btn btn-circle btn-circle_dark icon-arrow-next"></button>
+														</div>
+													</div>
+												</div>
+
+												<div class="card-balance__item _activadet">
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title">Код картки</div>
+														<div class="card-balance__row row-code">Z90XQ1O</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
+														<div class="card-balance__row row-denomination numb">+500 грн</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title icon-arrow-down">Статус</div>
+														<div class="card-balance__row row-status">
+															<span class="card-balance__row-icon icon-attantion"></span> 
+															Активований
+														</div>
+													</div>
+												</div>
+												<div class="card-balance__item _expired">
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title">Код картки</div>
+														<div class="card-balance__row row-code">Z90XQ1O</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
+														<div class="card-balance__row row-denomination">-</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title icon-arrow-down">Статус</div>
+														<div class="card-balance__row row-status">
+															<span class="card-balance__row-icon icon-attantion"></span> 
+															Протермінований
+														</div>
+													</div>
+												</div>
+												<div class="card-balance__item _used">
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title">Код картки</div>
+														<div class="card-balance__row row-code">Z90XQ1O</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
+														<div class="card-balance__row row-denomination">-</div>
+													</div>
+													<div class="card-balance__block">
+														<div class="card-balance__sub-title icon-arrow-down">Статус</div>
+														<div class="card-balance__row row-status">
+															<span class="card-balance__row-icon icon-attantion"></span> 
+															Вже використаний
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<img class="activation-balance__img" src="@img/cards/giftmall-card-2.png" width="156" height="104" alt="Image">
+									</div>
+									<div data-spollers class="balance-account__spollers spollers-balance">
+										<details class="spollers-balance__item">
+											<summary class="spollers-balance__title">
+												Заголовок спойлера
+												<div class="spollers-balance__arrow dropdown-arrow icon-arrow-down"></div>
+											</summary>
+											<div class="spollers-balance__body">
+												tetxt
+											</div>
+										</details>
+										<details class="spollers-balance__item">
+											<summary class="spollers-balance__title">
+												Заголовок спойлера
+												<div class="spollers-balance__arrow dropdown-arrow icon-arrow-down"></div>
+											</summary>
+											<div class="spollers-balance__body">
+												text
+											</div>
+										</details>
+									</div>
 								</div>
 								<div class="tabs-account__body order-account">
-									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="data-account__title title-btn icon-arrow-down" aria-label="open menu">Усі Замовлення</button>
+									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="order-account__title title-btn icon-arrow-down" aria-label="open menu">Усі Замовлення</button>
 								</div>
 								<div class="tabs-account__body certificate-account">
-									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="data-account__title title-btn icon-arrow-down" aria-label="open menu">Мої Сертифікати</button>
+									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="certificate-account__title title-btn icon-arrow-down" aria-label="open menu">Мої Сертифікати</button>
 								</div>
 							</div>
 						</div>

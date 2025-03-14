@@ -217,23 +217,23 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 }
 
 	function toggleSubmitButton(form) {
-		const submitButton = form.querySelector('button[type="submit"]');
-		if (!submitButton) return;
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (!submitButton) return;
 
-		const inputs = form.querySelectorAll('input, textarea');
-		let hasValue = false;
+    const wasInitiallyDisabled = submitButton.hasAttribute('disabled');
 
-		inputs.forEach(input => {
-				if (input.value.trim() !== '') {
-						hasValue = true;
-				}
-		});
+    const inputs = form.querySelectorAll('input, textarea');
+    let hasValue = Array.from(inputs).some(input => input.value.trim() !== '');
 
-		submitButton.disabled = !hasValue;
-	}
+    if (wasInitiallyDisabled) {
+        submitButton.disabled = !hasValue;
 
+        form.addEventListener("submit", function () {
+            submitButton.disabled = true;
+        });
+    }
+}
 
-	
 
 
 // == РАБОТА С ПОЛЕМ ВВОДА КОДА СМС ==============================
@@ -287,9 +287,6 @@ function initSmsInput(inputElement) {
         }
     });
 }
-
-
-
 
 // Валідація форм
 export let formValidate = {

@@ -4426,6 +4426,10 @@ html {
 .cart__head,
 .cart__type,
 .contacts-footer__block,
+.current-balance__bottom,
+.current-balance__btn,
+.current-balance__head,
+.current-balance__list,
 .edit-btn,
 .filters__footer,
 .filters__header,
@@ -4778,86 +4782,6 @@ body::after {
 }
 .timer .timer__txt {
   display: none
-}
-.tippy-box[data-animation=fade][data-state=hidden] {
-  opacity: 0
-}
-[data-tippy-root] {
-  max-width: calc(100vw - 10px)
-}
-.tippy-box {
-  position: relative;
-  background-color: #fff;
-  color: #210529;
-  border-radius: 16px;
-  font-size: 13px;
-  line-height: 1.4;
-  outline: 0;
-  transition-property: visibility,opacity,-webkit-transform;
-  transition-property: transform,visibility,opacity;
-  transition-property: transform,visibility,opacity,-webkit-transform;
-  box-shadow: 0 4px 40px 0 rgba(33,5,41,.16)
-}
-.tippy-box[data-placement^=top]>.tippy-arrow {
-  bottom: 0
-}
-.tippy-box[data-placement^=top]>.tippy-arrow:before {
-  bottom: -7px;
-  left: 0;
-  border-width: 8px 8px 0;
-  border-top-color: initial;
-  -webkit-transform-origin: center top;
-  transform-origin: center top
-}
-.tippy-box[data-placement^=bottom]>.tippy-arrow {
-  top: 0
-}
-.tippy-box[data-placement^=bottom]>.tippy-arrow:before {
-  top: -7px;
-  left: 0;
-  border-width: 0 8px 8px;
-  border-bottom-color: initial;
-  -webkit-transform-origin: center bottom;
-  transform-origin: center bottom
-}
-.tippy-box[data-placement^=left]>.tippy-arrow {
-  right: 0
-}
-.tippy-box[data-placement^=left]>.tippy-arrow:before {
-  border-width: 8px 0 8px 8px;
-  border-left-color: initial;
-  right: -7px;
-  -webkit-transform-origin: center left;
-  transform-origin: center left
-}
-.tippy-box[data-placement^=right]>.tippy-arrow {
-  left: 0
-}
-.tippy-box[data-placement^=right]>.tippy-arrow:before {
-  left: -7px;
-  border-width: 8px 8px 8px 0;
-  border-right-color: initial;
-  -webkit-transform-origin: center right;
-  transform-origin: center right
-}
-.tippy-box[data-inertia][data-state=visible] {
-  transition-timing-function: cubic-bezier(.54,1.5,.38,1.11)
-}
-.tippy-arrow {
-  width: 16px;
-  height: 16px;
-  color: #fff
-}
-.tippy-arrow:before {
-  content: "";
-  position: absolute;
-  border-color: transparent;
-  border-style: solid
-}
-.tippy-content {
-  position: relative;
-  padding: 16px;
-  z-index: 1
 }
 .filters {
   position: relative
@@ -7750,18 +7674,6 @@ body::after {
 .data-account__step {
   display: grid
 }
-.title-btn::before {
-  width: 2rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: var(--white);
-  font-size: 1.25rem;
-  display: grid;
-  place-items: center;
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-  padding-top: .125rem
-}
 .data-account__subtitle {
   line-height: 1.46;
   color: var(--fade-violet-2)
@@ -7778,6 +7690,154 @@ body::after {
 .data-account__step-txt {
   line-height: 1.46;
   color: var(--fade-violet-2)
+}
+.current-balance {
+  color: var(--white);
+  display: grid
+}
+.current-balance__title {
+  margin-bottom: .5rem
+}
+.current-balance__subtitle {
+  max-width: 17.5rem;
+  color: var(--fade-violet-1);
+  line-height: 1.5
+}
+.current-balance__bottom {
+  gap: 1rem
+}
+.current-balance__img {
+  width: 3.75rem;
+  height: auto;
+  box-shadow: 0 3px 25px 0 rgba(33,5,41,.06)
+}
+.current-balance__head {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: .5rem
+}
+.current-balance__btn {
+  transition: color .2s ease
+}
+.current-balance__btn::before {
+  font-size: 1.5rem
+}
+.current-balance__history {
+  display: flex;
+  align-items: center;
+  border-radius: 2.4375rem;
+  background-color: var(--fade-violet-3);
+  min-height: 4.1875rem;
+  position: relative;
+  z-index: 1
+}
+.current-balance__history::after,
+.current-balance__history::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2.4375rem
+}
+.current-balance__history::after {
+  z-index: -1;
+  background-color: #371e3e
+}
+.current-balance__history::before {
+  z-index: 0;
+  background-color: var(--fade-violet-3)
+}
+.current-balance__history * {
+  z-index: 2
+}
+.current-balance__list {
+  flex-wrap: wrap;
+  gap: .75rem .5rem;
+  justify-content: space-between;
+  width: 100%
+}
+.current-balance__top {
+  opacity: .6;
+  font-size: .6875rem;
+  margin-bottom: .375rem
+}
+.current-balance__msg {
+  color: var(--fade-violet-1);
+  line-height: 1.46
+}
+.activation-balance {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white)
+}
+.activation-balance__top {
+  position: relative;
+  z-index: 1
+}
+.activation-balance__top:not(:last-child) {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: .09375rem solid var(--gray-1)
+}
+.activation-balance__title {
+  line-height: 1.35
+}
+.activation-balance__block {
+  display: grid;
+  gap: 1.5rem 4.5rem;
+  align-items: end
+}
+.activation-balance__items {
+  display: grid;
+  gap: .5rem
+}
+.activation-balance__form .input {
+  letter-spacing: .25em
+}
+.activation-balance__form .input::-webkit-input-placeholder {
+  letter-spacing: 0
+}
+.activation-balance__form .input:-ms-input-placeholder {
+  letter-spacing: 0
+}
+.activation-balance__form .input::-ms-input-placeholder {
+  letter-spacing: 0
+}
+.activation-balance__form .input::placeholder {
+  letter-spacing: 0
+}
+.activation-balance__tippy {
+  color: var(--fade-violet-2)
+}
+.activation-balance__tippy:not(:last-child) {
+  margin-bottom: 1rem
+}
+.activation-balance__body .card-balance__row-input {
+  letter-spacing: .25em
+}
+.activation-balance__body .card-balance__row-input::-webkit-input-placeholder {
+  letter-spacing: 0
+}
+.activation-balance__body .card-balance__row-input:-ms-input-placeholder {
+  letter-spacing: 0
+}
+.activation-balance__body .card-balance__row-input::-ms-input-placeholder {
+  letter-spacing: 0
+}
+.activation-balance__body .card-balance__row-input::placeholder {
+  letter-spacing: 0
+}
+.activation-balance__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  box-shadow: 0 3px 30px 0 rgba(33,5,41,.06);
+  border-radius: .625rem;
+  -webkit-transform: rotate(-8.6deg) translate(25%,-3%);
+  transform: rotate(-8.6deg) translate(25%,-3%);
+  height: auto
 }
 .error__page .page__logo {
   margin: 3.375rem auto 0;
@@ -10222,6 +10282,86 @@ body::after {
   font-size: .6875rem;
   font-weight: 500
 }
+.tippy-box[data-animation=fade][data-state=hidden] {
+  opacity: 0
+}
+[data-tippy-root] {
+  max-width: calc(100vw - 10px)
+}
+.tippy-box {
+  position: relative;
+  background-color: #fff;
+  color: #210529;
+  border-radius: 16px;
+  font-size: 13px;
+  line-height: 1.4;
+  outline: 0;
+  transition-property: visibility,opacity,-webkit-transform;
+  transition-property: transform,visibility,opacity;
+  transition-property: transform,visibility,opacity,-webkit-transform;
+  box-shadow: 0 4px 40px 0 rgba(33,5,41,.16)
+}
+.tippy-box[data-placement^=top]>.tippy-arrow {
+  bottom: 0
+}
+.tippy-box[data-placement^=top]>.tippy-arrow:before {
+  bottom: -7px;
+  left: 0;
+  border-width: 8px 8px 0;
+  border-top-color: initial;
+  -webkit-transform-origin: center top;
+  transform-origin: center top
+}
+.tippy-box[data-placement^=bottom]>.tippy-arrow {
+  top: 0
+}
+.tippy-box[data-placement^=bottom]>.tippy-arrow:before {
+  top: -7px;
+  left: 0;
+  border-width: 0 8px 8px;
+  border-bottom-color: initial;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom
+}
+.tippy-box[data-placement^=left]>.tippy-arrow {
+  right: 0
+}
+.tippy-box[data-placement^=left]>.tippy-arrow:before {
+  border-width: 8px 0 8px 8px;
+  border-left-color: initial;
+  right: -7px;
+  -webkit-transform-origin: center left;
+  transform-origin: center left
+}
+.tippy-box[data-placement^=right]>.tippy-arrow {
+  left: 0
+}
+.tippy-box[data-placement^=right]>.tippy-arrow:before {
+  left: -7px;
+  border-width: 8px 8px 8px 0;
+  border-right-color: initial;
+  -webkit-transform-origin: center right;
+  transform-origin: center right
+}
+.tippy-box[data-inertia][data-state=visible] {
+  transition-timing-function: cubic-bezier(.54,1.5,.38,1.11)
+}
+.tippy-arrow {
+  width: 16px;
+  height: 16px;
+  color: #fff
+}
+.tippy-arrow:before {
+  content: "";
+  position: absolute;
+  border-color: transparent;
+  border-style: solid
+}
+.tippy-content {
+  position: relative;
+  padding: 16px;
+  z-index: 1
+}
 .swiper {
   overflow: hidden
 }
@@ -10549,6 +10689,7 @@ body::after {
   .total-cart__total {
     font-size: 1.75rem
   }
+  .activation-balance__title,
   .cart-empty__title,
   .popup-cart__sum,
   .popup__title,
@@ -10580,6 +10721,9 @@ body::after {
   .card-news__body,
   .card-slider-link__head,
   .cart__subtitle,
+  .current-balance__data,
+  .current-balance__head,
+  .current-balance__title,
   .faq__subtitle,
   .filters__header,
   .item-review__avatar-txt,
@@ -10602,6 +10746,8 @@ body::after {
   #popupQuestion.popup .popup-question__subtitle,
   #popupReviews.popup .add-photo__block,
   #popupRules.popup .popup-body-rules__rules-title,
+  .activation-balance__body .card-balance__title,
+  .activation-balance__tippy,
   .amount__item,
   .aside-card__description,
   .aside-card__link,
@@ -10620,6 +10766,8 @@ body::after {
   .cart-empty__subtitle,
   .cart__type,
   .checkbox,
+  .current-balance__msg,
+  .current-balance__subtitle,
   .data-account__step-txt,
   .data-account__subtitle,
   .edit-btn,
@@ -10739,6 +10887,7 @@ body::after {
   .footer {
     border-radius: 2.5rem 2.5rem 0 0
   }
+  .activation-balance,
   .article__image--wrapper,
   .article__video-container,
   .banner-card,
@@ -11434,9 +11583,6 @@ body::after {
     flex-direction: column;
     justify-content: space-between
   }
-  .tabs-account__top {
-    margin-bottom: 2rem
-  }
   .tabs-account__head {
     color: var(--fade-violet-2);
     font-size: .8125rem;
@@ -11453,6 +11599,9 @@ body::after {
   .title-btn {
     cursor: auto
   }
+  .title-btn::before {
+    display: none
+  }
   .data-account {
     background-color: var(--white)
   }
@@ -11463,12 +11612,45 @@ body::after {
     font-size: 1.4375rem!important;
     margin-bottom: .5rem
   }
-  .data-account__title::before {
-    display: none
-  }
   .data-account__block:not(:last-child) {
     margin-bottom: 2rem;
     padding-bottom: 2rem
+  }
+  .balance-account__title {
+    display: none
+  }
+  .current-balance__subtitle {
+    margin-bottom: 1.375rem
+  }
+  .current-balance__history {
+    margin-bottom: 1.125rem
+  }
+  .current-balance__history::after {
+    top: 1.125rem
+  }
+  .activation-balance__title br {
+    display: none
+  }
+  .activation-balance__title {
+    margin-bottom: 2rem
+  }
+  .activation-balance__items {
+    grid-template-columns: 1fr auto
+  }
+  .activation-balance__label {
+    font-size: .9375rem;
+    margin-bottom: .75rem
+  }
+  .activation-balance__btn {
+    min-width: 7.625rem;
+    height: -webkit-max-content;
+    height: max-content
+  }
+  .activation-balance__right {
+    max-width: 21.875rem
+  }
+  .activation-balance__tippy {
+    line-height: 1.5
   }
   .blog__filters {
     margin-bottom: 2rem
@@ -11733,8 +11915,7 @@ body::after {
     grid-column: 2/3
   }
   .tabs-account {
-    grid-template-columns: 11.875rem 1fr;
-    gap: 3.5rem
+    grid-template-columns: 11.875rem 1fr
   }
   .tabs-account__top {
     position: sticky;
@@ -11815,6 +11996,9 @@ body::after {
   }
   .card__items.grid-rw {
     grid-template-columns: 49% 49%
+  }
+  .tabs-account {
+    gap: 3.5rem
   }
   .data-account__footer,
   .data-account__header,
@@ -11905,6 +12089,9 @@ body::after {
   .card-balance__item {
     grid-template-columns: 16% 22% 1fr 22%
   }
+  .activation-balance__block {
+    grid-template-columns: 1fr 1fr
+  }
 }
 @media (min-width:59.43625em) {
   .cart__header {
@@ -11926,6 +12113,13 @@ body::after {
   }
   .e-card__image {
     height: 15.625rem
+  }
+  .current-balance {
+    border-radius: 1.5rem;
+    background-color: var(--dark-violet);
+    grid-template-columns: auto auto;
+    gap: 1.25rem;
+    margin-bottom: .5rem
   }
   .blog__grid {
     grid-template-columns: repeat(3,1fr)
@@ -11988,8 +12182,11 @@ body::after {
   }
 }
 @media (min-width:77.06125em) {
+  .activation-balance,
+  .balance-account__balance-card,
   .blog-inner,
   .card-news,
+  .current-balance,
   .data-account,
   .orders-checkout__body,
   .orders-checkout__total,
@@ -12085,6 +12282,15 @@ body::after {
   }
   .data-account {
     border-radius: 2.5rem
+  }
+  .current-balance__balance {
+    font-size: 2.5rem
+  }
+  .current-balance__history {
+    padding: 1.5rem
+  }
+  .activation-balance__img {
+    width: 9.5rem
   }
 }
 @media (min-width:90.06125em) {
@@ -12279,8 +12485,11 @@ body::after {
   }
 }
 @media (max-width:62.06125em) {
+  .activation-balance,
+  .balance-account__balance-card,
   .blog-inner,
   .card-news,
+  .current-balance,
   .data-account,
   .orders-checkout__body,
   .orders-checkout__total,
@@ -12325,6 +12534,16 @@ body::after {
   }
   .grid-cl .card__quantity .quantity__input {
     left: 0
+  }
+  .current-balance {
+    padding: 0;
+    gap: .125rem;
+    margin-bottom: 1rem
+  }
+  .current-balance__item {
+    border-radius: 1.5rem;
+    background-color: var(--dark-violet);
+    padding: 1.5rem
   }
   .error__page .error__card--3 {
     bottom: 0;
@@ -12739,6 +12958,9 @@ body::after {
   .terms__subtitle {
     margin-bottom: 1.5rem
   }
+  .current-balance__history {
+    padding: 1rem
+  }
 }
 @media (max-width:51.31125em) {
   .card__options.grid-rw {
@@ -12746,6 +12968,9 @@ body::after {
   }
   .card__items.grid-rw {
     grid-template-columns: 100%
+  }
+  .tabs-account {
+    gap: 1.25rem
   }
   .data-account__footer,
   .data-account__header,
@@ -14054,7 +14279,9 @@ body::after {
     grid-column: span 2
   }
   .tabs-account__btn {
-    justify-content: center
+    justify-content: center;
+    background-color: var(--gray-2);
+    padding-inline: .3125rem
   }
 }
 @media (max-width:43.81125em)and (any-hover:none) {
@@ -14503,6 +14730,7 @@ body::after {
   .total-cart__total {
     font-size: 1.25rem
   }
+  .activation-balance__title,
   .cart-empty__title,
   .popup-cart__sum,
   .popup__title,
@@ -14534,6 +14762,9 @@ body::after {
   .card-news__body,
   .card-slider-link__head,
   .cart__subtitle,
+  .current-balance__data,
+  .current-balance__head,
+  .current-balance__title,
   .faq__subtitle,
   .filters__header,
   .item-review__avatar-txt,
@@ -14556,6 +14787,8 @@ body::after {
   #popupQuestion.popup .popup-question__subtitle,
   #popupReviews.popup .add-photo__block,
   #popupRules.popup .popup-body-rules__rules-title,
+  .activation-balance__body .card-balance__title,
+  .activation-balance__tippy,
   .amount__item,
   .aside-card__description,
   .aside-card__link,
@@ -14574,6 +14807,8 @@ body::after {
   .cart-empty__subtitle,
   .cart__type,
   .checkbox,
+  .current-balance__msg,
+  .current-balance__subtitle,
   .data-account__step-txt,
   .data-account__subtitle,
   .edit-btn,
@@ -14700,6 +14935,7 @@ body::after {
   .footer {
     border-radius: 1.5rem 1.5rem 0 0
   }
+  .activation-balance,
   .article__image--wrapper,
   .article__video-container,
   .banner-card,
@@ -15547,6 +15783,18 @@ body::after {
     gap: 1rem;
     margin-bottom: 1rem
   }
+  .title-btn::before {
+    width: 2rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--white);
+    font-size: 1.25rem;
+    display: grid;
+    place-items: center;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    padding-top: .125rem
+  }
   .data-account {
     padding: 0!important
   }
@@ -15583,6 +15831,33 @@ body::after {
     margin-inline: -2rem;
     background-color: var(--white);
     box-shadow: 0 -4px 40px 0 rgba(33,5,41,.12)
+  }
+  .current-balance__subtitle {
+    margin-bottom: 1.5rem
+  }
+  .current-balance__balance {
+    font-size: 1.75rem
+  }
+  .current-balance__history {
+    margin-bottom: .9375rem
+  }
+  .current-balance__history::after {
+    top: .9375rem
+  }
+  .activation-balance__title {
+    margin-bottom: 1.4375rem
+  }
+  .activation-balance__label {
+    margin-bottom: .5rem;
+    font-size: .75rem;
+    letter-spacing: .02em;
+    font-weight: 600
+  }
+  .activation-balance__tippy {
+    line-height: 1.5
+  }
+  .activation-balance__img {
+    width: 6.5rem
   }
   .error__page .page__logo {
     font-size: 2rem;
@@ -15776,6 +16051,12 @@ body::after {
   .data-account {
     border-radius: clamp(1.5rem ,.9771956522rem + 1.7391304348vw ,2.5rem)
   }
+  .current-balance__balance {
+    font-size: clamp(1.75rem ,1.3578967391rem + 1.3043478261vw ,2.5rem)
+  }
+  .activation-balance__img {
+    width: clamp(6.5rem ,4.9315869565rem + 5.2173913043vw ,9.5rem)
+  }
 }
 @media (max-width:43.81125em)and (min-width:30.06125em) {
   .page {
@@ -15786,6 +16067,9 @@ body::after {
   }
   .tabs-account {
     gap: 2rem
+  }
+  .tabs-account__top {
+    margin-bottom: 2rem
   }
   .tabs-account__navigation {
     display: grid;
@@ -15804,8 +16088,11 @@ body::after {
   }
 }
 @media (min-width:62.06125em)and (max-width:77.06125em) {
+  .activation-balance,
+  .balance-account__balance-card,
   .blog-inner,
   .card-news,
+  .current-balance,
   .data-account,
   .orders-checkout__body,
   .orders-checkout__total,
@@ -15937,6 +16224,11 @@ body::after {
 @media (max-width:48.06125em)and (min-width:43.81125em) {
   .cart__wrapper {
     grid-template-columns: 1fr 14.5rem
+  }
+}
+@media (min-width:56.31125em)and (max-width:87.56125em) {
+  .current-balance__history {
+    padding: clamp(1rem ,.09902rem + 1.6vw ,1.5rem)
   }
 }
 @media (any-hover:hover) {
@@ -16330,6 +16622,9 @@ body::after {
   }
   .review__more-btn:hover {
     color: var(--dark-violet)
+  }
+  .current-balance__btn:hover {
+    color: var(--fade-violet-1)
   }
   .blog-filter__btn:hover {
     background-color: var(--pagging-hover-bg)
