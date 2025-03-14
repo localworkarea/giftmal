@@ -378,6 +378,34 @@ export function tabs() {
 			});
 		}
 	}
+
+	// Отслеживаем клики по ссылкам, которые ведут к табам через хеш
+	document.addEventListener("click", function (e) {
+    const link = e.target.closest('a[href*="#tab-"]');
+    if (link) {
+        const url = new URL(link.href);
+        const hash = url.hash;
+
+        if (hash && hash.startsWith("#tab-")) {
+            // Проверяем, ведет ли ссылка на текущую страницу
+            if (url.pathname !== window.location.pathname) {
+                return; // Если это переход на другую страницу, ничего не делаем (стандартный переход)
+            }
+
+            e.preventDefault(); // Блокируем стандартный переход, если ссылка на той же странице
+
+            // Получаем индекс таба из хеша
+            const tabsActiveHash = hash.replace("#tab-", "").split("-");
+            const tabsBlock = document.querySelector(`[data-tabs-index="${tabsActiveHash[0]}"]`);
+
+            if (tabsBlock) {
+                // Устанавливаем активный таб
+                setActiveTab(tabsBlock, Number(tabsActiveHash[1]), true);
+            }
+        }
+    }
+  });
+
 	// Встановлення позицій заголовків
 	function setTitlePosition(tabsMediaArray, matchMedia) {
 		tabsMediaArray.forEach(tabsMediaItem => {
@@ -457,6 +485,32 @@ export function tabs() {
 			});
 		}
 	}
+
+	function setActiveTab(tabsBlock, tabIndex, updateHash = false) {
+    let tabsTitles = tabsBlock.querySelectorAll('[data-tabs-title]');
+    let tabsContent = tabsBlock.querySelectorAll('[data-tabs-item]');
+
+    tabsTitles = Array.from(tabsTitles).filter(item => item.closest('[data-tabs]') === tabsBlock);
+    tabsContent = Array.from(tabsContent).filter(item => item.closest('[data-tabs]') === tabsBlock);
+
+    // Убираем активность у всех табов
+    tabsTitles.forEach(title => title.classList.remove('_tab-active'));
+    tabsContent.forEach(content => content.hidden = true);
+
+    // Добавляем активность нужному табу
+    const activeTitle = tabsTitles[tabIndex];
+    const activeContent = tabsContent[tabIndex];
+
+    if (activeTitle && activeContent) {
+        activeTitle.classList.add('_tab-active');
+        activeContent.hidden = false;
+
+        if (updateHash) {
+            setHash(`tab-${tabsBlock.dataset.tabsIndex}-${tabIndex}`);
+        }
+    }
+	}
+
 	function setTabsAction(e) {
 		const el = e.target;
 		if (el.closest('[data-tabs-title]')) {

@@ -8,6 +8,13 @@
             }), 0);
         }));
     }
+    function functions_getHash() {
+        if (location.hash) return location.hash.replace("#", "");
+    }
+    function setHash(hash) {
+        hash = hash ? `#${hash}` : window.location.href.split("#")[0];
+        history.pushState("", "", hash);
+    }
     let _slideUp = (target, duration = 500, showmore = 0) => {
         if (!target.classList.contains("_slide")) {
             target.classList.add("_slide");
@@ -243,6 +250,128 @@
                         spollerActiveBlock.open = false;
                     }), spollerSpeed);
                 }
+            }
+        }
+    }
+    function tabs() {
+        const tabs = document.querySelectorAll("[data-tabs]");
+        let tabsActiveHash = [];
+        if (tabs.length > 0) {
+            const hash = functions_getHash();
+            if (hash && hash.startsWith("tab-")) tabsActiveHash = hash.replace("tab-", "").split("-");
+            tabs.forEach(((tabsBlock, index) => {
+                tabsBlock.classList.add("_tab-init");
+                tabsBlock.setAttribute("data-tabs-index", index);
+                tabsBlock.addEventListener("click", setTabsAction);
+                initTabs(tabsBlock);
+            }));
+            let mdQueriesArray = dataMediaQueries(tabs, "tabs");
+            if (mdQueriesArray && mdQueriesArray.length) mdQueriesArray.forEach((mdQueriesItem => {
+                mdQueriesItem.matchMedia.addEventListener("change", (function() {
+                    setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+                }));
+                setTitlePosition(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+            }));
+        }
+        document.addEventListener("click", (function(e) {
+            const link = e.target.closest('a[href*="#tab-"]');
+            if (link) {
+                const url = new URL(link.href);
+                const hash = url.hash;
+                if (hash && hash.startsWith("#tab-")) {
+                    if (url.pathname !== window.location.pathname) return;
+                    e.preventDefault();
+                    const tabsActiveHash = hash.replace("#tab-", "").split("-");
+                    const tabsBlock = document.querySelector(`[data-tabs-index="${tabsActiveHash[0]}"]`);
+                    if (tabsBlock) setActiveTab(tabsBlock, Number(tabsActiveHash[1]), true);
+                }
+            }
+        }));
+        function setTitlePosition(tabsMediaArray, matchMedia) {
+            tabsMediaArray.forEach((tabsMediaItem => {
+                tabsMediaItem = tabsMediaItem.item;
+                let tabsTitles = tabsMediaItem.querySelector("[data-tabs-titles]");
+                let tabsTitleItems = tabsMediaItem.querySelectorAll("[data-tabs-title]");
+                let tabsContent = tabsMediaItem.querySelector("[data-tabs-body]");
+                let tabsContentItems = tabsMediaItem.querySelectorAll("[data-tabs-item]");
+                tabsTitleItems = Array.from(tabsTitleItems).filter((item => item.closest("[data-tabs]") === tabsMediaItem));
+                tabsContentItems = Array.from(tabsContentItems).filter((item => item.closest("[data-tabs]") === tabsMediaItem));
+                tabsContentItems.forEach(((tabsContentItem, index) => {
+                    if (matchMedia.matches) {
+                        tabsContent.append(tabsTitleItems[index]);
+                        tabsContent.append(tabsContentItem);
+                        tabsMediaItem.classList.add("_tab-spoller");
+                    } else {
+                        tabsTitles.append(tabsTitleItems[index]);
+                        tabsMediaItem.classList.remove("_tab-spoller");
+                    }
+                }));
+            }));
+        }
+        function initTabs(tabsBlock) {
+            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-titles]>*");
+            let tabsContent = tabsBlock.querySelectorAll("[data-tabs-body]>*");
+            const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+            const tabsActiveHashBlock = tabsActiveHash[0] == tabsBlockIndex;
+            if (tabsActiveHashBlock) {
+                const tabsActiveTitle = tabsBlock.querySelector("[data-tabs-titles]>._tab-active");
+                tabsActiveTitle ? tabsActiveTitle.classList.remove("_tab-active") : null;
+            }
+            if (tabsContent.length) tabsContent.forEach(((tabsContentItem, index) => {
+                tabsTitles[index].setAttribute("data-tabs-title", "");
+                tabsContentItem.setAttribute("data-tabs-item", "");
+                if (tabsActiveHashBlock && index == tabsActiveHash[1]) tabsTitles[index].classList.add("_tab-active");
+                tabsContentItem.hidden = !tabsTitles[index].classList.contains("_tab-active");
+            }));
+        }
+        function setTabsStatus(tabsBlock) {
+            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+            let tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
+            const tabsBlockIndex = tabsBlock.dataset.tabsIndex;
+            function isTabsAnamate(tabsBlock) {
+                if (tabsBlock.hasAttribute("data-tabs-animate")) return tabsBlock.dataset.tabsAnimate > 0 ? Number(tabsBlock.dataset.tabsAnimate) : 500;
+            }
+            const tabsBlockAnimate = isTabsAnamate(tabsBlock);
+            if (tabsContent.length > 0) {
+                const isHash = tabsBlock.hasAttribute("data-tabs-hash");
+                tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
+                tabsContent.forEach(((tabsContentItem, index) => {
+                    if (tabsTitles[index].classList.contains("_tab-active")) {
+                        if (tabsBlockAnimate) _slideDown(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = false;
+                        if (isHash && !tabsContentItem.closest(".popup")) setHash(`tab-${tabsBlockIndex}-${index}`);
+                    } else if (tabsBlockAnimate) _slideUp(tabsContentItem, tabsBlockAnimate); else tabsContentItem.hidden = true;
+                }));
+            }
+        }
+        function setActiveTab(tabsBlock, tabIndex, updateHash = false) {
+            let tabsTitles = tabsBlock.querySelectorAll("[data-tabs-title]");
+            let tabsContent = tabsBlock.querySelectorAll("[data-tabs-item]");
+            tabsTitles = Array.from(tabsTitles).filter((item => item.closest("[data-tabs]") === tabsBlock));
+            tabsContent = Array.from(tabsContent).filter((item => item.closest("[data-tabs]") === tabsBlock));
+            tabsTitles.forEach((title => title.classList.remove("_tab-active")));
+            tabsContent.forEach((content => content.hidden = true));
+            const activeTitle = tabsTitles[tabIndex];
+            const activeContent = tabsContent[tabIndex];
+            if (activeTitle && activeContent) {
+                activeTitle.classList.add("_tab-active");
+                activeContent.hidden = false;
+                if (updateHash) setHash(`tab-${tabsBlock.dataset.tabsIndex}-${tabIndex}`);
+            }
+        }
+        function setTabsAction(e) {
+            const el = e.target;
+            if (el.closest("[data-tabs-title]")) {
+                const tabTitle = el.closest("[data-tabs-title]");
+                const tabsBlock = tabTitle.closest("[data-tabs]");
+                if (!tabTitle.classList.contains("_tab-active") && !tabsBlock.querySelector("._slide")) {
+                    let tabActiveTitle = tabsBlock.querySelectorAll("[data-tabs-title]._tab-active");
+                    tabActiveTitle.length ? tabActiveTitle = Array.from(tabActiveTitle).filter((item => item.closest("[data-tabs]") === tabsBlock)) : null;
+                    tabActiveTitle.length ? tabActiveTitle[0].classList.remove("_tab-active") : null;
+                    tabTitle.classList.add("_tab-active");
+                    setTabsStatus(tabsBlock);
+                }
+                e.preventDefault();
             }
         }
     }
@@ -656,7 +785,9 @@
             if (this.options.hashSettings.location) this.hash = this.targetOpen.selector.includes("#") ? this.targetOpen.selector : this.targetOpen.selector.replace(".", "#");
         }
         _openToHash() {
+            if (!window.location.hash) return;
             let classInHash = document.querySelector(`.${window.location.hash.replace("#", "")}`) ? `.${window.location.hash.replace("#", "")}` : document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` : null;
+            if (!classInHash) return;
             const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace(".", "#")}"]`);
             if (buttons && classInHash) this.open(classInHash);
         }
@@ -7101,23 +7232,41 @@
             scrollDirection = scrollTop <= 0 ? 0 : scrollTop;
         }));
     }
-    function footerCartScroll() {
-        const totalCartFooter = document.querySelector(".total-cart__footer");
+    function footerStyickyScroll() {
+        const stickyFooter = document.querySelector("[data-sticky-parent]");
+        const stickyFooterEl = document.querySelector("[data-sticky-el]");
         const mediaQuery480max = window.matchMedia("(max-width: 30.061em)");
-        if (!totalCartFooter) return;
-        const checkFooterPosition = () => {
-            if (!mediaQuery480max.matches) {
-                totalCartFooter.classList.remove("_fixed");
-                return;
-            }
-            const rect = totalCartFooter.getBoundingClientRect();
+        if (!stickyFooter || !stickyFooterEl) return;
+        let lastState = null;
+        const threshold = 0;
+        const checkSticky = () => {
+            const footerRect = stickyFooter.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            const isFixed = rect.bottom >= windowHeight && rect.top < windowHeight;
-            totalCartFooter.classList.toggle("_fixed", isFixed);
+            const isBelowViewport = footerRect.bottom > windowHeight + threshold;
+            const isAboveViewport = footerRect.bottom < windowHeight - threshold;
+            const isExactMatch = Math.abs(footerRect.bottom - windowHeight) <= threshold;
+            if (isExactMatch) return;
+            if (isBelowViewport && lastState !== true) {
+                lastState = true;
+                stickyFooterEl.classList.add("_fixed");
+            } else if (isAboveViewport && lastState !== false) {
+                lastState = false;
+                stickyFooterEl.classList.remove("_fixed");
+            }
         };
-        document.addEventListener("windowScroll", checkFooterPosition);
-        mediaQuery480max.addEventListener("change", checkFooterPosition);
-        checkFooterPosition();
+        const handleMediaChange = event => {
+            if (event.matches) {
+                window.addEventListener("scroll", checkSticky, {
+                    passive: true
+                });
+                checkSticky();
+            } else {
+                window.removeEventListener("scroll", checkSticky);
+                stickyFooterEl.classList.remove("_fixed");
+            }
+        };
+        mediaQuery480max.addEventListener("change", handleMediaChange);
+        handleMediaChange(mediaQuery480max);
     }
     setTimeout((() => {
         if (addWindowScrollEvent) {
@@ -8595,6 +8744,7 @@
     addLoadedClass();
     menuInit();
     spollers();
+    tabs();
     videoPlayer();
     formFieldsInit({
         viewPass: false,
@@ -8606,5 +8756,5 @@
     formRating();
     formAddPhoto();
     headerScroll();
-    footerCartScroll();
+    footerStyickyScroll();
 })();

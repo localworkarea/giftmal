@@ -2,7 +2,7 @@
 <html lang="uk">
 
 <head>
-	<title>CARD | GIFT BAG</title>
+	<title>ACCOUNT</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
@@ -387,285 +387,140 @@
 			</div>
 		</header>
 		<main class="page">
-			<section class="card card-gift">
-				<div class="card__container">
-					<div class="card__breadcrumbs">
-						<div class="breadcrumbs">
-							<a href="/" class="breadcrumbs__item">Головна</a>
-							<span class="breadcrumbs__separator">
-								<span class="icon-arrow-down"></span>
-							</span>
-							<a href="catalog.html" class="breadcrumbs__item">Листівки та Коробки</a>
-							<span class="breadcrumbs__separator">
-								<span class="icon-arrow-down"></span>
-							</span>
-							<span class="breadcrumbs__current">Подарунковий пакет</span>
-						</div>
-					</div>
-					<div class="card__main">
-						<div class="card__aside aside-card">
-							<div class="aside-card__body">
-								<div data-gallery class="aside-card__gallery gallery">
-									<div data-gallery-main class="gallery__item" aria-label="gallery">
-										<img class="ibg" src="img/gift-box/box-03.jpg" width="388" height="255" alt="Image">
-									</div>
+			<section class="account">
+				<div class="account__container-c">
+					<div data-tabs data-tabs-hash class="account__tabs tabs-account">
+						<div class="tabs-account__aside">
+							<div class="tabs-account__top">
+								<div class="tabs-account__head">
+									<p>Мій Кабінет</p>
+									<p>+380-50-104-88-57</p>
 								</div>
-								<div class="aside-card__description">
-									Великий картонний подарунковий пакет із сатиновою стрічкою. Ідеальне доповнення до фізичної подарункової коробки.
-								</div>
+								<nav data-tabs-titles class="tabs-account__navigation">
+									<button type="button" aria-label="tab" class="tabs-account__btn icon-user-editing _tab-active">
+										Мої Дані
+									</button>
+									<button type="button" aria-label="tab" class="tabs-account__btn icon-balance">
+										Мій Баланс
+									</button>
+									<button type="button" aria-label="tab" class="tabs-account__btn icon-basket">
+										Усі Замовлення
+									</button>
+									<button type="button" aria-label="tab" class="tabs-account__btn icon-sertificates">
+										Мої Сертифікати
+									</button>
+								</nav>
+							</div>
+							<div class="tabs-account__exit">
+								<a href="#" class="tabs-account__exit-btn icon-exit" aria-label="exit">Вийти</a>
 							</div>
 						</div>
-						<div class="card__body">
-							<div class="card__header">
-								<h1 class="card__title">
-									Подарунковий Пакет (Великий)
-								</h1>
-								<div class="card__rating ">
-									<div data-rating="" data-rating-value="0" data-rating-size="5" class="rating">
-										<a href="#" class="rating__title">Ще немає відгуків</a>
+						<div data-tabs-body class="tabs-account__content">
+							<div class="tabs-account__body data-account">
+								<div class="data-account__header">
+									<div class="data-account__header-wr">
+										<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="data-account__title title-btn icon-arrow-down" aria-label="open menu">Мої Дані</button>
+										<p class="data-account__subtitle">
+											Ми серйозно ставимося до вашої конфіденційності та дбаємо про захист ваших персональних даних.
+										</p>
 									</div>
 								</div>
-								<div class="card__price">
-									<p class="card__price-txt"><span class="numb">35</span> грн</p>
-								</div>
-							</div>
-							<div class="card__details">
-								<div class="card__items grid-cl">
-									<div class="card__item">
-										<label class="card__info-label">
-											<span class="info-label">
-												<span data-tippy-content="Виберіть розмір" class="info-label__info icon-info"></span>
-												Оберіть розмір
-											</span>
-										</label>
-										<div class="card__option-gift gift-option">
-											<div class="gift-option__item">
-												<input id="giftBoxSizeS" class="gift-option__input" type="radio" name="giftBoxSize" value="giftBoxSizeS" checked>
-												<label for="giftBoxSizeS" class="gift-option__label">
-													<span class="gift-option__color color-white">S</span>
+								<div data-sticky-parent class="data-account__body">
+									<div class="data-account__block">
+										<div class="data-account__step">
+											<p class="data-account__step-title">
+												1. Додайте контактні дані
+											</p>
+										</div>
+										<div class="data-account__items">
+											<div class="input__item">
+												<label for="accountName" class="input__label">
+													Ваше Ім’я
 												</label>
+												<div class="input__sub-item">
+													<input id="accountName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+													<button disabled type="button" class="input__clear icon-cross"></button>
+												</div>
 											</div>
-											<div class="gift-option__item">
-												<input id="giftBoxSizeM" class="gift-option__input" type="radio" name="giftBoxSize" value="giftBoxSizeM">
-												<label for="giftBoxSizeM" class="gift-option__label">
-													<span class="gift-option__color color-white">M</span>
+											<div class="input__item">
+												<label for="accountSurname" class="input__label">
+													Ваше прізвище
 												</label>
+												<div class="input__sub-item">
+													<input id="accountSurname" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше прізвище" placeholder="Ваше Прізвище" data-required class="input input_sm">
+													<button disabled type="button" class="input__clear icon-cross"></button>
+												</div>
 											</div>
-											<div class="gift-option__item">
-												<input id="giftBoxSizeL" class="gift-option__input" type="radio" name="giftBoxSize" value="giftBoxSizeL">
-												<label for="giftBoxSizeL" class="gift-option__label">
-													<span class="gift-option__color color-white">L</span>
+											<div class="input__item">
+												<label for="accountEmail" class="input__label">
+													Ваш email
 												</label>
+												<div class="input__sub-item">
+													<input id="accountEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email" class="input input_sm">
+													<button disabled type="button" class="input__clear icon-cross"></button>
+												</div>
+											</div>
+											<div class="input__item input-intl-item">
+												<label for="accountTel" class="input__label">
+													Ваш номер телефону
+												</label>
+												<input id="accountTel" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
 											</div>
 										</div>
 									</div>
-									<div class="card__item">
-										<label class="card__info-label">
-											<span class="info-label">
-												<span data-tippy-content="Виберіть колір" class="info-label__info icon-info"></span>
-												Оберіть колір
-											</span>
-										</label>
-										<div class="card__option-gift gift-option">
-											<div class="gift-option__item">
-												<input id="giftBoxColorBlack" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorBlack" checked>
-												<label for="giftBoxColorBlack" class="gift-option__label">
-													<span class="gift-option__color color-black"></span>
-												</label>
-											</div>
-											<div class="gift-option__item">
-												<input id="giftBoxColorWhite" class="gift-option__input" type="radio" name="giftBox" value="giftBoxColorWhite">
-												<label for="giftBoxColorWhite" class="gift-option__label">
-													<span class="gift-option__color color-white"></span>
-												</label>
+									<div class="data-account__block">
+										<div class="data-account__step">
+											<div class="data-account__step-wr">
+												<p class="data-account__step-title">
+													2. Прив’яжіть свої аккаунти
+												</p>
+												<p class="data-account__step-txt">
+													Ми збережемо ваші аккаунти та зможемо надсилати подарункові сертифікати одразу туди.
+												</p>
 											</div>
 										</div>
-									</div>
-								</div>
-								<div class="card__items grid-rw">
-									<div class="card__item">
-										<label for="quantityInput" class="card__info-label">
-											<span class="info-label">
-												<span data-tippy-content="Виберіть кількість" class="info-label__info icon-info"></span>
-												Оберіть кількість
-											</span>
-										</label>
-										<div data-quantity class="card__quantity quantity">
-											<div class="quantity__item">
-												<div class="quantity__block">
-													<div class="quantity__input">
-														<input id="quantityInput" data-quantity-value type="text" name="" data-quantity-min="1" data-quantity-max="10" placeholder="1" value="1">
-														<span>шт</span>
+										<div class="data-account__items">
+											<div class="input__item">
+												<label for="accountTelegram" class="input__label">
+													Ваш аккаунт Telegram
+												</label>
+												<div class="input__sub-item">
+													<input id="accountTelegram" autocomplete="off" disabled type="text" name="telegram" data-error="Прив’яжіть аккаунт" placeholder="Прив’язати свій Telegram" value="Прив’язаний" data-required class="input input_sm input_social">
+													<div class="input__social-i">
+														<img src="img/icons/telegram.svg" width="24" height="24" alt="Image">
 													</div>
+													<button disabled type="button" class="input__clear icon-trash"></button>
 												</div>
-												<div class="quantity__btns">
-													<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
-													<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+											</div>
+											<div class="input__item">
+												<label for="accountFacebook" class="input__label">
+													Прив’яжіть свій аккаунт Facebook
+												</label>
+												<div class="input__sub-item">
+													<input id="accountFacebook" autocomplete="off" type="text" name="telegram" data-error="Прив’яжіть аккаунт" placeholder="Прив’язати свій Telegram" data-required class="input input_sm input_social">
+													<div class="input__social-i">
+														<img src="img/icons/facebook.svg" width="24" height="24" alt="Image">
+													</div>
+													<button disabled type="button" class="input__clear icon-trash"></button>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>
-							<div class="card__info">
-								<div class="card__info-card info-card">
-									<div class="info-card__title">Важливо знати</div>
-									<div class="info-card__description">
-										Великий картонний подарунковий пакет із сатиновою стрічкою. Ідеальне доповнення до фізичної подарункової коробки.
-									</div>
-									<div class="info-card__body">
-										<div class="info-card__item">
-											<span class="info-card__icon icon-phisical-filling"></span>
-											<p class="info-card__text">
-												Фізичний тип продукту
-											</p>
-										</div>
-										<div class="info-card__item">
-											<span class="info-card__icon icon-gift-box"></span>
-											<p class="info-card__text">
-												Підходить для подарункових коробок
-											</p>
-										</div>
-										<div class="info-card__item">
-											<span class="info-card__icon icon-diamension"></span>
-											<p class="info-card__text">
-												Розмір пакету —<br>
-												18 х 21,5 х 8 см
-											</p>
-										</div>
+									<div data-sticky-el class="data-account__footer">
+										<button type="button" class="data-account__change-btn btn btn_dark btn_sm" aria-label="change">Змінити</button>
 									</div>
 								</div>
 							</div>
-							<div class="card__footer">
-								<button type="button" class="card__add-button btn btn_dark">Додати у кошик</button>
+							<div class="tabs-account__body balance-account">
+								<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="data-account__title title-btn icon-arrow-down" aria-label="open menu">Мій баланс</button>
+							</div>
+							<div class="tabs-account__body order-account">
+								<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="data-account__title title-btn icon-arrow-down" aria-label="open menu">Усі Замовлення</button>
+							</div>
+							<div class="tabs-account__body certificate-account">
+								<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="data-account__title title-btn icon-arrow-down" aria-label="open menu">Мої Сертифікати</button>
 							</div>
 						</div>
-					</div>
-				</div>
-			</section>
-			<section class="card-offer best-offer">
-				<div class="best-offer__container">
-					<h2 class="best-offer__title title-av mb-24-8">Також купують</h2>
-					<div class="best-offer__body card-grid">
-						<a href="#" class="card-certificate" aria-label="link to card page">
-							<div class="card-certificate__header">
-								<div class="card-certificate__types">
-									<div class="card-certificate__type">
-										<span class="card-certificate__icon icon-electronic"></span>
-										<span>Електронний</span>
-									</div>
-									<div class="card-certificate__type">
-										<span class="card-certificate__icon icon-phisical-filling"></span>
-										<span>Фізичний</span>
-									</div>
-								</div>
-								<div class="card-certificate__img">
-									<img class="ibg" src="img/certificates/certificate-02.jpg" width="240" height="157" alt="Image">
-								</div>
-							</div>
-							<div class="card-certificate__body">
-								<div class="card-certificate__title">
-									Nails & Cocktails
-								</div>
-								<div class="card-certificate__subtitle">
-									Мережа салонів манікюру та педікюру
-								</div>
-							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
-						</a>
-						<a href="#" class="card-certificate" aria-label="link to card page">
-							<div class="card-certificate__header">
-								<div class="card-certificate__types">
-									<div class="card-certificate__type">
-										<span class="card-certificate__icon icon-electronic"></span>
-										<span>Електронний</span>
-									</div>
-									<div class="card-certificate__type">
-										<span class="card-certificate__icon icon-phisical-filling"></span>
-										<span>Фізичний</span>
-									</div>
-								</div>
-								<div class="card-certificate__img">
-									<img class="ibg" src="img/certificates/certificate-03.jpg" width="240" height="157" alt="Image">
-								</div>
-							</div>
-							<div class="card-certificate__body">
-								<div class="card-certificate__title">
-									Foxstrot
-								</div>
-								<div class="card-certificate__subtitle">
-									Мережа комп`ютерної техніки та електроніки
-								</div>
-							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
-						</a>
-						<a href="#" class="card-certificate" aria-label="link to card page">
-							<div class="card-certificate__header">
-								<div class="card-certificate__types">
-									<div class="card-certificate__type">
-										<span class="card-certificate__icon icon-electronic"></span>
-										<span>Електронний</span>
-									</div>
-									<div class="card-certificate__type">
-										<span class="card-certificate__icon icon-phisical-filling"></span>
-										<span>Фізичний</span>
-									</div>
-								</div>
-								<div class="card-certificate__img">
-									<img class="ibg" src="img/certificates/certificate-04.jpg" width="240" height="157" alt="Image">
-								</div>
-							</div>
-							<div class="card-certificate__body">
-								<div class="card-certificate__title">
-									Winetime
-								</div>
-								<div class="card-certificate__subtitle">
-									Мережа вина, сирів та міцного алкоголю
-								</div>
-							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
-						</a>
-						<a href="#" class="card-certificate" aria-label="link to card page">
-							<div class="card-certificate__header">
-								<div class="card-certificate__types">
-									<div class="card-certificate__type">
-										<span class="card-certificate__icon icon-electronic"></span>
-										<span>Електронний</span>
-									</div>
-									<div class="card-certificate__type">
-										<span class="card-certificate__icon icon-phisical-filling"></span>
-										<span>Фізичний</span>
-									</div>
-								</div>
-								<div class="card-certificate__img">
-									<img class="ibg" src="img/certificates/certificate-05.jpg" width="240" height="157" alt="Image">
-								</div>
-							</div>
-							<div class="card-certificate__body">
-								<div class="card-certificate__title">
-									The Cake bakery karta podarunkowa smyk
-								</div>
-								<div class="card-certificate__subtitle">
-									Мережа салонів манікюру та педікюру
-								</div>
-							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
-						</a>
-					</div>
-				</div>
-			</section>
-			<section class="review-empty pb-120-56">
-				<div class="review-empty__container">
-					<div class="review-empty__body">
-						<div class="review-empty__imgs">
-							<img src="img/banner-card/giftmall-card.png" width="156" height="103" alt="Image">
-							<img src="img/banner-card/giftmall-card.png" width="156" height="103" alt="Image">
-						</div>
-						<p class="review-empty__title">
-							Залиште відгук,<br>
-							будьте першими
-						</p>
-						<button type="button" data-popup="#popupReviews" class="review-empty__btn btn btn_dark btn_fs15-14">Залишити відгук</button>
 					</div>
 				</div>
 			</section>

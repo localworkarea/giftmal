@@ -1771,3 +1771,48 @@ document.querySelectorAll('.search').forEach(searchElement => {
   });
 });
 // == END OF SEARCH INPUTS BRANDS ============================
+
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const stickyFooter = document.querySelector("[data-sticky-parent]");
+//   const stickyFooterEl = document.querySelector("[data-sticky-el]");
+//   const mediaQuery480max = window.matchMedia("(max-width: 30.061em)");
+
+//   if (!stickyFooter || !stickyFooterEl) return;
+
+//   let lastState = null;
+//   const threshold = 5;
+
+//   const checkSticky = () => {
+//       const footerRect = stickyFooter.getBoundingClientRect();
+//       const windowHeight = window.innerHeight;
+
+//       const isBelowViewport = footerRect.bottom > windowHeight + threshold;
+//       const isAboveViewport = footerRect.bottom < windowHeight - threshold;
+//       const isExactMatch = Math.abs(footerRect.bottom - windowHeight) <= threshold;
+
+//       if (isExactMatch) return;
+
+//       if (isBelowViewport && lastState !== true) {
+//           lastState = true;
+//           stickyFooterEl.classList.add("_fixed");
+//       } else if (isAboveViewport && lastState !== false) {
+//           lastState = false;
+//           stickyFooterEl.classList.remove("_fixed");
+//       }
+//   };
+
+//   const handleMediaChange = (event) => {
+//       if (event.matches) {
+//           window.addEventListener("scroll", checkSticky, { passive: true });
+//           checkSticky();
+//       } else {
+//           window.removeEventListener("scroll", checkSticky);
+//           stickyFooterEl.classList.remove("_fixed");
+//       }
+//   };
+
+//   mediaQuery480max.addEventListener("change", handleMediaChange);
+//   handleMediaChange(mediaQuery480max);
+// });

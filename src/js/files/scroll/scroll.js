@@ -121,32 +121,52 @@ export function headerScroll() {
 	});
 }
 
-// == Elements position bottom total-cart__footer =====
-export function footerCartScroll() {
-	const totalCartFooter = document.querySelector('.total-cart__footer');
-	const mediaQuery480max = window.matchMedia('(max-width: 30.061em)');
+// == Elements position bottom  =====
+export function footerStyickyScroll() {
+	const stickyFooter = document.querySelector("[data-sticky-parent]");
+  const stickyFooterEl = document.querySelector("[data-sticky-el]");
+  const mediaQuery480max = window.matchMedia("(max-width: 30.061em)");
 
-	if (!totalCartFooter) return;
+  if (!stickyFooter || !stickyFooterEl) return;
 
-	const checkFooterPosition = () => {
-		if (!mediaQuery480max.matches) {
-			totalCartFooter.classList.remove('_fixed');
-			return;
-		}
+  let lastState = null;
+  const threshold = 0;
 
-		const rect = totalCartFooter.getBoundingClientRect();
-		const windowHeight = window.innerHeight;
+  const checkSticky = () => {
+      const footerRect = stickyFooter.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
-		const isFixed = rect.bottom >= windowHeight && rect.top < windowHeight;
+      const isBelowViewport = footerRect.bottom > windowHeight + threshold;
+      const isAboveViewport = footerRect.bottom < windowHeight - threshold;
+      const isExactMatch = Math.abs(footerRect.bottom - windowHeight) <= threshold;
 
-		totalCartFooter.classList.toggle('_fixed', isFixed);
-	};
+      if (isExactMatch) return;
 
-	document.addEventListener("windowScroll", checkFooterPosition);
-	mediaQuery480max.addEventListener('change', checkFooterPosition);
+      if (isBelowViewport && lastState !== true) {
+          lastState = true;
+          stickyFooterEl.classList.add("_fixed");
+      } else if (isAboveViewport && lastState !== false) {
+          lastState = false;
+          stickyFooterEl.classList.remove("_fixed");
+      }
+  };
 
-	checkFooterPosition();
+  const handleMediaChange = (event) => {
+      if (event.matches) {
+          window.addEventListener("scroll", checkSticky, { passive: true });
+          checkSticky();
+      } else {
+          window.removeEventListener("scroll", checkSticky);
+          stickyFooterEl.classList.remove("_fixed");
+      }
+  };
+
+  mediaQuery480max.addEventListener("change", handleMediaChange);
+  handleMediaChange(mediaQuery480max);
 }
+
+
+
 
 
 // Модуль анімація цифрового лічильника

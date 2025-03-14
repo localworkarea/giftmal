@@ -346,7 +346,9 @@
 	// .aside-card__body
 	&__body {
    @extend %padding32-16;
-  
+    @media (max-width:$mobileSmall){
+       padding-bottom: toRem(24) !important; 
+    }
 	}
   // .aside-card__gallery
   &__gallery {
@@ -356,7 +358,7 @@
       }
     }
     @media (max-width:$mobileSmall){
-       max-width: 71%;
+       max-width: 76%;
        margin-inline: auto; 
     }
   }
@@ -393,12 +395,23 @@
 .gallery {
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  gap: toRem(8);
+  @media (min-width:$mobileSmall){
+    gap: toRem(8);
+  }
+  @media (max-width:$mobileSmall){
+    gap: toRem(20) toRem(5);      
+  }
   // .gallery__item
   &__item {
     img {
-      border-radius: toRem(16);
       aspect-ratio: 124/84;
+      @media (min-width:$mobileSmall){
+        border-radius: toRem(16);
+      }
+      @media (max-width:$mobileSmall){
+        border-radius: toRem(10);
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.12);
+      }
     }
     &:first-child {
       grid-column: 1/4;
@@ -406,6 +419,10 @@
       img {
         border-radius: toRem(24);
         aspect-ratio: 388/255;
+        @media (max-width:$mobileSmall){
+           aspect-ratio: 249/150; 
+           box-shadow: 0 4px 45px 0 rgba(33, 5, 41, 0.16);
+        }
       }
     }
   }
@@ -579,10 +596,10 @@
     border-radius: toRem(24);
     background-color: var(--gray-1);
     @media (min-width:$mobileSmall){
-      padding: toRem(8) toRem(24);
+      padding: toRem(8) toRem(8) toRem(8) toRem(24);
     }
     @media (max-width:$mobileSmall){
-      padding: toRem(8) toRem(16)  toRem(8) toRem(16);
+      padding: toRem(8) toRem(8)  toRem(8) toRem(16);
     }
   }
   // .rules-spollers__title
@@ -597,12 +614,26 @@
   // .rules-spollers__arrow
   &__arrow {
     line-height: 1;
-    &::before {
-      transform-origin: 50% 50%;
-      transition: transform .3s ease;
-      ._spoller-active & {
-        transform: rotate(-180deg);
+    width: toRem(32);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background-color: var(--white);
+    transform-origin: 50% 50%;
+    transition: transform .3s ease, background-color .3s ease, color .3s ease;
+    @media (any-hover: hover){
+      &:hover{
+        background-color: var(--dark-violet);
+        color: var(--white);
       }
+    }
+    ._spoller-active & {
+      transform: rotate(-180deg);
+    }
+    &::before {
+      position: relative;
+      top: 1px;
       font-size: toRem(24);
     }
     @media (max-width:$mobileSmall){
@@ -617,9 +648,11 @@
     padding-top: toRem(24);
 
     @media (min-width:$mobileSmall){
+       padding-right: toRem(16);
        padding-bottom: toRem(16);
-    }
-    @media (max-width:$mobileSmall){
+      }
+      @media (max-width:$mobileSmall){
+      padding-right: toRem(8);
       padding-bottom: toRem(8); 
     }
   }

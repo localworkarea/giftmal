@@ -37,11 +37,13 @@ body::after {
 	bottom: 0;
 	right: 0;
 	opacity: 0;
-	transition: opacity 0.3s ease 0.3s;
+	transition: opacity 0.3s ease 0.3s, visibility .3s ease 0.3s;
 	// overflow: auto;
 	pointer-events: none;
+	visibility: hidden;
 	&.popup_show {
 		opacity: 1;
+		visibility:visible;
 		pointer-events: auto !important;
 		transition-delay: 0s;
 	}
@@ -1393,7 +1395,6 @@ body::after {
 		}
 	}
 }
-
 
 .brands-login {
 	position: fixed;

@@ -171,7 +171,9 @@ body {
 
 // Підключення стилів окремих сторінок
 @import "home";
+@import "pages/cart";
 @import "pages/card";
+@import "pages/account";
 @import "pages/error";
 @import "pages/blog";
 @import "pages/blog-inner";

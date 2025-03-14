@@ -323,14 +323,17 @@ class Popup {
 		}
 	}
 	_openToHash() {
+		if (!window.location.hash) return;
 		let classInHash = document.querySelector(`.${window.location.hash.replace('#', '')}`) ? `.${window.location.hash.replace('#', '')}` :
 			document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` :
 				null;
 
+		if (!classInHash) return;
 		const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace('.', "#")}"]`);
 
 		if (buttons && classInHash) this.open(classInHash);
 	}
+	
 	// Встановлення хеша
 	_setHash() {
 		history.pushState('', '', this.hash);
