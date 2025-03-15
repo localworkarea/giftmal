@@ -584,6 +584,8 @@ $bs_image-border-radius-mobile: toRem(24);
       
       @media (max-width: $mobile) {
         margin-bottom: toRem(16);
+        width: toRem(16);
+        height: toRem(16);
       }
     }
     
