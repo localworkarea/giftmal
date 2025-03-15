@@ -1,0 +1,136 @@
+.mobile-app {
+  padding: toRem(80) 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  @media (max-width: $tablet) {
+    padding: toRem(60) 0;
+  }
+  @media (max-width: $mobile) {
+    padding: toRem(40) 0;
+  }
+  @media (max-width: $mobileSmall) {
+    padding: toRem(30) 0;
+  }
+
+  &__container {
+    position: relative;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: toRem(30);
+
+    @media (max-width: $tablet) {
+      flex-direction: column;
+    }
+  }
+
+  &__info {
+    flex: 0 1 50%;
+    @media (max-width: $tablet) {
+      flex: 0 1 100%;
+      text-align: center;
+    }
+  }
+  &__title {
+    margin-bottom: toRem(20);
+    font-size: toRem(32);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--dark-violet);
+
+    @media (max-width: $mobile) {
+      font-size: toRem(28);
+      margin-bottom: toRem(16);
+    }
+  }
+
+  &__text {
+    font-size: toRem(18);
+    line-height: 1.5;
+    margin-bottom: toRem(32);
+    max-width: toRem(500);
+    color: var(--fade-violet-3);
+
+    @media (max-width: $tablet) {
+      margin: 0 auto toRem(24);
+    }
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(16);
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: toRem(30);
+    @media (max-width: $mobile) {
+      justify-content: center;
+    }
+    .qr-img{
+      width: toRem(200);
+      height: auto;
+      position: relative;
+      border-radius: toRem(32);
+      box-shadow: 0 toRem(4) toRem(20) rgba(33, 5, 41, 0.15);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: toRem(16);
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+    @media (max-width: $tablet) {
+      justify-content: center;
+    }
+    
+    @media (max-width: $mobileSmall) {
+      gap: toRem(12);
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__button {
+    display: inline-block;
+    max-width: toRem(183);
+    transition: transform 0.3s ease;
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  &__image {
+    flex: 0 1 50%;
+    display: flex;
+    justify-content: flex-end;
+    
+    img {
+      width: 100%;
+      max-width: toRem(285);
+      height: auto;
+      margin: 0 auto;
+    }
+    
+    @media (max-width: $tablet) {
+      justify-content: center;
+      margin-top: toRem(30);
+    }
+  }
+} 

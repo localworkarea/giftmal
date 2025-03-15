@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"Мобільний додаток | GiftMall"
+	})
+	<body>
+		<div class="wrapper">
+        <header data-scroll="50" data-scroll-show class="header">
+            @@include('html/_header-main.htm',{})
+            @@include('html/_header-sub.htm',{})
+        </header>
+			<main class="page">
+                <section class="mobile-app">
+                    <div class="mobile-app__container">
+                        <div class="mobile-app__content">
+                        <div class="mobile-app__info">
+                            <h1 class="mobile-app__title title-av">Мобільний додаток</h1>
+                            <p class="mobile-app__text">Швидко отримуй замовлення, зберігай та слідкуй за використанням сертифікатів, вчасно отримуй важливі повідомлення!</p>
+                            <div class="mobile-app__icons">
+                                <img class="qr-img" src="@img/mobile-app/image_4.png" alt="QR-код для завантаження додатку" width="156" height="156">
+                                <div class="mobile-app__buttons">
+                                    <a href="#" class="mobile-app__button mobile-app__button--appstore">
+                                        <img src="@img/mobile-app/image_2.png" alt="Download on the App Store" width="183" height="60">
+                                    </a>
+                                    <a href="#" class="mobile-app__button mobile-app__button--googleplay">
+                                        <img src="@img/mobile-app/image_3.png" alt="Get it on Google Play" width="183" height="60">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile-app__image">
+                            <img src="@img/mobile-app/image_1.png" alt="Скріншот мобільного додатку" width="600" height="600">
+                        </div>
+                        </div>
+                    </div>
+                </section>
+			</main>
+		</div>
+		@@include('html/_popup.htm',{})
+		@@include('html/_popup-mb.htm',{})
+		@@include('html/_js.htm',{})
+	</body>
+</html> 
