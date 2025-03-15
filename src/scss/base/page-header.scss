@@ -12,6 +12,7 @@
   @media (max-width: $mobile) {
     flex-direction: column;
     margin-bottom: toRem(24);
+    align-items: flex-start;
   }
   
   &__title {

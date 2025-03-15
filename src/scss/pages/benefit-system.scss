@@ -366,6 +366,7 @@ $bs_image-border-radius-mobile: toRem(24);
     
     @media (max-width: $mobile) {
       padding: $bs_card-padding-mobile;
+      min-height: toRem(600);
     }
   
     &:nth-child(even) {
@@ -375,6 +376,9 @@ $bs_image-border-radius-mobile: toRem(24);
     @for $i from 1 through 8 {
       &:nth-child(#{$i}) {
         top: 12% + (($i) * 3%);
+        @media (max-width: $mobile) {
+          top: 0% + (($i - 1) * 3%);
+        }
       }
     }
   }
@@ -452,7 +456,7 @@ $bs_image-border-radius-mobile: toRem(24);
       gap: toRem(24);
       
       @media (max-width: $mobile) {
-        gap: toRem(16);
+        gap: toRem(12);
       }
     }
     
@@ -495,7 +499,7 @@ $bs_image-border-radius-mobile: toRem(24);
     
     @media (max-width: $mobile) {
       border-radius: toRem(12);
-      max-height: toRem(175);
+      max-height: toRem(155);
     }
     
     img {

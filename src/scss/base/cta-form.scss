@@ -1,5 +1,5 @@
 .cta-form {
-  $card-border-radius: toRem(20);
+
   $badge-mobile-padding: toRem(8) toRem(16) toRem(16);
   
   background-color: var(--dark-violet);
@@ -145,73 +145,75 @@
     }
   }
   
-  &__card {
-    background-color: var(--gray-1);
-    border-radius: $card-border-radius;
-    padding: toRem(16);
-    width: toRem(230);
-    margin-right: toRem(115);
-    top: toRem(55);
+} 
+
+.cta-form__card {
+  $card-border-radius: toRem(20);
+  background-color: var(--gray-1);
+  border-radius: $card-border-radius;
+  padding: toRem(16);
+  width: toRem(230);
+  margin-right: toRem(115);
+  top: toRem(55);
+  position: relative;
+  *{
+    user-select: none;
+  }
+  
+  @media (max-width: $mobile) {
+    display: none;
+  }
+  
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: toRem(8);
+    color: var(--fade-violet-2);
+    font-weight: 500;
+  }
+  
+  &-label {
+    font-size: toRem(14);
+  }
+  
+  &-percent {
+    font-size: toRem(11);
+  }
+  
+  &-balance {
+    font-size: toRem(23);
+    font-weight: 500;
+    color: var(--dark-violet);
+    margin-bottom: toRem(44);
+  }
+  
+  &-chart {
+    width: 100%;
     position: relative;
-    *{
-      user-select: none;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     
-    @media (max-width: $mobile) {
-      display: none;
-    }
-    
-    &-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: toRem(8);
-      color: var(--fade-violet-2);
-      font-weight: 500;
-    }
-    
-    &-label {
-      font-size: toRem(14);
-    }
-    
-    &-percent {
-      font-size: toRem(11);
-    }
-    
-    &-balance {
-      font-size: toRem(23);
-      font-weight: 500;
-      color: var(--dark-violet);
-      margin-bottom: toRem(44);
-    }
-    
-    &-chart {
-      width: 100%;
+    img {
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      
-      img {
-        position: relative;
-        margin-left: toRem(10);
-      }
-    }
-    
-    &-action {
-      display: block;
-      text-align: center;
-      font-size: toRem(11);
-      font-weight: 600;
-      color: var(--dark-violet);
-      background-color: var(--white);
-      padding: toRem(12) toRem(16);
-      border-radius: toRem(100);
-      pointer-events: none;
-      user-select: none;
+      margin-left: toRem(10);
     }
   }
-} 
+  
+  &-action {
+    display: block;
+    text-align: center;
+    font-size: toRem(11);
+    font-weight: 600;
+    color: var(--dark-violet);
+    background-color: var(--white);
+    padding: toRem(12) toRem(16);
+    border-radius: toRem(100);
+    pointer-events: none;
+    user-select: none;
+  }
+}
 
 .cta__extra{
   .cta-form__card{
