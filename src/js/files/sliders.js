@@ -8,7 +8,7 @@
 // При необхідності підключаємо додаткові модулі слайдера, вказуючи їх у {} через кому
 // Приклад: { Navigation, Autoplay }
 import Swiper from 'swiper';
-import { Navigation, FreeMode, Pagination } from 'swiper/modules';
+import { Navigation, FreeMode, Pagination, Autoplay } from 'swiper/modules';
 /*
 Основні модулі слайдера:
 Navigation, Pagination, Autoplay, 
@@ -26,6 +26,40 @@ import "../../scss/base/swiper.scss";
 
 // Ініціалізація слайдерів
 function initSliders() {
+	// Ініціалізуємо слайдер для корпоративних пропозицій
+	if (document.querySelector('.corporate-promo__slider')) {
+		new Swiper('.corporate-promo__slider', {
+			modules: [Pagination, Autoplay],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 1,
+			spaceBetween: 0,
+			speed: 800,
+			loop: true,
+			loopAdditionalSlides: 1,
+			preloadImages: false,
+			
+			autoplay: {
+				delay: 5000,
+				disableOnInteraction: false,
+			},
+
+			pagination: {
+				el: '.corporate-promo__pagination',
+				clickable: true,
+			},
+			
+			on: {
+				init: function() {
+					const slides = document.querySelectorAll('.corporate-promo__slide');
+					slides.forEach(slide => {
+						slide.style.opacity = '1';
+					});
+				}
+			}
+		});
+	}
+
 	if (document.querySelector('.slider-checkout')) { // Вказуємо склас потрібного слайдера
 		// Створюємо слайдер
 		new Swiper('.slider-checkout', { 
