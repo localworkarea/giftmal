@@ -41,10 +41,16 @@
   }
 
   &__ad-content {
-    padding: toRem(67) toRem(16) toRem(16) toRem(40);
+    padding: toRem(50) toRem(16) toRem(16) toRem(40);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: $mobileSmall) {
+      padding-top: toRem(67);
+    }
+    @media (max-width: toEm(375)){
+      padding-top: toRem(55);
+    }
   }
 
   &__ad-info {
