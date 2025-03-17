@@ -129,10 +129,6 @@ function initMobileAppAd() {
             closeAppAd();
         });
     }
-    
-    window.addEventListener('beforeunload', () => {
-        localStorage.setItem(APP_AD_SHOWN_KEY, 'true');
-    });
 }
 
 /**
