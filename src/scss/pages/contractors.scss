@@ -1,0 +1,464 @@
+// Local variables
+$cn-card-border-radius-desktop: toRem(40);
+$cn-card-border-radius-mobile: toRem(32);
+$cn-card-padding-desktop: toRem(120);
+$cn-card-padding-mobile: toRem(56);
+$cn-standard-gap: toRem(8);
+$cn-content-gap: toRem(24);
+$cn-badge-border-radius: toRem(20);
+$cn-badge-mobile-radius: toRem(16);
+
+.contractors-page{
+  .contractors{
+    @extend %paddingTbBt56-16;
+    @media (max-width: $mobile) {
+     padding-bottom: 0;
+    }
+  }
+  .clients-marquee{
+    background-color: var(--gray-1);
+    padding: 0;
+    padding-bottom: toRem(56);
+    &__item{
+      background: var(--white);
+    }
+    &__wrapper{
+      &::after{
+        background: linear-gradient(to left, var(--gray-1), transparent);
+      }
+      &::before{
+        background: linear-gradient(to right, var(--gray-1), transparent);
+      }
+    }
+    &::after{
+      display: none;
+    }
+  }
+  .cta{
+    padding-top: toRem(120);
+    position: relative;
+    border-top-left-radius: $image-border-radius-desktop;
+    border-top-right-radius: $image-border-radius-desktop;
+    @media (max-width: $mobile) {
+      border-radius: 0;
+      padding: toRem(70) 0;
+    }
+  }
+}
+
+.contractors-benefits-cards {
+  @extend %paddingTbBt56-16;
+  background-color: var(--gray-1);
+  
+  @media (max-width: $mobile) {
+    background-color: var(--white);
+    border-top-left-radius: $cn-card-border-radius-mobile;
+    border-top-right-radius: $cn-card-border-radius-mobile;
+  }
+  
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $cn-standard-gap;
+    
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &__column {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  &__item {
+    background-color: var(--white);
+    border-radius: $cn-card-border-radius-desktop;
+    padding: $cn-card-padding-desktop;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    
+    @media (max-width: toEm(1380)) {
+      padding: $cn-card-padding-mobile;
+    }
+    
+    @media (max-width: $mobile) {
+      padding: $cn-card-padding-mobile toRem(16) toRem(112);
+      border-radius: $cn-card-border-radius-mobile;
+    }
+    
+    br {
+      @media (max-width: toEm(1280)) {
+        display: none;
+      }
+    }
+  }
+  
+  &__content {
+    margin-bottom: toRem(106);
+    
+    @media (max-width: $mobile) {
+      margin-bottom: toRem(46);
+    }
+  }
+  
+  &__title {
+    font-size: toRem(28);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--dark-violet);
+    margin-bottom: $cn-content-gap;
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(24);
+      margin-bottom: toRem(16);
+    }
+    
+    span {
+      color: var(--fade-violet-2);
+      display: block;
+    }
+  }
+
+  &__text {
+    font-size: toRem(15);
+    line-height: 1.5;
+    color: var(--fade-violet-3);
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(14);
+    }
+  }
+  
+  &__image {
+    position: relative;
+    border-radius: toRem(30);
+    overflow: hidden;
+    margin-top: auto;
+    
+    @media (max-width: $mobile) {
+      border-radius: toRem(24);
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    
+    &-wrapper {
+      position: relative;
+    }
+  }
+  
+  .contractors-benefits-cards__badge-1 {
+    bottom: toRem(-10);
+    right: toRem(-60);
+    position: absolute;
+    width: toRem(200);
+    
+    @media (max-width: toEm(1380)) {
+      bottom: toRem(20);
+      right: toRem(-30);
+    }
+    
+    @media (max-width: $mobile) {
+      right: unset;
+      bottom: toRem(-20);
+      left: toRem(20);
+    }
+    
+    .cta-form__card {
+      background-color: var(--electric-blue);
+      width: toRem(200);
+      display: block;
+      
+      @media (max-width: $mobile) {
+        padding: toRem(12) toRem(12) toRem(6);
+        border-radius: $cn-badge-mobile-radius;
+      }
+      
+      * {
+        color: var(--white);
+      }
+      
+      img {
+        filter: brightness(0) invert(1);
+        max-width: toRem(65);
+      }
+      
+      .cta-form__card-action {
+        background: rgba(255, 255, 255, 0.40);
+        padding: toRem(8) toRem(16);
+      }
+      
+      .cta-form__card-header {
+        @media (max-width: $mobile) {
+          font-size: toRem(12);
+        }
+      }
+      
+      .cta-form__card-balance {
+        margin-bottom: toRem(20);
+        
+        @media (max-width: $mobile) {
+          font-size: toRem(14);
+          margin-bottom: toRem(10);
+        }
+      }
+    }
+  }
+  
+  .contractors-benefits-cards__badge-2 {
+    top: toRem(-65);
+    right: toRem(-45);
+    position: absolute;
+    
+    @media (max-width: $mobile) {
+      top: unset;
+      bottom: toRem(-70);
+      right: toRem(25);
+    }
+  }
+  
+  .sales-badge {
+    background-color: var(--dark-violet);
+    border-radius: $cn-badge-border-radius;
+    padding: toRem(16);
+    min-width: toRem(200);
+    
+    @media (max-width: $mobile) {
+      padding: toRem(12);
+      border-radius: $cn-badge-mobile-radius;
+    }
+    
+    * {
+      color: var(--white);
+    }
+    
+    &__title {
+      font-size: toRem(15);
+      font-weight: 500;
+      
+      @media (max-width: $mobile) {
+        position: absolute;
+      }
+    }
+    
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: toRem(10);
+      
+      ul {
+        position: relative;
+        
+        li {
+          position: relative;
+          font-size: toRem(11);
+          padding-left: toRem(20);
+          
+          &:not(:last-child) {
+            margin-bottom: toRem(15);
+          }
+          
+          &:last-child {
+            color: var(--fade-violet-1);
+            
+            &:before {
+              background: var(--fade-violet-1);
+            }
+          }
+          
+          &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: var(--white);
+            width: toRem(10);
+            height: toRem(10);
+            border-radius: 100%;
+          }
+        }
+      }
+      
+      img {
+        max-width: toRem(80);
+      }
+    }
+  }
+}
+
+.contractors-trust {
+  padding-top: toRem(56);
+  
+  @media (max-width: $mobile) {
+    background: var(--white);
+    border-radius: 0;
+    padding-top: 0;
+  }
+
+  .how-it-works__title {
+    line-height: 1.2;
+    
+    span {
+      display: block;
+      color: var(--fade-violet-2);
+    }
+  }
+
+  br {
+    @media (max-width: $tablet) {
+      display: none;
+    }
+  }
+  
+  .how-it-works__card-image {
+    position: relative;
+  }
+
+  .how-it-works__card-image-label {
+    position: absolute;
+    background: var(--white);
+    padding: toRem(16);
+    border-radius: $cn-badge-mobile-radius;
+    text-align: left;
+    top: toRem(32);
+    right: toRem(32);
+    
+    @media (max-width: $mobile) {
+      border-radius: toRem(10);
+      top: toRem(16);
+      right: toRem(16);
+    }
+    
+    .contractors-title {
+      font-size: toRem(13);
+      color: var(--fade-violet-2);
+      margin-bottom: toRem(4);
+      
+      @media (max-width: $mobile) {
+        font-size: toRem(12);
+      }
+    }
+    
+    .contractors-number {
+      font-size: toRem(18);
+      color: var(--dark-violet);
+      margin-bottom: toRem(16);
+      
+      @media (max-width: $mobile) {
+        font-size: toRem(12);
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .how-it-works__card {
+    padding: toRem(32);
+    
+    @media (max-width: $mobile) {
+      padding: toRem(20);
+      background: none;
+      box-shadow: none;
+    }
+  }
+  
+  .how-it-works__card-image {
+    border: none;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .how-it-works__card-image-wrapper {
+    border-radius: toRem(24);
+    height: fit-content;
+    
+    @media (max-width: toEm(943)) {
+      width: 100%;
+      border-radius: toRem(14);
+    }
+    
+    img {
+      height: 100%;
+      
+      @media (max-width: toEm(943)) {
+        height: auto;
+        width: 100%;
+      }
+    }
+  }
+  
+  .how-it-works__card-title {
+    font-size: toRem(23);
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(18);
+    }
+  }
+  
+  ul {
+    font-size: toRem(15);
+    
+    @media (max-width: $mobile) {
+      font-size: toRem(14);
+    }
+    
+    li {
+      color: var(--fade-violet-3);
+      position: relative;
+      padding-left: toRem(20);
+      line-height: 1.2;
+      
+      &:not(:last-child) {
+        margin-bottom: toRem(16);
+      }
+      
+      img {
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+  
+  .cards-block {
+    position: relative;
+    
+    .how-it-works__card-cards {
+      position: absolute;
+      bottom: toRem(14);
+      right: toRem(14);
+      
+      @media (max-width: $mobile) {
+        position: relative;
+        bottom: unset;
+        right: unset;
+      }
+    }
+    
+    img {
+      max-width: toRem(170);
+      
+      @media (max-width: $mobile) {
+        max-width: toRem(120);
+        margin-left: auto;
+        display: block;
+      }
+    }
+    
+    .how-it-works__card-description {
+      max-width: calc(100% - toRem(170));
+      
+      @media (max-width: $mobile) {
+        max-width: 100%;
+      }
+    }
+  }
+}
