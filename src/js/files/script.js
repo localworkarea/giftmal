@@ -1803,7 +1803,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Загружаем JSON
-  fetch("/files/history-balance/history.json")
+  fetch("files/history-balance/history.json")
     .then(response => response.json())
     .then(data => {
       jsonData = data;
