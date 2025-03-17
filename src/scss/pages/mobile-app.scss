@@ -3,6 +3,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
+  position: relative;
   @media (max-width: $tablet) {
     padding: toRem(60) 0;
   }
@@ -11,6 +12,88 @@
   }
   @media (max-width: $mobileSmall) {
     padding: toRem(30) 0;
+  }
+
+  &__ad-notification {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    display: none;
+    @media (max-width: $mobile) {
+      display: block;
+    }
+    
+    &.active {
+      transform: translateY(0);
+    }
+  }
+
+  &__ad-container {
+    position: relative;
+    background-color: var(--dark-violet);
+    color: var(--white);
+    border-radius: 0 0 toRem(24) toRem(24);
+    overflow: hidden;
+  }
+
+  &__ad-content {
+    padding: toRem(67) toRem(16) toRem(16) toRem(40);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__ad-info {
+    display: flex;
+    align-items: center;
+    gap: toRem(12);
+    max-width: 80%;
+  }
+
+  &__ad-text {
+    display: flex;
+    flex-direction: column;
+    gap: toRem(6);
+  }
+
+  &__ad-title {
+    font-weight: 500;
+    font-size: toRem(13);
+    line-height: 1.2;
+  }
+
+  &__ad-description {
+    font-size: toRem(10);
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__ad-button {
+    font-size:  toRem(12);
+    padding:  toRem(10) toRem(12);
+    height: auto;
+    width: fit-content;
+    line-height: 1;
+    min-height: auto;
+  }
+
+  &__ad-close {
+    position: absolute;
+    left: toRem(15);
+    width: toRem(12);
+    height: toRem(12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 2;
   }
 
   &__container {

@@ -1,4 +1,9 @@
-// Функції для роботи з cookies
+/**
+ * Notifications module for handling various site notifications
+ * Including the mobile app advertisement
+ */
+
+// Functions for working with cookies
 function setCookie(name, value, days = 365) {
     const date = new Date();
     date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -12,7 +17,7 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-// Функції для роботи з localStorage
+// Functions for working with localStorage
 function setLocalStorage(key, value) {
     localStorage.setItem(key, value);
 }
@@ -21,7 +26,7 @@ function getLocalStorage(key) {
     return localStorage.getItem(key);
 }
 
-// Базова функція для обробки сповіщень
+// Base function for handling notifications
 function handleNotification({
     notificationSelector, 
     buttonSelector, 
@@ -63,7 +68,7 @@ function handleNotification({
     closeButton.addEventListener('click', hideNotification);
 }
 
-// Ініціалізація сповіщення про cookie
+// Initialization of cookie notification
 export function initCookieNotification() {
     handleNotification({
         notificationSelector: '.cookie-notification',
@@ -73,7 +78,7 @@ export function initCookieNotification() {
     });
 }
 
-// Ініціалізація промо-сповіщення
+// Initialization of promo notification
 export function initPromoNotification() {
     const promoContainer = document.querySelector('.corporate-promo__container');
     
@@ -89,8 +94,72 @@ export function initPromoNotification() {
     });
 }
 
-// Експортуємо функцію ініціалізації всіх сповіщень
+// Local storage key to check if ad was shown/closed
+const APP_AD_SHOWN_KEY = 'giftmall_app_ad_shown';
+
+/**
+ * Initialize the mobile app advertisement
+ * Shows the advertisement only once per user
+ */
+function initMobileAppAd() {
+    if (localStorage.getItem(APP_AD_SHOWN_KEY) === 'true') {
+        return;
+    }
+    
+    const adNotification = document.getElementById('appAdNotification');
+    const adCloseButton = document.getElementById('appAdClose');
+    const adButton = document.getElementById('appAdButton');
+    
+    if (!adNotification || !adCloseButton) {
+        return;
+    }
+    
+    // Show the ad with a slight delay for better UX
+    setTimeout(() => {
+        adNotification.classList.add('active');
+    }, 500);
+    
+    adCloseButton.addEventListener('click', () => {
+        closeAppAd();
+    });
+    
+    if (adButton) {
+        adButton.addEventListener('click', () => {
+            window.location.href = '#app-download'; // Replace with actual app store link
+            closeAppAd();
+        });
+    }
+    
+    window.addEventListener('beforeunload', () => {
+        localStorage.setItem(APP_AD_SHOWN_KEY, 'true');
+    });
+}
+
+/**
+ * Close the app advertisement 
+ */
+function closeAppAd() {
+    const adNotification = document.getElementById('appAdNotification');
+    
+    if (adNotification) {
+        adNotification.classList.remove('active');
+        localStorage.setItem(APP_AD_SHOWN_KEY, 'true');
+    }
+}
+
+/**
+ * Initialize all notification systems
+ */
 export function initAllNotifications() {
     initCookieNotification();
     initPromoNotification();
-} 
+    initMobileAppAd();
+}
+
+export default {
+    initAllNotifications,
+    initCookieNotification,
+    initPromoNotification,
+    initMobileAppAd,
+    closeAppAd
+}; 
