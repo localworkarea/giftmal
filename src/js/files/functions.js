@@ -764,9 +764,44 @@ export function customCursor(isShadowTrue) {
 		window.addEventListener('mouseout', mouseActions);
 	}
 }
+
+// show message on account page ===
+export function accountMsg() {
+	const msgAccountBtn = document.querySelectorAll("[data-account-msg]");
+	if (!msgAccountBtn.length) return;
+	msgAccountBtn.forEach(button => {
+			button.addEventListener("click", () => {
+				if (event.target.closest("form")) return;
+					showMessage(button.getAttribute("data-account-msg"));
+			});
+	});
+}
+
+export function showMessage(msgSelector) {
+	const msgElement = document.querySelector(msgSelector);
+	
+	if (msgElement) {
+			closeAllMessages(); 
+			msgElement.classList.add("_show-msg");
+			
+			setTimeout(() => {
+					msgElement.classList.remove("_show-msg");
+			}, 4000);
+	}
+}
+
+export function closeAllMessages() {
+	document.querySelectorAll(".msg").forEach(msg => {
+			msg.classList.remove("_show-msg");
+	});
+}
+// ======
 //================================================================================================================================================================================================================================================================================================================
 // Інші корисні функції ================================================================================================================================================================================================================================================================================================================
 //================================================================================================================================================================================================================================================================================================================
+
+
+
 // FLS (Full Logging System)
 export function FLS(message) {
 	setTimeout(() => {

@@ -2,7 +2,7 @@
 // Підключення списку активних модулів
 import { flsModules } from "../modules.js";
 // Допоміжні функції
-import { isMobile, _slideUp, _slideDown, _slideToggle, FLS } from "../functions.js";
+import { isMobile, _slideUp, _slideDown, _slideToggle, FLS,showMessage, closeAllMessages } from "../functions.js";
 // Модуль прокручування до блоку
 import { gotoBlock } from "../scroll/gotoblock.js";
 //================================================================================================================================================================================================================================================================================================================================
@@ -499,6 +499,7 @@ export function formSubmit() {
 				const formGoToErrorClass = form.dataset.gotoError ? form.dataset.gotoError : '._form-error';
 				gotoBlock(formGoToErrorClass, true, 1000);
 			}
+			return;
 		}
 	}
 	// Дії після надсилання форми
@@ -509,6 +510,11 @@ export function formSubmit() {
 				form: form
 			}
 		}));
+		// повідомлення для форми на сторінці Account 
+		const msgSelector = form.getAttribute("data-account-msg");
+		if (msgSelector) {
+				showMessage(msgSelector);
+		}
 		// Показуємо попап, якщо підключено модуль попапів 
 		// та для форми вказано налаштування
 		setTimeout(() => {

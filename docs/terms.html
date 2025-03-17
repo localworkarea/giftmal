@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250317102940">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250317225404">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -1402,10 +1402,105 @@
 			</form>
 		</div>
 	</div>
-	<script src="files/rolldate/rolldate.js?_v=20250317102940"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250317102940"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250317102940"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250317102940"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250317102940"></script>
-	<script src="js/app.min.js?_v=20250317102940"></script>
+
+	<div id="popupHistoryBalance" class="popup popup-full">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-history">
+					<div class="popup-history__header">
+						<p class="popup-history__title">Історія балансу</p>
+						<div class="popup-history__search icon-search">
+							<input id="historyBalanceSearch" autocomplete="off" type="text" name="searchCard" placeholder="Пошук картки по коду" data-required class="popup-history__input input input_sm ">
+						</div>
+					</div>
+					<div class="popup-history__content">
+						<div class="popup-history__wrapper">
+							<div class="popup-history__filter">
+								<button type="button" data-history="all" class="popup-history__filter-btn _all active" aria-label="filter Усі">Усі</button>
+								<button type="button" data-history="activation" class="popup-history__filter-btn _activation" aria-label="filter Активація">Активація</button>
+								<button type="button" data-history="expired" class="popup-history__filter-btn _expired" aria-label="filter Протермінований">Протермінований</button>
+								<button type="button" data-history="write-off" class="popup-history__filter-btn _write-off" aria-label="filter Списання балансу">Списання балансу</button>
+							</div>
+							<div class="popup-history__body">
+								<div class="popup-history__head">
+									<div class="popup-history__head-cell">Код Картки</div>
+									<div class="popup-history__head-cell icon-arrow-down">Номінал</div>
+									<div class="popup-history__head-cell icon-arrow-down">Дата активацї</div>
+									<div class="popup-history__head-cell head-cell-status icon-arrow-down">Статус</div>
+									<div class="popup-history__head-cell icon-arrow-down">Дійсний до</div>
+								</div>
+								<ul class="popup-history__list">
+
+								</ul>
+							</div>
+						</div>
+						<div class="popup-history__no-card no-card-history">
+							<p class="no-card-history__txt">
+								Такої картки немає у вашій історії активації.<br> Перевірте правильність написання.
+							</p>
+							<div class="no-card-history__img">
+								<img src="img/banner-card/giftmall-card.png" width="156" height="103" alt="Image">
+								<img src="img/banner-card/giftmall-card.png" width="156" height="103" alt="Image">
+							</div>
+						</div>
+					</div>
+					<div class="popup-history__pagging pagging">
+						<a href="#" class="pagging__arrow icon-arrow-down _prev" aria-label="Previous page"></a>
+						<ul class="pagging__list">
+							<li>
+								<a href="index.html" class="pagging__item _active">1</a>
+							</li>
+							<li>
+								<a href="#" class="pagging__item">2</a>
+							</li>
+							<li>
+								<a href="#" class="pagging__item">3</a>
+							</li>
+							<li>
+								<a href="#" class="pagging__item">4</a>
+							</li>
+						</ul>
+						<a href="#" class="pagging__arrow icon-arrow-down _next" aria-label="Next page"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupNoneHistoryBalance" class="popup popup-full">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-history">
+					<div class="popup-history__header">
+						<p class="popup-history__title">Історія балансу</p>
+						<div class="popup-history__search icon-search">
+							<input autocomplete="off" type="text" name="searchCard" placeholder="Пошук картки по коду" data-required class="popup-history__input input input_sm ">
+						</div>
+					</div>
+					<div class="popup-history__content">
+						<div class="popup-history__no-card no-card-history">
+							<p class="no-card-history__txt">
+								Тут відображатиметься ваша історія активації балансу giftmall. Ви зможете подивитись номінал, номер картки, дату активації, а також термін дії.
+							</p>
+							<div class="no-card-history__img">
+								<img src="img/banner-card/giftmall-card.png" width="156" height="103" alt="Image">
+								<img src="img/banner-card/giftmall-card.png" width="156" height="103" alt="Image">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="files/rolldate/rolldate.js?_v=20250317225404"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250317225404"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250317225404"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250317225404"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250317225404"></script>
+	<script src="js/app.min.js?_v=20250317225404"></script>
 </body>

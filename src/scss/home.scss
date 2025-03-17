@@ -1818,7 +1818,7 @@
   &__item {
     display: grid;
     &:nth-child(1) {
-      @media (min-width:toEm(550.98)){
+      @media (min-width:toEm(750.98)){
         .card-balance__sub-title {
           display: inline-flex;
         }
@@ -1827,13 +1827,13 @@
     @media (min-width:toEm(900.98)){
       grid-template-columns: 16% 22% 1fr 22%;
     }
-    @media (max-width: toEm(900.98)) and (min-width: toEm(550.98)) {
+    @media (max-width: toEm(900.98)) and (min-width: toEm(750.98)) {
       grid-template-columns: 17% 20% 1fr toRem(127);
     }
-    @media (min-width:toEm(550.98)){
+    @media (min-width:toEm(750.98)){
       gap: toRem(8);
     }
-    @media (max-width:toEm(550.98)){
+    @media (max-width:toEm(750.98)){
       grid-template-columns: 1fr 38%;
       gap: toRem(24);
       .card-balance__block {
@@ -1878,10 +1878,10 @@
     &:not(:last-child) {
       margin-bottom: toRem(12);
     }
-    @media (min-width:toEm(550.98)){
+    @media (min-width:toEm(750.98)){
       display: none;
     }
-    @media (max-width:toEm(550.98)){
+    @media (max-width:toEm(750.98)){
        display: inline-flex; 
     }
   }
@@ -1902,7 +1902,7 @@
     }
     &.row-denomination {
       @extend %fonsSize15-14;
-      ._activadet & {
+      ._activated & {
         color: var(--green);
       }
       ._expired &,
@@ -1911,7 +1911,7 @@
       }
     }
     &.row-status {
-      ._activadet & {
+      ._activated & {
         color: var(--green);
       }
       ._expired &,
@@ -1922,39 +1922,14 @@
     &.row-pin {
       gap: toRem(8);
     }
-    @media (min-width:toEm(550.98)){
+    @media (min-width:toEm(750.98)){
        min-height: toRem(40); 
     }
   }
   // .card-balance__row-icon
   &__row-icon {
-    position: relative;
-    // display: inline-block;
-      &::before {
-        display: none;
-        font-size: toRem(16);
-        ._edit & {
-          display: block;
-        }
-      }
-      &::after {
-        content: '';
-        display: none;
-        width: toRem(8);
-        height: toRem(8);
-        border-radius: 50%;
-        ._activadet & {
-          display: block;
-          background-color: var(--green);
-        }
-        ._expired &,
-        ._used & {
-          display: block;
-          background-color: var(--red-2);
-        }
-      }
-    }
-
+  }
+  
   // .card-balance__row-btn
   &__row-btn {
   }
@@ -1965,7 +1940,49 @@
 }
 
 
+.row-icon {
+  position: relative;
+  &.icon-attantion {
+    &::before {
+      display: none;
+      font-size: toRem(16);
+      ._edit & {
+        display: block;
+      }
+    }
+  }
+  &::after {
+    content: '';
+    display: none;
+    width: toRem(8);
+    height: toRem(8);
+    flex: 0 0 toRem(8);
+    border-radius: 50%;
+    ._available &,
+    ._activated &,
+    ._expired &,
+    ._used &,
+    ._active &,
+    ._error & {
+      display: block;
+    }
 
+    ._activated & {
+      background-color: var(--green);
+    }
+    ._expired &,
+    ._used &,
+    ._error & {
+      background-color: var(--red-2);
+    }
+    ._available & {
+      background-color: var(--electric-blue);
+    }
+    ._active & {
+      background-color: var(--green);
+    }
+  }
+}
 
 
 

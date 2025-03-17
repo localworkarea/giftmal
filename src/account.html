@@ -154,7 +154,7 @@
 										<div class="current-balance__item">
 											<div class="current-balance__head">
 												<p class="current-balance__head-txt">Історія Балансу</p>
-												<button type="button" class="current-balance__btn icon-arrow-next" aria-label="open popup balance">Переглянути усе</button>
+												<button type="button" data-popup="#popupHistoryBalance" class="current-balance__btn icon-arrow-next" aria-label="open popup balance">Переглянути усе</button>
 											</div>
 											<div class="current-balance__history">
 												<div class="current-balance__list">
@@ -196,7 +196,7 @@
 										<div class="current-balance__item">
 											<div class="current-balance__head">
 												<p class="current-balance__head-txt">Історія Балансу</p>
-												<button type="button" class="current-balance__btn icon-arrow-next" aria-label="open popup balance">Переглянути усе</button>
+												<button type="button" data-popup="#popupNoneHistoryBalance" class="current-balance__btn icon-arrow-next" aria-label="open popup balance">Переглянути усе</button>
 											</div>
 											<div class="current-balance__history">
 												<p class="current-balance__msg">
@@ -211,7 +211,7 @@
 												Активувати<br> Баланс giftmall
 											</p>
 											<div class="activation-balance__block">
-												<form data-dev method="post" class="activation-balance__form">
+												<form data-dev data-account-msg="#msgAccountActivated" method="post" class="activation-balance__form">
 													<label for="activationBalance" class="activation-balance__label">
 														Введіть код з Картки giftmall сюди
 													</label>
@@ -245,12 +245,12 @@
 													</div>
 													<div class="card-balance__block">
 														<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
-														<div class="card-balance__row row-denomination numb">500 грн</div>
+														<div class="card-balance__row row-denomination"><span class="numb">500</span>грн</div>
 													</div>
 													<div class="card-balance__block">
 														<div class="card-balance__sub-title icon-arrow-down">Статус</div>
 														<div class="card-balance__row row-status">
-															<span class="card-balance__row-icon icon-attantion"></span> 
+															<span class="card-balance__row-icon row-icon icon-attantion"></span> 
 															Введіть PIN-Code для активації
 														</div>
 													</div>
@@ -262,20 +262,19 @@
 														</div>
 													</div>
 												</div>
-
-												<div class="card-balance__item _activadet">
+												<div class="card-balance__item _activated">
 													<div class="card-balance__block">
 														<div class="card-balance__sub-title">Код картки</div>
 														<div class="card-balance__row row-code">Z90XQ1O</div>
 													</div>
 													<div class="card-balance__block">
 														<div class="card-balance__sub-title icon-arrow-down">Номінал</div>
-														<div class="card-balance__row row-denomination numb">+500 грн</div>
+														<div class="card-balance__row row-denomination"><span class="numb">500</span>грн</div>
 													</div>
 													<div class="card-balance__block">
 														<div class="card-balance__sub-title icon-arrow-down">Статус</div>
 														<div class="card-balance__row row-status">
-															<span class="card-balance__row-icon icon-attantion"></span> 
+															<span class="card-balance__row-icon row-icon"></span> 
 															Активований
 														</div>
 													</div>
@@ -292,7 +291,7 @@
 													<div class="card-balance__block">
 														<div class="card-balance__sub-title icon-arrow-down">Статус</div>
 														<div class="card-balance__row row-status">
-															<span class="card-balance__row-icon icon-attantion"></span> 
+															<span class="card-balance__row-icon row-icon"></span> 
 															Протермінований
 														</div>
 													</div>
@@ -309,7 +308,7 @@
 													<div class="card-balance__block">
 														<div class="card-balance__sub-title icon-arrow-down">Статус</div>
 														<div class="card-balance__row row-status">
-															<span class="card-balance__row-icon icon-attantion"></span> 
+															<span class="card-balance__row-icon row-icon"></span> 
 															Вже використаний
 														</div>
 													</div>
@@ -321,20 +320,184 @@
 									<div data-spollers class="balance-account__spollers spollers-balance">
 										<details class="spollers-balance__item">
 											<summary class="spollers-balance__title">
-												Заголовок спойлера
+												Як використати свій Баланс 
 												<div class="spollers-balance__arrow dropdown-arrow icon-arrow-down"></div>
 											</summary>
 											<div class="spollers-balance__body">
-												tetxt
+												<ul class="spollers-balance__list">
+													<li class="spollers-balance__li">
+														<p class="spollers-balance__txt">Після активацї коду, перейдіть до каталогу та оберіть будь-який сертифікат бренду.</p>
+														<a href="catalog.html" class="spollers-balance__link btn btn_dark btn_sm" aria-label="link">
+															<span>Перейти до каталогу</span>
+															<span>До каталогу</span>
+														</a>
+														<img class="spollers-balance__img" src="@img/account/certificates.png" width="99" height="82" alt="Image">
+													</li>
+													<li class="spollers-balance__li">
+														<p class="spollers-balance__txt">Оберіть спосіб оплати у кошику через 
+															Баланс giftmall.</p>
+														<p class="spollers-balance__subtxt">* Якщо сума сертифікату бренду перевищує ваш поточний баланс giftmall, то ви можете доплатити різницю через свою банківську картку у кошику.</p>
+													</li>
+												</ul>
 											</div>
 										</details>
 										<details class="spollers-balance__item">
 											<summary class="spollers-balance__title">
-												Заголовок спойлера
+												Перевірити картку
 												<div class="spollers-balance__arrow dropdown-arrow icon-arrow-down"></div>
 											</summary>
 											<div class="spollers-balance__body">
-												text
+												<form data-dev method="post" class="spollers-balance__form activation-balance__form">
+													<label for="checkCard" class="activation-balance__label">
+														Введіть код з Картки giftmall сюди
+													</label>
+													<div class="activation-balance__items">
+														<div class="input__item">
+															<div class="input__sub-item">
+																<input id="checkCard" autocomplete="off" type="text" name="codeCard"  data-error="Введіть код з картки" placeholder="Код з картки" data-required class="input input_sm ">
+																<button disabled type="button" class="input__clear icon-cross"></button>
+															</div>
+														</div>
+														<button type="submit" class="activation-balance__btn btn btn_dark btn_sm">Перевірити</button>
+													</div>
+												</form>
+												<div class="spollers-balance__card card-spollers _activated">
+													<p class="card-spollers__number icon-balance">ADET890</p>
+													<ul class="card-spollers__list">
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Номінал</з>
+															<p class="card-spollers__content"><span class="numb">500</span> грн</з>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Статус</p>
+															<p class="card-spollers__content card-spollers__content--status">
+																<span class="card-spollers__icon row-icon"></span>
+																Активний
+															</p>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Дійсний до</p>
+															<p class="card-spollers__content">08.09.24</p>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Дата Активації</p>
+															<p class="card-spollers__content">08.09.28</p>
+														</li>
+													</ul>
+												</div>
+												<div class="spollers-balance__card card-spollers _available">
+													<p class="card-spollers__number icon-balance">FBET892</p>
+													<ul class="card-spollers__list">
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Номінал</з>
+															<p class="card-spollers__content"><span class="numb">700</span> грн</з>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Статус</p>
+															<p class="card-spollers__content card-spollers__content--status">
+																<span class="card-spollers__icon row-icon"></span>
+																Доступний на сайті компанії “Netflix”
+															</p>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Дійсний до</p>
+															<p class="card-spollers__content">08.09.24</p>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Дата Активації</p>
+															<p class="card-spollers__content">Ще не було активації. Щоб активувати 
+																дану картку, перейдіть за посиланням нижче.</p>
+																<a href="#" class="card-spollers__link icon-exit" aria-label="link">Перейти за посиланням</a>
+														</li>
+													</ul>
+												</div>
+												<div class="spollers-balance__card card-spollers _active">
+													<p class="card-spollers__number icon-balance">ELAT392</p>
+													<ul class="card-spollers__list">
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Номінал</з>
+															<p class="card-spollers__content"><span class="numb">1700</span> грн</з>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Статус</p>
+															<p class="card-spollers__content card-spollers__content--status">
+																<span class="card-spollers__icon row-icon"></span>
+																Дійсний
+															</p>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Дійсний до</p>
+															<p class="card-spollers__content">08.09.24</p>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Дата Активації</p>
+															<p class="card-spollers__content">Ще не було активації. Щоб активувати 
+																дану картку, натисніть на кнопку нижче.</p>
+																<a href="#" class="card-spollers__link icon-balance" aria-label="link">Активувати</a>
+														</li>
+													</ul>
+												</div>
+												<div class="spollers-balance__card card-spollers _expired">
+													<p class="card-spollers__number icon-balance">ELAT392</p>
+													<ul class="card-spollers__list">
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Номінал</з>
+															<p class="card-spollers__content"><span class="numb">1700</span> грн</з>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Статус</p>
+															<p class="card-spollers__content card-spollers__content--status">
+																<span class="card-spollers__icon row-icon"></span>
+																Протермінований
+															</p>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Дійсний до</p>
+															<p class="card-spollers__content">08.09.24</p>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Дата Активації</p>
+															<p class="card-spollers__content">08.09.28</p>
+														</li>
+													</ul>
+												</div>
+												<div class="spollers-balance__card card-spollers _edit">
+													<p class="card-spollers__number icon-balance">AIME392</p>
+													<ul class="card-spollers__list">
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Номінал</з>
+															<p class="card-spollers__content"><span class="numb">900</span> грн</з>
+														</li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">Статус</p>
+															<p class="card-spollers__content card-spollers__content--status">
+																<span class="card-spollers__icon row-icon icon-attantion"></span>
+																Введіть PIN-Code для активації
+															</p>
+														</li>
+														<li class="card-spollers__item"></li>
+														<li class="card-spollers__item">
+															<p class="card-spollers__head">PIN-Code</p>
+															<div class="card-spollers__pin">
+																<input autocomplete="off" type="text" name="pinCode" placeholder="1 2 3 4" class="input input_sm">
+																<button type="button" class=" btn-circle btn-circle_dark icon-arrow-next"></button>
+															</div>
+														</li>
+													</ul>
+												</div>
+												<div class="spollers-balance__card card-spollers _error">
+													<p class="card-spollers__number icon-balance">AIME392</p>
+													<div class="card-spollers__error icon-attantion">
+														<div>
+															<p>Такої картки, на жаль, не існує.<br> Перевірте правильність написання</p>
+															<ul>
+																<li>не існує</li>
+																<li>...</li>
+																<li>...</li>
+															</ul>
+														</div>
+													</div>
+												</div>
 											</div>
 										</details>
 									</div>
@@ -352,6 +515,12 @@
       </main>
 			@@include('html/_footer.htm',{})
     </div>
+		<div id="msgAccountActivated" class="msg msg-succsess">
+			<p class="icon-check">Ваш баланс успішно активовано!</p>
+		</div>
+		<div id="msgAccountChecked" class="msg msg-succsess">
+			<p class="icon-check">Ваші сертифікати успішно відмічені використаними.</p>
+		</div>
 		@@include('html/_popup-mb.htm',{})
 		@@include('html/_js.htm',{})
   </body>

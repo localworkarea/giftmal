@@ -4280,6 +4280,153 @@ body::after {
   -webkit-transform: rotate(8deg);
   transform: rotate(8deg)
 }
+#popupHistoryBalance.popup .popup__content,
+#popupNoneHistoryBalance.popup .popup__content {
+  display: flex;
+  flex-direction: column
+}
+#popupNoneHistoryBalance.popup .no-card-history {
+  display: block!important
+}
+#popupNoneHistoryBalance.popup .no-card-history__txt {
+  max-width: 23.125rem
+}
+.popup-history__head,
+.popup-history__item {
+  display: grid;
+  grid-template-columns: 18% 18% 20% 1fr 13%;
+  gap: .5rem;
+  align-items: center
+}
+.popup-history {
+  display: flex;
+  flex-direction: column;
+  flex: 1
+}
+.popup-history__header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.3125rem 2rem
+}
+.popup-history__search {
+  position: relative;
+  min-width: 19.375rem
+}
+.popup-history__search::before {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  -webkit-transform: translate(0,-50%);
+  transform: translate(0,-50%);
+  pointer-events: none;
+  z-index: 1;
+  font-size: 1.5rem
+}
+._error .popup-history__input {
+  color: var(--red-2)
+}
+.popup-history__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column
+}
+.popup-history__head {
+  margin-bottom: 1rem
+}
+.popup-history__head-cell {
+  gap: .25rem!important;
+  color: var(--fade-violet-2)
+}
+.popup-history__head-cell::before {
+  order: 2;
+  font-weight: 600
+}
+.popup-history__item {
+  padding-block: .875rem;
+  line-height: 1.46
+}
+.popup-history__item:not(:last-child) {
+  border-bottom: .09375rem solid var(--gray-1)
+}
+._activation .popup-history__cell.cell-denomination {
+  color: var(--green)
+}
+._write-off .popup-history__cell.cell-denomination {
+  color: var(--fade-violet-2)
+}
+._expired .popup-history__cell.cell-denomination {
+  color: var(--red-2)
+}
+.popup-history__cell.cell-status:after {
+  display: block;
+  order: -1
+}
+._activation .popup-history__cell.cell-status:after {
+  background-color: var(--green)
+}
+._write-off .popup-history__cell.cell-status:after {
+  background-color: var(--fade-violet-2)
+}
+._expired .popup-history__cell.cell-status:after {
+  background-color: var(--red-2)
+}
+._activation .popup-history__cell.cell-status {
+  color: var(--green)
+}
+._write-off .popup-history__cell.cell-status {
+  color: var(--fade-violet-2)
+}
+._expired .popup-history__cell.cell-status {
+  color: var(--red-2)
+}
+.popup-history__pagging.pagging {
+  justify-content: flex-start!important;
+  gap: .25rem
+}
+.popup-history__pagging.pagging .pagging__arrow {
+  width: 1.5rem;
+  height: 1.5rem
+}
+.popup-history__pagging.pagging .pagging__arrow::before {
+  font-size: 1rem
+}
+.popup-history__pagging.pagging .pagging__list {
+  gap: .25rem
+}
+.popup-history__pagging.pagging .pagging__item {
+  font-weight: 600;
+  font-size: .6875rem;
+  width: 1.5rem;
+  height: 1.5rem
+}
+.no-card-history {
+  display: none;
+  position: relative;
+  flex: 1
+}
+.no-card-history__txt {
+  line-height: 1.46
+}
+.no-card-history__img {
+  position: absolute;
+  right: 0;
+  z-index: 1
+}
+.no-card-history__img img {
+  height: auto;
+  box-shadow: 0 2px 26px 0 rgba(33,5,41,.12)
+}
+.no-card-history__img img:nth-child(1) {
+  -webkit-transform: rotate(-10.5deg) translate(-29%,25%);
+  transform: rotate(-10.5deg) translate(-29%,25%)
+}
+.no-card-history__img img:nth-child(2) {
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  bottom: 0
+}
 .ibg {
   width: 100%;
   height: 100%;
@@ -4306,14 +4453,17 @@ body::after {
   -o-object-fit: contain;
   object-fit: contain
 }
-.rules-spollers__list {
+.rules-spollers__list,
+.spollers-balance__list {
   list-style-type: none;
   counter-reset: item
 }
-.rules-spollers__list li {
+.rules-spollers__list li,
+.spollers-balance__list li {
   position: relative
 }
-.rules-spollers__list li:before {
+.rules-spollers__list li:before,
+.spollers-balance__list li:before {
   counter-increment: item;
   content: counter(item);
   position: absolute;
@@ -4374,6 +4524,7 @@ html {
 .balance-card__title,
 .card-balance__sub-title,
 .card-slider_lg .card-slider__title,
+.card-spollers__head,
 .email-form .form__error,
 .input__item .form__error,
 .input__label,
@@ -4386,6 +4537,10 @@ html {
 .select_type-7 .select__asset,
 .select_type-8 .select__asset,
 .total-cart__txt {
+  font-weight: 600;
+  letter-spacing: .02em
+}
+.popup-history__head-cell {
   font-weight: 600;
   letter-spacing: .02em
 }
@@ -4426,6 +4581,10 @@ html {
 .card-certificate__types,
 .card-options__label,
 .card-options__message,
+.card-spollers__content,
+.card-spollers__error,
+.card-spollers__link,
+.card-spollers__number,
 .card__item .amount .amount__head,
 .cart-empty__title,
 .cart__head,
@@ -4456,6 +4615,7 @@ html {
 .main-header__container-c,
 .main-header__sub-wrapper,
 .menu__link,
+.msg-succsess p,
 .option__label,
 .orders-checkout__lines,
 .orders-checkout__sub-head,
@@ -4463,6 +4623,8 @@ html {
 .phone-checked__item,
 .popup-account__subhead,
 .popup-cart__total,
+.popup-history__cell.cell-status,
+.popup-history__head-cell,
 .popup-login__header,
 .price-filter__inputs,
 .price-filter__top,
@@ -4472,6 +4634,7 @@ html {
 .search__item,
 .social-footer,
 .soon-label,
+.spollers-balance__title,
 .spollers-faq__title,
 .sub-header__container-b,
 .sub-header__link.icon-arrow-down,
@@ -6920,14 +7083,14 @@ body::after {
 ._used .card-balance__row.row-code {
   color: var(--fade-violet-1)
 }
-._activadet .card-balance__row.row-denomination {
+._activated .card-balance__row.row-denomination {
   color: var(--green)
 }
 ._expired .card-balance__row.row-denomination,
 ._used .card-balance__row.row-denomination {
   color: var(--fade-violet-1)
 }
-._activadet .card-balance__row.row-status {
+._activated .card-balance__row.row-status {
   color: var(--green)
 }
 ._expired .card-balance__row.row-status,
@@ -6937,31 +7100,45 @@ body::after {
 .card-balance__row.row-pin {
   gap: .5rem
 }
-.card-balance__row-icon {
+.row-icon {
   position: relative
 }
-.card-balance__row-icon::before {
+.row-icon.icon-attantion::before {
   display: none;
   font-size: 1rem
 }
-._edit .card-balance__row-icon::before {
+._edit .row-icon.icon-attantion::before {
   display: block
 }
-.card-balance__row-icon::after {
+.row-icon::after {
   content: "";
   display: none;
   width: .5rem;
   height: .5rem;
+  flex: 0 0 .5rem;
   border-radius: 50%
 }
-._activadet .card-balance__row-icon::after {
-  display: block;
+._activated .row-icon::after,
+._active .row-icon::after,
+._available .row-icon::after,
+._error .row-icon::after,
+._expired .row-icon::after,
+._used .row-icon::after {
+  display: block
+}
+._activated .row-icon::after {
   background-color: var(--green)
 }
-._expired .card-balance__row-icon::after,
-._used .card-balance__row-icon::after {
-  display: block;
+._error .row-icon::after,
+._expired .row-icon::after,
+._used .row-icon::after {
   background-color: var(--red-2)
+}
+._available .row-icon::after {
+  background-color: var(--electric-blue)
+}
+._active .row-icon::after {
+  background-color: var(--green)
 }
 .banner__img {
   overflow: hidden
@@ -7775,6 +7952,33 @@ body::after {
 .account {
   padding-bottom: 3.5rem
 }
+.account__container-c {
+  position: relative
+}
+.msg-succsess {
+  position: fixed;
+  z-index: 8;
+  -webkit-transform: translate(-50%,0);
+  transform: translate(-50%,0);
+  background-color: var(--white);
+  box-shadow: 0 4px 50px 0 rgba(33,5,41,.12);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  line-height: 1.2;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .65s ease,visibility .65s ease;
+  pointer-events: none
+}
+.msg-succsess._show-msg {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease,visibility .3s ease
+}
+.msg-succsess p::before {
+  font-size: 1.5rem;
+  color: var(--green)
+}
 .tabs-account {
   display: grid
 }
@@ -7879,7 +8083,8 @@ body::after {
 .activation-balance {
   position: relative;
   overflow: hidden;
-  background-color: var(--white)
+  background-color: var(--white);
+  margin-bottom: .5rem
 }
 .activation-balance__top {
   position: relative;
@@ -7948,6 +8153,142 @@ body::after {
   -webkit-transform: rotate(-8.6deg) translate(25%,-3%);
   transform: rotate(-8.6deg) translate(25%,-3%);
   height: auto
+}
+.spollers-balance {
+  display: grid;
+  gap: .5rem
+}
+.spollers-balance__item {
+  border-radius: 1.5rem;
+  background-color: var(--white)
+}
+.spollers-balance__title {
+  justify-content: space-between;
+  cursor: pointer
+}
+.spollers-balance__arrow {
+  width: 2.5rem;
+  height: 2.5rem
+}
+._spoller-active .spollers-balance__arrow {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg)
+}
+.spollers-balance__li {
+  line-height: 1.46;
+  position: relative;
+  z-index: 1
+}
+.spollers-balance__li::before {
+  font-size: .6875rem;
+  font-weight: 600;
+  color: var(--white);
+  width: 1.5rem;
+  aspect-ratio: 1;
+  background-color: var(--dark-violet);
+  display: grid;
+  place-items: center;
+  border-radius: 50%
+}
+.spollers-balance__li:nth-child(1) .spollers-balance__txt {
+  max-width: 81%
+}
+.spollers-balance__link {
+  white-space: nowrap;
+  max-width: -webkit-max-content;
+  max-width: max-content;
+  margin-bottom: 2.5rem
+}
+.spollers-balance__img {
+  position: absolute;
+  z-index: -1;
+  top: 27%;
+  right: 0
+}
+.spollers-balance__subtxt {
+  margin-top: .5rem;
+  color: var(--fade-violet-2)
+}
+.card-spollers:not(:last-child) {
+  margin-bottom: 2.5rem
+}
+.card-spollers__number {
+  line-height: 1.46;
+  letter-spacing: .45em;
+  margin-bottom: 1.5rem
+}
+.card-spollers__number:before {
+  font-size: 1.5rem;
+  letter-spacing: 0
+}
+._error .card-spollers__number {
+  color: var(--red)
+}
+.card-spollers__list {
+  display: grid;
+  grid-template-columns: minmax(7rem,auto) 1fr
+}
+.card-spollers__head {
+  color: var(--fade-violet-1);
+  margin-bottom: .75rem
+}
+.card-spollers__content {
+  line-height: 1.46
+}
+._available .card-spollers__content--status {
+  color: var(--electric-blue)
+}
+._edit .card-spollers__content--status {
+  color: var(--dark-violet)
+}
+._activated .card-spollers__content--status {
+  color: var(--green)
+}
+._active .card-spollers__content--status {
+  color: var(--green)
+}
+._expired .card-spollers__content--status {
+  color: var(--red-2)
+}
+._used .card-spollers__content--status {
+  color: var(--red-2)
+}
+._error .card-spollers__content--status {
+  color: var(--red-2)
+}
+._edit .card-spollers__icon {
+  align-self: flex-start
+}
+.card-spollers__pin {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: .5rem
+}
+.card-spollers__pin .input {
+  min-height: 2.5rem
+}
+.card-spollers__link {
+  margin-top: .75rem;
+  color: var(--violet);
+  transition: color .2s ease
+}
+.card-spollers__link::before {
+  font-size: 1.5rem
+}
+.card-spollers__error {
+  gap: .75rem;
+  line-height: 1.46
+}
+.card-spollers__error:before {
+  font-size: 1.5rem;
+  align-self: flex-start
+}
+.card-spollers__error ul {
+  padding-left: 1.25rem
+}
+.card-spollers__error ul li {
+  list-style: disc
 }
 .error__page .page__logo {
   margin: 3.375rem auto 0;
@@ -11282,6 +11623,29 @@ body::after {
     gap: 1.5rem 1rem;
     grid-template-columns: 1fr 1fr
   }
+  #popupHistoryBalance.popup,
+  #popupNoneHistoryBalance.popup {
+    overflow-x: hidden;
+    overflow-y: auto
+  }
+  #popupHistoryBalance.popup .popup__content,
+  #popupNoneHistoryBalance.popup .popup__content {
+    max-width: 53.125rem;
+    min-height: 35.1875rem
+  }
+  .popup-history__header {
+    margin-bottom: 2rem
+  }
+  .popup-history__content {
+    margin-bottom: 2rem
+  }
+  .no-card-history__img {
+    bottom: 3%
+  }
+  .no-card-history__img img {
+    border-radius: 1rem;
+    width: 9.75rem
+  }
   .page {
     border-radius: 2.5rem 2.5rem 0 0
   }
@@ -11310,6 +11674,7 @@ body::after {
   .cart-empty__title,
   .popup-cart__sum,
   .popup__title,
+  .spollers-balance__title,
   .terms__subtitle {
     font-size: 1.4375rem
   }
@@ -11337,6 +11702,7 @@ body::after {
   .card-certificate__title,
   .card-news__body,
   .card-slider-link__head,
+  .card-spollers__content,
   .cart__subtitle,
   .current-balance__data,
   .current-balance__head,
@@ -11346,7 +11712,9 @@ body::after {
   .item-review__avatar-txt,
   .item-review__response-text,
   .item-review__text,
+  .msg-succsess,
   .popup-cart__header,
+  .popup-history__item,
   .price-filter__input-wr,
   .review__more-btn,
   .rules-spollers__item,
@@ -11354,6 +11722,7 @@ body::after {
   .search__null-txt,
   .search__top,
   .slider-checkout__subtitle,
+  .spollers-balance__li,
   .tab-checkout__subtitle {
     font-size: .9375rem
   }
@@ -11375,6 +11744,9 @@ body::after {
   .card-cabinet__item,
   .card-options__label,
   .card-slider__checked,
+  .card-spollers__error,
+  .card-spollers__link,
+  .card-spollers__number,
   .card__info-label,
   .card__item .amount .amount__max,
   .card__item .amount .amount__min,
@@ -11400,12 +11772,14 @@ body::after {
   .item-orders__amount,
   .item-orders__price,
   .iti__dropdown-content .iti__a11y-text,
+  .no-card-history__txt,
   .orders-checkout__info,
   .orders-checkout__lines.lines-total .orders-checkout__text,
   .orders-checkout__subtotoal,
   .popup-account__subtitle,
   .popup-cart__buttons,
   .popup-cart__total,
+  .popup-history__cell.cell-status,
   .quantity__item,
   .rules-spollers__title,
   .rules-spollers__txt--sm,
@@ -11454,6 +11828,7 @@ body::after {
   .balance-card__title,
   .card-balance__sub-title,
   .card-slider_lg .card-slider__title,
+  .card-spollers__head,
   .email-form .form__error,
   .input__item .form__error,
   .input__label,
@@ -11466,6 +11841,9 @@ body::after {
   .select_type-7 .select__asset,
   .select_type-8 .select__asset,
   .total-cart__txt {
+    font-size: .6875rem
+  }
+  .popup-history__head-cell {
     font-size: .6875rem
   }
   .txt-11 {
@@ -12269,6 +12647,28 @@ body::after {
   .activation-balance__tippy {
     line-height: 1.5
   }
+  .spollers-balance__li {
+    padding-left: 2.5rem
+  }
+  .spollers-balance__link {
+    margin-top: 1.25rem;
+    min-width: 11.5625rem
+  }
+  .spollers-balance__link span:nth-child(2) {
+    display: none
+  }
+  .spollers-balance__form:not(:last-child) {
+    margin-bottom: 2rem
+  }
+  ._edit .card-spollers__list {
+    max-width: 19.75rem
+  }
+  .card-spollers__list {
+    gap: 2rem .5rem
+  }
+  .card-spollers__error {
+    max-width: 70%
+  }
   .blog__filters {
     margin-bottom: 2rem
   }
@@ -12308,18 +12708,6 @@ body::after {
   }
   #popupContactsUs.popup .contacts-form-popup__items .input__item:last-child {
     grid-column: span 2
-  }
-  .card-balance__item:nth-child(1) .card-balance__sub-title {
-    display: inline-flex
-  }
-  .card-balance__item {
-    gap: .5rem
-  }
-  .card-balance__sub-title {
-    display: none
-  }
-  .card-balance__row {
-    min-height: 2.5rem
   }
   .banner-card {
     grid-template-columns: 52.5% auto
@@ -12390,6 +12778,12 @@ body::after {
     right: 6%;
     -webkit-transform: rotate(15deg);
     transform: rotate(15deg)
+  }
+  #popupNoneHistoryBalance.popup .popup__content {
+    min-height: 18.125rem
+  }
+  .popup-history__filter {
+    display: none
   }
   .filters__wrapper_mob .filters__header {
     display: none
@@ -12531,12 +12925,17 @@ body::after {
   .item-review__wrapper {
     grid-column: 2/3
   }
+  .msg-succsess {
+    left: 58%
+  }
   .tabs-account {
     grid-template-columns: 11.875rem 1fr
   }
-  .tabs-account__top {
+  .tabs-account__aside {
     position: sticky;
-    top: 7.5rem;
+    top: 7.5rem
+  }
+  .tabs-account__top {
     margin-bottom: 6.25rem
   }
   .tabs-account__btn:not(:last-child) {
@@ -12549,6 +12948,20 @@ body::after {
 @media (min-width:43.81125em)and (any-hover:hover) {
   .more-sub-list__items .sub-header__link:hover {
     background-color: var(--gray-2)
+  }
+}
+@media (min-width:46.93625em) {
+  .card-balance__item:nth-child(1) .card-balance__sub-title {
+    display: inline-flex
+  }
+  .card-balance__item {
+    gap: .5rem
+  }
+  .card-balance__sub-title {
+    display: none
+  }
+  .card-balance__row {
+    min-height: 2.5rem
   }
 }
 @media (min-width:48.06125em) {
@@ -12706,6 +13119,9 @@ body::after {
   .card-balance__item {
     grid-template-columns: 16% 22% 1fr 22%
   }
+  .msg-succsess {
+    top: 8.75rem
+  }
   .activation-balance__block {
     grid-template-columns: 1fr 1fr
   }
@@ -12737,6 +13153,10 @@ body::after {
     grid-template-columns: auto auto;
     gap: 1.25rem;
     margin-bottom: .5rem
+  }
+  .spollers-balance {
+    grid-template-columns: 1fr 1fr;
+    align-items: start
   }
   .blog__grid {
     grid-template-columns: repeat(3,1fr)
@@ -12807,6 +13227,7 @@ body::after {
   .data-account,
   .orders-checkout__body,
   .orders-checkout__total,
+  .spollers-balance__item,
   .spollers-faq__item,
   .tab-checkout__body,
   .tab-checkout_my-data,
@@ -12829,6 +13250,9 @@ body::after {
   .slider-checkout_visible::after {
     left: -2rem
   }
+  .spollers-balance__body {
+    padding-top: 2rem
+  }
 }
 @media (min-width:81.31125em) {
   .more-sub-list__items {
@@ -12844,6 +13268,9 @@ body::after {
   }
   .popup-login__body {
     padding: 3.375rem
+  }
+  .popup-history__title {
+    font-size: 1.4375rem
   }
   .card__title,
   .feedback__title,
@@ -13137,6 +13564,7 @@ body::after {
   .data-account,
   .orders-checkout__body,
   .orders-checkout__total,
+  .spollers-balance__item,
   .spollers-faq__item,
   .tab-checkout__body,
   .tab-checkout_my-data,
@@ -13191,6 +13619,9 @@ body::after {
     border-radius: 1.5rem;
     background-color: var(--dark-violet);
     padding: 1.5rem
+  }
+  .spollers-balance__body {
+    padding-top: 1.5rem
   }
   .error__page .error__card--3 {
     bottom: 0;
@@ -14998,6 +15429,26 @@ body::after {
     max-width: 11.25rem
   }
 }
+@media (max-width:46.93625em) {
+  .card-balance__item {
+    grid-template-columns: 1fr 38%;
+    gap: 1.5rem
+  }
+  .card-balance__item .card-balance__block:nth-child(3) {
+    grid-column: 1/3
+  }
+  .card-balance__item .card-balance__block:nth-child(4) {
+    grid-column: 1/3
+  }
+  .card-balance__item:not(:last-child) {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: .1rem solid var(--gray-2)
+  }
+  .card-balance__sub-title {
+    display: inline-flex
+  }
+}
 @media (max-width:43.81125em) {
   .popup-login.popup-full .popup__content {
     padding: 4.25rem 1rem 7.5rem
@@ -15034,6 +15485,47 @@ body::after {
     right: 1rem;
     -webkit-transform: rotate(118deg);
     transform: rotate(118deg)
+  }
+  .popup-history__head,
+  .popup-history__item {
+    grid-template-columns: 22% 1fr 1fr 22%
+  }
+  .popup-history__filter {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .25rem
+  }
+  .popup-history__filter-btn {
+    padding-inline: .75rem;
+    font-size: .8125rem;
+    min-height: 2.5rem;
+    border-radius: 1.875rem;
+    color: var(--fade-violet-2);
+    background-color: var(--gray-1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+  }
+  .popup-history__filter-btn._all {
+    min-width: 2.75rem
+  }
+  .popup-history__filter-btn._activation {
+    color: var(--green);
+    min-width: 5.5rem
+  }
+  .popup-history__filter-btn._expired {
+    color: var(--red-2)
+  }
+  .popup-history__filter-btn.active {
+    color: var(--white);
+    background-color: var(--dark-violet)
+  }
+  .popup-history__head-cell.head-cell-status {
+    display: none!important
+  }
+  .popup-history__cell.cell-status {
+    display: none!important
   }
   .filters__wrapper_mob {
     position: fixed!important;
@@ -15296,6 +15788,12 @@ body::after {
   .item-review__avatar {
     grid-column: span 2
   }
+  .msg-succsess {
+    top: 8.75rem;
+    left: 50%;
+    width: 100%;
+    max-width: 77%
+  }
   .tabs-account__btn {
     justify-content: center;
     background-color: var(--gray-2);
@@ -15347,24 +15845,6 @@ body::after {
   }
   .checkout__phone {
     display: none
-  }
-  .card-balance__item {
-    grid-template-columns: 1fr 38%;
-    gap: 1.5rem
-  }
-  .card-balance__item .card-balance__block:nth-child(3) {
-    grid-column: 1/3
-  }
-  .card-balance__item .card-balance__block:nth-child(4) {
-    grid-column: 1/3
-  }
-  .card-balance__item:not(:last-child) {
-    padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: .1rem solid var(--gray-2)
-  }
-  .card-balance__sub-title {
-    display: inline-flex
   }
   .banner-card__stars {
     width: 2.5625rem;
@@ -15685,6 +16165,40 @@ body::after {
   .popup-account__items {
     gap: 1rem
   }
+  #popupHistoryBalance.popup .popup__content,
+  #popupNoneHistoryBalance.popup .popup__content {
+    padding: 2rem 1rem 1rem 1rem
+  }
+  .popup-history__header {
+    margin-bottom: 1rem
+  }
+  .popup-history__title {
+    font-size: .875rem
+  }
+  .popup-history__search {
+    width: 100%
+  }
+  .popup-history__list {
+    height: 50svh;
+    overflow-y: auto;
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+    mask-image: linear-gradient(to bottom,rgba(255,255,255,0) 0,#fff 5%,#fff 95%,rgba(255,255,255,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom,rgba(255,255,255,0) 0,#fff 5%,#fff 95%,rgba(255,255,255,0) 100%)
+  }
+  .popup-history__pagging {
+    display: none!important
+  }
+  .no-card-history {
+    min-height: 50svh
+  }
+  .no-card-history__img {
+    bottom: 10%
+  }
+  .no-card-history__img img {
+    border-radius: .625rem;
+    width: 6.375rem
+  }
   .page {
     border-radius: 1.5rem 1.5rem 0 0;
     margin-top: 8.75rem
@@ -15759,6 +16273,7 @@ body::after {
   .cart-empty__title,
   .popup-cart__sum,
   .popup__title,
+  .spollers-balance__title,
   .terms__subtitle {
     font-size: 1.25rem
   }
@@ -15786,6 +16301,7 @@ body::after {
   .card-certificate__title,
   .card-news__body,
   .card-slider-link__head,
+  .card-spollers__content,
   .cart__subtitle,
   .current-balance__data,
   .current-balance__head,
@@ -15795,7 +16311,9 @@ body::after {
   .item-review__avatar-txt,
   .item-review__response-text,
   .item-review__text,
+  .msg-succsess,
   .popup-cart__header,
+  .popup-history__item,
   .price-filter__input-wr,
   .review__more-btn,
   .rules-spollers__item,
@@ -15803,6 +16321,7 @@ body::after {
   .search__null-txt,
   .search__top,
   .slider-checkout__subtitle,
+  .spollers-balance__li,
   .tab-checkout__subtitle {
     font-size: .875rem
   }
@@ -15824,6 +16343,9 @@ body::after {
   .card-cabinet__item,
   .card-options__label,
   .card-slider__checked,
+  .card-spollers__error,
+  .card-spollers__link,
+  .card-spollers__number,
   .card__info-label,
   .card__item .amount .amount__max,
   .card__item .amount .amount__min,
@@ -15849,12 +16371,14 @@ body::after {
   .item-orders__amount,
   .item-orders__price,
   .iti__dropdown-content .iti__a11y-text,
+  .no-card-history__txt,
   .orders-checkout__info,
   .orders-checkout__lines.lines-total .orders-checkout__text,
   .orders-checkout__subtotoal,
   .popup-account__subtitle,
   .popup-cart__buttons,
   .popup-cart__total,
+  .popup-history__cell.cell-status,
   .quantity__item,
   .rules-spollers__title,
   .rules-spollers__txt--sm,
@@ -15901,6 +16425,7 @@ body::after {
   .balance-card__title,
   .card-balance__sub-title,
   .card-slider_lg .card-slider__title,
+  .card-spollers__head,
   .email-form .form__error,
   .input__item .form__error,
   .input__label,
@@ -15914,6 +16439,9 @@ body::after {
   .select_type-8 .select__asset,
   .total-cart__txt {
     font-size: .75rem
+  }
+  .popup-history__head-cell {
+    font-size: .625rem
   }
   .title-big {
     font-size: 1.25rem
@@ -16796,6 +17324,9 @@ body::after {
   .account {
     padding-top: 1rem
   }
+  .msg-succsess {
+    top: 9.75rem
+  }
   .tabs-account__aside {
     display: none
   }
@@ -16883,6 +17414,25 @@ body::after {
   }
   .activation-balance__img {
     width: 6.5rem
+  }
+  .spollers-balance__li {
+    padding-left: 2.25rem
+  }
+  .spollers-balance__link {
+    margin-top: 2.125rem;
+    min-width: 7.875rem
+  }
+  .spollers-balance__link span:nth-child(1) {
+    display: none
+  }
+  .spollers-balance__subtxt {
+    margin-left: -2.125rem
+  }
+  .spollers-balance__form:not(:last-child) {
+    margin-bottom: 1.5rem
+  }
+  .card-spollers__list {
+    gap: 1.5rem .5rem
   }
   .error__page .page__logo {
     font-size: 2rem;
@@ -17053,6 +17603,9 @@ body::after {
   .popup-login__body {
     padding: clamp(1.5rem ,.5197418478rem + 3.2608695652vw ,3.375rem)
   }
+  .popup-history__title {
+    font-size: clamp(.875rem ,.5809225543rem + .9782608696vw ,1.4375rem)
+  }
   .card__title,
   .feedback__title,
   .popup-account__title,
@@ -17110,6 +17663,9 @@ body::after {
   }
 }
 @media (max-width:43.81125em)and (min-width:30.06125em) {
+  #popupNoneHistoryBalance.popup .popup__content {
+    min-height: 25rem
+  }
   .page {
     margin-top: 7.75rem
   }
@@ -17147,6 +17703,7 @@ body::after {
   .data-account,
   .orders-checkout__body,
   .orders-checkout__total,
+  .spollers-balance__item,
   .spollers-faq__item,
   .tab-checkout__body,
   .tab-checkout_my-data,
@@ -17159,6 +17716,9 @@ body::after {
   }
   .tab-checkout__slider {
     margin-inline: clamp(-2rem ,.5687083333rem + -3.3333333333vw ,-1.5rem)
+  }
+  .spollers-balance__body {
+    padding-top: clamp(1.5rem ,-.5687083333rem + 3.3333333333vw ,2rem)
   }
 }
 @media (min-width:52.18625em)and (max-width:90.06125em) {
@@ -17254,7 +17814,7 @@ body::after {
     left: clamp(-2rem ,-.1431024096rem + -2.4096385542vw ,-1.5rem)
   }
 }
-@media (max-width:56.31125em)and (min-width:34.43625em) {
+@media (max-width:56.31125em)and (min-width:46.93625em) {
   .card-balance__item {
     grid-template-columns: 17% 20% 1fr 7.9375rem
   }
@@ -17275,6 +17835,11 @@ body::after {
 @media (max-width:48.06125em)and (min-width:43.81125em) {
   .cart__wrapper {
     grid-template-columns: 1fr 14.5rem
+  }
+}
+@media (max-width:56.30625em)and (min-width:43.81125em) {
+  .msg-succsess {
+    top: 11.875rem
   }
 }
 @media (min-width:56.31125em)and (max-width:87.56125em) {
@@ -17676,6 +18241,9 @@ body::after {
   }
   .current-balance__btn:hover {
     color: var(--fade-violet-1)
+  }
+  .card-spollers__link:hover {
+    color: var(--dark-violet)
   }
   .blog-filter__btn:hover {
     background-color: var(--pagging-hover-bg)

@@ -387,6 +387,31 @@
         bodyUnlock();
         document.documentElement.classList.remove("menu-open");
     }
+    function accountMsg() {
+        const msgAccountBtn = document.querySelectorAll("[data-account-msg]");
+        if (!msgAccountBtn.length) return;
+        msgAccountBtn.forEach((button => {
+            button.addEventListener("click", (() => {
+                if (event.target.closest("form")) return;
+                showMessage(button.getAttribute("data-account-msg"));
+            }));
+        }));
+    }
+    function showMessage(msgSelector) {
+        const msgElement = document.querySelector(msgSelector);
+        if (msgElement) {
+            closeAllMessages();
+            msgElement.classList.add("_show-msg");
+            setTimeout((() => {
+                msgElement.classList.remove("_show-msg");
+            }), 4e3);
+        }
+    }
+    function closeAllMessages() {
+        document.querySelectorAll(".msg").forEach((msg => {
+            msg.classList.remove("_show-msg");
+        }));
+    }
     function FLS(message) {
         setTimeout((() => {
             if (window.FLS) console.log(message);
@@ -1191,6 +1216,7 @@
                     const formGoToErrorClass = form.dataset.gotoError ? form.dataset.gotoError : "._form-error";
                     gotoblock_gotoBlock(formGoToErrorClass, true, 1e3);
                 }
+                return;
             }
         }
         function formSent(form, responseResult = ``) {
@@ -1199,6 +1225,8 @@
                     form
                 }
             }));
+            const msgSelector = form.getAttribute("data-account-msg");
+            if (msgSelector) showMessage(msgSelector);
             setTimeout((() => {
                 if (modules_flsModules.popup) {
                     const popup = form.dataset.popupMessage;
@@ -11017,6 +11045,77 @@
             if (promoContainer) promoContainer.style.paddingTop = 0;
         }
     }));
+    document.addEventListener("DOMContentLoaded", (() => {
+        const bodyHistory = document.querySelector(".popup-history");
+        const listContainer = bodyHistory.querySelector(".popup-history__list");
+        const filterButtons = bodyHistory.querySelectorAll(".popup-history__filter-btn");
+        const searchInput = bodyHistory.querySelector("#historyBalanceSearch");
+        const searchInputWrapper = searchInput.closest(".popup-history__search");
+        const wrapper = bodyHistory.querySelector(".popup-history__wrapper");
+        const noCardMessage = bodyHistory.querySelector(".popup-history__no-card");
+        const allFilterButton = bodyHistory.querySelector('.popup-history__filter-btn[data-history="all"]');
+        const pagination = bodyHistory.querySelector(".pagging");
+        const paginationLinks = bodyHistory.querySelectorAll(".pagging__item, .pagging__arrow");
+        let jsonData = [];
+        const mediaQuery = window.matchMedia("(max-width: 30.061em)");
+        function renderList(data) {
+            listContainer.innerHTML = "";
+            const displayedData = mediaQuery.matches ? data : data.slice(0, 8);
+            displayedData.forEach((item => {
+                const li = document.createElement("li");
+                li.classList.add("popup-history__item", `_${item.status}`);
+                li.innerHTML = `\n        <div class="popup-history__cell cell-code">${item.code}</div>\n        <div class="popup-history__cell cell-denomination">${item.denomination} грн</div>\n        <div class="popup-history__cell cell-activation">${item.activation}</div>\n        <div class="popup-history__cell cell-status row-icon">${item.statusText}</div>\n        <div class="popup-history__cell cell-date">${item.date}</div>\n      `;
+                listContainer.appendChild(li);
+            }));
+            if (data.length === 0) {
+                wrapper.style.display = "none";
+                pagination.style.display = "none";
+                noCardMessage.style.display = "block";
+                searchInputWrapper.classList.add("_error");
+            } else {
+                wrapper.style.display = "block";
+                pagination.style.display = "flex";
+                noCardMessage.style.display = "none";
+                searchInputWrapper.classList.remove("_error");
+            }
+        }
+        fetch("/files/history-balance/history.json").then((response => response.json())).then((data => {
+            jsonData = data;
+            renderList(jsonData);
+        })).catch((error => console.error("Ошибка загрузки JSON:", error)));
+        filterButtons.forEach((button => {
+            button.addEventListener("click", (() => {
+                filterButtons.forEach((btn => btn.classList.remove("active")));
+                button.classList.add("active");
+                const filterValue = button.getAttribute("data-history");
+                if (filterValue === "all") renderList(jsonData); else {
+                    const filteredData = jsonData.filter((item => item.status === filterValue));
+                    renderList(filteredData);
+                }
+            }));
+        }));
+        searchInput.addEventListener("input", (() => {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            if (searchTerm === "") {
+                renderList(jsonData);
+                searchInputWrapper.classList.remove("_error");
+                filterButtons.forEach((btn => btn.classList.remove("active")));
+                allFilterButton.classList.add("active");
+                return;
+            }
+            const filteredData = jsonData.filter((item => item.code.toLowerCase().includes(searchTerm)));
+            renderList(filteredData);
+        }));
+        paginationLinks.forEach((link => {
+            link.addEventListener("click", (event => {
+                event.preventDefault();
+                event.stopPropagation();
+            }));
+        }));
+        mediaQuery.addEventListener("change", (() => {
+            renderList(jsonData);
+        }));
+    }));
     window.addEventListener("load", (function() {
         const tabButtons = document.querySelectorAll(".solutions__nav-button");
         const tabs = document.querySelectorAll(".solutions__tab");
@@ -11186,6 +11285,7 @@
     spollers();
     tabs();
     videoPlayer();
+    accountMsg();
     formFieldsInit({
         viewPass: false,
         autoHeight: true

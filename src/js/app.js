@@ -75,6 +75,11 @@ videoPlayer();
 // import './libs/keywords.js'
 
 /*
+Фунція показу повідомлення на сторінці "Account"
+*/
+flsFunctions.accountMsg();
+
+/*
 Модуль "Попапи"
 Документація: https://template.fls.guru/template-docs/funkcional-popup.html
 Сніппет (HTML): pl, pop
@@ -110,6 +115,7 @@ flsForms.formAmount();
 
 /* Модуль зіркового рейтингу */
 flsForms.formRating();
+
 flsForms.formAddPhoto();
 
 /* Модуль роботи з select. */

@@ -249,6 +249,16 @@ html {
      font-size: toRem(12);
    }
  }
+ %fonsSize11-10 {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+   @media (min-width:$mobileSmall){
+     font-size: toRem(11);
+   }
+   @media (max-width:$mobileSmall){
+     font-size: toRem(10);
+   }
+ }
  .title-big {
   line-height: 1.18;
   @include adaptiveValue("font-size", 48, 28,2,1440.98,834.98);

@@ -1,0 +1,106 @@
+[
+  {
+    "code": "A1B2C3",
+    "denomination": "+500",
+    "activation": "10.05.24",
+    "status": "activation",
+    "statusText": "Активація",
+    "date": "10.05.26"
+  },
+  {
+    "code": "X9Y8Z7W",
+    "denomination": -500,
+    "activation": "—",
+    "status": "write-off",
+    "statusText": "Списання балансу. №Замовлення 3096785",
+    "date": "—"
+  },
+  {
+    "code": "M3N4O5P",
+    "denomination": "+900",
+    "activation": "15.08.23",
+    "status": "activation",
+    "statusText": "Активація",
+    "date": "15.08.25"
+  },
+  {
+    "code": "Q7R8S9T",
+    "denomination": -900,
+    "activation": "—",
+    "status": "write-off",
+    "statusText": "Списання балансу. №Замовлення 3099999",
+    "date": "—"
+  },
+  {
+    "code": "U1V2W3X",
+    "denomination": "-250",
+    "activation": "12.12.22",
+    "status": "expired",
+    "statusText": "Протермінований",
+    "date": "12.12.23"
+  },
+  {
+    "code": "Y5Z6A7B",
+    "denomination": -250,
+    "activation": "—",
+    "status": "write-off",
+    "statusText": "Списання балансу. №Замовлення 3093333",
+    "date": "—"
+  },
+  {
+    "code": "C9D0E1F",
+    "denomination": "+750",
+    "activation": "01.03.24",
+    "status": "activation",
+    "statusText": "Активація",
+    "date": "01.03.26"
+  },
+  {
+    "code": "G3H4I5J",
+    "denomination": -750,
+    "activation": "12.12.22",
+    "status": "expired",
+    "statusText": "Протермінований",
+    "date": "12.12.23"
+  },
+  {
+    "code": "U1V2W3A",
+    "denomination": "-250",
+    "activation": "12.12.22",
+    "status": "expired",
+    "statusText": "Протермінований",
+    "date": "12.12.23"
+  },
+  {
+    "code": "Y5Z6A7C",
+    "denomination": -250,
+    "activation": "—",
+    "status": "write-off",
+    "statusText": "Списання балансу. №Замовлення 3093333",
+    "date": "—"
+  },
+  {
+    "code": "C9D0E1J",
+    "denomination": "+750",
+    "activation": "01.03.24",
+    "status": "activation",
+    "statusText": "Активація",
+    "date": "01.03.26"
+  },
+  {
+    "code": "G3H4I5L",
+    "denomination": -750,
+    "activation": "12.12.22",
+    "status": "expired",
+    "statusText": "Протермінований",
+    "date": "12.12.23"
+  },
+  {
+    "code": "AAH4I5J",
+    "denomination": -150,
+    "activation": "—",
+    "status": "write-off",
+    "statusText": "Списання балансу. №Замовлення 3095551",
+    "date": "—"
+  }
+]
