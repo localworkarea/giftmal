@@ -330,10 +330,7 @@
     }
     
     .notification {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+        position: relative;
         width: 100%;
         background-color: var(--notification-bg);
         padding: toRem(16) 0;
@@ -357,6 +354,20 @@
             align-items: center;
             gap: toRem(15);
             flex: 1;
+            position: relative;
+            overflow: hidden;
+            &:after{
+                content: '';
+                background: linear-gradient(270deg, var(--beige) 0%, rgba(253, 225, 187, 0) 100%);
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: toRem(100);
+                height: 100%;
+                @media (max-width: $mobile) {
+                    display: none;
+                }
+            }
         }
         
         &__icon {
@@ -379,9 +390,11 @@
             line-height: 1.4;
             color: var(--notification-text);
             font-weight: 500;
+            white-space: nowrap;
             
             @media (max-width: $mobile) {
                 font-size: toRem(14);
+                white-space: initial;
             }
         }
         
@@ -417,14 +430,9 @@
         justify-content: space-between;
         opacity: 0;
         transition: opacity 0.3s ease;
-        padding: toRem(40) 0 0;
-        
-        @media (max-width: $tablet) {
-            padding: toRem(60) toRem(20) toRem(20);
-        }
         
         @media (max-width: $mobile) {
-            padding: toRem(120) toRem(10) toRem(40);
+            padding: toRem(20) toRem(10) toRem(30);
         }
     }
     
@@ -460,7 +468,7 @@
         }
         
         @media (max-width: $mobileSmall) {
-            font-size: toRem(20);
+            font-size: toRem(18);
         }
     }
     
@@ -492,6 +500,8 @@
         
         @media (max-width: $mobileSmall) {
             font-size: toRem(14);
+            padding: toRem(10) toRem(20);
+            min-height: auto;
         }
     }
     

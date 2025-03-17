@@ -4,6 +4,8 @@ import { isMobile, bodyLockToggle, _slideToggle, _slideUp, _slideDown } from "./
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
 
+// Імпортуємо та ініціалізуємо сповіщення
+import { initAllNotifications } from '../modules/notifications.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -1750,36 +1752,7 @@ document.querySelectorAll('.search').forEach(searchElement => {
 });
 // == END OF SEARCH INPUTS BRANDS ============================
 
-// Initialize notification close functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const notification = document.querySelector('.notification');
-    const closeButton = notification?.querySelector('.notification__close');
-    const promoContainer = document.querySelector('.corporate-promo__container');
-    
-    if (!notification || !closeButton) return;
-    
-    // Function to hide notification
-    const hideNotification = () => {
-        notification.style.opacity = '0';
-        
-        setTimeout(() => {
-            notification.style.display = 'none';
-            
-            if (promoContainer) {
-                promoContainer.style.paddingTop = 0;
-            }
-        }, 300);
-        
-        localStorage.setItem('notificationClosed', 'true');
-    };
-    
-    closeButton.addEventListener('click', hideNotification);
-    
-    if (localStorage.getItem('notificationClosed') === 'true') {
-        notification.style.display = 'none';
-        
-        if (promoContainer) {
-            promoContainer.style.paddingTop = 0;
-        }
-    }
+    // Initialize all notifications
+    initAllNotifications();
 });
