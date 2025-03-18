@@ -1,15 +1,15 @@
 @font-face {
   font-family: FixelDisplay;
   font-display: swap;
-  src: url(../fonts/FixelDisplay-Regular.woff2) format("woff2");
-  font-weight: 400;
+  src: url(../fonts/FixelDisplay-Medium.woff2) format("woff2");
+  font-weight: 500;
   font-style: normal
 }
 @font-face {
   font-family: FixelDisplay;
   font-display: swap;
-  src: url(../fonts/FixelDisplay-Medium.woff2) format("woff2");
-  font-weight: 500;
+  src: url(../fonts/FixelDisplay-Regular.woff2) format("woff2");
+  font-weight: 400;
   font-style: normal
 }
 @font-face {
@@ -38,6 +38,12 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
+}
+.icon-dots:before {
+  content: ""
+}
+.icon-download:before {
+  content: ""
 }
 .icon-delivery:before {
   content: ""
@@ -4381,7 +4387,7 @@ body::after {
   color: var(--red-2)
 }
 .popup-history__pagging.pagging {
-  justify-content: flex-start!important;
+  justify-content: flex-start;
   gap: .25rem
 }
 .popup-history__pagging.pagging .pagging__arrow {
@@ -4525,6 +4531,7 @@ html {
 .card-balance__sub-title,
 .card-slider_lg .card-slider__title,
 .card-spollers__head,
+.certificate-account__header-cell,
 .email-form .form__error,
 .input__item .form__error,
 .input__label,
@@ -4589,6 +4596,10 @@ html {
 .cart-empty__title,
 .cart__head,
 .cart__type,
+.certificate-account__footer,
+.certificate-account__header-cell,
+.certificate-account__switch,
+.certificate-account__title--used,
 .contacts-footer__block,
 .current-balance__bottom,
 .current-balance__btn,
@@ -4604,6 +4615,8 @@ html {
 .header-cart__message,
 .header-cart__top,
 .info-card__link,
+.item-cert__last,
+.item-cert__photo,
 .item-dropdwn__btn,
 .item-dropdwn__link,
 .item-review__avatar,
@@ -4632,6 +4645,8 @@ html {
 .review__more-btn,
 .rules-spollers__title,
 .search__item,
+.select-certificate,
+.select-certificate__btn .icon-checked-sertificates,
 .social-footer,
 .soon-label,
 .spollers-balance__title,
@@ -8330,6 +8345,152 @@ body::after {
 .card-spollers__error ul li {
   list-style: disc
 }
+.certificate-account__header,
+.item-cert {
+  display: grid;
+  align-items: center;
+  gap: .5rem
+}
+.certificate-account__wrapper {
+  height: 100%
+}
+.certificate-account__item {
+  display: flex;
+  flex-direction: column;
+  height: 100%
+}
+.certificate-account__title {
+  position: relative
+}
+.certificate-account__title--used {
+  cursor: pointer
+}
+.certificate-account__title--used .icon-arrow-back {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translate(0,-50%);
+  transform: translate(0,-50%);
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--white);
+  transition: background-color .2s ease,color .2s ease
+}
+.certificate-account__title--used:active .icon-arrow-back {
+  background-color: var(--dark-violet);
+  color: var(--white)
+}
+.certificate-account__subhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.certificate-account__body {
+  flex: 1
+}
+.certificate-account__header {
+  margin-bottom: .75rem
+}
+.certificate-account__header-cell {
+  gap: .25rem!important;
+  color: var(--fade-violet-2)
+}
+.certificate-account__header-cell.header-checkbox {
+  gap: .5rem!important
+}
+.certificate-account__header-cell.icon-arrow-down::before {
+  order: 2;
+  font-weight: 600
+}
+.certificate-account__list {
+  margin-bottom: 1rem
+}
+.certificate-account__footer {
+  justify-content: space-between
+}
+.certificate-account__pagging.pagging {
+  justify-content: flex-start;
+  gap: .25rem
+}
+.certificate-account__pagging.pagging .pagging__arrow {
+  width: 1.5rem;
+  height: 1.5rem
+}
+.certificate-account__pagging.pagging .pagging__arrow::before {
+  font-size: 1rem
+}
+.certificate-account__pagging.pagging .pagging__list {
+  gap: .25rem
+}
+.certificate-account__pagging.pagging .pagging__item {
+  font-weight: 600;
+  font-size: .6875rem;
+  width: 1.5rem;
+  height: 1.5rem
+}
+.certificate-account__switch {
+  color: var(--fade-violet-2);
+  transition: color .2s ease
+}
+.certificate-account__switch::before {
+  font-size: 1.5rem
+}
+.certificate-account__switch:active {
+  color: var(--violet)
+}
+.item-cert {
+  position: relative;
+  overflow: hidden;
+  border-left: .25rem solid;
+  border-radius: 1.5rem;
+  background-color: var(--white);
+  cursor: pointer;
+  transition: box-shadow .3s ease
+}
+.item-cert._active {
+  border-color: var(--light-green)
+}
+.item-cert._used {
+  border-color: var(--light-red)
+}
+.item-cert__img {
+  height: auto
+}
+.item-cert__date-buy {
+  color: var(--fade-violet-2)
+}
+.item-cert__download:active {
+  background-color: var(--dark-violet);
+  color: var(--white)
+}
+.item-cert__modal {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transition: background-color .2s ease,color .2s ease
+}
+.item-cert__modal::before {
+  font-size: 2.5rem
+}
+.select-certificate__text {
+  color: var(--fade-violet-2);
+  line-height: 1.46
+}
+.select-certificate__btn {
+  padding-inline: 1rem;
+  max-width: -webkit-max-content;
+  max-width: max-content
+}
+.select-certificate__btn .icon-checked-sertificates {
+  line-height: 1
+}
+.select-certificate__btn .icon-checked-sertificates::before {
+  font-size: 1.5rem
+}
 .error__page .page__logo {
   margin: 3.375rem auto 0;
   display: block;
@@ -11814,7 +11975,8 @@ body::after {
   .card-cabinet__info-b {
     font-size: .9375rem
   }
-  #popupRules.popup .head-popup-rules__name {
+  #popupRules.popup .head-popup-rules__name,
+  .item-cert__denomination {
     font-size: .9375rem
   }
   .terms__title-sm {
@@ -11833,6 +11995,7 @@ body::after {
   .current-balance__title,
   .faq__subtitle,
   .filters__header,
+  .item-cert__brand,
   .item-review__avatar-txt,
   .item-review__response-text,
   .item-review__text,
@@ -11848,6 +12011,10 @@ body::after {
   .slider-checkout__subtitle,
   .spollers-balance__li,
   .tab-checkout__subtitle {
+    font-size: .9375rem
+  }
+  .item-cert__date-buy,
+  .item-cert__date-expired {
     font-size: .9375rem
   }
   #popupAvailability.popup .popup-availability__subtitle,
@@ -11878,6 +12045,7 @@ body::after {
   .card__item .amount .amount__msg,
   .cart-empty__subtitle,
   .cart__type,
+  .certificate-account__switch,
   .checkbox,
   .current-balance__msg,
   .current-balance__subtitle,
@@ -11893,6 +12061,7 @@ body::after {
   .info-card__link,
   .info-card__text,
   .info-card__title,
+  .item-cert__download,
   .item-orders__amount,
   .item-orders__price,
   .iti__dropdown-content .iti__a11y-text,
@@ -11912,6 +12081,7 @@ body::after {
   .search__item,
   .search__null-txt-acc,
   .search__top-link,
+  .select-certificate__text,
   .select__option,
   .select_type-1 .select__value,
   .select_type-2 .select__value,
@@ -11953,6 +12123,7 @@ body::after {
   .card-balance__sub-title,
   .card-slider_lg .card-slider__title,
   .card-spollers__head,
+  .certificate-account__header-cell,
   .email-form .form__error,
   .input__item .form__error,
   .input__label,
@@ -12793,6 +12964,18 @@ body::after {
   .card-spollers__error {
     max-width: 70%
   }
+  .certificate-account__head {
+    margin-bottom: 1.5rem
+  }
+  .certificate-account__title--used {
+    padding-left: 3.5rem
+  }
+  .certificate-account__title--used .icon-arrow-back {
+    width: 2.5rem
+  }
+  .certificate-account__title--used .icon-arrow-back::before {
+    font-size: 1.5rem
+  }
   .blog__filters {
     margin-bottom: 2rem
   }
@@ -13068,6 +13251,9 @@ body::after {
   .tabs-account__body {
     height: 100%
   }
+  .certificate-account__search {
+    min-width: 15.625rem
+  }
 }
 @media (min-width:43.81125em)and (any-hover:hover) {
   .more-sub-list__items .sub-header__link:hover {
@@ -13250,6 +13436,32 @@ body::after {
     grid-template-columns: 1fr 1fr
   }
 }
+@media (min-width:57.56125em) {
+  .certificate-account__subhead {
+    margin-bottom: 1.5rem
+  }
+  .certificate-account__header-cell.header-checkbox .checkbox {
+    opacity: 0;
+    pointer-events: none
+  }
+  .item-cert {
+    margin-bottom: .25rem
+  }
+  .item-cert__photo .checkbox {
+    transition: opacity .3s ease;
+    opacity: 0
+  }
+  .item-cert__img {
+    width: 3.875rem;
+    border-radius: .5rem
+  }
+  .item-cert__denomination .symbol-mob {
+    display: none
+  }
+  .item-cert__date-expired span {
+    display: none
+  }
+}
 @media (min-width:59.43625em) {
   .cart__header {
     grid-template-columns: 1fr 24.8%
@@ -13315,6 +13527,34 @@ body::after {
 @media (min-width:68.81125em) {
   .email-form__label {
     max-width: 75%
+  }
+  .certificate-account__header,
+  .item-cert {
+    grid-template-columns: 15% 17% 1fr 1fr 1fr 10.8125rem
+  }
+  .certificate-account__header {
+    padding: 0 1.5rem 0 .75rem
+  }
+  .item-cert {
+    padding: 1rem 1.5rem 1rem .5rem
+  }
+  .item-cert__last {
+    gap: 1rem
+  }
+  .item-cert__download.icon-download::before {
+    display: none
+  }
+  .item-cert__download {
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 1rem;
+    border-radius: 1.25rem;
+    background-color: var(--gray-1);
+    transition: background-color .2s ease,color .3s ease;
+    max-width: -webkit-max-content;
+    max-width: max-content
   }
 }
 @media (min-width:71.93625em) {
@@ -13459,6 +13699,9 @@ body::after {
   }
   .activation-balance__img {
     width: 9.5rem
+  }
+  .certificate-account__title--used {
+    font-size: 1.75rem
   }
 }
 @media (min-width:90.06125em) {
@@ -13640,6 +13883,27 @@ body::after {
   }
   .gift-promo br {
     display: none
+  }
+}
+@media (max-width:68.81125em) {
+  .item-cert {
+    padding: 1rem .25rem 1rem .5rem
+  }
+  .item-cert__last {
+    gap: .5rem
+  }
+  .item-cert__download.icon-download::before {
+    font-size: 1.5rem
+  }
+  .item-cert__download span {
+    display: none
+  }
+  .item-cert__download {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%
   }
 }
 @media (max-width:67.5em) {
@@ -14043,6 +14307,84 @@ body::after {
   .contractors-trust .how-it-works__card-image-wrapper img {
     height: auto;
     width: 100%
+  }
+}
+@media (max-width:57.56125em) {
+  .certificate-account__head--main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem
+  }
+  .certificate-account__subhead {
+    margin-bottom: .5rem
+  }
+  .certificate-account__header {
+    display: none
+  }
+  .certificate-account__switch span {
+    display: none
+  }
+  .item-cert {
+    padding: 1rem .25rem 1rem 1rem;
+    grid-template-columns: auto auto;
+    gap: .6875rem;
+    margin-bottom: .5rem
+  }
+  .item-cert__photo .checkbox {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: 0
+  }
+  .item-cert__photo {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: 0
+  }
+  .item-cert__img {
+    width: 7.1875rem;
+    border-radius: 1rem;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transform: rotate(-10deg) translate(10%,10%);
+    transform: rotate(-10deg) translate(10%,10%)
+  }
+  .item-cert__brand {
+    grid-row: 2/3;
+    grid-column: 1/2
+  }
+  .item-cert__date-buy {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    margin-bottom: .375rem;
+    font-weight: 600
+  }
+  .item-cert__denomination .symbol-pc {
+    display: none
+  }
+  .item-cert__denomination {
+    grid-row: 3/4;
+    grid-column: 1/2
+  }
+  .item-cert__date-expired {
+    grid-row: 4/5;
+    grid-column: 1/2;
+    color: var(--green);
+    margin-top: .375rem;
+    font-weight: 600
+  }
+  .item-cert__last {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    top: -.75rem;
+    position: absolute;
+    z-index: 1;
+    right: 0
+  }
+  .select-certificate {
+    display: none
   }
 }
 @media (max-width:56.31125em) {
@@ -15941,6 +16283,9 @@ body::after {
     background-color: var(--gray-2);
     padding-inline: .3125rem
   }
+  .certificate-account__search {
+    width: 100%
+  }
 }
 @media (max-width:43.81125em)and (any-hover:none) {
   .icon-menu__lines {
@@ -16431,7 +16776,8 @@ body::after {
   .card-cabinet__info-b {
     font-size: 1.25rem
   }
-  #popupRules.popup .head-popup-rules__name {
+  #popupRules.popup .head-popup-rules__name,
+  .item-cert__denomination {
     font-size: 1.125rem
   }
   .terms__title-sm {
@@ -16450,6 +16796,7 @@ body::after {
   .current-balance__title,
   .faq__subtitle,
   .filters__header,
+  .item-cert__brand,
   .item-review__avatar-txt,
   .item-review__response-text,
   .item-review__text,
@@ -16466,6 +16813,10 @@ body::after {
   .spollers-balance__li,
   .tab-checkout__subtitle {
     font-size: .875rem
+  }
+  .item-cert__date-buy,
+  .item-cert__date-expired {
+    font-size: .75rem
   }
   #popupAvailability.popup .popup-availability__subtitle,
   #popupAvailabilityMsg.popup .popup-msg__bottom,
@@ -16495,6 +16846,7 @@ body::after {
   .card__item .amount .amount__msg,
   .cart-empty__subtitle,
   .cart__type,
+  .certificate-account__switch,
   .checkbox,
   .current-balance__msg,
   .current-balance__subtitle,
@@ -16510,6 +16862,7 @@ body::after {
   .info-card__link,
   .info-card__text,
   .info-card__title,
+  .item-cert__download,
   .item-orders__amount,
   .item-orders__price,
   .iti__dropdown-content .iti__a11y-text,
@@ -16529,6 +16882,7 @@ body::after {
   .search__item,
   .search__null-txt-acc,
   .search__top-link,
+  .select-certificate__text,
   .select__option,
   .select_type-1 .select__value,
   .select_type-2 .select__value,
@@ -16568,6 +16922,7 @@ body::after {
   .card-balance__sub-title,
   .card-slider_lg .card-slider__title,
   .card-spollers__head,
+  .certificate-account__header-cell,
   .email-form .form__error,
   .input__item .form__error,
   .input__label,
@@ -17491,7 +17846,8 @@ body::after {
     place-items: center;
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
-    padding-top: .125rem
+    padding-top: .125rem;
+    box-shadow: 0 4px 20px 0 rgba(33,5,41,.05)
   }
   .data-account {
     padding: 0!important
@@ -17575,6 +17931,32 @@ body::after {
   }
   .card-spollers__list {
     gap: 1.5rem .5rem
+  }
+  .certificate-account__head {
+    margin-bottom: 1rem
+  }
+  .certificate-account__title {
+    margin-bottom: 0
+  }
+  .certificate-account__title--used {
+    font-size: .875rem
+  }
+  .certificate-account__title--used {
+    padding-left: 3rem;
+    margin-top: .5625rem;
+    margin-bottom: .5625rem
+  }
+  .certificate-account__title--used .icon-arrow-back {
+    width: 2rem
+  }
+  .certificate-account__title--used .icon-arrow-back::before {
+    font-size: 1.25rem
+  }
+  .certificate-account__title--used .icon-arrow-back {
+    box-shadow: 0 4px 20px 0 rgba(33,5,41,.05)
+  }
+  .certificate-account__pagging {
+    display: none!important
   }
   .error__page .page__logo {
     font-size: 2rem;
@@ -17813,6 +18195,9 @@ body::after {
   .activation-balance__img {
     width: clamp(6.5rem ,4.9315869565rem + 5.2173913043vw ,9.5rem)
   }
+  .certificate-account__title--used {
+    font-size: clamp(.875rem ,.4175461957rem + 1.5217391304vw ,1.75rem)
+  }
 }
 @media (max-width:43.81125em)and (min-width:30.06125em) {
   #popupNoneHistoryBalance.popup .popup__content {
@@ -17997,6 +18382,15 @@ body::after {
 @media (min-width:56.31125em)and (max-width:87.56125em) {
   .current-balance__history {
     padding: clamp(1rem ,.09902rem + 1.6vw ,1.5rem)
+  }
+}
+@media (max-width:68.81125em)and (min-width:57.56125em) {
+  .certificate-account__header,
+  .item-cert {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 5.5rem
+  }
+  .certificate-account__header {
+    padding: 0 .25rem 0 .75rem
   }
 }
 @media (any-hover:hover) {
@@ -18396,6 +18790,27 @@ body::after {
   }
   .card-spollers__link:hover {
     color: var(--dark-violet)
+  }
+  .certificate-account__title--used:hover .icon-arrow-back {
+    background-color: var(--dark-violet);
+    color: var(--white)
+  }
+  .certificate-account__switch:hover {
+    color: var(--violet)
+  }
+  .item-cert:hover {
+    box-shadow: 0 4px 40px 0 rgba(33,5,41,.16)
+  }
+  .item-cert:hover .checkbox {
+    opacity: 1
+  }
+  .item-cert__download:hover {
+    background-color: var(--dark-violet);
+    color: var(--white)
+  }
+  .item-cert__modal:hover {
+    background-color: var(--dark-violet);
+    color: var(--white)
   }
   .blog-filter__btn:hover {
     background-color: var(--pagging-hover-bg)

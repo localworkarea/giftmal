@@ -9915,6 +9915,15 @@
             let num = parseFloat(el.textContent.replace(/\s+/g, ""));
             if (!isNaN(num)) el.textContent = formatNumb.to(num);
         }));
+        const formatNumbDecimals = wNumb({
+            thousand: " ",
+            decimals: 2,
+            mark: "."
+        });
+        document.querySelectorAll(".numb-dec").forEach((el => {
+            let num = parseFloat(el.textContent.replace(/\s+/g, ""));
+            if (!isNaN(num)) el.textContent = formatNumbDecimals.to(num);
+        }));
         const checkoutPage = document.querySelector(".checkout");
         if (checkoutPage) document.documentElement.classList.add("checkout-page");
         const itemDropdowns = document.querySelectorAll(".item-dropdwn");
@@ -11184,6 +11193,51 @@
         }));
         mediaQuery.addEventListener("change", (() => {
             renderList(jsonData);
+        }));
+    }));
+    document.addEventListener("DOMContentLoaded", (function() {
+        const typeSwitch = document.querySelector(".certificate-account__switch");
+        const mainSertificates = document.querySelector(".certificate-account__wrapper--main");
+        const usedSertificates = document.querySelector(".certificate-account__wrapper--used");
+        const backButton = document.querySelector(".certificate-account__title--used");
+        if (!mainSertificates || !usedSertificates || !typeSwitch || !backButton) return;
+        usedSertificates.hidden = true;
+        function handleSelectCertificates(container) {
+            const selectCertificateBlocks = container.querySelectorAll(".select-certificate");
+            selectCertificateBlocks.forEach((block => {
+                const textSelect = block.querySelector(".text-select");
+                const textCount = block.querySelector(".text-count");
+                const btnSelect = block.querySelector(".btn-select");
+                const btnCount = block.querySelector(".btn-count");
+                const button = block.querySelector(".select-certificate__btn");
+                if (!textSelect || !textCount || !btnSelect || !btnCount || !button) return;
+                textCount.style.display = "none";
+                btnCount.style.display = "none";
+                button.addEventListener("click", (function() {
+                    const isActive = textSelect.style.display === "none";
+                    if (isActive) {
+                        textSelect.style.display = "";
+                        btnSelect.style.display = "";
+                        textCount.style.display = "none";
+                        btnCount.style.display = "none";
+                    } else {
+                        textSelect.style.display = "none";
+                        btnSelect.style.display = "none";
+                        textCount.style.display = "";
+                        btnCount.style.display = "";
+                    }
+                }));
+            }));
+        }
+        handleSelectCertificates(mainSertificates);
+        handleSelectCertificates(usedSertificates);
+        typeSwitch.addEventListener("click", (function() {
+            mainSertificates.hidden = true;
+            usedSertificates.hidden = false;
+        }));
+        backButton.addEventListener("click", (function() {
+            usedSertificates.hidden = true;
+            mainSertificates.hidden = false;
         }));
     }));
     window.addEventListener("load", (function() {

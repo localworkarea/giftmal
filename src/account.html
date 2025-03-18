@@ -39,6 +39,7 @@
 								</div>
 							</div>
 							<div data-tabs-body class="tabs-account__content">
+								<!-- data-account tab -->
 								<div class="tabs-account__body data-account">
 									<div class="data-account__header">
 										<div class="data-account__header-wr">
@@ -134,6 +135,8 @@
 										</div>
 									</div>
 								</div>
+
+								<!-- balance-account tab -->
 								<div class="tabs-account__body balance-account">
 									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="balance-account__title title-btn icon-arrow-down" aria-label="open menu">Мій баланс</button>
 									<div class="balance-account__balance-current current-balance">
@@ -502,11 +505,285 @@
 										</details>
 									</div>
 								</div>
+
+								<!-- order-account tab -->
 								<div class="tabs-account__body order-account">
-									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="order-account__title title-btn icon-arrow-down" aria-label="open menu">Усі Замовлення</button>
+									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="order-account__title title-btn icon-arrow-down" aria-label="open menu">Мої Сертифікати</button>
 								</div>
+
+								<!-- certificate-account tab -->
 								<div class="tabs-account__body certificate-account">
-									<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="certificate-account__title title-btn icon-arrow-down" aria-label="open menu">Мої Сертифікати</button>
+									<div class="certificate-account__wrapper certificate-account__wrapper--main">
+										<div class="certificate-account__item">
+											<div class="certificate-account__head certificate-account__head--main">
+												<button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="certificate-account__title certificate-account__title title-btn icon-arrow-down" aria-label="open menu">Усі Замовлення</button>
+											</div>
+											<div class="certificate-account__subhead">
+												<div class="certificate-account__search search__wrapper icon-search">
+													<input autocomplete="off" type="text" class="search__input" placeholder="Пошук по брендам">
+												</div>
+												<div class="certificate-account__select select-certificate">
+													<div class="select-certificate__block">
+														<p class="select-certificate__text text-select">Оберіть, щоб відмітити<br> використаним декілька</p>
+														<p class="select-certificate__text text-count">Вибрано: <span>0</span></p>
+													</div>
+													<button type="button" class="select-certificate__btn btn btn_light btn_sm" aria-label="select">
+														<span class="btn-select">Обрати сертифікати</span>
+														<span class="btn-count icon-checked-sertificates">Відмітити використаним</span>
+													</button>
+												</div>
+											</div>
+											<div class="certificate-account__body">
+												<ul class="certificate-account__header">
+													<li class="certificate-account__header-cell header-checkbox">
+														<div class="checkbox">
+															<input id="certificatesSelectAll" type="checkbox" class="checkbox__input">
+															<label for="certificatesSelectAll" class="checkbox__label icon-checkbox">
+															</label>
+														</div>
+														<span>Фото</span>
+													</li>
+													<li class="certificate-account__header-cell icon-arrow-down">Бренд</li>
+													<li class="certificate-account__header-cell icon-arrow-down">Дата покупки</li>
+													<li class="certificate-account__header-cell icon-arrow-down">Номінал</li>
+													<li class="certificate-account__header-cell icon-arrow-down">Дійсний до</li>
+												</ul>
+												<ul class="certificate-account__list">
+													<li class="certificate-account__item-cert item-cert _active">
+														<div class="item-cert__photo">
+															<div class="checkbox">
+																<input id="cert-1" type="checkbox" name="certificates" value="1" class="checkbox__input">
+																<label for="cert-1" class="checkbox__label icon-checkbox"></label>
+															</div>
+															<img class="item-cert__img" src="@img/certificates/certificate-01.jpg" width="62" height="40" alt="Image">
+														</div>
+														<div class="item-cert__brand">
+															Women’secret
+														</div>
+														<div class="item-cert__date-buy">
+															29.10.2024
+														</div>
+														<div class="item-cert__denomination">
+															<span class="symbol-mob">₴</span> <span class="numb-dec">4000</span> <span class="symbol-pc">грн</span>
+														</div>
+														<div class="item-cert__date-expired">
+															<span>Дійсний до</span> 29.10.2028
+														</div>
+														<div class="item-cert__last">
+															<a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
+															<button type="button" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+														</div>
+													</li>
+													<li class="certificate-account__item-cert item-cert _active">
+														<div class="item-cert__photo">
+															<div class="checkbox">
+																<input id="cert-2" type="checkbox" name="certificates" value="2" class="checkbox__input">
+																<label for="cert-2" class="checkbox__label icon-checkbox"></label>
+															</div>
+															<img class="item-cert__img" src="@img/certificates/certificate-02.jpg" width="62" height="40" alt="Image">
+														</div>
+														<div class="item-cert__brand">
+															The Cake
+														</div>
+														<div class="item-cert__date-buy">
+															29.10.2024
+														</div>
+														<div class="item-cert__denomination">
+															<span class="symbol-mob">₴</span> <span class="numb-dec">2000</span> <span class="symbol-pc">грн</span>
+														</div>
+														<div class="item-cert__date-expired">
+															<span>Дійсний до</span> 29.10.2028
+														</div>
+														<div class="item-cert__last">
+															<a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
+															<button type="button" class="item-cert__modal icon-dots" aria-label="open modal">
+																
+															</button>
+														</div>
+													</li>
+													<li class="certificate-account__item-cert item-cert _active">
+														<div class="item-cert__photo">
+															<div class="checkbox">
+																<input id="cert-3" type="checkbox" name="certificates" value="3" class="checkbox__input">
+																<label for="cert-3" class="checkbox__label icon-checkbox"></label>
+															</div>
+															<img class="item-cert__img" src="@img/certificates/certificate-03.jpg" width="62" height="40" alt="Image">
+														</div>
+														<div class="item-cert__brand">
+															Foxtrot
+														</div>
+														<div class="item-cert__date-buy">
+															29.10.2024
+														</div>
+														<div class="item-cert__denomination">
+															<span class="symbol-mob">₴</span> <span class="numb-dec">1000</span> <span class="symbol-pc">грн</span>
+														</div>
+														<div class="item-cert__date-expired">
+															<span>Дійсний до</span> 29.10.2028
+														</div>
+														<div class="item-cert__last">
+															<a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
+															<button type="button" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+														</div>
+													</li>
+													<li class="certificate-account__item-cert item-cert _active">
+														<div class="item-cert__photo">
+															<div class="checkbox">
+																<input id="cert-4" type="checkbox" name="certificates" value="4" class="checkbox__input">
+																<label for="cert-4" class="checkbox__label icon-checkbox"></label>
+															</div>
+															<img class="item-cert__img" src="@img/certificates/certificate-04.jpg" width="62" height="40" alt="Image">
+														</div>
+														<div class="item-cert__brand">
+															Brocard
+														</div>
+														<div class="item-cert__date-buy">
+															29.10.2024
+														</div>
+														<div class="item-cert__denomination">
+															<span class="symbol-mob">₴</span> <span class="numb-dec">3500</span> <span class="symbol-pc">грн</span>
+														</div>
+														<div class="item-cert__date-expired">
+															<span>Дійсний до</span> 29.10.2028
+														</div>
+														<div class="item-cert__last">
+															<a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
+															<button type="button" class="item-cert__modal icon-dots" aria-label="open modal">
+																
+															</button>
+														</div>
+													</li>
+													<li class="certificate-account__item-cert item-cert _active">
+														<div class="item-cert__photo">
+															<div class="checkbox">
+																<input id="cert-5" type="checkbox" name="certificates" value="5" class="checkbox__input">
+																<label for="cert-5" class="checkbox__label icon-checkbox"></label>
+															</div>
+															<img class="item-cert__img" src="@img/certificates/certificate-05.jpg" width="62" height="40" alt="Image">
+														</div>
+														<div class="item-cert__brand">
+															WineTime
+														</div>
+														<div class="item-cert__date-buy">
+															29.10.2024
+														</div>
+														<div class="item-cert__denomination">
+															<span class="symbol-mob">₴</span> <span class="numb-dec">100</span> <span class="symbol-pc">грн</span>
+														</div>
+														<div class="item-cert__date-expired">
+															<span>Дійсний до</span> 29.10.2028
+														</div>
+														<div class="item-cert__last">
+															<a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
+															<button type="button" class="item-cert__modal icon-dots" aria-label="open modal">
+																
+															</button>
+														</div>
+													</li>
+													<li class="certificate-account__item-cert item-cert _active">
+														<div class="item-cert__photo">
+															<div class="checkbox">
+																<input id="cert-6" type="checkbox" name="certificates" value="6" class="checkbox__input">
+																<label for="cert-6" class="checkbox__label icon-checkbox"></label>
+															</div>
+															<img class="item-cert__img" src="@img/certificates/certificate-06.jpg" width="62" height="40" alt="Image">
+														</div>
+														<div class="item-cert__brand">
+															The Cake
+														</div>
+														<div class="item-cert__date-buy">
+															29.10.2024
+														</div>
+														<div class="item-cert__denomination">
+															<span class="symbol-mob">₴</span> <span class="numb-dec">500</span> <span class="symbol-pc">грн</span>
+														</div>
+														<div class="item-cert__date-expired">
+															<span>Дійсний до</span> 29.10.2028
+														</div>
+														<div class="item-cert__last">
+															<a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
+															<button type="button" class="item-cert__modal icon-dots" aria-label="open modal">
+																
+															</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+											<div class="certificate-account__footer">
+												<div class="certificate-account__pagging pagging">
+													<a href="#" class="pagging__arrow icon-arrow-down _prev" aria-label="Previous page"></a>
+													<ul class="pagging__list">
+														<li>
+															<a href="index.html" class="pagging__item _active">1</a>
+														</li>
+														<li>
+															<a href="#" class="pagging__item">2</a>
+														</li>
+														<li>
+															<a href="#" class="pagging__item">3</a>
+														</li>
+														<li>
+															<a href="#" class="pagging__item">4</a>
+														</li>
+													</ul>
+													<a href="#" class="pagging__arrow icon-arrow-down _next" aria-label="Next page"></a>
+												</div>
+												<button type="button" data-da=".certificate-account__head--main,480.98" class="certificate-account__switch icon-checked-sertificates">
+													Використані <span>сертифікати</span>
+												</button>
+											</div>
+										</div>
+									</div>
+									<div hidden class="certificate-account__wrapper certificate-account__wrapper--used">
+										<div class="certificate-account__item">
+											<div class="certificate-account__head">
+												<button type="button" class="certificate-account__title certificate-account__title--used" aria-label="back to main">
+													<span class="icon-arrow-back"></span>
+													Використані cертифікати
+												</button>
+											</div>
+											<div class="certificate-account__subhead">
+												<div class="certificate-account__search search__wrapper icon-search">
+													<input autocomplete="off" type="text" class="search__input" placeholder="Пошук по брендам">
+												</div>
+												<div class="certificate-account__select select-certificate">
+													<div class="select-certificate__block">
+														<p class="select-certificate__text text-select">Оберіть, щоб повернути<br>
+															до дійсних декілька</p>
+														<p class="select-certificate__text text-count">Вибрано: <span>0</span></p>
+													</div>
+													<button type="button" class="select-certificate__btn btn btn_light btn_sm" aria-label="select">
+														<span class="btn-select">Обрати сертифікати</span>
+														<span class="btn-count">Повернути до дійсних</span>
+													</button>
+												</div>
+											</div>
+											<div class="certificate-account__body">
+												<div class="certificate-account__header"></div>
+												<div class="certificate-account__content"></div>
+											</div>
+											<div class="certificate-account__footer">
+												<div class="certificate-account__pagging pagging">
+													<a href="#" class="pagging__arrow icon-arrow-down _prev" aria-label="Previous page"></a>
+													<ul class="pagging__list">
+														<li>
+															<a href="index.html" class="pagging__item _active">1</a>
+														</li>
+														<li>
+															<a href="#" class="pagging__item">2</a>
+														</li>
+														<li>
+															<a href="#" class="pagging__item">3</a>
+														</li>
+														<li>
+															<a href="#" class="pagging__item">4</a>
+														</li>
+													</ul>
+													<a href="#" class="pagging__arrow icon-arrow-down _next" aria-label="Next page"></a>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

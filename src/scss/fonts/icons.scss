@@ -17,6 +17,12 @@
 
 
 // https://icomoon.io/app/#/select/font
+.icon-dots:before {
+  content: "\e96a";
+}
+.icon-download:before {
+  content: "\e969";
+}
 .icon-delivery:before {
   content: "\e968";
 }

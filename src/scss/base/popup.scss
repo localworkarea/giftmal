@@ -1734,7 +1734,7 @@ body::after {
 	// .popup-history__pagging
 	&__pagging {
 		&.pagging {
-			justify-content: flex-start !important;
+			justify-content: flex-start;
 			gap: toRem(4);
 			.pagging__arrow {
 				width: toRem(24);

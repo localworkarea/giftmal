@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formatNumb = wNumb({
       thousand: " ", // Разделитель тысячных
       decimals: 0,    // Округление до целых
-      mark: "."
+      mark: "." // Разделитель целой и дробной части
   });
 
   document.querySelectorAll(".numb").forEach((el) => {
@@ -30,6 +30,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   });
 
+  const formatNumbDecimals = wNumb({
+    thousand: " ", // Разделитель тысячных
+    decimals: 2,   // Округление до копеек
+    mark: "."      // Разделитель целой и дробной части
+  });
+
+  document.querySelectorAll(".numb-dec").forEach((el) => {
+    let num = parseFloat(el.textContent.replace(/\s+/g, ""));
+    if (!isNaN(num)) {
+        el.textContent = formatNumbDecimals.to(num);
+    }
+  });
 
 
 
@@ -1858,5 +1870,77 @@ document.addEventListener("DOMContentLoaded", () => {
   // Отслеживаем изменение медиазапроса и обновляем список при смене режима
   mediaQuery.addEventListener("change", () => {
     renderList(jsonData);
+  });
+});
+
+
+
+
+// == Account page - Certificates =======================================
+
+// -- change Main/Used Certificates --
+document.addEventListener('DOMContentLoaded', function() {
+  const typeSwitch = document.querySelector('.certificate-account__switch');
+  const mainSertificates = document.querySelector('.certificate-account__wrapper--main');
+  const usedSertificates = document.querySelector('.certificate-account__wrapper--used');
+  const backButton = document.querySelector('.certificate-account__title--used');
+
+  // Проверяем наличие элементов, чтобы избежать ошибок
+  if (!mainSertificates || !usedSertificates || !typeSwitch || !backButton) return;
+
+  // Изначально скрываем usedSertificates
+  usedSertificates.hidden = true;
+
+  // Функция обработки select-certificate внутри переданного контейнера
+  function handleSelectCertificates(container) {
+    const selectCertificateBlocks = container.querySelectorAll('.select-certificate');
+
+    selectCertificateBlocks.forEach(block => {
+      const textSelect = block.querySelector('.text-select');
+      const textCount = block.querySelector('.text-count');
+      const btnSelect = block.querySelector('.btn-select');
+      const btnCount = block.querySelector('.btn-count');
+      const button = block.querySelector('.select-certificate__btn');
+
+      if (!textSelect || !textCount || !btnSelect || !btnCount || !button) return;
+
+      // Изначально скрываем text-count и btn-count
+      textCount.style.display = 'none';
+      btnCount.style.display = 'none';
+
+      button.addEventListener('click', function() {
+        const isActive = textSelect.style.display === 'none';
+
+        if (isActive) {
+          // Вернуть в исходное состояние
+          textSelect.style.display = '';
+          btnSelect.style.display = '';
+          textCount.style.display = 'none';
+          btnCount.style.display = 'none';
+        } else {
+          // Переключить на активное состояние
+          textSelect.style.display = 'none';
+          btnSelect.style.display = 'none';
+          textCount.style.display = '';
+          btnCount.style.display = '';
+        }
+      });
+    });
+  }
+
+  // Обрабатываем select-certificate в обоих контейнерах
+  handleSelectCertificates(mainSertificates);
+  handleSelectCertificates(usedSertificates);
+
+  // При клике на переключатель меняем видимость блоков
+  typeSwitch.addEventListener('click', function() {
+    mainSertificates.hidden = true;
+    usedSertificates.hidden = false;
+  });
+
+  // При клике на кнопку "Назад" возвращаем основное состояние
+  backButton.addEventListener('click', function() {
+    usedSertificates.hidden = true;
+    mainSertificates.hidden = false;
   });
 });
