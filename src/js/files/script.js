@@ -1,6 +1,6 @@
 // Підключення функціоналу "Чертоги Фрілансера"
 // import { tr } from "intl-tel-input/i18n";
-import { isMobile, bodyLockToggle, _slideToggle, _slideUp, _slideDown, showMessage, closeAllMessages} from "./functions.js";
+import { isMobile, bodyLockToggle, bodyUnlock, bodyLock, bodyLockStatus, _slideToggle, _slideUp, _slideDown, closeAllMessages, showMessage} from "./functions.js";
 // Підключення списку активних модулів
 import { flsModules } from "./modules.js";
 
@@ -747,7 +747,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateGlobalFiltersCount();
   }
 
-
   function updateCount(wrapper) {
       const inputs = wrapper.querySelectorAll('[data-filters-body] input[type="checkbox"]:checked, [data-filters-body] input[type="radio"]:checked');
       const count = inputs.length;
@@ -940,106 +939,594 @@ document.addEventListener("DOMContentLoaded", () => {
 
       
 
-      // Робота з чекбоксами, кнопками підтвердження, відкриття попапу #popupRules;
-      const popupRules = document.getElementById("popupRules");
-      const popupBody = popupRules.querySelector(".popup-body-rules");
-      const popupMain = popupRules.querySelector(".popup-body-rules__main");
-      const popupContent = popupRules.querySelector(".popup-body-rules__content");
-      const confirmButton = popupRules.querySelector("[data-card-confirm]");
-      const checkboxRules = document.querySelector("[data-checkbox-rules]");
-      const addButton = document.querySelector("[data-card-add]");
-      let isCheckedThroughPopup = false;
-      let isAddButtonHandlerActive = false;
-  
-      function openPopup(event) {
-          event.preventDefault();
-          flsModules.popup.open('#popupRules');
-      }
-  
-      function updateAddButtonState() {
-          if (!checkboxRules) return
-          if (!mediaQuery480max.matches) {
-              if (checkboxRules.checked) {
-                  addButton.removeAttribute("disabled");
-              } else {
-                  addButton.setAttribute("disabled", "true");
-              }
-          }
-      }
-  
-      function handleAddButtonClick(event) {
-          if (mediaQuery480max.matches) {
-              openPopup(event);
-          }
-      }
-  
-      function checkMediaQuery() {
-        if (!addButton) return
-          if (mediaQuery480max.matches) {
-              addButton.removeAttribute("disabled");
-              if (!isAddButtonHandlerActive) {
-                  addButton.addEventListener("click", handleAddButtonClick);
-                  isAddButtonHandlerActive = true;
-              }
-          } else {
-              updateAddButtonState();
-          }
-      }
-  
-      if (checkboxRules) {
-          checkboxRules.addEventListener("click", function (event) {
-              if (!isCheckedThroughPopup) {
-                  event.preventDefault();
-                  openPopup(event);
-              } else {
-                  isCheckedThroughPopup = false;
-                  updateAddButtonState();
-              }
-          });
-      }
-  
-      if (popupContent && confirmButton) {
+      // Робота з чекбоксами, кнопками підтвердження, відкриття попапу #popupRules
+      // Card Page, Account Page ----
+      document.querySelectorAll(".popup-rules").forEach((popupRules) => {
+        const popupBody = popupRules.querySelector(".popup-body-rules");
+        const popupContent = popupRules.querySelector(".popup-body-rules__content");
+        const confirmButton = popupRules.querySelector("[data-card-confirm]");
+        const checkboxRules = document.querySelector("[data-checkbox-rules]");
+        const addButton = document.querySelector("[data-card-add]");
+    
+        if (!popupBody || !popupContent) return; // Если ключевые элементы отсутствуют, пропускаем этот попап
+    
+        let isCheckedThroughPopup = false;
+        let isAddButtonHandlerActive = false;
+    
+        function openPopup(event) {
+            event.preventDefault();
+            flsModules.popup.open(`#${popupRules.id}`);
+        }
+    
+        function updateAddButtonState() {
+            if (!checkboxRules || !addButton) return;
+            if (!mediaQuery480max.matches) {
+                if (checkboxRules.checked) {
+                    addButton.removeAttribute("disabled");
+                } else {
+                    addButton.setAttribute("disabled", "true");
+                }
+            }
+        }
+    
+        function handleAddButtonClick(event) {
+            if (mediaQuery480max.matches) {
+                openPopup(event);
+            }
+        }
+    
+        function checkMediaQuery() {
+            if (!addButton) return;
+            if (mediaQuery480max.matches) {
+                addButton.removeAttribute("disabled");
+                if (!isAddButtonHandlerActive) {
+                    addButton.addEventListener("click", handleAddButtonClick);
+                    isAddButtonHandlerActive = true;
+                }
+            } else {
+                updateAddButtonState();
+            }
+        }
+    
+        if (checkboxRules) {
+            checkboxRules.addEventListener("click", function (event) {
+                if (!isCheckedThroughPopup) {
+                    event.preventDefault();
+                    openPopup(event);
+                } else {
+                    isCheckedThroughPopup = false;
+                    updateAddButtonState();
+                }
+            });
+        }
+    
         popupContent.addEventListener("scroll", function () {
             if (popupContent.scrollTop > 5) {
-              popupBody.classList.add("_scroll-active");
+                popupBody.classList.add("_scroll-active");
             } else {
-              popupBody.classList.remove("_scroll-active");
+                popupBody.classList.remove("_scroll-active");
             }
     
             const isScrolledToEnd = popupContent.scrollTop + popupContent.clientHeight >= popupContent.scrollHeight - 1;
             if (isScrolledToEnd) {
-                confirmButton.removeAttribute("disabled");
+                if (confirmButton) {
+                  confirmButton.removeAttribute("disabled");
+                }
                 popupBody.classList.add("_scroll-end");
             } else {
-              popupBody.classList.remove("_scroll-end");
+                popupBody.classList.remove("_scroll-end");
             }
         });
-      }
     
-      confirmButton.addEventListener("click", function () {
-          if (checkboxRules) {
-              checkboxRules.checked = true;
-              isCheckedThroughPopup = true;
-              updateAddButtonState();
-              if (mediaQuery480max.matches) {
-                  addButton.removeEventListener("click", handleAddButtonClick);
-                  isAddButtonHandlerActive = false;
-              }
-              setTimeout(() => {
-                  flsModules.popup.close('#popupRules');
-              }, 100);
-          }
-      });
-  
+        if (!confirmButton) return;
+        confirmButton.addEventListener("click", function () {
+            if (!checkboxRules) return;
+            checkboxRules.checked = true;
+            isCheckedThroughPopup = true;
+            updateAddButtonState();
+            if (mediaQuery480max.matches) {
+                addButton?.removeEventListener("click", handleAddButtonClick);
+                isAddButtonHandlerActive = false;
+            }
+            setTimeout(() => {
+                flsModules.popup.close(`#${popupRules.id}`);
+            }, 100);
+        });
+    
         mediaQuery480max.addEventListener("change", checkMediaQuery);
-        checkMediaQuery(); 
-        updateAddButtonState(); 
+        checkMediaQuery();
+        updateAddButtonState();
+      });
+    
+    
       // ==================================================================
 
 
 
+      // Search an History Balance (Account Balance Page) =====================
+      const bodyHistory = document.querySelector(".popup-history");
+      const listContainer = bodyHistory.querySelector(".popup-history__list");
+      const filterButtonsHistory = bodyHistory.querySelectorAll(".popup-history__filter-btn");
+      const searchInput = bodyHistory.querySelector("#historyBalanceSearch");
+      const searchInputWrapper = searchInput.closest(".popup-history__search");
+      const wrapper = bodyHistory.querySelector(".popup-history__wrapper");
+      const noCardMessage = bodyHistory.querySelector(".popup-history__no-card");
+      const allFilterButton = bodyHistory.querySelector('.popup-history__filter-btn[data-history="all"]');
+      const pagination = bodyHistory.querySelector(".pagging");
+      const paginationLinks = bodyHistory.querySelectorAll(".pagging__item, .pagging__arrow");
+
+      let jsonData = [];
+
+      // Медиа-запрос для отслеживания изменений ширины экрана
+      const mediaQuery = window.matchMedia("(max-width: 30.061em)");
+
+      // Функция рендера списка
+      function renderList(data) {
+        listContainer.innerHTML = "";
+
+        // Проверяем, ограничивать ли вывод элементов
+        const displayedData = mediaQuery.matches ? data : data.slice(0, 8);
+      
+        displayedData.forEach(item => {
+          const li = document.createElement("li");
+          li.classList.add("popup-history__item", `_${item.status}`);
+        
+          li.innerHTML = `
+            <div class="popup-history__cell cell-code">${item.code}</div>
+            <div class="popup-history__cell cell-denomination">${item.denomination} грн</div>
+            <div class="popup-history__cell cell-activation">${item.activation}</div>
+            <div class="popup-history__cell cell-status row-icon">${item.statusText}</div>
+            <div class="popup-history__cell cell-date">${item.date}</div>
+          `;
+        
+          listContainer.appendChild(li);
+        });
+      
+        // Управляем видимостью при поиске
+        if (data.length === 0) {
+          wrapper.style.display = "none";
+          pagination.style.display = "none";
+          noCardMessage.style.display = "block";
+          searchInputWrapper.classList.add("_error");
+        } else {
+          wrapper.style.display = "block";
+          pagination.style.display = "flex";
+          noCardMessage.style.display = "none";
+          searchInputWrapper.classList.remove("_error");
+        }
+      }
+
+      // Загружаем JSON
+      fetch("files/history-balance/history.json")
+        .then(response => response.json())
+        .then(data => {
+          jsonData = data;
+          renderList(jsonData);
+        })
+        .catch(error => console.error("Ошибка загрузки JSON:", error));
+      
+      // Фильтрация по статусу
+      filterButtonsHistory.forEach(button => {
+        button.addEventListener("click", () => {
+          filterButtonsHistory.forEach(btn => btn.classList.remove("active"));
+          button.classList.add("active");
+        
+          const filterValue = button.getAttribute("data-history");
+        
+          if (filterValue === "all") {
+            renderList(jsonData);
+          } else {
+            const filteredData = jsonData.filter(item => item.status === filterValue);
+            renderList(filteredData);
+          }
+        });
+      });
+
+      // Поиск по номеру карты
+      searchInput.addEventListener("input", () => {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+      
+        if (searchTerm === "") {
+          renderList(jsonData);
+          searchInputWrapper.classList.remove("_error");
+        
+          // Возвращаем активную кнопку на "all"
+          filterButtonsHistory.forEach(btn => btn.classList.remove("active"));
+          allFilterButton.classList.add("active");
+        
+          return;
+        }
+      
+        const filteredData = jsonData.filter(item => item.code.toLowerCase().includes(searchTerm));
+        renderList(filteredData);
+      });
+
+      // Предотвращаем закрытие попапа для пагинации внутри pop-up
+      paginationLinks.forEach(link => {
+        link.addEventListener("click", event => {
+          event.preventDefault();
+          event.stopPropagation();
+        });
+      });
+
+      // Отслеживаем изменение медиазапроса и обновляем список при смене режима
+      mediaQuery.addEventListener("change", () => {
+        renderList(jsonData);
+      });
 
 
+
+
+
+
+      // ======================================================================
+      // == Account page - Certificates =====================================
+      // -- change Main/Used Certificates --
+
+
+
+
+
+// Константы
+const mainWrapper = document.querySelector(".certificate-account__wrapper--main");
+const usedWrapper = document.querySelector(".certificate-account__wrapper--used");
+const switchBtn = document.querySelector(".certificate-account__switch");
+const backBtn = document.querySelector(".certificate-account__title--used");
+const tabsNavigation = document.querySelector("[data-tabs-titles]");
+
+// Функция переключения на использованные сертификаты
+function showUsedTab() {
+  resetSelection(mainWrapper); // Сбрасываем состояние main перед переключением
+  mainWrapper.hidden = true;
+  usedWrapper.hidden = false;
+  attachEvents(usedWrapper);
+}
+
+// Функция переключения на главную вкладку
+function showMainTab() {
+  resetSelection(usedWrapper); // Сбрасываем состояние used перед переключением
+  mainWrapper.hidden = false;
+  usedWrapper.hidden = true;
+  attachEvents(mainWrapper);
+}
+
+// Функция проверки активного состояния
+function isSelectionActive(wrapper) {
+  return wrapper.querySelectorAll(".item-cert._checked").length > 0;
+}
+
+// Функция обновления количества выбранных сертификатов
+function updateSelectedCount(wrapper) {
+  const countElement = wrapper.querySelector(".text-count span");
+  const selectedCount = wrapper.querySelectorAll(".item-cert._checked").length;
+
+  if (countElement) {
+    countElement.textContent = selectedCount;
+  }
+}
+
+// Функция установки активного состояния
+function activateSelection(wrapper) {
+  const itemCerts = wrapper.querySelectorAll(".item-cert");
+  const headerCheckbox = wrapper.querySelector(".header-checkbox");
+  const selectContainer = wrapper.querySelector(".select-certificate");
+
+  itemCerts.forEach(item => item.classList.add("_item-active"));
+  headerCheckbox.classList.add("_items-active");
+  selectContainer.classList.add("_active");
+
+  updateSelectedCount(wrapper);
+}
+
+// Функция сброса активного состояния
+function resetSelection(wrapper) {
+  if (!wrapper) return;
+
+  const itemCerts = wrapper.querySelectorAll(".item-cert");
+  const headerCheckbox = wrapper.querySelector(".header-checkbox");
+  const selectContainer = wrapper.querySelector(".select-certificate");
+  const selectAllCheckbox = headerCheckbox?.querySelector(".checkbox__input");
+
+  itemCerts.forEach(item => {
+    item.classList.remove("_item-active", "_checked");
+    item.querySelector(".checkbox__input").checked = false;
+  });
+
+  headerCheckbox.classList.remove("_items-active");
+  selectContainer.classList.remove("_active");
+  if (selectAllCheckbox) selectAllCheckbox.checked = false;
+
+  updateSelectedCount(wrapper);
+}
+
+// Функция обработки клика по айтему
+function handleItemClick(event) {
+  if (event.target.closest(".item-cert__download, .item-cert__modal, .checkbox")) {
+    return;
+  }
+
+  const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+  const item = event.currentTarget;
+  const checkbox = item.querySelector(".checkbox__input");
+
+  activateSelection(wrapper);
+
+  // Переключаем состояние чекбокса и `_checked`
+  checkbox.checked = !checkbox.checked;
+  item.classList.toggle("_checked", checkbox.checked);
+
+  updateSelectedCount(wrapper);
+
+  // Если нет отмеченных элементов — сбрасываем активное состояние
+  if (!isSelectionActive(wrapper)) {
+    resetSelection(wrapper);
+  }
+}
+
+// Функция обработки клика по чекбоксу
+function handleCheckboxClick(event) {
+  event.stopPropagation();
+
+  const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+  const checkbox = event.target;
+  const item = checkbox.closest(".item-cert");
+
+  activateSelection(wrapper);
+
+  // Тоглим `_checked` класс в зависимости от состояния чекбокса
+  item.classList.toggle("_checked", checkbox.checked);
+
+  updateSelectedCount(wrapper);
+
+  // Если нет отмеченных элементов — сбрасываем активное состояние
+  if (!isSelectionActive(wrapper)) {
+    resetSelection(wrapper);
+  }
+}
+
+// Функция выделения всех айтемов
+function toggleSelectAll(event) {
+  const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+  const itemCerts = wrapper.querySelectorAll(".item-cert");
+  const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
+
+  const isChecked = selectAllCheckbox.checked;
+  itemCerts.forEach(item => {
+    const checkbox = item.querySelector(".checkbox__input");
+    item.classList.toggle("_checked", isChecked);
+    checkbox.checked = isChecked;
+  });
+
+  if (isChecked) {
+    activateSelection(wrapper);
+  } else {
+    resetSelection(wrapper);
+  }
+
+  updateSelectedCount(wrapper);
+}
+
+// Функция обработки клика по кнопке выбора сертификатов
+function handleSelectButtonClick(event) {
+  const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+
+  // Если вкладка в дефолтном состоянии, первый клик делает её активной
+  if (!isSelectionActive(wrapper)) {
+    activateSelection(wrapper);
+    return;
+  }
+
+  // После активации вкладки — вызываем showMessage
+  const button = event.currentTarget;
+  const msgSelector = button.getAttribute("data-account-msg");
+  if (msgSelector) {
+    showMessage(msgSelector);
+  }
+}
+
+// Функция сброса при переключении вкладок
+function handleTabSwitch(event) {
+  const clickedTab = event.target.closest(".tabs-account__btn");
+  if (!clickedTab) return;
+
+  // Если была выбрана не вкладка "Мої Сертифікати" — сбрасываем активное состояние
+  if (!clickedTab.classList.contains("icon-sertificates")) {
+    resetSelection(mainWrapper);
+    resetSelection(usedWrapper);
+  }
+}
+
+// Функция навешивания событий внутри активного контейнера
+function attachEvents(wrapper) {
+  const itemCerts = wrapper.querySelectorAll(".item-cert");
+  const selectBtn = wrapper.querySelector(".select-certificate__btn");
+  const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
+
+  if (selectBtn) selectBtn.addEventListener("click", handleSelectButtonClick);
+  if (selectAllCheckbox) selectAllCheckbox.addEventListener("change", toggleSelectAll);
+  itemCerts.forEach(item => {
+    item.addEventListener("click", handleItemClick);
+    item.querySelector(".checkbox__input").addEventListener("click", handleCheckboxClick);
+  });
+}
+
+// Навешиваем обработчики на активный контейнер
+attachEvents(mainWrapper);
+
+// Обработчики переключения вкладок
+switchBtn.addEventListener("click", showUsedTab);
+backBtn.addEventListener("click", showMainTab);
+
+// Обработчик переключения вкладок в навигации
+tabsNavigation.addEventListener("click", handleTabSwitch);
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // -- modal Account page ----------------------------
+      const modalButtons = document.querySelectorAll("[data-modal]");
+      let activeModal = null;
+      let activeButton = null;
+      let startY = 0;
+      let moveY = 0;
+
+      modalButtons.forEach(button => {
+          button.addEventListener("click", function (event) {
+              event.stopPropagation();
+          
+              const modalId = button.getAttribute("data-modal");
+              const modal = document.querySelector(modalId);
+          
+              if (!modal) return;
+          
+              if (activeModal && activeModal !== modal) {
+                  closeModal(activeModal);
+              }
+            
+              if (activeButton && activeButton !== button) {
+                  activeButton.classList.remove('_show-modal');
+              }
+            
+              positionModal(modal, button);
+            
+              modal.style.opacity = "1";
+              modal.style.visibility = "visible";
+              modal.style.pointerEvents = "auto";
+            
+              modal.classList.add('_modal-show');
+              document.documentElement.classList.add('_show-modal');
+              button.classList.add('_show-modal');
+            
+              activeModal = modal;
+              activeButton = button;
+            
+              // Если экран < 480px, блокируем скролл (только если не заблокировано ранее)
+              if (mediaQuery480max.matches && bodyLockStatus) {
+                  bodyLock();
+              }
+            
+              // Добавляем обработку свайпа вниз
+              if (mediaQuery480max.matches) {
+                  addSwipeToClose(modal);
+              }
+          });
+      });
+
+      document.addEventListener("click", function (event) {
+          if (activeModal && !activeModal.contains(event.target)) {
+              closeModal(activeModal);
+          }
+      });
+
+      document.addEventListener("click", function (event) {
+          if (mediaQuery480max.matches && activeModal) {
+              const modalWrapper = activeModal.querySelector(".modal-account__wrapper");
+              if (event.target === activeModal && !modalWrapper.contains(event.target)) {
+                  closeModal(activeModal);
+              }
+          }
+      });
+
+      document.querySelectorAll(".modal-account__close").forEach(closeBtn => {
+          closeBtn.addEventListener("click", function () {
+              if (activeModal) {
+                  closeModal(activeModal);
+              }
+          });
+      });
+
+      function positionModal(modal, button) {
+          if (mediaQuery480max.matches) {
+              modal.style.top = "";
+              modal.style.right = "";
+          } else {
+              const rect = button.getBoundingClientRect();
+              const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+              modal.style.top = `${rect.bottom + scrollTop + 4}px`;
+              modal.style.right = `${window.innerWidth - rect.right}px`;
+          }
+      }
+
+      function closeModal(modal) {
+        modal.style.top = "";
+        modal.style.right = "";
+        modal.style.opacity = "";
+        modal.style.visibility = "";
+        modal.style.pointerEvents = "";
+      
+        modal.classList.remove('_modal-show');
+        document.documentElement.classList.remove('_show-modal');
+      
+        if (activeButton) {
+            activeButton.classList.remove('_show-modal');
+            activeButton = null;
+        }
+      
+        activeModal = null;
+      
+        // Если был лок и экран < 480px, снимаем его
+        if (mediaQuery480max.matches && document.documentElement.classList.contains('lock')) {
+            bodyUnlock();
+        }
+      
+        // Сброс transform
+        const modalWrapper = modal.querySelector(".modal-account__wrapper");
+        if (modalWrapper) {
+            modalWrapper.style.transform = "";
+            modalWrapper.style.transition = "";
+        }
+      }
+
+      // Функция обработки свайпа вниз
+      function addSwipeToClose(modal) {
+          const modalWrapper = modal.querySelector(".modal-account__wrapper");
+          const closeBtn = modal.querySelector(".modal-account__close");
+      
+          if (!modalWrapper || !closeBtn) return;
+      
+          closeBtn.addEventListener("touchstart", (e) => {
+              startY = e.touches[0].clientY;
+              moveY = 0;
+          });
+        
+          closeBtn.addEventListener("touchmove", (e) => {
+              moveY = e.touches[0].clientY - startY;
+          
+              if (moveY > 0) {
+                  modalWrapper.style.transform = `translateY(${moveY}px)`;
+              }
+          });
+        
+          closeBtn.addEventListener("touchend", () => {
+              if (moveY > 30) {
+                  closeModal(modal);
+              } else {
+                setTimeout(() => {
+                  modalWrapper.style.transform = "";
+                }, 300);
+              }
+          });
+      }
+
+      // Отслеживаем изменение ширины экрана
+      mediaQuery480max.addEventListener("change", function () {
+          if (!mediaQuery480max.matches && document.documentElement.classList.contains('lock')) {
+              bodyUnlock();
+          }
+          if (activeModal && activeButton) {
+              positionModal(activeModal, activeButton);
+          }
+      });
 
 
 
@@ -1760,187 +2247,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Search an History Balance (Account Balance Page) =====================
-document.addEventListener("DOMContentLoaded", () => {
-  const bodyHistory = document.querySelector(".popup-history");
-  const listContainer = bodyHistory.querySelector(".popup-history__list");
-  const filterButtons = bodyHistory.querySelectorAll(".popup-history__filter-btn");
-  const searchInput = bodyHistory.querySelector("#historyBalanceSearch");
-  const searchInputWrapper = searchInput.closest(".popup-history__search");
-  const wrapper = bodyHistory.querySelector(".popup-history__wrapper");
-  const noCardMessage = bodyHistory.querySelector(".popup-history__no-card");
-  const allFilterButton = bodyHistory.querySelector('.popup-history__filter-btn[data-history="all"]');
-  const pagination = bodyHistory.querySelector(".pagging");
-  const paginationLinks = bodyHistory.querySelectorAll(".pagging__item, .pagging__arrow");
-
-  let jsonData = [];
-
-  // Медиа-запрос для отслеживания изменений ширины экрана
-  const mediaQuery = window.matchMedia("(max-width: 30.061em)");
-
-  // Функция рендера списка
-  function renderList(data) {
-    listContainer.innerHTML = "";
-    
-    // Проверяем, ограничивать ли вывод элементов
-    const displayedData = mediaQuery.matches ? data : data.slice(0, 8);
-
-    displayedData.forEach(item => {
-      const li = document.createElement("li");
-      li.classList.add("popup-history__item", `_${item.status}`);
-
-      li.innerHTML = `
-        <div class="popup-history__cell cell-code">${item.code}</div>
-        <div class="popup-history__cell cell-denomination">${item.denomination} грн</div>
-        <div class="popup-history__cell cell-activation">${item.activation}</div>
-        <div class="popup-history__cell cell-status row-icon">${item.statusText}</div>
-        <div class="popup-history__cell cell-date">${item.date}</div>
-      `;
-
-      listContainer.appendChild(li);
-    });
-
-    // Управляем видимостью при поиске
-    if (data.length === 0) {
-      wrapper.style.display = "none";
-      pagination.style.display = "none";
-      noCardMessage.style.display = "block";
-      searchInputWrapper.classList.add("_error");
-    } else {
-      wrapper.style.display = "block";
-      pagination.style.display = "flex";
-      noCardMessage.style.display = "none";
-      searchInputWrapper.classList.remove("_error");
-    }
-  }
-
-  // Загружаем JSON
-  fetch("files/history-balance/history.json")
-    .then(response => response.json())
-    .then(data => {
-      jsonData = data;
-      renderList(jsonData);
-    })
-    .catch(error => console.error("Ошибка загрузки JSON:", error));
-
-  // Фильтрация по статусу
-  filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      filterButtons.forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
-
-      const filterValue = button.getAttribute("data-history");
-
-      if (filterValue === "all") {
-        renderList(jsonData);
-      } else {
-        const filteredData = jsonData.filter(item => item.status === filterValue);
-        renderList(filteredData);
-      }
-    });
-  });
-
-  // Поиск по номеру карты
-  searchInput.addEventListener("input", () => {
-    const searchTerm = searchInput.value.trim().toLowerCase();
-
-    if (searchTerm === "") {
-      renderList(jsonData);
-      searchInputWrapper.classList.remove("_error");
-
-      // Возвращаем активную кнопку на "all"
-      filterButtons.forEach(btn => btn.classList.remove("active"));
-      allFilterButton.classList.add("active");
-
-      return;
-    }
-
-    const filteredData = jsonData.filter(item => item.code.toLowerCase().includes(searchTerm));
-    renderList(filteredData);
-  });
-
-  // Предотвращаем закрытие попапа для пагинации внутри pop-up
-  paginationLinks.forEach(link => {
-    link.addEventListener("click", event => {
-      event.preventDefault();
-      event.stopPropagation();
-    });
-  });
-
-  // Отслеживаем изменение медиазапроса и обновляем список при смене режима
-  mediaQuery.addEventListener("change", () => {
-    renderList(jsonData);
-  });
-});
 
 
 
 
-// == Account page - Certificates =======================================
 
-// -- change Main/Used Certificates --
-document.addEventListener('DOMContentLoaded', function() {
-  const typeSwitch = document.querySelector('.certificate-account__switch');
-  const mainSertificates = document.querySelector('.certificate-account__wrapper--main');
-  const usedSertificates = document.querySelector('.certificate-account__wrapper--used');
-  const backButton = document.querySelector('.certificate-account__title--used');
-
-  // Проверяем наличие элементов, чтобы избежать ошибок
-  if (!mainSertificates || !usedSertificates || !typeSwitch || !backButton) return;
-
-  // Изначально скрываем usedSertificates
-  usedSertificates.hidden = true;
-
-  // Функция обработки select-certificate внутри переданного контейнера
-  function handleSelectCertificates(container) {
-    const selectCertificateBlocks = container.querySelectorAll('.select-certificate');
-
-    selectCertificateBlocks.forEach(block => {
-      const textSelect = block.querySelector('.text-select');
-      const textCount = block.querySelector('.text-count');
-      const btnSelect = block.querySelector('.btn-select');
-      const btnCount = block.querySelector('.btn-count');
-      const button = block.querySelector('.select-certificate__btn');
-
-      if (!textSelect || !textCount || !btnSelect || !btnCount || !button) return;
-
-      // Изначально скрываем text-count и btn-count
-      textCount.style.display = 'none';
-      btnCount.style.display = 'none';
-
-      button.addEventListener('click', function() {
-        const isActive = textSelect.style.display === 'none';
-
-        if (isActive) {
-          // Вернуть в исходное состояние
-          textSelect.style.display = '';
-          btnSelect.style.display = '';
-          textCount.style.display = 'none';
-          btnCount.style.display = 'none';
-        } else {
-          // Переключить на активное состояние
-          textSelect.style.display = 'none';
-          btnSelect.style.display = 'none';
-          textCount.style.display = '';
-          btnCount.style.display = '';
-        }
-      });
-    });
-  }
-
-  // Обрабатываем select-certificate в обоих контейнерах
-  handleSelectCertificates(mainSertificates);
-  handleSelectCertificates(usedSertificates);
-
-  // При клике на переключатель меняем видимость блоков
-  typeSwitch.addEventListener('click', function() {
-    mainSertificates.hidden = true;
-    usedSertificates.hidden = false;
-  });
-
-  // При клике на кнопку "Назад" возвращаем основное состояние
-  backButton.addEventListener('click', function() {
-    usedSertificates.hidden = true;
-    mainSertificates.hidden = false;
-  });
-});

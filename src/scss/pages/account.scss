@@ -942,9 +942,15 @@
   gap: toRem(8);
   @media (min-width:toEm(1100.98)){
     grid-template-columns: 15% 17% 1fr 1fr 1fr toRem(173);
+    .certificate-account__wrapper--used & {
+      grid-template-columns: 15% 17% 1fr 1fr 1fr toRem(40);
+    }
   }
   @media (max-width: toEm(1100.98)) and (min-width: toEm(920.98)) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr toRem(88);      
+    .certificate-account__wrapper--used & {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr toRem(40);      
+    }
   }
 }
 .certificate-account {
@@ -1094,10 +1100,19 @@
     color: var(--fade-violet-2);
     &.header-checkbox {
       gap: toRem(8) !important;
-      @media (min-width:toEm(920.98)){
-        .checkbox {
+      .checkbox {
+        @media (min-width:toEm(920.98)){
           opacity: 0;
           pointer-events: none;
+          transition: opacity .2s ease;
+        }
+      }
+      &._items-active {
+        .checkbox {
+          @media (min-width:toEm(920.98)){
+            opacity: 1;
+            pointer-events: auto;
+          }
         }
       }
     }
@@ -1179,7 +1194,19 @@
   border-radius: toRem(24);
   background-color: var(--white);
   cursor: pointer;
-  transition: box-shadow .3s ease;
+  transition: box-shadow .2s ease;
+  &._checked {
+
+  } 
+  &._item-active {
+
+  }
+  &._active {
+    border-color: var(--light-green);
+  }
+  &._used {
+    border-color: var(--light-red);
+  }
   @media (any-hover: hover){
     &:hover{
       box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.16);
@@ -1203,12 +1230,6 @@
     gap: toRem(11);
     margin-bottom: toRem(8);
   }
-  &._active {
-    border-color: var(--light-green);
-  }
-  &._used {
-    border-color: var(--light-red);
-  }
   // .item-cert__photo
   &__photo {
     @extend %flexCenterGap8;
@@ -1216,6 +1237,9 @@
       @media (min-width:toEm(920.98)){
         transition: opacity .3s ease;
         opacity: 0;
+        ._item-active & {
+          opacity: 1;
+        }
       }
       @media (max-width: toEm(920.98)){
         visibility: hidden;
@@ -1385,12 +1409,33 @@
         color: var(--white);
       }
     }
+    &._show-modal {
+      background-color: var(--dark-violet);
+      color: var(--white);
+    }
+    &:active {
+      background-color: var(--dark-violet);
+      color: var(--white);
+    }
   }
 }
 
-
 .select-certificate {
   @extend %flexCenterGap8;
+  &._active {
+    .text-select {
+      display: none;
+    }
+    .text-count {
+      display: block;
+    }
+    .btn-select {
+      display: none;
+    }
+    .btn-count {
+      display: flex;
+    }
+  }
   @media (max-width: toEm(920.98)){
     display: none;
   }
@@ -1403,12 +1448,18 @@
     color: var(--fade-violet-2);
     line-height: 1.46;
     &.text-select {}
-    &.text-count {}
+    &.text-count {
+      display: none;
+    }
   }
   // .select-certificate__btn
   &__btn {
     padding-inline: toRem(16);
     max-width: max-content;
+    .btn-select {}
+    .btn-count {
+      display: none;
+    }
     .icon-checked-sertificates {
       @extend %flexCenterGap8;
       line-height: 1;
@@ -1419,6 +1470,104 @@
   }
 }
 
+
+
+// -- модальне вікно для Мої Сертифікати та Усі замовлення ===============
+.modal-account {
+  position: absolute;
+  z-index: 6;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+  &._modal-show {}
+  @media (max-width:$mobileSmall){
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  // .modal-account__wrapper
+  &__wrapper {
+    background-color: var(--white);
+    @media (min-width:$mobileSmall){
+      padding: toRem(24);
+      border-radius: toRem(24);
+      box-shadow: 0 4px 30px 0 rgba(33, 5, 41, 0.08);
+    }
+    @media (max-width:$mobileSmall){
+      border-radius: toRem(32) toRem(32) 0 0;
+      box-shadow: 0 -10px 70px 0 rgba(33, 5, 41, 0.16);
+      padding-bottom: toRem(10);
+      transform: translate(0,100%);
+      transition: transform .3s ease 0s;
+      ._modal-show & {
+        transform: translate(0,0);
+      }
+    }
+  }
+  // .modal-account__content
+  &__content {
+  }
+  // .modal-account__close
+  &__close {
+    @media (min-width:$mobileSmall){
+       display: none; 
+    }
+    @media (max-width:$mobileSmall){
+      position: relative !important;
+    }
+  }
+  // .modal-account__body
+  &__body {
+    @media (max-width:$mobileSmall){
+      padding-inline: toRem(24);
+    }
+  }
+  // .modal-account__btn
+  &__btn {
+    @extend %flexCenterGap8;
+    @extend %fonsSize13-14;
+    transition: color .2s ease;
+    &:before {
+      @media (min-width:$mobileSmall){
+         display: none; 
+      }
+      @media (max-width:$mobileSmall){
+        font-size: toRem(24);
+        order: 2;
+        transform: rotate(-90deg);
+      }
+    }
+    @media (any-hover: hover){
+      &:hover{
+        color: var(--violet);
+      }
+    }
+    &:not(:last-child) {
+      @media (min-width:$mobileSmall){
+        margin-bottom: toRem(24);
+      }
+    }
+    @media (max-width:$mobileSmall){
+      min-height: toRem(56);
+    }
+  }
+	// .modal-account__txt
+	&__txt {
+    @extend %flexCenterGap8;
+    &:before {
+      font-size: toRem(24);
+    }
+    @media (max-width:$mobileSmall){
+       flex: 1; 
+    }
+  }
+}
 
 
 

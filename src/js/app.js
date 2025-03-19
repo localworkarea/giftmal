@@ -77,7 +77,7 @@ videoPlayer();
 /*
 Фунція показу повідомлення на сторінці "Account"
 */
-flsFunctions.accountMsg();
+// flsFunctions.accountMsg();
 
 /*
 Модуль "Попапи"

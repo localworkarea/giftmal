@@ -1,15 +1,15 @@
 @font-face {
   font-family: FixelDisplay;
   font-display: swap;
-  src: url(../fonts/FixelDisplay-Medium.woff2) format("woff2");
-  font-weight: 500;
+  src: url(../fonts/FixelDisplay-Regular.woff2) format("woff2");
+  font-weight: 400;
   font-style: normal
 }
 @font-face {
   font-family: FixelDisplay;
   font-display: swap;
-  src: url(../fonts/FixelDisplay-Regular.woff2) format("woff2");
-  font-weight: 400;
+  src: url(../fonts/FixelDisplay-Medium.woff2) format("woff2");
+  font-weight: 500;
   font-style: normal
 }
 @font-face {
@@ -39,17 +39,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
 }
+.icon-physical:before {
+  content: ""
+}
+.icon-face:before {
+  content: ""
+}
+.icon-lock:before {
+  content: ""
+}
 .icon-trash-1:before {
   content: ""
 }
 .icon-trash:before {
   content: ""
-}
-.icon-lock:before {
-  content: ""
-}
-.icon-face:before {
-  content: ""
 }
 .icon-box:before {
   content: ""
@@ -81,9 +84,6 @@
 .icon-gift-box:before {
   content: ""
 }
-.icon-lock:before {
-  content: ""
-}
 .icon-no-money-exchange:before {
   content: ""
 }
@@ -101,9 +101,6 @@
 }
 .icon-number-5:before {
   content: ""
-}
-.icon-physical:before {
-  content: ""
 }
 .icon-balance:before {
   content: ""
@@ -3836,39 +3833,37 @@ body::after {
   gap: 1rem .5rem;
   margin-bottom: 2rem
 }
-#popupRules.popup .popup__wrapper {
-  overflow: hidden
-}
-#popupRules.popup .popup-body-rules {
+.popup-rules.popup .popup-body-rules {
   display: flex;
   flex-direction: column;
   min-height: 100%
 }
-#popupRules.popup .popup-body-rules__main {
+.popup-rules.popup .popup-body-rules__main {
   flex: 1;
-  margin-right: .09375rem
+  margin-right: .09375rem;
+  height: 100%
 }
-#popupRules.popup .popup-body-rules__content {
+.popup-rules.popup .popup-body-rules__content {
   overflow-y: auto;
   -ms-scroll-chaining: none;
   overscroll-behavior: contain;
   max-height: inherit
 }
-#popupRules.popup .popup-body-rules__info-card .info-card__body {
+.popup-rules.popup .popup-body-rules__info-card .info-card__body {
   grid-template-columns: repeat(auto-fit,minmax(10.625rem,1fr))
 }
-#popupRules.popup .head-popup-rules {
+.popup-rules.popup .head-popup-rules {
   display: flex;
   align-items: center
 }
-#popupRules.popup .head-popup-rules__img img {
+.popup-rules.popup .head-popup-rules__img img {
   aspect-ratio: 62/40
 }
-#popupRules.popup .head-popup-rules__category {
+.popup-rules.popup .head-popup-rules__category {
   color: var(--fade-violet-2);
   margin-bottom: .5rem
 }
-#popupRules.popup .head-popup-rules__name {
+.popup-rules.popup .head-popup-rules__name {
   line-height: 1.2
 }
 #popupQuestion.popup .popup__content {
@@ -4537,7 +4532,6 @@ html {
 .icon-logo:hover {
   color: var(--violet)
 }
-#popupRules.popup .head-popup-rules__category,
 .amount__minmax,
 .balance-card__title,
 .card-balance__sub-title,
@@ -4551,6 +4545,7 @@ html {
 .orders-checkout__lines,
 .popup-account__txt,
 .popup-cart__header p span,
+.popup-rules.popup .head-popup-rules__category,
 .select__disabled,
 .select_type-6 .select__asset,
 .select_type-7 .select__asset,
@@ -4640,6 +4635,8 @@ html {
 .main-header__container-c,
 .main-header__sub-wrapper,
 .menu__link,
+.modal-account__btn,
+.modal-account__txt,
 .msg-succsess p,
 .option__label,
 .orders-checkout__lines,
@@ -8459,7 +8456,7 @@ body::after {
   border-radius: 1.5rem;
   background-color: var(--white);
   cursor: pointer;
-  transition: box-shadow .3s ease
+  transition: box-shadow .2s ease
 }
 .item-cert._active {
   border-color: var(--light-green)
@@ -8488,19 +8485,62 @@ body::after {
 .item-cert__modal::before {
   font-size: 2.5rem
 }
+.item-cert__modal._show-modal {
+  background-color: var(--dark-violet);
+  color: var(--white)
+}
+.item-cert__modal:active {
+  background-color: var(--dark-violet);
+  color: var(--white)
+}
+.select-certificate._active .text-select {
+  display: none
+}
+.select-certificate._active .text-count {
+  display: block
+}
+.select-certificate._active .btn-select {
+  display: none
+}
+.select-certificate._active .btn-count {
+  display: flex
+}
 .select-certificate__text {
   color: var(--fade-violet-2);
   line-height: 1.46
+}
+.select-certificate__text.text-count {
+  display: none
 }
 .select-certificate__btn {
   padding-inline: 1rem;
   max-width: -webkit-max-content;
   max-width: max-content
 }
+.select-certificate__btn .btn-count {
+  display: none
+}
 .select-certificate__btn .icon-checked-sertificates {
   line-height: 1
 }
 .select-certificate__btn .icon-checked-sertificates::before {
+  font-size: 1.5rem
+}
+.modal-account {
+  position: absolute;
+  z-index: 6;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity .3s ease,visibility .3s ease
+}
+.modal-account__wrapper {
+  background-color: var(--white)
+}
+.modal-account__btn {
+  transition: color .2s ease
+}
+.modal-account__txt:before {
   font-size: 1.5rem
 }
 .error__page .page__logo {
@@ -11815,53 +11855,55 @@ body::after {
   #popupContactsUs.popup .popup__title {
     margin-bottom: 2rem
   }
-  #popupRules.popup .popup__content {
-    flex: 1;
-    max-height: calc(100svh - 12.5rem);
-    min-height: 22.5rem;
-    display: grid;
-    overflow: hidden;
-    max-width: 33.1875rem
+  .popup-rules.popup {
+    overflow-x: hidden;
+    overflow-y: auto
   }
-  #popupRules.popup .popup-body-rules {
+  .popup-rules.popup .popup__content {
+    min-height: 22.5rem;
+    max-width: 33.1875rem;
+    display: grid;
+    overflow: hidden
+  }
+  .popup-rules.popup .popup-body-rules {
     margin-inline: -2rem
   }
-  #popupRules.popup .popup-body-rules__header {
+  .popup-rules.popup .popup-body-rules__header {
     padding-inline: 2rem;
     padding-bottom: .5rem
   }
-  #popupRules.popup .popup-body-rules__title {
+  .popup-rules.popup .popup-body-rules__title {
     margin-bottom: .5rem
   }
-  #popupRules.popup .popup-body-rules__main {
+  .popup-rules.popup .popup-body-rules__main {
     mask-image: linear-gradient(to bottom,rgba(255,255,255,0) 0,#fff 5%,#fff 95%,rgba(255,255,255,0) 100%);
     -webkit-mask-image: linear-gradient(to bottom,rgba(255,255,255,0) 0,#fff 5%,#fff 95%,rgba(255,255,255,0) 100%);
     min-height: 8.75rem;
-    max-height: calc(100svh - 10.5rem - 4rem - 11.875rem)
+    max-height: 53svh
   }
-  #popupRules.popup .popup-body-rules__content {
+  .popup-rules.popup .popup-body-rules__content {
     min-height: 8.75rem;
     padding-top: 1.625rem;
     padding-left: 2rem;
     padding-right: 1.75rem
   }
-  #popupRules.popup .popup-body-rules__content .head-popup-rules {
+  .popup-rules.popup .popup-body-rules__content .head-popup-rules {
     display: none
   }
-  #popupRules.popup .popup-body-rules__info-card .info-card__body .info-card__text {
+  .popup-rules.popup .popup-body-rules__info-card .info-card__body .info-card__text {
     max-width: 70%
   }
-  #popupRules.popup .popup-body-rules__footer {
+  .popup-rules.popup .popup-body-rules__footer {
     padding-top: 2rem;
     padding-inline: 2rem
   }
-  #popupRules.popup .head-popup-rules {
+  .popup-rules.popup .head-popup-rules {
     gap: .5625rem
   }
-  #popupRules.popup .head-popup-rules__img img {
+  .popup-rules.popup .head-popup-rules__img img {
     border-radius: .5rem
   }
-  #popupRules.popup .head-popup-rules__img {
+  .popup-rules.popup .head-popup-rules__img {
     max-width: 3.875rem
   }
   #popupQuestion.popup .popup-question__items {
@@ -11987,8 +12029,8 @@ body::after {
   .card-cabinet__info-b {
     font-size: .9375rem
   }
-  #popupRules.popup .head-popup-rules__name,
-  .item-cert__denomination {
+  .item-cert__denomination,
+  .popup-rules.popup .head-popup-rules__name {
     font-size: .9375rem
   }
   .terms__title-sm {
@@ -12034,7 +12076,6 @@ body::after {
   #popupAvailabilityMsg.popup .popup-msg__subtitle,
   #popupQuestion.popup .popup-question__subtitle,
   #popupReviews.popup .add-photo__block,
-  #popupRules.popup .popup-body-rules__rules-title,
   .activation-balance__body .card-balance__title,
   .activation-balance__tippy,
   .amount__item,
@@ -12077,6 +12118,7 @@ body::after {
   .item-orders__amount,
   .item-orders__price,
   .iti__dropdown-content .iti__a11y-text,
+  .modal-account__btn,
   .no-card-history__txt,
   .orders-checkout__info,
   .orders-checkout__lines.lines-total .orders-checkout__text,
@@ -12085,6 +12127,7 @@ body::after {
   .popup-cart__buttons,
   .popup-cart__total,
   .popup-history__cell.cell-status,
+  .popup-rules.popup .popup-body-rules__rules-title,
   .quantity__item,
   .rules-spollers__title,
   .rules-spollers__txt--sm,
@@ -12129,7 +12172,6 @@ body::after {
     letter-spacing: .02em;
     font-size: .6875rem
   }
-  #popupRules.popup .head-popup-rules__category,
   .amount__minmax,
   .balance-card__title,
   .card-balance__sub-title,
@@ -12143,6 +12185,7 @@ body::after {
   .orders-checkout__lines,
   .popup-account__txt,
   .popup-cart__header p span,
+  .popup-rules.popup .head-popup-rules__category,
   .select__disabled,
   .select_type-6 .select__asset,
   .select_type-7 .select__asset,
@@ -12988,6 +13031,20 @@ body::after {
   .certificate-account__title--used .icon-arrow-back::before {
     font-size: 1.5rem
   }
+  .modal-account__wrapper {
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 30px 0 rgba(33,5,41,.08)
+  }
+  .modal-account__close {
+    display: none
+  }
+  .modal-account__btn:before {
+    display: none
+  }
+  .modal-account__btn:not(:last-child) {
+    margin-bottom: 1.5rem
+  }
   .blog__filters {
     margin-bottom: 2rem
   }
@@ -13454,7 +13511,12 @@ body::after {
   }
   .certificate-account__header-cell.header-checkbox .checkbox {
     opacity: 0;
-    pointer-events: none
+    pointer-events: none;
+    transition: opacity .2s ease
+  }
+  .certificate-account__header-cell.header-checkbox._items-active .checkbox {
+    opacity: 1;
+    pointer-events: auto
   }
   .item-cert {
     margin-bottom: .25rem
@@ -13462,6 +13524,9 @@ body::after {
   .item-cert__photo .checkbox {
     transition: opacity .3s ease;
     opacity: 0
+  }
+  ._item-active .item-cert__photo .checkbox {
+    opacity: 1
   }
   .item-cert__img {
     width: 3.875rem;
@@ -13543,6 +13608,10 @@ body::after {
   .certificate-account__header,
   .item-cert {
     grid-template-columns: 15% 17% 1fr 1fr 1fr 10.8125rem
+  }
+  .certificate-account__wrapper--used .certificate-account__header,
+  .certificate-account__wrapper--used .item-cert {
+    grid-template-columns: 15% 17% 1fr 1fr 1fr 2.5rem
   }
   .certificate-account__header {
     padding: 0 1.5rem 0 .75rem
@@ -13636,7 +13705,7 @@ body::after {
   }
 }
 @media (min-width:87.56125em) {
-  #popupRules.popup .popup-body-rules__title {
+  .popup-rules.popup .popup-body-rules__title {
     font-size: 1.4375rem
   }
   .popup-login__body {
@@ -16510,31 +16579,31 @@ body::after {
     margin-inline: -1.5rem;
     padding-inline: 1rem
   }
-  #popupRules.popup .popup__close {
+  .popup-rules.popup .popup__close {
     z-index: 5
   }
-  #popupRules.popup .popup__content {
+  .popup-rules.popup .popup__content {
     -webkit-padding-after: 0;
     padding-block-end: 0
   }
-  #popupRules.popup .popup-body-rules {
+  .popup-rules.popup .popup-body-rules {
     margin-inline: -1.5rem
   }
-  #popupRules.popup .popup-body-rules._scroll-active .popup-body-rules__header {
+  .popup-rules.popup .popup-body-rules._scroll-active .popup-body-rules__header {
     box-shadow: 0 4px 50px 0 rgba(33,5,41,.16)
   }
-  #popupRules.popup .popup-body-rules._scroll-end .popup-body-rules__footer {
+  .popup-rules.popup .popup-body-rules._scroll-end .popup-body-rules__footer {
     box-shadow: none
   }
-  #popupRules.popup .popup-body-rules__header {
+  .popup-rules.popup .popup-body-rules__header {
     position: relative;
     padding-inline: 1rem;
     padding-bottom: 1.375rem
   }
-  #popupRules.popup .popup-body-rules__header .head-popup-rules {
+  .popup-rules.popup .popup-body-rules__header .head-popup-rules {
     display: none
   }
-  #popupRules.popup .popup-body-rules__header::before {
+  .popup-rules.popup .popup-body-rules__header::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -16544,34 +16613,34 @@ body::after {
     background-color: var(--white);
     border-radius: 1.5rem 1.5rem 0 0
   }
-  #popupRules.popup .popup-body-rules__title {
+  .popup-rules.popup .popup-body-rules__title {
     font-size: .875rem
   }
-  #popupRules.popup .popup-body-rules__title {
+  .popup-rules.popup .popup-body-rules__title {
     position: relative;
     z-index: 3
   }
-  #popupRules.popup .popup-body-rules__main {
-    max-height: calc(100svh - 12.5rem)
+  .popup-rules.popup .popup-body-rules__main {
+    max-height: 75svh
   }
-  #popupRules.popup .popup-body-rules__content {
+  .popup-rules.popup .popup-body-rules__content {
     padding-inline: 1rem
   }
-  #popupRules.popup .popup-body-rules__footer {
+  .popup-rules.popup .popup-body-rules__footer {
     padding: 1rem;
     box-shadow: 0 -4px 40px 0 rgba(33,5,41,.15)
   }
-  ._scroll-end #popupRules.popup .popup-body-rules__footer {
+  ._scroll-end .popup-rules.popup .popup-body-rules__footer {
     box-shadow: none
   }
-  #popupRules.popup .head-popup-rules {
+  .popup-rules.popup .head-popup-rules {
     gap: .75rem
   }
-  #popupRules.popup .head-popup-rules__img img {
+  .popup-rules.popup .head-popup-rules__img img {
     border-radius: .625rem;
     box-shadow: 0 1px 17px 0 rgba(33,5,41,.16)
   }
-  #popupRules.popup .head-popup-rules__img {
+  .popup-rules.popup .head-popup-rules__img {
     max-width: 5.75rem
   }
   #popupQuestion.popup {
@@ -16788,8 +16857,8 @@ body::after {
   .card-cabinet__info-b {
     font-size: 1.25rem
   }
-  #popupRules.popup .head-popup-rules__name,
-  .item-cert__denomination {
+  .item-cert__denomination,
+  .popup-rules.popup .head-popup-rules__name {
     font-size: 1.125rem
   }
   .terms__title-sm {
@@ -16835,7 +16904,6 @@ body::after {
   #popupAvailabilityMsg.popup .popup-msg__subtitle,
   #popupQuestion.popup .popup-question__subtitle,
   #popupReviews.popup .add-photo__block,
-  #popupRules.popup .popup-body-rules__rules-title,
   .activation-balance__body .card-balance__title,
   .activation-balance__tippy,
   .amount__item,
@@ -16878,6 +16946,7 @@ body::after {
   .item-orders__amount,
   .item-orders__price,
   .iti__dropdown-content .iti__a11y-text,
+  .modal-account__btn,
   .no-card-history__txt,
   .orders-checkout__info,
   .orders-checkout__lines.lines-total .orders-checkout__text,
@@ -16886,6 +16955,7 @@ body::after {
   .popup-cart__buttons,
   .popup-cart__total,
   .popup-history__cell.cell-status,
+  .popup-rules.popup .popup-body-rules__rules-title,
   .quantity__item,
   .rules-spollers__title,
   .rules-spollers__txt--sm,
@@ -16928,7 +16998,6 @@ body::after {
   .total-cart__subtxt {
     font-size: .875rem
   }
-  #popupRules.popup .head-popup-rules__category,
   .amount__minmax,
   .balance-card__title,
   .card-balance__sub-title,
@@ -16942,6 +17011,7 @@ body::after {
   .orders-checkout__lines,
   .popup-account__txt,
   .popup-cart__header p span,
+  .popup-rules.popup .head-popup-rules__category,
   .select__disabled,
   .select_type-6 .select__asset,
   .select_type-7 .select__asset,
@@ -17970,6 +18040,48 @@ body::after {
   .certificate-account__pagging {
     display: none!important
   }
+  .modal-account {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end
+  }
+  .modal-account__wrapper {
+    border-radius: 2rem 2rem 0 0;
+    box-shadow: 0 -10px 70px 0 rgba(33,5,41,.16);
+    padding-bottom: .625rem;
+    -webkit-transform: translate(0,100%);
+    transform: translate(0,100%);
+    transition: -webkit-transform .3s ease 0s;
+    transition: transform .3s ease 0s;
+    transition: transform .3s ease 0s,-webkit-transform .3s ease 0s
+  }
+  ._modal-show .modal-account__wrapper {
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0)
+  }
+  .modal-account__close {
+    position: relative!important
+  }
+  .modal-account__body {
+    padding-inline: 1.5rem
+  }
+  .modal-account__btn:before {
+    font-size: 1.5rem;
+    order: 2;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg)
+  }
+  .modal-account__btn {
+    min-height: 3.5rem
+  }
+  .modal-account__txt {
+    flex: 1
+  }
   .error__page .page__logo {
     font-size: 2rem;
     margin-top: 2.25rem
@@ -18140,7 +18252,7 @@ body::after {
   }
 }
 @media (min-width:30.06125em)and (max-width:87.56125em) {
-  #popupRules.popup .popup-body-rules__title {
+  .popup-rules.popup .popup-body-rules__title {
     font-size: clamp(.875rem ,.5809225543rem + .9782608696vw ,1.4375rem)
   }
   .popup-login__body {
@@ -18400,6 +18512,10 @@ body::after {
   .certificate-account__header,
   .item-cert {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 5.5rem
+  }
+  .certificate-account__wrapper--used .certificate-account__header,
+  .certificate-account__wrapper--used .item-cert {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2.5rem
   }
   .certificate-account__header {
     padding: 0 .25rem 0 .75rem
@@ -18823,6 +18939,9 @@ body::after {
   .item-cert__modal:hover {
     background-color: var(--dark-violet);
     color: var(--white)
+  }
+  .modal-account__btn:hover {
+    color: var(--violet)
   }
   .blog-filter__btn:hover {
     background-color: var(--pagging-hover-bg)

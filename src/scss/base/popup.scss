@@ -365,9 +365,10 @@ body::after {
 
 }
 
-#popupRules.popup {
-	.popup__wrapper {
-		overflow: hidden;
+.popup-rules.popup {
+	@media (min-width:$mobileSmall){
+		overflow-x: hidden;
+		overflow-y: auto; 
 	}
 	.popup__close {
 		@media (max-width:$mobileSmall){
@@ -376,12 +377,10 @@ body::after {
 	}
 	.popup__content {
 		@media (min-width:$mobileSmall){
-			flex: 1;
-			max-height: calc(100svh - toRem(200));
 			min-height: toRem(360);
+			max-width: toRem(531); 
 			display: grid;
 			overflow: hidden;
-			max-width: toRem(531); 
 		}
 		@media (max-width:$mobileSmall){
 			 padding-block-end: toRem(0);
@@ -447,16 +446,19 @@ body::after {
 		&__main {
 			flex: 1;
 			margin-right: toRem(1.5);
+			height: 100%;
 			@media (min-width:$mobileSmall){
 				mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 5%, #fff 95%, rgba(255, 255, 255, 0) 100%);
 				-webkit-mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 5%, #fff 95%, rgba(255, 255, 255, 0) 100%);
 				
 				min-height: toRem(140);
-				max-height: calc(100svh - toRem(168) - toRem(64) - toRem(190));
+				// max-height: calc(100svh - toRem(168) - toRem(64) - toRem(190));
+				max-height: 53svh;
 			}
 			@media (max-width:$mobileSmall){
-				max-height: calc(100svh - toRem(200));
-
+				// max-height: calc(100svh - toRem(200));
+				max-height: 75svh;
+				
 			}
 		}
 		// .popup-body-rules__content
@@ -1758,8 +1760,6 @@ body::after {
 		}
 	}
 }
-
-
 
 .no-card-history {
 	display: none;

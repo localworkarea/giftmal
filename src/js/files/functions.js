@@ -766,16 +766,16 @@ export function customCursor(isShadowTrue) {
 }
 
 // show message on account page ===
-export function accountMsg() {
-	const msgAccountBtn = document.querySelectorAll("[data-account-msg]");
-	if (!msgAccountBtn.length) return;
-	msgAccountBtn.forEach(button => {
-			button.addEventListener("click", () => {
-				if (event.target.closest("form")) return;
-					showMessage(button.getAttribute("data-account-msg"));
-			});
-	});
-}
+// export function accountMsg() {
+// 	const msgAccountBtn = document.querySelectorAll("[data-account-msg]");
+// 	if (!msgAccountBtn.length) return;
+// 	msgAccountBtn.forEach(button => {
+// 			button.addEventListener("click", () => {
+// 				if (event.target.closest("form")) return;
+// 					showMessage(button.getAttribute("data-account-msg"));
+// 			});
+// 	});
+// }
 
 export function showMessage(msgSelector) {
 	const msgElement = document.querySelector(msgSelector);

@@ -387,16 +387,6 @@
         bodyUnlock();
         document.documentElement.classList.remove("menu-open");
     }
-    function accountMsg() {
-        const msgAccountBtn = document.querySelectorAll("[data-account-msg]");
-        if (!msgAccountBtn.length) return;
-        msgAccountBtn.forEach((button => {
-            button.addEventListener("click", (() => {
-                if (event.target.closest("form")) return;
-                showMessage(button.getAttribute("data-account-msg"));
-            }));
-        }));
-    }
     function showMessage(msgSelector) {
         const msgElement = document.querySelector(msgSelector);
         if (msgElement) {
@@ -10496,70 +10486,349 @@
                 button.src = currentMainSrc;
             }));
         }));
-        const popupRules = document.getElementById("popupRules");
-        const popupBody = popupRules.querySelector(".popup-body-rules");
-        popupRules.querySelector(".popup-body-rules__main");
-        const popupContent = popupRules.querySelector(".popup-body-rules__content");
-        const confirmButton = popupRules.querySelector("[data-card-confirm]");
-        const checkboxRules = document.querySelector("[data-checkbox-rules]");
-        const addButton = document.querySelector("[data-card-add]");
-        let isCheckedThroughPopup = false;
-        let isAddButtonHandlerActive = false;
-        function openPopup(event) {
-            event.preventDefault();
-            modules_flsModules.popup.open("#popupRules");
-        }
-        function updateAddButtonState() {
-            if (!checkboxRules) return;
-            if (!mediaQuery480max.matches) if (checkboxRules.checked) addButton.removeAttribute("disabled"); else addButton.setAttribute("disabled", "true");
-        }
-        function handleAddButtonClick(event) {
-            if (mediaQuery480max.matches) openPopup(event);
-        }
-        function checkMediaQuery() {
-            if (!addButton) return;
-            if (mediaQuery480max.matches) {
-                addButton.removeAttribute("disabled");
-                if (!isAddButtonHandlerActive) {
-                    addButton.addEventListener("click", handleAddButtonClick);
-                    isAddButtonHandlerActive = true;
-                }
-            } else updateAddButtonState();
-        }
-        if (checkboxRules) checkboxRules.addEventListener("click", (function(event) {
-            if (!isCheckedThroughPopup) {
+        document.querySelectorAll(".popup-rules").forEach((popupRules => {
+            const popupBody = popupRules.querySelector(".popup-body-rules");
+            const popupContent = popupRules.querySelector(".popup-body-rules__content");
+            const confirmButton = popupRules.querySelector("[data-card-confirm]");
+            const checkboxRules = document.querySelector("[data-checkbox-rules]");
+            const addButton = document.querySelector("[data-card-add]");
+            if (!popupBody || !popupContent) return;
+            let isCheckedThroughPopup = false;
+            let isAddButtonHandlerActive = false;
+            function openPopup(event) {
                 event.preventDefault();
-                openPopup(event);
-            } else {
-                isCheckedThroughPopup = false;
-                updateAddButtonState();
+                modules_flsModules.popup.open(`#${popupRules.id}`);
             }
-        }));
-        if (popupContent && confirmButton) popupContent.addEventListener("scroll", (function() {
-            if (popupContent.scrollTop > 5) popupBody.classList.add("_scroll-active"); else popupBody.classList.remove("_scroll-active");
-            const isScrolledToEnd = popupContent.scrollTop + popupContent.clientHeight >= popupContent.scrollHeight - 1;
-            if (isScrolledToEnd) {
-                confirmButton.removeAttribute("disabled");
-                popupBody.classList.add("_scroll-end");
-            } else popupBody.classList.remove("_scroll-end");
-        }));
-        confirmButton.addEventListener("click", (function() {
-            if (checkboxRules) {
+            function updateAddButtonState() {
+                if (!checkboxRules || !addButton) return;
+                if (!mediaQuery480max.matches) if (checkboxRules.checked) addButton.removeAttribute("disabled"); else addButton.setAttribute("disabled", "true");
+            }
+            function handleAddButtonClick(event) {
+                if (mediaQuery480max.matches) openPopup(event);
+            }
+            function checkMediaQuery() {
+                if (!addButton) return;
+                if (mediaQuery480max.matches) {
+                    addButton.removeAttribute("disabled");
+                    if (!isAddButtonHandlerActive) {
+                        addButton.addEventListener("click", handleAddButtonClick);
+                        isAddButtonHandlerActive = true;
+                    }
+                } else updateAddButtonState();
+            }
+            if (checkboxRules) checkboxRules.addEventListener("click", (function(event) {
+                if (!isCheckedThroughPopup) {
+                    event.preventDefault();
+                    openPopup(event);
+                } else {
+                    isCheckedThroughPopup = false;
+                    updateAddButtonState();
+                }
+            }));
+            popupContent.addEventListener("scroll", (function() {
+                if (popupContent.scrollTop > 5) popupBody.classList.add("_scroll-active"); else popupBody.classList.remove("_scroll-active");
+                const isScrolledToEnd = popupContent.scrollTop + popupContent.clientHeight >= popupContent.scrollHeight - 1;
+                if (isScrolledToEnd) {
+                    if (confirmButton) confirmButton.removeAttribute("disabled");
+                    popupBody.classList.add("_scroll-end");
+                } else popupBody.classList.remove("_scroll-end");
+            }));
+            if (!confirmButton) return;
+            confirmButton.addEventListener("click", (function() {
+                if (!checkboxRules) return;
                 checkboxRules.checked = true;
                 isCheckedThroughPopup = true;
                 updateAddButtonState();
                 if (mediaQuery480max.matches) {
-                    addButton.removeEventListener("click", handleAddButtonClick);
+                    addButton?.removeEventListener("click", handleAddButtonClick);
                     isAddButtonHandlerActive = false;
                 }
                 setTimeout((() => {
-                    modules_flsModules.popup.close("#popupRules");
+                    modules_flsModules.popup.close(`#${popupRules.id}`);
                 }), 100);
+            }));
+            mediaQuery480max.addEventListener("change", checkMediaQuery);
+            checkMediaQuery();
+            updateAddButtonState();
+        }));
+        const bodyHistory = document.querySelector(".popup-history");
+        const listContainer = bodyHistory.querySelector(".popup-history__list");
+        const filterButtonsHistory = bodyHistory.querySelectorAll(".popup-history__filter-btn");
+        const searchInput = bodyHistory.querySelector("#historyBalanceSearch");
+        const searchInputWrapper = searchInput.closest(".popup-history__search");
+        const wrapper = bodyHistory.querySelector(".popup-history__wrapper");
+        const noCardMessage = bodyHistory.querySelector(".popup-history__no-card");
+        const allFilterButton = bodyHistory.querySelector('.popup-history__filter-btn[data-history="all"]');
+        const pagination = bodyHistory.querySelector(".pagging");
+        const paginationLinks = bodyHistory.querySelectorAll(".pagging__item, .pagging__arrow");
+        let jsonData = [];
+        const mediaQuery = window.matchMedia("(max-width: 30.061em)");
+        function renderList(data) {
+            listContainer.innerHTML = "";
+            const displayedData = mediaQuery.matches ? data : data.slice(0, 8);
+            displayedData.forEach((item => {
+                const li = document.createElement("li");
+                li.classList.add("popup-history__item", `_${item.status}`);
+                li.innerHTML = `\n            <div class="popup-history__cell cell-code">${item.code}</div>\n            <div class="popup-history__cell cell-denomination">${item.denomination} грн</div>\n            <div class="popup-history__cell cell-activation">${item.activation}</div>\n            <div class="popup-history__cell cell-status row-icon">${item.statusText}</div>\n            <div class="popup-history__cell cell-date">${item.date}</div>\n          `;
+                listContainer.appendChild(li);
+            }));
+            if (data.length === 0) {
+                wrapper.style.display = "none";
+                pagination.style.display = "none";
+                noCardMessage.style.display = "block";
+                searchInputWrapper.classList.add("_error");
+            } else {
+                wrapper.style.display = "block";
+                pagination.style.display = "flex";
+                noCardMessage.style.display = "none";
+                searchInputWrapper.classList.remove("_error");
+            }
+        }
+        fetch("files/history-balance/history.json").then((response => response.json())).then((data => {
+            jsonData = data;
+            renderList(jsonData);
+        })).catch((error => console.error("Ошибка загрузки JSON:", error)));
+        filterButtonsHistory.forEach((button => {
+            button.addEventListener("click", (() => {
+                filterButtonsHistory.forEach((btn => btn.classList.remove("active")));
+                button.classList.add("active");
+                const filterValue = button.getAttribute("data-history");
+                if (filterValue === "all") renderList(jsonData); else {
+                    const filteredData = jsonData.filter((item => item.status === filterValue));
+                    renderList(filteredData);
+                }
+            }));
+        }));
+        searchInput.addEventListener("input", (() => {
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            if (searchTerm === "") {
+                renderList(jsonData);
+                searchInputWrapper.classList.remove("_error");
+                filterButtonsHistory.forEach((btn => btn.classList.remove("active")));
+                allFilterButton.classList.add("active");
+                return;
+            }
+            const filteredData = jsonData.filter((item => item.code.toLowerCase().includes(searchTerm)));
+            renderList(filteredData);
+        }));
+        paginationLinks.forEach((link => {
+            link.addEventListener("click", (event => {
+                event.preventDefault();
+                event.stopPropagation();
+            }));
+        }));
+        mediaQuery.addEventListener("change", (() => {
+            renderList(jsonData);
+        }));
+        const mainWrapper = document.querySelector(".certificate-account__wrapper--main");
+        const usedWrapper = document.querySelector(".certificate-account__wrapper--used");
+        const switchBtn = document.querySelector(".certificate-account__switch");
+        const backBtn = document.querySelector(".certificate-account__title--used");
+        const tabsNavigation = document.querySelector("[data-tabs-titles]");
+        function showUsedTab() {
+            resetSelection(mainWrapper);
+            mainWrapper.hidden = true;
+            usedWrapper.hidden = false;
+            attachEvents(usedWrapper);
+        }
+        function showMainTab() {
+            resetSelection(usedWrapper);
+            mainWrapper.hidden = false;
+            usedWrapper.hidden = true;
+            attachEvents(mainWrapper);
+        }
+        function isSelectionActive(wrapper) {
+            return wrapper.querySelectorAll(".item-cert._checked").length > 0;
+        }
+        function updateSelectedCount(wrapper) {
+            const countElement = wrapper.querySelector(".text-count span");
+            const selectedCount = wrapper.querySelectorAll(".item-cert._checked").length;
+            if (countElement) countElement.textContent = selectedCount;
+        }
+        function activateSelection(wrapper) {
+            const itemCerts = wrapper.querySelectorAll(".item-cert");
+            const headerCheckbox = wrapper.querySelector(".header-checkbox");
+            const selectContainer = wrapper.querySelector(".select-certificate");
+            itemCerts.forEach((item => item.classList.add("_item-active")));
+            headerCheckbox.classList.add("_items-active");
+            selectContainer.classList.add("_active");
+            updateSelectedCount(wrapper);
+        }
+        function resetSelection(wrapper) {
+            if (!wrapper) return;
+            const itemCerts = wrapper.querySelectorAll(".item-cert");
+            const headerCheckbox = wrapper.querySelector(".header-checkbox");
+            const selectContainer = wrapper.querySelector(".select-certificate");
+            const selectAllCheckbox = headerCheckbox?.querySelector(".checkbox__input");
+            itemCerts.forEach((item => {
+                item.classList.remove("_item-active", "_checked");
+                item.querySelector(".checkbox__input").checked = false;
+            }));
+            headerCheckbox.classList.remove("_items-active");
+            selectContainer.classList.remove("_active");
+            if (selectAllCheckbox) selectAllCheckbox.checked = false;
+            updateSelectedCount(wrapper);
+        }
+        function handleItemClick(event) {
+            if (event.target.closest(".item-cert__download, .item-cert__modal, .checkbox")) return;
+            const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+            const item = event.currentTarget;
+            const checkbox = item.querySelector(".checkbox__input");
+            activateSelection(wrapper);
+            checkbox.checked = !checkbox.checked;
+            item.classList.toggle("_checked", checkbox.checked);
+            updateSelectedCount(wrapper);
+            if (!isSelectionActive(wrapper)) resetSelection(wrapper);
+        }
+        function handleCheckboxClick(event) {
+            event.stopPropagation();
+            const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+            const checkbox = event.target;
+            const item = checkbox.closest(".item-cert");
+            activateSelection(wrapper);
+            item.classList.toggle("_checked", checkbox.checked);
+            updateSelectedCount(wrapper);
+            if (!isSelectionActive(wrapper)) resetSelection(wrapper);
+        }
+        function toggleSelectAll(event) {
+            const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+            const itemCerts = wrapper.querySelectorAll(".item-cert");
+            const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
+            const isChecked = selectAllCheckbox.checked;
+            itemCerts.forEach((item => {
+                const checkbox = item.querySelector(".checkbox__input");
+                item.classList.toggle("_checked", isChecked);
+                checkbox.checked = isChecked;
+            }));
+            if (isChecked) activateSelection(wrapper); else resetSelection(wrapper);
+            updateSelectedCount(wrapper);
+        }
+        function handleSelectButtonClick(event) {
+            const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+            if (!isSelectionActive(wrapper)) {
+                activateSelection(wrapper);
+                return;
+            }
+            const button = event.currentTarget;
+            const msgSelector = button.getAttribute("data-account-msg");
+            if (msgSelector) showMessage(msgSelector);
+        }
+        function handleTabSwitch(event) {
+            const clickedTab = event.target.closest(".tabs-account__btn");
+            if (!clickedTab) return;
+            if (!clickedTab.classList.contains("icon-sertificates")) {
+                resetSelection(mainWrapper);
+                resetSelection(usedWrapper);
+            }
+        }
+        function attachEvents(wrapper) {
+            const itemCerts = wrapper.querySelectorAll(".item-cert");
+            const selectBtn = wrapper.querySelector(".select-certificate__btn");
+            const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
+            if (selectBtn) selectBtn.addEventListener("click", handleSelectButtonClick);
+            if (selectAllCheckbox) selectAllCheckbox.addEventListener("change", toggleSelectAll);
+            itemCerts.forEach((item => {
+                item.addEventListener("click", handleItemClick);
+                item.querySelector(".checkbox__input").addEventListener("click", handleCheckboxClick);
+            }));
+        }
+        attachEvents(mainWrapper);
+        switchBtn.addEventListener("click", showUsedTab);
+        backBtn.addEventListener("click", showMainTab);
+        tabsNavigation.addEventListener("click", handleTabSwitch);
+        const modalButtons = document.querySelectorAll("[data-modal]");
+        let activeModal = null;
+        let activeButton = null;
+        let startY = 0;
+        let moveY = 0;
+        modalButtons.forEach((button => {
+            button.addEventListener("click", (function(event) {
+                event.stopPropagation();
+                const modalId = button.getAttribute("data-modal");
+                const modal = document.querySelector(modalId);
+                if (!modal) return;
+                if (activeModal && activeModal !== modal) closeModal(activeModal);
+                if (activeButton && activeButton !== button) activeButton.classList.remove("_show-modal");
+                positionModal(modal, button);
+                modal.style.opacity = "1";
+                modal.style.visibility = "visible";
+                modal.style.pointerEvents = "auto";
+                modal.classList.add("_modal-show");
+                document.documentElement.classList.add("_show-modal");
+                button.classList.add("_show-modal");
+                activeModal = modal;
+                activeButton = button;
+                if (mediaQuery480max.matches && bodyLockStatus) bodyLock();
+                if (mediaQuery480max.matches) addSwipeToClose(modal);
+            }));
+        }));
+        document.addEventListener("click", (function(event) {
+            if (activeModal && !activeModal.contains(event.target)) closeModal(activeModal);
+        }));
+        document.addEventListener("click", (function(event) {
+            if (mediaQuery480max.matches && activeModal) {
+                const modalWrapper = activeModal.querySelector(".modal-account__wrapper");
+                if (event.target === activeModal && !modalWrapper.contains(event.target)) closeModal(activeModal);
             }
         }));
-        mediaQuery480max.addEventListener("change", checkMediaQuery);
-        checkMediaQuery();
-        updateAddButtonState();
+        document.querySelectorAll(".modal-account__close").forEach((closeBtn => {
+            closeBtn.addEventListener("click", (function() {
+                if (activeModal) closeModal(activeModal);
+            }));
+        }));
+        function positionModal(modal, button) {
+            if (mediaQuery480max.matches) {
+                modal.style.top = "";
+                modal.style.right = "";
+            } else {
+                const rect = button.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                modal.style.top = `${rect.bottom + scrollTop + 4}px`;
+                modal.style.right = `${window.innerWidth - rect.right}px`;
+            }
+        }
+        function closeModal(modal) {
+            modal.style.top = "";
+            modal.style.right = "";
+            modal.style.opacity = "";
+            modal.style.visibility = "";
+            modal.style.pointerEvents = "";
+            modal.classList.remove("_modal-show");
+            document.documentElement.classList.remove("_show-modal");
+            if (activeButton) {
+                activeButton.classList.remove("_show-modal");
+                activeButton = null;
+            }
+            activeModal = null;
+            if (mediaQuery480max.matches && document.documentElement.classList.contains("lock")) bodyUnlock();
+            const modalWrapper = modal.querySelector(".modal-account__wrapper");
+            if (modalWrapper) {
+                modalWrapper.style.transform = "";
+                modalWrapper.style.transition = "";
+            }
+        }
+        function addSwipeToClose(modal) {
+            const modalWrapper = modal.querySelector(".modal-account__wrapper");
+            const closeBtn = modal.querySelector(".modal-account__close");
+            if (!modalWrapper || !closeBtn) return;
+            closeBtn.addEventListener("touchstart", (e => {
+                startY = e.touches[0].clientY;
+                moveY = 0;
+            }));
+            closeBtn.addEventListener("touchmove", (e => {
+                moveY = e.touches[0].clientY - startY;
+                if (moveY > 0) modalWrapper.style.transform = `translateY(${moveY}px)`;
+            }));
+            closeBtn.addEventListener("touchend", (() => {
+                if (moveY > 30) closeModal(modal); else setTimeout((() => {
+                    modalWrapper.style.transform = "";
+                }), 300);
+            }));
+        }
+        mediaQuery480max.addEventListener("change", (function() {
+            if (!mediaQuery480max.matches && document.documentElement.classList.contains("lock")) bodyUnlock();
+            if (activeModal && activeButton) positionModal(activeModal, activeButton);
+        }));
     }));
     function startCountdown(timerElement, callback) {
         if (!timerElement) return;
@@ -11124,122 +11393,6 @@
     document.addEventListener("DOMContentLoaded", (function() {
         initAllNotifications();
     }));
-    document.addEventListener("DOMContentLoaded", (() => {
-        const bodyHistory = document.querySelector(".popup-history");
-        const listContainer = bodyHistory.querySelector(".popup-history__list");
-        const filterButtons = bodyHistory.querySelectorAll(".popup-history__filter-btn");
-        const searchInput = bodyHistory.querySelector("#historyBalanceSearch");
-        const searchInputWrapper = searchInput.closest(".popup-history__search");
-        const wrapper = bodyHistory.querySelector(".popup-history__wrapper");
-        const noCardMessage = bodyHistory.querySelector(".popup-history__no-card");
-        const allFilterButton = bodyHistory.querySelector('.popup-history__filter-btn[data-history="all"]');
-        const pagination = bodyHistory.querySelector(".pagging");
-        const paginationLinks = bodyHistory.querySelectorAll(".pagging__item, .pagging__arrow");
-        let jsonData = [];
-        const mediaQuery = window.matchMedia("(max-width: 30.061em)");
-        function renderList(data) {
-            listContainer.innerHTML = "";
-            const displayedData = mediaQuery.matches ? data : data.slice(0, 8);
-            displayedData.forEach((item => {
-                const li = document.createElement("li");
-                li.classList.add("popup-history__item", `_${item.status}`);
-                li.innerHTML = `\n        <div class="popup-history__cell cell-code">${item.code}</div>\n        <div class="popup-history__cell cell-denomination">${item.denomination} грн</div>\n        <div class="popup-history__cell cell-activation">${item.activation}</div>\n        <div class="popup-history__cell cell-status row-icon">${item.statusText}</div>\n        <div class="popup-history__cell cell-date">${item.date}</div>\n      `;
-                listContainer.appendChild(li);
-            }));
-            if (data.length === 0) {
-                wrapper.style.display = "none";
-                pagination.style.display = "none";
-                noCardMessage.style.display = "block";
-                searchInputWrapper.classList.add("_error");
-            } else {
-                wrapper.style.display = "block";
-                pagination.style.display = "flex";
-                noCardMessage.style.display = "none";
-                searchInputWrapper.classList.remove("_error");
-            }
-        }
-        fetch("files/history-balance/history.json").then((response => response.json())).then((data => {
-            jsonData = data;
-            renderList(jsonData);
-        })).catch((error => console.error("Ошибка загрузки JSON:", error)));
-        filterButtons.forEach((button => {
-            button.addEventListener("click", (() => {
-                filterButtons.forEach((btn => btn.classList.remove("active")));
-                button.classList.add("active");
-                const filterValue = button.getAttribute("data-history");
-                if (filterValue === "all") renderList(jsonData); else {
-                    const filteredData = jsonData.filter((item => item.status === filterValue));
-                    renderList(filteredData);
-                }
-            }));
-        }));
-        searchInput.addEventListener("input", (() => {
-            const searchTerm = searchInput.value.trim().toLowerCase();
-            if (searchTerm === "") {
-                renderList(jsonData);
-                searchInputWrapper.classList.remove("_error");
-                filterButtons.forEach((btn => btn.classList.remove("active")));
-                allFilterButton.classList.add("active");
-                return;
-            }
-            const filteredData = jsonData.filter((item => item.code.toLowerCase().includes(searchTerm)));
-            renderList(filteredData);
-        }));
-        paginationLinks.forEach((link => {
-            link.addEventListener("click", (event => {
-                event.preventDefault();
-                event.stopPropagation();
-            }));
-        }));
-        mediaQuery.addEventListener("change", (() => {
-            renderList(jsonData);
-        }));
-    }));
-    document.addEventListener("DOMContentLoaded", (function() {
-        const typeSwitch = document.querySelector(".certificate-account__switch");
-        const mainSertificates = document.querySelector(".certificate-account__wrapper--main");
-        const usedSertificates = document.querySelector(".certificate-account__wrapper--used");
-        const backButton = document.querySelector(".certificate-account__title--used");
-        if (!mainSertificates || !usedSertificates || !typeSwitch || !backButton) return;
-        usedSertificates.hidden = true;
-        function handleSelectCertificates(container) {
-            const selectCertificateBlocks = container.querySelectorAll(".select-certificate");
-            selectCertificateBlocks.forEach((block => {
-                const textSelect = block.querySelector(".text-select");
-                const textCount = block.querySelector(".text-count");
-                const btnSelect = block.querySelector(".btn-select");
-                const btnCount = block.querySelector(".btn-count");
-                const button = block.querySelector(".select-certificate__btn");
-                if (!textSelect || !textCount || !btnSelect || !btnCount || !button) return;
-                textCount.style.display = "none";
-                btnCount.style.display = "none";
-                button.addEventListener("click", (function() {
-                    const isActive = textSelect.style.display === "none";
-                    if (isActive) {
-                        textSelect.style.display = "";
-                        btnSelect.style.display = "";
-                        textCount.style.display = "none";
-                        btnCount.style.display = "none";
-                    } else {
-                        textSelect.style.display = "none";
-                        btnSelect.style.display = "none";
-                        textCount.style.display = "";
-                        btnCount.style.display = "";
-                    }
-                }));
-            }));
-        }
-        handleSelectCertificates(mainSertificates);
-        handleSelectCertificates(usedSertificates);
-        typeSwitch.addEventListener("click", (function() {
-            mainSertificates.hidden = true;
-            usedSertificates.hidden = false;
-        }));
-        backButton.addEventListener("click", (function() {
-            usedSertificates.hidden = true;
-            mainSertificates.hidden = false;
-        }));
-    }));
     window.addEventListener("load", (function() {
         const tabButtons = document.querySelectorAll(".solutions__nav-button");
         const tabs = document.querySelectorAll(".solutions__tab");
@@ -11409,7 +11562,6 @@
     spollers();
     tabs();
     videoPlayer();
-    accountMsg();
     formFieldsInit({
         viewPass: false,
         autoHeight: true

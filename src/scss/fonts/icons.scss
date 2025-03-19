@@ -17,17 +17,20 @@
 
 
 // https://icomoon.io/app/#/select/font
+.icon-physical:before {
+  content: "\e93f";
+}
+.icon-face:before {
+  content: "\e96c";
+}
+.icon-lock:before {
+  content: "\e96e";
+}
 .icon-trash-1:before {
   content: "\e950";
 }
 .icon-trash:before {
   content: "\e96b";
-}
-.icon-lock:before {
-  content: "\e93f";
-}
-.icon-face:before {
-  content: "\e96c";
 }
 .icon-box:before {
   content: "\e96d";
@@ -59,9 +62,6 @@
 .icon-gift-box:before {
   content: "\e924";
 }
-.icon-lock:before {
-  content: "\e93f";
-}
 .icon-no-money-exchange:before {
   content: "\e95d";
 }
@@ -79,9 +79,6 @@
 }
 .icon-number-5:before {
   content: "\e962";
-}
-.icon-physical:before {
-  content: "\e963";
 }
 .icon-balance:before {
   content: "\e964";

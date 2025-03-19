@@ -1,629 +1,140 @@
-<select name="form[]" data-class-modif="greeting-select" data-pseudo-label="Псевдо лабл"  data-speed="300" data-show-selected data-scroll="200" data-required>
-  <option value >Оберіть тему</option>
-  <option data-class="new" value="2">Пункт №2</option>
-  <option data-class="new" value="3">Пункт №3</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-  <option data-class="new" value="4">Пункт №4</option>
-</select>
 
 
 
-
-
-
-<div class="checkbox">
-  <input id="formAgreement" checked type="checkbox" name="agreement" class="checkbox__input">
-  <label for="formAgreement" class="checkbox__label icon-checkbox">
-    <span>Не передзвонювати мені для підтвердження замовлення <a href="#">Даної Оферти</a></span>
-  </label>
-</div>
-
-
-<div data-quantity class="quantity quantity_type-1">
-  <div class="quantity__item">
-    <div class="quantity__block">
-      <div class="quantity__input">
-        <input data-quantity-value data-quantity-min="1" data-quantity-max="7" type="text" name="" placeholder="1" value="" data-required>
-        <span>шт</span>
+<div class="tabs-account__body certificate-account">
+  <div class="certificate-account__wrapper certificate-account__wrapper--main">
+    <div class="certificate-account__item">
+      <div class="certificate-account__head certificate-account__head--main">
+        <button type="button" data-popup="#popupCabinet" data-popup-width="480.98,max" class="certificate-account__title certificate-account__title title-btn icon-arrow-down" aria-label="open menu">Мої Сертифікати</button>
       </div>
-    </div>
-    <div class="quantity__btns">
-      <button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
-      <button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
-    </div>
-  </div>
-  <div class="quantity__warning">Залишились: <span>3</span> шт</div>
-  <div class="quantity__error">Ви обрали останній товар</div>
-</div>
-<div data-quantity class="quantity quantity_type-1">
-  <div class="quantity__item">
-    <div class="quantity__block">
-      <div class="quantity__input">
-        <input data-quantity-value  type="text" name="" placeholder="1" value="1" data-required>
-        <span>шт</span>
-      </div>
-    </div>
-    <div class="quantity__btns">
-      <button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
-      <button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<div class="orders-checkout__cart orders-checkout__cart_main">
-  <div class="orders-checkout__mob-wr">
-    <div data-spollers="900.98,max" class="orders-checkout__spoller _spoller-init">
-      <details data-spollers-popup class="orders-checkout__orders">
-        <summary data-spoller-close  class="orders-checkout__head">
-          <div class="orders-checkout__info">
-            <p>Ваші замовлення <span>(2)</span></p>
-            
+      <div class="certificate-account__subhead">
+        <div class="certificate-account__select select-certificate">
+          <div class="select-certificate__block">
+            <p class="select-certificate__text text-select">Оберіть, щоб відмітити<br> використаним декілька</p>
+            <p class="select-certificate__text text-count">Вибрано: <span>0</span></p>
           </div>
-          <div class="orders-checkout__arrow icon-arrow-down">
-            <div><span>2400</span>грн</div>
-          </div>
-        </summary>
-        <div class="orders-checkout__wrapper orders-checkout__wrapper_main" hidden="">
-          <button data-da=".orders-checkout__wrapper_main,900.98,0" type="button" class="orders-checkout__change edit-btn icon-edit _dynamic_adapt_" aria-label="change orders">
-              Змінити
-            </button><div class="orders-checkout__body">
-          </div>
-        </div>
-      </details>
-    </div>
-  
-    <div class="orders-checkout__btns">
-      <button type="button" class="orders-checkout__btn btn btn_dark">Продовжити</button>
-    </div>
-  </div>
-</div>
-
-
-<div class="tab-checkout__item _d-none-pc fixed-element-statick">
-  <div class="fixed-element"></div>
-</div>
-
-<div data-filters="type-2" data-filters-close class="sub-header__filters filters">
-  <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
-    <div class="button-filters__icon icon-sertificates"></div>
-    <div class="button-filters__title">
-      <div class="button-filters__name">Категорії по сертифікатам</div>
-      <div class="button-filters__subtitle">Sub</div>
-    </div>
-  </button>
-  <div data-filters-wrapper class="filters__wrapper">
-    <div data-filters-head class="filters__header">
-      <div class="filters__subtitle">Оберіть категорію</div>
-      <div class="filters__count">обрано <span>0</span></div>
-    </div>
-    <div data-filters-body class="filters__body">
-      <ul class="filters__list">
-        <li class="filters__item">
-          <input type="checkbox" id="charity-certificates" name="category" class="filters__input">
-          <label for="charity-certificates" class="filters__label">
-            <span class="filters__icon"></span>
-            <span class="filters__name">Благодійні сертифікати</span>
-            <span class="filters__checkbox"></span>
-          </label>
-        </li>
-        <li class="filters__item">
-          <input type="checkbox" id="children-goods" name="category" class="filters__input">
-          <label for="children-goods" class="filters__label">
-            <span class="filters__icon"></span>
-            <span class="filters__name">Дитячі товари</span>
-            <span class="filters__checkbox"></span>
-          </label>
-        </li>
-      </ul>
-    </div>
-    <div data-filters-footer class="filters__footer">
-      <button type="button" class="filters__clear" aria-label="clear all">Очистити все</button>
-      <button type="button" class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(25)</span></button>
-    </div>
-  </div>
-</div>
-<div data-filters="type-2" data-filters-close class="sub-header__filters filters">
-  <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
-    <div class="button-filters__icon icon-sertificates"></div>
-    <div class="button-filters__title">
-      <div class="button-filters__name">Категорії по сертифікатам</div>
-      <div class="button-filters__subtitle">Sub</div>
-    </div>
-  </button>
-  <div data-filters-wrapper class="filters__wrapper">
-    <div data-filters-body class="filters__body">
-      <ul class="filters__list">
-        <li class="filters__item">
-          <input type="checkbox" id="charity-certificates" name="category" class="filters__input">
-          <label for="charity-certificates" class="filters__label">
-            <span class="filters__icon"></span>
-            <span class="filters__name">Благодійні сертифікати</span>
-            <span class="filters__checkbox"></span>
-          </label>
-        </li>
-        <li class="filters__item">
-          <input type="checkbox" id="children-goods" name="category" class="filters__input">
-          <label for="children-goods" class="filters__label">
-            <span class="filters__icon"></span>
-            <span class="filters__name">Дитячі товари</span>
-            <span class="filters__checkbox"></span>
-          </label>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="main__filters">
-  <div data-filters="type-2" data-filters-close class="filters filters-category"></div>
-  <div data-filters="type-1" data-filters-close class="filters"></div>
-  <div data-filters="type-2"  class="filters"></div>
-</div>
-
-
-
-<div data-filters="type-2" data-filters-close class="sub-header__filters filters">
-  <button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
-    <div class="button-filters__icon icon-sertificates"></div>
-    <div class="button-filters__title">
-      <div class="button-filters__name">Категорії по сертифікатам</div>
-      <div class="button-filters__subtitle">Sub</div>
-    </div>
-  </button>
-  <div data-filters-wrapper class="filters__wrapper">
-    <div data-filters-head class="filters__header">
-      <div class="filters__subtitle">Оберіть категорію</div>
-      <div class="filters__count">обрано <span>(0)</span></div>
-    </div>
-    <div data-filters-body class="filters__body">
-      <div class="filters__sub-list">
-        <div data-filters-spoller class="filters__sub-item">
-          <button type="button" class="filters__link icon-arrow-down" aria-label="open sublist">
-            <span class="filters__icon icon-sertificates"></span>
-            <span class="filters__name">Подарункові Сертифікати </span>
+          <button type="button" data-account-msg="#msgAccountChecked" class="select-certificate__btn btn btn_light btn_sm" aria-label="select">
+            <span class="btn-select">Обрати сертифікати</span>
+            <span class="btn-count icon-checked-sertificates">Відмітити використаним</span>
           </button>
         </div>
-        <ul data-filters-spoller-body class="filters__list">
-          <li class="filters__item">
-            <input type="checkbox" id="charity-certificates" name="category" class="filters__input">
-            <label for="charity-certificates" class="filters__label">
-              <span class="filters__icon icon-charity"></span>
-              <span class="filters__name">Благодійні сертифікати</span>
-              <span class="filters__checkbox icon-checkbox"></span>
-            </label>
+      </div>
+      <div class="certificate-account__body">
+        <ul class="certificate-account__header">
+          <li class="certificate-account__header-cell header-checkbox">
+            <div class="checkbox">
+              <input id="certificatesSelectAll" type="checkbox" class="checkbox__input">
+              <label for="certificatesSelectAll" class="checkbox__label icon-checkbox">
+              </label>
+            </div>
+            <span>Фото</span>
           </li>
-          <li class="filters__item">
-            <input type="checkbox" id="fishing-hunting" name="category" class="filters__input">
-            <label for="fishing-hunting" class="filters__label">
-              <span class="filters__icon icon-fishing"></span>
-              <span class="filters__name">Риболовля та мисливство</span>
-              <span class="filters__checkbox icon-checkbox"></span>
-            </label>
+          <li class="certificate-account__header-cell icon-arrow-down">Бренд</li>
+          <li class="certificate-account__header-cell icon-arrow-down">Дата покупки</li>
+          <li class="certificate-account__header-cell icon-arrow-down">Номінал</li>
+          <li class="certificate-account__header-cell icon-arrow-down">Дійсний до</li>
+        </ul>
+        <ul class="certificate-account__list">
+          <li class="certificate-account__item-cert item-cert _active">
+            <div class="item-cert__photo">
+              <div class="checkbox">
+                <input id="cert-1" type="checkbox" name="certificates" value="1" class="checkbox__input">
+                <label for="cert-1" class="checkbox__label icon-checkbox"></label>
+              </div>
+              <img class="item-cert__img" src="@img/certificates/certificate-01.jpg" width="62" height="40" alt="Image">
+            </div>
+            <div class="item-cert__last">
+              <a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
+              <button type="button" data-modal="#modalSertificates" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+            </div>
+          </li>
+          <li class="certificate-account__item-cert item-cert _active">
+            <div class="item-cert__photo">
+              <div class="checkbox">
+                <input id="cert-2" type="checkbox" name="certificates" value="2" class="checkbox__input">
+                <label for="cert-2" class="checkbox__label icon-checkbox"></label>
+              </div>
+              <img class="item-cert__img" src="@img/certificates/certificate-02.jpg" width="62" height="40" alt="Image">
+            </div>
+            <div class="item-cert__last">
+              <a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
+              <button type="button" data-modal="#modalSertificates" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+            </div>
           </li>
         </ul>
       </div>
-      <div class="filters__sub-list">
-        <div class="filters__sub-item">
-          <input type="checkbox" id="postcards" name="category" class="filters__input">
-          <label for="postcards" class="filters__label">
-            <span class="filters__icon icon-postcard"></span>
-            <span class="filters__name">Листівки</span>
-            <span class="filters__checkbox icon-checkbox"></span>
-          </label>
-        </div>
-      </div>
-      <div class="filters__sub-list">
-        <div class="filters__sub-item">
-          <input type="checkbox" id="boxes" name="category" class="filters__input">
-          <label for="boxes" class="filters__label">
-            <span class="filters__icon icon-boxes"></span>
-            <span class="filters__name">Коробки</span>
-            <span class="filters__checkbox icon-checkbox"></span>
-          </label>
-        </div>
+      <div class="certificate-account__footer">
+        <button type="button" data-da=".certificate-account__head--main,480.98" class="certificate-account__switch icon-checked-sertificates">
+          Використані <span>сертифікати</span>
+        </button>
       </div>
     </div>
-    <div data-filters-footer class="filters__footer">
-      <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
-      <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
-    </div>
   </div>
-</div>
 
-<div data-filters="type-2" data-filters-close data-filters-search class="filters filters-location">
-  <div data-filters-input class="filters__button button-filters icon-arrow-down">
-    <input class="filters__search" type="text" autocomplete="off" placeholder="Місто">
-  </div>
-  <div data-filters-wrapper class="filters__wrapper">
-    <div data-filters-head class="filters__header">
-      <div class="filters__subtitle">Оберіть aбо впишіть місто</div>
-      <div class="filters__count">обрано <span>(0)</span></div>
-    </div>
-    <div data-filters-body class="filters__body">
-      <ul class="filters__list">
-        <li class="filters__item">
-          <input type="checkbox" id="city-Kyiv" name="category-city" class="filters__input">
-          <label for="city-Kyiv" class="filters__label">
-            <span class="filters__name">Київ</span>
-            <span class="filters__checkbox icon-checkbox"></span>
-          </label>
-        </li>
-        <li class="filters__item">
-          <input type="checkbox" id="city-Lviv" name="category-city" class="filters__input">
-          <label for="city-Lviv" class="filters__label">
-            <span class="filters__name">Львів</span>
-            <span class="filters__checkbox icon-checkbox"></span>
-          </label>
-        </li>
-        <li class="filters__item">
-          <input type="checkbox" id="city-Kharkiv" name="category-city" class="filters__input">
-          <label for="city-Kharkiv" class="filters__label">
-            <span class="filters__name">Харків</span>
-            <span class="filters__checkbox icon-checkbox"></span>
-          </label>
-        </li>
-
-      </ul>
-    </div>
-    <div data-filters-footer class="filters__footer">
-      <button type="button" disabled class="filters__clear" aria-label="clear all">Очистити все</button>
-      <button type="button" disabled class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-<div class="popup__body popup-body-filters">
-  <div class="popup-body-filters__header">
-    <div>Фільтрувати замовлення</div>
-    <div class="filters__count">обрано <span>(0)</span></div>
-  </div>
-  <div class="popup-body-filters__body">
-
-  <div data-filters="type-2" data-filters-close="" data-da=".popup-body-filters__body,480.98,0" data-filters-search="" class="filters filters-location _dynamic_adapt_ filters_type-2">
-      <div data-filters-title="" class="filters__button button-filters icon-arrow-down">
-        <input data-filters-input="" class="filters__search" type="text" autocomplete="off" placeholder="Місто">
+  <div hidden class="certificate-account__wrapper certificate-account__wrapper--used">
+    <div class="certificate-account__item">
+      <div class="certificate-account__head">
+        <button type="button" class="certificate-account__title certificate-account__title--used" aria-label="back to main">
+          <span class="icon-arrow-back"></span>
+          Використані cертифікати
+        </button>
       </div>
-      <div data-filters-wrapper="" class="filters__wrapper">
-        <div data-filters-head="" class="filters__header">
-          <div class="filters__subtitle">Оберіть aбо впишіть місто</div>
-          <div class="filters__count">обрано <span>(0)</span></div>
-        </div>
-        <div data-filters-body="" class="filters__body filters-spoller" style="" hidden="">
-          <ul class="filters__list">
-            <li class="filters__item">
-              <input type="checkbox" id="city-Kyiv" name="category-city" class="filters__input">
-              <label for="city-Kyiv" class="filters__label">
-                <span class="filters__name">Київ</span>
-                <span class="filters__checkbox icon-checkbox"></span>
-              </label>
-            </li>
-            <li class="filters__item">
-              <input type="checkbox" id="city-Lviv" name="category-city" class="filters__input">
-              <label for="city-Lviv" class="filters__label">
-                <span class="filters__name">Львів</span>
-                <span class="filters__checkbox icon-checkbox"></span>
-              </label>
-            </li>
- 
-          </ul>
-        </div>
-        <div data-filters-footer="" class="filters__footer">
-          <button type="button" disabled="" class="filters__clear" aria-label="clear all">Очистити все</button>
-          <button type="button" disabled="" class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
-        </div>
-      </div>
-    </div><div data-filters="type-2" data-filters-close="" data-da=".popup-body-filters__body,480.98,0" class="filters filters-denomination _dynamic_adapt_ filters_type-2">
-      <button data-filters-title="" type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
-        <div class="button-filters__title">
-          <div class="button-filters__name">Номінал</div>
-          <div class="button-filters__subtitle">50 — 2 000 грн</div>
-        </div>
-      </button>
-      <div data-filters-wrapper="" class="filters__wrapper">
-        <div data-filters-body="" class="filters__body filters-spoller" style="" hidden="">
-          
+      <div class="certificate-account__subhead">
+       
+        <div class="certificate-account__select select-certificate">
+          <div class="select-certificate__block">
+            <p class="select-certificate__text text-select">Оберіть, щоб повернути<br>
+              до дійсних декілька</p>
+            <p class="select-certificate__text text-count">Вибрано: <span>0</span></p>
           </div>
-        </div>
-        <div data-filters-footer="" class="filters__footer">
-          <button type="button" class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
-        </div>
-      </div>
-    </div><div data-filters="type-2" data-filters-close="" data-da=".popup-body-filters__body,480.98,0" class="filters filters-for _dynamic_adapt_ filters_type-2">
-      <button data-filters-title="" type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
-        <div class="button-filters__title">
-          <div class="button-filters__name">Для кого</div>
-        </div>
-      </button>
-      <div data-filters-wrapper="" class="filters__wrapper">
-        <div data-filters-head="" class="filters__header">
-          <div class="filters__subtitle">Оберіть для кого</div>
-        </div>
-        <div data-filters-body="" class="filters__body filters-spoller" style="" hidden="">
-          <ul class="filters__list">
-            <li class="filters__item">
-              <input type="checkbox" id="for-everyone" name="category-for" class="filters__input">
-              <label for="for-everyone" class="filters__label">
-                <span class="filters__name">Для усіх</span>
-                <span class="filters__checkbox icon-checkbox"></span>
-              </label>
-            </li>
-            <li class="filters__item">
-              <input type="checkbox" id="for-two" name="category-for" class="filters__input">
-              <label for="for-two" class="filters__label">
-                <span class="filters__name">Для двох</span>
-                <span class="filters__checkbox icon-checkbox"></span>
-              </label>
-            </li>
-          </ul>
-
+          <button type="button" class="select-certificate__btn btn btn_light btn_sm" aria-label="select">
+            <span class="btn-select">Обрати сертифікати</span>
+            <span class="btn-count">Повернути до дійсних</span>
+          </button>
         </div>
       </div>
-    </div><div data-filters="type-2" data-filters-close="" data-da=".popup-body-filters__body,480.98,0" class="filters filters-type _dynamic_adapt_ filters_type-2">
-      <button data-filters-title="" type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
-        <div class="button-filters__title">
-          <div class="button-filters__name">Тип сертифікатів</div>
-          <div class="button-filters__subtitle">Фізичні та електронні сертифікати</div>
-        </div>
-      </button>
-      <div data-filters-wrapper="" class="filters__wrapper">
-        <div data-filters-head="" class="filters__header">
-          <div class="filters__subtitle">Оберіть тип</div>
-        </div>
-        <div data-filters-body="" class="filters__body filters-spoller" style="" hidden="">
-          <ul class="filters__list">
-            <li class="filters__item">
-              <input type="checkbox" id="all-certificates" name="category-type" class="filters__input">
-              <label for="all-certificates" class="filters__label">
-                <span class="filters__name">Усі сертифікати</span>
-                <span class="filters__checkbox icon-checkbox"></span>
-              </label>
-            </li>
-            <li class="filters__item">
-              <input type="checkbox" id="physical-certificates" name="category-type" class="filters__input">
-              <label for="physical-certificates" class="filters__label">
-                <span class="filters__name">Фізичні сертифікати</span>
-                <span class="filters__checkbox icon-checkbox"></span>
-              </label>
-            </li>
-            <li class="filters__item">
-              <input type="checkbox" id="electronic-certificates" name="category-type" class="filters__input">
-              <label for="electronic-certificates" class="filters__label">
-                <span class="filters__name">Електронні сертифікати</span>
-                <span class="filters__checkbox icon-checkbox"></span>
-              </label>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div></div>
-  <div data-filters-footer-types="" class="popup-body-filters__footer filters__footer">
-    <button type="button" disabled="" class="filters__clear" aria-label="clear all">Очистити все</button>
-    <button type="button" disabled="" class="filters__show btn btn_dark btn_sm-2" aria-label="show">Показати товари <span>(0)</span></button>
-  </div>
-</div>
-
-
-<!-- 12 -->
-<div class="timepicker">
-  <div class="timepicker__body _am-pm">
-    <div class="timepicker__block hours">
-      <div class="timepicker__item">
-        <div class="timepicker__selected">00</div>
-        <button type="button" class="timepicker__open icon-arrow-down"></button>
-      </div>
-      <ul class="timepicker__list">
-          <li data-value="0">00</li>
-          <li data-value="1">01</li>
-          <li data-value="2">02</li>
-          <li data-value="3">03</li>
-          <li data-value="4">04</li>
-          <li data-value="5">05</li>
-          <li data-value="6">06</li>
-          <li data-value="7">07</li>
-          <li data-value="8">08</li>
-          <li data-value="9">09</li>
-          <li data-value="10">10</li>
-          <li data-value="11">11</li>
-          <li data-value="12">12</li>
-         
-      </ul>
-    </div>
-    <div class="timepicker__sep">
-      :
-    </div>
-    <div class="timepicker__block minuts">
-      <div class="timepicker__item">
-        <div class="timepicker__selected">00</div>
-        <button type="button" class="timepicker__open icon-arrow-down"></button>
-      </div>
-      <ul class="timepicker__list ">
-          <li data-value="0">00</li>
-          <li data-value="01">01</li>
-          <li data-value="02">02</li>
-          <li data-value="03">03</li>
-          <li data-value="04">04</li>
-          <li data-value="05">05</li>
-          <li data-value="06">06</li>
-          <li data-value="07">07</li>
-          <li data-value="08">08</li>
-          <li data-value="09">09</li>
-          <li data-value="10">10</li>
-          <li data-value="11">11</li>
-      </ul>
-      <button type="button" class="timepicker__open icon-arrow-down"></button>
-    </div>
-    <div class="timepicker__sep">
-      :
-    </div>
-    <div class="timepicker__block am-pm">
-      <div class="timepicker__item">
-        <div class="timepicker__selected">AM</div>
-        <button type="button" class="timepicker__open icon-arrow-down"></button>
-      </div>
-      <ul class="timepicker__list ">
-          <li data-value="AM">AM</li>
-          <li data-value="PM">PM</li>
-      </ul>
-      <button type="button" class="timepicker__open icon-arrow-down"></button>
-    </div>
-  </div>
-</div>
-
-<!-- 24  -->
-<div class="timepicker">
-  <div class="timepicker__body">
-    <div class="timepicker__block hours">
-      <div class="timepicker__item">
-        <div class="timepicker__selected">00</div>
-        <button type="button" class="timepicker__open icon-arrow-down"></button>
-      </div>
-      <ul class="timepicker__list">
-          <li data-value="0">00</li>
-          <li data-value="1">01</li>
-          <li data-value="2">02</li>
-          <li data-value="3">03</li>
-          <li data-value="4">04</li>
-          <li data-value="5">05</li>
-          <li data-value="6">06</li>
-          <li data-value="7">07</li>
-          <li data-value="8">08</li>
-          <li data-value="9">09</li>
-          <li data-value="10">10</li>
-          <li data-value="11">11</li>
-          <li data-value="12">12</li>
-          <li data-value="13">13</li>
-          <li data-value="14">14</li>
-          <li data-value="15">15</li>
-         <!-- ..... -->
-      </ul>
-    </div>
-    <div class="timepicker__sep">
-      :
-    </div>
-    <div class="timepicker__block minuts">
-      <div class="timepicker__item">
-        <div class="timepicker__selected">00</div>
-        <button type="button" class="timepicker__open icon-arrow-down"></button>
-      </div>
-      <ul class="timepicker__list ">
-          <li data-value="0">00</li>
-          <li data-value="01">01</li>
-          <li data-value="02">02</li>
-          <li data-value="03">03</li>
-          <li data-value="04">04</li>
-          <li data-value="05">05</li>
-          <li data-value="06">06</li>
-          <li data-value="07">07</li>
-          <li data-value="08">08</li>
-          <li data-value="09">09</li>
-          <li data-value="10">10</li>
-          <li data-value="11">11</li>
-           <!-- ..... -->
-      </ul>
-      <button type="button" class="timepicker__open icon-arrow-down"></button>
-    </div>
-  </div>
-</div>
-
-
-
-<form data-dev method="post" class="popup-account__body popup-login__body">
-  <div class="popup-account__head">
-    <div class="popup-account__subhead">
-      <button type="button" class="popup-account__prev icon-arrow-back" aria-label="previous step"></button>
-      <p class="popup-account__txt">Крок <span>1</span> з 2</p>
-    </div>
-    <p class="popup-account__title">Заповніть свій кабінет</p>
-    <p class="popup-account__subtitle">Заповніть свої дані, аби ми могли розпізнати вас та надати необхідні послуги.</p>
-  </div>
-  <div class="popup-account__steps">
-    <div class="popup-account__step _step-active">
-      <div class="popup-account__items">
-        <div class="input__item">
-          <label for="formAccountCard" class="input__label">
-            Номер картки Eridon
-          </label>
-          <div class="input__sub-item">
-            <input id="formAccountCard" autocomplete="off" type="text" name="form[]" data-error="Введіть номер картки Eridon" placeholder="ХХ-ХХ-ХХ" data-required class="input input_sm">
-            <button disabled type="button" class="input__clear icon-cross"></button>
-          </div>
-        </div>
-        <div class="input__item">
-          <label for="formAccountCode" class="input__label">
-            Код ЄДРПОУ
-          </label>
-          <div class="input__sub-item">
-            <input id="formAccountCode" autocomplete="off" type="text" name="form[]" data-error="Введіть код ЄДРПОУ" placeholder="ХХ-ХХ-ХХ-ХХ-ХХ" data-required class="input input_sm">
-            <button disabled type="button" class="input__clear icon-cross"></button>
-          </div>
-        </div>
-      </div>
-      <button type="button" disabled class="popup-account__btn-next btn btn_dark btn_sm-3">Далі</button>
-    </div>
-    <div class="popup-account__step">
-      <div class="popup-account__items">
-        <div class="input__item">
-          <label for="formAccountName" class="input__label">
-            Ваша Стать
-          </label>
-          <div class="gender-option">
-            <div class="gender-option__item">
-              <input id="formAccountGenderFemale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" checked>
-              <label for="formAccountGenderFemale" class="gender-option__label input input_sm">
-                <span>Жіноча</span>
+      <div class="certificate-account__body">
+        <ul class="certificate-account__header">
+          <li class="certificate-account__header-cell header-checkbox">
+            <div class="checkbox">
+              <input id="certificatesUsedSelectAll" type="checkbox" class="checkbox__input">
+              <label for="certificatesUsedSelectAll" class="checkbox__label icon-checkbox">
               </label>
             </div>
-            <div class="gender-option__item">
-              <input id="formAccountGenderMale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" >
-              <label for="formAccountGenderMale" class="gender-option__label input input_sm">
-                <span>Чоловіча</span>
-              </label>
+            <span>Фото</span>
+          </li>
+          <li class="certificate-account__header-cell icon-arrow-down">Бренд</li>
+          <li class="certificate-account__header-cell icon-arrow-down">Дата покупки</li>
+          <li class="certificate-account__header-cell icon-arrow-down">Номінал</li>
+          <li class="certificate-account__header-cell icon-arrow-down">Дійсний до</li>
+        </ul>
+        <ul class="certificate-account__list">
+          <li class="certificate-account__item-cert item-cert _used">
+            <div class="item-cert__photo">
+              <div class="checkbox">
+                <input id="cert-used-1" type="checkbox" name="certificates" value="1" class="checkbox__input">
+                <label for="cert-used-1" class="checkbox__label icon-checkbox"></label>
+              </div>
+              <img class="item-cert__img" src="@img/certificates/certificate-01.jpg" width="62" height="40" alt="Image">
             </div>
-            <div class="gender-option__item">
-              <input id="formAccountGenderNoneBinary" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" >
-              <label for="formAccountGenderNoneBinary" class="gender-option__label input input_sm">
-                <span>Небінарна</span>
-              </label>
+            <div class="item-cert__last">
+              <button type="button" data-modal="#modalSertificates" class="item-cert__modal icon-dots" aria-label="open modal"></button>
             </div>
-          </div>
-        </div>
-        <div class="input__item">
-          <label for="formAccountName" class="input__label">
-            Ваше Ім’я
-          </label>
-          <div class="input__sub-item">
-            <input id="formAccountName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
-            <button disabled type="button" class="input__clear icon-cross"></button>
-          </div>
-        </div>
+          </li>
+          <li class="certificate-account__item-cert item-cert _used">
+            <div class="item-cert__photo">
+              <div class="checkbox">
+                <input id="cert-used-2" type="checkbox" name="certificates" value="2" class="checkbox__input">
+                <label for="cert-used-2" class="checkbox__label icon-checkbox"></label>
+              </div>
+              <img class="item-cert__img" src="@img/certificates/certificate-02.jpg" width="62" height="40" alt="Image">
+            </div>
+            <div class="item-cert__last">
+              <button type="button" data-modal="#modalSertificates" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+            </div>
+          </li>
+        </ul>
       </div>
-      <button type="submit" disabled class="popup-account__btn-submit btn btn_dark btn_sm-3">Заповнити</button>
     </div>
   </div>
-</form>
+</div>
