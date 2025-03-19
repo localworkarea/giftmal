@@ -1338,15 +1338,25 @@ function handleTabSwitch(event) {
 
 // Функция навешивания событий внутри активного контейнера
 function attachEvents(wrapper) {
+  if (!wrapper) {
+    return;
+  }
+
   const itemCerts = wrapper.querySelectorAll(".item-cert");
   const selectBtn = wrapper.querySelector(".select-certificate__btn");
   const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
 
+  if (!itemCerts.length) {
+    return;
+  }
+
   if (selectBtn) selectBtn.addEventListener("click", handleSelectButtonClick);
   if (selectAllCheckbox) selectAllCheckbox.addEventListener("change", toggleSelectAll);
+
   itemCerts.forEach(item => {
+    const checkbox = item.querySelector(".checkbox__input");
     item.addEventListener("click", handleItemClick);
-    item.querySelector(".checkbox__input").addEventListener("click", handleCheckboxClick);
+    if (checkbox) checkbox.addEventListener("click", handleCheckboxClick);
   });
 }
 
@@ -1354,11 +1364,17 @@ function attachEvents(wrapper) {
 attachEvents(mainWrapper);
 
 // Обработчики переключения вкладок
-switchBtn.addEventListener("click", showUsedTab);
-backBtn.addEventListener("click", showMainTab);
+if (switchBtn) {
+  switchBtn.addEventListener("click", showUsedTab);
+}
+if (backBtn) {
+  backBtn.addEventListener("click", showMainTab);
+}
 
 // Обработчик переключения вкладок в навигации
-tabsNavigation.addEventListener("click", handleTabSwitch);
+if (tabsNavigation) {
+  tabsNavigation.addEventListener("click", handleTabSwitch);
+}
 
 
 
