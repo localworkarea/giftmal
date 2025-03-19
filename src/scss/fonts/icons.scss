@@ -17,6 +17,21 @@
 
 
 // https://icomoon.io/app/#/select/font
+.icon-trash-1:before {
+  content: "\e950";
+}
+.icon-trash:before {
+  content: "\e96b";
+}
+.icon-lock:before {
+  content: "\e93f";
+}
+.icon-face:before {
+  content: "\e96c";
+}
+.icon-box:before {
+  content: "\e96d";
+}
 .icon-dots:before {
   content: "\e96a";
 }
@@ -313,9 +328,6 @@
 }
 .icon-time-experience:before {
   content: "\e94f";
-}
-.icon-trash:before {
-  content: "\e950";
 }
 .icon-underclothes:before {
   content: "\e951";

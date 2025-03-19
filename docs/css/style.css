@@ -39,6 +39,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
 }
+.icon-trash-1:before {
+  content: ""
+}
+.icon-trash:before {
+  content: ""
+}
+.icon-lock:before {
+  content: ""
+}
+.icon-face:before {
+  content: ""
+}
+.icon-box:before {
+  content: ""
+}
 .icon-dots:before {
   content: ""
 }
@@ -335,9 +350,6 @@
 }
 .icon-time-experience:before {
   content: ""
-}
-.icon-trash:before {
-  content: ""
 }
 .icon-underclothes:before {
   content: ""
