@@ -720,8 +720,9 @@
 													</ul>
 													<a href="#" class="pagging__arrow icon-arrow-down _next" aria-label="Next page"></a>
 												</div>
-												<button type="button" data-da=".certificate-account__head--main,480.98" class="certificate-account__switch icon-checked-sertificates">
-													Використані <span>сертифікати</span>
+												<button type="button" data-da=".certificate-account__head--main,480.98" class="certificate-account__switch">
+													<span data-tippy-content="Ваші відмічені сертифікати знаходяться тут." class="icon-checked-sertificates"></span>
+													Використані <span class="mob">сертифікати</span>
 												</button>
 											</div>
 										</div>
@@ -956,7 +957,7 @@
 						<a href="#" data-popup="#popupAccountRules" class="modal-account__btn icon-arrow-down">
 							<span class="modal-account__txt icon-details">Правила використання</span>
 						</a>
-						<a href="#" class="modal-account__btn icon-arrow-down">
+						<a href="#" data-checked class="modal-account__btn icon-arrow-down">
 							<span class="modal-account__txt icon-checked-sertificates">Відмітити використаним</span>
 						</a>
 					</div>
@@ -966,7 +967,7 @@
 		<div id="modalOrders" class="modal-account">
 			<div class="modal-account__wrapper">
 				<div class="modal-account__content">
-					<div class="modal-account__close"></div>
+					<div class="modal-account__close popup__close"></div>
 					<div class="modal-account__body">
 						<a href="#" class="modal-account__btn icon-arrow-down">
 							<span class="modal-account__txt icon-upload">Завантажити</span>

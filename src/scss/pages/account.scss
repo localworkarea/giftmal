@@ -1167,10 +1167,12 @@
     @extend %fonsSize13-14;
     color: var(--fade-violet-2);
     transition: color .2s ease;
-    &::before {
-      font-size: toRem(24);
+    .icon-checked-sertificates {
+      &::before {
+        font-size: toRem(24);
+      }
     }
-    span {
+    .mob {
       @media (max-width: toEm(920.98)){
         display: none;
       }

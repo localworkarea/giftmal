@@ -9890,6 +9890,8 @@
         initMobileAppAd();
     }
     document.addEventListener("DOMContentLoaded", (() => {
+        window.matchMedia("(min-width: 57.561em)");
+        const mediaQuery920max = window.matchMedia("(max-width: 57.561em)");
         const mediaQuery900min = window.matchMedia("(min-width: 56.311em)");
         const mediaQuery900max = window.matchMedia("(max-width: 56.311em)");
         const mediaQuery700max = window.matchMedia("(max-width: 43.811em)");
@@ -10620,11 +10622,14 @@
         mediaQuery.addEventListener("change", (() => {
             renderList(jsonData);
         }));
+        const certificateAccount = document.querySelector(".certificate-account");
+        if (certificateAccount) document.documentElement.classList.add("account-page");
         const mainWrapper = document.querySelector(".certificate-account__wrapper--main");
         const usedWrapper = document.querySelector(".certificate-account__wrapper--used");
         const switchBtn = document.querySelector(".certificate-account__switch");
         const backBtn = document.querySelector(".certificate-account__title--used");
         const tabsNavigation = document.querySelector("[data-tabs-titles]");
+        const modalButtons2 = document.querySelectorAll("[data-modal]");
         function showUsedTab() {
             resetSelection(mainWrapper);
             mainWrapper.hidden = true;
@@ -10712,6 +10717,13 @@
             const button = event.currentTarget;
             const msgSelector = button.getAttribute("data-account-msg");
             if (msgSelector) showMessage(msgSelector);
+            const tippyButton = wrapper.querySelector(".certificate-account__switch [data-tippy-content]");
+            if (tippyButton && tippyButton._tippy) {
+                tippyButton._tippy.show();
+                setTimeout((() => {
+                    tippyButton._tippy.hide();
+                }), 4e3);
+            }
         }
         function handleTabSwitch(event) {
             const clickedTab = event.target.closest(".tabs-account__btn");
@@ -10731,10 +10743,56 @@
             if (selectAllCheckbox) selectAllCheckbox.addEventListener("change", toggleSelectAll);
             itemCerts.forEach((item => {
                 const checkbox = item.querySelector(".checkbox__input");
-                item.addEventListener("click", handleItemClick);
+                if (!mediaQuery920max.matches) item.addEventListener("click", handleItemClick);
                 if (checkbox) checkbox.addEventListener("click", handleCheckboxClick);
             }));
         }
+        function toggleItemClickEvents(isDisabled) {
+            const itemCerts = document.querySelectorAll(".item-cert");
+            itemCerts.forEach((item => {
+                if (isDisabled) item.removeEventListener("click", handleItemClick); else item.addEventListener("click", handleItemClick);
+            }));
+        }
+        toggleItemClickEvents(mediaQuery920max.matches);
+        mediaQuery920max.addEventListener("change", (e => {
+            toggleItemClickEvents(e.matches);
+        }));
+        modalButtons2.forEach((button => {
+            button.addEventListener("click", (function(event) {
+                event.stopPropagation();
+                const modalId = button.getAttribute("data-modal");
+                const modal = document.querySelector(modalId);
+                if (!modal) return;
+                activeModal = modal;
+                activeButton = button;
+                const checkedButton = activeModal.querySelector("[data-checked]");
+                if (checkedButton && !checkedButton.dataset.listener) {
+                    checkedButton.dataset.listener = "true";
+                    checkedButton.addEventListener("click", (function() {
+                        const parentWrapper = activeButton.closest(".certificate-account__wrapper");
+                        const isFromMain = parentWrapper?.classList.contains("certificate-account__wrapper--main");
+                        const targetWrapper = isFromMain ? mainWrapper : usedWrapper;
+                        if (!mediaQuery920max.matches) activateSelection(targetWrapper);
+                        const itemCert = activeButton.closest(".item-cert");
+                        if (itemCert) {
+                            const checkbox = itemCert.querySelector(".checkbox__input");
+                            if (checkbox) {
+                                checkbox.checked = true;
+                                itemCert.classList.add("_checked");
+                                if (!mediaQuery920max.matches) {
+                                    const fakeEvent = {
+                                        target: checkbox,
+                                        currentTarget: targetWrapper,
+                                        stopPropagation: () => {}
+                                    };
+                                    handleCheckboxClick(fakeEvent);
+                                }
+                            }
+                        }
+                    }));
+                }
+            }));
+        }));
         attachEvents(mainWrapper);
         if (switchBtn) switchBtn.addEventListener("click", showUsedTab);
         if (backBtn) backBtn.addEventListener("click", showMainTab);

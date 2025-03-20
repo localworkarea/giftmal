@@ -9,6 +9,8 @@ import { initAllNotifications } from '../modules/notifications.js';
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  const mediaQuery920min = window.matchMedia('(min-width: 57.561em)');
+  const mediaQuery920max = window.matchMedia('(max-width: 57.561em)');
   const mediaQuery900min = window.matchMedia('(min-width: 56.311em)');
   const mediaQuery900max = window.matchMedia('(max-width: 56.311em)');
   const mediaQuery700max = window.matchMedia('(max-width: 43.811em)');
@@ -1162,222 +1164,272 @@ document.addEventListener("DOMContentLoaded", () => {
       // ======================================================================
       // == Account page - Certificates =====================================
       // -- change Main/Used Certificates --
+      const certificateAccount = document.querySelector('.certificate-account');
+
+      if (certificateAccount) {
+        document.documentElement.classList.add('account-page');
+      }
 
 
 
 
+      const mainWrapper = document.querySelector(".certificate-account__wrapper--main");
+      const usedWrapper = document.querySelector(".certificate-account__wrapper--used");
+      const switchBtn = document.querySelector(".certificate-account__switch");
+      const backBtn = document.querySelector(".certificate-account__title--used");
+      const tabsNavigation = document.querySelector("[data-tabs-titles]");
+      const modalButtons2 = document.querySelectorAll("[data-modal]");
+      
+      // Функция переключения на использованные сертификаты
+      function showUsedTab() {
+        resetSelection(mainWrapper);
+        mainWrapper.hidden = true;
+        usedWrapper.hidden = false;
+        attachEvents(usedWrapper);
+      }
+      
+      // Функция переключения на главную вкладку
+      function showMainTab() {
+        resetSelection(usedWrapper);
+        mainWrapper.hidden = false;
+        usedWrapper.hidden = true;
+        attachEvents(mainWrapper);
+      }
+      
+      // Функция проверки активного состояния
+      function isSelectionActive(wrapper) {
+        return wrapper.querySelectorAll(".item-cert._checked").length > 0;
+      }
+      
+      // Функция обновления количества выбранных сертификатов
+      function updateSelectedCount(wrapper) {
+        const countElement = wrapper.querySelector(".text-count span");
+        const selectedCount = wrapper.querySelectorAll(".item-cert._checked").length;
+        if (countElement) countElement.textContent = selectedCount;
+      }
+      
+      // Функция установки активного состояния
+      function activateSelection(wrapper) {
+        const itemCerts = wrapper.querySelectorAll(".item-cert");
+        const headerCheckbox = wrapper.querySelector(".header-checkbox");
+        const selectContainer = wrapper.querySelector(".select-certificate");
+      
+        itemCerts.forEach(item => item.classList.add("_item-active"));
+        headerCheckbox.classList.add("_items-active");
+        selectContainer.classList.add("_active");
+      
+        updateSelectedCount(wrapper);
+      }
+      
+      // Функция сброса активного состояния
+      function resetSelection(wrapper) {
+        if (!wrapper) return;
+      
+        const itemCerts = wrapper.querySelectorAll(".item-cert");
+        const headerCheckbox = wrapper.querySelector(".header-checkbox");
+        const selectContainer = wrapper.querySelector(".select-certificate");
+        const selectAllCheckbox = headerCheckbox?.querySelector(".checkbox__input");
+      
+        itemCerts.forEach(item => {
+          item.classList.remove("_item-active", "_checked");
+          item.querySelector(".checkbox__input").checked = false;
+        });
+      
+        headerCheckbox.classList.remove("_items-active");
+        selectContainer.classList.remove("_active");
+        if (selectAllCheckbox) selectAllCheckbox.checked = false;
+      
+        updateSelectedCount(wrapper);
+      }
+      
+      // Функция обработки клика по айтему
+      function handleItemClick(event) {
+        if (event.target.closest(".item-cert__download, .item-cert__modal, .checkbox")) return;
+      
+        const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+        const item = event.currentTarget;
+        const checkbox = item.querySelector(".checkbox__input");
+      
+        activateSelection(wrapper);
+      
+        checkbox.checked = !checkbox.checked;
+        item.classList.toggle("_checked", checkbox.checked);
+      
+        updateSelectedCount(wrapper);
+      
+        if (!isSelectionActive(wrapper)) {
+          resetSelection(wrapper);
+        }
+      }
+      
+      // Функция обработки клика по чекбоксу
+      function handleCheckboxClick(event) {
+        event.stopPropagation();
+      
+        const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+        const checkbox = event.target;
+        const item = checkbox.closest(".item-cert");
+      
+        activateSelection(wrapper);
+      
+        item.classList.toggle("_checked", checkbox.checked);
+        updateSelectedCount(wrapper);
+      
+        if (!isSelectionActive(wrapper)) {
+          resetSelection(wrapper);
+        }
+      }
+      
+      // Функция выделения всех айтемов
+      function toggleSelectAll(event) {
+        const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+        const itemCerts = wrapper.querySelectorAll(".item-cert");
+        const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
+      
+        const isChecked = selectAllCheckbox.checked;
+        itemCerts.forEach(item => {
+          const checkbox = item.querySelector(".checkbox__input");
+          item.classList.toggle("_checked", isChecked);
+          checkbox.checked = isChecked;
+        });
+      
+        if (isChecked) {
+          activateSelection(wrapper);
+        } else {
+          resetSelection(wrapper);
+        }
+      
+        updateSelectedCount(wrapper);
+      }
+      
+      // Функция обработки клика по кнопке выбора сертификатов
+      function handleSelectButtonClick(event) {
+        const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
+      
+        if (!isSelectionActive(wrapper)) {
+          activateSelection(wrapper);
+          return;
+        }
+      
+        const button = event.currentTarget;
+        const msgSelector = button.getAttribute("data-account-msg");
+        if (msgSelector) showMessage(msgSelector);
 
-// Константы
-const mainWrapper = document.querySelector(".certificate-account__wrapper--main");
-const usedWrapper = document.querySelector(".certificate-account__wrapper--used");
-const switchBtn = document.querySelector(".certificate-account__switch");
-const backBtn = document.querySelector(".certificate-account__title--used");
-const tabsNavigation = document.querySelector("[data-tabs-titles]");
-
-// Функция переключения на использованные сертификаты
-function showUsedTab() {
-  resetSelection(mainWrapper); // Сбрасываем состояние main перед переключением
-  mainWrapper.hidden = true;
-  usedWrapper.hidden = false;
-  attachEvents(usedWrapper);
-}
-
-// Функция переключения на главную вкладку
-function showMainTab() {
-  resetSelection(usedWrapper); // Сбрасываем состояние used перед переключением
-  mainWrapper.hidden = false;
-  usedWrapper.hidden = true;
-  attachEvents(mainWrapper);
-}
-
-// Функция проверки активного состояния
-function isSelectionActive(wrapper) {
-  return wrapper.querySelectorAll(".item-cert._checked").length > 0;
-}
-
-// Функция обновления количества выбранных сертификатов
-function updateSelectedCount(wrapper) {
-  const countElement = wrapper.querySelector(".text-count span");
-  const selectedCount = wrapper.querySelectorAll(".item-cert._checked").length;
-
-  if (countElement) {
-    countElement.textContent = selectedCount;
-  }
-}
-
-// Функция установки активного состояния
-function activateSelection(wrapper) {
-  const itemCerts = wrapper.querySelectorAll(".item-cert");
-  const headerCheckbox = wrapper.querySelector(".header-checkbox");
-  const selectContainer = wrapper.querySelector(".select-certificate");
-
-  itemCerts.forEach(item => item.classList.add("_item-active"));
-  headerCheckbox.classList.add("_items-active");
-  selectContainer.classList.add("_active");
-
-  updateSelectedCount(wrapper);
-}
-
-// Функция сброса активного состояния
-function resetSelection(wrapper) {
-  if (!wrapper) return;
-
-  const itemCerts = wrapper.querySelectorAll(".item-cert");
-  const headerCheckbox = wrapper.querySelector(".header-checkbox");
-  const selectContainer = wrapper.querySelector(".select-certificate");
-  const selectAllCheckbox = headerCheckbox?.querySelector(".checkbox__input");
-
-  itemCerts.forEach(item => {
-    item.classList.remove("_item-active", "_checked");
-    item.querySelector(".checkbox__input").checked = false;
-  });
-
-  headerCheckbox.classList.remove("_items-active");
-  selectContainer.classList.remove("_active");
-  if (selectAllCheckbox) selectAllCheckbox.checked = false;
-
-  updateSelectedCount(wrapper);
-}
-
-// Функция обработки клика по айтему
-function handleItemClick(event) {
-  if (event.target.closest(".item-cert__download, .item-cert__modal, .checkbox")) {
-    return;
-  }
-
-  const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
-  const item = event.currentTarget;
-  const checkbox = item.querySelector(".checkbox__input");
-
-  activateSelection(wrapper);
-
-  // Переключаем состояние чекбокса и `_checked`
-  checkbox.checked = !checkbox.checked;
-  item.classList.toggle("_checked", checkbox.checked);
-
-  updateSelectedCount(wrapper);
-
-  // Если нет отмеченных элементов — сбрасываем активное состояние
-  if (!isSelectionActive(wrapper)) {
-    resetSelection(wrapper);
-  }
-}
-
-// Функция обработки клика по чекбоксу
-function handleCheckboxClick(event) {
-  event.stopPropagation();
-
-  const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
-  const checkbox = event.target;
-  const item = checkbox.closest(".item-cert");
-
-  activateSelection(wrapper);
-
-  // Тоглим `_checked` класс в зависимости от состояния чекбокса
-  item.classList.toggle("_checked", checkbox.checked);
-
-  updateSelectedCount(wrapper);
-
-  // Если нет отмеченных элементов — сбрасываем активное состояние
-  if (!isSelectionActive(wrapper)) {
-    resetSelection(wrapper);
-  }
-}
-
-// Функция выделения всех айтемов
-function toggleSelectAll(event) {
-  const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
-  const itemCerts = wrapper.querySelectorAll(".item-cert");
-  const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
-
-  const isChecked = selectAllCheckbox.checked;
-  itemCerts.forEach(item => {
-    const checkbox = item.querySelector(".checkbox__input");
-    item.classList.toggle("_checked", isChecked);
-    checkbox.checked = isChecked;
-  });
-
-  if (isChecked) {
-    activateSelection(wrapper);
-  } else {
-    resetSelection(wrapper);
-  }
-
-  updateSelectedCount(wrapper);
-}
-
-// Функция обработки клика по кнопке выбора сертификатов
-function handleSelectButtonClick(event) {
-  const wrapper = event.currentTarget.closest(".certificate-account__wrapper");
-
-  // Если вкладка в дефолтном состоянии, первый клик делает её активной
-  if (!isSelectionActive(wrapper)) {
-    activateSelection(wrapper);
-    return;
-  }
-
-  // После активации вкладки — вызываем showMessage
-  const button = event.currentTarget;
-  const msgSelector = button.getAttribute("data-account-msg");
-  if (msgSelector) {
-    showMessage(msgSelector);
-  }
-}
-
-// Функция сброса при переключении вкладок
-function handleTabSwitch(event) {
-  const clickedTab = event.target.closest(".tabs-account__btn");
-  if (!clickedTab) return;
-
-  // Если была выбрана не вкладка "Мої Сертифікати" — сбрасываем активное состояние
-  if (!clickedTab.classList.contains("icon-sertificates")) {
-    resetSelection(mainWrapper);
-    resetSelection(usedWrapper);
-  }
-}
-
-// Функция навешивания событий внутри активного контейнера
-function attachEvents(wrapper) {
-  if (!wrapper) {
-    return;
-  }
-
-  const itemCerts = wrapper.querySelectorAll(".item-cert");
-  const selectBtn = wrapper.querySelector(".select-certificate__btn");
-  const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
-
-  if (!itemCerts.length) {
-    return;
-  }
-
-  if (selectBtn) selectBtn.addEventListener("click", handleSelectButtonClick);
-  if (selectAllCheckbox) selectAllCheckbox.addEventListener("change", toggleSelectAll);
-
-  itemCerts.forEach(item => {
-    const checkbox = item.querySelector(".checkbox__input");
-    item.addEventListener("click", handleItemClick);
-    if (checkbox) checkbox.addEventListener("click", handleCheckboxClick);
-  });
-}
-
-// Навешиваем обработчики на активный контейнер
-attachEvents(mainWrapper);
-
-// Обработчики переключения вкладок
-if (switchBtn) {
-  switchBtn.addEventListener("click", showUsedTab);
-}
-if (backBtn) {
-  backBtn.addEventListener("click", showMainTab);
-}
-
-// Обработчик переключения вкладок в навигации
-if (tabsNavigation) {
-  tabsNavigation.addEventListener("click", handleTabSwitch);
-}
-
-
-
+        const tippyButton = wrapper.querySelector(".certificate-account__switch [data-tippy-content]");
+        if (tippyButton && tippyButton._tippy) {
+          tippyButton._tippy.show();
+      
+          setTimeout(() => {
+            tippyButton._tippy.hide();
+          }, 4000);
+        }
+      }
+      
+      // Функция сброса при переключении вкладок
+      function handleTabSwitch(event) {
+        const clickedTab = event.target.closest(".tabs-account__btn");
+        if (!clickedTab) return;
+      
+        if (!clickedTab.classList.contains("icon-sertificates")) {
+          resetSelection(mainWrapper);
+          resetSelection(usedWrapper);
+        }
+      }
+      
+      // Функция навешивания событий внутри активного контейнера
+      function attachEvents(wrapper) {
+        if (!wrapper) return;
+      
+        const itemCerts = wrapper.querySelectorAll(".item-cert");
+        const selectBtn = wrapper.querySelector(".select-certificate__btn");
+        const selectAllCheckbox = wrapper.querySelector(".header-checkbox .checkbox__input");
+      
+        if (!itemCerts.length) return;
+      
+        if (selectBtn) selectBtn.addEventListener("click", handleSelectButtonClick);
+        if (selectAllCheckbox) selectAllCheckbox.addEventListener("change", toggleSelectAll);
+      
+        itemCerts.forEach(item => {
+          const checkbox = item.querySelector(".checkbox__input");
+          if (!mediaQuery920max.matches) item.addEventListener("click", handleItemClick);
+          if (checkbox) checkbox.addEventListener("click", handleCheckboxClick);
+        });
+      }
+      
+      // Отключение кликов по айтемам при изменении ширины
+      function toggleItemClickEvents(isDisabled) {
+        const itemCerts = document.querySelectorAll(".item-cert");
+      
+        itemCerts.forEach(item => {
+          if (isDisabled) {
+            item.removeEventListener("click", handleItemClick);
+          } else {
+            item.addEventListener("click", handleItemClick);
+          }
+        });
+      }
+      
+      // Проверяем ширину экрана при загрузке
+      toggleItemClickEvents(mediaQuery920max.matches);
+      
+      // Слушаем изменения размера экрана
+      mediaQuery920max.addEventListener("change", (e) => {
+        toggleItemClickEvents(e.matches);
+      });
+      
+      // Обработка data-checked внутри открытого модального окна
+      modalButtons2.forEach(button => {
+        button.addEventListener("click", function (event) {
+          event.stopPropagation();
+      
+          const modalId = button.getAttribute("data-modal");
+          const modal = document.querySelector(modalId);
+          if (!modal) return;
+      
+          activeModal = modal;
+          activeButton = button;
+      
+          const checkedButton = activeModal.querySelector("[data-checked]");
+      
+          if (checkedButton && !checkedButton.dataset.listener) {
+            checkedButton.dataset.listener = "true"; 
+            checkedButton.addEventListener("click", function () {
+              const parentWrapper = activeButton.closest(".certificate-account__wrapper");
+              const isFromMain = parentWrapper?.classList.contains("certificate-account__wrapper--main");
+              const targetWrapper = isFromMain ? mainWrapper : usedWrapper;
+      
+              if (!mediaQuery920max.matches) {
+                activateSelection(targetWrapper);
+              }
+      
+              const itemCert = activeButton.closest(".item-cert");
+              if (itemCert) {
+                const checkbox = itemCert.querySelector(".checkbox__input");
+                if (checkbox) {
+                  checkbox.checked = true; 
+                  itemCert.classList.add("_checked");
+      
+                  if (!mediaQuery920max.matches) {
+                    const fakeEvent = { 
+                      target: checkbox, 
+                      currentTarget: targetWrapper,
+                      stopPropagation: () => {} 
+                    };
+                    handleCheckboxClick(fakeEvent);
+                  }
+                }
+              }
+            });
+          }
+        });
+      });
+      
+      // Навешиваем обработчики
+      attachEvents(mainWrapper);
+      if (switchBtn) switchBtn.addEventListener("click", showUsedTab);
+      if (backBtn) backBtn.addEventListener("click", showMainTab);
+      if (tabsNavigation) tabsNavigation.addEventListener("click", handleTabSwitch);
+      
 
 
 

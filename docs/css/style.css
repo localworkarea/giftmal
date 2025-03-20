@@ -8443,7 +8443,7 @@ body::after {
   color: var(--fade-violet-2);
   transition: color .2s ease
 }
-.certificate-account__switch::before {
+.certificate-account__switch .icon-checked-sertificates::before {
   font-size: 1.5rem
 }
 .certificate-account__switch:active {
@@ -11656,6 +11656,9 @@ body::after {
   padding: 16px;
   z-index: 1
 }
+.account-page .tippy-content {
+  max-width: 227px
+}
 .swiper {
   overflow: hidden
 }
@@ -14403,7 +14406,7 @@ body::after {
   .certificate-account__header {
     display: none
   }
-  .certificate-account__switch span {
+  .certificate-account__switch .mob {
     display: none
   }
   .item-cert {

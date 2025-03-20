@@ -16,6 +16,8 @@
 	outline: 0;
 	transition-property: transform, visibility, opacity;
 	box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.16);
+	
+
 }
 .tippy-box[data-placement^="top"] > .tippy-arrow {
 	bottom: 0;
@@ -73,4 +75,7 @@
 	position: relative;
 	padding: 16px;
 	z-index: 1;
+	.account-page & {
+		max-width: 227px ;
+	}
 }
