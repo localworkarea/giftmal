@@ -540,7 +540,6 @@ textarea {
 .input {
   width: 100%;
   display: block;
-  caret-color: inherit;
   border: .09375rem solid transparent;
   outline: 0;
   font-weight: 500;
@@ -557,6 +556,9 @@ textarea {
 }
 .input_social {
   padding: .625rem 2.75rem
+}
+.input_social._disabled {
+  pointer-events: none
 }
 .input._form-error {
   border-color: var(--red);
@@ -626,7 +628,9 @@ textarea {
 }
 textarea.input {
   resize: none;
-  min-height: 6.4375rem
+  min-height: 6.4375rem;
+  line-height: 1.46;
+  padding-top: .6875rem
 }
 .input__item {
   position: relative;
@@ -7003,6 +7007,9 @@ body::after {
   position: relative;
   z-index: 5;
   margin-inline: auto
+}
+.slider-checkout_visible {
+  overflow: visible!important
 }
 .slider-checkout_visible::before {
   background: linear-gradient(to right,rgba(255,255,255,0) 0,#fff 100%);
@@ -14002,6 +14009,14 @@ body::after {
   ._position-right .slider-checkout_visible::before::before {
     opacity: 0
   }
+  .slider-checkout .mask-bg {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    height: 90%;
+    background-color: var(--white)
+  }
   .card-balance__item {
     grid-template-columns: 16% 22% 1fr 22%
   }
@@ -14216,6 +14231,15 @@ body::after {
   }
   .slider-checkout {
     max-width: 46.5rem
+  }
+  .slider-checkout .mask-bg {
+    width: 2rem
+  }
+  .slider-checkout .mask-bg-left {
+    left: -2rem
+  }
+  .slider-checkout .mask-bg-right {
+    right: -2rem
   }
   .spollers-balance__body {
     padding-top: 2rem
@@ -15222,6 +15246,9 @@ body::after {
   }
   .slider-checkout {
     max-width: 33.4375rem
+  }
+  .slider-checkout .mask-bg {
+    display: none
   }
   .slider-checkout {
     overflow: visible!important
@@ -19170,6 +19197,15 @@ body::after {
   .slider-checkout {
     max-width: clamp(33.4375rem ,-2.0114495482rem + 62.9518072289vw ,46.5rem)
   }
+  .slider-checkout .mask-bg {
+    width: clamp(1.5rem ,.1431024096rem + 2.4096385542vw ,2rem)
+  }
+  .slider-checkout .mask-bg-left {
+    left: clamp(-2rem ,-.1431024096rem + -2.4096385542vw ,-1.5rem)
+  }
+  .slider-checkout .mask-bg-right {
+    right: clamp(-2rem ,-.1431024096rem + -2.4096385542vw ,-1.5rem)
+  }
 }
 @media (max-width:56.31125em)and (min-width:46.93625em) {
   .card-balance__item {
@@ -19245,7 +19281,7 @@ body::after {
   }
 }
 @media (any-hover:hover) {
-  .input_social[disabled]:hover {
+  .input_social._disabled:hover {
     background-color: var(--gray-1)
   }
   .input_white:hover {

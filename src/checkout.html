@@ -274,7 +274,7 @@
 																	<div class="tab-checkout__row row-gap-16">
 																		<div class="input__item">
 																			<div class="input__sub-item">
-																				<input autocomplete="off" disabled type="text" name="telegram" data-error="Прив’яжіть аккаунт" placeholder="Прив’язати свій Telegram" data-required class="input input_sm input_social">
+																				<input autocomplete="off" type="text" name="telegram" data-error="Прив’яжіть аккаунт" placeholder="Прив’язати свій Telegram" data-required class="input _disabled input_sm input_social">
 																				<div class="input__social-i">
 																					<img src="@img/icons/telegram.svg" width="24" height="24" alt="Image">
 																				</div>
@@ -309,7 +309,7 @@
 																</div>
 																<div class="tab-checkout__items items-cl-2">
 																	<div class="input__item">
-																		<label for="inp17" class="input__label">
+																		<label class="input__label">
 																			<span class="info-label">
 																				<span data-tippy-content="Впишіть ваше Ім’я" class="info-label__info icon-info"></span>
 																				Ваше ім’я
@@ -335,7 +335,7 @@
 																</div>
 																<div class="tab-checkout__items items-cl-2">
 																	<div class="input__item">
-																		<label for="inp12" class="input__label">
+																		<label class="input__label">
 																			<span class="info-label">
 																				<span data-tippy-content="Впишіть ваше Ім’я" class="info-label__info icon-info"></span>
 																				Ваше ім’я
@@ -757,7 +757,7 @@
 																		<label for="departmentCity" class="input__label">
 																			Місто
 																		</label>
-																		<select id="departmentCity" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="240" data-search  data-required data-error="Вкажіть місто">
+																		<select id="departmentCity" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="222" data-search  data-required data-error="Вкажіть місто">
 																			<option value data-class="item-placeholder">Місто</option>
 																			<option value="nothing" data-class="_nothing-found">За вашим запитом нічого не знайдено.</option>
 																			<option value="2">Київ</option>
@@ -775,7 +775,7 @@
 																		<label for="department" class="input__label">
 																			Відділення
 																		</label>
-																		<select id="department" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="221"  data-search data-required data-error="Вкажіть відділення">
+																		<select id="department" name="form[]" data-class-modif="type-1" data-speed="200" data-show-selected data-scroll="239"  data-search data-required data-error="Вкажіть відділення">
 																			<option value data-class="item-placeholder">Відділення</option>
 																			<option value="nothing" data-class="_nothing-found">За вашим запитом нічого не знайдено.</option>
 																			<option value="2">Відд №1. Драгоманова, 10А Відд №1. Драгоманова, 10А</option>
@@ -1071,6 +1071,8 @@
 																
 																<div class="tab-checkout__slider">
 																	<div class="slider-checkout__content slider-checkout slider-checkout-second slider-checkout_visible swiper">
+																		<span class="mask-bg mask-bg-left"></span>
+																		<span class="mask-bg mask-bg-right"></span>
 																		<div class="slider-checkout__nav">
 																			<p class="slider-checkout__subtitle">
 																				Додайте фізичний сертифікат до листівки

@@ -11,7 +11,7 @@ textarea {
 .input {
 	width: 100%;
 	display: block;
-	caret-color: inherit;
+	// caret-color: inherit;
 	border: toRem(1.5) solid transparent;
 	outline: none;
 	font-weight: 500;
@@ -37,7 +37,8 @@ textarea {
 	}
   &_social {
     padding: toRem(10) toRem(44); 
-    &[disabled] {
+    &._disabled {
+      pointer-events: none;
       @media (any-hover: hover){
         &:hover{
           background-color: var(--gray-1);
@@ -146,7 +147,9 @@ textarea {
 
 textarea.input {
 	resize: none;
-  min-height: toRem(103);
+  min-height: toRem(103); 
+  line-height: 1.46;
+  padding-top: toRem(11);
 }
 
 .input {
