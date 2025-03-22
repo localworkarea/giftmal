@@ -718,6 +718,12 @@
 	&_my-data {
     @extend %padding32-24;
     @extend %tabBg-br-r;
+    @media (max-width: toEm(900.98)) and (min-width:$mobileSmall) {
+      margin-bottom: toRem(100);
+    }
+    @media (max-width:$mobileSmall){
+       margin-bottom: toRem(170); 
+    }
   }
   // .tab-checkout_order
   &_order {

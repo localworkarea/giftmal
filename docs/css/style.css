@@ -18044,6 +18044,9 @@ body::after {
     grid-template-columns: 100%;
     gap: 1.125rem
   }
+  .tab-checkout_my-data {
+    margin-bottom: 10.625rem
+  }
   .tab-checkout__head {
     flex-direction: column;
     align-items: flex-start
@@ -19183,6 +19186,9 @@ body::after {
   .checkout__title-main {
     margin-inline: auto;
     max-width: 36.875rem
+  }
+  .tab-checkout_my-data {
+    margin-bottom: 6.25rem
   }
 }
 @media (min-width:56.31125em)and (max-width:90.06125em) {
