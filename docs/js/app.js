@@ -9443,7 +9443,7 @@
                 }
             }
         });
-        if (document.querySelector(".slider-checkout")) new Swiper(".slider-checkout", {
+        if (document.querySelector(".slider-checkout-first")) new Swiper(".slider-checkout-first", {
             modules: [ Navigation, freeMode ],
             observer: true,
             observeParents: true,
@@ -9455,11 +9455,87 @@
                 momentumBounce: false
             },
             navigation: {
-                prevEl: ".slider-checkout .swiper-button-prev",
-                nextEl: ".slider-checkout .swiper-button-next"
+                prevEl: ".slider-checkout-first .swiper-button-prev",
+                nextEl: ".slider-checkout-first .swiper-button-next"
             },
             on: {}
         });
+        if (document.querySelector(".slider-checkout-second")) {
+            const sliderCheckout = document.querySelector(".slider-checkout-second");
+            const sliderWrapper = sliderCheckout.closest(".tab-checkout__slider");
+            const prevBtn = sliderCheckout.querySelector(".swiper-button-prev");
+            const nextBtn = sliderCheckout.querySelector(".swiper-button-next");
+            const swiperCheckout = new Swiper(".slider-checkout-second", {
+                modules: [ Navigation, freeMode ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: "auto",
+                spaceBetween: 8,
+                speed: 500,
+                freeMode: {
+                    enabled: true,
+                    momentumBounce: false
+                },
+                navigation: {
+                    prevEl: prevBtn,
+                    nextEl: nextBtn
+                },
+                on: {}
+            });
+            const mediaQuery900max = window.matchMedia("(max-width: 56.311em)");
+            if (!mediaQuery900max.matches) {
+                swiperCheckout.on("init", updatePositionClasses);
+                swiperCheckout.on("slideChange", waitAndUpdate);
+                swiperCheckout.on("touchEnd", waitAndUpdate);
+                prevBtn.addEventListener("click", waitAndUpdate);
+                nextBtn.addEventListener("click", waitAndUpdate);
+                waitAndUpdate();
+            }
+            function waitAndUpdate() {
+                requestAnimationFrame((() => {
+                    requestAnimationFrame((() => {
+                        updatePositionClasses();
+                    }));
+                }));
+            }
+            function updatePositionClasses() {
+                sliderWrapper.classList.toggle("_position-left", prevBtn.classList.contains("swiper-button-disabled"));
+                sliderWrapper.classList.toggle("_position-right", nextBtn.classList.contains("swiper-button-disabled"));
+            }
+        }
+        if (document.querySelector(".status-slider")) {
+            new Swiper(".status-slider", {
+                modules: [ Navigation, freeMode ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: "auto",
+                spaceBetween: 0,
+                freeMode: {
+                    enabled: true,
+                    momentumBounce: false
+                },
+                navigation: {
+                    prevEl: ".status-slider .swiper-button-prev",
+                    nextEl: ".status-slider .swiper-button-next"
+                },
+                on: {
+                    init(swiper) {
+                        updateDisabledClasses(swiper);
+                    },
+                    reachBeginning(swiper) {
+                        updateDisabledClasses(swiper);
+                    },
+                    reachEnd(swiper) {
+                        updateDisabledClasses(swiper);
+                    }
+                }
+            });
+            function updateDisabledClasses(swiper) {
+                const sliderEl = swiper.el;
+                sliderEl.classList.toggle("_btn-disabled-prev", swiper.isBeginning);
+                sliderEl.classList.toggle("_btn-disabled-next", swiper.isEnd);
+            }
+        }
         const blogSliders = [ {
             selector: ".blog-inner__related-slider",
             navigation: {
@@ -9917,7 +9993,34 @@
             if (!isNaN(num)) el.textContent = formatNumbDecimals.to(num);
         }));
         const checkoutPage = document.querySelector(".checkout");
+        const certificateAccount = document.querySelector(".certificate-account");
         if (checkoutPage) document.documentElement.classList.add("checkout-page");
+        if (certificateAccount) document.documentElement.classList.add("account-page");
+        const illustrationInput = document.getElementById("customImageInput");
+        if (illustrationInput) {
+            illustrationInput.addEventListener("change", (function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader;
+                    reader.onload = function(e) {
+                        const previewContainer = document.querySelector(".illustrations__item--add .illustrations__img");
+                        previewContainer.innerHTML = `<img class="ibg" src="${e.target.result}" alt="Uploaded Image">`;
+                        document.querySelector(".illustrations__item--add").classList.add("_added");
+                        document.querySelectorAll('.illustrations__input[type="radio"]').forEach((radio => {
+                            radio.checked = false;
+                        }));
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }));
+            document.querySelectorAll('.illustrations__input[type="radio"]').forEach((radio => {
+                radio.addEventListener("change", (function() {
+                    document.getElementById("customImageInput").value = "";
+                    document.querySelector(".illustrations__item--add").classList.remove("_added");
+                    document.querySelector(".illustrations__item--add .illustrations__img").innerHTML = "";
+                }));
+            }));
+        }
         const itemDropdowns = document.querySelectorAll(".item-dropdwn");
         const itemButtons = document.querySelectorAll(".item-dropdwn__btn");
         itemDropdowns.forEach((dropdown => {
@@ -10622,8 +10725,26 @@
         mediaQuery.addEventListener("change", (() => {
             renderList(jsonData);
         }));
-        const certificateAccount = document.querySelector(".certificate-account");
-        if (certificateAccount) document.documentElement.classList.add("account-page");
+        const itemOrderMore = document.querySelectorAll(".item-order__more");
+        const itemOrder = document.querySelectorAll(".item-order");
+        itemOrder.forEach((body => {
+            const itemOrderBody = body.querySelector(".item-order__body");
+            _slideUp(itemOrderBody, 0);
+            body.classList.add("_init-spoller");
+        }));
+        itemOrderMore.forEach((button => {
+            button.addEventListener("click", (event => {
+                const orderItem = event.target.closest(".item-order");
+                const body = orderItem.querySelector(".item-order__body");
+                if (body.hidden) {
+                    _slideDown(body, 350);
+                    orderItem.classList.add("_open");
+                } else {
+                    _slideUp(body, 350);
+                    orderItem.classList.remove("_open");
+                }
+            }));
+        }));
         const mainWrapper = document.querySelector(".certificate-account__wrapper--main");
         const usedWrapper = document.querySelector(".certificate-account__wrapper--used");
         const switchBtn = document.querySelector(".certificate-account__switch");
@@ -10728,7 +10849,7 @@
         function handleTabSwitch(event) {
             const clickedTab = event.target.closest(".tabs-account__btn");
             if (!clickedTab) return;
-            if (!clickedTab.classList.contains("icon-sertificates")) {
+            if (!clickedTab.classList.contains("tab-3")) {
                 resetSelection(mainWrapper);
                 resetSelection(usedWrapper);
             }
@@ -10816,7 +10937,6 @@
                 modal.style.pointerEvents = "auto";
                 modal.classList.add("_modal-show");
                 document.documentElement.classList.add("_show-modal");
-                button.classList.add("_show-modal");
                 activeModal = modal;
                 activeButton = button;
                 if (mediaQuery480max.matches && bodyLockStatus) bodyLock();
@@ -10825,8 +10945,6 @@
         }));
         document.addEventListener("click", (function(event) {
             if (activeModal && !activeModal.contains(event.target)) closeModal(activeModal);
-        }));
-        document.addEventListener("click", (function(event) {
             if (mediaQuery480max.matches && activeModal) {
                 const modalWrapper = activeModal.querySelector(".modal-account__wrapper");
                 if (event.target === activeModal && !modalWrapper.contains(event.target)) closeModal(activeModal);
@@ -10890,6 +11008,7 @@
             if (!mediaQuery480max.matches && document.documentElement.classList.contains("lock")) bodyUnlock();
             if (activeModal && activeButton) positionModal(activeModal, activeButton);
         }));
+        initAllNotifications();
     }));
     function startCountdown(timerElement, callback) {
         if (!timerElement) return;
@@ -11284,31 +11403,6 @@
             input.value = `${displayHour.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")} ${ampm}`;
         } else input.value = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
     }
-    const illustrationInput = document.getElementById("customImageInput");
-    if (illustrationInput) {
-        illustrationInput.addEventListener("change", (function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader;
-                reader.onload = function(e) {
-                    const previewContainer = document.querySelector(".illustrations__item--add .illustrations__img");
-                    previewContainer.innerHTML = `<img class="ibg" src="${e.target.result}" alt="Uploaded Image">`;
-                    document.querySelector(".illustrations__item--add").classList.add("_added");
-                    document.querySelectorAll('.illustrations__input[type="radio"]').forEach((radio => {
-                        radio.checked = false;
-                    }));
-                };
-                reader.readAsDataURL(file);
-            }
-        }));
-        document.querySelectorAll('.illustrations__input[type="radio"]').forEach((radio => {
-            radio.addEventListener("change", (function() {
-                document.getElementById("customImageInput").value = "";
-                document.querySelector(".illustrations__item--add").classList.remove("_added");
-                document.querySelector(".illustrations__item--add .illustrations__img").innerHTML = "";
-            }));
-        }));
-    }
     const brands = [ {
         name: "Nails&Cocktails",
         logo: "img/search/nails.png"
@@ -11450,9 +11544,6 @@
         document.addEventListener("click", (e => {
             if (!e.target.closest(".search")) closeUI();
         }));
-    }));
-    document.addEventListener("DOMContentLoaded", (function() {
-        initAllNotifications();
     }));
     window.addEventListener("load", (function() {
         const tabButtons = document.querySelectorAll(".solutions__nav-button");

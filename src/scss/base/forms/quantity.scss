@@ -45,6 +45,7 @@
 			border-color: var(--gray-3);
 			border: toRem(0);
 			gap: toRem(1);
+			padding: toRem(4);
 		}
 		@media (any-hover: hover){
 			&:hover{
@@ -64,8 +65,8 @@
 		transition: background-color .3s ease, color .3s ease;
 		.quantity_type-1 & {
 			background-color: var(--gray-3);
-			// width: toRem(24);
-			// height: toRem(24);
+			width: toRem(24);
+			height: toRem(24);
 		}
 		@media (any-hover: hover){
 			&:hover{
@@ -85,7 +86,7 @@
 			font-size: toRem(32);
 			transition:  color .3s ease;
 			.quantity_type-1 & {
-				// font-size: toRem(16);
+				font-size: toRem(24);
 			}
 		}
 		&:disabled {
@@ -149,6 +150,12 @@
 			}
 			._form-error & {
 				color: var(--red);
+			}
+		}
+		span {
+			.quantity_type-1 & {
+				padding-left: 1px;
+				// font-size: toRem(9);
 			}
 		}
 	}

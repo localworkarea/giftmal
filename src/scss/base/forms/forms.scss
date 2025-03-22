@@ -115,6 +115,7 @@ textarea {
 	&::placeholder {
 		transition: opacity 0.3s, color .3s;
 		color: var(--fade-violet-1);
+		
 		._form-error & {
 			color: var(--red);
 		}
@@ -122,6 +123,25 @@ textarea {
 	&:focus::placeholder {
 		// opacity: 0;
 	}
+  @media (any-hover: hover){
+    &:hover{
+      background-color: var(--gray-2);
+      &::placeholder {
+        color: var(--fade-violet-2);
+      }
+      ~ .input__choise {
+        background-color: var(--dark-violet);
+        &::before {
+          color: var(--white);
+        }
+      }
+      .amount__input {
+        &::placeholder {
+          color: var(--fade-violet-2);
+        }
+      }
+    }
+  }
 }
 
 textarea.input {

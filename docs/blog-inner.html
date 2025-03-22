@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250320122153">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250322160139">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -1936,8 +1936,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="popup-history__pagging pagging">
-						<a href="#" class="pagging__arrow icon-arrow-down _prev" aria-label="Previous page"></a>
+					<div class="popup-history__pagging pagging pagging_sm">
+						<a href="#" class="pagging__arrow _disabled icon-arrow-down _prev" aria-label="Previous page"></a>
 						<ul class="pagging__list">
 							<li>
 								<a href="index.html" class="pagging__item _active">1</a>
@@ -2140,12 +2140,131 @@
 			</div>
 		</div>
 	</div>
-	<script src="files/rolldate/rolldate.js?_v=20250320122153"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250320122153"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250320122153"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250320122153"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250320122153"></script>
-	<script src="js/app.min.js?_v=20250320122153"></script>
+
+	<div id="popupOrderAccountFilter" class="popup-order-account popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body">
+					<div class="popup-order-account__header">
+						<p class="popup-order-account__name">Фільтрувати замовлення</p>
+						<button type="button" class="popup-order-account__clear" aria-label="clear result">Очистити вибір</button>
+					</div>
+					<div data-spollers data-one-spoller data-spollers-speed="350" class="popup-order-account__spollers">
+						<details data-open class="popup-order-account__item">
+							<summary class="popup-order-account__title">
+								За датою оформлення
+								<span class="icon-arrow-down"></span>
+							</summary>
+							<div class="popup-order-account__body">
+								<ul class="popup-order-account__list">
+									<li class="popup-order-account__checkbox">
+										<input id="dataOrder-1" type="radio" name="dataOrder" value="1" class="popup-order-account__input" checked>
+										<label for="dataOrder-1" class="popup-order-account__label">
+											<span>Усі</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="dataOrder-2" type="radio" name="dataOrder" value="2" class="popup-order-account__input">
+										<label for="dataOrder-2" class="popup-order-account__label">
+											<span>Цього місяця</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="dataOrder-3" type="radio" name="dataOrder" value="3" class="popup-order-account__input">
+										<label for="dataOrder-3" class="popup-order-account__label">
+											<span>Минулого місяця</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="dataOrder-4" type="radio" name="dataOrder" value="4" class="popup-order-account__input">
+										<label for="dataOrder-4" class="popup-order-account__label">
+											<span>Цього року</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="dataOrder-5" type="radio" name="dataOrder" value="5" class="popup-order-account__input">
+										<label for="dataOrder-5" class="popup-order-account__label">
+											<span>Минулого року</span>
+											<span class="check"></span>
+										</label>
+									</li>
+								</ul>
+							</div>
+						</details>
+						<details class="popup-order-account__item">
+							<summary class="popup-order-account__title">
+								За статусом замовлення
+								<span class="icon-arrow-down"></span>
+							</summary>
+							<div class="popup-order-account__body">
+								<ul class="popup-order-account__list">
+									<li class="popup-order-account__checkbox">
+										<input id="statusOrder-1" type="radio" name="statusOrder" value="1" class="popup-order-account__input" checked>
+										<label for="statusOrder-1" class="popup-order-account__label">
+											<span>Усі</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="statusOrder-2" type="radio" name="statusOrder" value="2" class="popup-order-account__input">
+										<label for="statusOrder-2" class="popup-order-account__label">
+											<span>Доставлені</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="statusOrder-3" type="radio" name="statusOrder" value="3" class="popup-order-account__input">
+										<label for="statusOrder-3" class="popup-order-account__label">
+											<span>Несплачені</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="statusOrder-4" type="radio" name="statusOrder" value="4" class="popup-order-account__input">
+										<label for="statusOrder-4" class="popup-order-account__label">
+											<span>Готується до відправлення</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="statusOrder-5" type="radio" name="statusOrder" value="5" class="popup-order-account__input">
+										<label for="statusOrder-5" class="popup-order-account__label">
+											<span>Відправлені</span>
+											<span class="check"></span>
+										</label>
+									</li>
+									<li class="popup-order-account__checkbox">
+										<input id="statusOrder-6" type="radio" name="statusOrder" value="5" class="popup-order-account__input">
+										<label for="statusOrder-6" class="popup-order-account__label">
+											<span>Скасовані</span>
+											<span class="check"></span>
+										</label>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</div>
+					<div class="popup-order-account__footer">
+						<button type="button" class="popup-order-account__btn btn btn_dark" aria-label="show result">
+							Показати результати <span>(20)</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="files/rolldate/rolldate.js?_v=20250322160139"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250322160139"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250322160139"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250322160139"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250322160139"></script>
+	<script src="js/app.min.js?_v=20250322160139"></script>
 </body>
 
 </html>

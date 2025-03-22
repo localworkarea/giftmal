@@ -61,6 +61,11 @@ label {
 	-webkit-tap-highlight-color: transparent; // блик при клике на кнопки
 }
 
+details,
+summary {
+	-webkit-tap-highlight-color: transparent;
+}
+
 button,
 select,
 option {

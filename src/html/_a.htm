@@ -30,9 +30,6 @@
             <span>Фото</span>
           </li>
           <li class="certificate-account__header-cell icon-arrow-down">Бренд</li>
-          <li class="certificate-account__header-cell icon-arrow-down">Дата покупки</li>
-          <li class="certificate-account__header-cell icon-arrow-down">Номінал</li>
-          <li class="certificate-account__header-cell icon-arrow-down">Дійсний до</li>
         </ul>
         <ul class="certificate-account__list">
           <li class="certificate-account__item-cert item-cert _active">
@@ -45,7 +42,24 @@
             </div>
             <div class="item-cert__last">
               <a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
-              <button type="button" data-modal="#modalSertificates" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+              <div class="item-cert__modal modal-account">
+                <button type="button" data-modal class="modal-account__btn item-dots icon-dots" aria-label="open modal"></button>
+                <div class="modal-account__item item-modal-account">
+                  <div class="item-modal-account__wrapper">
+                    <div class="item-modal-account__content">
+                      <div class="item-modal-account__close popup__close"></div>
+                      <div class="item-modal-account__body">
+                        <a href="#" data-popup="#popupAccountRules" class="item-modal-account__btn icon-arrow-down">
+                          <span class="item-modal-account__txt icon-details">Правила використання</span>
+                        </a>
+                        <a href="#" data-checked class="item-modal-account__btn icon-arrow-down">
+                          <span class="item-modal-account__txt icon-checked-sertificates">Відмітити використаним</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
           <li class="certificate-account__item-cert item-cert _active">
@@ -58,7 +72,24 @@
             </div>
             <div class="item-cert__last">
               <a href="files/file-certificate.jpg" download="file.jpg" class="item-cert__download icon-download"><span>Завантажити</span></a>
-              <button type="button" data-modal="#modalSertificates" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+              <div class="item-cert__modal modal-account">
+                <button type="button" data-modal class="modal-account__btn item-dots icon-dots" aria-label="open modal"></button>
+                <div class="modal-account__item item-modal-account">
+                  <div class="item-modal-account__wrapper">
+                    <div class="item-modal-account__content">
+                      <div class="item-modal-account__close popup__close"></div>
+                      <div class="item-modal-account__body">
+                        <a href="#" data-popup="#popupAccountRules" class="item-modal-account__btn icon-arrow-down">
+                          <span class="item-modal-account__txt icon-details">Правила використання</span>
+                        </a>
+                        <a href="#" data-checked class="item-modal-account__btn icon-arrow-down">
+                          <span class="item-modal-account__txt icon-checked-sertificates">Відмітити використаним</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
@@ -118,7 +149,25 @@
               <img class="item-cert__img" src="@img/certificates/certificate-01.jpg" width="62" height="40" alt="Image">
             </div>
             <div class="item-cert__last">
-              <button type="button" data-modal="#modalSertificates" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+          
+              <div class="item-cert__modal modal-account">
+                <button type="button" data-modal class="modal-account__btn item-dots icon-dots" aria-label="open modal"></button>
+                <div class="modal-account__item item-modal-account">
+                  <div class="item-modal-account__wrapper">
+                    <div class="item-modal-account__content">
+                      <div class="item-modal-account__close popup__close"></div>
+                      <div class="item-modal-account__body">
+                        <a href="#" data-popup="#popupAccountRules" class="item-modal-account__btn icon-arrow-down">
+                          <span class="item-modal-account__txt icon-details">Правила використання</span>
+                        </a>
+                        <a href="#" data-checked class="item-modal-account__btn icon-arrow-down">
+                          <span class="item-modal-account__txt icon-checked-sertificates">Відмітити використаним</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
           <li class="certificate-account__item-cert item-cert _used">
@@ -130,7 +179,25 @@
               <img class="item-cert__img" src="@img/certificates/certificate-02.jpg" width="62" height="40" alt="Image">
             </div>
             <div class="item-cert__last">
-              <button type="button" data-modal="#modalSertificates" class="item-cert__modal icon-dots" aria-label="open modal"></button>
+            
+              <div class="item-cert__modal modal-account">
+                <button type="button" data-modal class="modal-account__btn item-dots icon-dots" aria-label="open modal"></button>
+                <div class="modal-account__item item-modal-account">
+                  <div class="item-modal-account__wrapper">
+                    <div class="item-modal-account__content">
+                      <div class="item-modal-account__close popup__close"></div>
+                      <div class="item-modal-account__body">
+                        <a href="#" data-popup="#popupAccountRules" class="item-modal-account__btn icon-arrow-down">
+                          <span class="item-modal-account__txt icon-details">Правила використання</span>
+                        </a>
+                        <a href="#" data-checked class="item-modal-account__btn icon-arrow-down">
+                          <span class="item-modal-account__txt icon-checked-sertificates">Відмітити використаним</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
@@ -138,3 +205,65 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+<li class="certificate-account__item-cert item-cert _active">
+  <div class="item-cert__photo">
+    <div class="checkbox">
+      <input id="cert-1" type="checkbox" name="certificates" value="1" class="checkbox__input">
+      <label for="cert-1" class="checkbox__label icon-checkbox"></label>
+    </div>
+    <img class="item-cert__img" src="@img/certificates/certificate-01.jpg" width="62" height="40" alt="Image">
+  </div>
+    <button type="button" data-modal="#modalOrders" class="item-cert__modal item-dots icon-dots" aria-label="open modal"></button>
+</li>
+<li class="certificate-account__item-cert item-cert _active">
+  <div class="item-cert__photo">
+    <div class="checkbox">
+      <input id="cert-2" type="checkbox" name="certificates" value="2" class="checkbox__input">
+      <label for="cert-2" class="checkbox__label icon-checkbox"></label>
+    </div>
+    <img class="item-cert__img" src="@img/certificates/certificate-02.jpg" width="62" height="40" alt="Image">
+  </div>
+    <button type="button" data-modal="#modalSertificates" class="item-cert__modal item-dots icon-dots" aria-label="open modal"></button>
+</li>
+
+
+
+
+<li class="order-account__item item-order">
+  <div class="item-order__main">
+    <p class="item-order__number">
+      <span>№ Замовлення:</span> 721094
+    </p>
+    <button type="button" class="item-order__more dropdown-arrow icon-arrow-down" aria-label="more content"></button>
+  </div>
+  <div class="item-order__body">
+    <div class="item-order__delivery">
+      <div class="item-order__delivery-block">
+        <p class="item-order__delivery-title">Доставки</p>
+        <p class="item-order__delivery-text">Нова Пошта</p>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="order-account__item item-order">
+  <div class="item-order__main">
+    <p class="item-order__number">
+      <span>№ Замовлення:</span> 721094
+    </p>
+    <button type="button" class="item-order__more dropdown-arrow icon-arrow-down" aria-label="more content"></button>
+  </div>
+  <div class="item-order__body">
+    <div class="item-order__delivery">
+      <div class="item-order__delivery-block">
+        <p class="item-order__delivery-title">Доставки</p>
+        <p class="item-order__delivery-text">Нова Пошта</p>
+      </div>
+    </div>
+  </div>
+</li>

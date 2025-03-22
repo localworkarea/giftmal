@@ -213,6 +213,14 @@ html {
      font-size: toRem(11); 
   }
  }
+ %fonsSize13-18 {
+   @media (min-width:$mobileSmall){
+     font-size: toRem(13);
+   }
+   @media (max-width:$mobileSmall){
+     font-size: toRem(18);
+   }
+ }
  %fonsSize13-14 {
    @media (min-width:$mobileSmall){
      font-size: toRem(13);
@@ -551,6 +559,7 @@ html {
       font-size: toRem(14);
       font-weight: 600;
       transition: transform .3s ease;
+      transform-origin: 50% 50%;
       ._active & {
         transform: rotate(-180deg);
       }
@@ -898,6 +907,26 @@ html {
 }
 
 // filters ==========================================
+%radioCheckbox {
+  position: relative;
+  flex: 0 0 toRem(16);
+  width: toRem(16);
+  height: toRem(16);
+  border-radius: 50%;
+  border: toRem(1.5) solid var(--dark-violet);
+  display: grid;
+  place-items: center;
+  transition: background-color .2s ease, opacity .15s ease;
+  &::after {
+    content:'';
+    border-radius: 50%;
+    width: toRem(8);
+    height: toRem(8);
+    background-color: var(--dark-violet);
+    opacity: 0;
+    transition: opacity .2s ease;
+  }
+}
 .filters {
   position: relative;
   // z-index: 3;
@@ -1354,24 +1383,7 @@ html {
   }
 	// .filters__radio
 	&__radio {
-    position: relative;
-    flex: 0 0 toRem(16);
-    width: toRem(16);
-    height: toRem(16);
-    border-radius: 50%;
-    border: toRem(1.5) solid var(--dark-violet);
-    display: grid;
-    place-items: center;
-    transition: background-color .2s ease, opacity .15s ease;
-    &::after {
-      content:'';
-      border-radius: 50%;
-      width: toRem(8);
-      height: toRem(8);
-      background-color: var(--dark-violet);
-      opacity: 0;
-      transition: opacity .2s ease;
-    }
+    @extend %radioCheckbox;
     @media (min-width:$mobileSmall){
       opacity: 0;
     }

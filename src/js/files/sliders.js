@@ -1,32 +1,19 @@
-/*
-Документація по роботі у шаблоні: 
-Документація слайдера: https://swiperjs.com/
-Сніппет(HTML): swiper
-*/
-
-// Підключаємо слайдер Swiper з node_modules
-// При необхідності підключаємо додаткові модулі слайдера, вказуючи їх у {} через кому
-// Приклад: { Navigation, Autoplay }
 import Swiper from 'swiper';
 import { Navigation, FreeMode, Pagination, Autoplay } from 'swiper/modules';
 /*
 Основні модулі слайдера:
 Navigation, Pagination, Autoplay, 
 EffectFade, Lazy, Manipulation
-Детальніше дивись https://swiperjs.com/
 */
 
-// Стилі Swiper
-// Базові стилі
 import "../../scss/base/swiper.scss";
 // Повний набір стилів з scss/libs/swiper.scss
 // import "../../scss/libs/swiper.scss";
+
 // Повний набір стилів з node_modules
 // import 'swiper/css';
 
-// Ініціалізація слайдерів
 function initSliders() {
-	// Ініціалізуємо слайдер для корпоративних пропозицій
 	if (document.querySelector('.corporate-promo__slider')) {
 		new Swiper('.corporate-promo__slider', {
 			modules: [Pagination, Autoplay],
@@ -60,75 +47,125 @@ function initSliders() {
 		});
 	}
 
-	if (document.querySelector('.slider-checkout')) { // Вказуємо склас потрібного слайдера
-		// Створюємо слайдер
-		new Swiper('.slider-checkout', { 
+	if (document.querySelector('.slider-checkout-first')) {
+	 new Swiper('.slider-checkout-first', {
 			modules: [Navigation, FreeMode],
 			observer: true,
 			observeParents: true,
 			slidesPerView: "auto",
 			spaceBetween: 8,
 			speed: 500,
-
-			// touchRatio: 0,
-			//simulateTouch: false,
-			//loop: true,
-			//preloadImages: false,
-			//lazy: true,
-
-			/*
-			// Ефекти
-			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
-
+	
 			freeMode: {
 				enabled: true,
 				momentumBounce: false,
 			},
-
-			// pagination: {
-			// 	el: '.swiper-pagination',
-			// 	clickable: true,
-			// },
-
+	
 			navigation: {
-				prevEl: '.slider-checkout .swiper-button-prev',
-				nextEl: '.slider-checkout .swiper-button-next',
+				prevEl: '.slider-checkout-first .swiper-button-prev',
+				nextEl: '.slider-checkout-first .swiper-button-next',
 			},
-			/*
-			// Брейкпоінти
-			breakpoints: {
-				640: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
-				},
-			},
-			*/
-			// Події
+	
 			on: {
-
+			
 			}
 		});
 	}
 
-	// Ініціалізація слайдера для статей блогу
+
+	if (document.querySelector('.slider-checkout-second')) {
+		const sliderCheckout = document.querySelector('.slider-checkout-second');
+		const sliderWrapper = sliderCheckout.closest('.tab-checkout__slider');
+		const prevBtn = sliderCheckout.querySelector('.swiper-button-prev');
+		const nextBtn = sliderCheckout.querySelector('.swiper-button-next');
+	
+		const swiperCheckout = new Swiper('.slider-checkout-second', {
+			modules: [Navigation, FreeMode],
+			observer: true,
+			observeParents: true,
+			slidesPerView: "auto",
+			spaceBetween: 8,
+			speed: 500,
+			freeMode: {
+				enabled: true,
+				momentumBounce: false,
+			},
+			navigation: {
+				prevEl: prevBtn,
+				nextEl: nextBtn,
+			},
+			on: {}
+		});
+	
+		const mediaQuery900max = window.matchMedia('(max-width: 56.311em)');
+	
+		if (!mediaQuery900max.matches) {
+			swiperCheckout.on('init', updatePositionClasses);
+			swiperCheckout.on('slideChange', waitAndUpdate);
+			swiperCheckout.on('touchEnd', waitAndUpdate);
+		
+			prevBtn.addEventListener('click', waitAndUpdate);
+			nextBtn.addEventListener('click', waitAndUpdate);
+		
+			waitAndUpdate(); // сразу после инициализации
+		}
+		
+	
+		function waitAndUpdate() {
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
+					updatePositionClasses();
+				});
+			});
+		}
+	
+		function updatePositionClasses() {
+			sliderWrapper.classList.toggle('_position-left', prevBtn.classList.contains('swiper-button-disabled'));
+			sliderWrapper.classList.toggle('_position-right', nextBtn.classList.contains('swiper-button-disabled'));
+		}
+	}
+	
+
+	
+
+	if (document.querySelector('.status-slider')) {
+    new Swiper('.status-slider', {
+        modules: [Navigation, FreeMode],
+        observer: true,
+        observeParents: true,
+        slidesPerView: "auto",
+        spaceBetween: 0,
+        freeMode: {
+            enabled: true,
+            momentumBounce: false,
+        },
+        navigation: {
+            prevEl: '.status-slider .swiper-button-prev',
+            nextEl: '.status-slider .swiper-button-next',
+        },
+        on: {
+            init(swiper) {
+                updateDisabledClasses(swiper);
+            },
+            // slideChange(swiper) {
+            //     updateDisabledClasses(swiper);
+            // },
+            reachBeginning(swiper) {
+                updateDisabledClasses(swiper);
+            },
+            reachEnd(swiper) {
+                updateDisabledClasses(swiper);
+            }
+        }
+    });
+
+    function updateDisabledClasses(swiper) {
+        const sliderEl = swiper.el;
+        sliderEl.classList.toggle('_btn-disabled-prev', swiper.isBeginning);
+        sliderEl.classList.toggle('_btn-disabled-next', swiper.isEnd);
+    }
+	}
+
 	const blogSliders = [
 		{
 			selector: '.blog-inner__related-slider',
@@ -148,7 +185,6 @@ function initSliders() {
 		}
 	];
 
-	// Initialize all blog sliders with shared configuration
 	blogSliders.forEach(slider => {
 		if (document.querySelector(slider.selector)) {
 			new Swiper(slider.selector, {
@@ -191,7 +227,6 @@ function initSliders() {
 		}
 	});
 	
-	// Ініціалізація слайдера відгуків клієнтів
 	if (document.querySelector('.feedback__slider')) {
 		const mediaQuery = window.matchMedia('(min-width: 768px)');
 		let feedbackSlider;
@@ -246,8 +281,6 @@ function initSliders() {
 		}
 	}
 }
-
-
 
 
 window.addEventListener("load", function (e) {

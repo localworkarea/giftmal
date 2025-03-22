@@ -1,10 +1,7 @@
-// Підключення функціоналу "Чертоги Фрілансера"
-// import { tr } from "intl-tel-input/i18n";
 import { isMobile, bodyLockToggle, bodyUnlock, bodyLock, bodyLockStatus, _slideToggle, _slideUp, _slideDown, closeAllMessages, showMessage} from "./functions.js";
-// Підключення списку активних модулів
+
 import { flsModules } from "./modules.js";
 
-// Імпортуємо та ініціалізуємо сповіщення
 import { initAllNotifications } from '../modules/notifications.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -48,9 +45,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const checkoutPage = document.querySelector('.checkout');
+  const certificateAccount = document.querySelector('.certificate-account');
   if (checkoutPage) {
     document.documentElement.classList.add('checkout-page');
   }
+  if (certificateAccount) {
+    document.documentElement.classList.add('account-page');
+  }
+
+
+
+
+  // == Add picture to the radio button Checkout page =============================================
+  const illustrationInput = document.getElementById("customImageInput");
+  if (illustrationInput) {
+    illustrationInput.addEventListener("change", function (event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const previewContainer = document.querySelector(".illustrations__item--add .illustrations__img");
+          previewContainer.innerHTML = `<img class="ibg" src="${e.target.result}" alt="Uploaded Image">`;
+          document.querySelector('.illustrations__item--add').classList.add('_added');
+        
+          // Снимаем выбор со всех radio-инпутов
+          document.querySelectorAll('.illustrations__input[type="radio"]').forEach(radio => {
+            radio.checked = false;
+          });
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Снимаем выбор с пользовательского инпута, если кликнули на любой radio-инпут
+    document.querySelectorAll('.illustrations__input[type="radio"]').forEach(radio => {
+      radio.addEventListener("change", function () {
+        document.getElementById("customImageInput").value = "";
+        document.querySelector('.illustrations__item--add').classList.remove('_added');
+        document.querySelector(".illustrations__item--add .illustrations__img").innerHTML = "";
+      });
+    });
+  }
+
 
   // ITEM-DROPDOWN ===================================================
   const itemDropdowns = document.querySelectorAll(".item-dropdwn");
@@ -1158,20 +1194,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+      // == ITEM-ORDERS SPOLLERS =================================
+      const itemOrderMore = document.querySelectorAll('.item-order__more');
+      const itemOrder = document.querySelectorAll('.item-order');
+      
+      // -- инициализация спойлеров внутри itemOrder ---
+      itemOrder.forEach(body => {
+        const itemOrderBody = body.querySelector('.item-order__body');
+        _slideUp(itemOrderBody, 0);
+        body.classList.add("_init-spoller");
+      });
+
+      itemOrderMore.forEach(button => {
+        button.addEventListener('click', (event) => {
+          const orderItem = event.target.closest('.item-order');
+          const body = orderItem.querySelector('.item-order__body');
+    
+          if (body.hidden) {
+            _slideDown(body, 350); 
+            orderItem.classList.add("_open");
+          } else {
+            _slideUp(body, 350); 
+            orderItem.classList.remove("_open");
+          }
+        });
+      });
 
 
 
       // ======================================================================
       // == Account page - Certificates =====================================
       // -- change Main/Used Certificates --
-      const certificateAccount = document.querySelector('.certificate-account');
-
-      if (certificateAccount) {
-        document.documentElement.classList.add('account-page');
-      }
-
-
-
 
       const mainWrapper = document.querySelector(".certificate-account__wrapper--main");
       const usedWrapper = document.querySelector(".certificate-account__wrapper--used");
@@ -1330,7 +1383,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const clickedTab = event.target.closest(".tabs-account__btn");
         if (!clickedTab) return;
       
-        if (!clickedTab.classList.contains("icon-sertificates")) {
+        if (!clickedTab.classList.contains("tab-3")) {
           resetSelection(mainWrapper);
           resetSelection(usedWrapper);
         }
@@ -1472,30 +1525,23 @@ document.addEventListener("DOMContentLoaded", () => {
             
               modal.classList.add('_modal-show');
               document.documentElement.classList.add('_show-modal');
-              button.classList.add('_show-modal');
             
               activeModal = modal;
               activeButton = button;
             
-              // Если экран < 480px, блокируем скролл (только если не заблокировано ранее)
               if (mediaQuery480max.matches && bodyLockStatus) {
                   bodyLock();
               }
             
-              // Добавляем обработку свайпа вниз
               if (mediaQuery480max.matches) {
                   addSwipeToClose(modal);
               }
           });
       });
-
       document.addEventListener("click", function (event) {
-          if (activeModal && !activeModal.contains(event.target)) {
-              closeModal(activeModal);
-          }
-      });
-
-      document.addEventListener("click", function (event) {
+        if (activeModal && !activeModal.contains(event.target)) {
+            closeModal(activeModal);
+        }
           if (mediaQuery480max.matches && activeModal) {
               const modalWrapper = activeModal.querySelector(".modal-account__wrapper");
               if (event.target === activeModal && !modalWrapper.contains(event.target)) {
@@ -1596,14 +1642,211 @@ document.addEventListener("DOMContentLoaded", () => {
           }
       });
 
-
-
-
-
+      
 
 
 
       
+      
+      // ХОВЕР --------------
+
+      // const modalButtons = document.querySelectorAll("[data-modal]");
+      // let activeModal = null;
+      // let activeButton = null;
+      // let startY = 0;
+      // let moveY = 0;
+      // let hoverTimeout = null;
+      
+      // modalButtons.forEach(button => {
+      //   if (!mediaQuery480max.matches) {
+      //     // Для ПК: Hover (pointerenter)
+      //     button.addEventListener("pointerenter", function () {
+      //       if (hoverTimeout) clearTimeout(hoverTimeout);
+      //       hoverTimeout = setTimeout(() => {
+      //         const modalId = button.getAttribute("data-modal");
+      //         const modal = document.querySelector(modalId);
+      //         if (!modal) return;
+      
+      //         if (activeModal && activeModal !== modal) {
+      //           closeModal(activeModal, () => openModal(modal, button));
+      //         } else {
+      //           openModal(modal, button);
+      //         }
+      //       }, 50);
+      //     });
+      
+      //     // Закрываем модалку при уходе курсора с кнопки или с самого модального окна
+      //     button.addEventListener("pointerleave", function () {
+      //       if (hoverTimeout) clearTimeout(hoverTimeout);
+      //       setTimeout(() => {
+      //         if (activeModal && !activeModal.matches(":hover") && !activeButton.matches(":hover")) {
+      //           closeModal(activeModal);
+      //         }
+      //       }, 50);
+      //     });
+      //   } else {
+      //     // Для мобильных устройств оставляем click
+      //     button.addEventListener("click", function (event) {
+      //       event.stopPropagation();
+      //       const modalId = button.getAttribute("data-modal");
+      //       const modal = document.querySelector(modalId);
+      //       if (!modal) return;
+      
+      //       if (activeModal && activeModal !== modal) {
+      //         closeModal(activeModal, () => openModal(modal, button));
+      //       } else {
+      //         openModal(modal, button);
+      //       }
+      //     });
+      //   }
+      // });
+      
+      // function openModal(modal, button) {
+      //   if (activeButton && activeButton !== button) {
+      //     activeButton.classList.remove('_show-modal');
+      //   }
+      
+      //   positionModal(modal, button);
+      
+      //   modal.style.opacity = "1";
+      //   modal.style.visibility = "visible";
+      //   modal.style.pointerEvents = "auto";
+      
+      //   modal.classList.add('_modal-show');
+      //   button.classList.add('_show-modal'); // Добавляем класс к кнопке
+      //   document.documentElement.classList.add('_show-modal');
+      
+      //   activeModal = modal;
+      //   activeButton = button;
+      
+      //   if (mediaQuery480max.matches && bodyLockStatus) {
+      //     bodyLock();
+      //   }
+      
+      //   if (mediaQuery480max.matches) {
+      //     addSwipeToClose(modal);
+      //   }
+      // }
+
+      // function closeModal(modal, callback = null) {
+      //   modal.style.opacity = "0";
+      //   modal.style.visibility = "hidden";
+      //   modal.style.pointerEvents = "none";
+      
+      //   setTimeout(() => {
+      //     modal.style.top = "";
+      //     modal.style.right = "";
+      //     modal.classList.remove('_modal-show');
+      //     document.documentElement.classList.remove('_show-modal');
+      
+      //     if (activeButton) {
+      //       activeButton.classList.remove('_show-modal'); // Убираем класс у кнопки
+      //       activeButton = null;
+      //     }
+      
+      //     activeModal = null;
+      
+      //     if (mediaQuery480max.matches && document.documentElement.classList.contains('lock')) {
+      //       bodyUnlock();
+      //     }
+      
+      //     const modalWrapper = modal.querySelector(".modal-account__wrapper");
+      //     if (modalWrapper) {
+      //       modalWrapper.style.transform = "";
+      //       modalWrapper.style.transition = "";
+      //     }
+      
+      //     if (callback) callback();
+      //   }, 50);
+      // }
+      
+      // document.addEventListener("click", function (event) {
+      //   if (
+      //     activeModal &&
+      //     !activeModal.contains(event.target) &&
+      //     !event.target.closest("[data-modal]")
+      //   ) {
+      //     closeModal(activeModal);
+      //   }
+      
+      //   if (mediaQuery480max.matches && activeModal) {
+      //     const modalWrapper = activeModal.querySelector(".modal-account__wrapper");
+      //     if (event.target === activeModal && !modalWrapper.contains(event.target)) {
+      //       closeModal(activeModal);
+      //     }
+      //   }
+      // });
+      
+      // document.querySelectorAll(".modal-account__close").forEach(closeBtn => {
+      //   closeBtn.addEventListener("click", function () {
+      //     if (activeModal) {
+      //       closeModal(activeModal);
+      //     }
+      //   });
+      // });
+      
+      // function positionModal(modal, button) {
+      //   if (mediaQuery480max.matches) {
+      //     modal.style.top = "";
+      //     modal.style.right = "";
+      //   } else {
+      //     const rect = button.getBoundingClientRect();
+      //     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      //     modal.style.top = `${rect.bottom + scrollTop + 4}px`;
+      //     modal.style.right = `${window.innerWidth - rect.right}px`;
+      //   }
+      // }
+    
+      // function addSwipeToClose(modal) {
+      //   const modalWrapper = modal.querySelector(".modal-account__wrapper");
+      //   const closeBtn = modal.querySelector(".modal-account__close");
+      
+      //   if (!modalWrapper || !closeBtn) return;
+      
+      //   closeBtn.addEventListener("touchstart", (e) => {
+      //     startY = e.touches[0].clientY;
+      //     moveY = 0;
+      //   });
+      
+      //   closeBtn.addEventListener("touchmove", (e) => {
+      //     moveY = e.touches[0].clientY - startY;
+      //     if (moveY > 0) {
+      //       modalWrapper.style.transform = `translateY(${moveY}px)`;
+      //       modalWrapper.style.transition = "none";
+      //     }
+      //   });
+      
+      //   closeBtn.addEventListener("touchend", () => {
+      //     if (moveY > 30) {
+      //       closeModal(modal);
+      //     } else {
+      //       modalWrapper.style.transition = "transform 0.3s ease-out";
+      //       modalWrapper.style.transform = "";
+      //     }
+      //   });
+      // }
+      
+      // mediaQuery480max.addEventListener("change", function () {
+      //   if (!mediaQuery480max.matches && document.documentElement.classList.contains('lock')) {
+      //     bodyUnlock();
+      //   }
+      //   if (activeModal && activeButton) {
+      //     positionModal(activeModal, activeButton);
+      //   }
+      // });
+      
+
+   
+
+
+
+
+    // Initialize all notifications
+    initAllNotifications();
+
+    
+  
   
 
 }); // end DOMContentLoaded
@@ -2125,36 +2368,6 @@ function updateTime(input, value, type, format) {
 
 
 
-// == Add picture to the radio button =============================================
-const illustrationInput = document.getElementById("customImageInput");
-if (illustrationInput) {
-  illustrationInput.addEventListener("change", function (event) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const previewContainer = document.querySelector(".illustrations__item--add .illustrations__img");
-        previewContainer.innerHTML = `<img class="ibg" src="${e.target.result}" alt="Uploaded Image">`;
-        document.querySelector('.illustrations__item--add').classList.add('_added');
-  
-        // Снимаем выбор со всех radio-инпутов
-        document.querySelectorAll('.illustrations__input[type="radio"]').forEach(radio => {
-          radio.checked = false;
-        });
-      };
-      reader.readAsDataURL(file);
-    }
-  });
-  
-  // Снимаем выбор с пользовательского инпута, если кликнули на любой radio-инпут
-  document.querySelectorAll('.illustrations__input[type="radio"]').forEach(radio => {
-    radio.addEventListener("change", function () {
-      document.getElementById("customImageInput").value = "";
-      document.querySelector('.illustrations__item--add').classList.remove('_added');
-      document.querySelector(".illustrations__item--add .illustrations__img").innerHTML = "";
-    });
-  });
-}
 
 
 // == SEARCH INPUTS BRANDS ============================
@@ -2308,12 +2521,6 @@ document.querySelectorAll('.search').forEach(searchElement => {
   });
 });
 // == END OF SEARCH INPUTS BRANDS ============================
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all notifications
-    initAllNotifications();
-});
-
 
 
 

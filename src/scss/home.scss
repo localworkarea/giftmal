@@ -931,13 +931,13 @@
   // .tab-checkout__slider
   &__slider {
     // overflow: hidden;
-    @include adaptiveValue("margin-inline", -32, -24,0,1232.98,992.98);
+    // @include adaptiveValue("margin-inline", -32, -24,0,1232.98,992.98);
     &:not(:last-child) {
       margin-bottom: toRem(16);
     }
-    @media (max-width: toEm(900.98)){
-      padding-inline: toRem(24);
-    }
+    // @media (max-width: toEm(900.98)){
+    //   padding-inline: toRem(24);
+    // }
   }
 }
 
@@ -1262,7 +1262,7 @@
   margin-inline: auto;
   @include adaptiveValue("max-width", 744,535,0,1232.98,900.98);
   &_visible {
-    overflow: visible !important;
+    // overflow: visible !important;
     &::before,
     &::after {
       @media (min-width: toEm(900.98)) {
@@ -1271,17 +1271,36 @@
         z-index: 10;
         bottom: 0;
         height: calc(100% - toRem(40));
-        width: 50px;
+        width: toRem(30);
         pointer-events: none;
+        transition: opacity .2s ease;
+        ._position-left & {
+          &::after {
+            opacity: 0;
+          }
+        }
+        ._position-right & {
+          &::before {
+            opacity: 0;
+          }
+        }
       }
     }
     &::before {
       background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
-      @include adaptiveValue("right", -32, -24, 2, 1232.98, 900.98);
+      right: 0;
+      // @include adaptiveValue("right", -32, -24, 2, 1232.98, 900.98);
+      ._position-right & {
+        opacity: 0;
+      }
     }
     &::after {
       background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
-      @include adaptiveValue("left", -32, -24, 2, 1232.98, 900.98);
+      left: 0;
+      // @include adaptiveValue("left", -32, -24, 2, 1232.98, 900.98);
+      ._position-left & {
+        opacity: 0;
+      }
     }
   }
   @media (min-width:$mobileSmall){
@@ -1332,20 +1351,25 @@
         }
       }
     }
+    &:before {
+      position: relative;
+    }
     &.swiper-button-prev {
       &::before {
         transform: rotate(90deg);
+        left: -1px;
       }
     }
     &.swiper-button-next {
       &::before {
         transform: rotate(-90deg);
+        left: 1px;
       }
     }
     &.swiper-button-disabled {
       background-color: var(--gray-2) !important;
       &::before {
-        color: var(--dark-violet) !important;
+        color: var(--light-violet) !important;
       }
       pointer-events: none;
     }

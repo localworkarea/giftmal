@@ -1,7 +1,7 @@
 .pagging {
 	$item-size: toRem(32);
 	$icon-size: toRem(22);
-	$border-radius: toRem(20);
+	$border-radius: 50%;
 	$active-shadow: 0 toRem(4) toRem(16) 0 var(--pagging-shadow);
 
 	display: flex;
@@ -25,11 +25,18 @@
 			}
 		}
 	}
-
+	// .pagging_sm
+	&_sm {
+		justify-content: flex-start;
+		gap: toRem(4);
+	}
 	&__arrow {
 		@extend %interactive-item;
 		position: relative;
-		
+		.pagging_sm & {
+			width: toRem(24);
+			height: toRem(24);
+		}
 		&.icon-arrow-down {
 			&:before {
 				position: absolute;
@@ -37,6 +44,9 @@
 				left: 50%;
 				font-size: $icon-size;
 				transform: translate(-50%, -50%);
+				.pagging_sm & {
+					font-size: toRem(16);
+				}
 			}
 			
 			&._prev {
@@ -65,7 +75,9 @@
 	&__list {
 		display: flex;
 		gap: toRem(8);
-		
+		.pagging_sm & {
+			gap: toRem(4);
+		}
 		li {
 			display: flex;
 		}
@@ -75,6 +87,14 @@
 		@extend %interactive-item;
 		font-size: toRem(14);
 		font-weight: 500;
+
+		.pagging_sm & {
+			font-weight: 600;
+			font-size: toRem(11);
+			width: toRem(24);
+			height: toRem(24);
+			line-height: 1.1;
+		}
 		
 		&._active {
 			color: var(--white);
