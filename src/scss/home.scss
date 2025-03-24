@@ -489,11 +489,15 @@
   &__body {
     @extend %padding32-24;
     overflow-y: auto;
-    ._more-content & {
+    &._more-content {
       min-height: toRem(300);
       overscroll-behavior: contain;
       -webkit-mask: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 10%);
       mask: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 10%);
+    }
+    @media (min-width:toEm(900.98)){
+        height: 100%;
+        max-height: 53svh;
     }
     @media (max-width: toEm(900.98)){
         padding: 0 !important;
@@ -944,6 +948,16 @@
     // @media (max-width: toEm(900.98)){
     //   padding-inline: toRem(24);
     // }
+  }
+}
+
+.row-delivery {
+  @extend %flexCenterGap8;
+  @extend %fonsSize13-14;
+  line-height: 1.46;
+  &:before {
+    font-size: toRem(24);
+    align-self: flex-start;
   }
 }
 

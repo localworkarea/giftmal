@@ -9968,7 +9968,7 @@
     document.addEventListener("DOMContentLoaded", (() => {
         window.matchMedia("(min-width: 57.561em)");
         const mediaQuery920max = window.matchMedia("(max-width: 57.561em)");
-        const mediaQuery900min = window.matchMedia("(min-width: 56.311em)");
+        window.matchMedia("(min-width: 56.311em)");
         const mediaQuery900max = window.matchMedia("(max-width: 56.311em)");
         const mediaQuery700max = window.matchMedia("(max-width: 43.811em)");
         const mediaQuery700min = window.matchMedia("(min-width: 43.811em)");
@@ -10053,37 +10053,11 @@
                 tabs[index].removeAttribute("hidden");
             }));
         }));
-        function updateOrderCheckoutElHeights(e) {
-            const mainCart = document.querySelector(".orders-checkout__cart_main");
-            if (!mainCart) return;
-            const spoller = mainCart.querySelector(".orders-checkout__spoller");
-            const head = spoller.querySelector(".orders-checkout__head");
-            const total = mainCart.querySelector(".orders-checkout__total");
-            const wrapper = spoller.querySelector(".orders-checkout__wrapper");
-            const body = spoller.querySelector(".orders-checkout__body");
-            if (!head || !total || !wrapper || !body) return;
-            const viewportHeight = window.innerHeight;
-            const cartHeight = mainCart.offsetHeight;
-            const headHeight = head.offsetHeight;
-            const totalHeight = total.offsetHeight;
-            if (window.matchMedia("(min-width: 56.311em)").matches) {
-                spoller.style.setProperty("--height", `${totalHeight}px`);
-                if (cartHeight > viewportHeight - 260) {
-                    const newHeight = viewportHeight - 260 - headHeight - totalHeight;
-                    body.style.height = `${newHeight}px`;
-                    wrapper.classList.add("_more-content");
-                } else {
-                    body.style.height = "";
-                    wrapper.classList.remove("_more-content");
-                }
-            } else {
-                body.style.height = "";
-                wrapper.classList.remove("_more-content");
-                spoller.style.removeProperty("--height");
-            }
-        }
-        mediaQuery900min.addEventListener("change", updateOrderCheckoutElHeights);
-        updateOrderCheckoutElHeights();
+        const checkoutBodies = document.querySelectorAll(".orders-checkout__body");
+        checkoutBodies.forEach((body => {
+            const parent = body.closest(".orders-checkout__wrapper_main");
+            if (parent) if (body.scrollHeight > body.clientHeight) body.classList.add("_more-content"); else body.classList.remove("_more-content");
+        }));
         const slidersCheckout = document.querySelectorAll(".slider-checkout");
         slidersCheckout.forEach((slider => {
             const cardSliders = slider.querySelectorAll(".card-slider");
@@ -10097,18 +10071,6 @@
                     }
                 }));
             }));
-        }));
-        let lastWidth = window.innerWidth;
-        let resizeTimeout;
-        window.addEventListener("resize", (() => {
-            const currentWidth = window.innerWidth;
-            if (currentWidth !== lastWidth) {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout((() => {
-                    updateOrderCheckoutElHeights();
-                    lastWidth = currentWidth;
-                }), 0);
-            }
         }));
         const popups = document.querySelectorAll(".popup");
         popups.forEach((popup => {
@@ -11186,8 +11148,9 @@
     timeFormatsAir[currentLang] || timeFormatsAir["en"];
     const datepickerSelector = "[data-datepicker]";
     const timepickerSelector = "[data-datepicker-time]";
-    let dp = null, tp = null;
-    let rd = null, rt = null;
+    const mobileMediaQuery = window.matchMedia("(max-width: 30.061em)");
+    let dpInstances = [];
+    let rdInstances = [];
     let timePickers = [];
     function getLocalizedMonths(lang) {
         const defaultMonths = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
@@ -11213,20 +11176,49 @@
         };
         return translations[lang] || translations["en"];
     }
-    function toggleDatepicker(e) {
-        if (e.matches) {
-            if (dp) {
-                dp.destroy();
-                dp = null;
-            }
-            if (tp) {
-                tp.destroy();
-                tp = null;
-            }
-            timePickers.forEach((picker => picker?.remove?.()));
-            timePickers = [];
-            if (!rd && document.querySelector(datepickerSelector)) rd = new Rolldate({
-                el: datepickerSelector,
+    function destroyAllDatepickers() {
+        dpInstances.forEach((inst => inst.destroy?.()));
+        dpInstances = [];
+    }
+    function destroyAllRolldates() {
+        rdInstances.forEach((inst => inst.destroy?.()));
+        rdInstances = [];
+    }
+    function destroyAllTimePickers() {
+        timePickers.forEach((p => p?.remove?.()));
+        timePickers = [];
+    }
+    function initDesktopPickers() {
+        destroyAllDatepickers();
+        destroyAllTimePickers();
+        document.querySelectorAll(datepickerSelector).forEach((input => {
+            const dp = new AirDatepicker(input, {
+                dateFormat: "dd.MM.yyyy",
+                minDate: "01.01.1900",
+                locale: locales[currentLang] || locales["en"],
+                onShow(isFinished) {
+                    if (!isFinished || !dp.$el) return;
+                    dp.$el.parentElement?.classList.add("_show-picker");
+                },
+                onHide(isFinished) {
+                    if (!isFinished || !dp.$el) return;
+                    dp.$el.parentElement?.classList.remove("_show-picker");
+                }
+            });
+            dpInstances.push(dp);
+        }));
+        document.querySelectorAll(timepickerSelector).forEach((input => {
+            const format = input.dataset.format === "12" ? 12 : 24;
+            const picker = createTimePicker(input, format);
+            timePickers.push(picker);
+        }));
+    }
+    function initMobilePickers() {
+        destroyAllRolldates();
+        destroyAllTimePickers();
+        document.querySelectorAll(datepickerSelector).forEach((input => {
+            const rd = new Rolldate({
+                el: input,
                 format: "DD/MM/YYYY",
                 beginYear: 1920,
                 endYear: 2050,
@@ -11235,70 +11227,46 @@
                 localeMonth: getLocalizedMonths(currentLang),
                 lang: getLocalizedRolldateText(currentLang, false),
                 trigger: "tap",
-                init: function() {
+                init() {
                     modules_flsModules.popup.open("#popupRolldate");
                 },
-                cancel: function() {
+                cancel() {
                     modules_flsModules.popup.close("#popupRolldate");
                 },
-                confirm: function(date) {
+                confirm() {
                     modules_flsModules.popup.close("#popupRolldate");
                 }
             });
-            if (!rt && document.querySelector(timepickerSelector)) {
-                const timeFormat = [ "ru", "uk" ].includes(currentLang) ? "hh:mm" : "hh:mm A";
-                rt = new Rolldate({
-                    el: timepickerSelector,
-                    format: timeFormat,
-                    minStep: 1,
-                    lang: getLocalizedRolldateText(currentLang, true),
-                    trigger: "tap",
-                    init: function() {
-                        modules_flsModules.popup.open("#popupRolldate");
-                    },
-                    cancel: function() {
-                        modules_flsModules.popup.close("#popupRolldate");
-                    },
-                    confirm: function(date) {
-                        modules_flsModules.popup.close("#popupRolldate");
-                    }
-                });
-            }
-            document.addEventListener("beforePopupClose", (event => {
-                if (event.detail.popup.targetOpen.selector === "#popupRolldate") {
-                    rd?.hide();
-                    rt?.hide();
-                }
-            }));
-        } else {
-            if (rd) rd = null;
-            if (rt) rt = null;
-            modules_flsModules.popup.close("#popupRolldate");
-            if (!dp && document.querySelector(datepickerSelector)) dp = new AirDatepicker(datepickerSelector, {
-                dateFormat: "dd.MM.yyyy",
-                minDate: "01.01.1900",
-                locale: locales[currentLang] || locales["en"],
-                onShow: function(isFinished) {
-                    if (!isFinished || !dp.$el) return;
-                    const parent = dp.$el.parentElement;
-                    if (parent) parent.classList.add("_show-picker");
+            rdInstances.push(rd);
+        }));
+        document.querySelectorAll(timepickerSelector).forEach((input => {
+            const rt = new Rolldate({
+                el: input,
+                format: [ "ru", "uk" ].includes(currentLang) ? "hh:mm" : "hh:mm A",
+                minStep: 1,
+                lang: getLocalizedRolldateText(currentLang, true),
+                trigger: "tap",
+                init() {
+                    modules_flsModules.popup.open("#popupRolldate");
                 },
-                onHide: function(isFinished) {
-                    if (!isFinished || !dp.$el) return;
-                    const parent = dp.$el.parentElement;
-                    if (parent) parent.classList.remove("_show-picker");
+                cancel() {
+                    modules_flsModules.popup.close("#popupRolldate");
+                },
+                confirm() {
+                    modules_flsModules.popup.close("#popupRolldate");
                 }
             });
-            document.querySelectorAll(timepickerSelector).forEach((input => {
-                const format = input.dataset.format === "12" ? 12 : 24;
-                const picker = createTimePicker(input, format);
-                timePickers.push(picker);
-            }));
-        }
+            rdInstances.push(rt);
+        }));
+        document.addEventListener("beforePopupClose", (event => {
+            if (event.detail.popup.targetOpen.selector === "#popupRolldate") rdInstances.forEach((inst => inst?.hide?.()));
+        }));
     }
-    const mediaQuery = window.matchMedia("(max-width: 30.061em)");
-    mediaQuery.addEventListener("change", toggleDatepicker);
-    toggleDatepicker(mediaQuery);
+    function toggleDatepicker(e) {
+        if (e.matches) initMobilePickers(); else initDesktopPickers();
+    }
+    mobileMediaQuery.addEventListener("change", toggleDatepicker);
+    toggleDatepicker(mobileMediaQuery);
     function createTimePicker(input, format = 24) {
         const wrapper = document.createElement("div");
         wrapper.classList.add("timepicker");

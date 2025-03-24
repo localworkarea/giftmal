@@ -4675,6 +4675,9 @@ html {
 .mb-24 {
   margin-bottom: 1.5rem
 }
+.mb-16 {
+  margin-bottom: 1rem
+}
 #popupFiltersTypes.popup .popup__body .popup-body-filters__header,
 #popupReviews.popup .add-photo__block,
 .app-footer__apps,
@@ -4710,6 +4713,7 @@ html {
 .filters__header,
 .filters__label,
 .filters__link,
+.flex-8,
 .global-footer__list,
 .header-cart__block,
 .header-cart__message,
@@ -4756,6 +4760,7 @@ html {
 .price-filter__top,
 .review__buttons,
 .review__more-btn,
+.row-delivery,
 .rules-spollers__title,
 .search__item,
 .select-certificate,
@@ -6690,7 +6695,7 @@ body::after {
 .orders-checkout__body {
   overflow-y: auto
 }
-._more-content .orders-checkout__body {
+.orders-checkout__body._more-content {
   min-height: 18.75rem;
   -ms-scroll-chaining: none;
   overscroll-behavior: contain;
@@ -6857,6 +6862,13 @@ body::after {
 }
 .tab-checkout__slider:not(:last-child) {
   margin-bottom: 1rem
+}
+.row-delivery {
+  line-height: 1.46
+}
+.row-delivery:before {
+  font-size: 1.5rem;
+  align-self: flex-start
 }
 .illustrations {
   display: grid;
@@ -12554,6 +12566,7 @@ body::after {
   .popup-order-account__item,
   .popup-rules.popup .popup-body-rules__rules-title,
   .quantity__item,
+  .row-delivery,
   .rules-spollers__title,
   .rules-spollers__txt--sm,
   .search__clear-btn,
@@ -13970,6 +13983,10 @@ body::after {
   }
   .orders-checkout__arrow {
     display: none
+  }
+  .orders-checkout__body {
+    height: 100%;
+    max-height: 53svh
   }
   .orders-checkout__total {
     border-top: .09375rem solid var(--gray-1)
@@ -17567,6 +17584,7 @@ body::after {
   .popup-order-account__item,
   .popup-rules.popup .popup-body-rules__rules-title,
   .quantity__item,
+  .row-delivery,
   .rules-spollers__title,
   .rules-spollers__txt--sm,
   .search__clear-btn,

@@ -353,6 +353,9 @@ html {
   .mb-24 {
     margin-bottom: toRem(24);
   }
+  .mb-16 {
+    margin-bottom: toRem(16);
+  }
   .mb-80-56 {
     @media (min-width:$mobileSmall){
        margin-bottom: toRem(80); 
@@ -409,6 +412,10 @@ html {
       margin-bottom: toRem(24); 
     }
   }
+
+  .flex-8 {
+    @extend %flexCenterGap8;
+  }
   
   %flexCenterGap8 {
     display: flex;
@@ -416,9 +423,6 @@ html {
     gap: toRem(8);
   }
 
-  // .br-24 {
-  //   border-radius: toRem(24);
-  // }
 
   %borderRadiusTop40-24 {
     @media (min-width:$mobileSmall){

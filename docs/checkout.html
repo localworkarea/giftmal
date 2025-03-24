@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250322224114">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250324130018">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -403,15 +403,6 @@
 																			<button type="button" class="input__choise icon-calendar"></button>
 																		</div>
 																	</div>
-																	<!-- <div class="input__item">
-																		<label for="inpTime" class="input__label">
-																			Час доставки
-																		</label>
-																		<div class="input__sub-item">
-																			<input id="inpTime" data-datepicker-time autocomplete="off" type="text" name="form[]" data-error="Виберіть час доставки" placeholder="00:00" data-required class="input input_sm">
-																			<button type="button" class="input__choise icon-clock"></button>
-																		</div>
-																	</div> -->
 																	<div class="input__item">
 																		<label for="inpTimePicker" class="input__label">
 																			Час доставки
@@ -885,9 +876,43 @@
 															</div>
 															<div class="tab-checkout__item">
 																<p class="tab-checkout__subtitle">
-																	3. Додайте оформлення, зробіть свій подарунок чарівним
+																	3. Оберіть дату доставки
 																</p>
-
+																<div class="tab-checkout__row row-cl-2-nw row-gap-16-8 mb-24">
+																	<div class="option__item">
+																		<input id="dateDelivaryPhysical" class="option__input" type="radio" name="dateDelivaryPhysical" value="1" checked>
+																		<label for="dateDelivaryPhysical" class="option__label">
+																			<span class="box"></span>
+																			Найближчий
+																		</label>
+																	</div>
+																	<div class="option__item">
+																		<input id="dateDelivaryPhysical2" class="option__input" type="radio" name="dateDelivaryPhysical" value="2">
+																		<label for="dateDelivaryPhysical2" class="option__label">
+																			<span class="box"></span>
+																			Обрати
+																		</label>
+																	</div>
+																</div>
+																<div class="tab-checkout__row row-cl-2-16-8 mb-16">
+																	<div class="input__item">
+																		<label for="inpDateDelivery" class="input__label">
+																			Дата доставки
+																		</label>
+																		<div class="input__sub-item">
+																			<input id="inpDateDelivery" data-datepicker autocomplete="off" type="text" name="form[]" data-error="Виберіть дату доставки" placeholder="дд.мм.рррр" data-required class="input input_sm">
+																			<button type="button" class="input__choise icon-calendar"></button>
+																		</div>
+																	</div>
+																</div>
+																<div class="tab-checkout__row row-cl-2-16-8">
+																	<p class="row-delivery icon-delivery">Очікувана дата доставки: <span>15.04.2025</span></p>
+																</div>
+															</div>
+															<div class="tab-checkout__item">
+																<p class="tab-checkout__subtitle">
+																	4. Додайте оформлення, зробіть свій подарунок чарівним
+																</p>
 																<div class="tab-checkout__row mb-24 row-gap-16">
 																	<div class="tab-checkout__row row-cl-2-nw row-gap-16-8">
 																		<div class="option__item">
@@ -3045,12 +3070,12 @@
 			</div>
 		</div>
 	</div>
-	<script src="files/rolldate/rolldate.js?_v=20250322224114"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250322224114"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250322224114"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250322224114"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250322224114"></script>
-	<script src="js/app.min.js?_v=20250322224114"></script>
+	<script src="files/rolldate/rolldate.js?_v=20250324130018"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250324130018"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250324130018"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250324130018"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250324130018"></script>
+	<script src="js/app.min.js?_v=20250324130018"></script>
 </body>
 
 </html>
