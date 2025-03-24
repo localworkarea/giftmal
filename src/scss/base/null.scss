@@ -20,6 +20,9 @@ a:focus,
 a:active {
 	// outline: none;
 }
+html {
+	min-height: 100vh;
+}
 html,
 body {
 	height: 100%;
@@ -37,6 +40,7 @@ body {
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-tap-highlight-color: transparent;
 }
 input,
 button,

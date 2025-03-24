@@ -431,6 +431,9 @@
 *::before {
   display: inline-block
 }
+html {
+  min-height: 100vh
+}
 body,
 html {
   height: 100%;
@@ -446,7 +449,8 @@ body {
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent
 }
 button,
 input,
