@@ -172,7 +172,7 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 
 
 	// Форма в попапе #popupAccount
-	const formPopupAccount = document.querySelector("form.popup-account__body");
+	const formPopupAccount = document.querySelector("form#popupAccountForm");
 	if (!formPopupAccount) return;
 
 	const steps = formPopupAccount.querySelectorAll(".popup-account__step");
@@ -216,22 +216,33 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 
 }
 
-	function toggleSubmitButton(form) {
-    const submitButton = form.querySelector('button[type="submit"]');
-    if (!submitButton) return;
+function toggleSubmitButton(form) {
+	const submitButton = form.querySelector('button[type="submit"]');
+	if (!submitButton) return;
 
-    const wasInitiallyDisabled = submitButton.hasAttribute('disabled');
+	const wasInitiallyDisabled = submitButton.hasAttribute('disabled');
 
-    const inputs = form.querySelectorAll('input, textarea');
-    let hasValue = Array.from(inputs).some(input => input.value.trim() !== '');
+	// Только текстовые поля и textarea влияют на активацию кнопки
+	const inputsForValueCheck = form.querySelectorAll(
+		'input[type="text"]:not([readonly]):not([disabled]), ' +
+		'input[type="email"]:not([readonly]):not([disabled]), ' +
+		'input[type="tel"]:not([readonly]):not([disabled]), ' +
+		'textarea:not([readonly]):not([disabled])'
+	);
 
-    if (wasInitiallyDisabled) {
-        submitButton.disabled = !hasValue;
+	const hasValue = Array.from(inputsForValueCheck).some(input => input.value.trim() !== '');
 
-        form.addEventListener("submit", function () {
-            submitButton.disabled = true;
-        });
-    }
+	if (wasInitiallyDisabled) {
+		submitButton.disabled = !hasValue;
+
+		form.addEventListener("submit", function () {
+			// Повторная проверка при сабмите
+			const stillHasValue = Array.from(inputsForValueCheck).some(input => input.value.trim() !== '');
+			if (!stillHasValue) {
+				submitButton.disabled = true;
+			}
+		});
+	}
 }
 
 
@@ -295,7 +306,8 @@ export let formValidate = {
 		let formRequiredItems = form.querySelectorAll('*[data-required]');
 		if (formRequiredItems.length) {
 			formRequiredItems.forEach(formRequiredItem => {
-				if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) {
+				const isVisible = formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT" || formRequiredItem.type === "checkbox";
+				if (isVisible && !formRequiredItem.disabled) {
 					error += this.validateInput(formRequiredItem);
 				}
 			});

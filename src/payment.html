@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+		"title":"Payment"
+		})
+	<body>
+		<div class="wrapper">
+			<header class="checkout__top">
+				<div class="checkout__container-c">
+					<a href="index.html" class="checkout__continue icon-arrow-down" aria-label="continue shopping">Продовжити покупки</a>
+					<a href="index.html" class="checkout__logo icon-logo" aria-label="link to home page"></a>
+					<div class="checkout__phone item-dropdwn">
+						<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+							<span>+380 67 468 10 88</span>
+						</button>
+						<ul class="item-dropdwn__list">
+							<li class="item-dropdwn__item">
+								<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
+							</li>
+							<li class="item-dropdwn__item">
+								<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
+							</li>
+							<li class="item-dropdwn__item">
+								<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</header>
+			<main class="page">
+				<section class="payment checkout">
+					<div class="payment__container">
+						<div class="payment__head mb-24-16">
+							<h1 class="payment__title">Оплата <span>(2-х замовлень)</span></h1>
+							<div class="payment__total"><span class="numb">100</span> грн</div>
+						</div>
+						<ul class="payment__body">
+							<li class="payment__item item-payment">
+								<div class="item-payment__head">
+									<div class="item-payment__order-number">Замовлення 1</div>
+									<div class="item-payment__type icon-electronic">
+										Електронні сертифікати
+									</div>
+									<div class="item-payment__address">
+										<span>• &nbsp;</span>omihalovjul@gmail.com
+									</div>
+								</div>
+								<div class="item-payment__content">
+									<div class="item-payment__info">
+										<img class="item-payment__img" src="@img/certificates/certificate-03.jpg" width="95" height="63" alt="Image">
+										<div class="item-payment__body">
+											<p class="item-payment__name">Фокстрот</p>
+											<p class="item-payment__subname">Подарункова картка</p>
+											<p class="item-payment__count">2 шт х 250 грн</p>
+										</div>
+									</div>
+									<div class="item-payment__total">
+										<div class="item-payment__row">
+											<p class="item-payment__text">Загальна сума</p>
+											<p class="item-payment__subtotal"><span class="numb">500</span> грн</p>
+										</div>
+										<div class="item-payment__row">
+											<p class="item-payment__text">Списаний баланс giftmall</p>
+											<p class="item-payment__subtotal"><span class="numb">-450</span> грн</p>
+										</div>
+										<div class="item-payment__row row-mob">
+											<p class="item-payment__text">До сплати</p>
+											<p class="item-payment__subtotal"><span class="numb">50</span> грн</p>
+										</div>
+									</div>
+								</div>
+								<div class="item-payment__next">
+									<div class="item-payment__total-main"><span class="numb">50</span> грн</div>
+									<a href="#" class="item-payment__btn btn btn_dark btn_sm">Перейти до оплати</a>
+								</div>
+							</li>
+							<li class="payment__item item-payment">
+								<div class="item-payment__head">
+									<div class="item-payment__order-number">Замовлення 1</div>
+									<div class="item-payment__type icon-physical">
+										Фізичні сертифікати
+									</div>
+									<div class="item-payment__address">
+										<span>• &nbsp;</span>Київ, Відділення №1: вул. Драгомнова, 10А
+									</div>
+								</div>
+								<div class="item-payment__content">
+									<div class="item-payment__info">
+										<img class="item-payment__img" src="@img/certificates/certificate-01.jpg" width="95" height="63" alt="Image">
+										<div class="item-payment__body">
+											<p class="item-payment__name">The Cake</p>
+											<p class="item-payment__subname">Подарункова картка</p>
+											<p class="item-payment__count">2 шт х 800 грн</p>
+										</div>
+									</div>
+									<div class="item-payment__total">
+										<div class="item-payment__row">
+											<p class="item-payment__text">Загальна сума</p>
+											<p class="item-payment__subtotal"><span class="numb">800</span> грн</p>
+										</div>
+										<div class="item-payment__row">
+											<p class="item-payment__text">Списаний баланс giftmall </p>
+											<p class="item-payment__subtotal"><span class="numb">-750</span> грн</p>
+										</div>
+										<div class="item-payment__row row-mob">
+											<p class="item-payment__text">До сплати</p>
+											<p class="item-payment__subtotal"><span class="numb">50</span> грн</p>
+										</div>
+									</div>
+								</div>
+								<div class="item-payment__next">
+									<div class="item-payment__total-main"><span class="numb">50</span> грн</div>
+									<a href="#" class="item-payment__btn btn btn_dark btn_sm">Перейти до оплати</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_popup-mb.htm',{})
+		@@include('html/_js.htm',{})
+	</body>
+</html>

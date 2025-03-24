@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"Contacts"
+	})
+	<body>
+		<div class="wrapper">
+			<header data-scroll="50" data-scroll-show class="header">
+				@@include('html/_header-main.htm',{})
+				@@include('html/_header-sub.htm',{})
+			</header>
+			<main class="page">
+				<section class="contacts pb-120-56">
+					<div class="contacts__container">
+						<div class="contacts__left">
+							<div class="contacts__top">
+								<h1 class="contacts__title">Контакти</h1>
+								<div class="contacts__block">
+									<div class="contacts__row">
+										<div class="contacts__icon icon-clock"></div>
+										<div class="contacts__cl cl-2">
+											<div class="contacts__item">
+												<p class="contacts__label">Пн-Пт:</p>
+												<p class="contacts__info">09:00 — 18:00</p>
+											</div>
+											<div class="contacts__item">
+												<p class="contacts__label">Сб-Нд:</p>
+												<p class="contacts__info">Вихідні</p>
+											</div>
+										</div>
+									</div>
+									<div class="contacts__row">
+										<div class="contacts__icon icon-phone"></div>
+										<div class="contacts__cl cl-2-wr">
+											<div class="contacts__item">
+												<p class="contacts__label">Підтримка</p>
+												<a href="tel:+380674681088" class="contacts__info">+38 067 468 10 88</a>
+											</div>
+											<div class="contacts__item">
+												<p class="contacts__label">Корпоративні Замовлення</p>
+												<a href="tel:+380675668536" class="contacts__info">+38 067 566 85 36</a>
+											</div>
+										</div>
+									</div>
+									<div class="contacts__row">
+										<div class="contacts__icon icon-location"></div>
+										<div class="contacts__cl">
+											<div class="contacts__item">
+												<p class="contacts__label">Адреса</p>
+												<p class="contacts__info">м. Київ, 04-209, пр. Лукінський, 2</p>
+											</div>
+										</div>
+									</div>
+									<div class="contacts__row">
+										<div class="contacts__icon icon-mail"></div>
+										<div class="contacts__cl">
+											<div class="contacts__item">
+												<p class="contacts__label">Email</p>
+												<a href="mailto:info@giftmall.ua" class="contacts__info">info@giftmall.ua</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="contacts__bottom">
+								<p class="contacts__label">Соціальні мережі</p>
+								<ul class="contacts__social social-contacts">
+									<li class="social-contacts__item">
+										<a href="#" class="social-contacts__link" aria-label="link">
+											<img src="@img/icons/linkidin-white.svg" width="40" height="40" alt="Image">
+										</a>
+									</li>
+									<li class="social-contacts__item">
+										<a href="#" class="social-contacts__link" aria-label="link">
+											<img src="@img/icons/facebook-white.svg" width="40" height="40" alt="Image">
+										</a>
+									</li>
+									<li class="social-contacts__item">
+										<a href="#" class="social-contacts__link" aria-label="link">
+											<img src="@img/icons/instagram-white.svg" width="40" height="40" alt="Image">
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="contacts__form form-contacts">
+							<div class="form-contacts__block">
+								<h2 class="form-contacts__title">Зв’яжіться з нами</h2>
+								<form data-dev class="form-contacts__form" method="post">
+									<div class="form-contacts__items">
+										<div class="input__item">
+											<label for="contactUsPageName" class="input__label">
+												Ваше Ім’я
+											</label>
+											<div class="input__sub-item">
+												<input id="contactUsPageName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+												<button disabled type="button" class="input__clear icon-cross"></button>
+											</div>
+										</div>
+										<div class="input__item">
+											<label for="contactUsPageEmail" class="input__label">
+												Ваш email
+											</label>
+											<div class="input__sub-item">
+												<input id="contactUsPageEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email"  class="input input_sm">
+												<button disabled type="button" class="input__clear icon-cross"></button>
+											</div>
+										</div>
+										<div class="input__item input-intl-item">
+											<label for="contactUsPageTel" class="input__label">
+												Ваш номер телефону
+											</label>
+											<input id="contactUsPageTel" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+										</div>
+										<div class="input__item">
+											<label for="contactUsPageTheme" class="input__label">
+												Тема листа
+											</label>
+											<div class="input__sub-item">
+												<input id="contactUsPageTheme" autocomplete="off" type="text" name="form[]" data-error="Вкажіть Тему листа" placeholder="Тема листа" data-required class="input input_sm">
+												<button disabled type="button" class="input__clear icon-cross"></button>
+											</div>
+										</div>
+										<div class="input__item">
+											<label for="contactUsPageMessage" class="input__label">
+												Ваше повідомлення
+											</label>
+											<textarea id="contactUsPageMessage" data-autoheight autocomplete="off" type="text" name="form[]" data-error="Впишіть, що вас цікавить тут" placeholder="Напишіть, що вас цікавить тут" data-required class="input input_sm"></textarea>
+										</div>
+									</div>
+									<button disabled type="submit" class="form-contacts__btn btn btn_dark">Зв'язатись з нами</button>
+									<div class="form-contacts__checkbox checkbox">
+										<input  id="contactUsPageAgreement" type="checkbox" name="contactUsPageAgreement" class="checkbox__input" data-required >
+										<label for="contactUsPageAgreement" class="checkbox__label icon-checkbox">
+											<span>Я не робот</span>
+										</label>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		@@include('html/_popup-mb.htm',{})
+		@@include('html/_js.htm',{})
+	</body>
+</html>

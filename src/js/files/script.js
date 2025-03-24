@@ -956,7 +956,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Робота з чекбоксами, кнопками підтвердження, відкриття попапу #popupRules
       // Card Page, Account Page ----
-      document.querySelectorAll(".popup-rules").forEach((popupRules) => {
+      document.querySelectorAll(".popup-rules-item").forEach((popupRules) => {
         const popupBody = popupRules.querySelector(".popup-body-rules");
         const popupContent = popupRules.querySelector(".popup-body-rules__content");
         const confirmButton = popupRules.querySelector("[data-card-confirm]");
@@ -1549,11 +1549,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function closeModal(modal) {
-        modal.style.top = "";
-        modal.style.right = "";
         modal.style.opacity = "";
         modal.style.visibility = "";
         modal.style.pointerEvents = "";
+        setTimeout(() => {
+          modal.style.top = "";
+          modal.style.right = "";
+        }, 300);
       
         modal.classList.remove('_modal-show');
         document.documentElement.classList.remove('_show-modal');
@@ -1812,7 +1814,33 @@ document.addEventListener("DOMContentLoaded", () => {
       //     positionModal(activeModal, activeButton);
       //   }
       // });
+
+
+
+      // -- contacts page, check checkbox i`m not a robot =========
+    	const contactsPage = document.querySelector('.contacts');
+      const popupCardImg = document.querySelector('.popup-not-robot__card img');
+      const checkboxInput = document.querySelector('#contactUsPageAgreement');
+      const checkboxLabel = document.querySelector('label[for="contactUsPageAgreement"]');
+
+      if (contactsPage && popupCardImg && checkboxInput && checkboxLabel) {
+      	checkboxLabel.addEventListener('click', (e) => {
+      		e.preventDefault();
+        
+      		if (checkboxInput.checked) {
+      			checkboxInput.checked = false;
+      		} else {
+      			flsModules.popup.open('#popupNotRobot');
+      		}
+      	});
       
+      	popupCardImg.addEventListener('click', () => {
+      		checkboxInput.checked = true;
+      		flsModules.popup.close('#popupNotRobot');
+      	});
+      }
+
+
 
    
 

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+		"title":"Payment"
+		})
+	<body>
+		<div class="wrapper">
+			<header class="checkout__top">
+				<div class="checkout__container-c">
+					<a href="index.html" class="checkout__continue icon-arrow-down" aria-label="continue shopping">Продовжити покупки</a>
+					<a href="index.html" class="checkout__logo icon-logo" aria-label="link to home page"></a>
+					<div class="checkout__phone item-dropdwn">
+						<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+							<span>+380 67 468 10 88</span>
+						</button>
+						<ul class="item-dropdwn__list">
+							<li class="item-dropdwn__item">
+								<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
+							</li>
+							<li class="item-dropdwn__item">
+								<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
+							</li>
+							<li class="item-dropdwn__item">
+								<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</header>
+			<main class="page">
+				<section class="thanks checkout">
+					<div class="thanks__container">
+						<div class="thanks__block">
+							<div class="thanks__left">
+								<div class="thanks__title icon-check">
+									<p>Дякуємо за ваше замовлення!</p>
+								</div>
+								<p class="thanks__text">
+									Ура! Ваше Електронне та Фізичне замовлення успішно підтверджене. 
+								</p>
+								<div class="thanks__warning">
+									<p>Не забудьте перевірити папку “Спам”, якщо не отримали повідомлення протягом 15 хв.</p>
+								</div>
+							</div>
+							<div class="thanks__right">
+								<div class="thanks__user">
+									<span class="thanks__user-icon icon-user"></span>
+									Пам’ятайте!
+								</div>
+								<p class="thanks__text">Ви завжди зможете знайти копію сертифікатів і всю необхідну інформацію у своєму кабінеті.</p>
+								<a href="account.html" class="thanks__btn btn btn_dark btn_sm-4">Перейти до свого кабінету</a>
+							</div>
+						</div>
+						<div class="thanks__content">
+							<ul class="thanks__nav order-account__header">
+								<li class="order-account__cell">№ <span>замовлення</span></li>
+								<li class="order-account__cell icon-arrow-down">Дата <span>та час</span></li>
+								<li class="order-account__cell">Тип замовлення</li>
+								<li class="order-account__cell">Статус</li>
+								<li class="order-account__cell icon-arrow-down">Сума замовлення</li>
+								<li class="order-account__cell">Товар</li>
+							</ul>
+							<ul class="thanks__list order-account__list">
+								<li class="order-account__item item-order _confirmed">
+									<div class="item-order__main">
+										<p class="item-order__number">
+											<span>•&nbsp;&nbsp; № Замовлення:</span> 721095
+										</p>
+										<p class="item-order__time">24.04.24</p>
+										<p class="item-order__type icon-electronic"><span>Електронний</span></p>
+										<div class="item-order__status">
+											<p class="item-order__status-text row-icon">
+												Підтверджено
+											</p>
+										</div>
+										<div class="item-order__amount">
+											<p class="item-order__total">
+												<span class="currency-mb">₴</span>
+												<span class="numb-dec">2000</span>
+												<span class="currency-pc">грн</span>
+											</p>
+										</div>
+										<div class="item-order__imgs-block">
+											<div class="item-order__imgs">
+												<img class="item-order__img" src="@img/certificates/certificate-01.jpg" width="60" height="40" alt="Image">
+											</div>
+											<div class="item-order__count"></div>
+										</div>
+										<button type="button" class="item-order__more dropdown-arrow icon-arrow-down" aria-label="more content"></button>
+									</div>
+									<div class="item-order__body">
+										<div class="item-order__wrapper">
+											<ul class="item-order__sublist">
+												<li class="item-order__subitem subitem-order">
+													<img class="subitem-order__img" src="@img/certificates/certificate-01.jpg" width="96" height="63" alt="Image">
+													<div class="subitem-order__content">
+														<p class="subitem-order__name">Brocard</p>
+														<p class="subitem-order__title">Подарункова картка для магазину алкогольних напоїв у мережі магазинів у Києві та інших великих містах України</p>
+														<p class="subitem-order__count">2 шт</p>
+														<p class="subitem-order__total">
+															<span class="currency-mb">₴</span>
+															<span class="numb-dec">2000</span>
+															<span class="currency-pc">грн</span>
+														</p>
+													</div>
+													<button type="button" data-modal="#modalOrders" class="subitem-order__modal item-dots icon-dots" aria-label="open modal"></button>
+												</li>
+											</ul>
+											<div class="item-order__delivery">
+												<div class="item-order__delivery-block">
+													<p class="item-order__delivery-title">Адреса доставки:</p>
+													<p class="item-order__delivery-text">omihalovjul@gmail.com</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="order-account__item item-order _confirmed">
+									<div class="item-order__main">
+										<p class="item-order__number">
+											<span>•&nbsp;&nbsp; № Замовлення:</span> 721095
+										</p>
+										<p class="item-order__time">24.04.24</p>
+										<p class="item-order__type icon-electronic"><span>Електронний</span></p>
+										<div class="item-order__status">
+											<p class="item-order__status-text row-icon">
+												Підтверджено
+											</p>
+										</div>
+										<div class="item-order__amount">
+											<p class="item-order__total">
+												<span class="currency-mb">₴</span>
+												<span class="numb-dec">2000</span>
+												<span class="currency-pc">грн</span>
+											</p>
+										</div>
+										<div class="item-order__imgs-block">
+											<div class="item-order__imgs">
+												<img class="item-order__img" src="@img/certificates/certificate-01.jpg" width="60" height="40" alt="Image">
+												<img class="item-order__img" src="@img/certificates/certificate-02.jpg" width="60" height="40" alt="Image">
+											</div>
+											<div class="item-order__count">+1</div>
+										</div>
+										<button type="button" class="item-order__more dropdown-arrow icon-arrow-down" aria-label="more content"></button>
+									</div>
+									<div class="item-order__body">
+										<div class="item-order__wrapper">
+											<ul class="item-order__sublist">
+												<li class="item-order__subitem subitem-order">
+													<img class="subitem-order__img" src="@img/certificates/certificate-04.jpg" width="96" height="63" alt="Image">
+													<div class="subitem-order__content">
+														<p class="subitem-order__name">Brocard</p>
+														<p class="subitem-order__title">Подарункова картка для магазину алкогольних напоїв у мережі магазинів у Києві та інших великих містах України</p>
+														<p class="subitem-order__count">2 шт</p>
+														<p class="subitem-order__total">
+															<span class="currency-mb">₴</span>
+															<span class="numb-dec">2000</span>
+															<span class="currency-pc">грн</span>
+														</p>
+													</div>
+													<button type="button" data-modal="#modalOrders" class="subitem-order__modal item-dots icon-dots" aria-label="open modal"></button>
+												</li>
+												<li class="item-order__subitem subitem-order">
+													<img class="subitem-order__img" src="@img/certificates/certificate-05.jpg" width="96" height="63" alt="Image">
+													<div class="subitem-order__content">
+														<p class="subitem-order__name">The Cake</p>
+														<p class="subitem-order__title">Мережа десертів</p>
+														<p class="subitem-order__count">1 шт</p>
+														<p class="subitem-order__total">
+															<span class="currency-mb">₴</span>
+															<span class="numb-dec">500</span>
+															<span class="currency-pc">грн</span>
+														</p>
+													</div>
+													<button type="button" data-modal="#modalOrders" class="subitem-order__modal item-dots icon-dots" aria-label="open modal"></button>
+												</li>
+												<li class="item-order__subitem subitem-order">
+													<img class="subitem-order__img" src="@img/certificates/certificate-06.jpg" width="96" height="63" alt="Image">
+													<div class="subitem-order__content">
+														<p class="subitem-order__name">Коробка</p>
+														<p class="subitem-order__title">Подарункова коробка</p>
+														<p class="subitem-order__count">1 шт</p>
+														<p class="subitem-order__total">
+															<span class="currency-mb">₴</span>
+															<span class="numb-dec">400</span>
+															<span class="currency-pc">грн</span>
+														</p>
+													</div>
+													<button type="button" data-modal="#modalOrders" class="subitem-order__modal item-dots icon-dots" aria-label="open modal"></button>
+												</li>
+											</ul>
+											<div class="item-order__delivery">
+												<div class="item-order__delivery-block">
+													<p class="item-order__delivery-title">Доставки</p>
+													<p class="item-order__delivery-text">Нова Пошта</p>
+												</div>
+												<div class="item-order__delivery-block">
+													<p class="item-order__delivery-title">Адреса доставки:</p>
+													<p class="item-order__delivery-text">Відділення Нової Пошти №45 Київ, Вул. Драгоманова, 12А</p>
+												</div>
+												<div class="item-order__delivery-block">
+													<p class="item-order__delivery-title">Номер телефону:</p>
+													<p class="item-order__delivery-text">+380-50-100-11-00</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="order-account__item item-order _item-lg _unpaid">
+									<div class="item-order__main">
+										<p class="item-order__number">
+											<span>•&nbsp;&nbsp; № Замовлення:</span> 721094
+										</p>
+										<p class="item-order__time">24.04.24</p>
+										<p class="item-order__type icon-physical"><span>Фізичний</span></p>
+										<div class="item-order__status">
+											<p class="item-order__status-text row-icon">
+												Несплачені
+											</p>
+										</div>
+										<div class="item-order__amount">
+											<p class="item-order__total">
+												<span class="currency-mb">₴</span>
+												<span class="numb-dec">2000</span>
+												<span class="currency-pc">грн</span>
+											</p>
+											<a href="#" class="item-order__pay item-order__pay--pc btn btn_dark" aria-label="pay">Сплатити</a>
+										</div>
+										<div class="item-order__imgs-block">
+											<div class="item-order__imgs">
+												<img class="item-order__img" src="@img/certificates/certificate-01.jpg" width="60" height="40" alt="Image">
+											</div>
+										</div>
+										<button type="button" class="item-order__more dropdown-arrow icon-arrow-down" aria-label="more content"></button>
+									</div>
+									<div class="item-order__body">
+										<div class="item-order__wrapper">
+											<ul class="item-order__sublist">
+												<li class="item-order__subitem subitem-order">
+													<img class="subitem-order__img" src="@img/certificates/certificate-01.jpg" width="96" height="63" alt="Image">
+													<div class="subitem-order__content">
+														<p class="subitem-order__name">Brocard</p>
+														<p class="subitem-order__title">Подарункова картка для магазину алкогольних напоїв у мережі магазинів у Києві та інших великих містах України</p>
+														<p class="subitem-order__count">2 шт</p>
+														<p class="subitem-order__total">
+															<span class="currency-mb">₴</span>
+															<span class="numb-dec">2000</span>
+															<span class="currency-pc">грн</span>
+														</p>
+													</div>
+													<button type="button" data-modal="#modalOrders" class="subitem-order__modal item-dots icon-dots" aria-label="open modal"></button>
+												</li>
+											</ul>
+											<div class="item-order__delivery">
+												<div class="item-order__delivery-block">
+													<p class="item-order__delivery-title">Доставки</p>
+													<p class="item-order__delivery-text">Нова Пошта</p>
+												</div>
+												<div class="item-order__delivery-block">
+													<p class="item-order__delivery-title">Адреса доставки:</p>
+													<p class="item-order__delivery-text">Відділення Нової Пошти №45 Київ, Вул. Драгоманова, 12А</p>
+												</div>
+												<div class="item-order__delivery-block">
+													<p class="item-order__delivery-title">Номер телефону:</p>
+													<p class="item-order__delivery-text">+380-50-100-11-00</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<a href="#" class="item-order__pay item-order__pay--mob btn btn_dark" aria-label="pay">Сплатити</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</main>
+			@@include('html/_footer.htm',{})
+		</div>
+		<div id="modalSertificates" class="modal-account">
+			<div class="modal-account__wrapper">
+				<div class="modal-account__content">
+					<div class="modal-account__close popup__close"></div>
+					<div class="modal-account__body">
+						<a href="#" data-popup="#popupAccountRules" class="modal-account__btn icon-arrow-down">
+							<span class="modal-account__txt icon-details">Правила використання</span>
+						</a>
+						<a href="#" data-checked class="modal-account__btn icon-arrow-down">
+							<span class="modal-account__txt icon-checked-sertificates">Відмітити використаним</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="modalOrders" class="modal-account">
+			<div class="modal-account__wrapper">
+				<div class="modal-account__content">
+					<div class="modal-account__close popup__close"></div>
+					<div class="modal-account__body">
+						<a href="files/file-certificate.jpg" download="file.jpg" class="modal-account__btn icon-arrow-down">
+							<span class="modal-account__txt icon-upload">Завантажити</span>
+						</a>
+						<a href="#" data-popup="#popupAccountRules" class="modal-account__btn icon-arrow-down">
+							<span class="modal-account__txt icon-details">Правила використання</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		@@include('html/_popup-mb.htm',{})
+		@@include('html/_js.htm',{})
+	</body>
+</html>

@@ -1,0 +1,106 @@
+// === F A Q ===============================
+.faq {
+  @extend  %paddingTbBt56-16;
+  // .faq__container
+  &__container {
+  }
+  // .faq__body
+  &__body {
+    display: grid;
+    gap: toRem(24);
+    @media (min-width:$mobile){
+      grid-template-columns: 1fr 50%;
+    }
+  }
+  // .faq__block
+  &__block {
+  }
+  // .faq__title
+  &__title {
+    @extend %fonsSize32-20;
+    span {
+      color: var(--fade-violet-2);
+    }
+    &:not(:last-child) {
+      margin-bottom: toRem(16);
+    }
+    @media (min-width:$mobileSmall){
+      line-height: 1.2; 
+    }
+    @media (max-width:$mobileSmall){
+      line-height: 1.35;
+    }
+  }
+  // .faq__footer
+  &__footer {
+    @media (min-width:$mobileSmall){
+       max-width: toRem(330); 
+    }
+  }
+  // .faq__subtitle
+  &__subtitle {
+    line-height: 1.5;
+    @extend %fonsSize15-14;
+    color: #4B3451;
+    &:not(:last-child) {
+      @extend  %marginBt32-24;
+    }
+  }
+  // .faq__btn
+  &__btn {
+    @media (min-width:$mobileSmall){
+      max-width: fit-content;
+    }
+  }
+  // .faq__spollers
+  &__spollers {
+    @media (max-width:$mobileSmall){
+       &:not(:last-child) {
+        margin-bottom: toRem(16);
+       } 
+    }
+  }
+}
+
+.spollers-faq {
+  // .spollers-faq__item
+  &__item {
+    background-color: var(--white);
+    @extend %borderRadius30-24;
+    @extend %padding32-24;
+    &:not(:last-child) {
+      margin-bottom: toRem(8);
+    }
+  }
+  // .spollers-faq__title
+  &__title {
+    @extend %flexCenterGap8;
+    @extend %fonsSize23-18;
+    justify-content: space-between;
+    cursor: pointer;
+    @media (max-width:$mobileSmall){
+       align-items: flex-start; 
+    }
+  }
+  // .spollers-faq__arrow
+  &__arrow {
+    flex: 0 0 toRem(32);
+    ._spoller-active & {
+      transform: rotate(-180deg);
+    }
+  }
+  // .spollers-faq__body
+  &__body {
+    line-height: 1.5;
+  }
+  // .spollers-faq__content
+  &__content {
+    padding-top: toRem(24);
+    color: var(--fade-violet-3);
+    p {
+      &:not(:last-child) {
+        margin-bottom: toRem(16);
+      }
+    }
+  }
+}

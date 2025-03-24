@@ -602,8 +602,8 @@
                 closeEsc: true,
                 bodyLock: true,
                 hashSettings: {
-                    location: true,
-                    goHash: true
+                    location: false,
+                    goHash: false
                 },
                 on: {
                     beforeOpen: function() {},
@@ -963,7 +963,7 @@
                 }
             }
         }
-        const formPopupAccount = document.querySelector("form.popup-account__body");
+        const formPopupAccount = document.querySelector("form#popupAccountForm");
         if (!formPopupAccount) return;
         const steps = formPopupAccount.querySelectorAll(".popup-account__step");
         const nextButton = formPopupAccount.querySelector(".popup-account__btn-next");
@@ -1000,12 +1000,13 @@
         const submitButton = form.querySelector('button[type="submit"]');
         if (!submitButton) return;
         const wasInitiallyDisabled = submitButton.hasAttribute("disabled");
-        const inputs = form.querySelectorAll("input, textarea");
-        let hasValue = Array.from(inputs).some((input => input.value.trim() !== ""));
+        const inputsForValueCheck = form.querySelectorAll('input[type="text"]:not([readonly]):not([disabled]), ' + 'input[type="email"]:not([readonly]):not([disabled]), ' + 'input[type="tel"]:not([readonly]):not([disabled]), ' + "textarea:not([readonly]):not([disabled])");
+        const hasValue = Array.from(inputsForValueCheck).some((input => input.value.trim() !== ""));
         if (wasInitiallyDisabled) {
             submitButton.disabled = !hasValue;
             form.addEventListener("submit", (function() {
-                submitButton.disabled = true;
+                const stillHasValue = Array.from(inputsForValueCheck).some((input => input.value.trim() !== ""));
+                if (!stillHasValue) submitButton.disabled = true;
             }));
         }
     }
@@ -1048,7 +1049,8 @@
             let error = 0;
             let formRequiredItems = form.querySelectorAll("*[data-required]");
             if (formRequiredItems.length) formRequiredItems.forEach((formRequiredItem => {
-                if ((formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT") && !formRequiredItem.disabled) error += this.validateInput(formRequiredItem);
+                const isVisible = formRequiredItem.offsetParent !== null || formRequiredItem.tagName === "SELECT" || formRequiredItem.type === "checkbox";
+                if (isVisible && !formRequiredItem.disabled) error += this.validateInput(formRequiredItem);
             }));
             return error;
         },
@@ -10553,7 +10555,7 @@
                 button.src = currentMainSrc;
             }));
         }));
-        document.querySelectorAll(".popup-rules").forEach((popupRules => {
+        document.querySelectorAll(".popup-rules-item").forEach((popupRules => {
             const popupBody = popupRules.querySelector(".popup-body-rules");
             const popupContent = popupRules.querySelector(".popup-body-rules__content");
             const confirmButton = popupRules.querySelector("[data-card-confirm]");
@@ -10929,11 +10931,13 @@
             }
         }
         function closeModal(modal) {
-            modal.style.top = "";
-            modal.style.right = "";
             modal.style.opacity = "";
             modal.style.visibility = "";
             modal.style.pointerEvents = "";
+            setTimeout((() => {
+                modal.style.top = "";
+                modal.style.right = "";
+            }), 300);
             modal.classList.remove("_modal-show");
             document.documentElement.classList.remove("_show-modal");
             if (activeButton) {
@@ -10970,6 +10974,20 @@
             if (!mediaQuery480max.matches && document.documentElement.classList.contains("lock")) bodyUnlock();
             if (activeModal && activeButton) positionModal(activeModal, activeButton);
         }));
+        const contactsPage = document.querySelector(".contacts");
+        const popupCardImg = document.querySelector(".popup-not-robot__card img");
+        const checkboxInput = document.querySelector("#contactUsPageAgreement");
+        const checkboxLabel = document.querySelector('label[for="contactUsPageAgreement"]');
+        if (contactsPage && popupCardImg && checkboxInput && checkboxLabel) {
+            checkboxLabel.addEventListener("click", (e => {
+                e.preventDefault();
+                if (checkboxInput.checked) checkboxInput.checked = false; else modules_flsModules.popup.open("#popupNotRobot");
+            }));
+            popupCardImg.addEventListener("click", (() => {
+                checkboxInput.checked = true;
+                modules_flsModules.popup.close("#popupNotRobot");
+            }));
+        }
         initAllNotifications();
     }));
     function startCountdown(timerElement, callback) {

@@ -1,0 +1,125 @@
+// === T E R M S =============================
+.terms {
+  @extend %paddingTbBt56-16;
+  // .terms__container
+  &__container {
+  }
+	// .terms__head
+	&__head {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(45); 
+    }
+    @media (max-width:$mobileSmall){
+        margin-bottom: toRem(48);
+    }
+	}
+  // .terms__title
+  &__title {
+    @extend %fonsSize40-20;
+    max-width: toRem(842);
+    line-height: 1.12;
+    span {
+      color: var(--fade-violet-2);
+    }
+    &:not(:last-child) {
+      @media (min-width:$mobileSmall){
+        margin-bottom: toRem(4);
+      }
+      @media (max-width:$mobileSmall){
+        margin-bottom: toRem(10);
+      }
+    }
+  }
+	// .terms__title-sm
+	&__title-sm {
+    line-height: 1.5;
+    @extend %fonsSize15-16;
+    color: var(--fade-violet-2);
+	}
+  // .terms__list
+  &__list {
+    list-style: none;
+    max-width: toRem(1000);
+  }
+  // .terms__item
+  &__item {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 80, 48,0,1440.98,480.98);
+    }
+  }
+  // .terms__subtitle
+  &__subtitle {
+    @extend %flexCenterGap8;
+    gap: toRem(12);
+    @extend %fonsSize23-20;
+    @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,900.98);
+    span {
+      width: toRem(40);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background-color: var(--white);
+      font-size: toRem(15);
+    }
+  }
+  // .terms__sublist
+  &__sublist {
+  }
+  // .terms__subitem
+  &__subitem {
+    @extend %fonsSize18-16;
+    color: rgba(33, 5, 41, 0.7);
+    .accent {
+      color: var(--dark-violet);
+    }
+    a {
+      color: var(--violet);
+    }
+    p:not(:last-child),
+    &:not(:last-child) {
+      margin-bottom: toRem(40);
+    }
+    @media (min-width:$mobileSmall){
+      line-height: 1.38;
+    }
+    @media (max-width:$mobileSmall){
+       line-height: 1.5; 
+    }
+  }
+	// .terms__sub-sublist
+	&__sub-sublist {
+    li {
+      &:not(:last-child) {
+        @media (max-width:$mobileSmall){
+           margin-bottom: toRem(32); 
+        }
+      }
+    }
+	}
+	// .terms__sub-sublist-t
+	&__sub-sublist-t {
+    li {
+      position: relative;
+      padding-left: toRem(20);
+      &:not(:last-child) {
+        @media (min-width:$mobileSmall){
+           margin-bottom: toRem(32); 
+        }
+        @media (max-width:$mobileSmall){
+           margin-bottom: toRem(24); 
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: toRem(8);
+        left: 0;
+        width: toRem(8);
+        height: toRem(8);
+        border-radius: 50%;
+        background-color: var(--dark-violet);
+      }
+    }
+	}
+}

@@ -159,9 +159,10 @@ body {
 // Підключення стилів окремих блоків
 @import "header";
 @import "footer";
-@import "base/pagging";
 
 // Підключення стилів компонентів
+@import "base/filters";
+@import "base/pagging";
 @import "base/breadcrumbs";
 @import "base/social-share";
 @import "base/blog-card";
@@ -173,6 +174,8 @@ body {
 
 // Підключення стилів окремих сторінок
 @import "home";
+@import "pages/checkout";
+@import "pages/catalog";
 @import "pages/cart";
 @import "pages/card";
 @import "pages/account";
@@ -185,4 +188,8 @@ body {
 @import "pages/contractors";
 @import "pages/mobile-app";
 @import "pages/main";
+@import "pages/payment";
+@import "pages/thank-you";
+@import "pages/contacts";
+@import "pages/terms";
 

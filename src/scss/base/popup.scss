@@ -1,3 +1,4 @@
+// -- Загальні стилі popup ---------------
 body::after {
 	content: "";
 	@extend %bgClrPopups;
@@ -94,6 +95,49 @@ body::after {
 			}
 		}
 	}
+	&.popup-full-all {
+		.popup__wrapper {
+			justify-content: center;
+			overflow-y: auto;
+			padding: toRem(16);
+		}
+		.popup__content {
+			transform: translate(0,0%);
+			max-width: toRem(590);
+			border-radius: toRem(30);
+			padding: toRem(32);
+		}
+		.popup__close {
+			width: toRem(40);
+			height: toRem(40);
+			border-radius: 50%;
+			background-color: var(--gray-1);
+			top: toRem(8);
+			right: toRem(8);
+			display: grid;
+			place-items: center;
+			transition: background-color .3s ease;
+			&::before {
+				display: none;
+			}
+			@media (any-hover: hover){
+				&:hover{
+					background-color: var(--violet);
+					&::after {
+						color: var(--white);
+					}
+				}
+			}
+		}
+		.popup__close {
+			&::after {
+				@extend %ic;
+				content: "\e91b";
+				font-size: toRem(24);
+				transition: color .3s ease;
+			}
+		}
+	}
 	// .popup__wrapper
 	&__wrapper {
 		display: flex;
@@ -155,20 +199,10 @@ body::after {
 	}
 }
 
-#popupIti.popup {
+// Popup #popupLogIn + #popupRolldate =====================
+.popup-iti.popup,
+.popup-rolldate.popup {
 	z-index: 152;
-	.popup__body {
-		position: relative;
-		height: 100%;
-		min-height: toRem(300);
-	}
-} 
-#popupRolldate.popup {
-	z-index: 152;
-	@media (min-width:$mobileSmall){
-		//  display: none; 
-		//  pointer-events: none;
-	}
 	.popup__body {
 	 position: relative;
 	 height: 100%;
@@ -176,13 +210,26 @@ body::after {
  }
 }
 
-#popupCabinet.popup {
+.popup-iti.popup {
+	.popup__body {
+		min-height: toRem(300);
+	}
+} 
+.popup-rolldate.popup {
+	.popup__body {
+	 min-height: toRem(314);
+ }
+}
+
+// Popup #popupCabinet =====================
+.popup-cabinet.popup {
 	.popup__content {
 		padding: toRem(32) 0 0 0;
 	}
 }
 
-#popupSearch.popup {
+// Popup #popupSearch =====================
+.popup-search.popup {
 	.popup__content {
 		background-color: var(--gray-1);
 		padding: toRem(32) toRem(8) 0;
@@ -192,7 +239,8 @@ body::after {
 	}
 }
 
-#popupCart.popup {
+// Popup #popupCart =====================
+.popup-cart.popup {
 	@media (min-width:$mobileSmall){
 		pointer-events: none !important;
 		.popup__wrapper {
@@ -261,7 +309,8 @@ body::after {
 	}
 }
 
-#popupFiltersAll.popup {
+// Popup #popupFiltersAll =====================
+.popup-filters-all.popup {
 	.popup__content {
 		background-color: var(--gray-1);
 		padding: toRem(32) toRem(8) 0;
@@ -273,7 +322,8 @@ body::after {
 	}
 }
 
-#popupFiltersTypes.popup {
+// Popup #popupFiltersTypes =====================
+.popup-filters-types.popup {
 	.popup__content {
 		background-color: var(--gray-1);
 		padding: toRem(32) toRem(8) 0;
@@ -318,13 +368,13 @@ body::after {
 	}
 }
 
-#popupContactsUs.popup {
+// Popup #popupContactsUs =====================
+.popup-contacts.popup {
 		@media (max-width:$mobileSmall){
 				overflow-x: hidden;
 			 overflow-y: auto; 
 		}
-		.popup__content {
-			}
+		
 			.popup__close {
 				@media (max-width:$mobileSmall){
 					border-radius: toRem(24) toRem(24) 0 0;
@@ -365,6 +415,7 @@ body::after {
 
 }
 
+// Popup #popupRules =====================
 .popup-rules.popup {
 	@media (min-width:$mobileSmall){
 		overflow-x: hidden;
@@ -561,7 +612,8 @@ body::after {
 
 }
 
-#popupQuestion.popup {
+// Popup #popupQuestion =====================
+.popup-question.popup {
 	@media (max-width:$mobileSmall){
 		overflow-x: hidden;
 	 overflow-y: auto; 
@@ -608,7 +660,8 @@ body::after {
 	}
 }
 
-#popupReviews.popup {
+// Popup #popupReviews =====================
+.popup-reviews.popup {
 	@media (max-width:$mobileSmall){
 		overflow-x: hidden;
 		overflow-y: auto; 
@@ -735,7 +788,8 @@ body::after {
 	}
 }
 
-#popupAvailability.popup {
+// Popup #popupAvailability =====================
+.popup-availability.popup {
 	.popup__content {
 		max-width: toRem(450);
 		@media (max-width:$mobileSmall){
@@ -770,7 +824,8 @@ body::after {
 	}
 }
 
-#popupAvailabilityMsg.popup {
+// Popup #popupAvailabilityMsg =====================
+.popup-availability-msg.popup {
 	.popup__content {
 		max-width: toRem(450);
 		@media (max-width:$mobileSmall){
@@ -815,6 +870,7 @@ body::after {
 	}
 }
 
+// Popup #popupCart =====================
 .popup-cart {
 	flex: 1;
 	display: flex;
@@ -1094,7 +1150,7 @@ body::after {
 
 // Popup #popupLogIn =====================
 .popup-login {
-	transition: opacity .3s ease 0s;
+	transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
 	background-color: var(--gray-1);
 	min-height: 100svh;
 	&.popup-full {
@@ -1485,9 +1541,9 @@ body::after {
 	}
 }
 
-
-#popupHistoryBalance.popup,
-#popupNoneHistoryBalance.popup {
+// Popup #popupHistoryBalance + #popupNoneHistoryBalance =====================
+.popup-history.popup,
+.popup-history-none.popup {
 	@media (min-width:$mobileSmall){
 		overflow-x: hidden;
 		overflow-y: auto; 
@@ -1504,22 +1560,6 @@ body::after {
 		}
 	}
 }
-#popupNoneHistoryBalance.popup {
-	.popup__content {
-		@media (min-width:toEm(700.98)){
-			 min-height: toRem(290); 
-		}	
-		@media (max-width: toEm(700.98)) and (min-width:$mobileSmall) {
-			min-height: toRem(400);
-		}
-	}
-	.no-card-history {
-		display: block !important;
-	}
-	.no-card-history__txt {
-		max-width: toRem(370);
-	}
-}
 
 %gridItems {
 	display: grid;
@@ -1532,9 +1572,12 @@ body::after {
 }
 
 .popup-history {
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+	// .popup-history__body
+	&__body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
 	// .popup-history__header
 	&__header {
 		display: flex;
@@ -1791,7 +1834,24 @@ body::after {
 	}
 }
 
+.popup-history-none.popup {
+	.popup__content {
+		@media (min-width:toEm(700.98)){
+			 min-height: toRem(290); 
+		}	
+		@media (max-width: toEm(700.98)) and (min-width:$mobileSmall) {
+			min-height: toRem(400);
+		}
+	}
+	.no-card-history {
+		display: block !important;
+	}
+	.no-card-history__txt {
+		max-width: toRem(370);
+	}
+}
 
+// Popup #popupOrderAccountFilter =====================
 .popup-order-account {
 	&.popup {
 		.popup__content {
@@ -1899,3 +1959,36 @@ body::after {
 	&__btn {
 	}
 }
+
+// Popup #popupNotRobot =====================
+.popup-not-robot {
+	.popup__content {
+		background-color: var(--gray-2);
+		min-height: toRem(336);
+	}
+	// .popup-not-robot__title
+	&__title {
+		@extend %fonsSize23-20;
+		margin-bottom: toRem(111);
+	}
+	// .popup-not-robot__block
+	&__block {
+		@extend %flexCenterGap8;
+		justify-content: space-between;
+	}
+	// .popup-not-robot__icon
+	&__icon {
+		&::before {
+			font-size: toRem(56);
+			color: var(--green);
+		}
+	}
+	// .popup-not-robot__card
+	&__card {
+		img {
+			height: auto;
+			width: toRem(109);
+		}
+	}
+}
+

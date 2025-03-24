@@ -239,7 +239,7 @@ textarea.input {
 	// .input__choise
 	&__choise {
     position: absolute;
-    z-index: 2;
+    z-index: 0;
     right: toRem(4);
     transition: opacity .3s;
     pointer-events: none;
@@ -517,6 +517,9 @@ textarea.input {
   // .checkbox__input
   &__input {
     display: none;
+    // opacity: 0;
+    // position: absolute;
+    // width: 0;
     &:checked {
       + .checkbox__label {
         &::after {
@@ -566,6 +569,9 @@ textarea.input {
       border-radius: 6px;
       border: toRem(1.5) solid var(--fade-violet-2);
       transition: border-color .3s ease, background-color .2s ease;
+      ._form-error & {
+        border-color: var(--red);
+      }
     }
     span {
       order: 2;
@@ -579,6 +585,9 @@ textarea.input {
           color: var(--dark-violet);
         }
       }
+    }
+    ._form-error & {
+      color: var(--red);
     }
   }
 }
