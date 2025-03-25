@@ -1277,7 +1277,7 @@
     }
     .currency-pc {
       @media (max-width:$mobileSmall){
-        display: non; 
+        display: none; 
       }
     }
     .currency-mb {

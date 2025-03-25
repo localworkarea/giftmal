@@ -4836,6 +4836,7 @@ html {
 .social-footer,
 .soon-label,
 .spollers-balance__title,
+.spollers-faq__title,
 .status-slider__label,
 .sub-header__container-b,
 .sub-header__link.icon-arrow-down,
@@ -12206,6 +12207,47 @@ body::after {
   border-radius: 50%;
   background-color: var(--dark-violet)
 }
+.faq__body {
+  display: grid;
+  gap: 1.5rem
+}
+.faq__title span {
+  color: var(--fade-violet-2)
+}
+.faq__title:not(:last-child) {
+  margin-bottom: 1rem
+}
+.faq__subtitle {
+  line-height: 1.5;
+  color: #4b3451
+}
+.spollers-faq__item {
+  background-color: var(--white)
+}
+.spollers-faq__item:not(:last-child) {
+  margin-bottom: .5rem
+}
+.spollers-faq__title {
+  justify-content: space-between;
+  cursor: pointer
+}
+.spollers-faq__arrow {
+  flex: 0 0 2rem
+}
+._spoller-active .spollers-faq__arrow {
+  -webkit-transform: rotate(-180deg);
+  transform: rotate(-180deg)
+}
+.spollers-faq__body {
+  line-height: 1.5
+}
+.spollers-faq__content {
+  padding-top: 1.5rem;
+  color: var(--fade-violet-3)
+}
+.spollers-faq__content p:not(:last-child) {
+  margin-bottom: 1rem
+}
 .tippy-box[data-animation=fade][data-state=hidden] {
   opacity: 0
 }
@@ -12635,6 +12677,7 @@ body::after {
     padding-bottom: 7.5rem
   }
   .card-news__title,
+  .faq__title,
   .review-empty__title {
     font-size: 2rem
   }
@@ -12653,6 +12696,9 @@ body::after {
   .popup__title,
   .spollers-balance__title,
   .terms__subtitle {
+    font-size: 1.4375rem
+  }
+  .spollers-faq__title {
     font-size: 1.4375rem
   }
   .contacts__info,
@@ -12684,6 +12730,7 @@ body::after {
   .current-balance__data,
   .current-balance__head,
   .current-balance__title,
+  .faq__subtitle,
   .filters__header,
   .item-cert__brand,
   .item-payment__order-number,
@@ -12915,7 +12962,8 @@ body::after {
   .card-more,
   .card-news,
   .filters__wrapper,
-  .filters_type-2 .button-filters {
+  .filters_type-2 .button-filters,
+  .spollers-faq__item {
     border-radius: 1.875rem
   }
   .thanks__block {
@@ -13813,6 +13861,17 @@ body::after {
   .terms__sub-sublist-t li:not(:last-child) {
     margin-bottom: 2rem
   }
+  .faq__title {
+    line-height: 1.2
+  }
+  .faq__footer {
+    max-width: 20.625rem
+  }
+  .faq__btn {
+    max-width: -webkit-fit-content;
+    max-width: -moz-fit-content;
+    max-width: fit-content
+  }
 }
 @media (min-width:30.06125em)and (any-hover:hover) {
   .popup.popup-full .popup__close:hover {
@@ -14180,6 +14239,9 @@ body::after {
   .thanks__left {
     max-width: 37.5rem
   }
+  .faq__body {
+    grid-template-columns: 1fr 50%
+  }
 }
 @media (min-width:50.06125em) {
   .card-grid {
@@ -14546,6 +14608,7 @@ body::after {
   .orders-checkout__body,
   .orders-checkout__total,
   .spollers-balance__item,
+  .spollers-faq__item,
   .tab-checkout__body,
   .tab-checkout_my-data,
   .tab-checkout_payment,
@@ -14675,6 +14738,7 @@ body::after {
   .contractors-benefits-cards,
   .contractors-page .contractors,
   .corporative,
+  .faq,
   .feedback,
   .main-page .clients-marquee,
   .platform,
@@ -14688,6 +14752,7 @@ body::after {
   .contractors-benefits-cards,
   .contractors-page .contractors,
   .corporative,
+  .faq,
   .feedback,
   .main-page .clients-marquee,
   .platform,
@@ -14695,6 +14760,7 @@ body::after {
   .terms {
     padding-bottom: 3.5rem
   }
+  .faq__subtitle:not(:last-child),
   .tab-checkout__item,
   .tab-checkout__items:not(:last-child) {
     margin-bottom: 2rem
@@ -14939,6 +15005,7 @@ body::after {
   .orders-checkout__body,
   .orders-checkout__total,
   .spollers-balance__item,
+  .spollers-faq__item,
   .tab-checkout__body,
   .tab-checkout_my-data,
   .tab-checkout_payment,
@@ -17764,6 +17831,7 @@ body::after {
   .contractors-benefits-cards,
   .contractors-page .contractors,
   .corporative,
+  .faq,
   .feedback,
   .main-page .clients-marquee,
   .platform,
@@ -17777,6 +17845,7 @@ body::after {
   .contractors-benefits-cards,
   .contractors-page .contractors,
   .corporative,
+  .faq,
   .feedback,
   .main-page .clients-marquee,
   .platform,
@@ -17784,6 +17853,7 @@ body::after {
   .terms {
     padding-bottom: 2.5rem
   }
+  .faq__subtitle:not(:last-child),
   .tab-checkout__item,
   .tab-checkout__items:not(:last-child) {
     margin-bottom: 1.5rem
@@ -17797,6 +17867,7 @@ body::after {
     font-size: 1.25rem
   }
   .card-news__title,
+  .faq__title,
   .review-empty__title {
     font-size: 1.25rem
   }
@@ -17816,6 +17887,9 @@ body::after {
   .spollers-balance__title,
   .terms__subtitle {
     font-size: 1.25rem
+  }
+  .spollers-faq__title {
+    font-size: 1.125rem
   }
   .contacts__info,
   .terms__subitem {
@@ -17846,6 +17920,7 @@ body::after {
   .current-balance__data,
   .current-balance__head,
   .current-balance__title,
+  .faq__subtitle,
   .filters__header,
   .item-cert__brand,
   .item-payment__order-number,
@@ -18084,7 +18159,8 @@ body::after {
   .card-more,
   .card-news,
   .filters__wrapper,
-  .filters_type-2 .button-filters {
+  .filters_type-2 .button-filters,
+  .spollers-faq__item {
     border-radius: 1.5rem
   }
   .thanks__block {
@@ -19075,7 +19151,7 @@ body::after {
     grid-column: 2/5
   }
   .item-order__total .currency-pc {
-    display: non
+    display: none
   }
   .item-order__pay--pc {
     display: none
@@ -19338,6 +19414,15 @@ body::after {
   .terms__sub-sublist-t li:not(:last-child) {
     margin-bottom: 1.5rem
   }
+  .faq__title {
+    line-height: 1.35
+  }
+  .faq__spollers:not(:last-child) {
+    margin-bottom: 1rem
+  }
+  .spollers-faq__title {
+    align-items: flex-start
+  }
 }
 @media (max-width:24.43625em) {
   .card-more__images {
@@ -19393,6 +19478,7 @@ body::after {
   .contractors-benefits-cards,
   .contractors-page .contractors,
   .corporative,
+  .faq,
   .feedback,
   .main-page .clients-marquee,
   .platform,
@@ -19406,6 +19492,7 @@ body::after {
   .contractors-benefits-cards,
   .contractors-page .contractors,
   .corporative,
+  .faq,
   .feedback,
   .main-page .clients-marquee,
   .platform,
@@ -19413,6 +19500,7 @@ body::after {
   .terms {
     padding-bottom: clamp(2.5rem ,1.9989791667rem + 1.6666666667vw ,3.5rem)
   }
+  .faq__subtitle:not(:last-child),
   .tab-checkout__item,
   .tab-checkout__items:not(:last-child) {
     margin-bottom: clamp(1.5rem ,1.2494895833rem + .8333333333vw ,2rem)
@@ -19561,6 +19649,7 @@ body::after {
   .orders-checkout__body,
   .orders-checkout__total,
   .spollers-balance__item,
+  .spollers-faq__item,
   .tab-checkout__body,
   .tab-checkout_my-data,
   .tab-checkout_payment,
