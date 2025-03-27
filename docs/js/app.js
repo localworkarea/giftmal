@@ -11224,6 +11224,13 @@
                 }
             });
             dpInstances.push(dp);
+            input.addEventListener("input", (() => {
+                input.value = input.value.replace(/[^0-9.]/g, "");
+            }));
+            input.addEventListener("keydown", (e => {
+                const allowedKeys = [ "Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "." ];
+                if (!/[0-9]/.test(e.key) && !allowedKeys.includes(e.key)) e.preventDefault();
+            }));
         }));
         document.querySelectorAll(timepickerSelector).forEach((input => {
             const format = input.dataset.format === "12" ? 12 : 24;

@@ -1199,7 +1199,11 @@ textarea.input {
   flex: 1 1 auto;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap
+  white-space: nowrap;
+  transition: color .2s ease
+}
+._select-active .select__text {
+  color: var(--dark-violet)!important
 }
 .select__input {
   width: 100%;
@@ -1208,31 +1212,38 @@ textarea.input {
   font-weight: 500
 }
 ._select-active .select__input {
-  color: var(--dark-violet)
+  color: var(--dark-violet)!important
 }
 .select__input::-webkit-input-placeholder {
-  color: var(--fade-violet-1)
+  color: var(--fade-violet-1);
+  -webkit-transition: color .2s ease;
+  transition: color .2s ease
 }
 .select__input:-ms-input-placeholder {
-  color: var(--fade-violet-1)
+  color: var(--fade-violet-1);
+  -ms-transition: color .2s ease;
+  transition: color .2s ease
 }
 .select__input::-ms-input-placeholder {
-  color: var(--fade-violet-1)
+  color: var(--fade-violet-1);
+  -ms-transition: color .2s ease;
+  transition: color .2s ease
 }
 .select__input::placeholder {
-  color: var(--fade-violet-1)
+  color: var(--fade-violet-1);
+  transition: color .2s ease
 }
 ._select-active .select__input::-webkit-input-placeholder {
-  color: var(--dark-violet)
+  color: var(--dark-violet)!important
 }
 ._select-active .select__input:-ms-input-placeholder {
-  color: var(--dark-violet)
+  color: var(--dark-violet)!important
 }
 ._select-active .select__input::-ms-input-placeholder {
-  color: var(--dark-violet)
+  color: var(--dark-violet)!important
 }
 ._select-active .select__input::placeholder {
-  color: var(--dark-violet)
+  color: var(--dark-violet)!important
 }
 ._form-error .select__input::-webkit-input-placeholder {
   color: var(--red)
@@ -19983,6 +19994,21 @@ body::after {
   }
   .select__title:hover {
     background-color: var(--gray-2)
+  }
+  .select__title:hover .select__input::-webkit-input-placeholder {
+    color: var(--fade-violet-2)
+  }
+  .select__title:hover .select__input:-ms-input-placeholder {
+    color: var(--fade-violet-2)
+  }
+  .select__title:hover .select__input::-ms-input-placeholder {
+    color: var(--fade-violet-2)
+  }
+  .select__title:hover .select__input::placeholder {
+    color: var(--fade-violet-2)
+  }
+  .select__title:hover .select__text {
+    color: var(--fade-violet-2)
   }
   .select_type-9 .select__title:hover {
     background-color: var(--white)
