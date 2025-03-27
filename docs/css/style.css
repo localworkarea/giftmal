@@ -18396,13 +18396,6 @@ body::after {
     position: relative;
     background-color: var(--gray-1)
   }
-  .filters-category .filters__body .filters__list::-webkit-scrollbar,
-  .filters-denomination .filters__body .filters__list::-webkit-scrollbar,
-  .filters-for .filters__body .filters__list::-webkit-scrollbar,
-  .filters-location .filters__body .filters__list::-webkit-scrollbar,
-  .filters-type .filters__body .filters__list::-webkit-scrollbar {
-    display: none
-  }
   .filters-category .filters__body-wr {
     border-radius: 1.5rem;
     overflow: hidden;

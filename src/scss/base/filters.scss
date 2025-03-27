@@ -250,9 +250,9 @@
     .filters-category &  {
       @media (max-width:$mobileSmall){
         .filters__list {
-          &::-webkit-scrollbar {
-            display: none;
-          }
+          // &::-webkit-scrollbar {
+          //   display: none;
+          // }
         }
       }
     }
