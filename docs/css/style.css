@@ -562,9 +562,6 @@ textarea {
 .input_social {
   padding: .625rem 2.75rem
 }
-.input_social._disabled {
-  pointer-events: none
-}
 .input._form-error {
   border-color: var(--red);
   outline-color: var(--red);
@@ -592,7 +589,7 @@ textarea {
 .input_white::placeholder {
   letter-spacing: 0
 }
-.input._readonly {
+.input._readonly:not(.input_social) {
   min-height: auto;
   padding: 0;
   border: 0;
@@ -1267,7 +1264,7 @@ textarea.input {
   border-radius: 1.5rem;
   box-shadow: 0 4px 40px 0 rgba(33,5,41,.16);
   overflow: hidden;
-  padding: .5rem
+  padding: .5rem 0 .5rem .5rem
 }
 .select_type-3 .select__options {
   top: calc(100% + .25rem);
@@ -1280,13 +1277,16 @@ textarea.input {
   border-radius: 0 0 1.5rem 1.5rem;
   box-shadow: 0 40px 40px 0 rgba(33,5,41,.16)
 }
+.select_type-9 .select__options {
+  padding: 0
+}
 ._select-open .select__options {
   min-height: 3.5rem
 }
 .select__scroll {
   overflow-y: auto;
   overflow-x: hidden;
-  margin-right: -4px
+  padding-right: .5rem
 }
 .select_type-9 .select__scroll {
   max-height: 100%!important;
@@ -12377,7 +12377,7 @@ body::after {
     min-height: 2.5rem;
     font-size: .8125rem
   }
-  .input._readonly {
+  .input._readonly:not(.input_social) {
     font-size: .9375rem
   }
   .input__label {
@@ -17478,7 +17478,7 @@ body::after {
     min-height: 3rem;
     font-size: .875rem
   }
-  .input._readonly {
+  .input._readonly:not(.input_social) {
     font-size: .875rem
   }
   .input__label {
@@ -19855,9 +19855,6 @@ body::after {
   }
 }
 @media (any-hover:hover) {
-  .input_social._disabled:hover {
-    background-color: var(--gray-1)
-  }
   .input_white:hover {
     box-shadow: 0 4px 20px 0 rgba(33,5,41,.07)
   }

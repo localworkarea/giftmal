@@ -116,6 +116,7 @@ flsForms.formAmount();
 /* Модуль зіркового рейтингу */
 flsForms.formRating();
 
+/* Модуль додати файл */
 flsForms.formAddPhoto();
 
 /* Модуль роботи з select. */

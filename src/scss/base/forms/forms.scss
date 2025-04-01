@@ -35,16 +35,22 @@ textarea {
     min-height: toRem(48);
 		font-size: toRem(15);
 	}
+  // .input_social
   &_social {
     padding: toRem(10) toRem(44); 
-    &._disabled {
-      pointer-events: none;
-      @media (any-hover: hover){
-        &:hover{
-          background-color: var(--gray-1);
-        }
-      }
-    }
+    // &._disabled {
+    //   pointer-events: none;
+    //   @media (any-hover: hover){
+    //     &:hover{
+    //       background-color: var(--gray-1);
+    //     }
+    //   }
+    // }
+    // &[disabled] {
+    //   &::placeholder {
+        
+    //   }
+    // }
   }
 	&._form-focus {
 
@@ -96,7 +102,7 @@ textarea {
     }
   }
 
-  &._readonly {
+  &._readonly:not(.input_social) {
     min-height: auto;
     padding: 0;
     border: 0;

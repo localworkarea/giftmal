@@ -331,7 +331,8 @@
 		border-radius: toRem(24);
 		box-shadow: 0 4px 40px 0 rgba(33, 5, 41, 0.16);
 		overflow: hidden;
-		padding: toRem(8);
+		// padding: toRem(8);
+		padding: toRem(8) toRem(0) toRem(8) toRem(8);
 
 		// ._nothing-found_ & {
 		// 	visibility: hidden;
@@ -374,6 +375,9 @@
 				box-shadow: 0 40px 40px 0 rgba(33, 5, 41, 0.16);
 			}
 		}
+		.select_type-9 & {
+			padding: 0;
+		}
 		._select-open & {
 			min-height: toRem(56);
 		}
@@ -386,7 +390,8 @@
 		// Максимальна висота
 		// max-height: toRem(200);
 		// margin-right: 1.5px;
-		margin-right: -4px;
+		// margin-right: -4px;
+			padding-right: toRem(8);
 		// padding: toRem(8) toRem(4) toRem(8) toRem(8);
 		// .select_type-3 & {
 		// 	padding: 0 toRem(4);
