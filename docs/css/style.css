@@ -6797,10 +6797,10 @@ body::after {
   color: var(--dark-violet)
 }
 .steps-checkout__btn.step-completed {
-  color: var(--fade-violet-2)!important
+  color: var(--fade-violet-1)!important
 }
 .steps-checkout__btn.step-completed .steps-checkout__complete::before {
-  color: var(--fade-violet-2)!important
+  color: var(--fade-violet-1)!important
 }
 .steps-checkout__txt {
   letter-spacing: .02em
@@ -7468,6 +7468,11 @@ body::after {
 ._expired .card-balance__row.row-status,
 ._used .card-balance__row.row-status {
   color: var(--red-2)
+}
+._activated .card-balance__row.row-status,
+._expired .card-balance__row.row-status,
+._used .card-balance__row.row-status {
+  margin-left: .21875rem
 }
 .card-balance__row.row-pin {
   gap: .5rem
@@ -13937,6 +13942,9 @@ body::after {
   .tab-checkout__items.items-cl-2-wr-mb {
     grid-template-columns: 1fr 1fr;
     gap: 1rem
+  }
+  .tab-checkout__row.d-block {
+    padding-top: 4px
   }
 }
 @media (min-width:40.68625em) {

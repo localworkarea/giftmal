@@ -168,10 +168,10 @@
       color: var(--dark-violet);
     }
     &.step-completed {
-      color: var(--fade-violet-2) !important;
+      color: var(--fade-violet-1) !important;
       .steps-checkout__complete {
         &::before {
-          color: var(--fade-violet-2) !important;
+          color: var(--fade-violet-1) !important;
         }
       }
     }
@@ -806,7 +806,10 @@
 	&__row {
     display: grid;
     &.d-block {
-      display: block
+      display: block;
+      @media (min-width:toEm(600.98)){
+        padding-top: 4px;
+      }
     }
     &.d-flex-clm {
       display: flex;
@@ -1982,6 +1985,11 @@
       ._expired &,
       ._used & {
         color: var(--red-2);
+      }
+      ._expired &,
+      ._used &,
+      ._activated & {
+        margin-left: toRem(3.5);
       }
     }
     &.row-pin {
