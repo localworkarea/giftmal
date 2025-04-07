@@ -305,9 +305,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: toRem(32);
+    gap: toRem(5);
     @media (max-width: toEm(1280)) {
      display: grid;
+     gap: toRem(30);
      grid-template-columns: repeat(4, 1fr);
     }
     
@@ -325,6 +326,7 @@
     
     img {
       width: fit-content;
+      height: auto;
       @media (max-width: $mobile) {
         height: auto;
         max-width: toRem(120);
