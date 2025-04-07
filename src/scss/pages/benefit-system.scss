@@ -951,6 +951,13 @@ $bs_image-border-radius-mobile: toRem(24);
       }
     }
   }
+
+  &__balance-wrapper{
+    margin-left: auto;
+    @media (max-width: $mobile) {
+      margin-right: toRem(15);
+    }
+  }
   
   &__visual {
     display: flex;
