@@ -457,6 +457,10 @@
       display: inline-flex;
       align-items: center;
       text-decoration: underline;
+      font-size: toRem(18);
+      @media (max-width:$mobile) {
+        font-size: toRem(16);
+      }
       @media (any-hover: hover) {
         &:hover {
           text-decoration: none;

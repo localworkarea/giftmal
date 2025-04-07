@@ -85,8 +85,8 @@
 
 	&__item {
 		@extend %interactive-item;
-		font-size: toRem(14);
-		font-weight: 500;
+		font-size: toRem(11);
+		font-weight: 600;
 
 		.pagging_sm & {
 			font-weight: 600;

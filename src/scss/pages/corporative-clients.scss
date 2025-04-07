@@ -339,6 +339,8 @@
   padding-top: toRem(115);
   @media (max-width: $mobile) {
     padding-top: toRem(56);
+    border-top-left-radius: $image-border-radius-mobile;
+    border-top-right-radius: $image-border-radius-mobile;
   }
   
   &__container {
@@ -413,10 +415,6 @@
       height: auto;
       object-fit: contain;
       align-self: flex-start;
-      
-      @media (max-width: $mobile) {
-        max-width: toRem(70);
-      }
     }
   }
   
@@ -696,7 +694,7 @@
   }
   
   &__feature-text {
-    font-size: toRem(14);
+    font-size: toRem(15);
     color: var(--fade-violet-3);
     line-height: 1.4;
     
