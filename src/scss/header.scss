@@ -40,6 +40,9 @@
     padding-block: toRem(12);
     position: relative;
     z-index: 2;
+    @media (min-width:toEm(900.98)){
+      gap: toRem(32);
+    }
     @media (max-width: toEm(900.98)){
       justify-content: space-between;
       background-color: var(--gray-1);
@@ -57,16 +60,22 @@
 	// .main-header__sub-wrapper
 	&__sub-wrapper {
     @extend %flexCenterGap8;
-    justify-content: space-between;
+    // justify-content: space-between;
     @media (min-width:toEm(900.98)){
-        width: 100%;
+      width: 100%;
+      
+      gap: toRem(17);
     }
     @media (max-width:$mobileSmall){
+      justify-content: space-between;
        width: 100%; 
     }
 	}
   // .main-header__phones
   &__phones {
+    // @media (min-width:toEm(700.98)){
+    //     margin-left: toRem(26);
+    // }
     @media (max-width: toEm(700.98)){
       display: none;
     }
@@ -131,8 +140,25 @@
         }
     }
 	}
+		// .main-header__sub-block
+		&__sub-block {
+      gap: toRem(8);
+      flex: 1;
+      @media (min-width:toEm(1050.98)){
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      @media (max-width: toEm(1050.98)){
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+		}
   // .main-header__activate
   &__activate {
+    @media (min-width:$mobileSmall){
+       justify-self:flex-end; 
+    }
     @media (max-width:$mobileSmall){
        width: 100%; 
     }
@@ -142,6 +168,7 @@
     max-width: fit-content;
     padding-inline: toRem(16) !important;
     @extend  %fonsSize11-14;
+    min-width: toRem(152);
     &::before {
       font-size: toRem(24);
     }
@@ -155,12 +182,15 @@
   }
   // .main-header__cabinet
   &__cabinet {
+    @media (min-width:$mobileSmall){
+      justify-self:flex-end; 
+   }
   }
   // .main-header__card
   &__card {
-  }
-  // .main-header__cabinet
-  &__cabinet {
+    @media (min-width:$mobileSmall){
+      justify-self:flex-end; 
+   }
   }
 }
 
@@ -473,6 +503,10 @@
     &::before {
       transform: rotate(-90deg);
       font-size: toRem(22);
+      @media (max-width:$mobileSmall){
+         position: relative;
+         left: toRem(1.5); 
+      }
     }
     .card-cabinet__list & {
       @media (min-width:$mobileSmall){

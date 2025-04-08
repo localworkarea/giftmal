@@ -529,6 +529,11 @@ body::after {
 				.head-popup-rules {
 					display: none;
 				}
+				.rules-spollers__wrapper {
+					@media (min-width:$mobileSmall){
+						padding-top: toRem(16) !important;
+					}
+				}
 			}
 			@media (max-width:$mobileSmall){
 				 padding-inline: toRem(16); 
@@ -1401,10 +1406,9 @@ body::after {
 	// .popup-account__items
 	&__items {
 		display: grid;
-		gap: toRem(24) toRem(16);
 		margin-bottom: toRem(32);
 		@media (min-width:$mobileSmall){
-			gap: toRem(24) toRem(16);
+			gap: toRem(20) toRem(16);
 			grid-template-columns: 1fr 1fr;
 		}
 		@media (max-width:$mobileSmall){

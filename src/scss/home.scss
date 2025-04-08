@@ -73,12 +73,12 @@
   }
 	// .main__more-btn
 	&__more-btn {
-    @media (min-width:$mobileSmall){
-       margin-top: toRem(12); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-top: toRem(32);
-    }
+    // @media (min-width:$mobileSmall){
+    //    margin-top: toRem(12); 
+    // }
+    // @media (max-width:$mobileSmall){
+    //   margin-top: toRem(32);
+    // }
     .more-btn__btn {
       @media (min-width:$mobileSmall){
         max-width: fit-content;

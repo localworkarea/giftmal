@@ -41,7 +41,7 @@ $starHeightMob: toRem(16);
 		position: relative;
 		background: url($star) 0 0 / $starWidth no-repeat;
 		@media (min-width:$mobileSmall){
-			transition: all 0.2s;
+			transition: background 0.2s;
 		}
 
 		@media (max-width:$mobileSmall){

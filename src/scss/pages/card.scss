@@ -73,7 +73,12 @@
   }
   // .card__header
   &__header {
-    margin-bottom: toRem(24);
+    @media (min-width:$mobileSmall){
+      margin-bottom: toRem(18);
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(24);
+    }
   }
   // .card__title
   &__title {
@@ -112,8 +117,8 @@
     display: grid;
     gap: toRem(16) toRem(8);
     border-bottom: toRem(1.5) solid var(--gray-2);
-    padding-bottom: toRem(20);
-    margin-bottom: toRem(20);
+    padding-bottom: toRem(18);
+    margin-bottom: toRem(18);
     &.grid-cl {
       grid-template-columns: 49% 49%;
     }
@@ -131,8 +136,8 @@
     display: grid;
     gap: toRem(16) toRem(8);
     border-bottom: toRem(1.5) solid var(--gray-2);
-    padding-bottom: toRem(20);
-    margin-bottom: toRem(20);
+    padding-bottom: toRem(18);
+    margin-bottom: toRem(18);
     &.grid-cl {
       grid-template-columns: 49% 49%;
     }
@@ -221,6 +226,9 @@
   // .card__quantity
   &__quantity {
     .quantity__input {
+      @media (min-width:$mobileSmall){
+         left: 0; 
+      }
       @media (max-width:$tablet){
         .grid-cl & {
           left: 0;
@@ -610,6 +618,14 @@
     cursor: pointer;
     min-height: toRem(32);
     line-height: 1.5;
+    @media (any-hover: hover){
+      &:hover{
+        .rules-spollers__arrow {
+          background-color: var(--dark-violet);
+          color: var(--white);
+        }
+      }
+    }
   }
   // .rules-spollers__arrow
   &__arrow {
@@ -622,12 +638,6 @@
     background-color: var(--white);
     transform-origin: 50% 50%;
     transition: transform .3s ease, background-color .3s ease, color .3s ease;
-    @media (any-hover: hover){
-      &:hover{
-        background-color: var(--dark-violet);
-        color: var(--white);
-      }
-    }
     ._spoller-active & {
       transform: rotate(-180deg);
     }
@@ -695,6 +705,7 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
+      top: toRem(1) !important;
     }
     &:not(:last-child) {
       margin-bottom: toRem(24);

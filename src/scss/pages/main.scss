@@ -199,6 +199,41 @@
   padding: toRem(80) 0 toRem(50);
   background: var(--white);
   position: relative;
+
+  .card-page &,
+  .catalog-page & {
+    &::after,
+    &::before {
+        content:'';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        @media (min-width:$mobileSmall){
+            top: toRem(-40);
+            height: toRem(40);
+        }
+        @media (max-width:$mobileSmall){
+            top: toRem(-32);
+            height: toRem(32);
+        }
+    }
+    &::before {
+        background-color: var(--white);
+        z-index: 1;
+    }
+    &::after {
+        background-color: var(--gray-1);
+        z-index: 2;
+        @media (min-width:$mobileSmall){
+            border-bottom-left-radius: toRem(40);
+            border-bottom-right-radius: toRem(40);
+        }
+        @media (max-width:$mobileSmall){
+            border-bottom-left-radius: toRem(32);
+            border-bottom-right-radius: toRem(32);
+        }
+    }
+  }
   
   @media (max-width: $tablet) {
     padding: toRem(86) 0 toRem(50);

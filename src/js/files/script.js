@@ -46,11 +46,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const checkoutPage = document.querySelector('.checkout');
   const certificateAccount = document.querySelector('.certificate-account');
+  const cardPage = document.querySelector('.card');
+  const catalogPage = document.querySelector('.catalog');
   if (checkoutPage) {
     document.documentElement.classList.add('checkout-page');
   }
   if (certificateAccount) {
     document.documentElement.classList.add('account-page');
+  }
+  if (cardPage) {
+    document.documentElement.classList.add('card-page');
+  }
+  if (catalogPage) {
+    document.documentElement.classList.add('catalog-page');
   }
 
 

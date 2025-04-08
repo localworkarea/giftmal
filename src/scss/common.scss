@@ -350,6 +350,9 @@ html {
   .mb-56 {
     margin-bottom: toRem(56);
   }
+  .mt-56 {
+    margin-top: toRem(56);
+  }
   .mb-24 {
     margin-bottom: toRem(24);
   }
@@ -1095,7 +1098,7 @@ html {
     align-items: center;
     padding: 0 toRem(10) 0 0;
     overflow: hidden;
-    transition: width .3s ease;
+    transition: width .65s ease-in-out;
     width: toRem(32);
     max-width: fit-content;
 
@@ -1105,7 +1108,7 @@ html {
     span {
       &:nth-child(2) {
         opacity: 0;
-        transition: opacity 0s 0.3s;
+        transition: opacity 0s 0.55s;
       }
     }
     @media (any-hover: hover){
