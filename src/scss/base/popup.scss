@@ -311,6 +311,10 @@ body::after {
 
 // Popup #popupFiltersAll =====================
 .popup-filters-all.popup {
+	@media (max-width:$mobileSmall){
+		overflow-x: hidden;
+	 overflow-y: auto; 
+	}
 	.popup__content {
 		background-color: var(--gray-1);
 		padding: toRem(32) toRem(8) 0;
@@ -972,7 +976,7 @@ body::after {
 
 		}
 		.orders-checkout__type-txt {
-
+			@extend %fonsSize13-14;
 		}
 		.orders-checkout__subtotoal {
 
@@ -999,7 +1003,9 @@ body::after {
 
 		}
 		.item-orders__btn {
-
+			&::before {
+				font-size: toRem(24);
+			}
 		}
 	}
 	// .popup-cart__footer

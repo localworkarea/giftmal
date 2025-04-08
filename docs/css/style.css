@@ -4123,6 +4123,9 @@ body::after {
   overflow-y: auto;
   margin-bottom: 1.25rem
 }
+.popup-cart__content .item-orders__btn::before {
+  font-size: 1.5rem
+}
 .popup-cart__footer {
   flex: 1;
   display: flex;
@@ -5503,7 +5506,8 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--gray-1)
+  background-color: var(--gray-1);
+  transition: background-color .2s ease,color .2s ease
 }
 .card-cabinet__arrow::before {
   -webkit-transform: rotate(-90deg);
@@ -5925,6 +5929,9 @@ body::after {
 .filters__item._checked {
   background-color: var(--gray-1);
   color: var(--dark-violet)
+}
+.filters__item:not(:last-child) {
+  margin-bottom: .25rem
 }
 .filters__no-results {
   color: var(--dark-violet);
@@ -6893,8 +6900,7 @@ body::after {
   grid-template-columns: 38% 1fr auto
 }
 .item-orders__img {
-  padding: .5rem;
-  aspect-ratio: 106/74
+  padding: .5rem
 }
 .item-orders__img img {
   border-radius: 1rem;
@@ -12069,7 +12075,6 @@ body::after {
   margin-bottom: .625rem
 }
 .thanks__title:before {
-  align-self: flex-start;
   font-size: 2rem;
   color: var(--green)
 }
@@ -12748,6 +12753,7 @@ body::after {
   .current-balance__title,
   .faq__subtitle,
   .filters__header,
+  .filters__name--title,
   .item-cert__brand,
   .item-payment__order-number,
   .item-review__avatar-txt,
@@ -12839,6 +12845,7 @@ body::after {
   .popup-availability-msg.popup .popup-msg__subtitle,
   .popup-availability.popup .popup-availability__subtitle,
   .popup-cart__buttons,
+  .popup-cart__content .orders-checkout__type-txt,
   .popup-cart__total,
   .popup-history__cell.cell-status,
   .popup-order-account__header,
@@ -14271,6 +14278,9 @@ body::after {
   .card-grid_cl-2 {
     grid-template-columns: 1fr 1fr
   }
+  .header-cart__timer {
+    margin-top: .125rem
+  }
   .card__options.grid-rw {
     grid-template-columns: 49% 49%
   }
@@ -14507,7 +14517,8 @@ body::after {
     margin-bottom: 3.5rem
   }
   .thanks__nav.order-account__header {
-    grid-template-columns: 13% 13% 16% 1fr 17% 17% 2.5rem!important
+    grid-template-columns: 13% 13% 16% 1fr 17% 17% 2.5rem!important;
+    padding: 0 1.5rem 0 1.625rem
   }
   .thanks__list .item-order .item-order__main {
     grid-template-columns: 13% 13% 16% 1fr 17% 17% 2.5rem!important
@@ -14542,10 +14553,10 @@ body::after {
     padding-left: .5rem
   }
   .thanks__list .item-order .subitem-order__content {
-    grid-template-columns: 27% 1fr 13% 18%
+    grid-template-columns: 27.5% 1fr 13% 18%
   }
   .thanks__list .item-order .subitem-order__name {
-    padding-left: 22%
+    padding-left: 23%
   }
 }
 @media (min-width:68.81125em) {
@@ -17621,6 +17632,10 @@ body::after {
     flex-direction: column;
     padding: 2rem 1.5rem 0
   }
+  .popup-filters-all.popup {
+    overflow-x: hidden;
+    overflow-y: auto
+  }
   .popup-contacts.popup {
     overflow-x: hidden;
     overflow-y: auto
@@ -17941,6 +17956,7 @@ body::after {
   .current-balance__title,
   .faq__subtitle,
   .filters__header,
+  .filters__name--title,
   .item-cert__brand,
   .item-payment__order-number,
   .item-review__avatar-txt,
@@ -18032,6 +18048,7 @@ body::after {
   .popup-availability-msg.popup .popup-msg__subtitle,
   .popup-availability.popup .popup-availability__subtitle,
   .popup-cart__buttons,
+  .popup-cart__content .orders-checkout__type-txt,
   .popup-cart__total,
   .popup-history__cell.cell-status,
   .popup-order-account__header,
@@ -19399,6 +19416,9 @@ body::after {
   .thanks__container {
     padding-inline: .5rem
   }
+  .thanks__title:before {
+    align-self: flex-start
+  }
   .contacts {
     padding-top: 1.5rem
   }
@@ -20115,6 +20135,9 @@ body::after {
     background-color: var(--violet);
     color: var(--white)
   }
+  .card-certificate_wls:hover .card-certificate__button {
+    background-color: var(--dark-violet)
+  }
   .card-certificate__type:hover {
     width: 100%
   }
@@ -20145,6 +20168,10 @@ body::after {
   }
   .card-cabinet__item:hover {
     background-color: var(--gray-1)
+  }
+  .card-cabinet__item:hover .card-cabinet__arrow {
+    background-color: var(--dark-violet);
+    color: var(--white)
   }
   .search__input:hover {
     box-shadow: 0 4px 20px 0 rgba(33,5,41,.16)

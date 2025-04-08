@@ -339,6 +339,9 @@
       background-color: var(--gray-1);
       color: var(--dark-violet);
     }
+    &:not(:last-child) {
+      margin-bottom: toRem(4);
+    }
     @media (any-hover: hover){
       &:hover{
         background-color: var(--gray-1);
@@ -421,6 +424,10 @@
   &__name {
     transition: color .3s ease;
     flex: 1;
+    // .filters__name--title
+    &--title {
+      @extend %fonsSize15-14;
+    }
   }
   // .filters__checkbox
   &__checkbox {

@@ -38,9 +38,11 @@
       margin-bottom: toRem(10);
     }
     &:before {
-      align-self: flex-start;
       font-size: toRem(32);
       color: var(--green);
+      @media (max-width:$mobileSmall){
+        align-self: flex-start;
+      }
     }
   }
   // .thanks__text
@@ -99,6 +101,7 @@
     &.order-account__header {
       @media (min-width:toEm(1024.98)){
         grid-template-columns: 13% 13% 16% 1fr 17% 17% toRem(40) !important;
+        padding: 0 toRem(24) 0 toRem(26);
       }
     }
   }
@@ -112,12 +115,12 @@
       }
       .subitem-order__content {
         @media (min-width:toEm(1050.98)){
-          grid-template-columns: 27% 1fr 13% 18%;
+          grid-template-columns: 27.5% 1fr 13% 18%;
         }
       }
       .subitem-order__name {
         @media (min-width:toEm(1050.98)){
-          padding-left: 22%;
+          padding-left: 23%;
         }
       }
     }

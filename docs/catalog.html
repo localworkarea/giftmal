@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250403173412">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250408121732">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -397,7 +397,8 @@
 						<span class="breadcrumbs__current">Каталог</span>
 					</div>
 					<h1 class="catalog__title title-av">Оберіть бажаний товар</h1>
-					<div class="catalog__filters filters-grid ">
+
+					<div class="catalog__filters filters-grid">
 						<div data-filters="type-2" data-filters-close data-da=".popup-body-filters-all,480.98,0" class="filters filters-category">
 							<button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
 								<div class="button-filters__title">
@@ -415,7 +416,7 @@
 											<div data-filters-spoller class="filters__sub-item">
 												<button type="button" class="filters__link icon-arrow-down" aria-label="open sublist">
 													<span class="filters__icon icon-sertificates"></span>
-													<span class="filters__name">Подарункові Сертифікати </span>
+													<span class="filters__name filters__name--title">Подарункові Сертифікати </span>
 												</button>
 											</div>
 											<ul data-filters-spoller-body class="filters__list">
@@ -594,7 +595,7 @@
 												<input type="checkbox" id="postcards" name="category" class="filters__input">
 												<label for="postcards" class="filters__label">
 													<span class="filters__icon icon-postcard"></span>
-													<span class="filters__name">Листівки</span>
+													<span class="filters__name filters__name--title">Листівки</span>
 													<span class="filters__checkbox icon-checkbox"></span>
 												</label>
 											</div>
@@ -603,8 +604,8 @@
 											<div class="filters__sub-item">
 												<input type="checkbox" id="boxes" name="category" class="filters__input">
 												<label for="boxes" class="filters__label">
-													<span class="filters__icon icon-physicales"></span>
-													<span class="filters__name">Коробки</span>
+													<span class="filters__icon icon-boxes"></span>
+													<span class="filters__name filters__name--title">Коробки</span>
 													<span class="filters__checkbox icon-checkbox"></span>
 												</label>
 											</div>
@@ -626,7 +627,7 @@
 							</button>
 							<div data-filters-wrapper class="filters__wrapper">
 								<div data-filters-head class="filters__header">
-									<div class="filters__subtitle">Оберіть категорію</div>
+									<div class="filters__subtitle">Оберіть тип</div>
 									<div class="filters__count">обрано <span>(0)</span></div>
 								</div>
 								<div data-filters-body class="filters__body filters-spoller">
@@ -668,7 +669,7 @@
 							</button>
 							<div data-filters-wrapper class="filters__wrapper">
 								<div data-filters-head class="filters__header">
-									<div class="filters__subtitle">Оберіть категорію</div>
+									<div class="filters__subtitle">Оберіть для кого</div>
 									<div class="filters__count">обрано <span>(0)</span></div>
 								</div>
 								<div data-filters-body class="filters__body filters-spoller">
@@ -741,7 +742,7 @@
 							<button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
 								<div class="button-filters__title">
 									<div class="button-filters__name">Номінал</div>
-									<div class="button-filters__subtitle">50 — 2 000 грн</div>
+									<div class="button-filters__subtitle">50 — 50 000 грн</div>
 								</div>
 							</button>
 							<div data-filters-wrapper class="filters__wrapper">
@@ -749,18 +750,18 @@
 									<div data-range class="filter__price price-filter">
 										<div class="price-filter__top">
 											<p>Мін</p>
-											<p>Мак (₴<span>50 000</span>)</p>
+											<p>Макс (₴<span>50 000</span>)</p>
 										</div>
 										<div data-range-item class="price-filter__range"></div>
 										<div class="price-filter__inputs">
 											<div class="price-filter__input-wr">
 												<span class="price-filter__prefix">₴</span>
-												<input data-range-from="50" autocomplete="off" type="text" value="1000" name="form[]" class="price-filter__input">
+												<input data-range-from="50" autocomplete="off" type="tel" value="50" name="form[]" class="price-filter__input">
 											</div>
 											<span>—</span>
 											<div class="price-filter__input-wr">
 												<span class="price-filter__prefix">₴</span>
-												<input data-range-to="50000" autocomplete="off" type="text" value="50000" name="form[]" class="price-filter__input">
+												<input data-range-to="50000" autocomplete="off" type="tel" value="50000" name="form[]" class="price-filter__input">
 											</div>
 										</div>
 									</div>
@@ -923,6 +924,7 @@
 							<span>Фільтри</span>
 						</button>
 					</div>
+
 					<div class="catalog__card-certificate mb-80-56 card-grid">
 						<a href="#" class="card-certificate is-disabled" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -948,7 +950,7 @@
 									Картка з класом is-disabled
 								</div>
 							</div>
-							<div type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div type="button" class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -974,7 +976,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1000,7 +1002,7 @@
 									Мережа комп`ютерної техніки та електроніки
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1026,7 +1028,7 @@
 									Мережа вина, сирів та міцного алкоголю
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1052,7 +1054,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1078,7 +1080,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1104,7 +1106,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-more" aria-label="link">
 							<div class="card-more__block">
@@ -1159,7 +1161,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div type="button" class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1185,7 +1187,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1211,7 +1213,7 @@
 									Мережа комп`ютерної техніки та електроніки
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1237,7 +1239,7 @@
 									Мережа вина, сирів та міцного алкоголю
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1263,7 +1265,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1289,7 +1291,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1315,7 +1317,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-more" aria-label="link">
 							<div class="card-more__block">
@@ -1345,7 +1347,7 @@
 											Мережа електронних товарів та комп’ютерних ігор
 										</div>
 									</div>
-									<div class="card-news__btn btn btn_gray">Купити від 200 грн</div>
+									<div class="card-news__btn btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 								</div>
 								<div class="card-news__img">
 									<img src="img/certificates/certificate-03.jpg" width="222" height="145" alt="Image">
@@ -1364,7 +1366,7 @@
 											Мережа електронних товарів та комп’ютерних ігор
 										</div>
 									</div>
-									<div class="card-news__btn btn btn_gray">Купити від 200 грн</div>
+									<div class="card-news__btn btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 								</div>
 								<div class="card-news__img">
 									<img src="img/certificates/certificate-04.jpg" width="222" height="145" alt="Image">
@@ -1397,7 +1399,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div type="button" class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div type="button" class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1423,7 +1425,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1449,7 +1451,7 @@
 									Мережа комп`ютерної техніки та електроніки
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1475,7 +1477,7 @@
 									Мережа вина, сирів та міцного алкоголю
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1501,7 +1503,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1527,7 +1529,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-certificate" aria-label="link to card page">
 							<div class="card-certificate__header">
@@ -1553,7 +1555,7 @@
 									Мережа салонів манікюру та педікюру
 								</div>
 							</div>
-							<div class="card-certificate__button btn btn_gray">Купити від 200 грн</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
 						</a>
 						<a href="#" class="card-more" aria-label="link">
 							<div class="card-more__block">
@@ -2110,7 +2112,7 @@
 									<p>Разом до сплати</p>
 									<p class="popup-cart__sum"><span class="numb">2100</span> грн</p>
 								</div>
-								<a href="#" class="popup-cart__btn btn btn_dark" aria-label="to pay">Перейти до оплати</a>
+								<a href="#" class="popup-cart__btn btn btn_dark btn_fs15-14" aria-label="to pay">Перейти до оплати</a>
 							</div>
 						</div>
 					</div>
@@ -2359,7 +2361,7 @@
 						</div>
 					</div>
 					<div class="popup-body-rules__footer">
-						<button data-card-confirm disabled type="button" class="popup-body-rules__btn btn btn_dark">Погодитись із правилами</button>
+						<button data-card-confirm disabled type="button" class="popup-body-rules__btn btn btn_dark btn_fs15-13">Погодитись із правилами</button>
 					</div>
 				</div>
 			</div>
@@ -3114,10 +3116,10 @@
 			</div>
 		</div>
 	</div>
-	<script src="files/rolldate/rolldate.js?_v=20250403173412"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250403173412"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250403173412"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250403173412"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250403173412"></script>
-	<script src="js/app.min.js?_v=20250403173412"></script>
+	<script src="files/rolldate/rolldate.js?_v=20250408121732"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250408121732"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250408121732"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250408121732"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250408121732"></script>
+	<script src="js/app.min.js?_v=20250408121732"></script>
 </body>

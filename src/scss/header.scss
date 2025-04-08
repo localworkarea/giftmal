@@ -432,6 +432,10 @@
     @media (any-hover: hover){
       &:hover{
         background-color: var(--gray-1);
+        .card-cabinet__arrow {
+          background-color: var(--dark-violet);
+          color: var(--white);
+        }
       }
     }
     &:not(:last-child) {
@@ -465,6 +469,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--gray-1);
+    transition: background-color .2s ease, color .2s ease;
     &::before {
       transform: rotate(-90deg);
       font-size: toRem(22);

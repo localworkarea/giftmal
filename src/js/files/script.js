@@ -418,7 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
           spoller.addEventListener('click', function() {
               const isOpening = spollerBody.hidden || spollerBody.style.height === '0px';
-              _slideToggle(spollerBody, 200, 0, 200);
+              _slideToggle(spollerBody, 200, 0, 270);
   
               if (isOpening) {
                   spollerBody.classList.add('is-open');

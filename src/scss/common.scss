@@ -757,6 +757,7 @@ html {
       background-color: var(--dark-violet);
     }
   }
+ 
   &_light {
     background-color: var(--white);
     color: var(--dark-violet);
@@ -1025,9 +1026,11 @@ html {
       .card-certificate__button {
         background-color: var(--violet);
         color: var(--white);
+        
       }
     }
   }
+ 
 }
 .card-certificate {
   @extend %cardBody;
@@ -1037,6 +1040,16 @@ html {
     .card-certificate__title,
     .card-certificate__subtitle {
       color: var(--fade-violet-1);
+    }
+  }
+   //.card-certificate_wls
+   &_wls {
+    @media (any-hover: hover){
+      &:hover{
+        .card-certificate__button {
+          background-color: var(--dark-violet);
+        }
+      }
     }
   }
   @media (min-width:$mobileSmall){
