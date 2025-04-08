@@ -259,7 +259,7 @@ $bs_image-border-radius-mobile: toRem(24);
   
   &__title {
     font-size: toRem(40);
-    font-weight: 400;
+    font-weight: 500;
     color: var(--dark-violet);
     margin-bottom: toRem(24);
     text-align: left;
@@ -1117,7 +1117,6 @@ $bs_image-border-radius-mobile: toRem(24);
         gap: toRem(7);
         align-items: center;
         transition: all 0.3s ease;
-        cursor: pointer;
         
         &:not(:last-child) {
           margin-bottom: toRem(14);
@@ -1125,10 +1124,7 @@ $bs_image-border-radius-mobile: toRem(24);
         
         &:not(.active) {
           padding: 0 toRem(9);
-          
-          &:hover {
-            opacity: 0.5;
-          }
+
         }
         
         &.active {
