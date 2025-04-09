@@ -706,6 +706,15 @@ body::after {
 			}
 			.rating__items {
 				gap: toRem(14.4);
+				// [data-rating="set"] & {
+				// 	@media (any-hover: hover) {
+				// 		&:hover {
+				// 			.rating__item {
+				// 				background: url($starActive) 0 0 / toRem(24) no-repeat !important;
+				// 			}
+				// 		}
+				// 	}
+				// }
 			}
 			.rating__item {
 				flex: 0 0 toRem(24);
@@ -1567,6 +1576,17 @@ body::after {
 		}
 		@media (max-width:$mobileSmall){
 			padding: toRem(32) toRem(16) toRem(16) toRem(16);
+			
+		}
+	}
+}
+.popup-history-none.popup {
+	.popup__content {
+		.popup-history__header {
+			@media (max-width:$mobileSmall){
+				gap: toRem(14) toRem(32) !important;
+				margin-bottom: toRem(14) !important;
+			}
 		}
 	}
 }

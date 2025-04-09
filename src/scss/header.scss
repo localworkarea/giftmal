@@ -997,8 +997,7 @@
 .sub-header {
   position: relative;
   @media (min-width:toEm(900.98)){
-    padding-top: toRem(75);
-    
+    padding-top: toRem(72);
   }
   @media (max-width:toEm(900.98)) and (min-width: toEm(700.98)) {
     padding-top: toRem(124);

@@ -458,6 +458,10 @@
   &__imgs {
     @extend %flexCenterGap8;
     gap: toRem(24);
+    @media (min-width:$mobileSmall){
+      align-items: flex-end;
+      min-height: toRem(42);
+    }
     img {
       width: auto;
       height: toRem(32);
@@ -483,6 +487,8 @@
     flex-wrap: wrap;
     @media (min-width:$mobileSmall){
       gap: toRem(4);
+      min-height: toRem(42);
+      align-items: flex-end;
     }
     @media (max-width:$mobileSmall){
       gap: toRem(14);
@@ -526,6 +532,10 @@
   // .app-footer__apps
   &__apps {
     @extend %flexCenterGap8;
+    @media (min-width:$mobileSmall){
+       min-height: toRem(42); 
+       align-items: flex-end;
+    }
     @media (max-width:$mobileSmall){
        gap: toRem(16); 
        

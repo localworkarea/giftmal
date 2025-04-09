@@ -28,6 +28,9 @@ $starHeightMob: toRem(16);
 				&:hover {
 					.rating__item {
 						background: url($starActive) 0 0 / $starWidth no-repeat;
+						.popup-reviews & {
+							background: url($starActive) 0 0 / toRem(24) no-repeat;
+						}
 					}
 				}
 			}

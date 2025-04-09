@@ -237,6 +237,31 @@ textarea.input {
          top: toRem(14) 
       }
     }
+    .button-tippy {
+      position: absolute;
+      pointer-events: none;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity .45s ease, visibility .45s ease;
+      top: calc(100% + toRem(11));
+      left: 50%;
+      transform: translate(-50%,0);
+
+      @extend %fonsSize11-12;
+      padding: toRem(8);
+      color: var(--dark-violet);
+      box-shadow: 0 4px 20px 0 rgba(33, 5, 41, 0.08);
+      background-color: var(--white);
+      border-radius: toRem(8);
+    }
+    @media (any-hover: hover){
+      &:hover{
+        .button-tippy {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
     &:disabled {
       opacity: 0;
       pointer-events: none;

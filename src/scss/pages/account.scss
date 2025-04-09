@@ -301,6 +301,7 @@
 	}
   // .data-account__step-title
   &__step-title {
+    @extend %fonsSize15-14;
     &:not(:last-child) {
       margin-bottom: toRem(16);
     }
@@ -500,6 +501,11 @@
 	}
 	// .current-balance__clm
 	&__clm {
+    &.clm-mb-none {
+      @media (max-width:$mobileSmall){
+         display: none; 
+      }
+    }
   }
 	// .current-balance__top
 	&__top {
@@ -626,12 +632,19 @@
     &.card-balance__body {}
     .card-balance__title {
       @extend %fonsSize13-14;
+      @media (min-width:$mobileSmall){
+        margin-bottom: toRem(18);
+      }
     }
     .card-balance__list {}
     .card-balance__item {
     }
     .card-balance__block {}
-    .card-balance__sub-title {}
+    .card-balance__sub-title {
+      @media (min-width:$mobileSmall){
+        margin-bottom: toRem(8);
+      }
+    }
     .card-balance__row {}
     .card-balance__row-icon {}
     .card-balance__row-input {
@@ -825,7 +838,7 @@
   &__head {
     @extend %fonsSize11-12;
     color: var(--fade-violet-1);
-    margin-bottom: toRem(12);
+    margin-bottom: toRem(8);
   }
   // .card-spollers__content
   &__content {

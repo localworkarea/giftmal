@@ -1825,6 +1825,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+      // === Закрытие окна попапа .popup-cabinet при нажатии на кнопки навигации card-cabinet__item
+      function handleCardItemClick(event) {
+        if (mediaQuery480max.matches) {
+          if (typeof flsModules !== 'undefined' && flsModules.popup && typeof flsModules.popup.close === 'function') {
+          setTimeout(() => {
+            flsModules.popup.close();
+          }, 100);
+        }
+        }
+      }
+
+      document.querySelectorAll('.card-cabinet__item.tab-link').forEach(item => {
+        item.addEventListener('click', handleCardItemClick);
+      });
+
+
+
+
       // -- contacts page, check checkbox i`m not a robot =========
     	const contactsPage = document.querySelector('.contacts');
       const popupCardImg = document.querySelector('.popup-not-robot__card img');

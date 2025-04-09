@@ -10978,6 +10978,14 @@
             if (!mediaQuery480max.matches && document.documentElement.classList.contains("lock")) bodyUnlock();
             if (activeModal && activeButton) positionModal(activeModal, activeButton);
         }));
+        function handleCardItemClick(event) {
+            if (mediaQuery480max.matches) if (typeof modules_flsModules !== "undefined" && modules_flsModules.popup && typeof modules_flsModules.popup.close === "function") setTimeout((() => {
+                modules_flsModules.popup.close();
+            }), 100);
+        }
+        document.querySelectorAll(".card-cabinet__item.tab-link").forEach((item => {
+            item.addEventListener("click", handleCardItemClick);
+        }));
         const contactsPage = document.querySelector(".contacts");
         const popupCardImg = document.querySelector(".popup-not-robot__card img");
         const checkboxInput = document.querySelector("#contactUsPageAgreement");
