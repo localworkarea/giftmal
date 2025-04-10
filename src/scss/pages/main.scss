@@ -19,20 +19,15 @@
 
     .faq{
         position: relative;
-        $image-border-radius-desktop: toRem(40);
-        $image-border-radius-mobile: toRem(24);
         background-color: var(--gray-1);
         @extend  %paddingBottom120-56;
         padding-bottom: toRem(120);
-        border-bottom-left-radius: $image-border-radius-desktop;
-        border-bottom-right-radius: $image-border-radius-desktop;
+        border-bottom-left-radius: toRem(40);
+        border-bottom-right-radius: toRem(40);
         @media (max-width: $mobile) {
             padding-bottom: toRem(71);
-        } 
-        @media (max-width: $mobile) {
-            padding-bottom: toRem(56);
-            border-bottom-left-radius: $image-border-radius-mobile;
-            border-bottom-right-radius: $image-border-radius-mobile;
+            border-bottom-left-radius: toRem(24);
+            border-bottom-right-radius: toRem(24);
         } 
 
         .spollers-faq__content{

@@ -1,20 +1,9 @@
-// Local variables
-$image-border-radius-desktop: toRem(40);
-$image-border-radius-mobile: toRem(24);
-$stats-grid-gap: toRem(8);
-$stats-icon-size: toRem(40);
-$features-gap: toRem(24);
-$card-padding-desktop: toRem(32);
-$card-padding-mobile: toRem(24);
-$standard-gap: toRem(16);
-$small-gap: toRem(8);
-
 @mixin card-shadow {
   box-shadow: var(--card-shadow);
-  border-radius: $image-border-radius-desktop;
+  border-radius: toRem(40);
   
   @media (max-width: $mobile) {
-    border-radius: $image-border-radius-mobile;
+    border-radius: toRem(24);
   }
 }
 
@@ -59,13 +48,17 @@ $small-gap: toRem(8);
 .about {
   $root: &;
   @extend %paddingTbBt56-16;
+  padding-bottom: toRem(114);
+  @media (max-width: $mobile) {
+    padding-bottom: toRem(31);
+  }
   
   // Stats section
   &__stats {
     &-title {
       font-size: toRem(13);
       font-weight: 500;
-      margin-bottom: toRem(33);
+      margin-bottom: toRem(24);
       color: var(--fade-violet-2);
       
       @media (max-width: $mobile) {
@@ -77,7 +70,7 @@ $small-gap: toRem(8);
     &-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: $stats-grid-gap;
+      gap: toRem(8);
       counter-reset: stats-counter;
       
       @media (max-width: $tablet) {
@@ -89,10 +82,10 @@ $small-gap: toRem(8);
       position: relative;
       display: flex;
       align-items: flex-end;
-      gap: $standard-gap;
+      gap: toRem(16);
       background-color: var(--white);
-      border-radius: toRem(16);
-      padding: $card-padding-desktop;
+      border-radius: toRem(24);
+      padding: toRem(24);
       box-shadow: var(--item-shadow);
       counter-increment: stats-counter;
       justify-content: space-between;
@@ -100,15 +93,14 @@ $small-gap: toRem(8);
       @media (max-width: $mobileSmall) {
         flex-direction: column;
         align-items: flex-start;
-        gap: $small-gap;
-        padding: $card-padding-mobile;
+        gap: toRem(8);
       }
       
       &::before {
         content: counter(stats-counter, decimal-leading-zero);
         position: absolute;
-        top: $card-padding-desktop;
-        left: $card-padding-desktop;
+        top: toRem(24);
+        left: toRem(24);
         font-size: toRem(11);
         font-weight: 500;
         color: var(--fade-violet-1);
@@ -116,8 +108,6 @@ $small-gap: toRem(8);
         letter-spacing: toRem(0.5);
         
         @media (max-width: $mobile) {
-          top: toRem(10);
-          right: toRem(10);
           font-size: toRem(12);
         }
       }
@@ -129,8 +119,8 @@ $small-gap: toRem(8);
       display: flex;
       align-items: center;
       justify-content: center;
-      width: $stats-icon-size;
-      height: $stats-icon-size;
+      width: toRem(40);
+      height: toRem(40);
       border-radius: 50%;
       background-color: var(--gray-3);
       flex-shrink: 0;
@@ -144,13 +134,13 @@ $small-gap: toRem(8);
     &-text {
       font-size: toRem(18);
       line-height: 1.4;
-      color: var(--gray-text-2);
-      margin-top: $standard-gap;
+      color: var(--dark-violet);
+      margin-top: toRem(24);
       font-weight: 500;
       
       @media (max-width: $mobileSmall) {
         font-size: toRem(14);
-        margin-top: $small-gap;
+        margin-top: toRem(16);
       }
     }
   }
@@ -166,8 +156,11 @@ $small-gap: toRem(8);
   position: relative;
   overflow: hidden;
   @include card-shadow;
-  margin-bottom: toRem(56);
+  margin-bottom: toRem(111);
   min-height: toRem(235);
+  @media (max-width: $mobile) {
+    margin-bottom: toRem(24);
+  }
   
   img {
     width: 100%;
@@ -187,10 +180,12 @@ $small-gap: toRem(8);
 // Mission section
 .mission {
   @include section-padding;
+  padding-top: toRem(120);
+  padding-bottom: toRem(120);
   background-color: var(--white);
   position: relative;
-  border-top-left-radius: $image-border-radius-desktop;
-  border-top-right-radius: $image-border-radius-desktop;
+  border-top-left-radius: toRem(40);
+  border-top-right-radius: toRem(40);
   
   @media (max-width: $tablet) {
     padding-bottom: toRem(180);
@@ -198,8 +193,9 @@ $small-gap: toRem(8);
   
   @media (max-width: $mobile) {
     padding-bottom: toRem(160);
-    border-top-left-radius: $image-border-radius-mobile;
-    border-top-right-radius: $image-border-radius-mobile;
+    border-top-left-radius: toRem(24);
+    border-top-right-radius: toRem(24);
+    padding-top: toRem(112);
   }
   
   &::after {
@@ -220,6 +216,10 @@ $small-gap: toRem(8);
     @media (max-width: toEm(932)) {
       grid-template-columns: 1fr;
     }
+    @media (max-width: $mobile) {
+      gap: 0;
+      padding: 0;
+    }
   }
   
   &__header {
@@ -238,6 +238,7 @@ $small-gap: toRem(8);
   
   &__title {
     @include section-title;
+    margin-bottom: toRem(32);
   }
   
   &__subtitle {
@@ -288,7 +289,7 @@ $small-gap: toRem(8);
       justify-content: space-between;
       
       @media (max-width: toEm(932)) {
-        padding-top: 0;
+        padding: 0 15px;
         align-items: flex-start;
       }
       
@@ -306,6 +307,7 @@ $small-gap: toRem(8);
         &:last-child {
           @media (max-width: $mobileSmall) {
             max-width: toRem(250);
+            margin-top: toRem(64);
           }
         }
       }
@@ -319,11 +321,11 @@ $small-gap: toRem(8);
         @media (max-width: toEm(932)) {
           top: unset;
           right: unset;
-          left: 0;
+          left: toRem(15);
           bottom: -50%;
         }
         @media (max-width: $mobile) {
-          bottom: -65%;
+          bottom: -40%;
         }
         
         p {
@@ -368,7 +370,7 @@ $small-gap: toRem(8);
   }
   
   &__item-content {
-    padding: $card-padding-desktop;
+    padding: toRem(24);
     position: absolute;
     bottom: 45%;
     left: 0;
@@ -384,17 +386,19 @@ $small-gap: toRem(8);
     @media (max-width: $mobile) {
       bottom: 65%;
       border-radius: toRem(16);
+      padding: toRem(16);
+      max-width: toRem(180);
     }
     
     p {
       font-size: toRem(11);
       font-weight: 600;
       color: var(--fade-violet-1);
-      margin-bottom: $standard-gap;
+      margin-bottom: toRem(16);
       width: fit-content;
       
       @media (max-width: toEm(932)) {
-        margin-bottom: $small-gap;
+        margin-bottom: toRem(8);
       }
     }
     
@@ -441,6 +445,19 @@ $small-gap: toRem(8);
   &__item-content-inner {
     display: flex;
     align-items: flex-end;
+    @media (max-width: $mobile) {
+      align-items: center;
+     }
+     &--extended {
+      .mission__item-title{
+        @media (max-width: $mobile) {
+          margin-top: toRem(9);
+        }
+      }
+      @media (max-width: $mobile) {
+        align-items: flex-start;
+       }
+     }
   }
   
   &__item-icon {
@@ -460,13 +477,13 @@ $small-gap: toRem(8);
 .features {
   @include section-padding;
   background-color: var(--gray-1);
-  border-top-left-radius: $image-border-radius-desktop;
-  border-top-right-radius: $image-border-radius-desktop;
+  border-top-left-radius: toRem(40);
+  border-top-right-radius: toRem(40);
   position: relative;
   
   @media (max-width: $mobile) {
-    border-top-left-radius: $image-border-radius-mobile;
-    border-top-right-radius: $image-border-radius-mobile;
+    border-top-left-radius: toRem(24);
+    border-top-right-radius: toRem(24);
   }
   
   &__title {
@@ -476,11 +493,11 @@ $small-gap: toRem(8);
   &__grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: $small-gap;
+    gap: toRem(8);
     
     @media (max-width: $mobile) {
       grid-template-columns: 1fr;
-      gap: $standard-gap;
+      gap: toRem(16);
       width: 100%;
     }
     
@@ -488,11 +505,11 @@ $small-gap: toRem(8);
     .bottom-row {
       grid-column: span 12;
       display: flex;
-      gap: $small-gap;
+      gap: toRem(8);
       
       @media (max-width: $mobile) {
         flex-direction: column;
-        gap: $standard-gap;
+        gap: toRem(16);
         width: 100%;
         grid-column: 1;
       }
@@ -503,14 +520,14 @@ $small-gap: toRem(8);
     position: relative;
     background: var(--white);
     border-radius: toRem(40);
-    padding: $card-padding-desktop;
+    padding: toRem(32);
     box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     
     @media (max-width: $mobile) {
-      padding: $card-padding-mobile;
+      padding: toRem(24);
       border-radius: toRem(24);
       width: 100%;
     }
@@ -524,7 +541,7 @@ $small-gap: toRem(8);
     @include hide-br-mobile;
     
     ul {
-      margin-top: $standard-gap;
+      margin-top: toRem(16);
       
       @media (max-width: $mobile) {
         margin-top: 0;
@@ -548,7 +565,7 @@ $small-gap: toRem(8);
       grid-column: span 6;
       flex-direction: row;
       justify-content: space-between;
-      gap: $standard-gap;
+      gap: toRem(16);
       
       @media (max-width: $tablet) {
         flex-direction: column;
@@ -585,7 +602,7 @@ $small-gap: toRem(8);
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-end;
-      gap: $standard-gap;
+      gap: toRem(16);
       
       @media (max-width: $tablet) {
         flex-direction: column;
@@ -647,7 +664,7 @@ $small-gap: toRem(8);
     
     @media (max-width: $mobile) {
       font-size: toRem(18);
-      margin: $standard-gap 0;
+      margin: toRem(16) 0;
       padding-right: toRem(32);
     }
   }
@@ -661,7 +678,7 @@ $small-gap: toRem(8);
     flex-direction: column;
     
     p {
-      margin-bottom: $standard-gap;
+      margin-bottom: toRem(16);
       
       &:last-child {
         margin-bottom: 0;
@@ -670,7 +687,7 @@ $small-gap: toRem(8);
     
     li {
       position: relative;
-      margin-bottom: $standard-gap;
+      margin-bottom: toRem(16);
       display: flex;
       align-items: center;
       line-height: 1.2;
@@ -681,7 +698,7 @@ $small-gap: toRem(8);
       
       img {
         margin: 0;
-        margin-right: $small-gap;
+        margin-right: toRem(8);
       }
     }
   }
@@ -690,8 +707,8 @@ $small-gap: toRem(8);
 // About partners section
 .about-partners {
   background: var(--white);
-  border-top-left-radius: $image-border-radius-desktop;
-  border-top-right-radius: $image-border-radius-desktop;
+  border-top-left-radius: toRem(40);
+  border-top-right-radius: toRem(40);
   padding: toRem(120) 0 toRem(80);
   
   @media (max-width: $tablet) {
@@ -700,21 +717,21 @@ $small-gap: toRem(8);
   
   @media (max-width: $mobile) {
     padding: toRem(56) 0 toRem(28);
-    border-top-left-radius: $image-border-radius-mobile;
-    border-top-right-radius: $image-border-radius-mobile;
+    border-top-left-radius: toRem(24);
+    border-top-right-radius: toRem(24);
   }
 }
 
 // About CTA section
 .cta {
   background: var(--white);
-  padding: toRem(40) 0 toRem(80);
+  padding: toRem(98) 0 toRem(80);
   
   @media (max-width: $tablet) {
-    padding: toRem(32) 0 toRem(64);
+    padding: toRem(78) 0 toRem(64);
   }
   
   @media (max-width: $mobile) {
-    padding: toRem(28) 0 toRem(56);
+    padding: toRem(24) 0 toRem(56);
   }
 }

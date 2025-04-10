@@ -37,8 +37,8 @@ $cn-badge-mobile-radius: toRem(16);
   .cta{
     padding-top: toRem(120);
     position: relative;
-    border-top-left-radius: $image-border-radius-desktop;
-    border-top-right-radius: $image-border-radius-desktop;
+    border-top-left-radius: toRem(40);
+    border-top-right-radius: toRem(40);
     @media (max-width: $mobile) {
       border-radius: 0;
       padding: toRem(70) 0;

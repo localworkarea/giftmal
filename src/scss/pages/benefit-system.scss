@@ -1,14 +1,3 @@
-// Common variables
-$bs_card-border-radius-desktop: toRem(32);
-$bs_card-border-radius-mobile: toRem(24);
-$bs_card-padding-desktop: toRem(48);
-$bs_card-padding-mobile: toRem(24);
-$bs_card-gap: toRem(8);
-$bs_icon-size-desktop: toRem(40);
-$bs_icon-size-mobile: toRem(32);
-$bs_image-border-radius-desktop: toRem(40);
-$bs_image-border-radius-mobile: toRem(24);
-
 // Common mixins
 @mixin flex-center {
   display: flex;
@@ -21,14 +10,14 @@ $bs_image-border-radius-mobile: toRem(24);
 }
 
 @mixin circle-icon {
-  width: $bs_icon-size-desktop;
-  height: $bs_icon-size-desktop;
+  width: toRem(40);
+  height: toRem(40);
   border-radius: 50%;
   @include flex-center;
   
   @media (max-width: $mobile) {
-    width: $bs_icon-size-mobile;
-    height: $bs_icon-size-mobile;
+    width: toRem(32);
+    height: toRem(32);
   }
 }
 
@@ -61,6 +50,10 @@ $bs_image-border-radius-mobile: toRem(24);
       margin-top: toRem(43);
     }
   }
+
+  .cta__extra--extended {
+    padding-top: 0
+  }
 }
 
 .platform {
@@ -82,7 +75,7 @@ $bs_image-border-radius-mobile: toRem(24);
   }
   
   &__image {
-    border-radius: $bs_image-border-radius-desktop;
+    border-radius: toRem(40);
     overflow: hidden;
     height: toRem(380);
     
@@ -94,7 +87,7 @@ $bs_image-border-radius-mobile: toRem(24);
     }
     
     @media (max-width: $mobile) {
-      border-radius: $bs_image-border-radius-mobile;
+      border-radius: toRem(24);
       height: toRem(335);
       
       img {
@@ -220,7 +213,7 @@ $bs_image-border-radius-mobile: toRem(24);
     }
     
     &-title {
-      font-size: toRem(15);
+      font-size: toRem(18);
       font-weight: 500;
       color: var(--dark-violet);
       line-height: 1.2;
@@ -273,7 +266,7 @@ $bs_image-border-radius-mobile: toRem(24);
   &__grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: $bs_card-gap;
+    gap: toRem(8);
     width: 100%;
     margin-bottom: toRem(48);
     
@@ -289,15 +282,15 @@ $bs_image-border-radius-mobile: toRem(24);
   
   &__item {
     background: var(--white);
-    border-radius: $bs_card-border-radius-desktop;
-    padding: $bs_card-padding-desktop toRem(8) toRem(8);
+    border-radius: toRem(32);
+    padding: toRem(24) toRem(8) toRem(8);
     display: flex;
     flex-direction: column;
     align-items: center;
     
     @media (max-width: $mobile) {
-      border-radius: $bs_card-border-radius-mobile;
-      padding: $bs_card-padding-mobile toRem(8) toRem(8);
+      border-radius: toRem(24);
+      padding: toRem(16) toRem(8) toRem(8);
     }
   }
   
@@ -324,6 +317,7 @@ $bs_image-border-radius-mobile: toRem(24);
     color: var(--dark-violet);
     margin-bottom: toRem(24);
     text-align: left;
+    padding-left: toRem(8);
     width: 100%;
 
     @media (max-width: $mobile) {
@@ -334,6 +328,13 @@ $bs_image-border-radius-mobile: toRem(24);
   
   &__button {
     width: fit-content;
+    font-size: toRem(13);
+    padding: toRem(15) toRem(24);
+    line-height: 1;
+    min-height: auto;
+    @media (max-width: $mobile) {
+      font-size: toRem(14);
+    }
   }
 }
 
@@ -347,8 +348,8 @@ $bs_image-border-radius-mobile: toRem(24);
 
   &__card {
     background-color: var(--white);
-    border-radius: $bs_card-border-radius-desktop;
-    padding: $bs_card-padding-desktop;
+    border-radius: toRem(32);
+    padding: toRem(48);
     @include card-shadow(0.05);
     display: flex;
     flex-direction: column;
@@ -361,7 +362,7 @@ $bs_image-border-radius-mobile: toRem(24);
     }
     
     @media (max-width: $mobile) {
-      padding: $bs_card-padding-mobile;
+      padding: toRem(24);
       min-height: toRem(600);
     }
   
@@ -534,7 +535,7 @@ $bs_image-border-radius-mobile: toRem(24);
   &__cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: $bs_card-gap;
+    gap: toRem(8);
     
     @media (max-width: toEm(1215)) {
       grid-template-columns: 40% 1fr;
@@ -550,7 +551,7 @@ $bs_image-border-radius-mobile: toRem(24);
       &--2 {
         display: grid;
         grid-template-columns: 1fr;
-        gap: $bs_card-gap;
+        gap: toRem(8);
       }
     }
     
@@ -559,12 +560,12 @@ $bs_image-border-radius-mobile: toRem(24);
     display: flex;
     flex-direction: column;
     background-color: var(--white);
-    border-radius: $bs_card-border-radius-desktop;
-    padding: $bs_card-padding-desktop;
+    border-radius: toRem(32);
+    padding: toRem(48);
     @include card-shadow;
     
     @media (max-width: toEm(1215)) {
-      padding: $bs_card-padding-mobile;
+      padding: toRem(24);
     }
     
     &-number {
@@ -647,7 +648,7 @@ $bs_image-border-radius-mobile: toRem(24);
     &-palette {
       display: grid;
       grid-template-columns: 1fr toRem(176);
-      gap: $bs_card-gap;
+      gap: toRem(8);
       
       @media (max-width: toEm(1215)) {
         grid-template-columns: 1fr toRem(100);
@@ -815,7 +816,7 @@ $bs_image-border-radius-mobile: toRem(24);
   &__card-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: $bs_card-gap;
+    gap: toRem(8);
     
     @media (max-width: $mobile) {
       grid-template-columns: 1fr;
@@ -825,7 +826,7 @@ $bs_image-border-radius-mobile: toRem(24);
   .chart-block {
     display: grid;
     grid-template-columns: 1fr toRem(157);
-    gap: $bs_card-gap;
+    gap: toRem(8);
     
     @media (max-width: $mobile) {
       grid-template-columns: 1fr;
@@ -980,12 +981,12 @@ $bs_image-border-radius-mobile: toRem(24);
     }
     
     &-image {
-      border-radius: $bs_image-border-radius-desktop;
+      border-radius: toRem(40);
       overflow: hidden;
       height: toRem(333);
       
       @media (max-width: $mobile) {
-        border-radius: $bs_image-border-radius-mobile;
+        border-radius: toRem(24);
         height: toRem(225);
       }
       

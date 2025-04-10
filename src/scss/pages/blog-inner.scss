@@ -110,12 +110,33 @@
   height: 100%;
   position: relative;
 }
-
+.blog-inner__page{
+  footer{
+    margin-top:0;
+    z-index: 2;
+  }
+}
 .blog-inner {
   @extend %padding32-24;
+  padding-top: toRem(24);
+  padding-bottom: toRem(182);
+  position: relative;
+  z-index: 1;
+  @media (max-width:$mobile){
+    padding-bottom: toRem(55);
+  }
   @media (max-width:$mobileSmall) {
     padding-left: toRem(16);
     padding-right: toRem(16);
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: toRem(-45);
+    left: 0;
+    width: 100%;
+    height: toRem(100);
+    background-color: var(--gray-1);
   }
 
   &__container {
@@ -135,6 +156,7 @@
     
     @media (max-width:$mobile) {
       gap: toRem(24);
+      margin-bottom: toRem(56);
     }
   }
 
@@ -148,7 +170,7 @@
   }
   
   &__header {
-    margin-bottom: toRem(32);
+    margin-bottom: toRem(16);
     
     @media (max-width:$mobile) {
       margin-bottom: toRem(24);
@@ -158,17 +180,18 @@
   &__title {
     @extend %section-title;
     font-size: toRem(40);
-    line-height: 1.2;
-    margin-bottom: toRem(16);
+    line-height: 1.1;
     
     @media (max-width:$mobile) {
       font-size: toRem(20);
-      margin-bottom: toRem(12);
     }
   }
 
   &__share {
-    margin: toRem(16) 0;
+    margin: toRem(16) 0 toRem(32);
+    &_bottom{
+      margin: 0;
+    }
   }
   
   &__date {
@@ -307,6 +330,7 @@
   
   @media (max-width:$mobile) {
     margin-top: toRem(32);
+    margin-bottom: toRem(56);
   }
   
   &-slider {
@@ -644,6 +668,7 @@
     margin-bottom: toRem(32);
     font-size: toRem(18);
     color: var(--fade-violet-3);
+    line-height: 1.4;
     
     @media (max-width:$mobile) {
       margin-bottom: toRem(16);
@@ -745,7 +770,7 @@
   }
   
   &__sublist {
-    margin: toRem(16) 0 toRem(24);
+    margin: toRem(16) 0 toRem(32);
     
     @media (max-width:$mobile) {
       margin: toRem(12) 0 toRem(16);
@@ -753,9 +778,10 @@
   }
   
   &__subitem {
-    margin-bottom: toRem(12);
+    margin-bottom: toRem(16);
     position: relative;
     padding-left: toRem(16);
+    line-height: 1.4;
     @media (max-width:$mobile) {
       padding-left: toRem(22);
     }
@@ -835,7 +861,7 @@
       align-items: center;
       @extend %section-title;
       font-size: toRem(23);
-      margin-bottom: toRem(24);
+      margin-bottom: toRem(32);
       margin-top: toRem(32);
       padding-left: toRem(45);
       position: relative;
