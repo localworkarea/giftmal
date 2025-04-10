@@ -23,18 +23,15 @@ $starHeightMob: toRem(16);
 		@media (max-width:$mobileSmall){
 			gap: $starGapMob;
 		}
-		[data-rating="set"] & {
-			@media (any-hover: hover) {
-				&:hover {
-					.rating__item {
-						background: url($starActive) 0 0 / $starWidth no-repeat;
-						.popup-reviews & {
-							background: url($starActive) 0 0 / toRem(24) no-repeat;
-						}
-					}
-				}
-			}
-		}
+		// [data-rating="set"] & {
+		// 	@media (any-hover: hover) {
+		// 		&:hover {
+		// 			.rating__item {
+		// 				background: url($starActive) 0 0 / $starWidth no-repeat;
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 	// .rating__item
 	&__item {
@@ -90,18 +87,18 @@ $starHeightMob: toRem(16);
 				}
 			}
 		}
-		[data-rating="set"] & {
-			@media (any-hover: hover) {
-				&:hover {
-					~ .rating__item {
-						background: url($star) 0 0 / $starWidth no-repeat;
-						span {
-							display: none;
-						}
-					}
-				}
-			}
-		}
+		// [data-rating="set"] & {
+		// 	@media (any-hover: hover) {
+		// 		&:hover {
+		// 			~ .rating__item {
+		// 				background: url($star) 0 0 / $starWidth no-repeat;
+		// 				span {
+		// 					display: none;
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 	// .rating__input
 	&__input {
@@ -113,4 +110,32 @@ $starHeightMob: toRem(16);
 			cursor: pointer;
 		}
 	}
+}
+
+.rating-popup {
+	&[data-rating="set"]  {
+			.rating__items {
+				@media (any-hover: hover) {
+					&:hover {
+						.rating__item {
+							background: url($starActive) 0 0 / toRem(24) no-repeat;
+						}
+					}
+				}
+			}
+
+			.rating__item {
+				@media (any-hover: hover) {
+					&:hover {
+						~ .rating__item {
+						background: url($star) 0 0 / toRem(24) no-repeat;
+					}
+				}
+			}
+			&--active {
+				background: url($starActive) 0 0 / toRem(24) no-repeat;
+			}
+		}
+	}
+
 }

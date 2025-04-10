@@ -705,16 +705,7 @@ body::after {
 				display: inline-block;
 			}
 			.rating__items {
-				gap: toRem(14.4);
-				// [data-rating="set"] & {
-				// 	@media (any-hover: hover) {
-				// 		&:hover {
-				// 			.rating__item {
-				// 				background: url($starActive) 0 0 / toRem(24) no-repeat !important;
-				// 			}
-				// 		}
-				// 	}
-				// }
+				gap: toRem(14.4) !important;
 			}
 			.rating__item {
 				flex: 0 0 toRem(24);
