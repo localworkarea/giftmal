@@ -144,7 +144,7 @@
 
     &__text {
         font-size: toRem(18);
-        line-height: 1.5;
+        line-height: 1.4;
         color: var(--fade-violet-3);
         margin-bottom: toRem(32);
         
@@ -345,6 +345,9 @@
             top:toRem(-20);
         }
     }
+    .dropdown-arrow{
+        pointer-events: none;
+    }
 }
 
 .corporate-promo {
@@ -398,6 +401,9 @@
                     display: none;
                 }
             }
+            @media (max-width: $mobile) {
+                align-items: flex-start;
+            }
         }
         
         &__icon {
@@ -412,6 +418,7 @@
             
             @media (max-width: $mobile) {
                 font-size: toRem(16);
+                margin-top: toRem(10);
             }
         }
         
@@ -446,6 +453,9 @@
             
             span {
                 font-size: toRem(20);
+            }
+            @media (max-width: $mobile) {
+               display: none;
             }
         }
     }
