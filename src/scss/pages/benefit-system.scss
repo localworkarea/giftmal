@@ -52,7 +52,10 @@
   }
 
   .cta__extra--extended {
-    padding-top: 0
+    padding-top: 0;
+    @media (max-width: $mobile) {
+      padding-bottom: toRem(87);
+    }
   }
 }
 
@@ -77,7 +80,6 @@
   &__image {
     border-radius: toRem(40);
     overflow: hidden;
-    height: toRem(380);
     
     img {
       width: 100%;
@@ -88,12 +90,6 @@
     
     @media (max-width: $mobile) {
       border-radius: toRem(24);
-      height: toRem(335);
-      
-      img {
-        height: 100%;
-        width: 100%;
-      }
     }
   }
   
@@ -126,6 +122,9 @@
       max-width: toRem(170);
     }
     @media (max-width: $mobileSmall) {
+      max-width: toRem(167);
+    }
+    @media (max-width: toEm(380)) {
       max-width: toRem(150);
     }
 
@@ -639,7 +638,7 @@
         font-size: toRem(11);
         color: var(--dark-violet);
         @media (max-width: $mobile) {
-          font-size: toRem(14);
+          font-size: toRem(12);
         }
       }
       
@@ -1106,6 +1105,8 @@
           @media (max-width: $mobile) {
             max-width: toRem(157);
             transform: translateY(toRem(-26));
+            position: relative;
+            top: toRem(20);
           }
 
         }

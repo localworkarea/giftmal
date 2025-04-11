@@ -39,7 +39,7 @@ $item-mobile-height: toRem(90);
   &__title {
     font-size: toRem(40);
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 1.1;
     color: var(--dark-violet);
     margin-bottom: toRem(33);
     
@@ -51,7 +51,7 @@ $item-mobile-height: toRem(90);
   
   &__description {
     font-size: toRem(15);
-    line-height: 1.2;
+    line-height: 1.4;
     color: var(--fade-violet-3);
     
     @media (max-width: $mobile) {
@@ -66,7 +66,7 @@ $item-mobile-height: toRem(90);
     
     @media (max-width: $mobile) {
       grid-template-columns: repeat(2, 1fr);
-      gap: $grid-gap-mobile;
+      gap: toRem(8);
       margin-bottom: toRem(32);
     }
   }

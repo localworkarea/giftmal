@@ -293,7 +293,7 @@
     
     @media (max-width: $mobile) {
       font-size: toRem(14);
-      margin-bottom: toRem(32);
+      margin-bottom: toRem(16);
     }
   }
   
@@ -326,7 +326,7 @@
       height: auto;
       @media (max-width: $mobile) {
         height: auto;
-        max-width: toRem(120);
+        max-width: toRem(140);
         width: 100%;
       }
     }
@@ -365,7 +365,12 @@
     margin-bottom: toRem(8);
     
     @media (max-width: $mobile) {
-      font-size: toRem(28);
+      font-size: toRem(23);
+    }
+    br{
+      @media (max-width: $mobile) {
+        display: none;
+      }
     }
   }
   
@@ -376,7 +381,7 @@
     line-height: 1.2;
     
     @media (max-width: $mobile) {
-      font-size: toRem(28);
+      font-size: toRem(23);
     }
   }
   
@@ -417,7 +422,7 @@
     }
     &_fix{
       .benefits__text{
-        margin-top: toRem(4);
+        margin-top: toRem(35);
         @media (max-width: $mobile) {
           margin-top: auto;
         }
@@ -460,7 +465,7 @@
     font-size: toRem(15);
     color: var(--fade-violet-3);
     line-height: 1.5;
-    margin-bottom: toRem(43);
+    margin-bottom: toRem(32);
     margin-top: auto;
     
     @media (max-width: $mobile) {
@@ -480,7 +485,7 @@
   @media (max-width: $mobile) {
     border-top-left-radius: toRem(24);
     border-top-right-radius: toRem(24);
-    padding: toRem(70) 0;
+    padding: toRem(100) 0;
   }
   
   &__content {

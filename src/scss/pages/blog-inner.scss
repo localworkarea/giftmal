@@ -139,6 +139,10 @@
     background-color: var(--gray-1);
   }
 
+  .card-grid{
+    gap: toRem(16);
+  }
+
   &__container {
     @media (max-width:$mobile) {
       padding: 0;
