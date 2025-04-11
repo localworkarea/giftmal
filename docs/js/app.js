@@ -9571,11 +9571,11 @@
                 breakpoints: {
                     320: {
                         slidesPerView: 2,
-                        spaceBetween: 8
+                        spaceBetween: 1
                     },
                     480: {
                         slidesPerView: 2,
-                        spaceBetween: 8
+                        spaceBetween: 1
                     },
                     768: {
                         slidesPerView: 3,

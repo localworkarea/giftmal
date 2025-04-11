@@ -33,7 +33,7 @@
   &__title {
     font-size: toRem(40);
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 1.1;
     color: var(--white);
     margin-bottom: toRem(46);
     
@@ -56,7 +56,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: toRem(16) toRem(24);
+    padding: toRem(18) toRem(24);
     background-color: var(--white);
     color: var(--dark-violet);
     font-size: toRem(15);
@@ -68,6 +68,7 @@
     @media (any-hover: hover) {
       &:hover {
         background-color: var(--fade-violet-1);
+        color: var(--white);
       }
     }
     
@@ -131,6 +132,7 @@
       
       @media (max-width: $mobile) {
         font-size: toRem(14);
+        margin: toRem(8) 0 toRem(2);
       }
     }
     
@@ -141,6 +143,7 @@
       
       @media (max-width: $mobile) {
         font-size: toRem(12);
+        line-height: 1;
       }
     }
   }
@@ -221,7 +224,7 @@
   }
   .cta-form__badge{
     top: unset;
-    bottom: toRem(47);
+    bottom: toRem(-47);
   }
   .cta-form__badge-text{
     color: var(--fade-violet-3);

@@ -1,7 +1,4 @@
 .feedback {
-  $image-border-radius-desktop: toRem(40);
-  $image-border-radius-mobile: toRem(24);
-  
   @extend %paddingTbBt56-16;
   background-color: var(--white);
 
@@ -296,7 +293,7 @@
     
     @media (max-width: $mobile) {
       font-size: toRem(14);
-      margin-bottom: toRem(32);
+      margin-bottom: toRem(16);
     }
   }
   
@@ -329,7 +326,7 @@
       height: auto;
       @media (max-width: $mobile) {
         height: auto;
-        max-width: toRem(120);
+        max-width: toRem(140);
         width: 100%;
       }
     }
@@ -341,8 +338,8 @@
   padding-top: toRem(115);
   @media (max-width: $mobile) {
     padding-top: toRem(56);
-    border-top-left-radius: $image-border-radius-mobile;
-    border-top-right-radius: $image-border-radius-mobile;
+    border-top-left-radius: toRem(24);
+    border-top-right-radius: toRem(24);
   }
   
   &__container {
@@ -353,10 +350,10 @@
   
   &__header {
     text-align: left;
-    margin-bottom: toRem(48);
+    margin-bottom: toRem(22);
     
     @media (max-width: $mobile) {
-      margin-bottom: toRem(32);
+      margin-bottom: toRem(24);
     }
   }
   
@@ -368,7 +365,12 @@
     margin-bottom: toRem(8);
     
     @media (max-width: $mobile) {
-      font-size: toRem(28);
+      font-size: toRem(23);
+    }
+    br{
+      @media (max-width: $mobile) {
+        display: none;
+      }
     }
   }
   
@@ -379,7 +381,7 @@
     line-height: 1.2;
     
     @media (max-width: $mobile) {
-      font-size: toRem(28);
+      font-size: toRem(23);
     }
   }
   
@@ -418,6 +420,14 @@
       object-fit: contain;
       align-self: flex-start;
     }
+    &_fix{
+      .benefits__text{
+        margin-top: toRem(35);
+        @media (max-width: $mobile) {
+          margin-top: auto;
+        }
+      }
+    }
   }
   
   &__wrapper {
@@ -455,7 +465,8 @@
     font-size: toRem(15);
     color: var(--fade-violet-3);
     line-height: 1.5;
-    margin-bottom: toRem(43);
+    margin-bottom: toRem(32);
+    margin-top: auto;
     
     @media (max-width: $mobile) {
       font-size: toRem(14);
@@ -467,14 +478,14 @@
 .solutions {
   padding: toRem(120) 0;
   background-color: var(--gray-1);
-  border-top-left-radius: $image-border-radius-desktop;
-  border-top-right-radius: $image-border-radius-desktop;
+  border-top-left-radius: toRem(40);
+  border-top-right-radius: toRem(40);
   position: relative;
   
   @media (max-width: $mobile) {
-    border-top-left-radius: $image-border-radius-mobile;
-    border-top-right-radius: $image-border-radius-mobile;
-    padding: toRem(70) 0;
+    border-top-left-radius: toRem(24);
+    border-top-right-radius: toRem(24);
+    padding: toRem(100) 0;
   }
   
   &__content {
@@ -528,7 +539,6 @@
     align-items: center;
     width: 100%;
     text-align: left;
-    padding: toRem(8) 0;
     padding-left: toRem(20);
     background: transparent;
     border: none;
@@ -643,6 +653,10 @@
   &__tab-button {
     width: fit-content;
     margin-left: auto;
+    padding: toRem(15) toRem(24);
+    line-height: 1;
+    min-height: auto;
+    font-size: toRem(13);
     
     @media (max-width: $mobile) {
      display: none;

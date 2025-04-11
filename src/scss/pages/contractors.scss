@@ -1,19 +1,7 @@
-// Local variables
-$cn-card-border-radius-desktop: toRem(40);
-$cn-card-border-radius-mobile: toRem(32);
-$cn-card-padding-desktop: toRem(120);
-$cn-card-padding-mobile: toRem(56);
-$cn-standard-gap: toRem(8);
-$cn-content-gap: toRem(24);
-$cn-badge-border-radius: toRem(20);
-$cn-badge-mobile-radius: toRem(16);
-
 .contractors-page{
   .contractors{
     @extend %paddingTbBt56-16;
-    @media (max-width: $mobile) {
-     padding-bottom: 0;
-    }
+    padding-bottom: 0;
   }
   .clients-marquee{
     background-color: var(--gray-1);
@@ -35,13 +23,13 @@ $cn-badge-mobile-radius: toRem(16);
     }
   }
   .cta{
-    padding-top: toRem(120);
+    padding-top: toRem(140);
     position: relative;
-    border-top-left-radius: $image-border-radius-desktop;
-    border-top-right-radius: $image-border-radius-desktop;
+    border-top-left-radius: toRem(40);
+    border-top-right-radius: toRem(40);
     @media (max-width: $mobile) {
       border-radius: 0;
-      padding: toRem(70) 0;
+      padding: toRem(40) 0 toRem(70);
     }
   }
 }
@@ -52,14 +40,14 @@ $cn-badge-mobile-radius: toRem(16);
   
   @media (max-width: $mobile) {
     background-color: var(--white);
-    border-top-left-radius: $cn-card-border-radius-mobile;
-    border-top-right-radius: $cn-card-border-radius-mobile;
+    border-top-left-radius: toRem(32);
+    border-top-right-radius: toRem(32);
   }
   
   &__row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: $cn-standard-gap;
+    gap: toRem(8);
     
     @media (max-width: $tablet) {
       grid-template-columns: 1fr;
@@ -73,8 +61,8 @@ $cn-badge-mobile-radius: toRem(16);
   
   &__item {
     background-color: var(--white);
-    border-radius: $cn-card-border-radius-desktop;
-    padding: $cn-card-padding-desktop;
+    border-radius: toRem(40);
+    padding: toRem(120);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -82,12 +70,12 @@ $cn-badge-mobile-radius: toRem(16);
     overflow: hidden;
     
     @media (max-width: toEm(1380)) {
-      padding: $cn-card-padding-mobile;
+      padding: toRem(56);
     }
     
     @media (max-width: $mobile) {
-      padding: $cn-card-padding-mobile toRem(16) toRem(112);
-      border-radius: $cn-card-border-radius-mobile;
+      padding: toRem(56) toRem(16) toRem(112);
+      border-radius: toRem(32);
     }
     
     br {
@@ -110,10 +98,10 @@ $cn-badge-mobile-radius: toRem(16);
     font-weight: 500;
     line-height: 1.2;
     color: var(--dark-violet);
-    margin-bottom: $cn-content-gap;
+    margin-bottom: toRem(24);
     
     @media (max-width: $mobile) {
-      font-size: toRem(24);
+      font-size: toRem(23);
       margin-bottom: toRem(16);
     }
     
@@ -179,7 +167,7 @@ $cn-badge-mobile-radius: toRem(16);
       
       @media (max-width: $mobile) {
         padding: toRem(12) toRem(12) toRem(6);
-        border-radius: $cn-badge-mobile-radius;
+        border-radius: toRem(16);
       }
       
       * {
@@ -227,13 +215,13 @@ $cn-badge-mobile-radius: toRem(16);
   
   .sales-badge {
     background-color: var(--dark-violet);
-    border-radius: $cn-badge-border-radius;
+    border-radius: toRem(20);
     padding: toRem(16);
     min-width: toRem(200);
     
     @media (max-width: $mobile) {
       padding: toRem(12);
-      border-radius: $cn-badge-mobile-radius;
+      border-radius: toRem(16);
     }
     
     * {
@@ -327,7 +315,7 @@ $cn-badge-mobile-radius: toRem(16);
     position: absolute;
     background: var(--white);
     padding: toRem(16);
-    border-radius: $cn-badge-mobile-radius;
+    border-radius: toRem(16);
     text-align: left;
     top: toRem(32);
     right: toRem(32);

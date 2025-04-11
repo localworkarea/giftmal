@@ -1,12 +1,12 @@
 .page-header {
   display: flex;
   gap: toRem(40);
-  margin-bottom: toRem(40);
-  align-items: center;
+  margin-bottom: toRem(27);
+  align-items: flex-end;
   
   @media (max-width: $tablet) {
     gap: toRem(16);
-    margin-bottom: toRem(32);
+    margin-bottom: toRem(24);
   }
   
   @media (max-width: $mobile) {
@@ -18,7 +18,7 @@
   &__title {
     font-size: toRem(40);
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 1.1;
     color: var(--dark-violet);
     @media (max-width: $tablet) {
       font-size: toRem(30);
@@ -37,9 +37,10 @@
   
   &__subtitle {
     font-size: toRem(18);
-    line-height: 1.5;
+    line-height: 1.4;
     color: var(--fade-violet-3);
     max-width: toRem(390);
+    font-weight: 500;
     
     @media (max-width: $mobile) {
       font-size: toRem(14);

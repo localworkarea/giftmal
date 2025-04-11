@@ -20,9 +20,12 @@
                         
                         <div class="platform__image-wrapper">
                             <div class="platform__image">
-                                <img src="@img/benefits-system/image_1.png" width="1140" height="380" alt="Платформа винагород для бізнесу" loading="eager">
-                            </div>
-                            
+                                <picture>
+                                  <source media="(max-width: 48em)" srcset="@img/benefits-system/image_mob_3.png" width="375" height="200">
+                                  <img src="@img/benefits-system/image_1.png" width="1140" height="380" alt="Платформа винагород для бізнесу" loading="eager">
+                                </picture>
+                              </div>
+
                             <div class="platform__features">
                                 <div class="platform__feature-card">
                                     <div class="platform__card-number">01</div>
@@ -68,7 +71,10 @@
                                 <h1 class="one-click-start__text-title">Запускайтесь в один клік — <span>користуйтесь без проблем</span></h1>
                                 <p class="one-click-start__text-subtitle">Імплементуйте готове рішення для менеджменту <br>лояльності у вже існуючу систему!</p>
                                 <div class="one-click-start__visual-image">
-                                    <img src="@img/benefits-system/image_2.png" alt="Запускайтесь в один клік" loading="eager">
+                                    <picture>
+                                        <source media="(max-width: 48em)" srcset="@img/benefits-system/image_mob_4.png" width="375" height="200">
+                                        <img src="@img/benefits-system/image_2.png" alt="Запускайтесь в один клік" loading="eager">
+                                    </picture>
                                 </div>
                             </div>
                             
@@ -215,7 +221,7 @@
                     </div>
                 </section>
 
-                <section class="cta cta__extra cta__extra--dark">
+                <section class="cta cta__extra cta__extra--dark cta__extra--extended">
                     <div class="cta__container">
                     @@include('html/_cta-form.htm',{})
                     </div>

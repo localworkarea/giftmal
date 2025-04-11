@@ -1,5 +1,24 @@
+.blog__page{
+  footer{
+    margin-top:0;
+    z-index: 2;
+  }
+}
 .blog {
   @extend %paddingTbBt56-16;
+  position: relative;
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: toRem(-45);
+    left: 0;
+    width: 100%;
+    height: toRem(75);
+    background-color: var(--gray-1);
+    @media (max-width:$mobile){
+      height: toRem(75);
+    }
+  }
   
   &__title {
     font-size: toRem(40);

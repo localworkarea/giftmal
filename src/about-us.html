@@ -19,7 +19,10 @@
                 })
                 
                 <div class="header-block__image">
-                  <img src="@img/about/image_1.jpg" width="1140" height="380" alt="Міжнародний дистриб'ютор подарункових сертифікатів" loading="eager">
+                  <picture>
+                    <source media="(max-width: 48em)" srcset="@img/about/image_mob_1.png" width="375" height="200">
+                    <img src="@img/about/image_1.jpg" width="1140" height="380" alt="Міжнародний дистриб'ютор подарункових сертифікатів" loading="eager">
+                  </picture>
                 </div>
                 
                 <div class="about__stats">
@@ -98,7 +101,7 @@
                   </div>
                   <div class="mission__item-content">
                     <p aria-hidden="true">03</p>
-                    <div class="mission__item-content-inner">
+                    <div class="mission__item-content-inner mission__item-content-inner--extended">
                       <h3 class="mission__item-title">Інтеграція API</h3>
                       <div class="mission__item-icon" aria-hidden="true">
                         <img src="@img/icons/settings-i.svg" width="24" height="24" alt="">
