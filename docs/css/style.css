@@ -6621,13 +6621,12 @@ body::after {
   font-weight: 500;
   color: var(--fade-violet-3);
   line-height: 1.3;
-  margin-bottom: 1.5625rem
+  margin-bottom: 1.125rem
 }
 .clients-marquee__wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  padding: 1rem 0
+  overflow: hidden
 }
 .clients-marquee__wrapper::before {
   content: "";
@@ -10654,6 +10653,9 @@ body::after {
   width: auto;
   max-height: 14.375rem
 }
+.corporative-clients-page .awards {
+  padding-top: 0
+}
 .benefit-system__page {
   background-color: var(--white)
 }
@@ -11613,7 +11615,11 @@ body::after {
   height: 100%
 }
 .contractors-trust .how-it-works__card-title {
-  font-size: 1.4375rem
+  font-size: 1.4375rem;
+  line-height: 1.2
+}
+.contractors-trust .how-it-works__card-description {
+  line-height: 1.5
 }
 .contractors-trust ul {
   font-size: .9375rem
@@ -11748,7 +11754,7 @@ body::after {
 }
 .mobile-app__text {
   font-size: 1.125rem;
-  line-height: 1.5;
+  line-height: 1.4;
   margin-bottom: 2rem;
   max-width: 31.25rem;
   color: var(--fade-violet-3)
@@ -11874,7 +11880,7 @@ body::after {
 }
 .gift-promo__text {
   font-size: 1.125rem;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--fade-violet-3);
   margin-bottom: 2rem
 }
@@ -11964,6 +11970,9 @@ body::after {
   margin: 0 auto;
   top: -.625rem;
   position: relative
+}
+.card-certificate__show-more .dropdown-arrow {
+  pointer-events: none
 }
 .corporate-promo {
   position: relative;
@@ -16110,7 +16119,7 @@ body::after {
   }
   .clients-marquee__subtitle {
     font-size: .75rem;
-    margin-bottom: 1.25rem
+    margin-bottom: 1.5rem
   }
   .clients-marquee__wrapper::before {
     width: 2.5rem
@@ -16729,6 +16738,9 @@ body::after {
   .solutions__feature-text {
     font-size: .8125rem
   }
+  .corporative-clients-page .awards {
+    padding-top: 3.4375rem
+  }
   .benefit-system__page .partners-grid__note {
     display: flex;
     margin-top: 2.6875rem
@@ -17089,7 +17101,8 @@ body::after {
   .contractors-trust .how-it-works__card-image-label {
     border-radius: .625rem;
     top: 1rem;
-    right: 1rem
+    right: 1rem;
+    padding: .625rem
   }
   .contractors-trust .how-it-works__card-image-label .contractors-title {
     font-size: .75rem
@@ -17215,12 +17228,19 @@ body::after {
   .corporate-promo .notification__content:after {
     display: none
   }
+  .corporate-promo .notification__content {
+    align-items: flex-start
+  }
   .corporate-promo .notification__icon {
-    font-size: 1rem
+    font-size: 1rem;
+    margin-top: .625rem
   }
   .corporate-promo .notification__text {
     font-size: .875rem;
     white-space: initial
+  }
+  .corporate-promo .notification__close {
+    display: none
   }
   .corporate-promo__slide {
     padding: 1.25rem .625rem 1.875rem
