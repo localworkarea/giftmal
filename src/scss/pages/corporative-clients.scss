@@ -730,3 +730,12 @@
     }
   }
 }
+
+.corporative-clients-page{
+  .awards{
+    padding-top: 0;
+    @media (max-width: $mobile) {
+      padding-top: toRem(55);
+    }
+  }
+}

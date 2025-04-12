@@ -324,6 +324,7 @@
       border-radius: toRem(10);
       top: toRem(16);
       right: toRem(16);
+      padding: toRem(10);
     }
     
     .contractors-title {
@@ -386,10 +387,15 @@
   
   .how-it-works__card-title {
     font-size: toRem(23);
+    line-height: 1.2;
     
     @media (max-width: $mobile) {
       font-size: toRem(18);
     }
+  }
+
+  .how-it-works__card-description{
+    line-height: 1.5;
   }
   
   ul {
