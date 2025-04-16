@@ -1,5 +1,5 @@
 .clients-marquee {
-    padding: toRem(120);
+    padding: toRem(120) 0;
     background-color: var(--white);
     position: relative;
     @media (max-width: toEm(1280)) {

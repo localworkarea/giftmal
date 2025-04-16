@@ -70,11 +70,28 @@
       pointer-events: none;
       width: calc(100% - 2rem);
       margin: 0 auto toRem(30);
+      
       @media (max-width: $mobile) {
         display: flex;
         align-items: flex-end;
-        justify-content: space-around;
+        justify-content: center;
+        
+        .error__card:not(.error__card--mobile) {
+          display: none;
+        }
+        
+        .error__card--mobile {
+          display: none;
+          width: 100%;
+          max-width: 100%;
+          height: auto;
+          margin: 0 auto;
+          @media (max-width: $mobile) {
+            display: block;
+          }
+        }
       }
+      
       @media (max-height: toRem(540)) {
         position: absolute;
       }
@@ -146,6 +163,12 @@
 
       @media (max-width: $mobileSmall) {
         width: toRem(71);
+      }
+      &--mobile {
+        display: none;
+        @media (max-width: $mobile) {
+          display: block;
+        }
       }
     }
   }

@@ -28,8 +28,7 @@
     border-top-left-radius: toRem(40);
     border-top-right-radius: toRem(40);
     @media (max-width: $mobile) {
-      border-radius: 0;
-      padding: toRem(40) 0 toRem(70);
+      padding: toRem(60) 0 toRem(70);
     }
   }
 }
@@ -39,7 +38,6 @@
   background-color: var(--gray-1);
   
   @media (max-width: $mobile) {
-    background-color: var(--white);
     border-top-left-radius: toRem(32);
     border-top-right-radius: toRem(32);
   }
@@ -287,7 +285,6 @@
   padding-top: toRem(56);
   
   @media (max-width: $mobile) {
-    background: var(--white);
     border-radius: 0;
     padding-top: 0;
   }
@@ -354,8 +351,6 @@
     
     @media (max-width: $mobile) {
       padding: toRem(20);
-      background: none;
-      box-shadow: none;
     }
   }
   
