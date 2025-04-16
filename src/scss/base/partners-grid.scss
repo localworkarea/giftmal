@@ -86,9 +86,13 @@ $item-mobile-height: toRem(90);
     
     @media (any-hover: hover) {
       &:hover {
-        background-color: var(--white);
+        background-color: var(--dark-violet);
         box-shadow: var(--card-shadow-hover);
         transform: translateY(toRem(-2));
+        
+        img {
+          filter: brightness(0) invert(1);
+        }
       }
     }
     
@@ -102,6 +106,7 @@ $item-mobile-height: toRem(90);
       max-width: 100%;
       height: auto;
       object-fit: contain;
+      transition: filter 0.3s ease;
     }
   }
   
@@ -137,9 +142,13 @@ $item-mobile-height: toRem(90);
   
   @media (any-hover: hover) {
     &:hover {
-      background-color: var(--white);
+      background-color: var(--dark-violet);
       box-shadow: var(--card-shadow-hover);
       transform: translateY(toRem(-2));
+      
+      img {
+        filter: brightness(0) invert(1);
+      }
     }
   }
   
@@ -153,5 +162,6 @@ $item-mobile-height: toRem(90);
     max-width: 100%;
     height: auto;
     object-fit: contain;
+    transition: filter 0.3s ease;
   }
 }

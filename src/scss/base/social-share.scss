@@ -27,8 +27,11 @@
     
     @media (any-hover: hover){
       &:hover {
-        background-color: var(--primary-hover);
+        background-color: var(--dark-violet);
         transition: background-color 0.3s ease;
+        img {
+          filter: brightness(0) invert(1);
+        }
       }
     }
     

@@ -1,4 +1,12 @@
 .main-page{
+
+    .card-certificate__button, .gift-promo__button{
+        font-size: 15px;
+        @media (max-width: $tablet) {
+            font-size: 14px;
+        }
+    }
+
     &__title{
         font-weight: 500;
         font-size: toRem(40);
@@ -85,13 +93,13 @@
 
 .gift-promo {
     position: relative;
-    padding: toRem(30) 0;
+    padding: toRem(30) 0 0;
     background-color: var(--gray-1);    
     @media (max-width: $tablet) {
-        padding: toRem(48) 0;
+        padding: toRem(48) 0 0;
     }
     @media (max-width: $mobile) {
-        padding: toRem(40) 0 toRem(48);
+        padding: toRem(20) 0 0;
     }
 
     &__content {
@@ -380,6 +388,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 toRem(16);
+
+            @media (max-width: $mobile) {
+                align-items: flex-start;
+            }
         }
         
         &__content {
@@ -455,7 +467,8 @@
                 font-size: toRem(20);
             }
             @media (max-width: $mobile) {
-               display: none;
+                margin-top: toRem(5);
+                margin-left: toRem(5);
             }
         }
     }
@@ -470,9 +483,13 @@
         justify-content: space-between;
         opacity: 0;
         transition: opacity 0.3s ease;
+        padding: 0 toRem(100);
         
+        @media (max-width: $tablet) {
+            padding: 0 toRem(80);
+        }
         @media (max-width: $mobile) {
-            padding: toRem(20) toRem(10) toRem(30);
+            padding: toRem(20) toRem(40) toRem(30);
         }
     }
     
@@ -503,13 +520,10 @@
         }
         
         @media (max-width: $mobile) {
-            font-size: toRem(24);
+            font-size: toRem(16);
             margin-bottom: toRem(8);
         }
         
-        @media (max-width: $mobileSmall) {
-            font-size: toRem(18);
-        }
     }
     
     &__text {
@@ -524,12 +538,12 @@
         }
         
         @media (max-width: $mobile) {
-            font-size: toRem(16);
-            margin-bottom: toRem(20);
+            font-size: toRem(12);
+            margin-bottom: toRem(14);
         }
         
         @media (max-width: $mobileSmall) {
-            font-size: toRem(14);
+            font-size: toRem(11);
         }
     }
     
@@ -538,10 +552,13 @@
         color: var(--white);
         width: fit-content;
         
-        @media (max-width: $mobileSmall) {
-            font-size: toRem(14);
+        @media (max-width: $mobile) {
+            font-size: toRem(12);
             padding: toRem(10) toRem(20);
             min-height: auto;
+        }
+        @media (max-width: $mobileSmall) {
+            font-size: toRem(11);
         }
     }
     
