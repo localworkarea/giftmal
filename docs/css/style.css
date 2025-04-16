@@ -6552,7 +6552,10 @@ body::after {
   max-width: 100%;
   height: auto;
   -o-object-fit: contain;
-  object-fit: contain
+  object-fit: contain;
+  transition: -webkit-filter .3s ease;
+  transition: filter .3s ease;
+  transition: filter .3s ease,-webkit-filter .3s ease
 }
 .partners-grid__note {
   display: flex;
@@ -6580,7 +6583,10 @@ body::after {
   max-width: 100%;
   height: auto;
   -o-object-fit: contain;
-  object-fit: contain
+  object-fit: contain;
+  transition: -webkit-filter .3s ease;
+  transition: filter .3s ease;
+  transition: filter .3s ease,-webkit-filter .3s ease
 }
 .page-header {
   display: flex;
@@ -6607,7 +6613,7 @@ body::after {
   font-weight: 500
 }
 .clients-marquee {
-  padding: 7.5rem;
+  padding: 7.5rem 0;
   background-color: var(--white);
   position: relative
 }
@@ -9168,6 +9174,9 @@ body::after {
   -webkit-animation: floatingCard3 6s ease-in-out infinite;
   animation: floatingCard3 6s ease-in-out infinite
 }
+.error__page .error__card--mobile {
+  display: none
+}
 .error__page.error__page--404 .error__cards {
   padding-top: 80vh
 }
@@ -9903,7 +9912,6 @@ body::after {
   font-weight: 500
 }
 .header-block__container {
-  max-width: 75rem;
   margin: 0 auto;
   padding: 0 1rem
 }
@@ -11818,6 +11826,10 @@ body::after {
   height: auto;
   margin: 0 auto
 }
+.main-page .card-certificate__button,
+.main-page .gift-promo__button {
+  font-size: 15px
+}
 .main-page__title {
   font-weight: 500;
   font-size: 2.5rem;
@@ -11861,7 +11873,7 @@ body::after {
 }
 .gift-promo {
   position: relative;
-  padding: 1.875rem 0;
+  padding: 1.875rem 0 0;
   background-color: var(--gray-1)
 }
 .gift-promo__content {
@@ -12068,7 +12080,8 @@ body::after {
   align-items: center;
   justify-content: space-between;
   opacity: 0;
-  transition: opacity .3s ease
+  transition: opacity .3s ease;
+  padding: 0 6.25rem
 }
 .corporate-promo__content {
   max-width: 31.25rem;
@@ -15446,6 +15459,10 @@ body::after {
     justify-content: center;
     margin-top: 1.875rem
   }
+  .main-page .card-certificate__button,
+  .main-page .gift-promo__button {
+    font-size: 14px
+  }
   .main-page__title {
     font-size: 1.75rem;
     margin-bottom: 1.5rem
@@ -15459,7 +15476,7 @@ body::after {
     font-size: .875rem
   }
   .gift-promo {
-    padding: 3rem 0
+    padding: 3rem 0 0
   }
   .gift-promo__card {
     padding: 2rem
@@ -15497,6 +15514,9 @@ body::after {
   }
   .card-certificate__show-more span {
     top: -1.25rem
+  }
+  .corporate-promo__slide {
+    padding: 0 5rem
   }
   .corporate-promo__content {
     max-width: 23.75rem
@@ -16190,7 +16210,17 @@ body::after {
   .error__page .error__cards {
     display: flex;
     align-items: flex-end;
-    justify-content: space-around
+    justify-content: center
+  }
+  .error__page .error__cards .error__card:not(.error__card--mobile) {
+    display: none
+  }
+  .error__page .error__cards .error__card--mobile {
+    display: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto
   }
   .error__page .error__card {
     width: 100%;
@@ -16228,6 +16258,9 @@ body::after {
   .error__page .error__card--7,
   .error__page .error__card--8 {
     display: none
+  }
+  .error__page .error__card--mobile {
+    display: block
   }
   .error__page.error__page--404 {
     background: 0 0
@@ -17055,11 +17088,9 @@ body::after {
     font-size: .75rem
   }
   .contractors-page .cta {
-    border-radius: 0;
-    padding: 2.5rem 0 4.375rem
+    padding: 3.75rem 0 4.375rem
   }
   .contractors-benefits-cards {
-    background-color: var(--white);
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem
   }
@@ -17109,7 +17140,6 @@ body::after {
     position: absolute
   }
   .contractors-trust {
-    background: var(--white);
     border-radius: 0;
     padding-top: 0
   }
@@ -17127,9 +17157,7 @@ body::after {
     margin-bottom: 0
   }
   .contractors-trust .how-it-works__card {
-    padding: 1.25rem;
-    background: 0 0;
-    box-shadow: none
+    padding: 1.25rem
   }
   .contractors-trust .how-it-works__card-title {
     font-size: 1.125rem
@@ -17155,6 +17183,9 @@ body::after {
   }
   .mobile-app__ad-notification {
     display: block
+  }
+  .mobile-app__ad-content {
+    padding-top: 1.25rem
   }
   .mobile-app__title {
     font-size: 1.75rem;
@@ -17186,7 +17217,7 @@ body::after {
     border-radius: 1.3125rem
   }
   .gift-promo {
-    padding: 2.5rem 0 3rem
+    padding: 1.25rem 0 0
   }
   .gift-promo__content {
     max-width: 100%
@@ -17240,6 +17271,9 @@ body::after {
   .corporate-promo .notification {
     padding: .625rem 0
   }
+  .corporate-promo .notification__container {
+    align-items: flex-start
+  }
   .corporate-promo .notification__content:after {
     display: none
   }
@@ -17255,24 +17289,35 @@ body::after {
     white-space: initial
   }
   .corporate-promo .notification__close {
-    display: none
+    margin-top: .3125rem;
+    margin-left: .3125rem
   }
   .corporate-promo__slide {
-    padding: 1.25rem .625rem 1.875rem
+    padding: 1.25rem 2.5rem 1.875rem
   }
   .corporate-promo__content {
     max-width: 100%
   }
   .corporate-promo__title {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: .5rem
   }
   .corporate-promo__text {
-    font-size: 1rem;
-    margin-bottom: 1.25rem
+    font-size: .75rem;
+    margin-bottom: .875rem
+  }
+  .corporate-promo__button {
+    font-size: .75rem;
+    padding: .625rem 1.25rem;
+    min-height: auto
   }
   .corporate-promo__image img {
     max-width: 11.25rem
+  }
+}
+@media (max-width:48.06125em)and (max-width:48.06125em) {
+  .error__page .error__cards .error__card--mobile {
+    display: block
   }
 }
 @media (max-width:46.93625em) {
@@ -19622,9 +19667,6 @@ body::after {
   .mobile-app {
     padding: 1.875rem 0
   }
-  .mobile-app__ad-content {
-    padding-top: 4.1875rem
-  }
   .mobile-app__buttons {
     gap: .75rem;
     flex-direction: column;
@@ -19642,16 +19684,11 @@ body::after {
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem
   }
-  .corporate-promo__title {
-    font-size: 1.125rem
-  }
   .corporate-promo__text {
-    font-size: .875rem
+    font-size: .6875rem
   }
   .corporate-promo__button {
-    font-size: .875rem;
-    padding: .625rem 1.25rem;
-    min-height: auto
+    font-size: .6875rem
   }
   .corporate-promo__image img {
     max-width: 7.5rem
@@ -19770,11 +19807,6 @@ body::after {
 @media (max-width:23.4375rem) {
   .platform__feature-card {
     min-width: auto
-  }
-}
-@media (max-width:23.4375em) {
-  .mobile-app__ad-content {
-    padding-top: 3.4375rem
   }
 }
 @media (max-width:22.56125em) {
@@ -20548,8 +20580,12 @@ body::after {
     color: var(--dark-violet)
   }
   .social-share__link:hover {
-    background-color: var(--primary-hover);
+    background-color: var(--dark-violet);
     transition: background-color .3s ease
+  }
+  .social-share__link:hover img {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1)
   }
   .blog-card:hover {
     box-shadow: 0 .25rem 2.5rem 0 rgba(33,5,41,.12)
@@ -20559,16 +20595,24 @@ body::after {
     color: var(--white)
   }
   .partners-grid__item:hover {
-    background-color: var(--white);
+    background-color: var(--dark-violet);
     box-shadow: var(--card-shadow-hover);
     -webkit-transform: translateY(-.125rem);
     transform: translateY(-.125rem)
   }
+  .partners-grid__item:hover img {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1)
+  }
   .partners-grid__item:hover {
-    background-color: var(--white);
+    background-color: var(--dark-violet);
     box-shadow: var(--card-shadow-hover);
     -webkit-transform: translateY(-.125rem);
     transform: translateY(-.125rem)
+  }
+  .partners-grid__item:hover img {
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1)
   }
   .card-news:hover {
     box-shadow: 0 4px 40px 0 rgba(33,5,41,.12)
