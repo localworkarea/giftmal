@@ -545,7 +545,7 @@ body::after {
 		// .popup-body-rules__info-card
 		&__info-card {
 			.info-card__body {
-				grid-template-columns: repeat(auto-fit,minmax(toRem(170), 1fr));
+				grid-template-columns: repeat(auto-fit,minmax(toRem(150), 1fr));
 				.info-card__text {
 					@media (min-width:$mobileSmall){
 						 max-width: 70%; 
@@ -563,7 +563,7 @@ body::after {
 		// .popup-body-rules__footer
 		&__footer {
 			@media (min-width:$mobileSmall){
-				padding-top: toRem(32);
+				padding-top: toRem(16);
 				padding-inline: toRem(32);
 			}
 			@media (max-width:$mobileSmall){
@@ -700,7 +700,7 @@ body::after {
 		&__rating {
 			display: flex;
 			justify-content: center;
-			margin-bottom: toRem(32);
+			margin-bottom: toRem(16);
 			.rating {
 				display: inline-block;
 			}
@@ -925,7 +925,7 @@ body::after {
 	}
 	// .popup-cart__edit
 	&__edit {
-		span {
+		.mob {
 			@media (max-width:$mobileSmall){
 				 display: none; 
 			}

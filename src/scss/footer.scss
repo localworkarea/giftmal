@@ -5,6 +5,9 @@
   @include adaptiveValue("padding-top", 80, 56,0,1400.98,480.98);
   @include adaptiveValue("padding-bottom", 56, 24,0,1400.98,480.98);
   @extend  %borderRadiusTop40-24;
+  .card-page & {
+    margin-top: toRem(6) !important;
+  }
   // .footer__container
   &__container {
     @media (max-width: toEm(1264)) and (min-width:$mobileSmall) {

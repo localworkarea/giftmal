@@ -682,6 +682,7 @@ textarea.input {
     }
     &::placeholder {
       transition: color .3s ease;
+      color: var(--fade-violet-2);
     }
 	}
   // .amount__minmax

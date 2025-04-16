@@ -430,8 +430,10 @@ document.addEventListener("DOMContentLoaded", () => {
   
               if (isOpening) {
                   spollerBody.classList.add('is-open');
-              } else {
+                  spoller.classList.add('is-open');
+                } else {
                   spollerBody.classList.remove('is-open');
+                  spoller.classList.remove('is-open');
               }
           });
       });
@@ -2041,25 +2043,35 @@ if (intlTelInputs.length > 0) {
 
     // кастомный класс если совпадает выбранная страна со странной из списка
     let previousSelectedCountry = null;
+   
     function updateSelectedClass() {
-        const selectedCountry = iti.getSelectedCountryData();
-        const newSelectedElement = document.querySelector(`.iti__country[data-dial-code="${selectedCountry.dialCode}"]`);
-
-        if (previousSelectedCountry) {
-            previousSelectedCountry.classList.remove("_selected");
-        }
-
-        if (newSelectedElement) {
-            newSelectedElement.classList.add("_selected");
-            previousSelectedCountry = newSelectedElement; 
-        }
+      const selectedCountry = iti.getSelectedCountryData();
+      const dropdownContent = iti.countryList.parentElement;
+    
+      if (!dropdownContent) return;
+    
+      const countryList = dropdownContent.querySelector(".iti__country-list");
+      if (!countryList) return;
+    
+      const newSelectedElement = countryList.querySelector(`.iti__country[data-dial-code="${selectedCountry.dialCode}"]`);
+    
+      // Удаляем _selected у предыдущего внутри текущего dropdown
+      const previouslySelected = countryList.querySelector("._selected");
+      if (previouslySelected) {
+        previouslySelected.classList.remove("_selected");
+      }
+    
+      if (newSelectedElement) {
+        newSelectedElement.classList.add("_selected");
+      }
     }
-
+    
     input.addEventListener("countrychange", updateSelectedClass);
     updateSelectedClass();
 
     const inputParentPopup = input.closest(".popup");
     let dropdownOpened = false;
+    // const popupBody = document.querySelector(".popup__body");
     const popupBody = document.querySelector("#popupIti .popup__body");
 
     if (iti.options.useFullscreenPopup && popupBody) {

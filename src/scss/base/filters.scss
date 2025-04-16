@@ -623,6 +623,26 @@
   }
 }
 
+[data-filters-spoller].is-open {
+  .filters__link {
+    &::before {
+      transform: rotate(-180deg);
+    }
+  }
+}
+[data-filters-spoller-body].filters__list {
+  @media (min-width:$mobileSmall){
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.03) 0%,
+      rgba(0, 0, 0, 0) 10%,
+      rgba(0, 0, 0, 0) 90%,
+      rgba(0, 0, 0, 0.03) 100%
+    );
+  }
+  
+}
+
 .price-filter {
   @media (min-width:$mobileSmall){
     padding: toRem(24) toRem(24) toRem(8);

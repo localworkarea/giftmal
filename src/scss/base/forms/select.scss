@@ -112,7 +112,8 @@
 						color: var(--fade-violet-2);
 					}
 				}
-				.select__text {
+				.select__text,
+				.select__asset {
 					color: var(--fade-violet-2);
 				}
 				.select_type-9 & {
@@ -129,6 +130,7 @@
 				}
 			}
 		}
+		.select__asset,
 		.select__text {
 			._select-active & {
 				color: var(--dark-violet);
@@ -453,7 +455,8 @@
 				margin-bottom: toRem(4);
 			}
 		}
-		.select_type-5 & {
+		.select_type-5 &,
+		.select_type-6 & {
 			// font-size: toRem(15);
 			@extend %fonsSize15-14;
 		}

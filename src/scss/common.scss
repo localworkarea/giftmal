@@ -485,7 +485,7 @@ html {
   .card-grid {
     display: grid;
     gap: toRem(8);
-    grid-auto-rows: 1fr;
+    // grid-auto-rows: 1fr;
     @media (min-width:toEm(800.98)){
       grid-template-columns: repeat(auto-fill,minmax(toRem(250), 1fr));
     }
@@ -569,7 +569,8 @@ html {
   font-size: toRem(13);
   font-weight: 500;
   line-height: 0.8;
-  padding: toRem(0) toRem(8);
+  // padding: toRem(0) toRem(8);
+  padding: toRem(0) toRem(0);
   max-width: fit-content;
   &._active {
     z-index: 5;
@@ -1160,7 +1161,7 @@ html {
   }
   // .card-certificate__title
   &__title {
-    flex: 1;
+    // flex: 1;
     @extend %fonsSize15-14;
     &:not(:last-child) {
       @media (min-width:$mobileSmall){
