@@ -139,6 +139,8 @@
     border: none;
     box-shadow: var(--pagging-shadow);
     transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
 
     @media (any-hover: hover) {
       &:hover {
@@ -154,7 +156,43 @@
     }
 
     .live-chat__button-icon {
-      transition: transform 0.3s ease;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      will-change: transform, opacity;
+      
+      &--open {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+        @media (max-width: $mobile) {
+          max-width: toRem(30);
+        }
+      }
+      
+      &--close {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
+        @media (max-width: $mobile) {
+          max-width: toRem(30);
+        }
+      }
+    }
+
+    &[aria-expanded="true"] {
+      .live-chat__button-icon {
+        &--open {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.3);
+        }
+        
+        &--close {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
     }
   }
 } 
