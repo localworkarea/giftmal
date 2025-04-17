@@ -6850,12 +6850,39 @@ body::after {
   box-shadow: var(--pagging-shadow);
   transition: background-color .3s ease,-webkit-transform .3s ease;
   transition: background-color .3s ease,transform .3s ease;
-  transition: background-color .3s ease,transform .3s ease,-webkit-transform .3s ease
+  transition: background-color .3s ease,transform .3s ease,-webkit-transform .3s ease;
+  position: relative;
+  overflow: hidden
 }
 .live-chat__button .live-chat__button-icon {
-  transition: -webkit-transform .3s ease;
-  transition: transform .3s ease;
-  transition: transform .3s ease,-webkit-transform .3s ease
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  transition: all .3s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+  will-change: transform,opacity
+}
+.live-chat__button .live-chat__button-icon--open {
+  opacity: 1;
+  -webkit-transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%) scale(1)
+}
+.live-chat__button .live-chat__button-icon--close {
+  opacity: 0;
+  -webkit-transform: translate(-50%,-50%) scale(.3);
+  transform: translate(-50%,-50%) scale(.3)
+}
+.live-chat__button[aria-expanded=true] .live-chat__button-icon--open {
+  opacity: 0;
+  -webkit-transform: translate(-50%,-50%) scale(.3);
+  transform: translate(-50%,-50%) scale(.3)
+}
+.live-chat__button[aria-expanded=true] .live-chat__button-icon--close {
+  opacity: 1;
+  -webkit-transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%) scale(1)
 }
 .banner__img {
   overflow: hidden
@@ -16330,6 +16357,12 @@ body::after {
     width: 3rem;
     height: 3rem;
     font-size: 1.25rem
+  }
+  .live-chat__button .live-chat__button-icon--open {
+    max-width: 1.875rem
+  }
+  .live-chat__button .live-chat__button-icon--close {
+    max-width: 1.875rem
   }
   .item-cart__buttons {
     gap: .5rem
