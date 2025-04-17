@@ -39,6 +39,10 @@ flsFunctions.tabs();
 import videoPlayer from "./modules/videoPlayer.js";
 videoPlayer();
 
+// Live Chat module
+import initLiveChat from './modules/live-chat.js';
+initLiveChat();
+
 /*
 Модуль "Показати ще"
 Документація: https://template.fls.guru/template-docs/modul-pokazat-eshhjo.html

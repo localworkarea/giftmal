@@ -1,0 +1,156 @@
+.live-chat {
+  position: fixed;
+  bottom: toRem(30);
+  right: toRem(30);
+  z-index: 1000;
+
+  @media (max-width: $mobile) {
+    bottom: toRem(20);
+    right: toRem(20);
+  }
+
+  &__modal {
+    position: absolute;
+    bottom: calc(100% + toRem(16));
+    right: 0;
+    width: toRem(320);
+    background-color: var(--white);
+    border-radius: toRem(24);
+    box-shadow: 0 toRem(4) toRem(40) rgba(0, 0, 0, 0.1);
+    padding: toRem(24);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(toRem(10));
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+
+    &[hidden] {
+      display: none;
+    }
+
+    &--active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (max-width: $mobile) {
+      width: calc(100vw - toRem(40));
+      max-width: toRem(320);
+      padding: toRem(20);
+      border-radius: toRem(16);
+    }
+  }
+
+  &__header {
+    margin-bottom: toRem(24);
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: toRem(20);
+    line-height: 1.3;
+    color: var(--dark-violet);
+    margin-bottom: toRem(8);
+
+    @media (max-width: $mobile) {
+      font-size: toRem(18);
+    }
+  }
+
+  &__subtitle {
+    font-size: toRem(15);
+    line-height: 1.4;
+    color: var(--fade-violet-3);
+
+    @media (max-width: $mobile) {
+      font-size: toRem(14);
+    }
+  }
+
+  &__options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__option {
+    &:not(:last-child) {
+      margin-bottom: toRem(16);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: toRem(16);
+    padding: toRem(12) 0;
+    text-decoration: none;
+    color: var(--dark-violet);
+    transition: opacity 0.3s ease;
+
+    @media (any-hover: hover) {
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: toRem(24);
+    color: var(--dark-violet);
+    &.icon-chat::before { content: '\\e900'; }
+    &.icon-telegram::before { content: '\\e901'; }
+    &.icon-viber::before { content: '\\e902'; }
+
+    &.icon-telegram {
+      color: var(--electric-blue);
+    }
+    &.icon-viber {
+      color: var(--promo-violet);
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: toRem(16);
+    line-height: 1.4;
+
+    @media (max-width: $mobile) {
+      font-size: toRem(15);
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: toRem(64);
+    height: toRem(64);
+    background-color: var(--dark-violet);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: toRem(24);
+    cursor: pointer;
+    border: none;
+    box-shadow: var(--pagging-shadow);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--violet);
+        transform: scale(1.05);
+      }
+    }
+
+    @media (max-width: $mobile) {
+      width: toRem(56);
+      height: toRem(56);
+      font-size: toRem(20);
+    }
+
+    .live-chat__button-icon {
+      transition: transform 0.3s ease;
+    }
+  }
+} 
