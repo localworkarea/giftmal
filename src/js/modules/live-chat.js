@@ -3,36 +3,33 @@
  */
 function initLiveChat() {
   const liveChat = document.getElementById('live-chat');
-  if (!liveChat) {
-    return;
-  }
+  if (!liveChat) return;
 
   const chatButton = document.getElementById('live-chat-button');
   const chatModal = document.getElementById('live-chat-modal');
-  const openIcon = chatButton.querySelector('.live-chat__button-icon--open');
-  const closeIcon = chatButton.querySelector('.live-chat__button-icon--close');
+  const openIcon = chatButton?.querySelector('.live-chat__button-icon--open');
+  const closeIcon = chatButton?.querySelector('.live-chat__button-icon--close');
 
   if (!chatButton || !chatModal || !openIcon || !closeIcon) {
     console.error('Live chat elements not found.');
     return;
   }
 
-  // Function to toggle the modal visibility
+  chatModal.hidden = true;
+  chatModal.classList.remove('live-chat__modal--active');
+  chatButton.setAttribute('aria-expanded', 'false');
+
   const toggleModal = () => {
     const isExpanded = chatButton.getAttribute('aria-expanded') === 'true';
-    chatButton.setAttribute('aria-expanded', !isExpanded);
+    const newState = !isExpanded;
+
+    chatButton.setAttribute('aria-expanded', newState);
     chatModal.hidden = isExpanded;
-    chatModal.classList.toggle('live-chat__modal--active', !isExpanded);
+    chatModal.classList.toggle('live-chat__modal--active', newState);
 
-    // Toggle icon visibility
-    openIcon.hidden = !isExpanded;
-    closeIcon.hidden = isExpanded;
-
-    if (!isExpanded) {
+    if (newState) {
       const firstFocusable = chatModal.querySelector('a[href], button');
-      if (firstFocusable) {
-        firstFocusable.focus();
-      }
+      firstFocusable?.focus();
     }
   };
 
@@ -49,15 +46,7 @@ function initLiveChat() {
       toggleModal();
     }
   });
-
-  // Initial setup: ensure modal and close icon are hidden correctly on load
-  chatModal.hidden = true;
-  closeIcon.hidden = true;
-  openIcon.hidden = false;
-  chatButton.setAttribute('aria-expanded', 'false');
-  chatModal.classList.remove('live-chat__modal--active');
 }
-
 
 export default initLiveChat;
 
