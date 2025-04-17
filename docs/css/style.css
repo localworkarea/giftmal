@@ -6756,6 +6756,107 @@ body::after {
   text-decoration: underline;
   white-space: nowrap
 }
+.live-chat {
+  position: fixed;
+  bottom: 1.875rem;
+  right: 1.875rem;
+  z-index: 1000
+}
+.live-chat__modal {
+  position: absolute;
+  bottom: calc(100% + 1rem);
+  right: 0;
+  width: 20rem;
+  background-color: var(--white);
+  border-radius: 1.5rem;
+  box-shadow: 0 .25rem 2.5rem rgba(0,0,0,.1);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(.625rem);
+  transform: translateY(.625rem);
+  transition: opacity .3s ease,visibility .3s ease,-webkit-transform .3s ease;
+  transition: opacity .3s ease,visibility .3s ease,transform .3s ease;
+  transition: opacity .3s ease,visibility .3s ease,transform .3s ease,-webkit-transform .3s ease;
+  overflow: hidden
+}
+.live-chat__modal[hidden] {
+  display: none
+}
+.live-chat__modal--active {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translateY(0);
+  transform: translateY(0)
+}
+.live-chat__header {
+  border-bottom: 1px solid var(--gray-1);
+  padding: 2rem
+}
+.live-chat__title {
+  font-weight: 500;
+  font-size: 1.4375rem;
+  line-height: 1.3;
+  color: var(--dark-violet);
+  margin-bottom: .75rem
+}
+.live-chat__subtitle {
+  font-size: .9375rem;
+  line-height: 1.4;
+  color: var(--fade-violet-2)
+}
+.live-chat__options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding: 2rem
+}
+.live-chat__option:not(:last-child) {
+  margin-bottom: 1rem
+}
+.live-chat__link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--dark-violet);
+  font-size: .9375rem;
+  font-weight: 500;
+  transition: opacity .3s ease
+}
+.live-chat__link:not(:last-child) {
+  margin-bottom: 1.5rem
+}
+.live-chat__icon {
+  width: 1.5rem;
+  height: 1.5rem
+}
+.live-chat__text {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.4
+}
+.live-chat__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--dark-violet);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: var(--pagging-shadow);
+  transition: background-color .3s ease,-webkit-transform .3s ease;
+  transition: background-color .3s ease,transform .3s ease;
+  transition: background-color .3s ease,transform .3s ease,-webkit-transform .3s ease
+}
+.live-chat__button .live-chat__button-icon {
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease,-webkit-transform .3s ease
+}
 .banner__img {
   overflow: hidden
 }
@@ -12072,6 +12173,9 @@ body::after {
 .corporate-promo .notification__close span {
   font-size: 1.25rem
 }
+.corporate-promo .corporate-promo__container {
+  max-width: 106.25rem
+}
 .corporate-promo__slider {
   overflow: hidden
 }
@@ -12080,8 +12184,12 @@ body::after {
   align-items: center;
   justify-content: space-between;
   opacity: 0;
-  transition: opacity .3s ease;
-  padding: 0 6.25rem
+  transition: opacity .3s ease
+}
+.corporate-promo__slide .corporate-promo-img {
+  width: 100%;
+  height: auto;
+  display: block
 }
 .corporate-promo__content {
   max-width: 31.25rem;
@@ -15516,7 +15624,7 @@ body::after {
     top: -1.25rem
   }
   .corporate-promo__slide {
-    padding: 0 5rem
+    padding-bottom: 1.25rem
   }
   .corporate-promo__content {
     max-width: 23.75rem
@@ -15531,6 +15639,13 @@ body::after {
   }
   .corporate-promo__image img {
     max-width: 20rem
+  }
+  .corporate-promo__pagination {
+    bottom: .75rem
+  }
+  .corporate-promo__pagination .swiper-pagination-bullet {
+    width: .5rem;
+    height: .5rem
   }
   .item-payment__address span {
     display: none
@@ -16183,6 +16298,38 @@ body::after {
     white-space: initial;
     font-size: .875rem;
     text-align: center
+  }
+  .live-chat {
+    bottom: 1.25rem;
+    right: 1.25rem
+  }
+  .live-chat__modal {
+    width: calc(100vw - 2.5rem);
+    max-width: 17.625rem
+  }
+  .live-chat__header {
+    padding: 1.5rem
+  }
+  .live-chat__title {
+    font-size: 1rem;
+    margin-bottom: .25rem
+  }
+  .live-chat__subtitle {
+    font-size: .875rem
+  }
+  .live-chat__options {
+    padding: 1.5rem
+  }
+  .live-chat__link {
+    font-size: .875rem
+  }
+  .live-chat__text {
+    font-size: .9375rem
+  }
+  .live-chat__button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.25rem
   }
   .item-cart__buttons {
     gap: .5rem
@@ -17292,9 +17439,6 @@ body::after {
     margin-top: .3125rem;
     margin-left: .3125rem
   }
-  .corporate-promo__slide {
-    padding: 1.25rem 2.5rem 1.875rem
-  }
   .corporate-promo__content {
     max-width: 100%
   }
@@ -17313,6 +17457,10 @@ body::after {
   }
   .corporate-promo__image img {
     max-width: 11.25rem
+  }
+  .corporate-promo__pagination .swiper-pagination-bullet {
+    width: .375rem;
+    height: .375rem
   }
 }
 @media (max-width:48.06125em)and (max-width:48.06125em) {
@@ -20613,6 +20761,14 @@ body::after {
   .partners-grid__item:hover img {
     -webkit-filter: brightness(0) invert(1);
     filter: brightness(0) invert(1)
+  }
+  .live-chat__link:hover {
+    opacity: .7
+  }
+  .live-chat__button:hover {
+    background-color: var(--violet);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05)
   }
   .card-news:hover {
     box-shadow: 0 4px 40px 0 rgba(33,5,41,.12)
