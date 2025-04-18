@@ -60,8 +60,8 @@
 }
 
 .platform {
-  @extend %paddingTbBt56-16;
   position: relative;
+  @include adaptiveValue("padding-top", 56,16,0,1440.98,480.98);
   padding-bottom: toRem(175);
   
   @media (max-width: $tablet) {
@@ -528,7 +528,7 @@
   }
   
   &__title {
-    font-size: toRem(32);
+    font-size: toRem(40);
     font-weight: 500;
     color: var(--dark-violet);
     margin-bottom: toRem(24);
