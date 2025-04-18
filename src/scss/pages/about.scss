@@ -31,7 +31,7 @@
 // About section
 .about {
   $root: &;
-  @extend %paddingTbBt56-16;
+  @include adaptiveValue("padding-top", 56,16,0,1440.98,480.98);
   padding-bottom: toRem(114);
   @media (max-width: $mobile) {
     padding-bottom: toRem(32);
