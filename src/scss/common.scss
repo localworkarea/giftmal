@@ -1094,12 +1094,13 @@ html {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     box-shadow: 0 3px 32px 0 rgba(0, 0, 0, 0.08);
-    background: rgba(255, 255, 255, 0.6);
+    // background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgb(242, 242, 242,0.6);
     display: flex;
     align-items: center;
     padding: 0 toRem(10) 0 0;
     overflow: hidden;
-    transition: width .65s ease-in-out;
+    transition: width .65s ease-in-out, background-color .45s ease-in-out;
     width: toRem(32);
     max-width: fit-content;
 
@@ -1115,6 +1116,7 @@ html {
     @media (any-hover: hover){
       &:hover{
         width: 100%;
+        background-color: rgb(242, 242, 242,1);
         span {
           &:nth-child(2) {
             opacity: 1;

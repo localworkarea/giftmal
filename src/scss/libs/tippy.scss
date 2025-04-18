@@ -5,6 +5,7 @@
 }
 [data-tippy-root] {
 	max-width: calc(100vw - 10px);
+	z-index: 3 !important;
 }
 .tippy-box {
 	position: relative;

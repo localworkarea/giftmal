@@ -128,7 +128,7 @@
       height: 100%;
       max-height: 100% !important;    
       background-color: var(--gray-1);
-      border-radius: 0;
+      border-radius: 0 !important;
       box-shadow: unset;   
       opacity: 0;
       pointer-events: none;
@@ -237,7 +237,7 @@
          .filters__sub-list {
            .filters__list {
              position: relative;
-             background-color: var(--gray-1);
+            //  background-color: var(--gray-1);
             
            }
          }
@@ -631,7 +631,7 @@
   }
 }
 [data-filters-spoller-body].filters__list {
-  @media (min-width:$mobileSmall){
+  // @media (min-width:$mobileSmall){
     background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.03) 0%,
@@ -639,7 +639,7 @@
       rgba(0, 0, 0, 0) 90%,
       rgba(0, 0, 0, 0.03) 100%
     );
-  }
+  // }
   
 }
 

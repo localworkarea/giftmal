@@ -607,6 +607,9 @@
   // .search__history
   &__history {
     @extend %fonsSize15-14;
+    @media (max-width:$mobileSmall){
+       font-size: toRem(20) !important; 
+    }
   }
   // .search__top
   &__top {

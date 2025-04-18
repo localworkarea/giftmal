@@ -5,8 +5,8 @@
   @include adaptiveValue("padding-top", 80, 56,0,1400.98,480.98);
   @include adaptiveValue("padding-bottom", 56, 24,0,1400.98,480.98);
   @extend  %borderRadiusTop40-24;
-  .card-page & {
-    margin-top: toRem(6) !important;
+  .has-seo-block & {
+    margin-top: toRem(0) !important;
   }
   // .footer__container
   &__container {

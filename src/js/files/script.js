@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const certificateAccount = document.querySelector('.certificate-account');
   const cardPage = document.querySelector('.card');
   const catalogPage = document.querySelector('.catalog');
+  const seoBlockEl = document.querySelector('.seo-block');
   if (checkoutPage) {
     document.documentElement.classList.add('checkout-page');
   }
@@ -59,6 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (catalogPage) {
     document.documentElement.classList.add('catalog-page');
+  }
+  if (seoBlockEl) {
+    document.documentElement.classList.add('has-seo-block');
   }
 
 
