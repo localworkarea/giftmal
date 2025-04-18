@@ -224,7 +224,7 @@
   }
 }
 
-// Add more specific selectors to override the existing styles
+
 .live-chat__button .live-chat__button-icon--open.live-chat__button-icon--dark {
   opacity: 1 !important;
   display: block !important;
@@ -251,7 +251,6 @@
   }
 }
 
-// Add even more specific selectors for the expanded state
 .live-chat__button[aria-expanded="true"] .live-chat__button-icon--open.live-chat__button-icon--dark {
   opacity: 0 !important;
   display: none !important;
