@@ -10059,7 +10059,6 @@ body::after {
   display: block
 }
 .mission {
-  padding: 5rem 0;
   padding-top: 7.5rem;
   padding-bottom: 7.5rem;
   background-color: var(--white);
@@ -10147,7 +10146,7 @@ body::after {
   width: 100%;
   height: auto
 }
-.mission .mobile-visible {
+.mission .mission__image-block--wrapper.mobile-visible {
   display: none
 }
 .mission__item-content {
@@ -10507,7 +10506,7 @@ body::after {
 .faq__dark .dropdown-arrow:hover {
   background-color: var(--dark-violet)
 }
-.faq__exeption {
+.faq.faq__exeption {
   padding-top: 7.5rem
 }
 .awards__title {
@@ -11086,7 +11085,7 @@ body::after {
   z-index: 1
 }
 .how-it-works__title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 500;
   color: var(--dark-violet);
   margin-bottom: 1.5rem
@@ -14968,7 +14967,6 @@ body::after {
 @media (min-width:77.06125em) {
   .activation-balance,
   .balance-account__balance-card,
-  .blog-inner,
   .card-news,
   .current-balance,
   .data-account,
@@ -15104,12 +15102,10 @@ body::after {
   .awards,
   .blog,
   .contractors-benefits-cards,
-  .contractors-page .contractors,
   .corporative,
   .faq,
   .feedback,
   .main-page .clients-marquee,
-  .platform,
   .rewards-catalog,
   .terms {
     padding-top: 3.5rem
@@ -15118,12 +15114,10 @@ body::after {
   .awards,
   .blog,
   .contractors-benefits-cards,
-  .contractors-page .contractors,
   .corporative,
   .faq,
   .feedback,
   .main-page .clients-marquee,
-  .platform,
   .rewards-catalog,
   .terms {
     padding-bottom: 3.5rem
@@ -15156,6 +15150,12 @@ body::after {
   }
   .tab-checkout__item {
     padding-bottom: 2rem
+  }
+  .platform {
+    padding-top: 3.5rem
+  }
+  .contractors-page .contractors {
+    padding-top: 3.5rem
   }
   .thanks {
     padding-top: 3rem
@@ -15371,7 +15371,6 @@ body::after {
 @media (max-width:62.06125em) {
   .activation-balance,
   .balance-account__balance-card,
-  .blog-inner,
   .card-news,
   .current-balance,
   .data-account,
@@ -15503,9 +15502,6 @@ body::after {
   }
   .about__stats-item br {
     display: none
-  }
-  .mission {
-    padding: 4rem 0
   }
   .mission {
     padding-bottom: 11.25rem
@@ -15721,13 +15717,13 @@ body::after {
     left: .9375rem;
     bottom: -50%
   }
-  .mission .mobile-visible {
+  .mission .mission__image-block--wrapper.mobile-visible {
     display: block;
     margin-bottom: 1.5rem;
     width: 100%;
     max-width: 100%
   }
-  .mission .mobile-visible img {
+  .mission .mission__image-block--wrapper.mobile-visible img {
     width: 100%;
     height: auto
   }
@@ -16673,9 +16669,6 @@ body::after {
     margin-bottom: 1.5rem
   }
   .mission {
-    padding: 3rem 0
-  }
-  .mission {
     padding-bottom: 10rem;
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
@@ -16847,10 +16840,10 @@ body::after {
   .feedback-card__text {
     font-size: .875rem
   }
-  .faq__exeption {
+  .faq.faq__exeption {
     padding-top: 3.5rem
   }
-  .faq__exeption .faq__title {
+  .faq.faq__exeption .faq__title {
     display: none
   }
   .awards__title {
@@ -18343,12 +18336,10 @@ body::after {
   .awards,
   .blog,
   .contractors-benefits-cards,
-  .contractors-page .contractors,
   .corporative,
   .faq,
   .feedback,
   .main-page .clients-marquee,
-  .platform,
   .rewards-catalog,
   .terms {
     padding-top: 1rem
@@ -18357,12 +18348,10 @@ body::after {
   .awards,
   .blog,
   .contractors-benefits-cards,
-  .contractors-page .contractors,
   .corporative,
   .faq,
   .feedback,
   .main-page .clients-marquee,
-  .platform,
   .rewards-catalog,
   .terms {
     padding-bottom: 2.5rem
@@ -19826,15 +19815,15 @@ body::after {
     font-size: .875rem;
     margin-top: 1rem
   }
-  .mission {
-    padding: 2rem 0
-  }
   .mission__grid--1 .mission__image-block--wrapper {
     max-width: 15.625rem
   }
   .mission__grid--2 .mission__image-block--wrapper:last-child {
     max-width: 15.625rem;
     margin-top: 4rem
+  }
+  .platform {
+    padding-top: 1rem
   }
   .platform__feature-card {
     max-width: 10.4375rem
@@ -19844,6 +19833,9 @@ body::after {
   }
   .how-it-works .how-it-works__card-chart {
     margin-top: -1rem
+  }
+  .contractors-page .contractors {
+    padding-top: 1rem
   }
   .mobile-app {
     padding: 1.875rem 0
@@ -20004,12 +19996,10 @@ body::after {
   .awards,
   .blog,
   .contractors-benefits-cards,
-  .contractors-page .contractors,
   .corporative,
   .faq,
   .feedback,
   .main-page .clients-marquee,
-  .platform,
   .rewards-catalog,
   .terms {
     padding-top: clamp(1rem ,-.2525520833rem + 4.1666666667vw ,3.5rem)
@@ -20018,12 +20008,10 @@ body::after {
   .awards,
   .blog,
   .contractors-benefits-cards,
-  .contractors-page .contractors,
   .corporative,
   .faq,
   .feedback,
   .main-page .clients-marquee,
-  .platform,
   .rewards-catalog,
   .terms {
     padding-bottom: clamp(2.5rem ,1.9989791667rem + 1.6666666667vw ,3.5rem)
@@ -20047,6 +20035,12 @@ body::after {
   }
   .tab-checkout__item {
     padding-bottom: clamp(1.5rem ,1.2494895833rem + .8333333333vw ,2rem)
+  }
+  .platform {
+    padding-top: clamp(1rem ,-.2525520833rem + 4.1666666667vw ,3.5rem)
+  }
+  .contractors-page .contractors {
+    padding-top: clamp(1rem ,-.2525520833rem + 4.1666666667vw ,3.5rem)
   }
   .thanks {
     padding-top: clamp(.5rem ,-.7525520833rem + 4.1666666667vw ,3rem)
@@ -20169,7 +20163,6 @@ body::after {
 @media (min-width:62.06125em)and (max-width:77.06125em) {
   .activation-balance,
   .balance-account__balance-card,
-  .blog-inner,
   .card-news,
   .current-balance,
   .data-account,
