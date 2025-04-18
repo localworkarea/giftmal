@@ -6853,7 +6853,7 @@ body::after {
   justify-content: center;
   width: 3.5rem;
   height: 3.5rem;
-  background-color: var(--dark-violet);
+  background-color: var(--white);
   border-radius: 50%;
   color: var(--white);
   font-size: 1.5rem;
@@ -6881,20 +6881,47 @@ body::after {
   -webkit-transform: translate(-50%,-50%) scale(1);
   transform: translate(-50%,-50%) scale(1)
 }
+.live-chat__button .live-chat__button-icon--open--dark {
+  opacity: 1;
+  display: block
+}
+.live-chat__button .live-chat__button-icon--open--light {
+  opacity: 0;
+  display: none
+}
 .live-chat__button .live-chat__button-icon--close {
   opacity: 0;
   -webkit-transform: translate(-50%,-50%) scale(.3);
-  transform: translate(-50%,-50%) scale(.3)
+  transform: translate(-50%,-50%) scale(.3);
+  -webkit-filter: brightness(0) saturate(100%);
+  filter: brightness(0) saturate(100%)
 }
 .live-chat__button[aria-expanded=true] .live-chat__button-icon--open {
   opacity: 0;
   -webkit-transform: translate(-50%,-50%) scale(.3);
-  transform: translate(-50%,-50%) scale(.3)
+  transform: translate(-50%,-50%) scale(.3);
+  display: none!important
 }
 .live-chat__button[aria-expanded=true] .live-chat__button-icon--close {
   opacity: 1;
   -webkit-transform: translate(-50%,-50%) scale(1);
   transform: translate(-50%,-50%) scale(1)
+}
+.live-chat__button .live-chat__button-icon--open.live-chat__button-icon--dark {
+  opacity: 1!important;
+  display: block!important
+}
+.live-chat__button .live-chat__button-icon--open.live-chat__button-icon--light {
+  opacity: 0!important;
+  display: none!important
+}
+.live-chat__button[aria-expanded=true] .live-chat__button-icon--open.live-chat__button-icon--dark {
+  opacity: 0!important;
+  display: none!important
+}
+.live-chat__button[aria-expanded=true] .live-chat__button-icon--open.live-chat__button-icon--light {
+  opacity: 0!important;
+  display: none!important
 }
 .banner__img {
   overflow: hidden
@@ -11359,7 +11386,7 @@ body::after {
 }
 .one-click-start__content {
   display: grid;
-  grid-template-columns: 55% 1fr;
+  grid-template-columns: 43.4375rem 1fr;
   gap: .5rem
 }
 .one-click-start__text-title {
@@ -15112,7 +15139,6 @@ body::after {
   .option {
     gap: 1rem
   }
-  .about,
   .awards,
   .blog,
   .contractors-benefits-cards,
@@ -15124,7 +15150,6 @@ body::after {
   .terms {
     padding-top: 3.5rem
   }
-  .about,
   .awards,
   .blog,
   .contractors-benefits-cards,
@@ -15164,6 +15189,9 @@ body::after {
   }
   .tab-checkout__item {
     padding-bottom: 2rem
+  }
+  .about {
+    padding-top: 3.5rem
   }
   .platform {
     padding-top: 3.5rem
@@ -18360,7 +18388,6 @@ body::after {
   .main-page .faq {
     padding-bottom: 3.5rem
   }
-  .about,
   .awards,
   .blog,
   .contractors-benefits-cards,
@@ -18372,7 +18399,6 @@ body::after {
   .terms {
     padding-top: 1rem
   }
-  .about,
   .awards,
   .blog,
   .contractors-benefits-cards,
@@ -19840,6 +19866,9 @@ body::after {
   .article__quote {
     border-radius: .75rem
   }
+  .about {
+    padding-top: 1rem
+  }
   .about__stats-item {
     flex-direction: column;
     align-items: flex-start;
@@ -20026,7 +20055,6 @@ body::after {
   .option {
     gap: clamp(.5rem ,.2494895833rem + .8333333333vw ,1rem)
   }
-  .about,
   .awards,
   .blog,
   .contractors-benefits-cards,
@@ -20038,7 +20066,6 @@ body::after {
   .terms {
     padding-top: clamp(1rem ,-.2525520833rem + 4.1666666667vw ,3.5rem)
   }
-  .about,
   .awards,
   .blog,
   .contractors-benefits-cards,
@@ -20069,6 +20096,9 @@ body::after {
   }
   .tab-checkout__item {
     padding-bottom: clamp(1.5rem ,1.2494895833rem + .8333333333vw ,2rem)
+  }
+  .about {
+    padding-top: clamp(1rem ,-.2525520833rem + 4.1666666667vw ,3.5rem)
   }
   .platform {
     padding-top: clamp(1rem ,-.2525520833rem + 4.1666666667vw ,3.5rem)
@@ -20827,9 +20857,29 @@ body::after {
     opacity: .7
   }
   .live-chat__button:hover {
-    background-color: var(--violet);
+    background-color: var(--dark-violet);
     -webkit-transform: scale(1.05);
     transform: scale(1.05)
+  }
+  .live-chat__button:hover .live-chat__button .live-chat__button-icon--open--dark {
+    opacity: 0;
+    display: none
+  }
+  .live-chat__button:hover .live-chat__button .live-chat__button-icon--open--light {
+    opacity: 1;
+    display: block
+  }
+  .live-chat__button:hover .live-chat__button-icon--open.live-chat__button-icon--dark {
+    opacity: 0!important;
+    display: none!important
+  }
+  .live-chat__button:hover .live-chat__button-icon--open.live-chat__button-icon--light {
+    opacity: 1!important;
+    display: block!important
+  }
+  .live-chat__button:hover .live-chat__button-icon--close {
+    -webkit-filter: brightness(0) saturate(100%) invert(100%) sepia(0) saturate(0) hue-rotate(93deg) brightness(103%) contrast(103%);
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0) saturate(0) hue-rotate(93deg) brightness(103%) contrast(103%)
   }
   .card-news:hover {
     box-shadow: 0 4px 40px 0 rgba(33,5,41,.12)
