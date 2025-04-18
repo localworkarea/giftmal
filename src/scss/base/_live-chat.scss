@@ -131,7 +131,7 @@
     justify-content: center;
     width: toRem(56);
     height: toRem(56);
-    background-color: var(--dark-violet);
+    background-color: var(--white);
     border-radius: 50%;
     color: var(--white);
     font-size: toRem(24);
@@ -144,7 +144,7 @@
 
     @media (any-hover: hover) {
       &:hover {
-        background-color: var(--violet);
+        background-color: var(--dark-violet);
         transform: scale(1.05);
       }
     }
@@ -167,6 +167,31 @@
       &--open {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
+        
+        &--dark {
+          opacity: 1;
+          display: block;
+        }
+        
+        &--light {
+          opacity: 0;
+          display: none;
+        }
+        
+        @media (any-hover: hover) {
+          .live-chat__button:hover & {
+            &--dark {
+              opacity: 0;
+              display: none;
+            }
+            
+            &--light {
+              opacity: 1;
+              display: block;
+            }
+          }
+        }
+        
         @media (max-width: $mobile) {
           max-width: toRem(30);
         }
@@ -175,6 +200,7 @@
       &--close {
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.3);
+        filter: brightness(0) saturate(100%);
         @media (max-width: $mobile) {
           max-width: toRem(30);
         }
@@ -186,6 +212,7 @@
         &--open {
           opacity: 0;
           transform: translate(-50%, -50%) scale(0.3);
+          display: none !important;
         }
         
         &--close {
@@ -195,4 +222,42 @@
       }
     }
   }
+}
+
+// Add more specific selectors to override the existing styles
+.live-chat__button .live-chat__button-icon--open.live-chat__button-icon--dark {
+  opacity: 1 !important;
+  display: block !important;
+}
+
+.live-chat__button .live-chat__button-icon--open.live-chat__button-icon--light {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+@media (any-hover: hover) {
+  .live-chat__button:hover .live-chat__button-icon--open.live-chat__button-icon--dark {
+    opacity: 0 !important;
+    display: none !important;
+  }
+  
+  .live-chat__button:hover .live-chat__button-icon--open.live-chat__button-icon--light {
+    opacity: 1 !important;
+    display: block !important;
+  }
+  
+  .live-chat__button:hover .live-chat__button-icon--close {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  }
+}
+
+// Add even more specific selectors for the expanded state
+.live-chat__button[aria-expanded="true"] .live-chat__button-icon--open.live-chat__button-icon--dark {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+.live-chat__button[aria-expanded="true"] .live-chat__button-icon--open.live-chat__button-icon--light {
+  opacity: 0 !important;
+  display: none !important;
 } 

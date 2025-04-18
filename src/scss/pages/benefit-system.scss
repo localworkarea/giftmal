@@ -919,7 +919,7 @@
   
   &__content {
     display: grid;
-    grid-template-columns: 55% 1fr;
+    grid-template-columns: toRem(695) 1fr;
     gap: toRem(8);
     
     @media (max-width: toRem(1180)) {
