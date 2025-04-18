@@ -1681,20 +1681,31 @@ body::after {
 				white-space: nowrap;
 				&._all {
 					min-width: toRem(44);
+					&.active {
+						background-color: var(--dark-violet);
+					}
 				}
 				&._activation {
 					color: var(--green);
 					min-width: toRem(88);
+					&.active {
+						background-color: var(--green);
+					}
 				}
 				&._write-off {
-
+					&.active {
+						background-color: var(--fade-violet-2);
+					}
 				}
 				&._expired {
 					color: var(--red-2);
+					&.active {
+						background-color: var(--red-2);
+					}
 				}
 				&.active {
 					color: var(--white);
-					background-color: var(--dark-violet);
+					// background-color: var(--dark-violet);
 				}
 		}
 	}
@@ -1703,7 +1714,9 @@ body::after {
 	}
 	// .popup-history__head
 	&__head {
-		margin-bottom: toRem(16);
+		@media (max-width:$mobileSmall){
+			margin-bottom: toRem(16);
+		}
 		@extend %gridItems;
 	}
 	// .popup-history__head-cell
@@ -1736,7 +1749,7 @@ body::after {
 	// .popup-history__item
 	&__item {
 		@extend %gridItems;
-		padding-block: toRem(14);
+		padding-block: toRem(12);
 		@extend %fonsSize15-14;
 		line-height: 1.46;
 		&:not(:last-child) {

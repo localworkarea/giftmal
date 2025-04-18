@@ -2,7 +2,7 @@
   background-color: var(--dark-violet);
   color: var(--white);
   @include adaptiveValue("margin-top", 56, 46,0,1400.98,480.98);
-  @include adaptiveValue("padding-top", 80, 56,0,1400.98,480.98);
+  @include adaptiveValue("padding-top", 80, 24,0,1400.98,480.98);
   @include adaptiveValue("padding-bottom", 56, 24,0,1400.98,480.98);
   @extend  %borderRadiusTop40-24;
   .has-seo-block & {

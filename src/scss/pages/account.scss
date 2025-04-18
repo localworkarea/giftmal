@@ -639,7 +639,9 @@
     .card-balance__list {}
     .card-balance__item {
     }
-    .card-balance__block {}
+    .card-balance__block {
+      @extend %fonsSize15-14;
+    }
     .card-balance__sub-title {
       @media (min-width:$mobileSmall){
         margin-bottom: toRem(8);
@@ -769,8 +771,13 @@
   &__img {
     position: absolute;
     z-index: -1;
-    top: 27%;
     right: 0;
+    @media (min-width:$mobileSmall){
+      top: 27%;
+    }
+    @media (max-width:$mobileSmall){
+       top: 44%; 
+    }
   }
   // .spollers-balance__subtxt
   &__subtxt {
@@ -883,6 +890,7 @@
     gap: toRem(8);
     .input {
       min-height: toRem(40);
+      letter-spacing: 0.25em;
     }
   }
 	// .card-spollers__link
