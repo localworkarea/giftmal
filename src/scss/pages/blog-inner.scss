@@ -117,7 +117,6 @@
   }
 }
 .blog-inner {
-  @extend %padding32-24;
   padding-top: toRem(24);
   padding-bottom: toRem(182);
   position: relative;

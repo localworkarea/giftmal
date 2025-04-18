@@ -7,22 +7,6 @@
   }
 }
 
-@mixin section-padding {
-  padding: toRem(80) 0;
-  
-  @media (max-width: $tablet) {
-    padding: toRem(64) 0;
-  }
-  
-  @media (max-width: $mobile) {
-    padding: toRem(48) 0;
-  }
-  
-  @media (max-width: $mobileSmall) {
-    padding: toRem(32) 0;
-  }
-}
-
 @mixin section-title {
   font-size: toRem(40);
   font-weight: 500;
@@ -170,7 +154,6 @@
 }
 // Mission section
 .mission {
-  @include section-padding;
   padding-top: toRem(120);
   padding-bottom: toRem(120);
   background-color: var(--white);
@@ -342,20 +325,20 @@
       height:auto;
      }
     }
-  }
 
-  .mobile-visible {
-    display: none;
-    
-    @media (max-width: toEm(932)) {
-      display: block;
-      margin-bottom: toRem(24);
-      width: 100%;
-      max-width: 100%;
+    &.mobile-visible {
+      display: none;
       
-      img {
+      @media (max-width: toEm(932)) {
+        display: block;
+        margin-bottom: toRem(24);
         width: 100%;
-        height: auto;
+        max-width: 100%;
+        
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
     }
   }

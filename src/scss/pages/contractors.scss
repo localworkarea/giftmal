@@ -1,6 +1,6 @@
 .contractors-page{
   .contractors{
-    @extend %paddingTbBt56-16;
+    @include adaptiveValue("padding-top", 56,16,0,1440.98,480.98);
     padding-bottom: 0;
   }
   .clients-marquee{
