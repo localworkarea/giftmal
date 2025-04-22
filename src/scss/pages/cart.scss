@@ -295,6 +295,7 @@
     gap: toRem(16);
     grid-template-columns: 49% 49%;
     @media (min-width:toEm(950.98)){
+      align-items: center;
     }
     @media (max-width: toEm(950.98)){
       grid-row: 2/3;

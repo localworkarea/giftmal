@@ -4034,7 +4034,7 @@ body::after {
   line-height: 1.2
 }
 .popup-question.popup .popup__content {
-  max-width: 32.8125rem
+  max-width: 32.8125rem!important
 }
 .popup-question.popup .popup-question__head {
   text-align: center;
@@ -4125,7 +4125,7 @@ body::after {
   font-size: .75rem
 }
 .popup-availability.popup .popup__content {
-  max-width: 28.125rem
+  max-width: 28.125rem!important
 }
 .popup-availability.popup .popup-availability__head {
   margin-bottom: 2rem;
@@ -4144,7 +4144,7 @@ body::after {
   margin-bottom: 2rem
 }
 .popup-availability-msg.popup .popup__content {
-  max-width: 28.125rem
+  max-width: 28.125rem!important
 }
 .popup-availability-msg.popup .popup-msg {
   text-align: center
@@ -14833,6 +14833,9 @@ body::after {
   }
   .cart__wrapper {
     grid-template-columns: 1fr 24%
+  }
+  .item-cart__buttons {
+    align-items: center
   }
   .item-cart__select {
     width: 9rem

@@ -806,7 +806,7 @@ body::after {
 	 overflow-y: auto; 
 	}
 	.popup__content {
-		max-width: toRem(525);
+		max-width: toRem(525) !important;
 		@media (max-width:$mobileSmall){
 			padding: toRem(32) toRem(16) toRem(16) toRem(16);
 		}
@@ -978,7 +978,7 @@ body::after {
 // Popup #popupAvailability =====================
 .popup-availability.popup {
 	.popup__content {
-		max-width: toRem(450);
+		max-width: toRem(450) !important;
 		@media (max-width:$mobileSmall){
 			padding: toRem(32) toRem(16) toRem(16) toRem(16);
 		}
@@ -1014,7 +1014,7 @@ body::after {
 // Popup #popupAvailabilityMsg =====================
 .popup-availability-msg.popup {
 	.popup__content {
-		max-width: toRem(450);
+		max-width: toRem(450) !important;
 		@media (max-width:$mobileSmall){
 			padding: toRem(32) toRem(16) toRem(16) toRem(16);
 		}
