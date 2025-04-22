@@ -245,6 +245,10 @@
     opacity: 1 !important;
     display: block !important;
   }
+  .live-chat__modal--active + .live-chat__button:hover .live-chat__button-icon--open.live-chat__button-icon--light  {
+    opacity: 0 !important;
+    display: none !important;
+  }
   
   .live-chat__button:hover .live-chat__button-icon--close {
     filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
