@@ -11929,14 +11929,28 @@ body::after {
 .seo-block ::-webkit-scrollbar-track {
   background: var(--gray-1)
 }
+.seo-block__container {
+  position: relative
+}
+.seo-block__container::after {
+  content: "";
+  width: 95%;
+  height: 4.375rem;
+  position: absolute;
+  bottom: -1.25rem;
+  left: 0;
+  background: var(--white);
+  background: linear-gradient(0deg,#fff 20%,rgba(87,199,133,0) 150%)
+}
 .seo-block__content {
   max-height: 13.75rem;
   overflow: auto;
-  padding: 0 7.5rem
+  padding: 0 7.5rem;
+  padding-bottom: 2.5rem
 }
 .seo-block__title {
   font-weight: 500;
-  font-size: 2.5rem;
+  font-size: 2rem;
   line-height: 1.3;
   text-align: center;
   margin-bottom: 1rem
@@ -11953,6 +11967,9 @@ body::after {
   line-height: 1.3;
   text-align: center;
   margin-bottom: 1rem
+}
+.seo-block__subtitle~p {
+  font-size: .8125rem
 }
 .featured {
   padding-top: 3.75rem;
@@ -15688,13 +15705,14 @@ body::after {
   }
   .seo-block__content {
     padding: 0 1.5rem;
+    padding-bottom: 2.5rem;
     max-height: 15rem
   }
   .seo-block__title {
     font-size: 1.75rem
   }
   .seo-block__subtitle {
-    font-size: 1.1875rem
+    font-size: 1.25rem
   }
   .featured__title {
     margin-bottom: 1rem
@@ -17476,7 +17494,8 @@ body::after {
   }
   .seo-block__content {
     padding: 0 .625rem;
-    max-height: 18.125rem
+    max-height: 18.125rem;
+    padding-bottom: 2.5rem
   }
   .seo-block__title {
     font-size: 1.25rem
@@ -17485,6 +17504,9 @@ body::after {
     font-size: .875rem
   }
   .seo-block p {
+    font-size: .6875rem
+  }
+  .seo-block__subtitle~p {
     font-size: .6875rem
   }
   .featured {
@@ -20908,6 +20930,10 @@ body::after {
   .live-chat__button:hover .live-chat__button-icon--open.live-chat__button-icon--light {
     opacity: 1!important;
     display: block!important
+  }
+  .live-chat__modal--active+.live-chat__button:hover .live-chat__button-icon--open.live-chat__button-icon--light {
+    opacity: 0!important;
+    display: none!important
   }
   .live-chat__button:hover .live-chat__button-icon--close {
     -webkit-filter: brightness(0) saturate(100%) invert(100%) sepia(0) saturate(0) hue-rotate(93deg) brightness(103%) contrast(103%);
