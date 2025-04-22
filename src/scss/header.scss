@@ -65,6 +65,9 @@
       width: 100%;
       
       gap: toRem(17);
+      .item-dropdwn {
+        margin-inline: toRem(-8) !important;
+      }
     }
     @media (max-width:$mobileSmall){
       justify-content: space-between;

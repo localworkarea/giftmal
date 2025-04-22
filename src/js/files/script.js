@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardPage = document.querySelector('.card');
   const catalogPage = document.querySelector('.catalog');
   const seoBlockEl = document.querySelector('.seo-block');
+  const cabinetPage = document.querySelector('.cabinet');
   if (checkoutPage) {
     document.documentElement.classList.add('checkout-page');
   }
@@ -63,6 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (seoBlockEl) {
     document.documentElement.classList.add('has-seo-block');
+  }
+  if (cabinetPage) {
+    document.documentElement.classList.add('cabinet-page');
   }
 
 
@@ -344,17 +348,17 @@ document.addEventListener("DOMContentLoaded", () => {
   mediaQuery900max.addEventListener('change', initDragSpoiler);
 
 
-  // == popup-login scroll content ==========================
-  const popupLogin = document.querySelectorAll(".popup-login");
-  popupLogin.forEach(popup => {
-      const content = popup.querySelector(".popup-login__content");
+  // // == popup-login scroll content ==========================
+  // const popupLogin = document.querySelectorAll(".popup-login");
+  // popupLogin.forEach(popup => {
+  //     const content = popup.querySelector(".popup-login__content");
 
-      if (!content) return;
+  //     if (!content) return;
 
-      content.addEventListener("scroll", function () {
-          popup.classList.toggle("_scroll-content", content.scrollTop > 5);
-      });
-  });
+  //     content.addEventListener("scroll", function () {
+  //         popup.classList.toggle("_scroll-content", content.scrollTop > 5);
+  //     });
+  // });
 
   
   
@@ -982,10 +986,18 @@ document.addEventListener("DOMContentLoaded", () => {
         let isCheckedThroughPopup = false;
         let isAddButtonHandlerActive = false;
     
-        function openPopup(event) {
-            event.preventDefault();
-            flsModules.popup.open(`#${popupRules.id}`);
-        }
+        // function openPopup(event) {
+        //     event.preventDefault();
+        //     flsModules.popup.open(`#${popupRules.id}`);
+        // }
+        function openPopup(event, targetCheckbox) {
+          event.preventDefault();
+          const popupSelector = targetCheckbox?.dataset.popup;
+          if (popupSelector) {
+              flsModules.popup.open(popupSelector);
+          }
+      }
+      
     
         function updateAddButtonState() {
             if (!checkboxRules || !addButton) return;
@@ -1000,7 +1012,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
         function handleAddButtonClick(event) {
             if (mediaQuery480max.matches) {
-                openPopup(event);
+                // openPopup(event);
+                openPopup(event, checkboxRules);
             }
         }
     
@@ -1074,6 +1087,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Search an History Balance (Account Balance Page) =====================
       const bodyHistory = document.querySelector(".popup-history");
+      if (!bodyHistory) return;
       const listContainer = bodyHistory.querySelector(".popup-history__list");
       const filterButtonsHistory = bodyHistory.querySelectorAll(".popup-history__filter-btn");
       const searchInput = bodyHistory.querySelector("#historyBalanceSearch");
@@ -1085,6 +1099,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const paginationLinks = bodyHistory.querySelectorAll(".pagging__item, .pagging__arrow");
 
       let jsonData = [];
+
 
       // Медиа-запрос для отслеживания изменений ширины экрана
       const mediaQuery = window.matchMedia("(max-width: 30.061em)");

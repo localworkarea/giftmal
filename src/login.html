@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"Login"
+	})
+	<body>
+    <div class="wrapper login-page">
+      <header data-scroll="10" class="login__header">
+        <a href="index.html" class="login__logo icon-logo" aria-label="link to main page"></a>
+      </header>
+			<main class="page">
+        <section class="login">
+          <div class="login__content">
+            <form data-dev method="post" class="login__body">
+              <div class="login__head">
+                <div class="login__logo-sm">
+                  <img src="@img/icons/logo-short.svg" width="19" height="20" alt="Image">
+                </div>
+                <div class="login__title">Вхід у свій Кабінет</div>
+              </div>
+              <div class="login__tel">
+                <div class="login__tel-input input__item input-intl-item">
+                  <label for="loginTel" class="input__label">
+                    Ваш номер телефону
+                  </label>
+                  <input id="loginTel" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+                </div>
+                <div class="login__checked phone-checked">
+                  <div class="phone-checked__item txt-15">
+                    +380-50-104-88-57
+                  </div>
+                  <button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+                    Змінити
+                  </button>
+                </div>
+              </div>
+              <div class="login__sms input__item">
+                <label for="loginSms" class="input__label">
+                  Введіть отриманий код з SMS
+                </label>
+                <div class="input__sms-item">
+                  <input id="loginSms" autocomplete="one-time-code" type="text" name="sms" data-error="Невірний код" data-required="sms"  class="input-sms" maxlength="4" inputmode="numeric">
+                  <div class="input__sms-chars input input_sm">
+                    <span class="input__sms-char char-placeholder sms-cursor">
+                      <span class="char-num"></span>
+                      <span class="char-x">X</span>
+                    </span>
+                    <span class="input__sms-char char-placeholder">
+                      <span class="char-num"></span>
+                      <span class="char-x">X</span>
+                    </span>
+                    <span class="input__sms-char char-placeholder">
+                      <span class="char-num"></span>
+                      <span class="char-x">X</span>
+                    </span>
+                    <span class="input__sms-char char-placeholder">
+                      <span class="char-num"></span>
+                      <span class="char-x">X</span>
+                    </span>
+                  </div>
+                </div>
+                <div data-timer-set class=" timer">
+                  <button type="button" data-timer-btn class="edit-btn icon-phone-sms txt-13" aria-label="continue">
+                    Надіслати код повторно
+                  </button>
+                  <p class="timer__txt txt-accent txt-13">
+                    Не прийшов код?<br> Отримати повторно через <span data-timer="0.3"> 00 : 00</span> сек
+                  </p>
+                </div>
+              </div>
+              <div class="login__footer">
+                <button type="submit" disabled class="login__btn btn btn_dark btn_sm-3">Увійти</button>
+                <div class="login__checkbox checkbox">
+                  <input id="loginAgreement" checked type="checkbox" name="loginAgreement" class="checkbox__input">
+                  <label for="loginAgreement" class="checkbox__label icon-checkbox">
+                    <span>Даю згоду на обробку своїх персональних даних згідно <a href="checkout.html">Даної Оферти</a></span>
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </section>
+        <div class="brands-login">
+          <img class="brands-login__img img-1" src="@img/certificates/certificate-01.jpg" width="118" height="77" alt="Image">
+          <img class="brands-login__img img-2" src="@img/certificates/certificate-06.jpg" width="118" height="77" alt="Image">
+          <img class="brands-login__img img-3" src="@img/certificates/certificate-11.jpg" width="118" height="77" alt="Image">
+          <img class="brands-login__img img-4" src="@img/certificates/certificate-09.jpg" width="118" height="77" alt="Image">
+          <img class="brands-login__img img-5" src="@img/certificates/certificate-12.jpg" width="118" height="77" alt="Image">
+          <img class="brands-login__img img-6" src="@img/certificates/certificate-02.jpg" width="118" height="77" alt="Image">
+        </div>
+      </main>
+    </div>
+    @@include('html/_popup-mb.htm',{})
+		@@include('html/_js.htm',{})
+  </body>
+</html> 

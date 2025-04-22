@@ -25,12 +25,15 @@ html {
 
 .wrapper {
   background-color: var(--white);
+ 
 }
 .page {
   background-color: var(--gray-1);
   @media (max-width: toEm(700.98)) and (min-width:$mobileSmall) {
       margin-top: toRem(124);
-      .checkout-page & {
+      .checkout-page &,
+      .login-page &,
+      .cabinet-page & {
         margin-top: 0;
       }
   }
@@ -41,6 +44,10 @@ html {
     }
     .checkout-page & {
       padding-bottom: toRem(120);
+    }
+    .login-page &,
+    .cabinet-page & {
+      border-radius: 0;
     }
   }
   @media (max-width:$mobileSmall){
@@ -56,6 +63,10 @@ html {
       &:not(:last-child) {
         border-radius: toRem(32);
       }
+    }
+    .login-page &,
+    .cabinet-page &  {
+      margin-top: 0;
     }
   }
 }
@@ -569,8 +580,9 @@ html {
   font-size: toRem(13);
   font-weight: 500;
   line-height: 0.8;
-  // padding: toRem(0) toRem(8);
-  padding: toRem(0) toRem(0);
+  padding: toRem(0) toRem(8);
+  // padding: toRem(0) toRem(0);
+  // margin-inline: toRem(-8);
   max-width: fit-content;
   &._active {
     z-index: 5;

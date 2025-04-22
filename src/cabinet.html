@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uk">
+	@@include('html/_head.htm',{
+	"title":"Cabinet edit"
+	})
+	<body>
+    <div class="wrapper cabinet-page">
+      <header data-scroll="10" class="login__header">
+        <a href="index.html" class="login__logo icon-logo" aria-label="link to main page"></a>
+      </header>
+			<main class="page">
+        <section class="cabinet">
+          <form data-dev method="post" id="popupAccountForm" class="cabinet__body">
+            <div class="cabinet__head">
+              <button type="button" class="cabinet__subhead" aria-label="previous step">
+                <span class="cabinet__prev icon-arrow-back"></span>
+                <span class="cabinet__txt">Крок <span>1</span> з 2</і>
+              </button>
+              <h1 class="cabinet__title">Заповніть свій кабінет</h1>
+              <p class="cabinet__subtitle">Заповніть свої дані, аби ми могли розпізнати вас та надати необхідні послуги.</p>
+            </div>
+            <div class="cabinet__steps">
+              <div class="cabinet__step _step-active">
+                <div class="cabinet__items">
+                  <div class="input__item">
+                    <label for="formAccountCard" class="input__label">
+                      Номер картки Eridon
+                    </label>
+                    <div class="input__sub-item">
+                      <input id="formAccountCard" autocomplete="off" type="text" name="form[]" data-error="Введіть номер картки Eridon" placeholder="ХХ-ХХ-ХХ" data-required class="input input_sm">
+                      <button disabled type="button" class="input__clear icon-cross"></button>
+                    </div>
+                  </div>
+                  <div class="input__item">
+                    <label for="formAccountCode" class="input__label">
+                      Код ЄДРПОУ
+                    </label>
+                    <div class="input__sub-item">
+                      <input id="formAccountCode" autocomplete="off" type="text" name="form[]" data-error="Введіть код ЄДРПОУ" placeholder="ХХ-ХХ-ХХ-ХХ-ХХ" data-required class="input input_sm">
+                      <button disabled type="button" class="input__clear icon-cross"></button>
+                    </div>
+                  </div>
+                  <div class="input__item">
+                    <label for="formAccountIPN" class="input__label">
+                      Номер ІПН
+                    </label>
+                    <div class="input__sub-item">
+                      <input id="formAccountIPN" autocomplete="off" type="text" name="form[]" data-error="Введіть номер ІПН" placeholder="ХХ-ХХ-ХХ-ХХ-ХХ" data-required class="input input_sm">
+                      <button disabled type="button" class="input__clear icon-cross"></button>
+                    </div>
+                  </div>
+                  <div class="input__item">
+                    <label for="formAccountPosition" class="input__label">
+                      Посада
+                    </label>
+                    <div class="input__sub-item">
+                      <input id="formAccountPosition" autocomplete="off" type="text" name="form[]" data-error="Введіть вашу посаду" placeholder="Ваша Посада" data-required class="input input_sm">
+                      <button disabled type="button" class="input__clear icon-cross"></button>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" disabled class="cabinet__btn-next btn btn_dark btn_sm-3">Далі</button>
+              </div>
+              <div class="cabinet__step">
+                <div class="cabinet__items">
+                  <div class="input__item">
+                    <label for="formAccountEmail" class="input__label">
+                      Ваш email
+                    </label>
+                    <div class="input__sub-item">
+                      <input id="formAccountEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email"  class="input input_sm">
+                      <button disabled type="button" class="input__clear icon-cross"></button>
+                    </div>
+                  </div>
+                  <div class="input__item">
+                    <label for="formAccountName" class="input__label">
+                      Ваша Стать
+                    </label>
+                    <div class="gender-option">
+                      <div class="gender-option__item">
+                        <input id="formAccountGenderFemale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" checked>
+                        <label for="formAccountGenderFemale" class="gender-option__label input input_sm">
+                          <span>Жіноча</span>
+                        </label>
+                      </div>
+                      <div class="gender-option__item">
+                        <input id="formAccountGenderMale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" >
+                        <label for="formAccountGenderMale" class="gender-option__label input input_sm">
+                          <span>Чоловіча</span>
+                        </label>
+                      </div>
+                      <div class="gender-option__item">
+                        <input id="formAccountGenderNoneBinary" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" >
+                        <label for="formAccountGenderNoneBinary" class="gender-option__label input input_sm">
+                          <span>Небінарна</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input__item">
+                    <label for="formAccountName" class="input__label">
+                      Ваше Ім’я
+                    </label>
+                    <div class="input__sub-item">
+                      <input id="formAccountName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+                      <button disabled type="button" class="input__clear icon-cross"></button>
+                    </div>
+                  </div>
+                  <div class="input__item">
+                    <label for="formAccountSurname" class="input__label">
+                      Ваше Прізвище
+                    </label>
+                    <div class="input__sub-item">
+                      <input id="formAccountSurname" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше Прізвище" placeholder="Ваше Прізвище" data-required class="input input_sm">
+                      <button disabled type="button" class="input__clear icon-cross"></button>
+                    </div>
+                  </div>
+                  <div class="input__item">
+                    <label for="formAccountDate" class="input__label">
+                      Дата Народження <span> опціонально</span>
+                    </label>
+                    <div class="input__sub-item">
+                      <input id="formAccountDate" data-datepicker autocomplete="off" type="text" name="form[]" data-error="Виберіть дату доставки" placeholder="дд.мм.рррр" class="input input_sm">
+                      <button type="button" class="input__choise icon-calendar"></button>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" disabled class="cabinet__btn-submit btn btn_dark btn_sm-3">Заповнити</button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+    @@include('html/_popup-mb.htm',{})
+		@@include('html/_js.htm',{})
+  </body>
+</html> 

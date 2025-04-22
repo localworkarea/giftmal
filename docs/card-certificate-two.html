@@ -2,7 +2,7 @@
 <html lang="uk">
 
 <head>
-	<title>404 - Сторінка не знайдена</title>
+	<title>CARD | CERTIFICATE v2</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<div class="wrapper error__page error__page--404">
+	<div class="wrapper">
 		<header data-scroll="50" data-scroll-show class="header">
 			<div class="header__main-header main-header">
 				<div class="main-header__container-c">
@@ -389,31 +389,717 @@
 			</div>
 		</header>
 		<main class="page">
-			<section class="error">
-				<div class="error__container">
-					<div class="error__content">
-						<p class="error__title">404</p>
-						<h1 class="error__subtitle">Сторінка не знайдена</h1>
-						<a href="index.html" class="error__button btn btn_dark" aria-label="перейти на головну">До головної</a>
+			<section class="card">
+				<div class="card__container">
+					<div class="card__breadcrumbs">
+						<div class="breadcrumbs">
+							<a href="/" class="breadcrumbs__item">Головна</a>
+							<span class="breadcrumbs__separator">
+								<span class="icon-arrow-down"></span>
+							</span>
+							<a href="catalog.html" class="breadcrumbs__item">Каталог</a>
+							<span class="breadcrumbs__separator">
+								<span class="icon-arrow-down"></span>
+							</span>
+							<span class="breadcrumbs__current">Майстер-клас з малювання епоксидною смолою "Resin Art"</span>
+						</div>
 					</div>
-					<div class="error__cards">
-						<img src="img/brands/mobile_img_info.png" alt="brand logos" class="error__card error__card--mobile">
-						<img src="img/brands/image_1.png" alt="brand logo" class="error__card error__card--1">
-						<img src="img/brands/image_2.png" alt="brand logo" class="error__card error__card--2">
-						<img src="img/brands/image_3.png" alt="brand logo" class="error__card error__card--3">
-						<img src="img/brands/image_4.png" alt="brand logo" class="error__card error__card--4">
-						<img src="img/brands/image_5.png" alt="brand logo" class="error__card error__card--5">
-						<img src="img/brands/image_6.png" alt="brand logo" class="error__card error__card--6">
-						<img src="img/brands/image_7.png" alt="brand logo" class="error__card error__card--7">
-						<img src="img/brands/image_8.png" alt="brand logo" class="error__card error__card--8">
-						<img src="img/brands/image_9.png" alt="brand logo" class="error__card error__card--9">
-						<img src="img/brands/image_10.png" alt="brand logo" class="error__card error__card--10">
-						<img src="img/brands/image_11.png" alt="brand logo" class="error__card error__card--11">
-						<img src="img/brands/image_12.png" alt="brand logo" class="error__card error__card--12">
+					<div class="card__main">
+						<div class="card__aside aside-card">
+							<div class="aside-card__body">
+								<div data-gallery class="aside-card__gallery gallery">
+									<div data-gallery-main class="gallery__item" aria-label="gallery">
+										<img class="ibg" src="img/certificates/certificate-07.jpg" width="388" height="255" alt="Image">
+									</div>
+									<a href="#" data-gallery-button class="gallery__item" aria-label="gallery">
+										<img class="ibg" src="img/certificates/certificate-02.jpg" width="388" height="255" alt="Image">
+									</a>
+									<a href="#" data-gallery-button class="gallery__item " aria-label="gallery">
+										<img class="ibg" src="img/certificates/certificate-03.jpg" width="388" height="255" alt="Image">
+									</a>
+									<a href="#" data-gallery-button class="gallery__item " aria-label="gallery">
+										<img class="ibg" src="img/certificates/certificate-04.jpg" width="388" height="255" alt="Image">
+									</a>
+								</div>
+								<div class="aside-card__description">
+									Подарункова картка від мережі супермаркетів електроніки та побутової техніки , що займає лідируючі позиції на ринку.
+								</div>
+								<a href="#" class="aside-card__link icon-arrow-next" aria-label="link">Перейти на сайт партнера</a>
+							</div>
+						</div>
+						<div class="card__body">
+							<div class="card__header">
+								<h1 class="card__title">
+									Майстер-клас з малювання епоксидною смолою "Resin Art"
+								</h1>
+								<div class="card__rating ">
+									<div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
+										<a href="#" class="rating__title"><span>4.5</span> (184 відгуків)</a>
+									</div>
+								</div>
+							</div>
+							<div class="card__details">
+								<div class="card__options grid-rw">
+									<div class="card-options">
+										<div class="card__info-label">
+											<span class="info-label">
+												<span data-tippy-content="Фізичні картки доставляються Новою Поштою протягом 2-3 роб. днів. Електронні — одразу у вашому кабінеті." class="info-label__info icon-info"></span>
+												Оберіть тип картки
+											</span>
+										</div>
+										<input id="cardTypeElectronic" checked class="card-options__input" type="radio" name="cardType" value="electronic">
+										<label for="cardTypeElectronic" class="card-options__label icon-electronic">
+											Електронний
+										</label>
+									</div>
+								</div>
+								<div class="card__items grid-rw">
+									<div class="card__item">
+										<label class="card__info-label">
+											<span class="info-label">
+												<span data-tippy-content="Виберіть номінал" class="info-label__info icon-info"></span>
+												Оберіть номінал
+											</span>
+										</label>
+										<div class="card__select">
+											<select name="form[]" data-class-modif="type-8" data-speed="200" data-show-selected data-scroll="300" data-required>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value data-class="item-placeholder">₴ 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="1">₴ 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="2">₴ 1 000</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500 </option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="4">₴ 2 000</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="5">₴ 2 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="6">₴ 3 000</option>
+											</select>
+										</div>
+									</div>
+									<div class="card__item">
+										<label for="quantityInput" class="card__info-label">
+											<span class="info-label">
+												<span data-tippy-content="Виберіть кількість" class="info-label__info icon-info"></span>
+												Оберіть кількість
+											</span>
+										</label>
+										<div data-quantity class="card__quantity quantity">
+											<div class="quantity__item">
+												<div class="quantity__block">
+													<div class="quantity__input">
+														<input id="quantityInput" data-quantity-value type="tel" name="" data-quantity-min="1" data-quantity-max="10" placeholder="1" value="1">
+														<span>шт</span>
+													</div>
+												</div>
+												<div class="quantity__btns">
+													<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+													<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card__info">
+								<div class="card__info-card info-card">
+									<div class="info-card__title">Важливо знати</div>
+									<div class="info-card__description">
+										Подарункова картка від мережі супермаркетів електроніки та побутової техніки , що займає лідируючі позиції на ринку.
+									</div>
+									<a href="#" class="info-card__link icon-arrow-next" aria-label="link">Перейти на сайт партнера</a>
+									<div class="info-card__body info-card-grid-1">
+										<div class="info-card__item">
+											<span class="info-card__icon icon-number-1"></span>
+											<p class="info-card__text">
+												1 рік — Термін дії
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-cake"></span>
+											<p class="info-card__text">
+												Розбивається на декілька чеків
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-no-money-exchange"></span>
+											<p class="info-card__text">
+												Не обмінюється на гроші
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-puzzle"></span>
+											<p class="info-card__text">
+												Сумується з балансом giftmall
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-no-money-exchange"></span>
+											<p class="info-card__text">
+												Не обмінюється на гроші
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-puzzle"></span>
+											<p class="info-card__text">
+												Сумується з балансом giftmall
+											</p>
+										</div>
+									</div>
+								</div>
+								<div data-spollers class="card__rules rules-spollers">
+									<details class="rules-spollers__details">
+										<summary class="rules-spollers__title">
+											Правила та умови Використання
+											<span class="rules-spollers__arrow icon-arrow-down"></span>
+										</summary>
+										<div class="rules-spollers__body">
+											<div class="rules-spollers__wrapper">
+												<div class="rules-spollers__items">
+													<ul class="rules-spollers__list">
+														<li class="rules-spollers__item">
+															<p class="rules-spollers__txt">
+																Сертифікат giftmall не є платіжним засобом в магазинах партнерів.
+															</p>
+														</li>
+														<li class="rules-spollers__item">
+															<p class="rules-spollers__txt">
+																Щоб скористатися, необхідно активувати баланс картки на нашому сайті в особистому кабінеті.
+															</p>
+														</li>
+														<li class="rules-spollers__item">
+															<p class="rules-spollers__txt">
+																За активований баланс з картки можна купити будь-який сертифікат бренду в нашому каталозі.
+															</p>
+															<p class="rules-spollers__txt--sm">
+																* За активований баланс неможливо сплатити дану Подарункову Картку giftmall.
+															</p>
+														</li>
+														<li class="rules-spollers__item">
+															<p class="rules-spollers__txt">
+																Щоб сплатити за сертифікат бренду, необхідно обрати спосіб оплати через баланс giftmall у кошику.
+															</p>
+															<p class="rules-spollers__txt--sm">
+																* Якщо сума сертифікату бренду перевищує ваш поточний баланс giftmall, то ви можете доплатити різницю через свою банківську картку у кошику.
+															</p>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</details>
+								</div>
+							</div>
+							<div class="card__footer">
+								<div class="card__checkbox checkbox">
+									<input data-checkbox-rules data-popup="#popupRulesTwo" id="rulesAgreement" type="checkbox" name="agreement" class="checkbox__input">
+									<label for="rulesAgreement" class="checkbox__label icon-checkbox">
+										<span>Погоджуюсь з <span class="underline">правилами користування</span> Подарункової Картки giftmall</span>
+									</label>
+								</div>
+								<button data-card-add type="button" disabled class="card__add-button btn btn_dark">Додати у кошик</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="card-offer best-offer">
+				<div class="best-offer__container">
+					<h2 class="best-offer__title title-av mb-24-8">Також купують</h2>
+					<div class="best-offer__body card-grid">
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-physical"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-02.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Nails & Cocktails
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-physical"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-03.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Foxstrot
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа комп`ютерної техніки та електроніки
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-physical"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-04.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Winetime
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа вина, сирів та міцного алкоголю
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-physical"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-05.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
+						</a>
+					</div>
+				</div>
+			</section>
+			<section class="review pb-120-56">
+				<div class="review__container">
+					<div class="review__header mb-20-24">
+						<div class="review__block">
+							<h2 class="review__title title-av">Відгуки</h2>
+							<div class="review__card-header card__header">
+								<p class="card__title">
+									Подарункова Картка giftmall
+								</p>
+								<div class="card__rating ">
+									<div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
+										<a href="#" class="rating__title"><span>4.5</span> (184 відгуків)</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="review__buttons">
+							<button type="button" data-popup="#popupReviews" class="review__btn btn btn_dark btn_sm-3" aria-label="open popup">Залишити відгук</button>
+							<button type="button" data-popup="#popupQuestion" class="review__btn btn btn_light btn_sm-3" aria-label="open popup">Задати запитання</button>
+						</div>
+					</div>
+					<div class="review__items mb-20-24">
+						<div class="review__item item-review">
+							<div class="item-review__header">
+								<div class="item-review__avatar">
+									<div class="item-review__avatar-img">
+										<img src="img/testimonials/letter-k.svg" width="13" height="17" alt="Image">
+									</div>
+									<div class="item-review__avatar-txt">Катерина</div>
+								</div>
+								<div class="item-review__rating">
+									<div class="card__rating ">
+										<div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
+											<p class="rating__title"><span>4.5</span></p>
+										</div>
+									</div>
+								</div>
+								<p class="item-review__date">
+									<time datetime="2024-06-23">23.06.24</time>
+								</p>
+							</div>
+							<div class="item-review__body">
+								<div class="item-review__wrapper">
+									<p class="item-review__text">
+										Чудовий сервіс! Універсальна карта GiftMall дозволяє самостійно вибрати подарунок. Це дуже полегшує вибір) Активація картки займає кілька хвилин. Дуже швидко та зручно. Стильне оздоблення. Все дуже сподобалось!
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="review__item item-review">
+							<div class="item-review__header">
+								<div class="item-review__avatar">
+									<div class="item-review__avatar-img">
+										<img src="img/testimonials/letter-b.svg" width="13" height="17" alt="Image">
+									</div>
+									<div class="item-review__avatar-txt">Віталіна</div>
+								</div>
+								<div class="item-review__rating">
+									<div class="card__rating ">
+										<div data-rating="" data-rating-value="5" data-rating-size="5" class="rating">
+											<p class="rating__title"><span>5.0</span></p>
+										</div>
+									</div>
+								</div>
+								<p class="item-review__date">
+									<time datetime="2024-06-23">23.06.24</time>
+								</p>
+							</div>
+							<div class="item-review__body">
+								<div class="item-review__wrapper">
+									<p class="item-review__text">
+										Чудовий сертифікат. Купувала мамі на День Народження, все сподобалось: від обслуговування до оформлення замовлення. P.S. дуже красива упаковка та стікери, які дають у подарунок.
+									</p>
+									<div class="item-review__photo">
+										<img src="img/testimonials/testimonials.jpg" width="183" height="120" alt="Image">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="review__item item-review">
+							<div class="item-review__header">
+								<div class="item-review__avatar">
+									<div class="item-review__avatar-img">
+										<img src="img/testimonials/letter-c.svg" width="13" height="17" alt="Image">
+									</div>
+									<div class="item-review__avatar-txt">Сергій</div>
+								</div>
+								<div class="item-review__rating">
+									<div class="card__rating ">
+										<div data-rating="" data-rating-value="1.5" data-rating-size="5" class="rating">
+											<p class="rating__title"><span>1.5</span></p>
+										</div>
+									</div>
+								</div>
+								<p class="item-review__date">
+									<time datetime="2024-06-23">23.06.24</time>
+								</p>
+							</div>
+							<div class="item-review__body">
+								<div class="item-review__wrapper">
+									<p class="item-review__text">
+										Відгуки модеруються. Негативні не оприлюднюються.
+									</p>
+									<div class="item-review__response">
+										<div class="item-review__response-head">
+											<div class="item-review__response-avatar">
+												<img src="img/icons/logo-short.svg" width="15" height="16" alt="Image">
+											</div>
+											<p>giftmall</p>
+										</div>
+										<p class="item-review__response-text">
+											Сергію, доброго дня! Нам дуже шкода, що у вас склалася така думка про наш сервіс. Ми бажаємо бути кращими, тому будемо вдячні, якщо повідомите, що було не так. Відгуки всі публікуються після модерації, у тому числі негативні. Ми не публікуємо спам та відгуки, які не відносяться до нашого ресурсу чи бренду під яким вони написані.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="review__more">
+						<button type="button" class="review__more-btn icon-eye" aria-label="more">Більше відгуків</button>
 					</div>
 				</div>
 			</section>
 		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div data-spollers="768.98,max" data-one-spoller class="footer__top">
+					<div class="footer__spollers spollers-footer">
+						<details data-open class="spollers-footer__details">
+							<summary class="spollers-footer__title">
+								<span class="spollers-footer__title-name footer-name">Товари</span>
+								<span class="spollers-footer__title-icon icon-arrow-down"></span>
+							</summary>
+							<div class="spollers-footer__body">
+								<ul class="spollers-footer__list">
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Каталог Брендів
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Подарункова Картка GiftMall
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Листівки та Коробки
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Сертифікати на Паливо
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Для бізнесів
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Постачальникам
+										</a>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</div>
+					<div class="footer__spollers spollers-footer">
+						<details class="spollers-footer__details">
+							<summary class="spollers-footer__title">
+								<span class="spollers-footer__title-name footer-name">Про компанію</span>
+								<span class="spollers-footer__title-icon icon-arrow-down"></span>
+							</summary>
+							<div class="spollers-footer__body">
+								<ul class="spollers-footer__list">
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Про нас
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Контакти
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Оплата та Доставка
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Блог
+										</a>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</div>
+					<div class="footer__spollers spollers-footer">
+						<details class="spollers-footer__details">
+							<summary class="spollers-footer__title">
+								<span class="spollers-footer__title-name footer-name">Інформація</span>
+								<span class="spollers-footer__title-icon icon-arrow-down"></span>
+							</summary>
+							<div class="spollers-footer__body">
+								<ul class="spollers-footer__list">
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											FAQ
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											АРІ Документація
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Мапа Сайту
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Мобільний додаток
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Договір оферти
+										</a>
+									</li>
+									<li class="spollers-footer__item">
+										<a href="#" class="spollers-footer__link" aria-label="link to page">
+											Політика конфеденційності
+										</a>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</div>
+					<div class="footer__contacts contacts-footer">
+						<div class="contacts-footer__block">
+							<div class="contacts-footer__item">
+								<div class="contacts-footer__name footer-name">Контакти</div>
+								<div class="contacts-footer__phones item-dropdwn">
+									<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+										<span>+380 67 468 10 88</span>
+									</button>
+									<ul class="item-dropdwn__list">
+										<li class="item-dropdwn__item">
+											<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
+										</li>
+										<li class="item-dropdwn__item">
+											<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
+										</li>
+										<li class="item-dropdwn__item">
+											<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<ul class="contacts-footer__social social-footer">
+								<li class="social-footer__item">
+									<a href="#" class="social-footer__link" aria-label="link">
+										<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z" fill="white" />
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M8.80001 9.69744C8.80001 10.6347 9.54031 11.3949 10.4525 11.3949C11.3656 11.3949 12.1049 10.6347 12.1049 9.69744C12.1049 8.76019 11.3646 8 10.4525 8C9.54031 8 8.80001 8.76019 8.80001 9.69744ZM9.03607 23.2V12.615H11.8689V23.2H9.03607ZM20.3672 23.2H23.2V16.696C23.2 11.6412 17.9084 11.825 16.5902 14.3134V12.615H13.7574V23.2H16.5902V17.8074C16.5902 14.8119 20.3672 14.5665 20.3672 17.8074V23.2Z" fill="#210529" />
+										</svg>
+									</a>
+								</li>
+								<li class="social-footer__item">
+									<a href="#" class="social-footer__link" aria-label="link">
+										<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z" fill="white" />
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M12 17.911V14.8888H14.1818V13.3777C14.1818 12.3758 14.5649 11.4149 15.2469 10.7064C15.9288 9.99795 16.8538 9.59993 17.8182 9.59993H20V12.6222H17.8182C17.6253 12.6222 17.4403 12.7018 17.3039 12.8435C17.1675 12.9851 17.0909 13.1773 17.0909 13.3777V14.8888H20L19.2727 17.911H17.0909V23.1999H14.1818V17.911H12Z" fill="#210529" />
+										</svg>
+									</a>
+								</li>
+								<li class="social-footer__item">
+									<a href="#" class="social-footer__link" aria-label="link">
+										<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z" fill="white" />
+											<path fill-rule="evenodd" clip-rule="evenodd" d="M9.60001 12.9999C9.60001 12.0982 9.95822 11.2334 10.5958 10.5958C11.2335 9.95815 12.0983 9.59993 13 9.59993H19.8C20.7017 9.59993 21.5665 9.95815 22.2042 10.5958C22.8418 11.2334 23.2 12.0982 23.2 12.9999V19.7999C23.2 20.7017 22.8418 21.5665 22.2042 22.2041C21.5665 22.8417 20.7017 23.1999 19.8 23.1999H13C12.0983 23.1999 11.2335 22.8417 10.5958 22.2041C9.95822 21.5665 9.60001 20.7017 9.60001 19.7999V12.9999ZM16.3998 19.9698C18.3715 19.9698 19.9698 18.3714 19.9698 16.3998C19.9698 14.4281 18.3715 12.8298 16.3998 12.8298C14.4282 12.8298 12.8298 14.4281 12.8298 16.3998C12.8298 18.3714 14.4282 19.9698 16.3998 19.9698ZM14.5967 18.2029C14.1185 17.7247 13.8498 17.0761 13.8498 16.3998C13.8498 15.7235 14.1185 15.0749 14.5967 14.5966C15.0749 14.1184 15.7235 13.8498 16.3998 13.8498C17.0761 13.8498 17.7247 14.1184 18.203 14.5966C18.6812 15.0749 18.9498 15.7235 18.9498 16.3998C18.9498 17.0761 18.6812 17.7247 18.203 18.2029C17.7247 18.6811 17.0761 18.9498 16.3998 18.9498C15.7235 18.9498 15.0749 18.6811 14.5967 18.2029ZM20.2248 13.3398C20.6473 13.3398 20.9898 12.9973 20.9898 12.5748C20.9898 12.1523 20.6473 11.8098 20.2248 11.8098C19.8023 11.8098 19.4598 12.1523 19.4598 12.5748C19.4598 12.9973 19.8023 13.3398 20.2248 13.3398Z" fill="#210529" />
+										</svg>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="contacts-footer__form email-form">
+							<form class="email-form__form" data-dev method="post">
+								<div class="email-form__item">
+									<label for="email-form" class="email-form__label">
+										Будьте першими та дізнавайтесь про наші новинки та спеціальні пропозиції
+									</label>
+									<div class="email-form__sub-item">
+										<input id="email-form" autocomplete="off" type="email" name="email" data-error="Ви ввели невірний формат" placeholder="Ваш Email" data-required="email" class="input input_sm">
+										<button type="submit" class="email-form__btn icon-arrow-down"></button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="footer__bottom">
+					<div data-da=".footer__top,768.98,0" class="footer__logo logo-footer">
+						<a href="index.html" class="logo-footer__logo icon-logo" aria-label="link"></a>
+						<p class="logo-footer__txt">Всі права захищені<br>
+							"GiftMall" Copyright©2024</p>
+					</div>
+					<div class="footer__testimonials testimonials-footer">
+						<div class="testimonials-footer__imgs">
+							<img src="img/icons/opineo.svg" width="120" height="32" alt="Image">
+							<img src="img/icons/google.svg" width="143" height="30" alt="Image">
+						</div>
+						<a href="#" class="testimonials-footer__link" aria-label="link">Дивись Відгуки</a>
+					</div>
+					<div class="footer__global global-footer">
+						<ul class="global-footer__list">
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-austria.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-belgia.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-english.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-germany.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-poland.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<li class="global-footer__item">
+								<a href="#" class="global-footer__link">
+									<img src="img/icons/flag-spain.svg" width="36" height="24" alt="Image">
+								</a>
+							</li>
+							<!-- <li class="global-footer__item">
+						<a href="#" class="global-footer__link">
+							<img src="img/icons/flag-switzarland.svg" width="36" height="24" alt="Image">
+						</a>
+					</li>
+					<li class="global-footer__item">
+						<a href="#" class="global-footer__link">
+							<img src="img/icons/flag-ukraine.svg" width="36" height="24" alt="Image">
+						</a>
+					</li>
+					<li class="global-footer__item">
+						<a href="#" class="global-footer__link">
+							<img src="img/icons/flag-austria.svg" width="36" height="24" alt="Image">
+						</a>
+					</li> -->
+						</ul>
+						<a href="#" class="global-footer__global" aria-label="link">GiftMall Global</a>
+					</div>
+					<div class="footer__app app-footer">
+						<div class="app-footer__apps">
+							<a href="#" class="app-footer__link" aria-label="link">
+								<img src="img/icons/download-app-store-light.svg" width="106" height="37" alt="Image">
+							</a>
+							<a href="#" class="app-footer__link" aria-label="link">
+								<img src="img/icons/download-google-play-light.svg" width="106" height="37" alt="Image">
+							</a>
+						</div>
+						<div class="app-footer__block">
+							<p class="app-footer__txt">Наш мобільний додаток</p>
+							<div data-da=".footer__bottom,600.98,last" class="footer__design">
+								<p>
+									Design by Other Land
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</div>
 	<div id="popupSliderCheckout" class="popup">
 		<div class="popup__wrapper">
@@ -1598,5 +2284,3 @@
 	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250422222341"></script>
 	<script src="js/app.min.js?_v=20250422222341"></script>
 </body>
-
-</html>

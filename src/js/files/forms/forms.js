@@ -175,10 +175,10 @@ export function formFieldsInit(options = { viewPass: false, autoHeight: false })
 	const formPopupAccount = document.querySelector("form#popupAccountForm");
 	if (!formPopupAccount) return;
 
-	const steps = formPopupAccount.querySelectorAll(".popup-account__step");
-	const nextButton = formPopupAccount.querySelector(".popup-account__btn-next");
-	const prevButton = formPopupAccount.querySelector(".popup-account__subhead");
-	const stepIndicator = formPopupAccount.querySelector(".popup-account__txt span");
+	const steps = formPopupAccount.querySelectorAll(".cabinet__step");
+	const nextButton = formPopupAccount.querySelector(".cabinet__btn-next");
+	const prevButton = formPopupAccount.querySelector(".cabinet__subhead");
+	const stepIndicator = formPopupAccount.querySelector(".cabinet__txt span");
 
 	if (!steps.length || !nextButton || !prevButton || !stepIndicator) return;
 
@@ -722,6 +722,7 @@ export function formRating() {
 
 export function formAddPhoto() {
 	const fileInput = document.querySelector(".add-photo__input");
+	if (!fileInput) return;
 	const previewContainer = document.querySelector(".add-photo__img");
 
 	fileInput.addEventListener("change", function () {

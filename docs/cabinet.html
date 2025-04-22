@@ -2,7 +2,7 @@
 <html lang="uk">
 
 <head>
-	<title>404 - Сторінка не знайдена</title>
+	<title>Cabinet edit</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
@@ -13,405 +13,131 @@
 </head>
 
 <body>
-	<div class="wrapper error__page error__page--404">
-		<header data-scroll="50" data-scroll-show class="header">
-			<div class="header__main-header main-header">
-				<div class="main-header__container-c">
-					<div class="main-header__menu menu">
-						<button type="button" class="menu__open icon-menu" data-menu aria-label="close menu">
-							<span class="icon-menu__lines"><span></span></span>
+	<div class="wrapper cabinet-page">
+		<header data-scroll="10" class="login__header">
+			<a href="index.html" class="login__logo icon-logo" aria-label="link to main page"></a>
+		</header>
+		<main class="page">
+			<section class="cabinet">
+				<form data-dev method="post" id="popupAccountForm" class="cabinet__body">
+					<div class="cabinet__head">
+						<button type="button" class="cabinet__subhead" aria-label="previous step">
+							<span class="cabinet__prev icon-arrow-back"></span>
+							<span class="cabinet__txt">Крок <span>1</span> з 2</і>
 						</button>
-						<nav class="menu__body">
-							<div class="menu__top">
-								<a href="index.html" class="menu__logo icon-logo" aria-label="link to home page"> </a>
-								<a href="#" class="menu__activate-btn btn btn_dark btn_sm icon-balance" aria-label="balance">
-									Активувати<br> Баланс giftmall
-								</a>
-								<button type="button" class="menu__close icon-cross" data-menu aria-label="close menu"></button>
-							</div>
-							<ul class="menu__lang lang-menu">
-								<li class="lang-menu__item">
-									<a href="#" class="lang-menu__link _active" aria-label="language">
-										<img src="img/icons/flag-ukraine.svg" width="24" height="8" alt="Image">
-										<span>UA</span>
-									</a>
-								</li>
-								<li class="lang-menu__item">
-									<a href="#" class="lang-menu__link" aria-label="language">
-										<img src="img/icons/flag-poland.svg" width="24" height="8" alt="Image">
-										<span>PL</span>
-									</a>
-								</li>
-								<li class="lang-menu__item">
-									<a href="#" class="lang-menu__link" aria-label="language">
-										<img src="img/icons/flag-english.svg" width="24" height="8" alt="Image">
-										<span>ENG</span>
-									</a>
-								</li>
-							</ul>
-							<ul class="menu__list">
-								<li class="menu__item"><a href="#" data-open-filters class="menu__link icon-arrow-down" aria-label="open popup">
-										<span class="menu__link-icon icon-sertificates"></span>
-										<span class="menu__link-t">Категорії по сертифікатам</span>
-									</a></li>
-								<li class="menu__item"><a href="#" class="menu__link icon-arrow-down" aria-label="open popup">
-										<span class="menu__link-icon icon-user"></span>
-										<span class="menu__link-t">Мій Кабінет</span>
-									</a></li>
-								<li class="menu__item"><a href="#" class="menu__link icon-arrow-down" aria-label="open popup">
-										<span class="menu__link-icon icon-basket"></span>
-										<span class="menu__link-t">Мій Кошик</span>
-									</a></li>
-							</ul>
-							<ul class="menu__list-c list-c-menu">
-								<li class="list-c-menu__item">
-									<a href="tel:+380674681088" class="list-c-menu__link">+380 67 468 10 88</a>
-								</li>
-								<li class="list-c-menu__item">
-									<a href="tel:+380445993810" class="list-c-menu__link">+380 44 599 38 10</a>
-								</li>
-							</ul>
-						</nav>
+						<h1 class="cabinet__title">Заповніть свій кабінет</h1>
+						<p class="cabinet__subtitle">Заповніть свої дані, аби ми могли розпізнати вас та надати необхідні послуги.</p>
 					</div>
-					<div class="main-header__sub-wrapper">
-						<div class="main-header__phones item-dropdwn">
-							<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
-								<span>+380 67 468 10 88</span>
-							</button>
-							<ul class="item-dropdwn__list">
-								<li class="item-dropdwn__item">
-									<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
-								</li>
-								<li class="item-dropdwn__item">
-									<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
-								</li>
-								<li class="item-dropdwn__item">
-									<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
-								</li>
-							</ul>
-						</div>
-						<div class="main-header__lang item-dropdwn">
-							<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
-								<img src="img/icons/flag-ukraine.svg" width="24" height="17" alt="Image"> <span>UA</span>
-							</button>
-							<ul class="item-dropdwn__list">
-								<li class="item-dropdwn__item">
-									<a href="#" class="item-dropdwn__link" aria-label="language">
-										<img src="img/icons/flag-poland.svg" width="24" height="17" alt="Image"> PL
-									</a>
-								</li>
-								<li class="item-dropdwn__item">
-									<a href="#" class="item-dropdwn__link" aria-label="language">
-										<img src="img/icons/flag-english.svg" width="24" height="17" alt="Image"> ENG
-									</a>
-								</li>
-							</ul>
-						</div>
-						<div data-da=".main-header,900.98" class="main-header__search">
-							<button data-popup="#popupSearch" data-popup-width="480.98,max" type="button" aria-label="open popup" class="main-header__search-btn icon-search">Пошук по брендам</button>
-							<div data-da=".popup-body-search,480.98" class="search">
-								<div class="search__wrapper icon-search">
-									<input autocomplete="off" type="text" class="search__input" placeholder="Пошук по брендам">
+					<div class="cabinet__steps">
+						<div class="cabinet__step _step-active">
+							<div class="cabinet__items">
+								<div class="input__item">
+									<label for="formAccountCard" class="input__label">
+										Номер картки Eridon
+									</label>
+									<div class="input__sub-item">
+										<input id="formAccountCard" autocomplete="off" type="text" name="form[]" data-error="Введіть номер картки Eridon" placeholder="ХХ-ХХ-ХХ" data-required class="input input_sm">
+										<button disabled type="button" class="input__clear icon-cross"></button>
+									</div>
 								</div>
-								<div class="search__box">
-									<div class="search__header"></div>
-									<div class="search__list"></div>
-									<div class="search__null">
-										<div class="search__null-wr">
-											<p class="search__null-txt">У нас немає таких сертифікатів</p>
-											<p class="search__null-txt-acc">Спробуй пошукати щось схоже у нашому каталозі</p>
-											<a href="#" class="search__null-link btn btn_dark">Перейти до каталогу</a>
+								<div class="input__item">
+									<label for="formAccountCode" class="input__label">
+										Код ЄДРПОУ
+									</label>
+									<div class="input__sub-item">
+										<input id="formAccountCode" autocomplete="off" type="text" name="form[]" data-error="Введіть код ЄДРПОУ" placeholder="ХХ-ХХ-ХХ-ХХ-ХХ" data-required class="input input_sm">
+										<button disabled type="button" class="input__clear icon-cross"></button>
+									</div>
+								</div>
+								<div class="input__item">
+									<label for="formAccountIPN" class="input__label">
+										Номер ІПН
+									</label>
+									<div class="input__sub-item">
+										<input id="formAccountIPN" autocomplete="off" type="text" name="form[]" data-error="Введіть номер ІПН" placeholder="ХХ-ХХ-ХХ-ХХ-ХХ" data-required class="input input_sm">
+										<button disabled type="button" class="input__clear icon-cross"></button>
+									</div>
+								</div>
+								<div class="input__item">
+									<label for="formAccountPosition" class="input__label">
+										Посада
+									</label>
+									<div class="input__sub-item">
+										<input id="formAccountPosition" autocomplete="off" type="text" name="form[]" data-error="Введіть вашу посаду" placeholder="Ваша Посада" data-required class="input input_sm">
+										<button disabled type="button" class="input__clear icon-cross"></button>
+									</div>
+								</div>
+							</div>
+							<button type="button" disabled class="cabinet__btn-next btn btn_dark btn_sm-3">Далі</button>
+						</div>
+						<div class="cabinet__step">
+							<div class="cabinet__items">
+								<div class="input__item">
+									<label for="formAccountEmail" class="input__label">
+										Ваш email
+									</label>
+									<div class="input__sub-item">
+										<input id="formAccountEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email" class="input input_sm">
+										<button disabled type="button" class="input__clear icon-cross"></button>
+									</div>
+								</div>
+								<div class="input__item">
+									<label for="formAccountName" class="input__label">
+										Ваша Стать
+									</label>
+									<div class="gender-option">
+										<div class="gender-option__item">
+											<input id="formAccountGenderFemale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" checked>
+											<label for="formAccountGenderFemale" class="gender-option__label input input_sm">
+												<span>Жіноча</span>
+											</label>
+										</div>
+										<div class="gender-option__item">
+											<input id="formAccountGenderMale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender">
+											<label for="formAccountGenderMale" class="gender-option__label input input_sm">
+												<span>Чоловіча</span>
+											</label>
+										</div>
+										<div class="gender-option__item">
+											<input id="formAccountGenderNoneBinary" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender">
+											<label for="formAccountGenderNoneBinary" class="gender-option__label input input_sm">
+												<span>Небінарна</span>
+											</label>
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="main-header__activate">
-							<a href="#" class="main-header__activate-btn btn btn_dark btn_sm icon-balance" aria-label="balance">
-								Активувати<br> Баланс giftmall
-							</a>
-						</div>
-						<div class="main-header__cabinet cabinet-header">
-							<button data-popup="#popupCabinet" data-popup-width="480.98,max" type="button" aria-label="open popup" class=" cabinet-header__button">
-								<div class="cabinet-header__user icon-user"></div>
-								<div class="cabinet-header__body">
-									<div class="cabinet-header__txt">Мій кабінет</div>
-									<div class="cabinet-header__txt">Увійти</div>
-								</div>
-								<div class="cabinet-header__arrow icon-arrow-down"></div>
-							</button>
-							<div data-da=".popup-body-cabinet,480.98" class="cabinet-header__card card-cabinet">
-								<div class="card-cabinet__header">
-									<p>Мій кабінет</p>
-									<p>+380-50-104-88-57</p>
-								</div>
-								<a href="#" class="card-cabinet__balance" aria-label="link">
-									<div class="card-cabinet__img">
-										<img src="img/cards/giftmall-card.png" width="51" height="34" alt="Image">
+								<div class="input__item">
+									<label for="formAccountName" class="input__label">
+										Ваше Ім’я
+									</label>
+									<div class="input__sub-item">
+										<input id="formAccountName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+										<button disabled type="button" class="input__clear icon-cross"></button>
 									</div>
-									<div class="card-cabinet__info">
-										<p class="card-cabinet__info-t">Мій Баланс</p>
-										<p class="card-cabinet__info-b"><span>2 000</span> грн</p>
+								</div>
+								<div class="input__item">
+									<label for="formAccountSurname" class="input__label">
+										Ваше Прізвище
+									</label>
+									<div class="input__sub-item">
+										<input id="formAccountSurname" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше Прізвище" placeholder="Ваше Прізвище" data-required class="input input_sm">
+										<button disabled type="button" class="input__clear icon-cross"></button>
 									</div>
-								</a>
-								<div class="card-cabinet__list">
-									<a href="account.html#tab-0-0" class="card-cabinet__item tab-link icon-user-editing" aria-label="link">
-										<span class="card-cabinet__item-t">Мої Дані</span>
-										<span class="card-cabinet__arrow icon-arrow-down"></span>
-									</a>
-									<a href="account.html#tab-0-1" class="card-cabinet__item tab-link icon-balance" aria-label="link">
-										<span class="card-cabinet__item-t">Мій Баланс</span>
-										<span class="card-cabinet__arrow icon-arrow-down"></span>
-									</a>
-									<a href="account.html#tab-0-2" class="card-cabinet__item tab-link icon-basket" aria-label="link">
-										<span class="card-cabinet__item-t">Мої Замовлення</span>
-										<span class="card-cabinet__arrow icon-arrow-down"></span>
-									</a>
-									<a href="account.html#tab-0-3" class="card-cabinet__item tab-link icon-sertificates" aria-label="link">
-										<span class="card-cabinet__item-t">Мої Сертифікати</span>
-										<span class="card-cabinet__arrow icon-arrow-down"></span>
-									</a>
-									<a href="#" class="card-cabinet__item icon-exit" aria-label="link">
-										<span class="card-cabinet__item-t">Вийти</span>
-										<span class="card-cabinet__arrow icon-arrow-down"></span>
-									</a>
 								</div>
-								<div class="card-cabinet__footer">
-									<a href="#" class="card-cabinet__item" aria-label="link">
-										<span class="card-cabinet__item-t">Адмін Панель</span>
-										<span class="card-cabinet__arrow icon-arrow-down"></span>
-									</a>
-									<a href="#" class="card-cabinet__item" aria-label="link">
-										<span class="card-cabinet__item-t">Бізнес аккаунт</span>
-										<span class="card-cabinet__arrow icon-arrow-down"></span>
-									</a>
+								<div class="input__item">
+									<label for="formAccountDate" class="input__label">
+										Дата Народження <span> опціонально</span>
+									</label>
+									<div class="input__sub-item">
+										<input id="formAccountDate" data-datepicker autocomplete="off" type="text" name="form[]" data-error="Виберіть дату доставки" placeholder="дд.мм.рррр" class="input input_sm">
+										<button type="button" class="input__choise icon-calendar"></button>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="main-header__card">
-							<button data-popup="#popupCart" type="button" aria-label="open popup" class=" cabinet-header__button">
-								<div class="cabinet-header__user icon-basket"></div>
-								<div class="cabinet-header__body">
-									<div class="cabinet-header__txt">Кошик</div>
-									<div class="cabinet-header__txt"><span>5</span> товарів</div>
-								</div>
-								<div class="cabinet-header__arrow icon-arrow-down"></div>
-								<div class="cabinet-header__count">5</div>
-							</button>
-						</div>
-						<!-- <div class="main-header__sub-block">
-			</div> -->
-					</div>
-				</div>
-			</div>
-			<div class="header__sub-header sub-header">
-				<div class="sub-header__container-b">
-					<div data-filters="type-1" data-filters-close class="sub-header__filters filters">
-						<button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
-							<div class="button-filters__icon icon-sertificates"></div>
-							<div class="button-filters__title">
-								<div class="button-filters__name">Категорії по сертифікатам</div>
-							</div>
-						</button>
-						<div data-filters-wrapper class="filters__wrapper filters__wrapper_mob">
-							<div data-filters-head class="filters__header">
-								<a href="#" data-open-filters class="filters__back-mob icon-arrow-down">Назад до меню</a>
-							</div>
-							<nav data-filters-body class="filters__body">
-								<ul class="filters__list">
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="charity-certificates">
-											<span class="filters__icon icon-charity"></span>
-											<span class="filters__name">Благодійні сертифікати</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="children-goods">
-											<span class="filters__icon icon-children"></span>
-											<span class="filters__name">Дитячі товари</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="services">
-											<span class="filters__icon icon-services"></span>
-											<span class="filters__name">Послуги та сервіси</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="impressions">
-											<span class="filters__icon icon-impressions"></span>
-											<span class="filters__name">Враження</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="cosmetics">
-											<span class="filters__icon icon-cosmetics"></span>
-											<span class="filters__name">Косметика та парфюмерія</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="online-stores">
-											<span class="filters__icon icon-e-comm"></span>
-											<span class="filters__name">Інтернет-магазини</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="jewelry">
-											<span class="filters__icon icon-jewelry"></span>
-											<span class="filters__name">Ювелірні вироби</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="home-goods">
-											<span class="filters__icon icon-home-goods"></span>
-											<span class="filters__name">Товари для дому</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="pharmacy">
-											<span class="filters__icon icon-drugs"></span>
-											<span class="filters__name">Аптеки та медицина</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="clothing">
-											<span class="filters__icon icon-clothes"></span>
-											<span class="filters__name">Одяг та взуття</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="wine">
-											<span class="filters__icon icon-wine"></span>
-											<span class="filters__name">Вино та міцні напої</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="appliances">
-											<span class="filters__icon icon-electronics"></span>
-											<span class="filters__name">Побутова техніка та електроніка</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="pet-supplies">
-											<span class="filters__icon icon-zoo"></span>
-											<span class="filters__name">Зоотовари</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="fuel">
-											<span class="filters__icon icon-petrol"></span>
-											<span class="filters__name">Паливо</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="food-products">
-											<span class="filters__icon icon-food"></span>
-											<span class="filters__name">Продукти харчування</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="lingerie">
-											<span class="filters__icon icon-underclothes"></span>
-											<span class="filters__name">Спідня білизна</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="sport-goods">
-											<span class="filters__icon icon-sport"></span>
-											<span class="filters__name">Товари для спорту</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="restaurants">
-											<span class="filters__icon icon-restorountes"></span>
-											<span class="filters__name">Ресторани</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="books">
-											<span class="filters__icon icon-book"></span>
-											<span class="filters__name">Книжки</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="accessories">
-											<span class="filters__icon icon-accessories"></span>
-											<span class="filters__name">Аксесуари</span>
-										</a>
-									</li>
-									<li class="filters__item">
-										<a href="#" class="filters__link" aria-label="fishing-hunting">
-											<span class="filters__icon icon-fishing"></span>
-											<span class="filters__name">Риболовля та мисливство</span>
-										</a>
-									</li>
-								</ul>
-							</nav>
+							<button type="submit" disabled class="cabinet__btn-submit btn btn_dark btn_sm-3">Заповнити</button>
 						</div>
 					</div>
-					<nav class="sub-header__nav">
-						<ul class="sub-header__list">
-							<li data-da=".more-sub-list__items,700.98,first" class="sub-header__item">
-								<a href="#" class="sub-header__link" aria-label="link">Каталог</a>
-							</li>
-							<li data-da=".more-sub-list__items,701.98,first" class="sub-header__item">
-								<a href="#" class="sub-header__link" aria-label="link">Подарункова картка giftmall</a>
-							</li>
-							<li data-da=".more-sub-list__items,900.98,first" class="sub-header__item item-line">
-								<a href="#" class="sub-header__link" aria-label="link">Листівки та коробки</a>
-							</li>
-							<li data-da=".more-sub-list__items,1000.98,first" class="sub-header__item">
-								<a href="#" data-popup="#popupContactsUs" class="sub-header__link" aria-label="link">Контакти</a>
-							</li>
-							<li data-da=".more-sub-list__items,1100.98,first" class="sub-header__item">
-								<a href="#" class="sub-header__link" aria-label="link">giftmate для бізнесів</a>
-							</li>
-							<li class="sub-header__item more-sub-list">
-								<button type="button" class="sub-header__link sub-header__link_more icon-arrow-down" aria-label="open sub list"><span>Більше</span></button>
-								<ul data-da=".menu__body,700.98,3" class="more-sub-list__items">
-									<li class="sub-header__item">
-										<a href="#" class="sub-header__link" aria-label="link">Про нас</a>
-									</li>
-									<li class="sub-header__item">
-										<a href="#" class="sub-header__link" aria-label="link">Оплата і доставка</a>
-									</li>
-									<li class="sub-header__item">
-										<a href="#" class="sub-header__link" aria-label="link">Платформа винагород</a>
-									</li>
-									<li class="sub-header__item">
-										<a href="#" class="sub-header__link" aria-label="link">Постачальникам</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</header>
-		<main class="page">
-			<section class="error">
-				<div class="error__container">
-					<div class="error__content">
-						<p class="error__title">404</p>
-						<h1 class="error__subtitle">Сторінка не знайдена</h1>
-						<a href="index.html" class="error__button btn btn_dark" aria-label="перейти на головну">До головної</a>
-					</div>
-					<div class="error__cards">
-						<img src="img/brands/mobile_img_info.png" alt="brand logos" class="error__card error__card--mobile">
-						<img src="img/brands/image_1.png" alt="brand logo" class="error__card error__card--1">
-						<img src="img/brands/image_2.png" alt="brand logo" class="error__card error__card--2">
-						<img src="img/brands/image_3.png" alt="brand logo" class="error__card error__card--3">
-						<img src="img/brands/image_4.png" alt="brand logo" class="error__card error__card--4">
-						<img src="img/brands/image_5.png" alt="brand logo" class="error__card error__card--5">
-						<img src="img/brands/image_6.png" alt="brand logo" class="error__card error__card--6">
-						<img src="img/brands/image_7.png" alt="brand logo" class="error__card error__card--7">
-						<img src="img/brands/image_8.png" alt="brand logo" class="error__card error__card--8">
-						<img src="img/brands/image_9.png" alt="brand logo" class="error__card error__card--9">
-						<img src="img/brands/image_10.png" alt="brand logo" class="error__card error__card--10">
-						<img src="img/brands/image_11.png" alt="brand logo" class="error__card error__card--11">
-						<img src="img/brands/image_12.png" alt="brand logo" class="error__card error__card--12">
-					</div>
-				</div>
+				</form>
 			</section>
 		</main>
 	</div>

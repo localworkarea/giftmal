@@ -999,10 +999,10 @@
         }
         const formPopupAccount = document.querySelector("form#popupAccountForm");
         if (!formPopupAccount) return;
-        const steps = formPopupAccount.querySelectorAll(".popup-account__step");
-        const nextButton = formPopupAccount.querySelector(".popup-account__btn-next");
-        const prevButton = formPopupAccount.querySelector(".popup-account__subhead");
-        const stepIndicator = formPopupAccount.querySelector(".popup-account__txt span");
+        const steps = formPopupAccount.querySelectorAll(".cabinet__step");
+        const nextButton = formPopupAccount.querySelector(".cabinet__btn-next");
+        const prevButton = formPopupAccount.querySelector(".cabinet__subhead");
+        const stepIndicator = formPopupAccount.querySelector(".cabinet__txt span");
         if (!steps.length || !nextButton || !prevButton || !stepIndicator) return;
         const firstStep = steps[0];
         const secondStep = steps[1];
@@ -1384,6 +1384,7 @@
     }
     function formAddPhoto() {
         const fileInput = document.querySelector(".add-photo__input");
+        if (!fileInput) return;
         const previewContainer = document.querySelector(".add-photo__img");
         fileInput.addEventListener("change", (function() {
             if (!fileInput.files.length) return;
@@ -9764,6 +9765,7 @@
     function headerScroll() {
         addWindowScrollEvent = true;
         const header = document.querySelector("[data-scroll]");
+        if (!header) return;
         const headerShow = header.hasAttribute("data-scroll-show");
         const headerShowTimer = header.dataset.scrollShow ? header.dataset.scrollShow : 500;
         const startPoint = header.dataset.scroll ? header.dataset.scroll : 1;
@@ -10033,11 +10035,13 @@
         const cardPage = document.querySelector(".card");
         const catalogPage = document.querySelector(".catalog");
         const seoBlockEl = document.querySelector(".seo-block");
+        const cabinetPage = document.querySelector(".cabinet");
         if (checkoutPage) document.documentElement.classList.add("checkout-page");
         if (certificateAccount) document.documentElement.classList.add("account-page");
         if (cardPage) document.documentElement.classList.add("card-page");
         if (catalogPage) document.documentElement.classList.add("catalog-page");
         if (seoBlockEl) document.documentElement.classList.add("has-seo-block");
+        if (cabinetPage) document.documentElement.classList.add("cabinet-page");
         const illustrationInput = document.getElementById("customImageInput");
         if (illustrationInput) {
             illustrationInput.addEventListener("change", (function(event) {
@@ -10195,14 +10199,6 @@
         }
         initDragSpoiler();
         mediaQuery900max.addEventListener("change", initDragSpoiler);
-        const popupLogin = document.querySelectorAll(".popup-login");
-        popupLogin.forEach((popup => {
-            const content = popup.querySelector(".popup-login__content");
-            if (!content) return;
-            content.addEventListener("scroll", (function() {
-                popup.classList.toggle("_scroll-content", content.scrollTop > 5);
-            }));
-        }));
         const popupButtons = document.querySelectorAll(".cabinet-header__button");
         function toggleModalShow(button) {
             const parentElement = button.parentElement;
@@ -10610,16 +10606,17 @@
             if (!popupBody || !popupContent) return;
             let isCheckedThroughPopup = false;
             let isAddButtonHandlerActive = false;
-            function openPopup(event) {
+            function openPopup(event, targetCheckbox) {
                 event.preventDefault();
-                modules_flsModules.popup.open(`#${popupRules.id}`);
+                const popupSelector = targetCheckbox?.dataset.popup;
+                if (popupSelector) modules_flsModules.popup.open(popupSelector);
             }
             function updateAddButtonState() {
                 if (!checkboxRules || !addButton) return;
                 if (!mediaQuery480max.matches) if (checkboxRules.checked) addButton.removeAttribute("disabled"); else addButton.setAttribute("disabled", "true");
             }
             function handleAddButtonClick(event) {
-                if (mediaQuery480max.matches) openPopup(event);
+                if (mediaQuery480max.matches) openPopup(event, checkboxRules);
             }
             function checkMediaQuery() {
                 if (!addButton) return;
@@ -10667,6 +10664,7 @@
             updateAddButtonState();
         }));
         const bodyHistory = document.querySelector(".popup-history");
+        if (!bodyHistory) return;
         const listContainer = bodyHistory.querySelector(".popup-history__list");
         const filterButtonsHistory = bodyHistory.querySelectorAll(".popup-history__filter-btn");
         const searchInput = bodyHistory.querySelector("#historyBalanceSearch");
