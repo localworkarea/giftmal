@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250422222720">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250423134447">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -2525,12 +2525,226 @@
 			</div>
 		</div>
 	</div>
-	<script src="files/rolldate/rolldate.js?_v=20250422222720"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250422222720"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250422222720"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250422222720"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250422222720"></script>
-	<script src="js/app.min.js?_v=20250422222720"></script>
+
+	<div id="popupLogIn" class="popup-login popup popup-full">
+		<div class="login__header">
+			<div class="login__logo icon-logo"></div>
+			<button data-close type="button" class="login__close icon-cross" aria-label="close"></button>
+		</div>
+		<div class="popup-login__content popup__content">
+			<form data-dev method="post" class="login__body">
+				<div class="login__head">
+					<div class="login__logo-sm">
+						<img src="img/icons/logo-short.svg" width="19" height="20" alt="Image">
+					</div>
+					<div class="login__title">Вхід у свій Кабінет</div>
+				</div>
+				<div class="login__tel">
+					<div class="login__tel-input input__item input-intl-item">
+						<label for="loginTel" class="input__label">
+							Ваш номер телефону
+						</label>
+						<input id="loginTel" data-intl-number type="tel" name="tel" class="intl-input input input_sm">
+					</div>
+					<div class="login__checked phone-checked">
+						<div class="phone-checked__item txt-15">
+							+380-50-104-88-57
+						</div>
+						<button type="button" class="edit-btn icon-edit txt-13" aria-label="change data">
+							Змінити
+						</button>
+					</div>
+				</div>
+				<div class="login__sms input__item">
+					<label for="loginSms" class="input__label">
+						Введіть отриманий код з SMS
+					</label>
+					<div class="input__sms-item">
+						<input id="loginSms" autocomplete="one-time-code" type="text" name="sms" data-error="Невірний код" data-required="sms" class="input-sms" maxlength="4" inputmode="numeric">
+						<div class="input__sms-chars input input_sm">
+							<span class="input__sms-char char-placeholder sms-cursor">
+								<span class="char-num"></span>
+								<span class="char-x">X</span>
+							</span>
+							<span class="input__sms-char char-placeholder">
+								<span class="char-num"></span>
+								<span class="char-x">X</span>
+							</span>
+							<span class="input__sms-char char-placeholder">
+								<span class="char-num"></span>
+								<span class="char-x">X</span>
+							</span>
+							<span class="input__sms-char char-placeholder">
+								<span class="char-num"></span>
+								<span class="char-x">X</span>
+							</span>
+						</div>
+					</div>
+					<div data-timer-set class=" timer">
+						<button type="button" data-timer-btn class="edit-btn icon-phone-sms txt-13" aria-label="continue">
+							Надіслати код повторно
+						</button>
+						<p class="timer__txt txt-accent txt-13">
+							Не прийшов код?<br> Отримати повторно через <span data-timer="0.3"> 00 : 00</span> сек
+						</p>
+					</div>
+				</div>
+				<div class="login__footer">
+					<button type="submit" disabled class="login__btn btn btn_dark btn_sm-3">Увійти</button>
+					<div class="login__checkbox checkbox">
+						<input id="loginAgreement" checked type="checkbox" name="loginAgreement" class="checkbox__input">
+						<label for="loginAgreement" class="checkbox__label icon-checkbox">
+							<span>Даю згоду на обробку своїх персональних даних згідно <a href="checkout.html">Даної Оферти</a></span>
+						</label>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="login__brands brands-login">
+			<img class="brands-login__img img-1" src="img/certificates/certificate-01.jpg" width="118" height="77" alt="Image">
+			<img class="brands-login__img img-2" src="img/certificates/certificate-06.jpg" width="118" height="77" alt="Image">
+			<img class="brands-login__img img-3" src="img/certificates/certificate-11.jpg" width="118" height="77" alt="Image">
+			<img class="brands-login__img img-4" src="img/certificates/certificate-09.jpg" width="118" height="77" alt="Image">
+			<img class="brands-login__img img-5" src="img/certificates/certificate-12.jpg" width="118" height="77" alt="Image">
+			<img class="brands-login__img img-6" src="img/certificates/certificate-02.jpg" width="118" height="77" alt="Image">
+		</div>
+	</div>
+
+	<div id="popupAccount" class="popup-account popup popup-full">
+		<div class="login__header">
+			<div class="login__logo icon-logo"></div>
+			<button data-close type="button" class="login__close icon-cross" aria-label="close"></button>
+		</div>
+		<div class="popup-account__content popup__content">
+			<form data-dev method="post" id="popupAccountForm" class="cabinet__body">
+				<div class="cabinet__head">
+					<button type="button" class="cabinet__subhead" aria-label="previous step">
+						<span class="cabinet__prev icon-arrow-back"></span>
+						<span class="cabinet__txt">Крок <span>1</span> з 2</і>
+					</button>
+					<h1 class="cabinet__title">Заповніть свій кабінет</h1>
+					<p class="cabinet__subtitle">Заповніть свої дані, аби ми могли розпізнати вас та надати необхідні послуги.</p>
+				</div>
+				<div class="cabinet__steps">
+					<div class="cabinet__step _step-active">
+						<div class="cabinet__items">
+							<div class="input__item">
+								<label for="formAccountCard" class="input__label">
+									Номер картки Eridon
+								</label>
+								<div class="input__sub-item">
+									<input id="formAccountCard" autocomplete="off" type="text" name="form[]" data-error="Введіть номер картки Eridon" placeholder="ХХ-ХХ-ХХ" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="formAccountCode" class="input__label">
+									Код ЄДРПОУ
+								</label>
+								<div class="input__sub-item">
+									<input id="formAccountCode" autocomplete="off" type="text" name="form[]" data-error="Введіть код ЄДРПОУ" placeholder="ХХ-ХХ-ХХ-ХХ-ХХ" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="formAccountIPN" class="input__label">
+									Номер ІПН
+								</label>
+								<div class="input__sub-item">
+									<input id="formAccountIPN" autocomplete="off" type="text" name="form[]" data-error="Введіть номер ІПН" placeholder="ХХ-ХХ-ХХ-ХХ-ХХ" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="formAccountPosition" class="input__label">
+									Посада
+								</label>
+								<div class="input__sub-item">
+									<input id="formAccountPosition" autocomplete="off" type="text" name="form[]" data-error="Введіть вашу посаду" placeholder="Ваша Посада" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+						</div>
+						<button type="button" disabled class="cabinet__btn-next btn btn_dark btn_sm-3">Далі</button>
+					</div>
+					<div class="cabinet__step">
+						<div class="cabinet__items">
+							<div class="input__item">
+								<label for="formAccountEmail" class="input__label">
+									Ваш email
+								</label>
+								<div class="input__sub-item">
+									<input id="formAccountEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email" class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="formAccountName" class="input__label">
+									Ваша Стать
+								</label>
+								<div class="gender-option">
+									<div class="gender-option__item">
+										<input id="formAccountGenderFemale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender" checked>
+										<label for="formAccountGenderFemale" class="gender-option__label input input_sm">
+											<span>Жіноча</span>
+										</label>
+									</div>
+									<div class="gender-option__item">
+										<input id="formAccountGenderMale" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender">
+										<label for="formAccountGenderMale" class="gender-option__label input input_sm">
+											<span>Чоловіча</span>
+										</label>
+									</div>
+									<div class="gender-option__item">
+										<input id="formAccountGenderNoneBinary" class="gender-option__input" type="radio" name="giftBox" value="formAccountGender">
+										<label for="formAccountGenderNoneBinary" class="gender-option__label input input_sm">
+											<span>Небінарна</span>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="formAccountName" class="input__label">
+									Ваше Ім’я
+								</label>
+								<div class="input__sub-item">
+									<input id="formAccountName" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше ім'я" placeholder="Ваше Ім’я" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="formAccountSurname" class="input__label">
+									Ваше Прізвище
+								</label>
+								<div class="input__sub-item">
+									<input id="formAccountSurname" autocomplete="off" type="text" name="form[]" data-error="Вкажіть ваше Прізвище" placeholder="Ваше Прізвище" data-required class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="formAccountDate" class="input__label">
+									Дата Народження <span> опціонально</span>
+								</label>
+								<div class="input__sub-item">
+									<input id="formAccountDate" data-datepicker autocomplete="off" type="text" name="form[]" data-error="Виберіть дату доставки" placeholder="дд.мм.рррр" class="input input_sm">
+									<button type="button" class="input__choise icon-calendar"></button>
+								</div>
+							</div>
+						</div>
+						<button type="submit" disabled class="cabinet__btn-submit btn btn_dark btn_sm-3">Заповнити</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<script src="files/rolldate/rolldate.js?_v=20250423134447"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250423134447"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250423134447"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250423134447"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250423134447"></script>
+	<script src="js/app.min.js?_v=20250423134447"></script>
 </body>
 
 </html>

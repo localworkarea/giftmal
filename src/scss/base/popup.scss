@@ -1656,3 +1656,284 @@ body::after {
 	}
 }
 
+
+// Popup #popupLogIn, #popupAccount =====================
+
+.popup-login,
+.popup-account {
+	transition: opacity 0.3s ease 0s, visibility 0.3s ease 0s;
+	background-color: var(--gray-1);
+	min-height: 100svh;
+	&.popup-full {
+		.popup__content {
+			max-width: 100% !important;
+			// min-height: 100svh;
+			height: 100%;
+			transform: translate(0%,0%);
+			border-radius: 0 !important;
+			background-color: transparent;
+			box-shadow: none;
+			// @media (min-width:toEm(700.98)){
+			// 	padding: toRem(140) toRem(32) toRem(32);				
+			// }
+			// @media (max-width:toEm(700.98)){
+			// 	padding: toRem(68) toRem(16) toRem(120);
+			// }
+		}
+	}
+	// .popup-login__content
+	&__content {
+		overflow-y: auto;
+		z-index: 2;
+		// .popup-account & {
+			display: grid;
+			align-items: center;
+			@media (min-width:toEm(700.98)){
+				padding: toRem(32) !important;
+			}
+			@media (max-width:toEm(700.98)){
+				padding: toRem(75) toRem(16) toRem(24) !important;
+			}
+		// }
+	}
+}
+
+// .popup-login {
+	// // .popup-login__header
+	// &__header {
+	// 	position: fixed;
+	// 	top: 0;
+	// 	left: 0;
+	// 	width: 100%;
+	// 	z-index: 5;
+	// 	pointer-events: none;
+	// 	@extend %flexCenterGap8;
+	// 	justify-content: space-between;
+	// 	@media (min-width:$mobileSmall){
+	// 		padding: toRem(32) toRem(32) toRem(16);
+	// 	}
+	// 	@media (max-width:$mobileSmall){
+	// 		padding: toRem(12) toRem(16) toRem(12);
+	// 		background-color: var(--gray-1);
+	// 		border-radius: 0 0 toRem(24) toRem(24);
+	// 		transition: box-shadow .3s ease;
+	// 		._scroll-content & {
+	// 			box-shadow: 0 4px 20px 0 rgba(33, 5, 41, 0.12);
+	// 		}
+	// 	}
+	// }
+	// // .popup-login__logo
+	// &__logo {
+	
+	// }
+	// // .popup-login__close
+	// &__close {
+	// 	pointer-events: all;
+	// 	background-color: var(--dark-violet);
+	// 	aspect-ratio: 1;
+	// 	border-radius: 50%;
+	// 	display: grid;
+	// 	place-items: center;
+	// 	transition: background-color .2s ease, color .2s ease;
+	// 	@media (min-width:$mobileSmall){
+	// 		width: toRem(40);
+	// 	}
+	// 	@media (max-width:$mobileSmall){
+	// 		width: toRem(32);
+	// 	}
+	// 	&::before {
+	// 		color: var(--white);
+	// 		@media (min-width:$mobileSmall){
+	// 			font-size: toRem(24);
+	// 		}
+	// 		@media (max-width:$mobileSmall){
+	// 			font-size: toRem(24);				
+	// 		}
+	// 	}
+	// 	@media (any-hover: hover){
+	// 		&:hover{
+	// 			background-color: var(--violet);
+	// 		}
+	// 	}
+	// }
+	// // .popup-login__body
+	// &__body {
+	// 	position: relative;
+	// 	z-index: 2;
+	// 	width: 100%;
+	// 	max-width: toRem(480);
+	// 	background-color: var(--white);
+	// 	margin-inline: auto;
+	// 	@include adaptiveValue("border-radius", 40, 24,0,1400.98,480.98);
+	// 	@include adaptiveValue("padding", 54, 24,0,1400.98,480.98);
+	// 	display: grid;
+	// 	gap: toRem(32);
+	// 	.popup-account & {
+	// 		max-width: toRem(694);
+	// 	}
+	// }
+	// // .popup-login__head
+	// &__head {
+	// }
+	// // .popup-login__logo-sm
+	// &__logo-sm {
+	// 	border-radius: toRem(9);
+	// 	background-color: var(--gray-1);
+	// 	display: grid;
+	// 	place-items: center;
+	// 	justify-self: flex-start;
+	// 	padding: toRem(9.75) toRem(9.75) toRem(8.5);
+	// 	margin-bottom: toRem(16);
+	// 	width: max-content;
+	// 	img {
+	// 		height: auto;
+	// 		width: toRem(19.68);
+	// 	}
+	// }
+	// // .popup-login__title
+	// &__title {
+	// 	@extend %fonsSize40-20;
+	// 	line-height: 1.2;
+	// }
+	// // .popup-login__tel
+	// &__tel {
+	// }
+	// // .popup-login__tel-input
+	// &__tel-input {
+	// 	&:not(:last-child) {
+	// 		margin-bottom: toRem(16);
+	// 	}
+	// }
+	// // .popup-login__checked
+	// &__checked {
+	// }
+	// // .popup-login__sms
+	// &__sms {
+	// }
+	// // .popup-login__footer
+	// &__footer {
+	// 	display: grid;
+	// 	gap: toRem(16);
+	// }
+	// // .popup-login__btn
+	// &__btn {
+	// }
+	// // .popup-login__checkbox
+	// &__checkbox {
+	// }
+	// // .popup-login__brands
+	// &__brands {
+	// }
+// }
+
+// Popup #popupAccount =====================
+// .popup-account {
+		// .popup-account__content
+		// &__content {
+			// @media (max-height: toEm(800.98)){
+				  // padding-block: toRem(140)!important;
+			// }
+		// }
+// 	// .popup-account__body
+// 	&__body {
+// 	}
+// 	// .popup-account__head
+// 	&__head {
+// 	}
+// 	// .popup-account__subhead
+// 	&__subhead {
+// 		position: relative;
+// 		@extend %flexCenterGap8;
+// 		&._active {
+// 			padding-left: toRem(32);
+// 		}
+// 		@media (min-width:$mobileSmall){
+// 			 margin-bottom: toRem(16); 
+// 		}
+// 		@media (max-width:$mobileSmall){
+// 			  margin-bottom: toRem(12);
+// 		}
+// 	}
+// 	// .popup-account__prev
+// 	&__prev {
+// 		position: absolute;
+// 		top: 50%;
+// 		transform: translate(0,-48%);
+// 		left: 0;
+// 		display: none;
+// 		._active & {
+// 			display: block;
+// 		}
+// 		&::before {
+// 			font-size: toRem(24);
+// 			color: var(--fade-violet-2);
+// 			transition: color .3s ease;
+// 		}
+// 		@media (any-hover: hover){
+// 			&:hover{
+// 				&::before {
+// 					color: var(--dark-violet);
+// 				}
+// 			}
+// 		}
+// 	}
+// 	// .popup-account__txt
+// 	&__txt {
+// 		@extend %fonsSize11-12;
+// 		color: var(--fade-violet-2);
+// 	}
+// 	// .popup-account__title
+// 	&__title {
+// 		@extend %fonsSize40-20;
+// 		&:not(:last-child) {
+// 			margin-bottom: toRem(16);
+// 		}
+// 	}
+// 	// .popup-account__subtitle
+// 	&__subtitle {
+// 		@extend %fonsSize13-14;
+// 		color: var(--fade-violet-2);
+// 		line-height: 1.46;
+// 	}
+// 	// .popup-account__steps
+// 	&__steps {
+// 		position: relative;
+// 	}
+// 	// .popup-account__step
+// 	&__step {
+// 		visibility: hidden;
+// 		position: absolute;
+// 		opacity: 0;
+// 		height: 0;
+// 		overflow: hidden;
+// 		&._step-active {
+// 			visibility: visible;
+// 			position: static;
+// 			opacity: 1;
+// 			height: auto;
+// 		}
+// 	}
+// 	// .popup-account__items
+// 	&__items {
+// 		display: grid;
+// 		margin-bottom: toRem(32);
+// 		@media (min-width:$mobileSmall){
+// 			gap: toRem(20) toRem(16);
+// 			grid-template-columns: 1fr 1fr;
+// 		}
+// 		@media (max-width:$mobileSmall){
+// 			 gap: toRem(16); 
+// 		}
+// 		.input__label {
+// 			span {
+// 				color: var(--fade-violet-1);
+// 			}
+// 		}
+// 	}
+// 	// .popup-account__btn-next
+// 	&__btn-next {
+// 	}
+// 	// .popup-account__btn-submit
+// 	&__btn-submit {
+// 	}
+// }

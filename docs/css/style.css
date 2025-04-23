@@ -4455,6 +4455,29 @@ body::after {
   height: auto;
   width: 6.8125rem
 }
+.popup-account,
+.popup-login {
+  transition: opacity .3s ease 0s,visibility .3s ease 0s;
+  background-color: var(--gray-1);
+  min-height: 100svh
+}
+.popup-account.popup-full .popup__content,
+.popup-login.popup-full .popup__content {
+  max-width: 100%!important;
+  height: 100%;
+  -webkit-transform: translate(0,0);
+  transform: translate(0,0);
+  border-radius: 0!important;
+  background-color: rgba(0,0,0,0);
+  box-shadow: none
+}
+.popup-account__content,
+.popup-login__content {
+  overflow-y: auto;
+  z-index: 2;
+  display: grid;
+  align-items: center
+}
 .ibg {
   width: 100%;
   height: 100%;
@@ -12438,6 +12461,21 @@ body::after {
 .login__logo {
   pointer-events: all
 }
+.popup-login .login__logo {
+  pointer-events: none
+}
+.login__close {
+  pointer-events: all;
+  background-color: var(--dark-violet);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: background-color .2s ease,color .2s ease
+}
+.login__close::before {
+  color: var(--white)
+}
 .login__body {
   position: relative;
   z-index: 2;
@@ -14268,6 +14306,12 @@ body::after {
   .login__header {
     padding: 2rem 2rem 1rem
   }
+  .login__close {
+    width: 2.5rem
+  }
+  .login__close::before {
+    font-size: 1.5rem
+  }
   .cabinet {
     padding-top: 1.875rem;
     padding-bottom: 1.875rem;
@@ -14357,6 +14401,10 @@ body::after {
   }
   .popup-history-none.popup .popup__content {
     min-height: 18.125rem
+  }
+  .popup-account__content,
+  .popup-login__content {
+    padding: 2rem!important
   }
   .menu__activate-btn {
     display: none
@@ -17648,6 +17696,10 @@ body::after {
   .popup-history__cell.cell-status {
     display: none!important
   }
+  .popup-account__content,
+  .popup-login__content {
+    padding: 4.6875rem 1rem 1.5rem!important
+  }
   .header__sub-header {
     z-index: 5
   }
@@ -20036,8 +20088,15 @@ body::after {
     border-radius: 0 0 1.5rem 1.5rem;
     transition: box-shadow .3s ease
   }
+  ._scroll-content .login__header,
   .login__header._header-scroll {
     box-shadow: 0 4px 20px 0 rgba(33,5,41,.12)
+  }
+  .login__close {
+    width: 2rem
+  }
+  .login__close::before {
+    font-size: 1.5rem
   }
   .login__body {
     border-radius: 1.5rem
@@ -21077,6 +21136,9 @@ body::after {
     color: var(--dark-violet)
   }
   .social-contacts__link:hover {
+    background-color: var(--violet)
+  }
+  .login__close:hover {
     background-color: var(--violet)
   }
   .cabinet__prev:hover::before {

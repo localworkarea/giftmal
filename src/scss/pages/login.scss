@@ -13,39 +13,7 @@
     padding-top: toRem(75);
     padding-bottom: toRem(96);
   }
-	// min-height: 100svh;
-	// &.popup-full {
-	// 	.popup__content {
-	// 		max-width: 100% !important;
-	// 		// min-height: 100svh;
-	// 		height: 100%;
-	// 		transform: translate(0%,0%);
-	// 		border-radius: 0 !important;
-	// 		background-color: transparent;
-	// 		box-shadow: none;
-	// 		@media (min-width:toEm(700.98)){
-	// 			padding: toRem(140) toRem(32) toRem(32);				
-	// 		}
-	// 		@media (max-width:toEm(700.98)){
-	// 			padding: toRem(68) toRem(16) toRem(120);
-	// 		}
-	// 	}
-	// }
-	// .login__content
-	// &__content {
-	// 	overflow-y: auto;
-	// 	z-index: 2;
-	// 	.popup-account & {
-	// 		display: grid;
-	// 		align-items: center;
-	// 		@media (min-width:toEm(700.98)){
-	// 			padding: toRem(32) !important;
-	// 		}
-	// 		@media (max-width:toEm(700.98)){
-	// 			padding: toRem(68) toRem(16) toRem(24) !important;
-	// 		}
-	// 	}
-	// }
+	
 	// .login__header
 	&__header {
 		position: fixed;
@@ -64,7 +32,8 @@
 			background-color: var(--gray-1);
 			border-radius: 0 0 toRem(24) toRem(24);
 			transition: box-shadow .3s ease;
-			&._header-scroll {
+			&._header-scroll,
+			._scroll-content & {
 				box-shadow: 0 4px 20px 0 rgba(33, 5, 41, 0.12);
 			}
 		}
@@ -72,37 +41,40 @@
 	// .login__logo
 	&__logo {
     pointer-events: all;
+		.popup-login & {
+			pointer-events: none;
+		}
 	}
-	// // .login__close
-	// &__close {
-	// 	pointer-events: all;
-	// 	background-color: var(--dark-violet);
-	// 	aspect-ratio: 1;
-	// 	border-radius: 50%;
-	// 	display: grid;
-	// 	place-items: center;
-	// 	transition: background-color .2s ease, color .2s ease;
-	// 	@media (min-width:$mobileSmall){
-	// 		width: toRem(40);
-	// 	}
-	// 	@media (max-width:$mobileSmall){
-	// 		width: toRem(32);
-	// 	}
-	// 	&::before {
-	// 		color: var(--white);
-	// 		@media (min-width:$mobileSmall){
-	// 			font-size: toRem(24);
-	// 		}
-	// 		@media (max-width:$mobileSmall){
-	// 			font-size: toRem(24);				
-	// 		}
-	// 	}
-	// 	@media (any-hover: hover){
-	// 		&:hover{
-	// 			background-color: var(--violet);
-	// 		}
-	// 	}
-	// }
+		// .login__close
+		&__close {
+			pointer-events: all;
+			background-color: var(--dark-violet);
+			aspect-ratio: 1;
+			border-radius: 50%;
+			display: grid;
+			place-items: center;
+			transition: background-color .2s ease, color .2s ease;
+			@media (min-width:$mobileSmall){
+				width: toRem(40);
+			}
+			@media (max-width:$mobileSmall){
+				width: toRem(32);
+			}
+			&::before {
+				color: var(--white);
+				@media (min-width:$mobileSmall){
+					font-size: toRem(24);
+				}
+				@media (max-width:$mobileSmall){
+					font-size: toRem(24);				
+				}
+			}
+			@media (any-hover: hover){
+				&:hover{
+					background-color: var(--violet);
+				}
+			}
+		}
 	// .login__body
 	&__body {
 		position: relative;

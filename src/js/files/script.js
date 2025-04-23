@@ -348,17 +348,20 @@ document.addEventListener("DOMContentLoaded", () => {
   mediaQuery900max.addEventListener('change', initDragSpoiler);
 
 
-  // // == popup-login scroll content ==========================
-  // const popupLogin = document.querySelectorAll(".popup-login");
-  // popupLogin.forEach(popup => {
-  //     const content = popup.querySelector(".popup-login__content");
+  // == popup-login + popup-account scroll content ==========================
+  const popupLogin = document.querySelector(".popup-login");
+  const contentLogin = popupLogin.querySelector(".popup__content");
+  const popupAccount = document.querySelector(".popup-account");
+  const contentAccount = popupAccount.querySelector(".popup-account__content");
 
-  //     if (!content) return;
+  if (!popupLogin || !popupAccount) return;
 
-  //     content.addEventListener("scroll", function () {
-  //         popup.classList.toggle("_scroll-content", content.scrollTop > 5);
-  //     });
-  // });
+  contentLogin.addEventListener("scroll", function () {
+    popupLogin.classList.toggle("_scroll-content", contentLogin.scrollTop > 5);
+  });
+  contentAccount.addEventListener("scroll", function () {
+    popupAccount.classList.toggle("_scroll-content", contentAccount.scrollTop > 5);
+  });
 
   
   
@@ -2217,6 +2220,36 @@ function initDesktopPickers() {
       dateFormat: 'dd.MM.yyyy',
       minDate: '01.01.1900',
       locale: locales[currentLang] || locales['en'],
+      position({ $datepicker, $target, $pointer }) {
+        const targetRect = $target.getBoundingClientRect();
+        const dpHeight = $datepicker.offsetHeight;
+        const dpWidth = $datepicker.offsetWidth;
+        const windowHeight = window.innerHeight;
+        const windowWidth = window.innerWidth;
+      
+        const scrollY = window.scrollY;
+        const scrollX = window.scrollX;
+      
+        const spaceBelow = windowHeight - targetRect.bottom;
+        const spaceAbove = targetRect.top;
+      
+        const offset = 4; // отступ от поля ввода
+        const shouldPlaceAbove = spaceBelow < dpHeight && spaceAbove > dpHeight;
+      
+        const top = shouldPlaceAbove
+          ? scrollY + targetRect.top - dpHeight - offset
+          : scrollY + targetRect.bottom + offset;
+      
+        const left = Math.min(
+          scrollX + targetRect.left,
+          scrollX + windowWidth - dpWidth - 10 // отступ справа
+        );
+      
+        $datepicker.style.top = `${top}px`;
+        $datepicker.style.left = `${left}px`;
+      
+        $pointer.style.display = 'none';
+      },
       onShow(isFinished) {
         if (!isFinished || !dp.$el) return;
         dp.$el.parentElement?.classList.add('_show-picker');
