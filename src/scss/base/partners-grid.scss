@@ -15,7 +15,7 @@ $item-mobile-height: toRem(90);
   }
   
   @media (max-width: $mobile) {
-    gap: toRem(40);
+    gap: toRem(31);
   }
   
   &__header {
@@ -107,6 +107,7 @@ $item-mobile-height: toRem(90);
       height: auto;
       object-fit: contain;
       transition: filter 0.3s ease;
+      transform: scale(0.7);
     }
   }
   
@@ -118,7 +119,7 @@ $item-mobile-height: toRem(90);
     font-size: toRem(15);
     
     @media (max-width: $tablet) {
-      display: none;
+      margin-top: toRem(47);
     }
     
     img {

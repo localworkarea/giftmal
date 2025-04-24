@@ -118,6 +118,7 @@
         max-height: toRem(40);
         width: auto;
         object-fit: contain;
+        transform: scale(0.7);
         
         @media (max-width: $mobile) {
           max-width: toRem(80);
