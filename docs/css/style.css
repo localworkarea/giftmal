@@ -6454,7 +6454,9 @@ body::after {
   object-fit: contain;
   transition: -webkit-filter .3s ease;
   transition: filter .3s ease;
-  transition: filter .3s ease,-webkit-filter .3s ease
+  transition: filter .3s ease,-webkit-filter .3s ease;
+  -webkit-transform: scale(.7);
+  transform: scale(.7)
 }
 .partners-grid__note {
   display: flex;
@@ -6593,7 +6595,9 @@ body::after {
   max-height: 2.5rem;
   width: auto;
   -o-object-fit: contain;
-  object-fit: contain
+  object-fit: contain;
+  -webkit-transform: scale(.7);
+  transform: scale(.7)
 }
 @-webkit-keyframes marquee {
   0% {
@@ -6657,9 +6661,9 @@ body::after {
 }
 .live-chat {
   position: fixed;
-  bottom: 1.875rem;
-  right: 1.875rem;
-  z-index: 1000
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99
 }
 .live-chat__modal {
   position: absolute;
@@ -6726,12 +6730,12 @@ body::after {
   margin-bottom: 1.5rem
 }
 .live-chat__icon {
-  width: 1.5rem;
-  height: 1.5rem
+  width: 2rem;
+  height: 2rem
 }
 .live-chat__text {
   font-weight: 500;
-  font-size: 1rem;
+  font-size: .9375rem;
   line-height: 1.4
 }
 .live-chat__button {
@@ -10731,6 +10735,10 @@ body::after {
 .corporative-clients-page .awards {
   padding-top: 0
 }
+.corporative-clients-page .faq {
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem
+}
 .benefit-system__page {
   background-color: var(--white)
 }
@@ -10911,28 +10919,28 @@ body::after {
   background-color: var(--gray-1)
 }
 .help-support__card:nth-child(1) {
-  top: 15%
+  top: 8%
 }
 .help-support__card:nth-child(2) {
-  top: 18%
+  top: 11%
 }
 .help-support__card:nth-child(3) {
-  top: 21%
+  top: 14%
 }
 .help-support__card:nth-child(4) {
-  top: 24%
+  top: 17%
 }
 .help-support__card:nth-child(5) {
-  top: 27%
+  top: 20%
 }
 .help-support__card:nth-child(6) {
-  top: 30%
+  top: 23%
 }
 .help-support__card:nth-child(7) {
-  top: 33%
+  top: 26%
 }
 .help-support__card:nth-child(8) {
-  top: 36%
+  top: 29%
 }
 .help-support__header {
   display: flex;
@@ -10961,7 +10969,7 @@ body::after {
 }
 .help-support__body {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 37.375rem;
   gap: 3rem
 }
 .help-support__features-list {
@@ -15608,7 +15616,7 @@ body::after {
     max-width: 100%
   }
   .partners-grid__note {
-    display: none
+    margin-top: 2.9375rem
   }
   .page-header {
     gap: 1rem;
@@ -15749,6 +15757,11 @@ body::after {
     gap: 2rem
   }
   .solutions__sidebar {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content
+  }
+  .solutions__nav {
     display: none
   }
   .solutions__image {
@@ -15767,7 +15780,7 @@ body::after {
     grid-template-columns: repeat(3,1fr)
   }
   .help-support__body {
-    grid-template-columns: 1fr 18.75rem
+    grid-template-columns: 1fr 25rem
   }
   .contractors-benefits-cards__row {
     grid-template-columns: 1fr
@@ -16454,7 +16467,7 @@ body::after {
     display: none
   }
   .partners-grid {
-    gap: 2.5rem
+    gap: 1.9375rem
   }
   .partners-grid__header {
     margin-bottom: 0
@@ -16552,8 +16565,12 @@ body::after {
   .live-chat__link {
     font-size: .875rem
   }
+  .live-chat__icon {
+    width: 1.5rem;
+    height: 1.5rem
+  }
   .live-chat__text {
-    font-size: .9375rem
+    font-size: .875rem
   }
   .live-chat__button {
     width: 3rem;
@@ -17049,9 +17066,6 @@ body::after {
   .faq.faq__exeption {
     padding-top: 3.5rem
   }
-  .faq.faq__exeption .faq__title {
-    display: none
-  }
   .awards__title {
     font-size: .875rem;
     margin-bottom: 1rem
@@ -17107,7 +17121,14 @@ body::after {
   .solutions {
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
-    padding: 6.25rem 0
+    padding: 3.125rem 0 6.25rem
+  }
+  .solutions__content {
+    gap: 1.5625rem
+  }
+  .solutions__title {
+    font-size: 1.4375rem;
+    margin-bottom: 0
   }
   .solutions__tab:nth-child(1) {
     top: 0
@@ -17167,6 +17188,10 @@ body::after {
   }
   .corporative-clients-page .awards {
     padding-top: 3.4375rem
+  }
+  .corporative-clients-page .faq {
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem
   }
   .benefit-system__page .partners-grid__note {
     display: flex;
