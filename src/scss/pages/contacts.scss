@@ -11,7 +11,7 @@
   // .contacts__left
   &__left {
     @media (min-width:$tablet){
-       padding-bottom: toRem(32);
+       padding-bottom: toRem(50);
        display: flex;
        flex-direction: column;
        justify-content: space-between;
@@ -90,9 +90,9 @@
   }
   // .contacts__form
   &__form {
-    @media (min-width:$tablet){
-      padding-top: toRem(55);
-    }
+    // @media (min-width:$tablet){
+      // padding-top: toRem(55);
+    // }
     @media (max-width:$tablet){
       padding-top: toRem(48);
       max-width: toRem(550);
@@ -143,6 +143,10 @@
   }
   // .form-contacts__form
   &__form {
+    textarea {
+      min-height: toRem(136);
+    }
+    
   }
   // .form-contacts__items
   &__items {
@@ -168,5 +172,13 @@
   }
   // .form-contacts__checkbox
   &__checkbox {
+    br {
+      @media (max-width:$mobile){
+         display: none; 
+      }
+    }
+    &:not(:last-child) {
+      margin-bottom: toRem(8);
+    }
   }
 }

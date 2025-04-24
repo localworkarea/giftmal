@@ -463,6 +463,20 @@ export let formValidate = {
 	
 }
 
+// Снимаем ошибку с инпута чекбокс, если была отметка
+document.addEventListener("change", function (e) {
+	const target = e.target;
+	if (target.matches('input[type="checkbox"][data-required]')) {
+		if (target.checked) {
+			formValidate.removeError(target);
+			formValidate.addSuccess(target);
+		} else {
+			formValidate.addError(target);
+			formValidate.removeSuccess(target);
+		}
+	}
+});
+
 // Відправлення форм
 export function formSubmit() {
 	const forms = document.forms;

@@ -19,7 +19,8 @@ body::after {
 	display: none;
 }
 .popup-show.popupIti-show body::after,
-.popup-show.popupRolldate-show body::after {
+.popup-show.popupRolldate-show body::after,
+.popup-show.popupNotRobot-show body::after {
 	display: block;
 	z-index: 151;
 }
@@ -201,7 +202,8 @@ body::after {
 
 // Popup #popupLogIn + #popupRolldate =====================
 .popup-iti.popup,
-.popup-rolldate.popup {
+.popup-rolldate.popup,
+.popup-not-robot.popup {
 	z-index: 152;
 	.popup__body {
 	 position: relative;
@@ -593,8 +595,19 @@ body::after {
 					}
 				}
 			}
+			// .contacts-form-popup__btn
+			&__btn {
+				&:not(:last-child) {
+					margin-bottom: toRem(16);
+				}
+			}
+			// .contacts-form-popup__checkbox
+			&__checkbox {
+				&:not(:last-child) {
+					margin-bottom: toRem(8);
+				}
+			}
 		}
-
 }
 
 // Popup #popupRules =====================

@@ -24,7 +24,7 @@ class Popup {
 				bodyActive: 'popup-show', // Додається для боді, коли попап відкритий
 			},
 			focusCatch: true, // Фокус усередині попапа зациклений
-			closeEsc: true, // Закриття ESC
+			closeEsc: false, // Закриття ESC
 			bodyLock: true, // Блокування скролла
 			hashSettings: {
 				location: false, // Хеш в адресному рядку
@@ -37,6 +37,9 @@ class Popup {
 				afterClose: function () { },
 			},
 		}
+		// // Перечисляем попапы, которые нужно учитвать, чтобы не закрывались предыдущие открытые
+		// this.ignoreClosePopups = ["#popupRolldate", "#popupNotRobot", "#popupIti"];
+
 		this.youTubeCode;
 		this.isOpen = false;
 		// Поточне вікно
@@ -205,10 +208,29 @@ class Popup {
 			// 	this.close();
 			// }
 			// **Не закрываем предыдущий попап, если открывается #popupRolldate**
-			if (this.isOpen && !options.keepParentOpen && selectorValue !== "#popupRolldate") {
+			// if (this.isOpen && !options.keepParentOpen && selectorValue !== "#popupRolldate") {
+				// 	this._reopen = true;
+				// 	this.close();
+				// }
+				
+				// Не закрываем предыдущий попап, если открывается новый. Перечисляем id попапов которые нужно учитывать при открытии, если уже открыт предыдущий*
+			// const ignoreClosePopups = ["#popupRolldate", "#popupNotRobot", "#popupIti"];
+
+			// **Не закрываем предыдущий попап, если открывается попап с data-popup-keep-open**
+			if (
+				// this.isOpen &&
+				// !options.keepParentOpen &&
+				// !ignoreClosePopups.includes(selectorValue)
+				this.isOpen &&
+				!options.keepParentOpen &&
+				// !this.ignoreClosePopups.includes(selectorValue)
+				!document.querySelector(selectorValue)?.hasAttribute("data-popup-keep-open")
+
+			) {
 				this._reopen = true;
 				this.close();
 			}
+
 	
 			this.targetOpen.element = document.querySelector(this.targetOpen.selector);
 			if (this.targetOpen.element) {
@@ -280,7 +302,11 @@ class Popup {
 			this.isOpen = false;
 		} else {
 			
-				if ((selectorValue === "#popupIti" || selectorValue === "#popupRolldate") && openPopups.length > 0) {
+				// if ((selectorValue === "#popupNotRobot" || selectorValue === "#popupIti" || selectorValue === "#popupRolldate") && openPopups.length > 0) {
+				// if (this.ignoreClosePopups.includes(selectorValue) && openPopups.length > 0) {
+
+				// **Если закрывается попап с data-popup-keep-open то оставляем октрытым предыдущий**
+				if (document.querySelector(selectorValue)?.hasAttribute("data-popup-keep-open") && openPopups.length > 0){
 					this.previousOpen.element = openPopups[openPopups.length - 1];
 					this.previousOpen.selector = `#${this.previousOpen.element.id}`;
 					this.isOpen = true;

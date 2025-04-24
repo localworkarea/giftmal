@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250423134447">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250424142212">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -213,7 +213,15 @@
 												</div>
 											</div>
 										</div>
-										<button type="submit" class="tab-checkout__btn btn btn_dark">Отримати код</button>
+										<div class="tab-checkout__row row-gap-16">
+											<button type="submit" class="tab-checkout__btn btn btn_dark">Отримати код</button>
+											<div class="checkbox">
+												<input id="contactUsAgreement" type="checkbox" name="contactUsAgreement" class="checkbox__input">
+												<label for="contactUsAgreement" class="checkbox__label icon-checkbox">
+													<span>Даю згоду на обробку своїх персональних даних згідно <a href="#">Даної Оферти</a> <span data-tippy-grid="#tooltipContent" class="checkbox__tippy icon-details"></span></span>
+												</label>
+											</div>
+										</div>
 									</form>
 
 									<!-- Дані для замовлення -->
@@ -1971,7 +1979,7 @@
 		</div>
 	</div>
 
-	<div id="popupIti" class="popup-iti popup">
+	<div id="popupIti" data-popup-keep-open class="popup-iti popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
 				<button data-close type="button" class="popup__close" aria-label="close">
@@ -1982,7 +1990,7 @@
 	</div>
 	</div>
 
-	<div id="popupRolldate" class="popup-rolldate popup">
+	<div id="popupRolldate" data-popup-keep-open class="popup-rolldate popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
 				<button data-close type="button" class="popup__close" aria-label="close">
@@ -2175,7 +2183,19 @@
 								<textarea id="contactUsMessage" data-autoheight autocomplete="off" type="text" name="form[]" data-error="Впишіть, що вас цікавить тут" placeholder="Напишіть, що вас цікавить тут" data-required class="input input_sm"></textarea>
 							</div>
 						</div>
-						<button form="formContactUs" disabled type="submit" class="btn btn_dark">Зв'язатись з нами</button>
+						<button form="formContactUs" disabled type="submit" class="contacts-form-popup__btn btn btn_dark">Зв'язатись з нами</button>
+						<div class="contacts-form-popup__checkbox checkbox">
+							<input id="contactUsPopupForm" data-id-popup="#popupNotRobot" type="checkbox" name="contactUsPopupForm" class="checkbox__input" data-required>
+							<label for="contactUsPopupForm" class="checkbox__label icon-checkbox">
+								<span>Я не робот</span>
+							</label>
+						</div>
+						<div class="contacts-form-popup__checkbox checkbox">
+							<input id="contactUsAgreement" type="checkbox" name="contactUsAgreement" class="checkbox__input" data-required>
+							<label for="contactUsAgreement" class="checkbox__label icon-checkbox">
+								<span>Даю згоду на обробку своїх персональних даних згідно <a href="#">Даної Оферти</a> <span data-tippy-grid="#tooltipContent" class="checkbox__tippy icon-details"></span></span>
+							</label>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -3065,11 +3085,9 @@
 		</div>
 	</div>
 
-	<div id="popupNotRobot" class="popup-not-robot popup popup-full-all">
+	<div id="popupNotRobot" data-popup-keep-open class="popup-not-robot popup popup-full-all">
 		<div class="popup__wrapper">
 			<div class="popup__content">
-				<!-- <button data-close type="button" class="popup__close" aria-label="close">
-			</button> -->
 				<div class="popup__body">
 					<p class="popup-not-robot__title">Натисніть на картку</p>
 					<div class="popup-not-robot__block">
@@ -3151,7 +3169,7 @@
 					<div class="login__checkbox checkbox">
 						<input id="loginAgreement" checked type="checkbox" name="loginAgreement" class="checkbox__input">
 						<label for="loginAgreement" class="checkbox__label icon-checkbox">
-							<span>Даю згоду на обробку своїх персональних даних згідно <a href="checkout.html">Даної Оферти</a></span>
+							<span>Даю згоду на обробку своїх персональних даних згідно <a href="#">Даної Оферти</a> <span data-tippy-grid="#tooltipContent" class="checkbox__tippy icon-details"></span></span>
 						</label>
 					</div>
 				</div>
@@ -3295,13 +3313,41 @@
 		</div>
 	</div>
 
-
-	<script src="files/rolldate/rolldate.js?_v=20250423134447"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250423134447"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250423134447"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250423134447"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250423134447"></script>
-	<script src="js/app.min.js?_v=20250423134447"></script>
+	<!-- tooptip контент для передачі елементу data-tippy-grid="#tooltipContent" -->
+	<div id="tooltipContent" style="display: none;">
+		<ul class="tooltip__list">
+			<li class="tooltip__item">
+				<p class="tooltip__title">Responsible</p>
+				<p class="tooltip__txt">Giftmall S.L</p>
+			</li>
+			<li class="tooltip__item">
+				<p class="tooltip__title">Purpose</p>
+				<p class="tooltip__txt">To respond to requests for information</p>
+			</li>
+			<li class="tooltip__item">
+				<p class="tooltip__title">Legitimation</p>
+				<p class="tooltip__txt">Consent of the interested party</p>
+			</li>
+			<li class="tooltip__item">
+				<p class="tooltip__title">Recipients</p>
+				<p class="tooltip__txt">No data will be sent to third parties</p>
+			</li>
+			<li class="tooltip__item">
+				<p class="tooltip__title">Rights</p>
+				<p class="tooltip__txt">Access, rectification and deletion of data</p>
+			</li>
+			<li class="tooltip__item">
+				<p class="tooltip__title">More information</p>
+				<a href="#" class="tooltip__link">Privacy Policy</a>
+			</li>
+		</ul>
+	</div>
+	<script src="files/rolldate/rolldate.js?_v=20250424142212"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250424142212"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250424142212"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250424142212"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250424142212"></script>
+	<script src="js/app.min.js?_v=20250424142212"></script>
 </body>
 
 </html>

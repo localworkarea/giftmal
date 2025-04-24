@@ -4,7 +4,7 @@
 	opacity: 0;
 }
 [data-tippy-root] {
-	max-width: calc(100vw - 10px);
+	max-width: calc(100vw - 32px);
 	z-index: 3 !important;
 }
 .tippy-box {
@@ -78,5 +78,50 @@
 	z-index: 1;
 	.account-page & {
 		max-width: 227px ;
+	}
+}
+
+
+// Для data-tippy-grid ====================
+// .tippy-root--custom-grid {
+// 	@media (max-width:480.98px){
+// 		 	min-width:calc(100vw - 32px); 
+// 	}
+// }
+.tippy-box[data-theme~="custom-grid"] {
+  max-width: 647px !important;
+	width: 100%;
+	@media (min-width:670.98px){
+		min-width: 647px;
+	}
+	@media (max-width: 670.98px){
+		min-width: calc(100vw - 32px);
+		max-width: calc(100vw - 32px) !important;
+	}
+}
+.tooltip {
+	// .tooltip__list
+	&__list {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+		gap: 16px 10px;
+		font-size: 13px;
+		font-weight: 500;
+		line-height: 1.46;
+	}
+	// .tooltip__item
+	&__item {
+	}
+	// .tooltip__title
+	&__title {
+	}
+	// .tooltip__txt
+	&__txt {
+		color: #7A697F;
+	}
+	// .tooltip__link
+	&__link {
+		color: var(--violet);
+		text-decoration: underline;
 	}
 }

@@ -225,11 +225,12 @@
   &__name {
     @media (min-width:$mobile){
       margin-bottom: toRem(14); 
+      line-height: 1.3; 
     }
     @media (max-width:$mobile){
        margin-bottom: toRem(32); 
-        line-height: 1.11; 
-     }
+       line-height: 1.11; 
+      }
   }
   // .contacts-footer__phones
   &__phones {
@@ -242,9 +243,9 @@
       } 
     }      
     &.item-dropdwn {
-      @media (min-width:$mobile){
-         font-size: toRem(15); 
-      }
+      // @media (min-width:$mobile){
+      //    font-size: toRem(15); 
+      // }
       @media (max-width:$mobile){
         font-size: toRem(18);    
         padding: 0;
@@ -413,6 +414,45 @@
       width: toRem(48);
     }
   }
+	// .email-form__checkbox
+	&__checkbox {
+      .checkbox__input {
+        &:checked {
+          + .checkbox__label {
+            &::after {
+              background-color: var(--white);
+              border-color: var(--white);
+            }
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      .checkbox__label {
+        color: var(--white);
+        @media (any-hover: hover){
+          &:hover{
+            &::after {
+              border-color: var(--white);
+            }
+          }
+        }
+        &:before {
+          color: var(--dark-violet);
+        }
+        &::after {
+          border-color: #7A697F;
+        }
+      }
+      .checkbox__tippy {
+        &.icon-details {
+          &::before {
+            color: var(--white);
+          }
+        }
+      }
+	}
 }
 
 .logo-footer {

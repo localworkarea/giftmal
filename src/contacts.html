@@ -130,9 +130,21 @@
 									</div>
 									<button disabled type="submit" class="form-contacts__btn btn btn_dark">Зв'язатись з нами</button>
 									<div class="form-contacts__checkbox checkbox">
-										<input  id="contactUsPageAgreement" type="checkbox" name="contactUsPageAgreement" class="checkbox__input" data-required >
+										<input id="contactUsPageAgreement" type="checkbox" name="contactUsPageAgreement" class="checkbox__input"  data-required >
 										<label for="contactUsPageAgreement" class="checkbox__label icon-checkbox">
+											<span>Даю згоду на обробку своїх персональних даних<br> згідно <a href="#">Даної Оферти</a> <span data-tippy-grid="#tooltipContent" class="checkbox__tippy icon-details"></span></span>
+										</label>
+									</div>
+									<div class="form-contacts__checkbox checkbox">
+										<input  id="contactUsPageNotRobot" data-id-popup="#popupNotRobot" type="checkbox" name="contactUsPageNotRobot" class="checkbox__input" data-required >
+										<label for="contactUsPageNotRobot" class="checkbox__label icon-checkbox">
 											<span>Я не робот</span>
+										</label>
+									</div>
+									<div class="form-contacts__checkbox checkbox">
+										<input  id="contactUsPageCustomer" type="checkbox" name="contactUsPageCustomer" class="checkbox__input" >
+										<label for="contactUsPageCustomer" class="checkbox__label icon-checkbox">
+											<span>I am a regular customer</span>
 										</label>
 									</div>
 								</form>

@@ -633,7 +633,7 @@
                     bodyActive: "popup-show"
                 },
                 focusCatch: true,
-                closeEsc: true,
+                closeEsc: false,
                 bodyLock: true,
                 hashSettings: {
                     location: false,
@@ -747,7 +747,7 @@
                     this._selectorOpen = true;
                 }
                 if (document.documentElement.classList.contains("menu-open")) document.documentElement.classList.remove("menu-open");
-                if (this.isOpen && !options.keepParentOpen && selectorValue !== "#popupRolldate") {
+                if (this.isOpen && !options.keepParentOpen && !document.querySelector(selectorValue)?.hasAttribute("data-popup-keep-open")) {
                     this._reopen = true;
                     this.close();
                 }
@@ -804,7 +804,7 @@
                 !this.bodyLock ? bodyUnlock() : null;
                 this.isOpen = false;
             } else {
-                if ((selectorValue === "#popupIti" || selectorValue === "#popupRolldate") && openPopups.length > 0) {
+                if (document.querySelector(selectorValue)?.hasAttribute("data-popup-keep-open") && openPopups.length > 0) {
                     this.previousOpen.element = openPopups[openPopups.length - 1];
                     this.previousOpen.selector = `#${this.previousOpen.element.id}`;
                     this.isOpen = true;
@@ -1198,6 +1198,16 @@
             return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(formRequiredItem.value);
         }
     };
+    document.addEventListener("change", (function(e) {
+        const target = e.target;
+        if (target.matches('input[type="checkbox"][data-required]')) if (target.checked) {
+            formValidate.removeError(target);
+            formValidate.addSuccess(target);
+        } else {
+            formValidate.addError(target);
+            formValidate.removeSuccess(target);
+        }
+    }));
     function formSubmit() {
         const forms = document.forms;
         if (forms.length) for (const form of forms) {
@@ -5553,6 +5563,22 @@
     modules_flsModules.tippy = tippy_esm("[data-tippy-content]", {
         placement: "bottom"
     });
+    const customTooltipTriggers = document.querySelectorAll("[data-tippy-grid]");
+    customTooltipTriggers.forEach((trigger => {
+        const contentSelector = trigger.getAttribute("data-tippy-grid");
+        const tooltipContent = document.querySelector(contentSelector);
+        if (tooltipContent) tippy_esm(trigger, {
+            content: () => {
+                const clone = tooltipContent.cloneNode(true);
+                clone.style.display = "block";
+                return clone;
+            },
+            allowHTML: true,
+            interactive: true,
+            placement: "bottom",
+            theme: "custom-grid"
+        });
+    }));
     function ssr_window_esm_isObject(obj) {
         return obj !== null && typeof obj === "object" && "constructor" in obj && obj.constructor === Object;
     }
@@ -10608,26 +10634,29 @@
                 button.src = currentMainSrc;
             }));
         }));
+        const checkboxRules = document.querySelector("[data-checkbox-rules]");
+        const addButton = document.querySelector("[data-card-add]");
+        let isConfirmed = false;
         document.querySelectorAll(".popup-rules-item").forEach((popupRules => {
             const popupBody = popupRules.querySelector(".popup-body-rules");
             const popupContent = popupRules.querySelector(".popup-body-rules__content");
             const confirmButton = popupRules.querySelector("[data-card-confirm]");
-            const checkboxRules = document.querySelector("[data-checkbox-rules]");
-            const addButton = document.querySelector("[data-card-add]");
             if (!popupBody || !popupContent) return;
-            let isCheckedThroughPopup = false;
             let isAddButtonHandlerActive = false;
-            function openPopup(event, targetCheckbox) {
-                event.preventDefault();
-                const popupSelector = targetCheckbox?.dataset.popup;
+            function openPopupFrom(element) {
+                const popupSelector = element?.dataset.idPopup;
                 if (popupSelector) modules_flsModules.popup.open(popupSelector);
             }
             function updateAddButtonState() {
                 if (!checkboxRules || !addButton) return;
-                if (!mediaQuery480max.matches) if (checkboxRules.checked) addButton.removeAttribute("disabled"); else addButton.setAttribute("disabled", "true");
+                if (!mediaQuery480max.matches) if (isConfirmed) addButton.removeAttribute("disabled"); else addButton.setAttribute("disabled", "true");
             }
             function handleAddButtonClick(event) {
-                if (mediaQuery480max.matches) openPopup(event, checkboxRules);
+                const popupSelector = addButton?.dataset.idPopup;
+                if (isConfirmed && popupSelector) modules_flsModules.popup.open(popupSelector); else if (mediaQuery480max.matches && !isConfirmed) {
+                    openPopupFrom(checkboxRules);
+                    event.preventDefault();
+                }
             }
             function checkMediaQuery() {
                 if (!addButton) return;
@@ -10637,37 +10666,48 @@
                         addButton.addEventListener("click", handleAddButtonClick);
                         isAddButtonHandlerActive = true;
                     }
-                } else updateAddButtonState();
-            }
-            if (checkboxRules) checkboxRules.addEventListener("click", (function(event) {
-                if (!isCheckedThroughPopup) {
-                    event.preventDefault();
-                    openPopup(event);
                 } else {
-                    isCheckedThroughPopup = false;
                     updateAddButtonState();
+                    addButton.addEventListener("click", (function handleDesktopAddClick(event) {
+                        if (isConfirmed) {
+                            const popupSelector = addButton?.dataset.idPopup;
+                            if (popupSelector) modules_flsModules.popup.open(popupSelector);
+                        }
+                    }));
                 }
-            }));
+            }
+            if (checkboxRules) {
+                checkboxRules.addEventListener("click", (function(event) {
+                    if (!mediaQuery480max.matches && !isConfirmed) {
+                        event.preventDefault();
+                        openPopupFrom(checkboxRules);
+                    }
+                }));
+                checkboxRules.addEventListener("change", (function() {
+                    if (!checkboxRules.checked && !mediaQuery480max.matches) {
+                        isConfirmed = false;
+                        updateAddButtonState();
+                    }
+                }));
+            }
             popupContent.addEventListener("scroll", (function() {
-                if (popupContent.scrollTop > 5) popupBody.classList.add("_scroll-active"); else popupBody.classList.remove("_scroll-active");
+                popupBody.classList.toggle("_scroll-active", popupContent.scrollTop > 5);
                 const isScrolledToEnd = popupContent.scrollTop + popupContent.clientHeight >= popupContent.scrollHeight - 1;
-                if (isScrolledToEnd) {
-                    if (confirmButton) confirmButton.removeAttribute("disabled");
-                    popupBody.classList.add("_scroll-end");
-                } else popupBody.classList.remove("_scroll-end");
+                popupBody.classList.toggle("_scroll-end", isScrolledToEnd);
+                if (isScrolledToEnd && confirmButton) confirmButton.removeAttribute("disabled");
             }));
-            if (!confirmButton) return;
-            confirmButton.addEventListener("click", (function() {
+            if (confirmButton) confirmButton.addEventListener("click", (function() {
                 if (!checkboxRules) return;
                 checkboxRules.checked = true;
-                isCheckedThroughPopup = true;
+                isConfirmed = true;
                 updateAddButtonState();
-                if (mediaQuery480max.matches) {
-                    addButton?.removeEventListener("click", handleAddButtonClick);
+                if (mediaQuery480max.matches && isAddButtonHandlerActive) {
+                    addButton.removeEventListener("click", handleAddButtonClick);
                     isAddButtonHandlerActive = false;
                 }
                 setTimeout((() => {
-                    modules_flsModules.popup.close(`#${popupRules.id}`);
+                    const popupSelector = checkboxRules?.dataset.idPopup;
+                    if (popupSelector) modules_flsModules.popup.close(popupSelector);
                 }), 100);
             }));
             mediaQuery480max.addEventListener("change", checkMediaQuery);
@@ -11037,20 +11077,30 @@
         document.querySelectorAll(".card-cabinet__item.tab-link").forEach((item => {
             item.addEventListener("click", handleCardItemClick);
         }));
-        const contactsPage = document.querySelector(".contacts");
-        const popupCardImg = document.querySelector(".popup-not-robot__card img");
-        const checkboxInput = document.querySelector("#contactUsPageAgreement");
-        const checkboxLabel = document.querySelector('label[for="contactUsPageAgreement"]');
-        if (contactsPage && popupCardImg && checkboxInput && checkboxLabel) {
-            checkboxLabel.addEventListener("click", (e => {
+        let activeCheckbox = null;
+        document.querySelectorAll(".checkbox__input[data-id-popup]").forEach((checkboxInput => {
+            const label = document.querySelector(`label[for="${checkboxInput.id}"]`);
+            const popupSelector = checkboxInput.dataset.idPopup;
+            if (label && popupSelector) label.addEventListener("click", (e => {
                 e.preventDefault();
-                if (checkboxInput.checked) checkboxInput.checked = false; else modules_flsModules.popup.open("#popupNotRobot");
+                if (checkboxInput.checked) checkboxInput.checked = false; else {
+                    activeCheckbox = checkboxInput;
+                    modules_flsModules.popup.open(popupSelector);
+                }
             }));
-            popupCardImg.addEventListener("click", (() => {
-                checkboxInput.checked = true;
-                modules_flsModules.popup.close("#popupNotRobot");
+        }));
+        document.querySelectorAll(".popup-not-robot__card img").forEach((img => {
+            img.addEventListener("click", (() => {
+                if (activeCheckbox) {
+                    activeCheckbox.checked = true;
+                    formValidate.removeError(activeCheckbox);
+                    formValidate.addSuccess(activeCheckbox);
+                    const popupSelector = activeCheckbox.dataset.idPopup;
+                    modules_flsModules.popup.close(popupSelector);
+                    activeCheckbox = null;
+                }
             }));
-        }
+        }));
         initAllNotifications();
     }));
     function startCountdown(timerElement, callback) {

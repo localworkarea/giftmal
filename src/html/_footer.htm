@@ -167,14 +167,20 @@
 				</div>
 				<div class="contacts-footer__form email-form">
 					<form class="email-form__form" data-dev method="post">
-						<div class="email-form__item">
-							<label for="email-form" class="email-form__label">
+						<div class="email-form__item mb-16-24">
+							<p class="email-form__label">
 								Будьте першими та дізнавайтесь про наші новинки та спеціальні пропозиції
-							</label>
+							</p>
 							<div class="email-form__sub-item">
 								<input id="email-form" autocomplete="off" type="email" name="email" data-error="Ви ввели невірний формат" placeholder="Ваш Email" data-required="email"  class="input input_sm">
 								<button type="submit" class="email-form__btn icon-arrow-down"></button>
 							</div>
+						</div>
+						<div class="email-form__checkbox checkbox">
+							<input id="footerFormAgreement" type="checkbox" name="footerFormAgreement" class="checkbox__input">
+							<label for="footerFormAgreement" class="checkbox__label icon-checkbox">
+								<span>Погоджуюсь отримувати промо-матеріали <span data-tippy-grid="#tooltipContent" class="checkbox__tippy icon-details"></span></span>
+							</label>
 						</div>
 					</form>
 				</div>
