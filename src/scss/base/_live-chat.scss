@@ -1,8 +1,8 @@
 .live-chat {
   position: fixed;
-  bottom: toRem(30);
-  right: toRem(30);
-  z-index: 1000;
+  bottom: toRem(32);
+  right: toRem(32);
+  z-index: 99;
 
   @media (max-width: $mobile) {
     bottom: toRem(20);
@@ -111,17 +111,21 @@
   }
 
   &__icon {
-    width: toRem(24);
-    height: toRem(24);
+    width: toRem(32);
+    height: toRem(32);
+    @media (max-width: $mobile) {
+      width: toRem(24);
+      height: toRem(24);
+    }
   }
 
   &__text {
     font-weight: 500;
-    font-size: toRem(16);
+    font-size: toRem(15);
     line-height: 1.4;
 
     @media (max-width: $mobile) {
-      font-size: toRem(15);
+      font-size: toRem(14);
     }
   }
 
