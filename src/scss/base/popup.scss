@@ -1023,6 +1023,9 @@ body::after {
 			gap: toRem(16);
 			margin-bottom: toRem(32);
 		}
+		// .popup-availability__footer
+		&__footer {
+		}
 	}
 }
 
