@@ -596,9 +596,11 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: toRem(472);
-  
+    &:not(:last-child){
+      margin-bottom: toRem(100);
+    }
     &:nth-child(1) {
-      top: 15%;
+      top: 10%;
       @media (max-width: $mobile) {
         top: 0;
       }
@@ -606,7 +608,7 @@
     
     @for $i from 2 through 8 {
       &:nth-child(#{$i}) {
-        top: 15% + (($i - 1) * 3%);
+        top: 10% + (($i - 1) * 3%);
         @media (max-width: $mobile) {
           top: 0% + (($i - 1) * 3%);
         }
