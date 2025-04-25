@@ -360,6 +360,9 @@
     justify-content: space-between;
     position: sticky;
     min-height: toRem(584);
+    &:not(:last-child){
+      margin-bottom: toRem(100);
+    }
     
     @media (min-height: toRem(600)) {
       min-height: toRem(485);
@@ -377,7 +380,7 @@
     
     @for $i from 1 through 8 {
       &:nth-child(#{$i}) {
-        top: 5% + (($i) * 3%);
+        top: 8% + (($i) * 3%);
         @media (max-width: $mobile) {
           top: 0% + (($i - 1) * 3%);
         }

@@ -13,7 +13,7 @@
     position: absolute;
     bottom: calc(100% + toRem(16));
     right: 0;
-    width: toRem(320);
+    width: toRem(374);
     background-color: var(--white);
     border-radius: toRem(24);
     box-shadow: 0 toRem(4) toRem(40) rgba(0, 0, 0, 0.1);
@@ -22,6 +22,10 @@
     transform: translateY(toRem(10));
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     overflow: hidden;
+    @media (max-width: $mobile) {
+      width: toRem(282);
+      bottom: calc(100% + toRem(8));
+    }
 
     &[hidden] {
       display: none;
