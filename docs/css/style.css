@@ -1,13 +1,6 @@
 @font-face {
   font-family: FixelDisplay;
   font-display: swap;
-  src: url(../fonts/FixelDisplay-Regular.woff2) format("woff2");
-  font-weight: 400;
-  font-style: normal
-}
-@font-face {
-  font-family: FixelDisplay;
-  font-display: swap;
   src: url(../fonts/FixelDisplay-Medium.woff2) format("woff2");
   font-weight: 500;
   font-style: normal
@@ -15,8 +8,8 @@
 @font-face {
   font-family: FixelDisplay;
   font-display: swap;
-  src: url(../fonts/FixelDisplay-SemiBold.woff2) format("woff2");
-  font-weight: 600;
+  src: url(../fonts/FixelDisplay-Regular.woff2) format("woff2");
+  font-weight: 400;
   font-style: normal
 }
 @font-face {
@@ -24,6 +17,13 @@
   font-display: swap;
   src: url(../fonts/icons.woff2) format("woff2");
   font-weight: 400;
+  font-style: normal
+}
+@font-face {
+  font-family: FixelDisplay;
+  font-display: swap;
+  src: url(../fonts/FixelDisplay-SemiBold.woff2) format("woff2");
+  font-weight: 600;
   font-style: normal
 }
 .iti__country._selected::before,
@@ -41,6 +41,18 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
+}
+.icon-no-return:before {
+  content: ""
+}
+.icon-number-1-less:before {
+  content: ""
+}
+.icon-number-6:before {
+  content: ""
+}
+.icon-puzzle-none:before {
+  content: ""
 }
 .icon-physical:before {
   content: ""
@@ -4566,6 +4578,16 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem
 }
+.icon-test-index__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center
+}
+.icon-test-index::before {
+  font-size: 54px;
+  color: var(--dark-violet)!important
+}
 .wrapper {
   background-color: var(--white)
 }
@@ -4703,7 +4725,9 @@ html {
 .item-cert__photo,
 .item-dropdwn__btn,
 .item-dropdwn__link,
+.item-order__buttons,
 .item-order__imgs-block,
+.item-order__link,
 .item-order__reserve,
 .item-order__status-text,
 .item-order__type,
@@ -8750,6 +8774,14 @@ body::after {
   color: var(--violet);
   transition: color .2s ease;
   text-decoration: underline
+}
+.item-order__link {
+  font-size: .8125rem;
+  color: var(--violet);
+  transition: color .3s ease
+}
+.item-order__link::before {
+  font-size: 1.5rem
 }
 .subitem-order {
   background-color: var(--gray-1);
@@ -14258,11 +14290,17 @@ body::after {
   .item-order__img {
     width: 3.75rem
   }
+  .item-order__wrapper:not(:last-child) {
+    margin-bottom: 1.25rem
+  }
   .item-order__wrapper {
     padding-top: 1.25rem
   }
   .item-order__delivery-block:not(:last-child) {
     margin-bottom: .75rem
+  }
+  .item-order__buttons {
+    gap: 1.25rem
   }
   .subitem-order {
     padding: .5rem;
@@ -19927,11 +19965,21 @@ body::after {
     top: -.5rem;
     right: 0
   }
+  .item-order__wrapper:not(:last-child) {
+    margin-bottom: 1.5rem
+  }
   .item-order__wrapper {
     padding-top: .5rem
   }
   .item-order__delivery-block:not(:last-child) {
     margin-bottom: 1.25rem
+  }
+  .item-order__buttons {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: .75rem;
+    padding-bottom: .5rem
   }
   .subitem-order {
     border-radius: 1rem;
@@ -21177,6 +21225,9 @@ body::after {
     color: var(--dark-violet)
   }
   .item-order__delivery-link:hover {
+    color: var(--dark-violet)
+  }
+  .item-order__link:hover {
     color: var(--dark-violet)
   }
   .status-slider__label:hover {

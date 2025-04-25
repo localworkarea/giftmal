@@ -23,6 +23,19 @@ html {
   }
 }
 
+.icon-test-index__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+.icon-test-index {
+  &::before {
+    font-size: 54px;
+    color: var(--dark-violet) !important;
+  }
+}
+
 .wrapper {
   background-color: var(--white);
  
