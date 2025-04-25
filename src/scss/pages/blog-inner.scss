@@ -118,15 +118,15 @@
 }
 .blog-inner {
   padding-top: toRem(24);
-  padding-bottom: toRem(182);
+  padding-bottom: toRem(142);
   position: relative;
   z-index: 1;
-  @media (max-width:$mobile){
-    padding-bottom: toRem(55);
-  }
-  @media (max-width:$mobileSmall) {
+  @media (max-width:$tablet) {
     padding-left: toRem(16);
     padding-right: toRem(16);
+  }
+  @media (max-width:$mobile){
+    padding-bottom: toRem(55);
   }
   &::after{
     content: "";
@@ -138,6 +138,12 @@
     background-color: var(--gray-1);
   }
 
+  &__related-slider{
+    width: calc(100% + toRem(80));
+    padding: 0 toRem(40) toRem(40);
+    left: toRem(-40);
+    position: relative;
+  }
   .card-grid{
     gap: toRem(16);
   }
@@ -307,12 +313,6 @@
       @extend %arrow-rotation;
       transform: rotate(-90deg);
       left: toRem(1);
-    }
-  }
-
-  .blog-card {
-    &:hover {
-     box-shadow: none;
     }
   }
 
