@@ -238,6 +238,9 @@
     display: grid;
     align-items: center;
     gap: toRem(4) toRem(16);
+    .item-cart--align-start & {
+      align-self: flex-start;
+    }
     @media (min-width:toEm(1150.98)){
       grid-template-columns: toRem(86) 24% 1fr;
     }

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20250425135448">
+	<link rel="stylesheet" href="css/style.min.css?_v=20250428172738">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -201,8 +201,6 @@
 								<div class="cabinet-header__count">5</div>
 							</button>
 						</div>
-						<!-- <div class="main-header__sub-block">
-			</div> -->
 					</div>
 				</div>
 			</div>
@@ -2627,23 +2625,78 @@
 		</div>
 	</div>
 
-	<!-- <div id="popupAvailabilityRegister" class="popup-availability popup popup-full">
-	<div class="popup__wrapper">
-		<div class="popup__content">
-			<button data-close type="button" class="popup__close" aria-label="close">
-			</button>
-			<div class="popup__body popup-availability__body">
-				<div class="popup-availability__head">
-					<p class="popup-availability__title popup__title">Сповістити про наявність</p>
-					<p class="popup-availability__subtitle">Щоб отримати сповіщення про наявність товару, потрібно бути зареєстрованим. Створіть акаунт за кілька хвилин та не пропустіть бажаний товар!</p>
-				</div>
-				<div class="popup-availability__footer">
-					<a href="login.html" class="btn btn_dark btn_fs15-13" aria-label="link to a login form">Зареєструватись</a>
+	<div id="popupAvailabilityRegister" class="popup-availability popup popup-full">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-availability__body">
+					<div class="popup-availability__head">
+						<p class="popup-availability__title popup__title">Сповістити про наявність</p>
+						<p class="popup-availability__subtitle">Щоб отримати сповіщення про наявність товару, потрібно бути зареєстрованим. Створіть акаунт за кілька хвилин та не пропустіть бажаний товар!</p>
+					</div>
+					<div class="popup-availability__footer">
+						<a href="login.html" class="btn btn_dark btn_fs15-13" aria-label="link to a login form">Зареєструватись</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div> -->
+
+	<div id="popupAvailabilityInform" class="popup-availability popup popup-full">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close" aria-label="close">
+				</button>
+				<div class="popup__body popup-availability__body">
+					<div class="popup-availability__head">
+						<p class="popup-availability__title popup__title">Сповістити про наявність</p>
+						<p class="popup-availability__subtitle">Подарункова Kартка giftmall</p>
+					</div>
+					<form id="popupFormAvailabilityInform" data-popup-message="#popupAvailabilityMsg" class="popup-availability__form" data-dev method="post">
+						<div class="popup-availability__items">
+							<div class="input__item">
+								<label for="formQuestionEmail" class="input__label">
+									Ваш email
+								</label>
+								<div class="input__sub-item">
+									<input id="formQuestionEmail" autocomplete="off" type="email" name="form[]" data-error="Ви ввели невірний формат" placeholder="example@gmail.com" data-required="email" class="input input_sm">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+								</div>
+							</div>
+							<div class="input__item">
+								<label for="formQuestionEmail" class="input__label">
+									Ваш email
+								</label>
+								<div class="input__sub-item _form-error">
+									<input id="formQuestionEmail" autocomplete="off" type="email" name="form[]" placeholder="example@gmail.com" data-required="email" class="input input_sm _form-error">
+									<button disabled type="button" class="input__clear icon-cross"></button>
+									<div class="form__error--mail">
+										Ви намагаєтесь підписатися на сповіщення з іншою email-адресою. Щоб уникнути дублювання підписок, будь ласка, використовуйте свою попередню адресу.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="popup-availability__footer">
+							<button disabled type="submit" class="popup-availability__btn btn btn_dark btn_fs15-13">Сповістити</button>
+							<div class="popup-availability__checkbox checkbox">
+								<input id="formAvailabilityNotRobot" type="checkbox" name="formAvailabilityNotRobot" class="checkbox__input" data-required>
+								<label for="formAvailabilityNotRobot" class="checkbox__label icon-checkbox">
+									<span>Я не робот</span>
+								</label>
+							</div>
+							<div class="popup-availability__checkbox checkbox">
+								<input id="formAvailabilityAgreement" type="checkbox" name="formAvailabilityAgreement" class="checkbox__input" data-required>
+								<label for="formAvailabilityAgreement" class="checkbox__label icon-checkbox">
+									<span>Даю згоду на обробку своїх персональних даних згідно <a href="#">Даної Оферти</a> <span data-tippy-grid="#tooltipContent" class="checkbox__tippy icon-details"></span></span>
+								</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div id="popupAvailabilityMsg" class="popup-send-msg popup popup-full">
 		<div class="popup__wrapper">
@@ -3326,10 +3379,10 @@
 			</li>
 		</ul>
 	</div>
-	<script src="files/rolldate/rolldate.js?_v=20250425135448"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250425135448"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250425135448"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250425135448"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250425135448"></script>
-	<script src="js/app.min.js?_v=20250425135448"></script>
+	<script src="files/rolldate/rolldate.js?_v=20250428172738"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20250428172738"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20250428172738"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20250428172738"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250428172738"></script>
+	<script src="js/app.min.js?_v=20250428172738"></script>
 </body>

@@ -868,7 +868,52 @@
       flex: 1;
     }
 	}
+  // .menu__markets
+  &__markets {
+  }
 }
+
+.markets-menu {
+  @media (min-width:toEm(700.98)){
+    display: none;
+  }
+  @media (max-width: toEm(700.98)){
+      padding-top: toRem(24);
+  }
+	// .markets-menu__txt
+	&__txt {
+    @extend %fonsSize15-14;
+    @media (max-width: toEm(700.98)){
+      line-height: 1.14;
+      margin-bottom: toRem(16);
+    }
+	}
+	// .markets-menu__links
+	&__links {
+    @media (max-width: toEm(700.98)){
+      display: flex;
+      align-items: center;
+      gap: toRem(16);
+    }
+	}
+  // .markets-menu__link
+  &__link {
+    @media (max-width: toEm(700.98)){
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      border: toRem(1.5) solid var(--gray-2);
+      border-radius: toRem(12);
+      padding: toRem(8);
+      img {
+        width: auto;
+        height: toRem(30);
+      }
+    }
+  }
+}
+
 
 .lang-menu {
   @media (min-width:toEm(700.98)){
@@ -912,8 +957,12 @@
   }
   @media (max-width: toEm(700.98)){
     margin-top: toRem(12);
-    padding-top: toRem(6);
+    // padding-top: toRem(6);
+    padding-block: toRem(12);
     border-top: toRem(1.5) solid var(--gray-5);
+    &:not(:last-child) {
+      border-bottom: toRem(1.5) solid var(--gray-5);
+    }
   }
   // .list-c-menu__item
   &__item {

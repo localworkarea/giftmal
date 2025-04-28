@@ -549,6 +549,7 @@ export function formSubmit() {
 				popup ? flsModules.popup.open(popup) : null;
 			}
 		}, 0);
+		document.documentElement.classList.add("_form-sent");
 		// Очищуємо форму
 		formValidate.formClean(form);
 	}

@@ -596,6 +596,7 @@
     .input {
       letter-spacing: 0.25em;
       &::placeholder {
+        // letter-spacing: 0.25em;
         letter-spacing: 0;
       }
     }
@@ -652,7 +653,8 @@
     .card-balance__row-input {
       letter-spacing: 0.25em;
       &::placeholder {
-        letter-spacing: 0;
+        // letter-spacing: 0;
+        letter-spacing: 0.5em;
       }
     }
     .card-balance__row-btn {}
@@ -891,6 +893,9 @@
     .input {
       min-height: toRem(40);
       letter-spacing: 0.25em;
+      &::placeholder {
+        letter-spacing: 0.5em;
+      }
     }
   }
 	// .card-spollers__link

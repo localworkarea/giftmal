@@ -1026,6 +1026,18 @@ body::after {
 		// .popup-availability__footer
 		&__footer {
 		}
+		// .popup-availability__btn
+		&__btn {
+			&:not(:last-child) {
+				margin-bottom: toRem(16);
+			}
+		}
+		// .popup-availability__checkbox
+		&__checkbox {
+			&:not(:last-child) {
+				margin-bottom: toRem(8);
+			}
+		}
 	}
 }
 

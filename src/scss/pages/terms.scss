@@ -75,6 +75,12 @@
     }
     a {
       color: var(--violet);
+      transition: color .3s ease;
+      @media (any-hover: hover){
+        &:hover{
+          color: var(--dark-violet);
+        }
+      }
     }
     p:not(:last-child),
     &:not(:last-child) {

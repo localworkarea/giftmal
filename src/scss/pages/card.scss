@@ -279,6 +279,11 @@
        padding: toRem(16);
        background-color: var(--white);
        box-shadow: 0 -4px 40px 0 rgba(33, 5, 41, 0.15);
+       transform: translate(0,100%);
+       transition: transform .45s ease;
+       &._fixed {
+        transform: translate(0,0);
+       }
     }
   }
   // .card__checkbox
@@ -307,7 +312,33 @@
   }
   // .card__add-button
   &__add-button {
+    &--inform {
+      ._form-sent & {
+        display: none;
+      }
+    }
   }
+	// .card__after-sent
+	&__after-sent {
+    display: none;
+    ._form-sent & {
+      display: block;
+    }
+  }
+	// .card__after-msg
+	&__after-msg {
+    @extend %flexCenterGap8;
+    @extend %fonsSize15-14;
+    justify-content: center;
+    padding-block: toRem(12);
+    line-height: 1.2;
+    &::before {
+      font-size: toRem(24);
+      @media (max-width:$mobileSmall){
+         align-self: flex-start; 
+      }
+    }
+	}
 }
 
 .soon-label {

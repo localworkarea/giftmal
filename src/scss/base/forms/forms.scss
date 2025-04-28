@@ -163,10 +163,13 @@ textarea.input {
 	&__item {
 		position: relative;
 		min-width: 0;
-		.form__error {
+		.form__error,
+    .form__error--mail {
       @extend %fonsSize11-12;
 			margin-top: toRem(8);
 			color: var(--red);
+      line-height: 1.45;
+      letter-spacing: 0.02em;
 		}
     &._readonly {
       .input__label {

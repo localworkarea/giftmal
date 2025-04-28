@@ -801,6 +801,20 @@ html {
       color: var(--white);
     }
   }
+  &_light-dark {
+    background-color: var(--white);
+    color: var(--dark-violet);
+    @media (any-hover: hover){
+      &:hover{
+        background-color: var(--dark-violet);
+        color: var(--white);
+      }
+    }
+    &:active {
+      background-color: var(--dark-violet);
+      color: var(--white);
+    }
+  }
   &:disabled {
     background-color: var(--disabled-pink);
     color: var(--white);

@@ -250,7 +250,8 @@ class Popup {
 				this.targetOpen.element.classList.add(this.options.classes.popupActive);
 				document.documentElement.classList.add(this.options.classes.bodyActive);
 	
-				if (!this._reopen && !options.keepParentOpen) {
+				// if (!this._reopen && !options.keepParentOpen) {
+				if (!this._reopen) {
 					!this.bodyLock ? bodyLock() : null;
 				} else {
 					this._reopen = false;
@@ -296,7 +297,8 @@ class Popup {
 
     // Проверяем, остались ли открытые попапы
     const openPopups = document.querySelectorAll(`.${this.options.classes.popupActive}`);
-		if (openPopups.length === 0) {
+		// if (openPopups.length === 0) {
+		if (openPopups.length === 0 && !this._reopen) {
 			document.documentElement.classList.remove(this.options.classes.bodyActive);
 			!this.bodyLock ? bodyUnlock() : null;
 			this.isOpen = false;

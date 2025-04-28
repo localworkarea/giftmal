@@ -2,7 +2,7 @@
 <html lang="uk">
 
 <head>
-	<title>Payment</title>
+	<title>CARD | SOON IN SELL</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
@@ -14,115 +14,840 @@
 
 <body>
 	<div class="wrapper">
-		<header class="checkout__top">
-			<div class="checkout__container-c">
-				<a href="index.html" class="checkout__continue icon-arrow-down" aria-label="continue shopping">Продовжити покупки</a>
-				<a href="index.html" class="checkout__logo icon-logo" aria-label="link to home page"></a>
-				<div class="checkout__phone item-dropdwn">
-					<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
-						<span>+380 67 468 10 88</span>
-					</button>
-					<ul class="item-dropdwn__list">
-						<li class="item-dropdwn__item">
-							<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
-						</li>
-						<li class="item-dropdwn__item">
-							<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
-						</li>
-						<li class="item-dropdwn__item">
-							<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
-						</li>
-					</ul>
+		<header data-scroll="50" data-scroll-show class="header">
+			<div class="header__main-header main-header">
+				<div class="main-header__container-c">
+					<div class="main-header__menu menu">
+						<button type="button" class="menu__open icon-menu" data-menu aria-label="close menu">
+							<span class="icon-menu__lines"><span></span></span>
+						</button>
+						<nav class="menu__body">
+							<div class="menu__top">
+								<a href="index.html" class="menu__logo icon-logo" aria-label="link to home page"> </a>
+								<a href="#" class="menu__activate-btn btn btn_dark btn_sm icon-balance" aria-label="balance">
+									Активувати<br> Баланс giftmall
+								</a>
+								<button type="button" class="menu__close icon-cross" data-menu aria-label="close menu"></button>
+							</div>
+							<ul class="menu__lang lang-menu">
+								<li class="lang-menu__item">
+									<a href="#" class="lang-menu__link _active" aria-label="language">
+										<img src="img/icons/flag-ukraine.svg" width="24" height="8" alt="Image">
+										<span>UA</span>
+									</a>
+								</li>
+								<li class="lang-menu__item">
+									<a href="#" class="lang-menu__link" aria-label="language">
+										<img src="img/icons/flag-poland.svg" width="24" height="8" alt="Image">
+										<span>PL</span>
+									</a>
+								</li>
+								<li class="lang-menu__item">
+									<a href="#" class="lang-menu__link" aria-label="language">
+										<img src="img/icons/flag-english.svg" width="24" height="8" alt="Image">
+										<span>ENG</span>
+									</a>
+								</li>
+							</ul>
+							<ul class="menu__list">
+								<li class="menu__item"><a href="#" data-open-filters class="menu__link icon-arrow-down" aria-label="open popup">
+										<span class="menu__link-icon icon-sertificates"></span>
+										<span class="menu__link-t">Категорії по сертифікатам</span>
+									</a></li>
+								<li class="menu__item"><a href="#" class="menu__link icon-arrow-down" aria-label="open popup">
+										<span class="menu__link-icon icon-user"></span>
+										<span class="menu__link-t">Мій Кабінет</span>
+									</a></li>
+								<li class="menu__item"><a href="#" class="menu__link icon-arrow-down" aria-label="open popup">
+										<span class="menu__link-icon icon-basket"></span>
+										<span class="menu__link-t">Мій Кошик</span>
+									</a></li>
+							</ul>
+							<ul class="menu__list-c list-c-menu">
+								<li class="list-c-menu__item">
+									<a href="tel:+380674681088" class="list-c-menu__link">+380 67 468 10 88</a>
+								</li>
+								<li class="list-c-menu__item">
+									<a href="tel:+380445993810" class="list-c-menu__link">+380 44 599 38 10</a>
+								</li>
+							</ul>
+							<div class="menu__markets markets-menu">
+								<p class="markets-menu__txt">Завантажуй наш мобільний додаток</p>
+								<div class="markets-menu__links">
+									<a href="#" class="markets-menu__link" aria-label="link">
+										<img src="img/icons/download-app-store-dark.svg" width="106" height="37" alt="Image">
+									</a>
+									<a href="#" class="markets-menu__link" aria-label="link">
+										<img src="img/icons/download-google-play-dark.svg" width="106" height="37" alt="Image">
+									</a>
+								</div>
+							</div>
+						</nav>
+					</div>
+					<div class="main-header__sub-wrapper">
+						<div class="main-header__phones item-dropdwn">
+							<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+								<span>+380 67 468 10 88</span>
+							</button>
+							<ul class="item-dropdwn__list">
+								<li class="item-dropdwn__item">
+									<a href="tel:+380674681088" class="item-dropdwn__link" aria-label="phone number">+380 67 468 10 88</a>
+								</li>
+								<li class="item-dropdwn__item">
+									<a href="tel:+380924681092" class="item-dropdwn__link" aria-label="phone number">+380 92 468 10 92</a>
+								</li>
+								<li class="item-dropdwn__item">
+									<a href="tel:+380964681096" class="item-dropdwn__link" aria-label="phone number">+380 96 468 10 96</a>
+								</li>
+							</ul>
+						</div>
+						<div class="main-header__lang item-dropdwn">
+							<button type="button" class="item-dropdwn__btn icon-arrow-down" aria-label="open dropdown">
+								<img src="img/icons/flag-ukraine.svg" width="24" height="17" alt="Image"> <span>UA</span>
+							</button>
+							<ul class="item-dropdwn__list">
+								<li class="item-dropdwn__item">
+									<a href="#" class="item-dropdwn__link" aria-label="language">
+										<img src="img/icons/flag-poland.svg" width="24" height="17" alt="Image"> PL
+									</a>
+								</li>
+								<li class="item-dropdwn__item">
+									<a href="#" class="item-dropdwn__link" aria-label="language">
+										<img src="img/icons/flag-english.svg" width="24" height="17" alt="Image"> ENG
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div data-da=".main-header,900.98" class="main-header__search">
+							<button data-popup="#popupSearch" data-popup-width="480.98,max" type="button" aria-label="open popup" class="main-header__search-btn icon-search">Пошук по брендам</button>
+							<div data-da=".popup-body-search,480.98" class="search">
+								<div class="search__wrapper icon-search">
+									<input autocomplete="off" type="text" class="search__input" placeholder="Пошук по брендам">
+								</div>
+								<div class="search__box">
+									<div class="search__header"></div>
+									<div class="search__list"></div>
+									<div class="search__null">
+										<div class="search__null-wr">
+											<p class="search__null-txt">У нас немає таких сертифікатів</p>
+											<p class="search__null-txt-acc">Спробуй пошукати щось схоже у нашому каталозі</p>
+											<a href="#" class="search__null-link btn btn_dark">Перейти до каталогу</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="main-header__activate">
+							<a href="#" class="main-header__activate-btn btn btn_dark btn_sm icon-balance" aria-label="balance">
+								Активувати<br> Баланс giftmall
+							</a>
+						</div>
+						<div class="main-header__cabinet cabinet-header">
+							<button data-popup="#popupCabinet" data-popup-width="480.98,max" type="button" aria-label="open popup" class=" cabinet-header__button">
+								<div class="cabinet-header__user icon-user"></div>
+								<div class="cabinet-header__body">
+									<div class="cabinet-header__txt">Мій кабінет</div>
+									<div class="cabinet-header__txt">Увійти</div>
+								</div>
+								<div class="cabinet-header__arrow icon-arrow-down"></div>
+							</button>
+							<div data-da=".popup-body-cabinet,480.98" class="cabinet-header__card card-cabinet">
+								<div class="card-cabinet__header">
+									<p>Мій кабінет</p>
+									<p>+380-50-104-88-57</p>
+								</div>
+								<a href="#" class="card-cabinet__balance" aria-label="link">
+									<div class="card-cabinet__img">
+										<img src="img/cards/giftmall-card.png" width="51" height="34" alt="Image">
+									</div>
+									<div class="card-cabinet__info">
+										<p class="card-cabinet__info-t">Мій Баланс</p>
+										<p class="card-cabinet__info-b"><span>2 000</span> грн</p>
+									</div>
+								</a>
+								<div class="card-cabinet__list">
+									<a href="account.html#tab-0-0" class="card-cabinet__item tab-link icon-user-editing" aria-label="link">
+										<span class="card-cabinet__item-t">Мої Дані</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="account.html#tab-0-1" class="card-cabinet__item tab-link icon-balance" aria-label="link">
+										<span class="card-cabinet__item-t">Мій Баланс</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="account.html#tab-0-2" class="card-cabinet__item tab-link icon-basket" aria-label="link">
+										<span class="card-cabinet__item-t">Мої Замовлення</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="account.html#tab-0-3" class="card-cabinet__item tab-link icon-sertificates" aria-label="link">
+										<span class="card-cabinet__item-t">Мої Сертифікати</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="#" class="card-cabinet__item icon-exit" aria-label="link">
+										<span class="card-cabinet__item-t">Вийти</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+								</div>
+								<div class="card-cabinet__footer">
+									<a href="#" class="card-cabinet__item" aria-label="link">
+										<span class="card-cabinet__item-t">Адмін Панель</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+									<a href="#" class="card-cabinet__item" aria-label="link">
+										<span class="card-cabinet__item-t">Бізнес аккаунт</span>
+										<span class="card-cabinet__arrow icon-arrow-down"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="main-header__card">
+							<button data-popup="#popupCart" type="button" aria-label="open popup" class=" cabinet-header__button">
+								<div class="cabinet-header__user icon-basket"></div>
+								<div class="cabinet-header__body">
+									<div class="cabinet-header__txt">Кошик</div>
+									<div class="cabinet-header__txt"><span>5</span> товарів</div>
+								</div>
+								<div class="cabinet-header__arrow icon-arrow-down"></div>
+								<div class="cabinet-header__count">5</div>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header__sub-header sub-header">
+				<div class="sub-header__container-b">
+					<div data-filters="type-1" data-filters-close class="sub-header__filters filters">
+						<button data-filters-title type="button" class="filters__button button-filters icon-arrow-down" aria-label="open categorys">
+							<div class="button-filters__icon icon-sertificates"></div>
+							<div class="button-filters__title">
+								<div class="button-filters__name">Категорії по сертифікатам</div>
+							</div>
+						</button>
+						<div data-filters-wrapper class="filters__wrapper filters__wrapper_mob">
+							<div data-filters-head class="filters__header">
+								<a href="#" data-open-filters class="filters__back-mob icon-arrow-down">Назад до меню</a>
+							</div>
+							<nav data-filters-body class="filters__body">
+								<ul class="filters__list">
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="charity-certificates">
+											<span class="filters__icon icon-charity"></span>
+											<span class="filters__name">Благодійні сертифікати</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="children-goods">
+											<span class="filters__icon icon-children"></span>
+											<span class="filters__name">Дитячі товари</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="services">
+											<span class="filters__icon icon-services"></span>
+											<span class="filters__name">Послуги та сервіси</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="impressions">
+											<span class="filters__icon icon-impressions"></span>
+											<span class="filters__name">Враження</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="cosmetics">
+											<span class="filters__icon icon-cosmetics"></span>
+											<span class="filters__name">Косметика та парфюмерія</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="online-stores">
+											<span class="filters__icon icon-e-comm"></span>
+											<span class="filters__name">Інтернет-магазини</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="jewelry">
+											<span class="filters__icon icon-jewelry"></span>
+											<span class="filters__name">Ювелірні вироби</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="home-goods">
+											<span class="filters__icon icon-home-goods"></span>
+											<span class="filters__name">Товари для дому</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="pharmacy">
+											<span class="filters__icon icon-drugs"></span>
+											<span class="filters__name">Аптеки та медицина</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="clothing">
+											<span class="filters__icon icon-clothes"></span>
+											<span class="filters__name">Одяг та взуття</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="wine">
+											<span class="filters__icon icon-wine"></span>
+											<span class="filters__name">Вино та міцні напої</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="appliances">
+											<span class="filters__icon icon-electronics"></span>
+											<span class="filters__name">Побутова техніка та електроніка</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="pet-supplies">
+											<span class="filters__icon icon-zoo"></span>
+											<span class="filters__name">Зоотовари</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="fuel">
+											<span class="filters__icon icon-petrol"></span>
+											<span class="filters__name">Паливо</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="food-products">
+											<span class="filters__icon icon-food"></span>
+											<span class="filters__name">Продукти харчування</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="lingerie">
+											<span class="filters__icon icon-underclothes"></span>
+											<span class="filters__name">Спідня білизна</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="sport-goods">
+											<span class="filters__icon icon-sport"></span>
+											<span class="filters__name">Товари для спорту</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="restaurants">
+											<span class="filters__icon icon-restorountes"></span>
+											<span class="filters__name">Ресторани</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="books">
+											<span class="filters__icon icon-book"></span>
+											<span class="filters__name">Книжки</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="accessories">
+											<span class="filters__icon icon-accessories"></span>
+											<span class="filters__name">Аксесуари</span>
+										</a>
+									</li>
+									<li class="filters__item">
+										<a href="#" class="filters__link" aria-label="fishing-hunting">
+											<span class="filters__icon icon-fishing"></span>
+											<span class="filters__name">Риболовля та мисливство</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<nav class="sub-header__nav">
+						<ul class="sub-header__list">
+							<li data-da=".more-sub-list__items,700.98,first" class="sub-header__item">
+								<a href="#" class="sub-header__link" aria-label="link">Каталог</a>
+							</li>
+							<li data-da=".more-sub-list__items,701.98,first" class="sub-header__item">
+								<a href="#" class="sub-header__link" aria-label="link">Подарункова картка giftmall</a>
+							</li>
+							<li data-da=".more-sub-list__items,900.98,first" class="sub-header__item item-line">
+								<a href="#" class="sub-header__link" aria-label="link">Листівки та коробки</a>
+							</li>
+							<li data-da=".more-sub-list__items,1000.98,first" class="sub-header__item">
+								<a href="#" data-popup="#popupContactsUs" class="sub-header__link" aria-label="link">Контакти</a>
+							</li>
+							<li data-da=".more-sub-list__items,1100.98,first" class="sub-header__item">
+								<a href="#" class="sub-header__link" aria-label="link">giftmate для бізнесів</a>
+							</li>
+							<li class="sub-header__item more-sub-list">
+								<button type="button" class="sub-header__link sub-header__link_more icon-arrow-down" aria-label="open sub list"><span>Більше</span></button>
+								<ul data-da=".menu__body,700.98,3" class="more-sub-list__items">
+									<li class="sub-header__item">
+										<a href="#" class="sub-header__link" aria-label="link">Про нас</a>
+									</li>
+									<li class="sub-header__item">
+										<a href="#" class="sub-header__link" aria-label="link">Оплата і доставка</a>
+									</li>
+									<li class="sub-header__item">
+										<a href="#" class="sub-header__link" aria-label="link">Платформа винагород</a>
+									</li>
+									<li class="sub-header__item">
+										<a href="#" class="sub-header__link" aria-label="link">Постачальникам</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
 				</div>
 			</div>
 		</header>
 		<main class="page">
-			<section class="payment checkout">
-				<div class="payment__container">
-					<div class="payment__head mb-24-16">
-						<h1 class="payment__title">Оплата <span>(2-х замовлень)</span></h1>
-						<div class="payment__total"><span class="numb">100</span> грн</div>
+			<section class="card">
+				<div class="card__container">
+					<div class="card__breadcrumbs">
+						<div class="breadcrumbs">
+							<a href="/" class="breadcrumbs__item">Головна</a>
+							<span class="breadcrumbs__separator">
+								<span class="icon-arrow-down"></span>
+							</span>
+							<a href="catalog.html" class="breadcrumbs__item">Каталог</a>
+							<span class="breadcrumbs__separator">
+								<span class="icon-arrow-down"></span>
+							</span>
+							<span class="breadcrumbs__current">Подарункова Картка Фокстрот</span>
+						</div>
 					</div>
-					<ul class="payment__body">
-						<li class="payment__item item-payment">
-							<div class="item-payment__head">
-								<div class="item-payment__order-number">Замовлення 1</div>
-								<div class="item-payment__type icon-electronic">
-									Електронні сертифікати
+					<div class="card__main">
+						<div class="card__aside aside-card">
+							<div class="aside-card__body">
+								<div data-gallery class="aside-card__gallery gallery">
+									<div data-gallery-main class="gallery__item" aria-label="gallery">
+										<img class="ibg" src="img/certificates/certificate-03.jpg" width="388" height="255" alt="Image">
+									</div>
+									<a href="#" data-gallery-button class="gallery__item" aria-label="gallery">
+										<img class="ibg" src="img/certificates/certificate-02.jpg" width="388" height="255" alt="Image">
+									</a>
+									<a href="#" data-gallery-button class="gallery__item " aria-label="gallery">
+										<img class="ibg" src="img/certificates/certificate-06.jpg" width="388" height="255" alt="Image">
+									</a>
+									<a href="#" data-gallery-button class="gallery__item " aria-label="gallery">
+										<img class="ibg" src="img/certificates/certificate-04.jpg" width="388" height="255" alt="Image">
+									</a>
 								</div>
-								<div class="item-payment__address">
-									<span>• &nbsp;</span>omihalovjul@gmail.com
+								<div class="aside-card__description">
+									Подарункова картка від мережі супермаркетів електроніки та побутової техніки , що займає лідируючі позиції на ринку.
 								</div>
+								<a href="#" class="aside-card__link icon-arrow-next" aria-label="link">Перейти на сайт партнера</a>
 							</div>
-							<div class="item-payment__content">
-								<div class="item-payment__info">
-									<img class="item-payment__img" src="img/certificates/certificate-03.jpg" width="95" height="63" alt="Image">
-									<div class="item-payment__body">
-										<p class="item-payment__name">Фокстрот</p>
-										<p class="item-payment__subname">Подарункова картка</p>
-										<p class="item-payment__count">2 шт х 250 грн</p>
-									</div>
-								</div>
-								<div class="item-payment__total">
-									<div class="item-payment__row">
-										<p class="item-payment__text">Загальна сума</p>
-										<p class="item-payment__subtotal"><span class="numb">500</span> грн</p>
-									</div>
-									<div class="item-payment__row">
-										<p class="item-payment__text">Списаний баланс giftmall</p>
-										<p class="item-payment__subtotal"><span class="numb">-450</span> грн</p>
-									</div>
-									<div class="item-payment__row row-mob">
-										<p class="item-payment__text">До сплати</p>
-										<p class="item-payment__subtotal"><span class="numb">50</span> грн</p>
-									</div>
-								</div>
-							</div>
-							<div class="item-payment__next">
-								<div class="item-payment__total-main"><span class="numb">50</span> грн</div>
-								<a href="#" class="item-payment__btn btn btn_dark btn_sm">Перейти до оплати</a>
-							</div>
-						</li>
-						<li class="payment__item item-payment">
-							<div class="item-payment__head">
-								<div class="item-payment__order-number">Замовлення 1</div>
-								<div class="item-payment__type icon-physical">
-									Фізичні сертифікати
-								</div>
-								<div class="item-payment__address">
-									<span>• &nbsp;</span>Київ, Відділення №1: вул. Драгомнова, 10А
-								</div>
-							</div>
-							<div class="item-payment__content">
-								<div class="item-payment__info">
-									<img class="item-payment__img" src="img/certificates/certificate-01.jpg" width="95" height="63" alt="Image">
-									<div class="item-payment__body">
-										<p class="item-payment__name">The Cake</p>
-										<p class="item-payment__subname">Подарункова картка</p>
-										<p class="item-payment__count">2 шт х 800 грн</p>
-									</div>
-								</div>
-								<div class="item-payment__total">
-									<div class="item-payment__row">
-										<p class="item-payment__text">Загальна сума</p>
-										<p class="item-payment__subtotal"><span class="numb">800</span> грн</p>
-									</div>
-									<div class="item-payment__row">
-										<p class="item-payment__text">Списаний баланс giftmall </p>
-										<p class="item-payment__subtotal"><span class="numb">-750</span> грн</p>
-									</div>
-									<div class="item-payment__row row-mob">
-										<p class="item-payment__text">До сплати</p>
-										<p class="item-payment__subtotal"><span class="numb">50</span> грн</p>
+						</div>
+						<div data-sticky-parent class="card__body">
+							<div class="card__header">
+								<h1 class="card__title">
+									Картка Фокстрот
+								</h1>
+								<div class="card__rating ">
+									<div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
+										<a href="#" class="rating__title"><span>4.5</span> (184 відгуків)</a>
 									</div>
 								</div>
 							</div>
-							<div class="item-payment__next">
-								<div class="item-payment__total-main"><span class="numb">50</span> грн</div>
-								<a href="#" class="item-payment__btn btn btn_dark btn_sm">Перейти до оплати</a>
+							<div class="card__details">
+								<div class="card__options grid-cl">
+									<div class="card-options">
+										<div class="card__info-label">
+											<span class="info-label">
+												<span data-tippy-content="Фізичні картки доставляються Новою Поштою протягом 2-3 роб. днів. Електронні — одразу у вашому кабінеті." class="info-label__info icon-info"></span>
+												Оберіть тип картки
+											</span>
+										</div>
+										<input id="cardTypeElectronic" class="card-options__input" type="radio" name="cardType" value="electronic">
+										<label for="cardTypeElectronic" class="card-options__label icon-electronic">
+											Електронний
+										</label>
+									</div>
+									<div class="card-options card-options_msg">
+										<input id="cardTypePhysical" class="card-options__input icon-physical" type="radio" name="cardType" value="physical">
+										<label for="cardTypePhysical" class="card-options__label icon-physical">
+											Фізичний
+										</label>
+										<div class="card-options__message icon-delivery">
+											Відправка: з Пн по Пт після 09:00 ранку
+										</div>
+									</div>
+								</div>
+								<div class="card__items grid-rw">
+									<div class="card__item">
+										<label class="card__info-label">
+											<span class="info-label">
+												<span data-tippy-content="Виберіть номінал" class="info-label__info icon-info"></span>
+												Оберіть номінал
+											</span>
+										</label>
+										<div class="card__select">
+											<select name="form[]" data-class-modif="type-8" data-speed="200" data-show-selected data-scroll="300" data-required>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value data-class="item-placeholder">₴ 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="1">₴ 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="2">₴ 1 000</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" data-disabled="Немає в наявності" data-class="_option-disabled" value="3">₴ 1 500 </option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="4">₴ 2 000</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="5">₴ 2 500</option>
+												<option data-asset="Майстер клас “Алкогольні чорнила. Побачення на двох”" value="6">₴ 3 000</option>
+											</select>
+										</div>
+									</div>
+									<div class="card__item">
+										<label for="quantityInput" class="card__info-label">
+											<span class="info-label">
+												<span data-tippy-content="Виберіть кількість" class="info-label__info icon-info"></span>
+												Оберіть кількість
+											</span>
+										</label>
+										<div data-quantity class="card__quantity quantity">
+											<div class="quantity__item">
+												<div class="quantity__block">
+													<div class="quantity__input">
+														<input id="quantityInput" data-quantity-value type="tel" name="" data-quantity-min="1" data-quantity-max="10" placeholder="1" value="1">
+														<span>шт</span>
+													</div>
+												</div>
+												<div class="quantity__btns">
+													<button data-quantity-minus type="button" class="quantity__btn quantity__btn_minus icon-minus"></button>
+													<button data-quantity-plus type="button" class="quantity__btn quantity__btn_plus icon-plus"></button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-						</li>
-					</ul>
+							<div class="card__info">
+								<div class="card__info-card info-card">
+									<div class="info-card__title">Важливо знати</div>
+									<div class="info-card__description">
+										Подарункова картка від мережі супермаркетів електроніки та побутової техніки , що займає лідируючі позиції на ринку.
+									</div>
+									<a href="#" class="info-card__link icon-arrow-next" aria-label="link">Перейти на сайт партнера</a>
+									<div class="info-card__body info-card-grid-1">
+										<div class="info-card__item">
+											<span class="info-card__icon icon-number-1"></span>
+											<p class="info-card__text">
+												1 рік — Термін дії
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-cake"></span>
+											<p class="info-card__text">
+												Розбивається на декілька чеків
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-no-money-exchange"></span>
+											<p class="info-card__text">
+												Не обмінюється на гроші
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-puzzle"></span>
+											<p class="info-card__text">
+												Сумується з балансом giftmall
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-no-money-exchange"></span>
+											<p class="info-card__text">
+												Не обмінюється на гроші
+											</p>
+										</div>
+										<div class="info-card__item">
+											<span class="info-card__icon icon-puzzle"></span>
+											<p class="info-card__text">
+												Сумується з балансом giftmall
+											</p>
+										</div>
+									</div>
+								</div>
+								<div data-spollers class="card__rules rules-spollers">
+									<details class="rules-spollers__details">
+										<summary class="rules-spollers__title">
+											Правила та умови Використання
+											<span class="rules-spollers__arrow icon-arrow-down"></span>
+										</summary>
+										<div class="rules-spollers__body">
+											<div class="rules-spollers__wrapper">
+												<div class="rules-spollers__items">
+													<ul class="rules-spollers__list">
+														<li class="rules-spollers__item">
+															<p class="rules-spollers__txt">
+																Сертифікат giftmall не є платіжним засобом в магазинах партнерів.
+															</p>
+														</li>
+														<li class="rules-spollers__item">
+															<p class="rules-spollers__txt">
+																Щоб скористатися, необхідно активувати баланс картки на нашому сайті в особистому кабінеті.
+															</p>
+														</li>
+														<li class="rules-spollers__item">
+															<p class="rules-spollers__txt">
+																За активований баланс з картки можна купити будь-який сертифікат бренду в нашому каталозі.
+															</p>
+															<p class="rules-spollers__txt--sm">
+																* За активований баланс неможливо сплатити дану Подарункову Картку giftmall.
+															</p>
+														</li>
+														<li class="rules-spollers__item">
+															<p class="rules-spollers__txt">
+																Щоб сплатити за сертифікат бренду, необхідно обрати спосіб оплати через баланс giftmall у кошику.
+															</p>
+															<p class="rules-spollers__txt--sm">
+																* Якщо сума сертифікату бренду перевищує ваш поточний баланс giftmall, то ви можете доплатити різницю через свою банківську картку у кошику.
+															</p>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</details>
+								</div>
+							</div>
+							<div data-sticky-el class="card__footer">
+								<button type="button" data-popup="#popupAvailabilityInform" class="card__add-button card__add-button--inform btn btn_dark">Сповістити про наявність</button>
+								<div class="card__after-sent">
+									<p class="card__after-msg icon-mail">
+										Ви підписалися на сповіщення про наявність
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="card-offer best-offer">
+				<div class="best-offer__container">
+					<h2 class="best-offer__title title-av mb-24-8">Також купують</h2>
+					<div class="best-offer__body card-grid">
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-physical"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-02.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Nails & Cocktails
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-physical"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-03.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Foxstrot
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа комп`ютерної техніки та електроніки
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-physical"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-04.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									Winetime
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа вина, сирів та міцного алкоголю
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
+						</a>
+						<a href="#" class="card-certificate" aria-label="link to card page">
+							<div class="card-certificate__header">
+								<div class="card-certificate__types">
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-electronic"></span>
+										<span>Електронний</span>
+									</div>
+									<div class="card-certificate__type">
+										<span class="card-certificate__icon icon-physical"></span>
+										<span>Фізичний</span>
+									</div>
+								</div>
+								<div class="card-certificate__img">
+									<img class="ibg" src="img/certificates/certificate-05.jpg" width="240" height="157" alt="Image">
+								</div>
+							</div>
+							<div class="card-certificate__body">
+								<div class="card-certificate__title">
+									The Cake bakery karta podarunkowa smyk
+								</div>
+								<div class="card-certificate__subtitle">
+									Мережа салонів манікюру та педікюру
+								</div>
+							</div>
+							<div class="card-certificate__button btn btn_gray btn_fs15-14">Купити від 200 грн</div>
+						</a>
+					</div>
+				</div>
+			</section>
+			<section class="review pb-120-56">
+				<div class="review__container">
+					<div class="review__header mb-20-24">
+						<div class="review__block">
+							<h2 class="review__title title-av">Відгуки</h2>
+							<div class="review__card-header card__header">
+								<p class="card__title">
+									Подарункова Картка giftmall
+								</p>
+								<div class="card__rating ">
+									<div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
+										<a href="#" class="rating__title"><span>4.5</span> (184 відгуків)</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="review__buttons">
+							<button type="button" data-popup="#popupReviews" class="review__btn btn btn_dark btn_sm-3" aria-label="open popup">Залишити відгук</button>
+							<button type="button" data-popup="#popupQuestion" class="review__btn btn btn_light-dark btn_sm-3" aria-label="open popup">Задати запитання</button>
+						</div>
+					</div>
+					<div class="review__items mb-20-24">
+						<div class="review__item item-review">
+							<div class="item-review__header">
+								<div class="item-review__avatar">
+									<div class="item-review__avatar-img">
+										<img src="img/testimonials/letter-k.svg" width="13" height="17" alt="Image">
+									</div>
+									<div class="item-review__avatar-txt">Катерина</div>
+								</div>
+								<div class="item-review__rating">
+									<div class="card__rating ">
+										<div data-rating="" data-rating-value="4.5" data-rating-size="5" class="rating">
+											<p class="rating__title"><span>4.5</span></p>
+										</div>
+									</div>
+								</div>
+								<p class="item-review__date">
+									<time datetime="2024-06-23">23.06.24</time>
+								</p>
+							</div>
+							<div class="item-review__body">
+								<div class="item-review__wrapper">
+									<p class="item-review__text">
+										Чудовий сервіс! Універсальна карта GiftMall дозволяє самостійно вибрати подарунок. Це дуже полегшує вибір) Активація картки займає кілька хвилин. Дуже швидко та зручно. Стильне оздоблення. Все дуже сподобалось!
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="review__item item-review">
+							<div class="item-review__header">
+								<div class="item-review__avatar">
+									<div class="item-review__avatar-img">
+										<img src="img/testimonials/letter-b.svg" width="13" height="17" alt="Image">
+									</div>
+									<div class="item-review__avatar-txt">Віталіна</div>
+								</div>
+								<div class="item-review__rating">
+									<div class="card__rating ">
+										<div data-rating="" data-rating-value="5" data-rating-size="5" class="rating">
+											<p class="rating__title"><span>5.0</span></p>
+										</div>
+									</div>
+								</div>
+								<p class="item-review__date">
+									<time datetime="2024-06-23">23.06.24</time>
+								</p>
+							</div>
+							<div class="item-review__body">
+								<div class="item-review__wrapper">
+									<p class="item-review__text">
+										Чудовий сертифікат. Купувала мамі на День Народження, все сподобалось: від обслуговування до оформлення замовлення. P.S. дуже красива упаковка та стікери, які дають у подарунок.
+									</p>
+									<div class="item-review__photo">
+										<img src="img/testimonials/testimonials.jpg" width="183" height="120" alt="Image">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="review__item item-review">
+							<div class="item-review__header">
+								<div class="item-review__avatar">
+									<div class="item-review__avatar-img">
+										<img src="img/testimonials/letter-c.svg" width="13" height="17" alt="Image">
+									</div>
+									<div class="item-review__avatar-txt">Сергій</div>
+								</div>
+								<div class="item-review__rating">
+									<div class="card__rating ">
+										<div data-rating="" data-rating-value="1.5" data-rating-size="5" class="rating">
+											<p class="rating__title"><span>1.5</span></p>
+										</div>
+									</div>
+								</div>
+								<p class="item-review__date">
+									<time datetime="2024-06-23">23.06.24</time>
+								</p>
+							</div>
+							<div class="item-review__body">
+								<div class="item-review__wrapper">
+									<p class="item-review__text">
+										Відгуки модеруються. Негативні не оприлюднюються.
+									</p>
+									<div class="item-review__response">
+										<div class="item-review__response-head">
+											<div class="item-review__response-avatar">
+												<img src="img/icons/logo-short.svg" width="15" height="16" alt="Image">
+											</div>
+											<p>giftmall</p>
+										</div>
+										<p class="item-review__response-text">
+											Сергію, доброго дня! Нам дуже шкода, що у вас склалася така думка про наш сервіс. Ми бажаємо бути кращими, тому будемо вдячні, якщо повідомите, що було не так. Відгуки всі публікуються після модерації, у тому числі негативні. Ми не публікуємо спам та відгуки, які не відносяться до нашого ресурсу чи бренду під яким вони написані.
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="review__more">
+						<button type="button" class="review__more-btn icon-eye" aria-label="more">Більше відгуків</button>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -1907,5 +2632,3 @@
 	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20250428172738"></script>
 	<script src="js/app.min.js?_v=20250428172738"></script>
 </body>
-
-</html>

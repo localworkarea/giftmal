@@ -1927,6 +1927,11 @@
   // .card-balance__block
   &__block {
     @extend  %fonsSize13-14;
+    input {
+      &::placeholder {
+        letter-spacing: 0.5em;
+      }
+    }
   }
   // .card-balance__sub-title
   &__sub-title {

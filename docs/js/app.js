@@ -767,7 +767,7 @@
                     if (popupId) document.documentElement.classList.add(`${popupId}-show`);
                     this.targetOpen.element.classList.add(this.options.classes.popupActive);
                     document.documentElement.classList.add(this.options.classes.bodyActive);
-                    if (!this._reopen && !options.keepParentOpen) !this.bodyLock ? bodyLock() : null; else this._reopen = false;
+                    if (!this._reopen) !this.bodyLock ? bodyLock() : null; else this._reopen = false;
                     this.previousOpen.selector = this.targetOpen.selector;
                     this.previousOpen.element = this.targetOpen.element;
                     this._selectorOpen = false;
@@ -799,7 +799,7 @@
             }
             this.previousOpen.element.classList.remove(this.options.classes.popupActive);
             const openPopups = document.querySelectorAll(`.${this.options.classes.popupActive}`);
-            if (openPopups.length === 0) {
+            if (openPopups.length === 0 && !this._reopen) {
                 document.documentElement.classList.remove(this.options.classes.bodyActive);
                 !this.bodyLock ? bodyUnlock() : null;
                 this.isOpen = false;
@@ -1269,6 +1269,7 @@
                     popup ? modules_flsModules.popup.open(popup) : null;
                 }
             }), 0);
+            document.documentElement.classList.add("_form-sent");
             formValidate.formClean(form);
         }
     }
@@ -9583,7 +9584,9 @@
                 },
                 on: {
                     init(swiper) {
+                        window.statusSwiper = swiper;
                         updateDisabledClasses(swiper);
+                        attachFullScrollHandlers(swiper);
                     },
                     reachBeginning(swiper) {
                         updateDisabledClasses(swiper);
@@ -9598,6 +9601,47 @@
                 sliderEl.classList.toggle("_btn-disabled-prev", swiper.isBeginning);
                 sliderEl.classList.toggle("_btn-disabled-next", swiper.isEnd);
             }
+            function attachFullScrollHandlers(swiper) {
+                const prevButton = swiper.navigation.prevEl;
+                const nextButton = swiper.navigation.nextEl;
+                if (prevButton) prevButton.addEventListener("click", (() => {
+                    swiper.slideTo(0, 600);
+                }));
+                if (nextButton) nextButton.addEventListener("click", (() => {
+                    swiper.slideTo(swiper.slides.length - 1, 600);
+                }));
+            }
+            function isOverlapping(el1, el2) {
+                const rect1 = el1.getBoundingClientRect();
+                const rect2 = el2.getBoundingClientRect();
+                return !(rect1.right < rect2.left || rect1.left > rect2.right);
+            }
+            function scrollUntilVisible(swiper, targetSlide) {
+                if (!swiper || !targetSlide) return;
+                const prevButton = swiper.navigation.prevEl;
+                const nextButton = swiper.navigation.nextEl;
+                let iterationLimit = 20;
+                const scrollRight = () => {
+                    if (isOverlapping(targetSlide, nextButton) && !swiper.isEnd && iterationLimit--) {
+                        swiper.slideNext(600);
+                        setTimeout(scrollRight, 0);
+                    }
+                };
+                const scrollLeft = () => {
+                    if (isOverlapping(targetSlide, prevButton) && !swiper.isBeginning && iterationLimit--) {
+                        swiper.slidePrev(600);
+                        setTimeout(scrollLeft, 0);
+                    }
+                };
+                if (isOverlapping(targetSlide, nextButton)) scrollRight(); else if (isOverlapping(targetSlide, prevButton)) scrollLeft();
+            }
+            document.querySelectorAll(".status-slider__input").forEach((input => {
+                input.addEventListener("click", (() => {
+                    if (!window.statusSwiper) return;
+                    const slide = input.closest(".swiper-slide");
+                    scrollUntilVisible(window.statusSwiper, slide);
+                }));
+            }));
         }
         const blogSliders = [ {
             selector: ".blog-inner__related-slider",
