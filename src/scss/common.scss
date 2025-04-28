@@ -8,10 +8,29 @@
   }
   &::-webkit-scrollbar-thumb {
     background-color: #B2AFB3;
+    // background: 
+    //   linear-gradient(
+    //     to bottom,
+    //     transparent 0,
+    //     transparent 20px,
+    //     #B2AFB3 20px,
+    //     #B2AFB3 calc(100% - 20px),
+    //     transparent calc(100% - 20px),
+    //     transparent 100%
+    //   );
     border-radius: 4px;
     border: 1px solid transparent; /* Добавляем прозрачную границу для ползунка */
     background-clip: padding-box; 
   }
+  // &::-webkit-scrollbar-track-piece:start {
+  //   background: transparent;
+  //   margin-top: 40px;
+  // }
+
+  // &::-webkit-scrollbar-track-piece:end {
+  //   background: transparent;
+  //   margin-bottom: 40px;
+  // }
 }
 
 html {

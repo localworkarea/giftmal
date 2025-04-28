@@ -348,6 +348,7 @@
 		overflow: hidden;
 		// padding: toRem(8);
 		padding: toRem(8) toRem(0) toRem(8) toRem(8);
+		// padding: toRem(8) toRem(2) toRem(8) toRem(8);
 
 		// ._nothing-found_ & {
 		// 	visibility: hidden;
@@ -394,7 +395,7 @@
 			padding: 0;
 		}
 		._select-open & {
-			min-height: toRem(56);
+			// min-height: toRem(56);
 		}
 	}
 	// .select__scroll
@@ -406,10 +407,37 @@
 		// max-height: toRem(200);
 		// margin-right: 1.5px;
 		// margin-right: -4px;
+
 			padding-right: toRem(8);
-		// padding: toRem(8) toRem(4) toRem(8) toRem(8);
+			// padding-right: toRem(2);
+			// padding: toRem(8);
+		
+			// padding: toRem(8) toRem(4) toRem(8) toRem(8);
 		// .select_type-3 & {
 		// 	padding: 0 toRem(4);
+		// }
+		// &::-webkit-scrollbar {
+		// 	width: 8px !important;
+		// }
+		// &::-webkit-scrollbar-track {
+		// 	background-color: transparent; 
+		// 	padding: toRem(2) !important;
+		// }
+		// &::-webkit-scrollbar-thumb {
+		// 	// background-color: #B2AFB3;
+		// 	background: 
+		// 		linear-gradient(
+		// 			to bottom,
+		// 			transparent 0,
+		// 			transparent 20px,
+		// 			#D9D9D9 20px,
+		// 			#D9D9D9 calc(100% - 20px),
+		// 			transparent calc(100% - 20px),
+		// 			transparent 100%
+		// 		);
+		// 	border-radius: 4px;
+		// 	border: 2px solid transparent; /* Добавляем прозрачную границу для ползунка */
+		// 	background-clip: padding-box; 
 		// }
 		.select_type-9 & {
 			max-height: 100% !important;

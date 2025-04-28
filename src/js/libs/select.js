@@ -1,7 +1,100 @@
 // Підключення функціоналу "Чортоги Фрілансера"
-import { isMobile, _slideUp, _slideDown, _slideToggle, FLS } from "../files/functions.js";
+import { isMobile, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 import { formValidate } from "../files/forms/forms.js";
+
+
+let _slideUpSelect = (target, duration = 500) => {
+  if (!target.classList.contains('_slide')) {
+    target.classList.add('_slide');
+
+    target.style.transitionProperty = 'height, padding, margin';
+    target.style.transitionDuration = `${duration}ms`;
+    target.style.height = `${target.offsetHeight}px`;
+    target.style.paddingTop = `${target.style.paddingTop || 0}`;
+    target.style.paddingBottom = `${target.style.paddingBottom || 0}`;
+    target.style.marginTop = `${target.style.marginTop || 0}`;
+    target.style.marginBottom = `${target.style.marginBottom || 0}`;
+    target.offsetHeight; // форсируем перерисовку
+
+    target.style.overflow = 'hidden';
+    target.style.height = '0px';
+    target.style.paddingTop = '0px';
+    target.style.paddingBottom = '0px';
+    target.style.marginTop = '0px';
+    target.style.marginBottom = '0px';
+
+    window.setTimeout(() => {
+      // После схлопывания height/padding/margin сразу без transition прячем opacity и visibility
+      target.style.removeProperty('transition-property');
+      target.style.removeProperty('transition-duration');
+      target.style.opacity = '0';
+      target.style.visibility = 'hidden';
+      target.style.pointerEvents = 'none';
+
+      target.style.removeProperty('height');
+      target.style.removeProperty('padding-top');
+      target.style.removeProperty('padding-bottom');
+      target.style.removeProperty('margin-top');
+      target.style.removeProperty('margin-bottom');
+      target.style.removeProperty('overflow');
+      target.classList.remove('_slide');
+      document.dispatchEvent(new CustomEvent("slideUpDone", { detail: { target } }));
+    }, duration);
+  }
+};
+
+let _slideDownSelect = (target, duration = 500, maxHeight = 0) => {
+  if (!target.classList.contains('_slide')) {
+    target.classList.add('_slide');
+
+    // Мгновенно показываем
+    target.style.opacity = '1';
+    target.style.visibility = 'visible';
+    target.style.pointerEvents = 'auto';
+
+    target.style.removeProperty('height');
+    let height = target.offsetHeight;
+    target.style.height = '0px';
+    target.style.paddingTop = '0px';
+    target.style.paddingBottom = '0px';
+    target.style.marginTop = '0px';
+    target.style.marginBottom = '0px';
+    target.offsetHeight; // рефлоу
+
+    if (maxHeight > 0) {
+      height = Math.min(height, maxHeight);
+    }
+
+    target.style.transitionProperty = 'height, padding, margin';
+    target.style.transitionDuration = `${duration}ms`;
+    target.style.height = `${height}px`;
+    target.style.paddingTop = '';
+    target.style.paddingBottom = '';
+    target.style.marginTop = '';
+    target.style.marginBottom = '';
+
+    window.setTimeout(() => {
+      target.style.removeProperty('height');
+      target.style.removeProperty('overflow');
+      target.style.removeProperty('transition-property');
+      target.style.removeProperty('transition-duration');
+      target.classList.remove('_slide');
+      document.dispatchEvent(new CustomEvent("slideDownDone", { detail: { target } }));
+    }, duration);
+  }
+};
+
+let _slideToggleSelect = (target, duration = 500, maxHeight = 0) => {
+  const computedStyle = window.getComputedStyle(target);
+  if (parseFloat(computedStyle.opacity) === 0 || target.style.height === '0px') {
+    return _slideDownSelect(target, duration, maxHeight);
+  } else {
+    return _slideUpSelect(target, duration);
+  }
+};
+
+
 
 // Підключення файлу стилів
 // Базові стилі полягають у src/scss/forms.scss
@@ -150,7 +243,11 @@ class SelectConstructor {
 			}
 		}
 		// Конструктор основних елементів
-		selectItem.insertAdjacentHTML('beforeend', `<div class="${this.selectClasses.classSelectBody}"><div hidden class="${this.selectClasses.classSelectOptions}"></div></div>`);
+
+		// ИЗМЕНЕНИЯ
+		selectItem.insertAdjacentHTML('beforeend', `<div class="${this.selectClasses.classSelectBody}"><div style="opacity: 0;pointer-events: none; visibility: hidden" class="${this.selectClasses.classSelectOptions}"></div></div>`);
+		// selectItem.insertAdjacentHTML('beforeend', `<div class="${this.selectClasses.classSelectBody}"><div hidden class="${this.selectClasses.classSelectOptions}"></div></div>`);
+
 		// Запускаємо конструктор псевдоселекту
 		this.selectBuild(originalSelect);
 
@@ -235,7 +332,7 @@ class SelectConstructor {
 		const selectOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
 		if (!selectOptions.classList.contains('_slide')) {
 			selectItem.classList.remove(this.selectClasses.classSelectOpen);
-			_slideUp(selectOptions, originalSelect.dataset.speed);
+			_slideUpSelect(selectOptions, originalSelect.dataset.speed);
 			setTimeout(() => {
 				selectItem.style.zIndex = '';
 			}, originalSelect.dataset.speed);
@@ -246,6 +343,7 @@ class SelectConstructor {
 		const originalSelect = this.getSelectElement(selectItem).originalSelect;
 		const selectOptions = this.getSelectElement(selectItem, this.selectClasses.classSelectOptions).selectElement;
 		const selectOpenzIndex = originalSelect.dataset.zIndex ? originalSelect.dataset.zIndex : 3;
+
 
 		// Визначаємо, де видобразити випадаючий список
 		this.setOptionsPosition(selectItem);
@@ -260,7 +358,7 @@ class SelectConstructor {
 		setTimeout(() => {
 			if (!selectOptions.classList.contains('_slide')) {
 				selectItem.classList.toggle(this.selectClasses.classSelectOpen);
-				_slideToggle(selectOptions, originalSelect.dataset.speed);
+				_slideToggleSelect(selectOptions, originalSelect.dataset.speed);
 
 				if (selectItem.classList.contains(this.selectClasses.classSelectOpen)) {
 					selectItem.style.zIndex = selectOpenzIndex;
@@ -477,11 +575,18 @@ class SelectConstructor {
 		const selectOptionsPosMargin = +originalSelect.dataset.optionsMargin ? +originalSelect.dataset.optionsMargin : 10;
 
 		if (!selectItem.classList.contains(this.selectClasses.classSelectOpen)) {
-			selectOptions.hidden = false;
+			// selectOptions.hidden = false;
+
+			// ИЗМЕНЕНИЯ
+			selectOptions.style.opacity = 0;
+			selectOptions.style.visibility = 'hidden';
+			selectOptions.style.pointerEvents = 'none';
+			// ====
+
 			const selectItemScrollHeight = selectItemScroll.offsetHeight ? selectItemScroll.offsetHeight : parseInt(window.getComputedStyle(selectItemScroll).getPropertyValue('max-height'));
 			const selectOptionsHeight = selectOptions.offsetHeight > selectItemScrollHeight ? selectOptions.offsetHeight : selectItemScrollHeight + selectOptions.offsetHeight;
 			const selectOptionsScrollHeight = selectOptionsHeight - selectItemScrollHeight;
-			selectOptions.hidden = true;
+			// selectOptions.hidden = true;
 
 			const selectItemHeight = selectItem.offsetHeight;
 			const selectItemPos = selectItem.getBoundingClientRect().top;
