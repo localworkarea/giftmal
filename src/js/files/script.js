@@ -2189,6 +2189,20 @@ if (intlTelInputs.length > 0) {
       }
     });
 
+    // фикс бага для андроидов при клике на кнопку с флагами для октрытия списка страниц, чтобы убрать фокус и автоматическое выдвижение клавиатуры
+    const selectedFlag = input.parentNode.querySelector(".iti__selected-flag");
+    if (selectedFlag) {
+      selectedFlag.addEventListener("click", (e) => {
+        if (window.innerWidth <= 480.98) {
+          e.preventDefault();
+          input.blur();
+          if (typeof iti._openDropdown === "function") {
+            iti._openDropdown();
+          }
+        }
+      });
+    }
+
     function updateNoResultsMessage(searchInput, dropdownContent) {
       if (!dropdownContent) return;
 

@@ -12338,6 +12338,14 @@
                         return selectedCountryPlaceholder.replace(/\d/g, "X").replace(/\s/g, "-");
                     }
                 });
+                const selectedFlag = input.parentNode.querySelector(".iti__selected-flag");
+                if (selectedFlag) selectedFlag.addEventListener("click", (e => {
+                    if (window.innerWidth <= 480.98) {
+                        e.preventDefault();
+                        input.blur();
+                        if (typeof iti._openDropdown === "function") iti._openDropdown();
+                    }
+                }));
                 function updateNoResultsMessage(searchInput, dropdownContent) {
                     if (!dropdownContent) return;
                     const countryList = dropdownContent.querySelector(".iti__country-list");
