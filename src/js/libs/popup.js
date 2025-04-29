@@ -23,7 +23,7 @@ class Popup {
 				popupActive: 'popup_show', // Додається для попапа, коли він відкривається
 				bodyActive: 'popup-show', // Додається для боді, коли попап відкритий
 			},
-			focusCatch: true, // Фокус усередині попапа зациклений
+			focusCatch: false, // Фокус усередині попапа зациклений
 			closeEsc: false, // Закриття ESC
 			bodyLock: true, // Блокування скролла
 			hashSettings: {
@@ -386,6 +386,8 @@ class Popup {
 
 	_focusTrap() {
     if (!this.previousOpen.element) return; // Защита от ошибок, если нет предыдущего попапа
+
+		// if (this.previousOpen.selector === "#popupIti") return;
 
     const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
     

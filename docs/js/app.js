@@ -234,6 +234,26 @@
     (() => {
         "use strict";
         const modules_flsModules = {};
+        let isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function() {
+                return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+            }
+        };
         function addLoadedClass() {
             if (!document.documentElement.classList.contains("loading")) window.addEventListener("load", (function() {
                 setTimeout((function() {
@@ -865,7 +885,7 @@
                         popupActive: "popup_show",
                         bodyActive: "popup-show"
                     },
-                    focusCatch: true,
+                    focusCatch: false,
                     closeEsc: false,
                     bodyLock: true,
                     hashSettings: {
@@ -11224,6 +11244,7 @@
             if (catalogPage) document.documentElement.classList.add("catalog-page");
             if (seoBlockEl) document.documentElement.classList.add("has-seo-block");
             if (cabinetPage) document.documentElement.classList.add("cabinet-page");
+            if (isMobile.Android()) document.documentElement.classList.add("_android");
             const illustrationInput = document.getElementById("customImageInput");
             if (illustrationInput) {
                 illustrationInput.addEventListener("change", (function(event) {
@@ -12338,14 +12359,6 @@
                         return selectedCountryPlaceholder.replace(/\d/g, "X").replace(/\s/g, "-");
                     }
                 });
-                const selectedFlag = input.parentNode.querySelector(".iti__selected-flag");
-                if (selectedFlag) selectedFlag.addEventListener("click", (e => {
-                    if (window.innerWidth <= 480.98) {
-                        e.preventDefault();
-                        input.blur();
-                        if (typeof iti._openDropdown === "function") iti._openDropdown();
-                    }
-                }));
                 function updateNoResultsMessage(searchInput, dropdownContent) {
                     if (!dropdownContent) return;
                     const countryList = dropdownContent.querySelector(".iti__country-list");
@@ -12403,6 +12416,9 @@
                                 setTimeout((() => {
                                     originalShowDropdown.call(iti);
                                     updateSelectedClass();
+                                    const dropdownContent = iti.countryList?.parentElement;
+                                    const searchInput = dropdownContent?.querySelector(".iti__search-input");
+                                    if (searchInput) searchInput.blur();
                                 }), 50);
                             }
                         };

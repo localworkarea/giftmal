@@ -215,6 +215,9 @@ body::after {
 .popup-iti.popup {
 	.popup__body {
 		min-height: toRem(300);
+		._android & {
+			min-height: 60dvh;
+		}
 	}
 } 
 .popup-rolldate.popup {
