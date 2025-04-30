@@ -1,8 +1,3 @@
-//Модуль паралаксу мишею
-// (c)Фрілансер по життю, "Хмурый Кот"
-// Документація: 
-
-// Підключення функціоналу "Чортоги Фрілансера"
 import { isMobile, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 

@@ -1,7 +1,5 @@
-// Підключення функціоналу "Чертоги Фрілансера"
 import { isMobile, getHash, menuClose, getDigFormat } from "../functions.js";
 import { flsModules } from "../../files/modules.js";
-// Модуль прокручування до блоку
 import { gotoBlock } from "./gotoblock.js";
 // Змінна контролю додавання події window scroll.
 let addWindowScrollEvent = false;

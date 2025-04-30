@@ -1,4 +1,3 @@
-// Увімкнути/вимкнути FLS (Full Logging System) (в роботі)
 window['FLS'] = false;
 
 // Підключення основного файлу стилів
@@ -7,11 +6,12 @@ import "../scss/style.scss";
 
 import * as flsFunctions from "./files/functions.js";
 
-/* Перевірка підтримки webp, додавання класу webp або no-webp для HTML */
-/* (i) необхідно для коректного відображення webp із css */
-// flsFunctions.isWebp();
-/* Додавання класу touch для HTML якщо браузер мобільний */
-// flsFunctions.addTouchClass();
+// /* Перевірка підтримки webp, додавання класу webp або no-webp для HTML */
+// /* (i) необхідно для коректного відображення webp із css */
+// // flsFunctions.isWebp();
+// /* Додавання класу touch для HTML якщо браузер мобільний */
+// // flsFunctions.addTouchClass();
+
 /* Додавання loaded для HTML після повного завантаження сторінки */
 flsFunctions.addLoadedClass();
 /* Модуль для роботи з меню (Бургер) */
@@ -21,15 +21,11 @@ import './libs/wNumb.min.js';
 
 /*
 Модуль "Спойлери"
-Документація: https://template.fls.guru/template-docs/modul-spojlery.html
-Сніппет (HTML): spollers
 */
 flsFunctions.spollers();
 
 /*
 Модуль "Таби"
-Документація: https://template.fls.guru/template-docs/modul-taby.html
-Сніппет (HTML): tabs
 */
 flsFunctions.tabs();
 
@@ -45,21 +41,15 @@ initLiveChat();
 
 /*
 Модуль "Показати ще"
-Документація: https://template.fls.guru/template-docs/modul-pokazat-eshhjo.html
-Сніппет (HTML): showmore
 */
 // flsFunctions.showMore();
 
 /*
 Модуль "До/Після"
-Документація: https://template.fls.guru/template-docs/modul-do-pislia.html
-Сніппет (HTML): ba
 */
 // import './libs/beforeafter.js';
 
 /*
-Модуль "Ефект хвиль"
-Документация: https://template.fls.guru/template-docs/modul-ripple-effect.html
 Сниппет (HTML):
 */
 // flsFunctions.rippleEffect();
@@ -73,26 +63,17 @@ initLiveChat();
 
 /*
 Модуль "Бігучий рядок" (Alpha)
-Документация:
-Сниппет (HTML):
 */
 // import './libs/keywords.js'
 
-/*
-Фунція показу повідомлення на сторінці "Account"
-*/
-// flsFunctions.accountMsg();
 
 /*
 Модуль "Попапи"
-Документація: https://template.fls.guru/template-docs/funkcional-popup.html
-Сніппет (HTML): pl, pop
 */
 import './libs/popup.js'
 
 /*
 Модуль паралаксу мишею
-Документація: https://template.fls.guru/template-docs/modul-animacii-parallaks-obektov-pri-dvizhenii-myshi.html
 */
 // import './libs/parallax-mouse.js'
 
@@ -102,7 +83,6 @@ import './libs/popup.js'
 import * as flsForms from "./files/forms/forms.js";
 
 /* Робота з полями форми */
-/* Документація: https://template.fls.guru/template-docs/rabota-s-formami.html */
 // /*
 flsForms.formFieldsInit({
 	viewPass: false,
@@ -110,7 +90,6 @@ flsForms.formFieldsInit({
 });
 // */
 /* Надсилання форми */
-/* Документація: https://template.fls.guru/template-docs/rabota-s-formami.html */
 flsForms.formSubmit();
 
 /* Модуль форми "кількість" */
@@ -131,9 +110,6 @@ flsForms.formAddPhoto();
 /* (У роботі) Модуль роботи з масками.*/
 /*
 Підключення та налаштування виконується у файлі js/files/forms/inputmask.js
-Документація по роботі у шаблоні:
-Документація плагіна: https://github.com/RobinHerbots/inputmask
-Сніппет(HTML):
 */
 // import "./files/forms/inputmask.js";
 
@@ -151,7 +127,6 @@ import "./files/forms/range.js";
 Підключення плагіна Tippy.js та налаштування виконується у файлі js/files/tippy.js
 Документація по роботі у шаблоні:
 Документація плагіна: https://atomiks.github.io/tippyjs/
-Сніппет (HTML): tip (додає атрибут з підказкою для html тега)
 */
 import "./files/tippy.js";
 
@@ -160,7 +135,6 @@ import "./files/tippy.js";
 // ========================================================================================================================================================================================================================================================
 /*
 Налаштування підключення плагіна слайдера Swiper та нових слайдерів виконується у файлі js/files/sliders.js
-Документація по роботі у шаблоні: https://template.fls.guru/template-docs/rabota-so-slajderom-swiper.html
 Документація плагіна: https://swiperjs.com/
 Сніппет(HTML): swiper
 */
@@ -188,17 +162,14 @@ import './libs/select.js'
 // import './files/scroll/lazyload.js';
 
 // Спостерігач за об'єктами з атрибутом data-watch
-// Документація: https://template.fls.guru/template-docs/modul-nabljudatel-za-poyavleniem-elementa-pri-skrolle.html
 // Сніппет(HTML):
 import './libs/watcher.js'
 
 // Модуль поекранної прокрутки
-// Документація: https://template.fls.guru/template-docs/modul-poekrannoj-prokrutki-stranicy-fullpage.html
 // Сніппет(HTML):
 // import './libs/fullpage.js'
 
 // Модуль паралаксу
-// Документація: https://template.fls.guru/template-docs/paralaks-pri-skroli.html
 // Сніппет(HTML):
 // import './libs/parallax.js'
 
@@ -206,16 +177,13 @@ import './libs/watcher.js'
 import * as flsScroll from "./files/scroll/scroll.js";
 
 // Плавна навігація по сторінці
-// Документація: https://template.fls.guru/template-docs/modul-plavnoj-navigacii-po-stranice.html
 // flsScroll.pageNavigation();
 
 // Функціонал додавання класів до хедеру під час прокручування
-// Документація: https://template.fls.guru/template-docs/modul-dobavleniya-klassov-k-shapke-pri-prokrutke-stranicy.html
 flsScroll.headerScroll();
 flsScroll.footerStyickyScroll();
 
 // Модуль анімація цифрового лічильника
-// Документація: https://template.fls.guru/template-docs/modul-animacii-cifrovogo-lichilnika.html
 // Сніппет(HTML):
 // flsScroll.digitsCounter();
 
@@ -251,13 +219,11 @@ flsScroll.footerStyickyScroll();
 // ========================================================================================================================================================================================================================================================
 
 /* Динамічний адаптив */
-// Документація: https://template.fls.guru/template-docs/dinamicheskij-adaptiv.html
 import "./libs/dynamic_adapt.js";
 
 // ========================================================================================================================================================================================================================================================
 // Інше ========================================================================================================================================================================================================================================================
 // ========================================================================================================================================================================================================================================================
-/* Підключаємо файли зі своїм кодом */
 import "./files/script.js";
 import "./modules/tabs-navigation.js"; // Імпорт навігації табів
 //============================================================================================================================================================================================================================================

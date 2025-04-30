@@ -1,4 +1,3 @@
-// Підключення функціоналу "Чортоги Фрілансера"
 import { isMobile, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 import { formValidate } from "../files/forms/forms.js";

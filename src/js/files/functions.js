@@ -1,4 +1,3 @@
-// Підключення списку активних модулів
 import { flsModules } from "./modules.js";
 
 /* Перевірка підтримки webp, додавання класу webp або no-webp для HTML */
@@ -606,14 +605,6 @@ export function menuInit() {
 			}
 		});
 	};
-	// if (document.querySelector(".icon-menu")) {
-	// 	document.addEventListener("click", function (e) {
-	// 		if (bodyLockStatus && e.target.closest('.icon-menu')) {
-	// 			bodyLockToggle();
-	// 			document.documentElement.classList.toggle("menu-open");
-	// 		}
-	// 	});
-	// };
 }
 export function menuOpen() {
 	bodyLock();
@@ -835,17 +826,6 @@ export function customCursor(isShadowTrue) {
 }
 
 // show message on account page ===
-// export function accountMsg() {
-// 	const msgAccountBtn = document.querySelectorAll("[data-account-msg]");
-// 	if (!msgAccountBtn.length) return;
-// 	msgAccountBtn.forEach(button => {
-// 			button.addEventListener("click", () => {
-// 				if (event.target.closest("form")) return;
-// 					showMessage(button.getAttribute("data-account-msg"));
-// 			});
-// 	});
-// }
-
 export function showMessage(msgSelector) {
 	const msgElement = document.querySelector(msgSelector);
 	

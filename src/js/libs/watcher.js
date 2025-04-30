@@ -1,4 +1,3 @@
-// Підключення функціоналу "Чортоги Фрілансера"
 import { isMobile, uniqArray, FLS } from "../files/functions.js";
 import { flsModules } from "../files/modules.js";
 

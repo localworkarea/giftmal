@@ -1,10 +1,6 @@
 /* Календар */
-
-// Підключення функціоналу "Чертоги Фрілансера"
-// Підключення списку активних модулів
 import { flsModules } from "../modules.js";
 
-// Підключення модуля
 import datepicker from 'js-datepicker';
 
 if (document.querySelector('[data-datepicker]')) {

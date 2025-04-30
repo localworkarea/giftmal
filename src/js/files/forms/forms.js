@@ -1,15 +1,9 @@
-// Підключення функціоналу "Чертоги Фрілансера"
-// Підключення списку активних модулів
 import { flsModules } from "../modules.js";
-// Допоміжні функції
 import { isMobile, _slideUp, _slideDown, _slideToggle, FLS,showMessage, closeAllMessages } from "../functions.js";
-// Модуль прокручування до блоку
 import { gotoBlock } from "../scroll/gotoblock.js";
 //================================================================================================================================================================================================================================================================================================================================
 
-/*
-Документація: https://template.fls.guru/template-docs/rabota-s-formami.html
-*/
+
 
 // Робота із полями форми.
 export function formFieldsInit(options = { viewPass: false, autoHeight: false }) {
