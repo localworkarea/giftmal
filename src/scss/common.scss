@@ -8,29 +8,11 @@
   }
   &::-webkit-scrollbar-thumb {
     background-color: #B2AFB3;
-    // background: 
-    //   linear-gradient(
-    //     to bottom,
-    //     transparent 0,
-    //     transparent 20px,
-    //     #B2AFB3 20px,
-    //     #B2AFB3 calc(100% - 20px),
-    //     transparent calc(100% - 20px),
-    //     transparent 100%
-    //   );
     border-radius: 4px;
     border: 1px solid transparent; /* Добавляем прозрачную границу для ползунка */
     background-clip: padding-box; 
   }
-  // &::-webkit-scrollbar-track-piece:start {
-  //   background: transparent;
-  //   margin-top: 40px;
-  // }
-
-  // &::-webkit-scrollbar-track-piece:end {
-  //   background: transparent;
-  //   margin-bottom: 40px;
-  // }
+ 
 }
 
 html {
@@ -133,6 +115,8 @@ html {
   }
 }
 
+ // PADDINGS MAGRINS ================================
+
 %padding32-24 {
   @include adaptiveValue("padding", 32, 24,0,1232.98,992.98);
  }
@@ -157,6 +141,90 @@ html {
  %marginBt32-24 {
   @include adaptiveValue("margin-bottom", 32, 24,0,1440.98,480.98);
  }
+
+  .pb-120-56 {
+    @include adaptiveValue("padding-bottom", 120, 56,0,1400.98,480.98);
+  }
+
+  .mb-56 {
+    margin-bottom: toRem(56);
+  }
+  .mt-56 {
+    margin-top: toRem(56);
+  }
+  .mb-24 {
+    margin-bottom: toRem(24);
+  }
+  .mb-16 {
+    margin-bottom: toRem(16);
+  }
+  .mb-80-56 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(80); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(56); 
+    }
+  }
+  .mb-32-24 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(32); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(24); 
+    }
+  }
+  .mb-24-16 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(24); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(16); 
+    }
+  }
+  .mb-24-8 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(24); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(8); 
+    }
+  }
+  .mb-20-24 {
+    @media (min-width:$mobileSmall){
+      margin-bottom: toRem(20); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(24); 
+    }
+  }
+  .mb-8-16 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(8); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(16); 
+    }
+  }
+  .mb-16-8 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(16); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(8); 
+    }
+  }
+  .mb-16-24 {
+    @media (min-width:$mobileSmall){
+       margin-bottom: toRem(16); 
+    }
+    @media (max-width:$mobileSmall){
+      margin-bottom: toRem(24); 
+    }
+  }
+
+
+ // FONT SIZE ================================
  %fonsSize40-20 {
   @include adaptiveValue("font-size", 40, 20,0,1400.98,480.98);
  }
@@ -269,6 +337,14 @@ html {
      font-size: toRem(13);
    }
    @media (max-width:$mobileSmall){
+     font-size: toRem(14);
+   }
+ }
+ %fonsSize13-14-2 {
+   @media (min-width: toEm(992.98)){
+     font-size: toRem(13);
+   }
+   @media (max-width: toEm(992.98)){
      font-size: toRem(14);
    }
  }
@@ -387,85 +463,8 @@ html {
     opacity: 0;
   }
   
-  .pb-120-56 {
-    @include adaptiveValue("padding-bottom", 120, 56,0,1400.98,480.98);
-  }
-  .mb-56 {
-    margin-bottom: toRem(56);
-  }
-  .mt-56 {
-    margin-top: toRem(56);
-  }
-  .mb-24 {
-    margin-bottom: toRem(24);
-  }
-  .mb-16 {
-    margin-bottom: toRem(16);
-  }
-  .mb-80-56 {
-    @media (min-width:$mobileSmall){
-       margin-bottom: toRem(80); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-bottom: toRem(56); 
-    }
-  }
-  .mb-32-24 {
-    @media (min-width:$mobileSmall){
-       margin-bottom: toRem(32); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-bottom: toRem(24); 
-    }
-  }
-  .mb-24-16 {
-    @media (min-width:$mobileSmall){
-       margin-bottom: toRem(24); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-bottom: toRem(16); 
-    }
-  }
-  .mb-24-8 {
-    @media (min-width:$mobileSmall){
-       margin-bottom: toRem(24); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-bottom: toRem(8); 
-    }
-  }
-  .mb-20-24 {
-    @media (min-width:$mobileSmall){
-      margin-bottom: toRem(20); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-bottom: toRem(24); 
-    }
-  }
-  .mb-8-16 {
-    @media (min-width:$mobileSmall){
-       margin-bottom: toRem(8); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-bottom: toRem(16); 
-    }
-  }
-  .mb-16-8 {
-    @media (min-width:$mobileSmall){
-       margin-bottom: toRem(16); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-bottom: toRem(8); 
-    }
-  }
-  .mb-16-24 {
-    @media (min-width:$mobileSmall){
-       margin-bottom: toRem(16); 
-    }
-    @media (max-width:$mobileSmall){
-      margin-bottom: toRem(24); 
-    }
-  }
+
+
 
   .flex-8 {
     @extend %flexCenterGap8;

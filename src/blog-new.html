@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+@@include('html/_head.htm',{
+"title":"Blog"
+})
+
+<body>
+  <div class="wrapper blog-page">
+    <header data-scroll="50" data-scroll-show class="header">
+      @@include('html/_header-main.htm',{})
+      @@include('html/_header-sub.htm',{})
+    </header>
+    <main class="page">
+      <section class="page-blog">
+        <div class="page-blog__container">
+          <nav class="breadcrumb">
+            <ul itemscope="" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb__list">
+              <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+                <a itemprop="item" href="index.html"><span itemprop="name">giftmall</span></a>
+                <meta itemprop="position" content="1">
+              </li>
+              <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+                <span itemprop="name">блог</span>
+                <meta itemprop="position" content="2">
+              </li>
+            </ul>
+          </nav>
+          <div class="page-blog__head">
+            <h1 class="page-blog__title">Блог giftmall</h1>
+            <div class="page-blog__subtitle">
+              <p>
+                Ознайомтеся з інформацією про галузь, дізнайтеся про наші історії успіху, <b>зазирніть за лаштунки нашого бізнесу та знайдіть ідеї для наступних подарунків.</b>
+              </p>
+            </div>
+          </div>
+          <div class="page-blog__img">
+            <img src="@img/blog/blog-1.jpg" width="1200" height="788" alt="Image">
+          </div>
+          <div class="page-blog__body">
+            <h2 class="page-blog__title">Читайте наші історії</h2>
+            <div class="page-blog__filters filters-blog">
+              <button type="button" class="filters-blog__item filters-blog__item--active" aria-label="Всі історії" data-category="all">
+                всі історії
+              </button>
+
+              <button type="button" class="filters-blog__item" aria-label="Історії клієнтів та партнерів" data-category="clients-partners">
+                історії клієнтів та партнерів
+              </button>
+
+              <button type="button" class="filters-blog__item" aria-label="Новини" data-category="news">
+                новини
+              </button>
+
+              <button type="button" class="filters-blog__item" aria-label="Розмови з Giftmall" data-category="giftmall-talks">
+                розмови з giftmall
+              </button>
+
+              <button type="button" class="filters-blog__item" aria-label="Цікаве в галузі" data-category="industry-1">
+                цікаве в галузі
+              </button>
+
+              <button type="button" class="filters-blog__item" aria-label="Цікаве в галузі" data-category="industry-2">
+                цікаве в галузі
+              </button>
+
+              <button type="button" class="filters-blog__item" aria-label="Цікаве в галузі" data-category="industry-3">
+                цікаве в галузі
+              </button>
+
+              <button type="button" class="filters-blog__item" aria-label="Натхнення для подарунків" data-category="gift-inspiration">
+                натхнення для подарунків
+              </button>
+            </div>
+            <div class="page-blog__content">
+              @@include('html/_blog-card-new.htm',{
+                "src" : "img/blog/blog-2.jpg",
+                "tag" : "історії клієнтів та партнерів",
+                "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити lorem lorem lorem lorem"
+              })
+              @@include('html/_blog-card-new.htm',{
+                "src" : "img/blog/blog-3.jpg",
+                "tag" : "розмови з giftmall",
+                "title": "How Cesur reduced reward chaos with giftmall white",
+                 "text" : "Іспанський інститут Cesur використав giftmall white label задля налаштування процесу винагород та створення персоналізованого досвіду для своїх студентів, співробітників та викладачів."
+              })
+              @@include('html/_blog-card-new.htm',{
+                "src" : "img/blog/blog-4.jpg",
+                "tag" : "цікаве в галузі",
+                "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                 "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити"
+              })
+              @@include('html/_blog-card-new.htm',{
+                "src" : "img/blog/blog-5.jpg",
+                "tag" : "розмови з giftmall",
+                "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                 "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку."
+              })
+              @@include('html/_blog-card-new.htm',{
+                "src" : "img/blog/blog-6.jpg",
+                "tag" : "натхнення для подарунків",
+                "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                 "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити lorem lorem lorem lorem"
+              })
+              @@include('html/_blog-card-new.htm',{
+                "src" : "img/blog/blog-7.jpg",
+                "tag" : "новини",
+                "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                 "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити lorem lorem lorem lorem"
+              })
+            </div>
+            @@include('html/_pagging.htm',{})
+          </div>
+          @@include('html/_cta-banner-big.htm',{})
+        </div>
+      </section>
+    </main>
+    @@include('html/_footer.htm',{})
+  </div>
+  @@include('html/_popup-mb.htm',{})
+  @@include('html/_js.htm',{})
+</body>
+
+</html>

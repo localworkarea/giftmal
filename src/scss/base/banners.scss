@@ -1,0 +1,250 @@
+.cta-banner {
+  &.cta-banner--big {
+    background-color: var(--electric-blue);
+		border-radius: toRem(24);
+		padding: toRem(24);
+		@media (min-width:$tablet){
+			padding: toRem(56);
+			border-radius: toRem(40);
+		}
+  }
+  &.cta-banner--av {
+		background-color: var(--violet);
+		border-radius: toRem(24);
+		padding: toRem(24);
+		@media (min-width:$tablet){
+			padding: toRem(32) toRem(32) toRem(40);
+			  
+		}
+  }
+	&.cta-banner--sm {
+		background-color: var(--violet);
+		border-radius: toRem(10);
+		padding: toRem(12);
+		@media (min-width:$mobileSmall){
+			padding: toRem(19);
+			border-radius: toRem(16);
+		}
+	}
+	overflow: hidden;
+	position: relative;
+		// .cta-banner__body
+
+		&__body {
+			position: relative;
+			z-index: 1;
+			.cta-banner--sm & {
+				@media (min-width:$mobileSmall){
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					gap: toRem(18);
+				}
+			}
+		}
+
+		// .cta-banner__title
+
+		&__title {
+			color: var(--white);
+			font-weight: 500;
+			text-wrap: balance;
+			line-height: 0.9;
+			
+			.cta-banner--big & {
+				max-width: toRem(320);
+				font-size: toRem(24);
+				margin-bottom: toRem(86);
+				@media (min-width:$tablet){
+					line-height: 1.12;
+					font-size: toRem(40);
+					max-width: toRem(416);
+					margin-bottom: toRem(46);
+				}
+				@media (max-width:$tablet) and (min-width: $mobileSmall) {
+					margin-bottom: toRem(20);
+				}
+			}
+			.cta-banner--av & {
+				max-width: toRem(260);
+				font-size: toRem(24);
+				margin-bottom: toRem(64);
+				@media (min-width:$tablet){
+					line-height: 1.12;
+					font-size: toRem(28);
+					max-width: toRem(451);
+					margin-bottom: toRem(45);
+				}
+				@media (max-width:$tablet) and (min-width: $mobileSmall) {
+					max-width: toRem(298);
+					margin-bottom: toRem(86);
+				}
+			}
+			.cta-banner--sm & {
+				flex: 1;
+				max-width: toRem(160);
+				font-size: toRem(14);
+				line-height: 1;
+				text-wrap: unset;
+				margin-bottom: toRem(9);
+				@media (min-width:$mobileSmall){
+					margin-bottom: 0;
+					line-height: 0.9;
+					font-size: toRem(18);
+					max-width: toRem(260);
+				}
+			}
+
+		}
+
+		// .cta-banner__link
+
+		&__link {
+			display: flex;
+			align-items: center;
+			text-align: center;
+			max-width: max-content;
+			font-weight: 500;
+			line-height: 1.2;
+			padding-block: toRem(6);
+			background-color: var(--white);
+			color: var(--dark-violet);
+			transition: color .3s ease, box-shadow .3s ease, background-color .3s ease;
+			@media (any-hover: hover){
+				&:hover{
+					color: var(--violet);
+					box-shadow: 0 4px 12px 0 rgba(33, 5, 41, 0.06);
+					background-color: var(--gray-1);
+				}
+			}
+			.cta-banner--big & {
+				font-size: toRem(11);
+				border-radius: toRem(17);
+				min-height: toRem(34);
+				padding-inline: toRem(17);
+				@media (min-width:$tablet){
+					font-size: toRem(15);
+					border-radius: toRem(24);
+					min-height: toRem(48);
+					padding-inline: toRem(24);
+				}
+				@media (max-width:$tablet) and (min-width: $mobileSmall) {
+					font-size: toRem(12);
+					border-radius: toRem(19);
+					min-height: toRem(37);
+					padding-inline: toRem(19);
+				}
+			}
+			.cta-banner--av & {
+				font-size: toRem(11);
+				border-radius: toRem(17);
+				padding-inline: toRem(17);
+				min-height: toRem(34);
+				@media (min-width:$tablet){
+					font-size: toRem(15);
+					border-radius: toRem(24);
+					padding-inline: toRem(24);
+					min-height: toRem(40);
+				}
+				@media (max-width:$tablet) and (min-width: $mobileSmall) {
+				}
+			}
+			.cta-banner--sm & {
+				font-size: toRem(10);
+				border-radius: toRem(20);
+				padding-inline: toRem(16);
+				min-height: toRem(23);
+				@media (min-width:$mobileSmall){
+					border-radius: toRem(24);
+					font-size: toRem(15);
+					padding-inline: toRem(24);
+					min-height: toRem(32);
+				}
+				@media (min-width:$tablet){
+
+				}
+				@media (max-width:$tablet) and (min-width: $mobileSmall) {
+
+				}
+			}
+		}
+
+		// .cta-banner__img
+
+		&__img {
+			position: absolute;
+			width: 100%;
+			height: auto;
+			z-index: 0;
+			.cta-banner--big & {
+				max-width: 81%;
+				top: 26%;
+				right: -70%;
+				transform: translate(-50%,0);
+				@media (min-width:$tablet){
+					top: -13%;
+					right: 0;
+					max-width: toRem(546);
+				}
+				@media (min-width:$mobileSmall){
+					transform: unset;
+				}
+				@media (max-width:$tablet) and (min-width: $mobileSmall) {
+					top: -37%;
+					right: -7%;
+					max-width: toRem(419);
+				}
+			}
+			.cta-banner--av & {
+				top: 0;
+				right: -29%;
+				// max-width: toRem(332);
+				@media (min-width:toEm(834.98)){
+					max-width: toRem(563);
+					top: -9%;
+					right: -39%;
+				}
+				@media (max-width:toEm(834.98)) and (min-width: $mobileSmall) {
+					top: -20%;
+					right: -25%;
+					max-width: toRem(609);
+				}
+				@media (max-width:$mobileSmall){
+					min-width: 144%;
+					 transform: translate(50%,0) rotate(3deg); 
+				}
+			}
+			.cta-banner--sm & {
+				 top: -26%;
+				 right: -79%;
+				 min-width: 110%;
+				 @media (min-width:$mobileSmall){
+					 top: -41%;
+					 right: 0%;
+					max-width: 57%;
+					min-width: unset;
+				 }
+			 }
+		}
+
+		// .cta-banner__logo
+
+		&__logo {
+			color: var(--white);
+			position: absolute;
+			z-index: 0;
+			right: toRem(18);
+			bottom: toRem(18);
+			font-size: toRem(24);
+			@media (min-width:$tablet){
+				right: toRem(50);
+				bottom: toRem(40);
+				font-size: toRem(34);	  
+			}
+			@media (max-width:$tablet) and (min-width:$mobileSmall){
+				right: toRem(24);
+				bottom: toRem(33);
+				font-size: toRem(26);	  
+			}
+		}
+}

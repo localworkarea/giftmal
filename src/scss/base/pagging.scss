@@ -1,6 +1,7 @@
 .pagging {
 	$item-size: toRem(32);
 	$icon-size: toRem(22);
+	$icon-size-2: toRem(16);
 	$border-radius: 50%;
 	$active-shadow: 0 toRem(4) toRem(16) 0 var(--pagging-shadow);
 
@@ -43,7 +44,11 @@
 				top: 50%;
 				left: 50%;
 				font-size: $icon-size;
+				font-weight: 600;
 				transform: translate(-50%, -50%);
+				.page-blog & {
+					font-size: $icon-size-2;
+				}
 				.pagging_sm & {
 					font-size: toRem(16);
 				}
@@ -67,7 +72,10 @@
 		}
 		
 		&._disabled {
-			opacity: 0.5;
+			// opacity: 0.5;
+			&::before {
+				color: var(--fade-violet-1);
+			}
 			pointer-events: none;
 		}
 	}

@@ -39,6 +39,12 @@ videoPlayer();
 import initLiveChat from './modules/live-chat.js';
 initLiveChat();
 
+
+// Copy link 
+import initCopyLinks from "./modules/copy-link.js";
+initCopyLinks(document);
+
+
 /*
 Модуль "Показати ще"
 */
@@ -177,7 +183,7 @@ import './libs/watcher.js'
 import * as flsScroll from "./files/scroll/scroll.js";
 
 // Плавна навігація по сторінці
-// flsScroll.pageNavigation();
+flsScroll.pageNavigation();
 
 // Функціонал додавання класів до хедеру під час прокручування
 flsScroll.headerScroll();
@@ -226,4 +232,5 @@ import "./libs/dynamic_adapt.js";
 // ========================================================================================================================================================================================================================================================
 import "./files/script.js";
 import "./modules/tabs-navigation.js"; // Імпорт навігації табів
+
 //============================================================================================================================================================================================================================================

@@ -164,8 +164,10 @@ body {
 @import "base/filters";
 @import "base/pagging";
 @import "base/breadcrumbs";
+@import "base/breadcrumbs-blog";
 @import "base/social-share";
 @import "base/blog-card";
+@import "base/blog-card-article";
 @import "base/cta-form";
 @import "base/partners-grid";
 @import "base/page-header";
@@ -173,6 +175,7 @@ body {
 @import "base/cookie-notification";
 @import "base/live-chat";
 @import "base/simplebar";
+@import "base/banners";
 
 // Підключення стилів окремих сторінок
 @import "home";
@@ -197,4 +200,5 @@ body {
 @import "pages/faq";
 @import "pages/login";
 @import "pages/cabinet";
+@import "pages/article";
 

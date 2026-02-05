@@ -1,0 +1,49 @@
+.breadcrumb {
+
+		// .breadcrumb__list
+		&__list {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+		}
+    
+		// .breadcrumb__item
+		&__item {
+      font-weight: 500;
+      line-height: 1.35;
+      
+      @media (min-width: $tablet){
+        line-height: 1.4615;
+      }
+       white-space: nowrap;
+      @extend  %fonsSize13-14-2;
+      color: var(--dark-violet);
+      a {
+        transition: color .3s ease;
+        color: var(--fade-violet-2);
+        @media (any-hover: hover){
+          &:hover{
+            color: var(--dark-violet);
+          }
+        }
+      }
+      &:not(:last-child) {
+        margin-right: toRem(8);
+        a {
+          &::after {
+            content:'>';
+            margin-left: 8px;
+          }
+        }
+      }
+      &:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+		}
+}

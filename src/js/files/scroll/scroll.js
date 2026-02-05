@@ -26,12 +26,12 @@ export function pageNavigation() {
 				const gotoSpeed = gotoLink.dataset.gotoSpeed ? gotoLink.dataset.gotoSpeed : 500;
 				const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
 				if (flsModules.fullpage) {
-					const fullpageSection = document.querySelector(`${gotoLinkSelector}`).closest('[data-fp-section]');
-					const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.fpId : null;
-					if (fullpageSectionId !== null) {
-						flsModules.fullpage.switchingSection(fullpageSectionId);
-						document.documentElement.classList.contains("menu-open") ? menuClose() : null;
-					}
+					// const fullpageSection = document.querySelector(`${gotoLinkSelector}`).closest('[data-fp-section]');
+					// const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.fpId : null;
+					// if (fullpageSectionId !== null) {
+					// 	flsModules.fullpage.switchingSection(fullpageSectionId);
+					// 	document.documentElement.classList.contains("menu-open") ? menuClose() : null;
+					// }
 				} else {
 					gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
 				}
