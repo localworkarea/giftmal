@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20260205173558">
+	<link rel="stylesheet" href="css/style.min.css?_v=20260207173950">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1">
@@ -436,7 +436,7 @@
 											<img src="img/blog/author-1.png" width="56" height="56" alt="автор" />
 										</div>
 										<div class="author-post__body">
-											<a href="#" class="author-post__name" aria-label="посилання на автора">Ксенія Кунах</a>
+											<a href="author.html" class="author-post__name" aria-label="посилання на автора">Ксенія Кунах</a>
 											<p class="author-post__role">Brand Content Producer</p>
 											<time class="author-post__date" datetime="2025-01-01">01.01.2025</time>
 										</div>
@@ -499,8 +499,45 @@
 									<li>Bausch & Lomb, </li>
 									<li>and others.</li>
 								</ul>
+								<figure class="post-slider" aria-label="Галерея зображень">
+									<div class="post-slider__slider swiper">
+										<div class="post-slider__wrapper swiper-wrapper">
+											<div class="post-slider__slide swiper-slide">
+												<figure>
+													<img src="img/blog/slide-1.png" alt="image" loading="lazy" />
+													<figcaption>Photo: Depositphotos</figcaption>
+												</figure>
+											</div>
+
+											<div class="post-slider__slide swiper-slide">
+												<figure>
+													<img src="img/blog/slide-2.png" alt="image" loading="lazy" />
+													<figcaption>Photo: Depositphotos</figcaption>
+												</figure>
+											</div>
+											<div class="post-slider__slide swiper-slide">
+												<figure>
+													<img src="img/blog/slide-1.png" alt="image" loading="lazy" />
+													<figcaption>Photo: Depositphotos</figcaption>
+												</figure>
+											</div>
+
+											<div class="post-slider__slide swiper-slide">
+												<figure>
+													<img src="img/blog/slide-2.png" alt="image" loading="lazy" />
+													<figcaption>Photo: Depositphotos</figcaption>
+												</figure>
+											</div>
+										</div>
+
+									</div>
+									<!-- <figcaption>Photo: Depositphotos</figcaption> -->
+									<button type="button" class="post-slider__nav swiper-button-prev icon-arrow-down" aria-label="Попереднє"></button>
+									<button type="button" class="post-slider__nav swiper-button-next icon-arrow-down" aria-label="Наступне"></button>
+								</figure>
+
 								<hr>
-								<section data-watch="navigator" data-watch-threshold="0.8" id="about-cesur" class="post__section">
+								<section id="about-cesur" class="post__section">
 									<h2>Огляд: <span class="clr-violet">Про Cesur</span></h2>
 									<p>
 										<a href="#">Cesur Formación</a> – це офіційний центр професійної підготовки, який пропонує понад 100 кваліфікацій у форматах очного, онлайн, подвійного та змішаного навчання. Cesur має понад 30 центрів по всій Іспанії та вже 25
@@ -510,9 +547,15 @@
 										Місія Cesur – пропонувати високоякісну, офіційно визнану професійну підготовку, адаптовану до потреб ринку праці, щоб полегшити своїм студентам входження у професійний світ. Організація надає пріоритет практичному навчанню в
 										різних технічних галузях, пропонує доступні програми для студентів різного рівня, включаючи рівень Grado Superior, та має високий показник працевлаштування своїх випускників.
 									</p>
+									<hr>
+									<figure class="video-post">
+										<div class="video-post__body">
+											<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hQiG2lNmagY?si=epCKmH1eJDqE08AE&amp;controls=0&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+										</div>
+										<figcaption>Video: YouTube</figcaption>
+									</figure>
 								</section>
-								<hr>
-								<section data-watch="navigator" data-watch-threshold="0.8" id="challenges" class="post__section">
+								<section id="challenges" class="post__section">
 									<h2>Виклики: <span class="clr-violet">Ручний підхід до винагород, складна операційка та обмежений вибір подарунків</span></h2>
 									<p>
 										Вирішивши впровадити програму винагород, Cesur почали з найпопулярнішого сертифіката в Іспанії – подарункової картки одного із найбільших маркетплейсів у світі <a class="footnote-ref" href="#source-2" data-goto="#source-2" data-goto-top="160" id="ref-2" aria-label="Джерело 2"><sup>[2]</sup></a>. Цей сертифікат з номіналом від €10 до €500 дає можливість купити
@@ -540,7 +583,7 @@
 									</div>
 								</section>
 								<hr>
-								<section data-watch="navigator" data-watch-threshold="0.8" id="solution" class="post__section">
+								<section id="solution" class="post__section">
 									<h2>Рішення: <span class="clr-violet">Персоналізований простір відкриває шлях до вибору</span></h2>
 									<div class="callout-post">
 										<p>
@@ -578,13 +621,11 @@
 
 												<div class="post-quote__person-body">
 													<span class="post-quote__name">Кароліна Хіменес Лара</span>
+													<img class="post-quote__brand" src="img/blog/logo-1.svg" width="73" height="20" alt="CESUR" loading="lazy">
 													<span class="post-quote__position">Директор з комунікацій, Cesur</span>
 												</div>
 											</div>
 
-											<div class="post-quote__brand" aria-label="Компанія">
-												<img src="img/blog/logo-1.svg" width="73" height="20" alt="CESUR" loading="lazy">
-											</div>
 										</figcaption>
 
 										<blockquote class="post-quote__body">
@@ -600,13 +641,75 @@
 
 								</section>
 								<hr>
-								<section data-watch="navigator" data-watch-threshold="0.8" id="result" class="post__section">
+								<section id="result" class="post__section">
 									<h2>Результат: <span class="clr-violet">Широкий та кастомізований вибір брендів</span></h2>
 									<p>
 										Cesur отримала повне покриття замовлень по всій Іспанії та можливість для користувачів використати сертифікати онлайн або в офлайн‑магазинах. Наразі організація має понад 100 задоволених учасників внутрішніх активностей та
 										конкурсів, що отримали ідеальні подарунки. Процес дарування відбувається без зайвих складнощів, бо користувачі мають швидкий доступ до підтримки giftmall з будь-яких питань. Cesur суттєво економить час на корпоративні винагороди,
 										від кількох днів підготовки до кількох хвилин на відправку подарункових сертифікатів.
 									</p>
+									<figure class="post-table" aria-label="Таблиця даних">
+										<div class="post-table__scroll">
+											<table>
+												<thead>
+													<tr>
+														<th>NDVI</th>
+														<th>0.1</th>
+														<th>0.2</th>
+														<th>0.3</th>
+														<th>0.4</th>
+														<th>0.5</th>
+														<th>0.6</th>
+													</tr>
+												</thead>
+
+												<tbody>
+													<tr>
+														<td>Z9OXQ10</td>
+														<td>12345</td>
+														<td>56789</td>
+														<td>090807</td>
+														<td>060504</td>
+														<td>12345</td>
+														<td>67890</td>
+													</tr>
+
+													<tr>
+														<td>Z9OXQ10</td>
+														<td>12345</td>
+														<td>56789</td>
+														<td>090807</td>
+														<td>060504</td>
+														<td>12345</td>
+														<td>67890</td>
+													</tr>
+													<tr>
+														<td>Z9OXQ10</td>
+														<td>12345</td>
+														<td>56789</td>
+														<td>090807</td>
+														<td>060504</td>
+														<td>12345</td>
+														<td>67890</td>
+													</tr>
+												</tbody>
+												<tfoot>
+													<tr>
+														<td>Z9OXQ10</td>
+														<td>12345</td>
+														<td>56789</td>
+														<td>090807</td>
+														<td>060504</td>
+														<td>12345</td>
+														<td>67890</td>
+													</tr>
+												</tfoot>
+											</table>
+										</div>
+
+										<figcaption>Photo: Depositphotos</figcaption>
+									</figure>
+
 									<figure class="post-quote post-quote--clr-2" aria-label="Цитата">
 										<figcaption class="post-quote__meta">
 											<div class="post-quote__person">
@@ -616,18 +719,17 @@
 
 												<div class="post-quote__person-body">
 													<span class="post-quote__name">Ярослава Олійник</span>
+													<img class="post-quote__brand" src="img/blog/logo-2.svg" width="68" height="31" alt="CESUR" loading="lazy">
 													<span class="post-quote__position">Head of Business Development, giftmall</span>
 												</div>
 											</div>
 
-											<div class="post-quote__brand" aria-label="Компанія">
-												<img src="img/blog/logo-2.svg" width="68" height="31" alt="CESUR" loading="lazy">
-											</div>
 										</figcaption>
 
 										<blockquote class="post-quote__body">
 											<p>
-												Чому giftmall white label спрацював для Cesur? Тепер і співробітники, і студенти можуть обрати саме те, що їм потрібно з понад 70 брендів. Персоналізований каталог – це єдина для всіх система, де замість різних процесів і постачальників усе працює в одному місці, що значно зменшує операційне навантаження на команду. Ми також запропонували гнучкість бюджету для мультибрендового сертифіката – можна налаштувати суму під конкретну подію або
+												Чому giftmall white label спрацював для Cesur? Тепер і співробітники, і студенти можуть обрати саме те, що їм потрібно з понад 70 брендів. Персоналізований каталог – це єдина для всіх система, де замість різних процесів і
+												постачальників усе працює в одному місці, що значно зменшує операційне навантаження на команду. Ми також запропонували гнучкість бюджету для мультибрендового сертифіката – можна налаштувати суму під конкретну подію або
 												кампанію, починаючи з €5.
 											</p>
 										</blockquote>
@@ -638,8 +740,7 @@
 									</p>
 								</section>
 								<hr>
-
-								<div class="cta-banner cta-banner--av" aria-label="Заклик до дії">
+								<div class="cta-banner cta-banner--av">
 									<div class="cta-banner__body">
 										<div class="cta-banner__title">
 											Хочете дізнатися більше про наші рішення?
@@ -675,17 +776,17 @@
 							<nav data-da=".post__nav-mb,992.98" class="sidebar-post" aria-label="Зміст">
 								<h2 class="sidebar-post__title">Зміст</h2>
 								<ul class="sidebar-post__list">
-									<li class="sidebar-post__item is-active">
-										<a class="sidebar-post__link" data-goto="#about-cesur" aria-label="лінк до секції" href="#about-cesur"><span>Огляд:</span> Про Cesur</a>
+									<li class="sidebar-post__item">
+										<a class="sidebar-post__link" data-scroll-to="#about-cesur" aria-label="лінк до секції" href="#about-cesur"><span>Огляд:</span> Про Cesur</a>
 									</li>
 									<li class="sidebar-post__item">
-										<a class="sidebar-post__link" data-goto="#challenges" aria-label="лінк до секції" href="#challenges"><span>Виклики:</span> Ручний підхід до винагород, складна операційка та обмежений вибір подарунків</a>
+										<a class="sidebar-post__link" data-scroll-to="#challenges" aria-label="лінк до секції" href="#challenges"><span>Виклики:</span> Ручний підхід до винагород, складна операційка та обмежений вибір подарунків</a>
 									</li>
 									<li class="sidebar-post__item">
-										<a class="sidebar-post__link" data-goto="#solution" aria-label="лінк до секції" href="#solution"><span>Рішення:</span> Персоналізований простір відкриває шлях до вибору</a>
+										<a class="sidebar-post__link" data-scroll-to="#solution" aria-label="лінк до секції" href="#solution"><span>Рішення:</span> Персоналізований простір відкриває шлях до вибору</a>
 									</li>
 									<li class="sidebar-post__item">
-										<a class="sidebar-post__link" data-goto="#result" aria-label="лінк до секції" href="#result"><span>Результат:</span> Широкий та кастомізований вибір брендів</a>
+										<a class="sidebar-post__link" data-scroll-to="#result" aria-label="лінк до секції" href="#result"><span>Результат:</span> Широкий та кастомізований вибір брендів</a>
 									</li>
 								</ul>
 								<!-- <div class="sidebar-post__marker" aria-hidden="true"></div> -->
@@ -704,6 +805,166 @@
 					</div>
 				</div>
 			</div>
+			<section class="related">
+				<div class="related__container">
+					<div class="related__head">
+						<h2 class="related__title">Схожі статті</h2>
+						<div class="related__btns">
+							<button type="button" class="related__nav swiper-button-prev icon-arrow-down" aria-label="попередній"></button>
+							<button type="button" class="related__nav swiper-button-next icon-arrow-down" aria-label="наступний"></button>
+						</div>
+					</div>
+					<div class="related__slider swiper">
+						<div class="related__wrapper swiper-wrapper">
+							<div class="related__slide swiper-slide">
+								<article class="card-article">
+									<header class="card-article__header">
+										<div class="card-article__img">
+											<img src="img/blog/blog-2.jpg" alt="image" loading="lazy" decoding="async" width="378" height="180">
+										</div>
+										<a class="card-article__tag" href="blog-article-2.html" aria-label="Перейти к категории">
+											історії клієнтів та партнерів
+										</a>
+									</header>
+
+									<div class="card-article__body">
+										<h3 class="card-article__title">How Tolino expanded and automated its loyalty programmes with giftmall</h3>
+										<div class="card-article__text">
+											<p>Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити lorem lorem lorem lorem</p>
+										</div>
+										<footer class="card-article__footer">
+											<time class="card-article__date" datetime="2025-01-01">
+												01.01.2025
+											</time>
+											<span class="card-article__sep">|</span>
+											<span class="card-article__author">
+												Kseniia Kunakh
+											</span>
+										</footer>
+									</div>
+									<a class="card-article__link" href="blog-article.html" aria-label="відкрити статью" tabindex="-1"></a>
+								</article>
+							</div>
+							<div class="related__slide swiper-slide">
+								<article class="card-article">
+									<header class="card-article__header">
+										<div class="card-article__img">
+											<img src="img/blog/blog-3.jpg" alt="image" loading="lazy" decoding="async" width="378" height="180">
+										</div>
+										<a class="card-article__tag" href="blog-article-2.html" aria-label="Перейти к категории">
+											розмови з giftmall
+										</a>
+									</header>
+
+									<div class="card-article__body">
+										<h3 class="card-article__title">How Cesur reduced reward chaos with giftmall white</h3>
+										<div class="card-article__text">
+											<p>Іспанський інститут Cesur використав giftmall white label задля налаштування процесу винагород та створення персоналізованого досвіду для своїх студентів, співробітників та викладачів.</p>
+										</div>
+										<footer class="card-article__footer">
+											<time class="card-article__date" datetime="2025-01-01">
+												01.01.2025
+											</time>
+											<span class="card-article__sep">|</span>
+											<span class="card-article__author">
+												Kseniia Kunakh
+											</span>
+										</footer>
+									</div>
+									<a class="card-article__link" href="blog-article.html" aria-label="відкрити статью" tabindex="-1"></a>
+								</article>
+							</div>
+							<div class="related__slide swiper-slide">
+								<article class="card-article">
+									<header class="card-article__header">
+										<div class="card-article__img">
+											<img src="img/blog/blog-4.jpg" alt="image" loading="lazy" decoding="async" width="378" height="180">
+										</div>
+										<a class="card-article__tag" href="blog-article-2.html" aria-label="Перейти к категории">
+											цікаве в галузі
+										</a>
+									</header>
+
+									<div class="card-article__body">
+										<h3 class="card-article__title">How Tolino expanded and automated its loyalty programmes with giftmall</h3>
+										<div class="card-article__text">
+											<p>Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити</p>
+										</div>
+										<footer class="card-article__footer">
+											<time class="card-article__date" datetime="2025-01-01">
+												01.01.2025
+											</time>
+											<span class="card-article__sep">|</span>
+											<span class="card-article__author">
+												Kseniia Kunakh
+											</span>
+										</footer>
+									</div>
+									<a class="card-article__link" href="blog-article.html" aria-label="відкрити статью" tabindex="-1"></a>
+								</article>
+							</div>
+							<div class="related__slide swiper-slide">
+								<article class="card-article">
+									<header class="card-article__header">
+										<div class="card-article__img">
+											<img src="img/blog/blog-5.jpg" alt="image" loading="lazy" decoding="async" width="378" height="180">
+										</div>
+										<a class="card-article__tag" href="blog-article-2.html" aria-label="Перейти к категории">
+											розмови з giftmall
+										</a>
+									</header>
+
+									<div class="card-article__body">
+										<h3 class="card-article__title">How Tolino expanded and automated its loyalty programmes with giftmall</h3>
+										<div class="card-article__text">
+											<p>Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку.</p>
+										</div>
+										<footer class="card-article__footer">
+											<time class="card-article__date" datetime="2025-01-01">
+												01.01.2025
+											</time>
+											<span class="card-article__sep">|</span>
+											<span class="card-article__author">
+												Kseniia Kunakh
+											</span>
+										</footer>
+									</div>
+									<a class="card-article__link" href="blog-article.html" aria-label="відкрити статью" tabindex="-1"></a>
+								</article>
+							</div>
+							<div class="related__slide swiper-slide">
+								<article class="card-article">
+									<header class="card-article__header">
+										<div class="card-article__img">
+											<img src="img/blog/blog-6.jpg" alt="image" loading="lazy" decoding="async" width="378" height="180">
+										</div>
+										<a class="card-article__tag" href="blog-article-2.html" aria-label="Перейти к категории">
+											натхнення для подарунків
+										</a>
+									</header>
+
+									<div class="card-article__body">
+										<h3 class="card-article__title">How Tolino expanded and automated its loyalty programmes with giftmall</h3>
+										<div class="card-article__text">
+											<p>Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити lorem lorem lorem lorem</p>
+										</div>
+										<footer class="card-article__footer">
+											<time class="card-article__date" datetime="2025-01-01">
+												01.01.2025
+											</time>
+											<span class="card-article__sep">|</span>
+											<span class="card-article__author">
+												Kseniia Kunakh
+											</span>
+										</footer>
+									</div>
+									<a class="card-article__link" href="blog-article.html" aria-label="відкрити статью" tabindex="-1"></a>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</main>
 		<footer class="footer">
 			<div class="footer__container">
@@ -2479,12 +2740,12 @@
 			</li>
 		</ul>
 	</div>
-	<script src="files/rolldate/rolldate.js?_v=20260205173558"></script>
-	<script src="files/air-datepicker/air-datepickerLng.js?_v=20260205173558"></script>
-	<script src="files/air-datepicker/air-datepicker.min.js?_v=20260205173558"></script>
-	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20260205173558"></script>
-	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20260205173558"></script>
-	<script src="js/app.min.js?_v=20260205173558"></script>
+	<script src="files/rolldate/rolldate.js?_v=20260207173950"></script>
+	<script src="files/air-datepicker/air-datepickerLng.js?_v=20260207173950"></script>
+	<script src="files/air-datepicker/air-datepicker.min.js?_v=20260207173950"></script>
+	<script src="files/intl-tel-input/intlTelInputLng.js?_v=20260207173950"></script>
+	<script src="files/intl-tel-input/intlTelInputWithUtils.min.js?_v=20260207173950"></script>
+	<script src="js/app.min.js?_v=20260207173950"></script>
 </body>
 
 </html>

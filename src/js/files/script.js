@@ -2860,6 +2860,205 @@ document.querySelectorAll('.search').forEach(searchElement => {
 
 
 
+function initPostTablesScroll() {
+  const wrappers = Array.from(document.querySelectorAll('.post-table'));
+  if (!wrappers.length) return;
+
+  const EPS = 2;
+
+  const hasOverflowX = (el) =>
+    el.scrollWidth > el.clientWidth + EPS;
+
+  const isScrollEnd = (el) =>
+    el.scrollLeft + el.clientWidth >= el.scrollWidth - EPS;
+
+  const update = (wrap, scroller) => {
+    const overflow = hasOverflowX(scroller);
+
+    wrap.classList.toggle('_scroll', overflow);
+
+    if (!overflow) {
+      wrap.classList.remove('_scroll-end');
+      return;
+    }
+
+    wrap.classList.toggle('_scroll-end', isScrollEnd(scroller));
+  };
+
+  wrappers.forEach((wrap) => {
+    const scroller = wrap.querySelector('.post-table__scroll');
+    if (!scroller) return;
+
+    scroller.addEventListener('scroll', () => {
+      update(wrap, scroller);
+    });
+
+    requestAnimationFrame(() => update(wrap, scroller));
+
+    if ('ResizeObserver' in window) {
+      const ro = new ResizeObserver(() => {
+        update(wrap, scroller);
+      });
+      ro.observe(scroller);
+      const table = scroller.querySelector('table');
+      if (table) ro.observe(table);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    wrappers.forEach(wrap => {
+      const scroller = wrap.querySelector('.post-table__scroll');
+      if (scroller) update(wrap, scroller);
+    });
+  });
+}
+initPostTablesScroll();
 
 
+function initPostToc(options = {}) {
+  const {
+    activeClass = '_watching',
+    offsetTop = 120,
+    clickLockMs = 800,
+  } = options;
 
+  const links = Array.from(document.querySelectorAll('[data-scroll-to]'));
+  if (!links.length) return { destroy() {} };
+
+  const items = links
+    .map((el) => {
+      const targetSel = el.getAttribute('data-scroll-to');
+      if (!targetSel || !targetSel.startsWith('#')) return null;
+      const section = document.querySelector(targetSel);
+      if (!section) return null;
+
+      return {
+        el,
+        parent: el.parentElement,
+        section,
+        id: targetSel,
+      };
+    })
+    .filter(Boolean);
+
+  if (!items.length) return { destroy() {} };
+
+  let rafId = 0;
+  let clickLockedUntil = 0;
+  const ratios = new Map();
+
+  const setActive = (id) => {
+    items.forEach(({ el, parent, id: itemId }) => {
+      const isActive = itemId === id;
+      el.classList.toggle(activeClass, isActive);
+      if (parent) parent.classList.toggle(activeClass, isActive);
+    });
+  };
+
+  const chooseBest = () => {
+    if (Date.now() < clickLockedUntil) return;
+
+    let best = null;
+
+    items.forEach(({ id, section }) => {
+      const r = ratios.get(id) || 0;
+      if (r <= 0) return;
+
+      const rect = section.getBoundingClientRect();
+      const dist = Math.abs(rect.top - offsetTop);
+
+      const score = r * 1000 - dist;
+
+      if (!best || score > best.score) {
+        best = { id, score };
+      }
+    });
+
+    if (best) setActive(best.id);
+  };
+
+  const scheduleChoose = () => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(chooseBest);
+  };
+
+  const thresholds = [];
+  for (let t = 0; t <= 1; t += 0.05) thresholds.push(Number(t.toFixed(2)));
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = `#${entry.target.id}`;
+        ratios.set(id, entry.isIntersecting ? entry.intersectionRatio : 0);
+      });
+      scheduleChoose();
+    },
+    {
+      root: null,
+      rootMargin: `-${offsetTop}px 0px -45% 0px`,
+      threshold: thresholds,
+    }
+  );
+
+  items.forEach(({ section }) => {
+    if (section.id) io.observe(section);
+  });
+
+  const onClick = (e) => {
+    const el = e.target.closest('[data-scroll-to]');
+    if (!el) return;
+
+    const sel = el.getAttribute('data-scroll-to');
+    if (!sel || !sel.startsWith('#')) return;
+
+    const target = document.querySelector(sel);
+    if (!target) return;
+
+    e.preventDefault();
+
+    setActive(sel);
+    clickLockedUntil = Date.now() + clickLockMs;
+
+    const y =
+      window.pageYOffset +
+      target.getBoundingClientRect().top -
+      offsetTop;
+
+    window.scrollTo({
+      top: Math.max(0, y),
+      behavior: 'smooth',
+    });
+
+    try {
+      history.replaceState(null, '', sel);
+    } catch (e) {}
+  };
+
+  document.addEventListener('click', onClick);
+
+  // первичная подсветка
+  const initial =
+    window.location.hash &&
+    items.some((i) => i.id === window.location.hash)
+      ? window.location.hash
+      : items[0].id;
+
+  setActive(initial);
+
+  return {
+    destroy() {
+      cancelAnimationFrame(rafId);
+      document.removeEventListener('click', onClick);
+      io.disconnect();
+      ratios.clear();
+    },
+  };
+}
+
+// init
+window.addEventListener('load', () => {
+  initPostToc({
+    activeClass: '_watching',
+    offsetTop: 180,
+  });
+});

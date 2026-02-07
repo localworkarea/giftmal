@@ -1370,3 +1370,9 @@ html {
     }
   }
 }
+
+
+.swiper-button-prev .swiper-navigation-icon,
+.swiper-button-next .swiper-navigation-icon {
+  display: none !important;
+}

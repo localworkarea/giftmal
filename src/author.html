@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="uk">
+@@include('html/_head.htm',{ "title":"Про автора" })
+
+<body>
+  <div class="wrapper author-page">
+    <header data-scroll="50" data-scroll-show class="header">
+      @@include('html/_header-main.htm',{})
+      @@include('html/_header-sub.htm',{})
+    </header>
+    <main class="page">
+      <div class="author">
+        <div class="author__container">
+          <nav class="breadcrumb">
+            <ul itemscope="" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb__list">
+              <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+                <a itemprop="item" href="index.html"><span itemprop="name">giftmall</span></a>
+                <meta itemprop="position" content="1" />
+              </li>
+              <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+                <a itemprop="item" href="index.html"><span itemprop="name">блог</span></a>
+                <meta itemprop="position" content="2" />
+              </li>
+              <li itemprop="itemListElement" itemscope="" itemtype="https://schema.org/ListItem" class="breadcrumb__item">
+                <span itemprop="name">Ангеліна Іванова</span>
+                <meta itemprop="position" content="3" />
+              </li>
+            </ul>
+          </nav>
+          <div class="author__loyout">
+            <article class="author__main">
+              <header class="head-author">
+                <div class="head-author__img">
+                  <img src="@img/blog/author-2.png" alt="Image">
+                </div>
+                <div class="head-author__body">
+                  <p class="head-author__name">Ангеліна Іванова</p>
+                  <p class="head-author__role">Chief Revenue Officer</p>
+                  <a href="mailto:a.ivanova@giftmall.eu" class="head-author__link">a.ivanova@giftmall.eu</a>
+                </div>
+                <a class="share-post__link" href="#" aria-label="Поділитися у LinkedIn" rel="noopener noreferrer">
+                  <img src="@img/icons/social_5.svg" alt="Image">
+                </a>
+              </header>
+              <div class="author__body">
+
+                <p>
+                  <b>Ангеліна Іванова – Chief Revenue Officer в компанії giftmall.</b> Співпрацює з компаніями в Україні, Польщі та Іспанії, допомагаючи їм запускати сучасні програми мотивації та подяки з мультибрендовим сертифікатом giftmall та
+                  брендовими
+                  подарунковими картками. Вона супроводжує клієнтів від першого запиту до запуску рішень для корпоративних винагород, промокампаній і програм залучення співробітників, клієнтів та партнерів.
+                </p>
+                <hr>
+                <p>
+                  Ангеліна приєдналася до команди у 2020 році, а згодом очолила відділ продажів. Вона вірить у комплексний win-win підхід до клієнтів, який включає прозору комунікацію, оперативну реакцію на запити та здатність швидко адаптовуватися і
+                  вчитися. Саме на цих принципах Ангеліна побудувала сильну та вмотивовану команду з розвитку бізнесу в giftmall.
+                </p>
+                <p>
+                  <b>Ключова експертиза Ангеліни в giftmall:</b>
+                </p>
+                <ul>
+                  <li>
+                    Розвиває бізнес giftmall на ринках України, Польщі та Іспанії, шукаючи нові можливості, партнерства і напрями зростання;
+                  </li>
+                  <li>
+                    Допомагає компаніям будувати програми винагород та лояльності, які мотивують команди та підтримують довгострокові відносини з партнерами та клієнтами;
+                  </li>
+                  <li>
+                    Разом з командою впроваджує рішення giftmall так, щоб клієнти швидко бачили результат і могли масштабувати свої програми без зайвої бюрократії.
+                  </li>
+                </ul>
+                <hr>
+                @@include('html/_cta-banner-sm.htm',{})
+              </div>
+              <div class="author__footer">
+                <div class="share-post" aria-label="Поділитися">
+                  <span class="share-post__label">Слідкуйте за нашими новинами та оновленнями:</span>
+                  <ul class="share-post__list">
+                    <li class="share-post__item">
+                      <a class="share-post__link" href="#" aria-label="Поділитися у Facebook" rel="noopener noreferrer">
+                        <img src="@img/icons/social_2.svg" alt="Image">
+                      </a>
+                    </li>
+                    <li class="share-post__item">
+                      <a class="share-post__link" href="#" aria-label="Поділитися у LinkedIn" rel="noopener noreferrer">
+                        <img src="@img/icons/social_5.svg" alt="Image">
+                      </a>
+                    </li>
+                    <li class="share-post__item">
+                      <a class="share-post__link" href="#" aria-label="Поділитися у LinkedIn" rel="noopener noreferrer">
+                        <img src="@img/icons/social_6.svg" alt="Image">
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <!-- тут можливо додати <aside>, якщо потрібно буде -->
+          </div>
+        </div>
+      </div>
+      <section class="related">
+        <div class="related__container">
+          <div class="related__head">
+            <h2 class="related__title">Схожі статті</h2>
+            <div class="related__btns">
+              <button type="button" class="related__nav swiper-button-prev icon-arrow-down" aria-label="попередній"></button>
+              <button type="button" class="related__nav swiper-button-next icon-arrow-down" aria-label="наступний"></button>
+            </div>
+          </div>
+          <div class="related__slider swiper">
+            <div class="related__wrapper swiper-wrapper">
+              <div class="related__slide swiper-slide">
+                 @@include('html/_blog-card-new.htm',{
+                "src" : "img/blog/blog-2.jpg",
+                "tag" : "історії клієнтів та партнерів",
+                "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити lorem lorem lorem lorem"
+              })
+              </div>
+              <div class="related__slide swiper-slide">
+                @@include('html/_blog-card-new.htm',{
+                "src" : "img/blog/blog-3.jpg",
+                "tag" : "розмови з giftmall",
+                "title": "How Cesur reduced reward chaos with giftmall white",
+                "text" : "Іспанський інститут Cesur використав giftmall white label задля налаштування процесу винагород та створення персоналізованого досвіду для своїх студентів, співробітників та викладачів."
+                })
+              </div>
+              <div class="related__slide swiper-slide">
+                @@include('html/_blog-card-new.htm',{
+                    "src" : "img/blog/blog-4.jpg",
+                    "tag" : "цікаве в галузі",
+                    "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                     "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити"
+                  })
+              </div>
+              <div class="related__slide swiper-slide">
+                 @@include('html/_blog-card-new.htm',{
+                    "src" : "img/blog/blog-5.jpg",
+                    "tag" : "розмови з giftmall",
+                    "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                     "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку."
+                  })
+              </div>
+              <div class="related__slide swiper-slide">
+                @@include('html/_blog-card-new.htm',{
+                    "src" : "img/blog/blog-6.jpg",
+                    "tag" : "натхнення для подарунків",
+                    "title": "How Tolino expanded and automated its loyalty programmes with giftmall",
+                     "text" : "Як компанія Tolino розширила й автоматизувала свої програми лояльності з giftmall. Від ідеї до запуску за 7 днів. Перед колаборацією ми провели дослідження ринку та самої компанії загалом, це в свою чергу допомогло нам виявити lorem lorem lorem lorem"
+                  })
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('html/_footer.htm',{})
+  </div>
+  @@include('html/_popup-mb.htm',{})
+  @@include('html/_js.htm',{})
+</body>
+
+</html>

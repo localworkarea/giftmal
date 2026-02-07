@@ -1,19 +1,25 @@
-.blog-page {
+.post-page,
+.author-page,
+.blog-page  {
   .page {
-    border-radius: toRem(24) toRem(24) 0 0; 
+    border-radius: toRem(24) toRem(24) 0 0;
     margin-bottom: toRem(-24);
     padding-bottom: toRem(24);
-    @media (min-width:$mobileSmall){
+
+    @media (min-width:$mobileSmall) {
       margin-bottom: toRem(-40);
       padding-bottom: toRem(40);
-       border-radius: toRem(40) toRem(40) 0 0; 
+      border-radius: toRem(40) toRem(40) 0 0;
     }
   }
-  footer{
-    margin-top:0;
+
+  footer {
+    margin-top: 0;
     z-index: 2;
   }
 }
+
+// == old styles
 .blog {
   @extend %paddingTbBt56-16;
   position: relative;

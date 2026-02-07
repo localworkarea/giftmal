@@ -14,6 +14,7 @@ import "../../scss/base/swiper.scss";
 // import 'swiper/css';
 
 function initSliders() {
+	 setupSwiperNavigationIconCleaner(document);
 	if (document.querySelector('.corporate-promo__slider')) {
 		new Swiper('.corporate-promo__slider', {
 			modules: [Pagination, Autoplay],
@@ -343,9 +344,101 @@ function initSliders() {
 			});
 		}
 	}
+
+	// слайдер на старнице POST (статья блога) ====
+	if (document.querySelector('.post-slider__slider')) {
+	 new Swiper('.post-slider__slider', {
+			modules: [Navigation],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 1,
+			spaceBetween: 8,
+			speed: 500,
+			
+			navigation: {
+				prevEl: '.post-slider .swiper-button-prev',
+				nextEl: '.post-slider .swiper-button-next',
+			},
+			
+			// breakpoints: {
+			// 	300: {
+			// 		spaceBetween: 4,
+					
+			// 	},
+			// 	480: {
+			// 		spaceBetween: 8,
+
+			// 	}
+			// },
+	
+			on: {
+			
+			}
+		});
+	}
+	if (document.querySelector('.related__slider')) {
+	 new Swiper('.related__slider', {
+			modules: [Navigation],
+			observer: true,
+			observeParents: true,
+			slidesPerView: 3,
+			spaceBetween: 8,
+			speed: 500,
+			
+			navigation: {
+				prevEl: '.related__nav.swiper-button-prev',
+				nextEl: '.related__nav.swiper-button-next',
+			},
+			
+			breakpoints: {
+				300: {
+					spaceBetween: 8,
+					slidesPerView: 1.15,
+				},
+				600: {
+					spaceBetween: 16,
+					slidesPerView: 2,
+				},
+				992: {
+					spaceBetween: 8,
+					slidesPerView: 3,
+				}
+			},
+	
+			on: {
+			
+			}
+		});
+	}
+
+
 }
 
+let swiperNavIconObserver = null;
+function setupSwiperNavigationIconCleaner(root = document) {
+  const removeIcons = () => {
+    root
+      .querySelectorAll(
+        '.swiper-button-prev .swiper-navigation-icon, .swiper-button-next .swiper-navigation-icon'
+      )
+      .forEach((el) => el.remove());
+  };
+
+  removeIcons();
+
+  if (swiperNavIconObserver) return;
+
+  swiperNavIconObserver = new MutationObserver(() => {
+    removeIcons();
+  });
+
+  swiperNavIconObserver.observe(root.body || root.documentElement, {
+    childList: true,
+    subtree: true,
+  });
+}
 
 window.addEventListener("load", function (e) {
 	initSliders();
+	 setupSwiperNavigationIconCleaner(document);
 });
