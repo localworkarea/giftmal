@@ -13619,8 +13619,9 @@ body::after {
   gap: 1rem
 }
 .share-post__label {
-  font-size: 1.125rem;
-  line-height: .69
+  font-size: .8125rem;
+  text-wrap: balance;
+  line-height: 1.1
 }
 .share-post__list {
   display: flex;
@@ -13776,7 +13777,6 @@ body::after {
 }
 .post-quote__position {
   margin-top: .5rem;
-  grid-column: span 2;
   font-weight: 600;
   font-size: .8125rem;
   line-height: 1;
@@ -13831,7 +13831,8 @@ body::after {
 }
 .post-table__scroll {
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: .75rem
 }
 .post-table__scroll::-webkit-scrollbar {
   height: 4px;
@@ -13985,13 +13986,7 @@ body::after {
 }
 .author__footer .share-post {
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: .875rem
-}
-.author__footer .share-post__label {
-  font-size: .8125rem;
-  text-wrap: balance;
-  line-height: 1.1
 }
 .head-author {
   display: grid;
@@ -15823,11 +15818,11 @@ body::after {
   .post-quote__name {
     align-self: flex-end
   }
+  .post-quote__position {
+    grid-column: span 2
+  }
   .post-quote__body {
     display: flex
-  }
-  .post-table__scroll {
-    padding-bottom: .75rem
   }
   .related__slider {
     margin-inline: 0;
@@ -16145,6 +16140,10 @@ body::after {
     right: 6%;
     -webkit-transform: rotate(15deg);
     transform: rotate(15deg)
+  }
+  .author .cta-banner.cta-banner--sm .cta-banner__title {
+    font-size: 23px;
+    max-width: 300px
   }
 }
 @media (min-width:43.81125em)and (any-hover:hover) {
@@ -22006,6 +22005,9 @@ body::after {
   .post-slider__nav.swiper-button-prev {
     margin-right: .75rem
   }
+  .share-post__label {
+    max-width: 16.25rem
+  }
   .post-quote__body::before {
     float: left;
     margin: 6px 16px 0 0
@@ -22016,9 +22018,6 @@ body::after {
   }
   .related__nav.icon-arrow-down::before {
     font-size: 24px
-  }
-  .author__footer .share-post__label {
-    max-width: 16.25rem
   }
 }
 @media (max-width:24.43625em) {

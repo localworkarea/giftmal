@@ -573,8 +573,14 @@
   // .share-post__label
   &__label {
 
-    font-size: toRem(18);
-    line-height: 0.69;
+    // font-size: toRem(18);
+    // line-height: 0.69;
+      font-size: toRem(13);
+      text-wrap: balance;
+      line-height: 1.1;
+      @media (max-width:$mobileSmall){
+         max-width: toRem(260); 
+      }
   }
 
   // .share-post__list  
@@ -846,20 +852,23 @@
   // .post-quote__position
   &__position {
     margin-top: toRem(8);
-    grid-column: span 2;
     font-weight: 600;
     font-size: toRem(13);
     line-height: 1;
     color: var(--fade-violet-2);
-
+    
     @media (min-width:$tablet) {
       letter-spacing: 0.02em;
       font-size: toRem(11);
       line-height: 0.73;
     }
-
+    
     @media (max-width:$tablet) and (min-width:$mobileSmall) {
       line-height: 1.46;
+    }
+    @media (min-width:$mobileSmall){
+      grid-column: span 2;
+        
     }
   }
 
@@ -960,9 +969,9 @@
     // border-radius: 16px;
     // padding-bottom: toRem(8);
     // padding-bottom: toRem(12);
-    @media (min-width:$mobileSmall) {
+    // @media (min-width:$mobileSmall) {
       padding-bottom: toRem(12);
-    }
+    // }
 
     &::-webkit-scrollbar {
       height: 4px; // горизонтальный
@@ -1267,7 +1276,14 @@
 
 .author {
   @extend %author-post-general;
-
+  .cta-banner.cta-banner--sm {
+    .cta-banner__title {
+      @media (min-width:toEm(700.98)){
+         font-size: 23px; 
+         max-width: 300px;
+      }
+    }
+  }
   // .author__container
   &__container {}
 
@@ -1295,17 +1311,17 @@
     margin-top: toRem(32);
     .share-post {
       flex-wrap: wrap;
-      justify-content: space-between;
+      // justify-content: space-between;
       gap: toRem(14);
     }
-    .share-post__label {
-      font-size: toRem(13);
-      text-wrap: balance;
-      line-height: 1.1;
-      @media (max-width:$mobileSmall){
-         max-width: toRem(260); 
-      }
-    }
+    // .share-post__label {
+    //   font-size: toRem(13);
+    //   text-wrap: balance;
+    //   line-height: 1.1;
+    //   @media (max-width:$mobileSmall){
+    //      max-width: toRem(260); 
+    //   }
+    // }
   }
 }
 
